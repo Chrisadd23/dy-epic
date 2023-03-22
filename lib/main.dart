@@ -1,7 +1,26 @@
+import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
+import 'package:amplify_flutter/amplify_flutter.dart';
+import 'package:app_flutter_produkt_bestellen/amplifyconfiguration.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await awconfigureAmplify();
   runApp(const MyApp());
+}
+
+Future<void> awconfigureAmplify() async {
+  //Add AmplifyDataStore
+  //Add AmplifyAuthCognito
+  Amplify.addPlugins([AmplifyAuthCognito()]);
+  //Add DataStore and AuthCognito
+  //Add Configure Amplify
+  try {
+    await Amplify.configure(amplifyconfig);
+  }
+  catch (e){
+    print('Amplify wurde bereits konfiguriert [ ${e.toString()} ]');
+  }
 }
 
 class MyApp extends StatelessWidget {
