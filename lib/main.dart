@@ -1,6 +1,6 @@
 import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
-import 'package:app_flutter_produkt_bestellen/amplifyconfiguration.dart';
+import 'package:app_flutter_produkt_bestellen/core/amplify/amplifyconfiguration.dart';
 import 'package:flutter/material.dart';
 
 Future<void> main() async {
