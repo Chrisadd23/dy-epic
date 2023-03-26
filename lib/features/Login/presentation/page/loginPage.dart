@@ -11,7 +11,9 @@ class Login extends StatelessWidget {
     return GlobalScaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(100),
-        child: GlobalAppBar(),
+        child: GlobalAppBar(
+          context: context,
+        ),
 
       ),
       body: const LoginPage(),
