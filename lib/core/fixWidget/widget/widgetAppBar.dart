@@ -14,13 +14,19 @@ class GlobalAppBar extends AppBar {
           title: Transform(
             transform: Matrix4.translationValues(-20, 0.0, 0.0),
             child: Container(
-              height: 100,
+              height: 98.5,
               padding: const EdgeInsets.only(top: 20,bottom: 20),
               width: MediaQuery.of(context).size.width * 0.7,
-              decoration:  BoxDecoration(
+              decoration:  const BoxDecoration(
                 color: Colors.white,
-                borderRadius: const BorderRadius.only(bottomRight: Radius.circular(20)),
-                border: Border.all(color: Colors.black)
+                borderRadius: BorderRadius.only(bottomRight: Radius.circular(20),
+                ),
+                boxShadow: [
+                  BoxShadow(color: Colors.black,blurStyle: BlurStyle.inner,offset: Offset(0,1.5)),
+                  BoxShadow(color: Colors.black,blurStyle: BlurStyle.inner,offset: Offset(-2.5,0)),
+                  BoxShadow(color: Colors.black,blurStyle: BlurStyle.inner,offset: Offset(0,-1.5)),
+
+                ]
               ),
               child: Image.asset(
   Assets.company.appBarLogo.path,
@@ -30,7 +36,7 @@ class GlobalAppBar extends AppBar {
             ),
           ),
           toolbarHeight: 100,
-          backgroundColor: const Color.fromRGBO(87, 87, 87, 0.3),
-          elevation: 1,
+          backgroundColor: const Color.fromRGBO(87, 87, 87, 0.0),
+          elevation: 0.1,
         );
 }

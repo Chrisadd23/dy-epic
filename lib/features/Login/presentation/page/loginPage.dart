@@ -16,8 +16,9 @@ class Login extends StatelessWidget {
         ),
 
       ),
-      body: const LoginPage(),
-      );
+      body:
+         const LoginPage(),)
+
   }
 }
 
