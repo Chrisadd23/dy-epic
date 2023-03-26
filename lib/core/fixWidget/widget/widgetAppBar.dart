@@ -17,10 +17,10 @@ class GlobalAppBar extends AppBar {
               height: 100,
               padding: const EdgeInsets.only(top: 20,bottom: 20),
               width: MediaQuery.of(context).size.width * 0.7,
-              decoration: BoxDecoration(
-
+              decoration:  BoxDecoration(
+                color: Colors.white,
                 borderRadius: const BorderRadius.only(bottomRight: Radius.circular(20)),
-                border: Border.all(color: Colors.black, width: 1.5)
+                border: Border.all(color: Colors.black)
               ),
               child: Image.asset(
   Assets.company.appBarLogo.path,
@@ -30,7 +30,7 @@ class GlobalAppBar extends AppBar {
             ),
           ),
           toolbarHeight: 100,
-          backgroundColor: Colors.white,
+          backgroundColor: const Color.fromRGBO(87, 87, 87, 0.3),
           elevation: 1,
         );
 }
