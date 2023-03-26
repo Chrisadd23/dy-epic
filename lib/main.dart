@@ -3,10 +3,12 @@ import 'package:amplify_flutter/amplify_flutter.dart';
 import 'package:app_flutter_produkt_bestellen/core/amplify/amplifyconfiguration.dart';
 import 'package:app_flutter_produkt_bestellen/features/Login/presentation/page/loginPage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 Future<void> main() async {
-  //WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
   //await awconfigureAmplify();
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,overlays: []);
   runApp(const MyApp());
 }
 
@@ -30,6 +32,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(

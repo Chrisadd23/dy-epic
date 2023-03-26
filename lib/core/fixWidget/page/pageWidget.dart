@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class GlobalScaffold extends Scaffold{
   const GlobalScaffold(
       {Key? key,
-      required AppBar appBar,
+      PreferredSizeWidget? appBar,
       required Widget body,
       })
       : super(

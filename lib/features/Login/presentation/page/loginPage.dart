@@ -9,8 +9,10 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GlobalScaffold(
-      appBar: GlobalAppBar(
-        title: const Text('Titel'),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(100),
+        child: GlobalAppBar(),
+
       ),
       body: const LoginPage(),
       );
