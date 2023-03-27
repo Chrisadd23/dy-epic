@@ -10,22 +10,20 @@ class GlobalAppBar extends AppBar {
   }) : super(
           key: key,
           centerTitle: false,
-          leadingWidth: 0,
+
           title: Transform(
-            transform: Matrix4.translationValues(-20, 0.0, 0.0),
+            transform: Matrix4.translationValues(-20, 0, 0.0),
             child: Container(
-              height: 98.5,
-              padding: const EdgeInsets.only(top: 20,bottom: 20),
+              height: 102,
+              margin: const EdgeInsets.only(bottom: 8,),
+              padding: const EdgeInsets.only(top: 28,bottom: 20, right: 5,left: 4),
               width: MediaQuery.of(context).size.width * 0.7,
               decoration:  const BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(bottomRight: Radius.circular(20),
                 ),
                 boxShadow: [
-                  BoxShadow(color: Colors.black,blurStyle: BlurStyle.inner,offset: Offset(0,1.5)),
-                  BoxShadow(color: Colors.black,blurStyle: BlurStyle.inner,offset: Offset(-2.5,0)),
-                  BoxShadow(color: Colors.black,blurStyle: BlurStyle.inner,offset: Offset(0,-1.5)),
-
+                  BoxShadow(color: Colors.black,blurStyle: BlurStyle.outer,offset: Offset(0,2)),
                 ]
               ),
               child: Image.asset(
