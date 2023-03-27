@@ -1,7 +1,6 @@
-import 'package:app_flutter_produkt_bestellen/core/fixWidget/page/pageWidget.dart';
-import 'package:app_flutter_produkt_bestellen/core/fixWidget/widget/widgetAppBar.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../../../../core/globalWidgets/page/globalPageWidget.dart';
+import '../../../../core/globalWidgets/widget/globalAppBar.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
@@ -12,7 +11,7 @@ class Login extends StatelessWidget {
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(100),
           child: Container(
-            decoration: const BoxDecoration(
+            decoration:  const BoxDecoration(
                 border: Border(
               top: BorderSide(color: Colors.black, width: 2),
                   left: BorderSide(color: Colors.black,width: 2),
