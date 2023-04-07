@@ -20,6 +20,7 @@ class Login extends StatelessWidget {
             )),
             child: GlobalAppBar(
               context: context,
+
             ),
           ),
         ),
@@ -36,3 +37,5 @@ class LoginPage extends StatelessWidget {
     return const SizedBox.shrink();
   }
 }
+
+

@@ -1,9 +1,10 @@
 import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
-import 'package:app_flutter_produkt_bestellen/core/amplify/amplifyconfiguration.dart';
-import 'package:app_flutter_produkt_bestellen/features/Login/presentation/page/loginPage.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+import 'features/category/presentation/page/loginPage.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,7 +20,7 @@ Future<void> awconfigureAmplify() async {
   //Add DataStore and AuthCognito
   //Add Configure Amplify
   try {
-    await Amplify.configure(amplifyconfig);
+    //await Amplify.configure(amplifyconfig);
   }
   catch (e){
     print('Amplify wurde bereits konfiguriert [ ${e.toString()} ]');
