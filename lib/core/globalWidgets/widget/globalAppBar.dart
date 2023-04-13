@@ -10,6 +10,7 @@ class GlobalAppBar extends AppBar {
     Widget? leading
   }) : super(
           key: key,
+          leading: leading,
           centerTitle: false,
           title: Row(
             children: [
@@ -41,10 +42,13 @@ class GlobalAppBar extends AppBar {
                   margin: const EdgeInsets.only(bottom: 8,),
                   padding: const EdgeInsets.only(top: 18,bottom: 10, right: 5,left: 4),
 
-                  child: IconButton(onPressed: (){
-                    Scaffold.of(context).openDrawer();
-                  }, icon: const Icon(Icons.menu),iconSize: 50,
-                  color: const Color.fromRGBO(247, 165, 64, 1.0),
+                  child: FittedBox(
+                    fit: BoxFit.fill,
+                    child: IconButton(onPressed: (){
+                      Scaffold.of(context).openDrawer();
+                    }, icon: Image.asset(Assets.appComponents.png.iconMenu.path),
+                    color: const Color.fromRGBO(247, 165, 64, 1.0),
+                    ),
                   ),
                 ),
               ),

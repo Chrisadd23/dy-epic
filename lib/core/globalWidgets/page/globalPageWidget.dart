@@ -5,7 +5,6 @@ class GlobalScaffold extends Scaffold{
       {Key? key,
       PreferredSizeWidget? appBar,
       required Widget body,
-
       })
       : super(
           key: key,
