@@ -7,16 +7,18 @@ class GlobalAppBar extends AppBar {
     Key? key,
     Widget? title,
     required BuildContext context,
-    Widget? leading
+    Widget? leading,
+    
   }) : super(
           key: key,
-          leading: leading,
+          leadingWidth: 0,
+          leading: const SizedBox.shrink(),
           centerTitle: false,
-          title: Row(
-            children: [
-              Transform(
-                transform: Matrix4.translationValues(-20, 0, 0.0),
-                child: Container(
+          title: Transform(
+            transform: Matrix4.translationValues(-17, 0, 0.0),
+            child: Row(
+              children: [
+                Container(
                   height: 102,
                   margin: const EdgeInsets.only(bottom: 8,),
                   padding: const EdgeInsets.only(top: 28,bottom: 20, right: 5,left: 4),
@@ -31,28 +33,31 @@ class GlobalAppBar extends AppBar {
                   ),
                   child: Image.asset(
   Assets.company.appBarLogo.path,
-    fit: BoxFit.fill,
+    fit: BoxFit.fitWidth,
 
   ),
                 ),
-              ),
-              Expanded(
-                child: Container(
+                Container(
                   height: 102,
                   margin: const EdgeInsets.only(bottom: 8,),
                   padding: const EdgeInsets.only(top: 18,bottom: 10, right: 5,left: 4),
 
-                  child: FittedBox(
-                    fit: BoxFit.fill,
-                    child: IconButton(onPressed: (){
-                      Scaffold.of(context).openDrawer();
-                    }, icon: Image.asset(Assets.appComponents.png.iconMenu.path),
-                    color: const Color.fromRGBO(247, 165, 64, 1.0),
-                    ),
+                  child: Builder(
+                    builder: (context) {
+                      return FittedBox(
+                        fit: BoxFit.fill,
+                        child: IconButton(onPressed: (){
+
+                          Scaffold.of(context).openDrawer();
+                        }, icon: Image.asset(Assets.appComponents.png.iconMenu.path),
+                        color: const Color.fromRGBO(247, 165, 64, 1.0),
+                        ),
+                      );
+                    }
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           toolbarHeight: 100,
           backgroundColor: const Color.fromRGBO(87, 87, 87, 0.0),

@@ -20,11 +20,10 @@ class Login extends StatelessWidget {
             )),
             child: GlobalAppBar(
               context: context,
-
             ),
           ),
         ),
-        body: const LoginPage());
+        body: const LoginPage(), );
   }
 }
 

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../widget/globalDrawer.dart';
+
 class GlobalScaffold extends Scaffold{
   const GlobalScaffold(
       {Key? key,
@@ -11,5 +13,6 @@ class GlobalScaffold extends Scaffold{
           appBar: appBar,
           body: body,
           backgroundColor: const Color.fromRGBO(255, 255, 255, 0.9),
+          drawer: const GlobalDrawer(),
         );
 }
