@@ -38,19 +38,21 @@ class GlobalAppBar extends AppBar {
   ),
                 ),
                 Container(
-                  height: 102,
+                  height: 100,
                   margin: const EdgeInsets.only(bottom: 8,),
                   padding: const EdgeInsets.only(top: 18,bottom: 10, right: 5,left: 4),
 
                   child: Builder(
                     builder: (context) {
-                      return FittedBox(
-                        fit: BoxFit.fill,
-                        child: IconButton(onPressed: (){
-
-                          Scaffold.of(context).openDrawer();
-                        }, icon: Image.asset(Assets.appComponents.png.iconMenu.path),
-                        color: const Color.fromRGBO(247, 165, 64, 1.0),
+                      return Transform(
+                        transform: Matrix4.translationValues(20, 0 , 0),
+                        child: FittedBox(
+                          fit: BoxFit.fill,
+                          child: IconButton(onPressed: (){
+                            Scaffold.of(context).openDrawer();
+                          }, icon: Image.asset(Assets.appComponents.png.iconMenu.path),
+                          color: const Color.fromRGBO(247, 165, 64, 1.0),
+                          ),
                         ),
                       );
                     }
