@@ -1,6 +1,8 @@
+import 'package:app_flutter_produkt_bestellen/features/category/presentation/widget/category_widget.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/globalWidgets/page/globalPageWidget.dart';
 import '../../../../core/globalWidgets/widget/globalAppBar.dart';
+import '../../../../gen/assets.gen.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
@@ -23,17 +25,31 @@ class Login extends StatelessWidget {
             ),
           ),
         ),
-        body: const LoginPage(), );
+        body: const CategoryPage(), );
   }
 }
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class CategoryPage extends StatelessWidget {
+  const CategoryPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     // TODO: impconst Center(child: Text("hi"),)ter(child: Text("hi"),),);
-    return const SizedBox.shrink();
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+    return Column(
+      children: [
+        SizedBox(
+         width: double.infinity,
+          child: Column(
+            children: [
+              CategoryWidget(img: Assets.appComponents.jpg.beispielTable.path, title: 'Tische')
+
+            ],
+          ),
+        )
+      ],
+    );
   }
 }
 

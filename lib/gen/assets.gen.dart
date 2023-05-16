@@ -12,6 +12,7 @@ import 'package:flutter/widgets.dart';
 class $AssetsAppComponentsGen {
   const $AssetsAppComponentsGen();
 
+  $AssetsAppComponentsJpgGen get jpg => const $AssetsAppComponentsJpgGen();
   $AssetsAppComponentsPngGen get png => const $AssetsAppComponentsPngGen();
   $AssetsAppComponentsSvgGen get svg => const $AssetsAppComponentsSvgGen();
 }
@@ -25,6 +26,17 @@ class $AssetsCompanyGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [appBarLogo];
+}
+
+class $AssetsAppComponentsJpgGen {
+  const $AssetsAppComponentsJpgGen();
+
+  /// File path: assets/appComponents/jpg/beispiel_table.jpg
+  AssetGenImage get beispielTable =>
+      const AssetGenImage('assets/appComponents/jpg/beispiel_table.jpg');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [beispielTable];
 }
 
 class $AssetsAppComponentsPngGen {
