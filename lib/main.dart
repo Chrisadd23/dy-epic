@@ -1,15 +1,17 @@
 import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
+import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
 
 import 'features/category/presentation/page/loginPage.dart';
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  //WidgetsFlutterBinding.ensureInitialized();
   //await awconfigureAmplify();
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,overlays: []);
+  //SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,overlays: []);
+  setupMain();
   runApp(const MyApp());
 }
 

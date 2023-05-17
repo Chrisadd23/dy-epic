@@ -1,8 +1,14 @@
-import 'package:app_flutter_produkt_bestellen/features/category/presentation/widget/category_widget.dart';
+import 'package:app_flutter_produkt_bestellen/core/fix_widgets/failure_widget.dart';
+import 'package:app_flutter_produkt_bestellen/core/fix_widgets/loading_widget.dart';
+import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globalPageWidget.dart';
+import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/globalAppBar.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/presentation/cubit/cubit_category.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/presentation/cubit/state_category.dart';
+import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
+
 import 'package:flutter/material.dart';
-import '../../../../core/globalWidgets/page/globalPageWidget.dart';
-import '../../../../core/globalWidgets/widget/globalAppBar.dart';
-import '../../../../gen/assets.gen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 
 class Login extends StatelessWidget {
   const Login({super.key});
@@ -10,22 +16,25 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GlobalScaffold(
-        appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(100),
-          child: Container(
-            decoration:  const BoxDecoration(
-                border: Border(
-              top: BorderSide(color: Colors.black, width: 2),
-                  left: BorderSide(color: Colors.black,width: 2),
-                  right: BorderSide(color: Colors.black,width: 2),
-                  bottom: BorderSide(color: Colors.black,width: 0.3,style: BorderStyle.none)
-            )),
-            child: GlobalAppBar(
-              context: context,
-            ),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(100),
+        child: Container(
+          decoration: const BoxDecoration(
+              border: Border(
+                  top: BorderSide(color: Colors.black, width: 2),
+                  left: BorderSide(color: Colors.black, width: 2),
+                  right: BorderSide(color: Colors.black, width: 2),
+                  bottom: BorderSide(
+                      color: Colors.black,
+                      width: 0.3,
+                      style: BorderStyle.none))),
+          child: GlobalAppBar(
+            context: context,
           ),
         ),
-        body: const CategoryPage(), );
+      ),
+      body: const CategoryPage(),
+    );
   }
 }
 
@@ -37,20 +46,27 @@ class CategoryPage extends StatelessWidget {
     // TODO: impconst Center(child: Text("hi"),)ter(child: Text("hi"),),);
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
-    return Column(
-      children: [
-        SizedBox(
-         width: double.infinity,
-          child: Column(
-            children: [
-              CategoryWidget(img: Assets.appComponents.jpg.beispielTable.path, title: 'Tische')
-
-            ],
-          ),
-        )
-      ],
+    return BlocProvider(
+      create: (context) => CubitCategory(getIt())..load(),
+      child: Column(
+        children: [
+          SizedBox(
+              width: double.infinity,
+              child: BlocBuilder<CubitCategory, StateCategory>(
+                builder: (context, state) => (state.maybeWhen(
+                    loading: () => const LoadingWidget(),
+                    failure: () => const FailureWidget(
+                          failure: '',
+                        ),
+                    success: (listCategory) => SingleChildScrollView(
+                          child: Column(
+                            children: [...listCategory],
+                          ),
+                        ),
+                    orElse: () => const SizedBox.shrink())),
+              ))
+        ],
+      ),
     );
   }
 }
-
-
