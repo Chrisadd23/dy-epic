@@ -48,25 +48,21 @@ class CategoryPage extends StatelessWidget {
     final height = MediaQuery.of(context).size.height;
     return BlocProvider(
       create: (context) => CubitCategory(getIt())..load(),
-      child: Column(
-        children: [
-          SizedBox(
-              width: double.infinity,
-              child: BlocBuilder<CubitCategory, StateCategory>(
-                builder: (context, state) => (state.maybeWhen(
-                    loading: () => const LoadingWidget(),
-                    failure: () => const FailureWidget(
-                          failure: '',
-                        ),
-                    success: (listCategory) => SingleChildScrollView(
-                          child: Column(
-                            children: [...listCategory],
-                          ),
-                        ),
-                    orElse: () => const SizedBox.shrink())),
-              ))
-        ],
-      ),
+      child: SizedBox(
+          width: double.infinity,
+          child: BlocBuilder<CubitCategory, StateCategory>(
+            builder: (context, state) => (state.maybeWhen(
+                loading: () => const LoadingWidget(),
+                failure: () => const FailureWidget(
+                      failure: '',
+                    ),
+                success: (listCategory) => SingleChildScrollView(
+                      child: Column(
+                        children: [...listCategory],
+                      ),
+                    ),
+                orElse: () => const SizedBox.shrink())),
+          )),
     );
   }
 }
