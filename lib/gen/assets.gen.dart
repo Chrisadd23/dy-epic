@@ -31,12 +31,21 @@ class $AssetsCompanyGen {
 class $AssetsAppComponentsJpgGen {
   const $AssetsAppComponentsJpgGen();
 
-  /// File path: assets/appComponents/jpg/beispiel_table.jpg
-  AssetGenImage get beispielTable =>
-      const AssetGenImage('assets/appComponents/jpg/beispiel_table.jpg');
+  /// File path: assets/appComponents/jpg/Arbeitstisch.jpg
+  AssetGenImage get arbeitstisch =>
+      const AssetGenImage('assets/appComponents/jpg/Arbeitstisch.jpg');
+
+  /// File path: assets/appComponents/jpg/Buerodrehstuehle.jpg
+  AssetGenImage get buerodrehstuehle =>
+      const AssetGenImage('assets/appComponents/jpg/Buerodrehstuehle.jpg');
+
+  /// File path: assets/appComponents/jpg/Konferenzstuehle.jpg
+  AssetGenImage get konferenzstuehle =>
+      const AssetGenImage('assets/appComponents/jpg/Konferenzstuehle.jpg');
 
   /// List of all assets
-  List<AssetGenImage> get values => [beispielTable];
+  List<AssetGenImage> get values =>
+      [arbeitstisch, buerodrehstuehle, konferenzstuehle];
 }
 
 class $AssetsAppComponentsPngGen {

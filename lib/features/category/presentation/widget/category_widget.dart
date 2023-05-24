@@ -38,7 +38,7 @@ class CategoryWidget extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  bottom: 20,
+                  top: 30,
                   right: 0,
                   child: Container(
                     decoration: const BoxDecoration(
@@ -52,17 +52,15 @@ class CategoryWidget extends StatelessWidget {
                       vertical: 5,
                       horizontal: 20,
                     ),
-                    child: Center(
-                      child: Text(
-                        title,
-                        style: const TextStyle(
-                            fontSize: 26,
-                            color: Colors.white,
-                            fontStyle: FontStyle.italic,
-                            fontWeight: FontWeight.bold),
-                        softWrap: true,
-                        overflow: TextOverflow.fade,
-                      ),
+                    child: Text(
+                      title,
+                      style: const TextStyle(
+                          fontSize: 26,
+                          color: Colors.white,
+                          fontStyle: FontStyle.italic,
+                          fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.center,
+                      softWrap: true,
                     ),
                   ),
                 ),

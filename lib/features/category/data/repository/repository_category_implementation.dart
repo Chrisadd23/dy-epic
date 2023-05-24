@@ -16,9 +16,9 @@ class RepositoryCategoryImplementation implements RepositoryCategory
   List<ModelCategory> CHOOSE_CATEGORRY = 
       [
 
-    ModelCategory(title: 'Tische', imgPath: Assets.appComponents.jpg.beispielTable.path, indexPositon: 0),
-    ModelCategory(title: 'Stühle', imgPath: Assets.appComponents.jpg.beispielTable.path, indexPositon: 1),
-    ModelCategory(title: 'Couch', imgPath: Assets.appComponents.jpg.beispielTable.path, indexPositon: 2),
+    ModelCategory(title: 'Arbeitstische', imgPath: Assets.appComponents.jpg.arbeitstisch.path, indexPositon: 0),
+    ModelCategory(title: 'Bürostühle', imgPath: Assets.appComponents.jpg.buerodrehstuehle.path, indexPositon: 1),
+    ModelCategory(title: 'Konferenzstühle', imgPath: Assets.appComponents.jpg.konferenzstuehle.path, indexPositon: 2),
   ];
       
 

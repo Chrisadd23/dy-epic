@@ -41,7 +41,6 @@ class GlobalAppBar extends AppBar {
                   height: 100,
                   margin: const EdgeInsets.only(bottom: 8,),
                   padding: const EdgeInsets.only(top: 18,bottom: 10, right: 5,left: 4),
-
                   child: Builder(
                     builder: (context) {
                       return Transform(
