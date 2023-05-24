@@ -8,7 +8,7 @@ class GlobalDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-    width: MediaQuery.of(context).size.width * 0.702,
+    width: MediaQuery.of(context).size.width * 0.704,
         child:  Drawer(
           child: Column(
             children: [
@@ -18,9 +18,8 @@ class GlobalDrawer extends StatelessWidget {
           top: BorderSide(color: Colors.black, width: 2),
         )),
                 child: Container(
-                  height: 96,
-                  padding: const EdgeInsets.only(top: 28,bottom: 20, right: 5,left: 4),
-                  width: MediaQuery.of(context).size.width * 0.7,
+                  height: 97,
+                  width: MediaQuery.of(context).size.width * 0.704,
                   decoration:  const BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.only(bottomRight: Radius.circular(20),

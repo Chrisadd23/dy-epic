@@ -19,9 +19,11 @@ class GlobalAppBar extends AppBar {
           title: SizedBox(
             height: 100,
             width: double.infinity,
-            child: Row(children: [
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
               Container(
-               height: 94,
+               height: 97,
                 width: MediaQuery.of(context).size.width * 0.7,
                 decoration:  const BoxDecoration(
                     color: Colors.white,
