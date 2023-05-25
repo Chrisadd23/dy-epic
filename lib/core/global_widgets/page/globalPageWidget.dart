@@ -12,7 +12,7 @@ class GlobalScaffold extends Scaffold{
           key: key,
           appBar: appBar,
           body: body,
-          backgroundColor: const Color.fromRGBO(255, 255, 255, 0.9),
+          backgroundColor: const Color.fromRGBO(255, 255, 255, 0.8),
           drawer: const GlobalDrawer(),
         );
 }
