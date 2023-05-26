@@ -16,9 +16,12 @@ class GlobalAppBar extends AppBar {
           centerTitle: false,
           automaticallyImplyLeading: false,
           titleSpacing: 0,
-          title: SizedBox(
+          title: Container(
             height: 100,
             width: double.infinity,
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(colors: [Color.fromRGBO(87, 87, 87, 0.0),Colors.white],begin: Alignment.bottomRight,end: Alignment.bottomLeft)
+            ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -66,7 +69,7 @@ class GlobalAppBar extends AppBar {
             ],),
           ) ,
           toolbarHeight: 100,
-          backgroundColor: const Color.fromRGBO(87, 87, 87, 0.0),
-          elevation: 0.1,
+          backgroundColor: Colors.white,
+          elevation: 1,
         );
 }
