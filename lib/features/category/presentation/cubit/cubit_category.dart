@@ -13,7 +13,7 @@ class CubitCategory extends Cubit<StateCategory>
         emit(const StateCategory.loading());
       }
 
-    await Future.delayed(const Duration(seconds: 5));
+    await Future.delayed(const Duration(seconds: 2));
 
     final category = _useCaseGetCategory();
 
