@@ -117,6 +117,7 @@ class GlobalDrawer extends StatelessWidget {
                                 ),
                               ),
                             ),
+                            const Expanded(child: Center(child: Text('Kundennummer',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),))
                           ],
                         ),
                       )
