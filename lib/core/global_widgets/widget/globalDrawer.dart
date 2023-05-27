@@ -56,76 +56,81 @@ class GlobalDrawer extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(
-                            width: double.infinity,
-                            height: 90,
-                            child: Row(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 8),
-                                  child: Container(
-                                    height: 75,
-                                    width: 75,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(100),
-                                        color: const Color.fromRGBO(
-                                            247, 165, 64, 1.0),
-                                        boxShadow: const [
-                                          BoxShadow(
-                                              color: Colors.black,
-                                              blurStyle: BlurStyle.inner,
-                                              offset: Offset(0, 1)),
-                                          BoxShadow(
-                                              color: Colors.black,
-                                              blurStyle: BlurStyle.inner,
-                                              offset: Offset(0, -1)),
-                                          BoxShadow(
-                                              color: Colors.black,
-                                              blurStyle: BlurStyle.inner,
-                                              offset: Offset(1, 0)),
-                                          BoxShadow(
-                                              color: Colors.black,
-                                              blurStyle: BlurStyle.inner,
-                                              offset: Offset(-1, 0)),
-                                        ]),
-                                    child: const Padding(
-                                      padding: EdgeInsets.only(bottom: 5),
-                                      child: Icon(
-                                        Icons.person,
-                                        color: Color.fromRGBO(221, 221, 221, 1),
-                                        size: 70,
-                                        shadows: [
-                                          BoxShadow(
-                                              color: Colors.black,
-                                              blurStyle: BlurStyle.inner,
-                                              offset: Offset(0, 1)),
-                                          BoxShadow(
-                                              color: Colors.black,
-                                              blurStyle: BlurStyle.inner,
-                                              offset: Offset(0, -1)),
-                                          BoxShadow(
-                                              color: Colors.black,
-                                              blurStyle: BlurStyle.inner,
-                                              offset: Offset(1, 0)),
-                                          BoxShadow(
-                                              color: Colors.black,
-                                              blurStyle: BlurStyle.inner,
-                                              offset: Offset(-1, 0)),
-                                        ],
+                          InkWell(
+                            onTap: (){},
+                            child: SizedBox(
+                              width: double.infinity,
+                              height: 90,
+                              child: InkWell(
+                                child: Row(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 8),
+                                      child: Container(
+                                        height: 75,
+                                        width: 75,
+                                        decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(100),
+                                            color: const Color.fromRGBO(
+                                                247, 165, 64, 1.0),
+                                            boxShadow: const [
+                                              BoxShadow(
+                                                  color: Colors.black,
+                                                  blurStyle: BlurStyle.inner,
+                                                  offset: Offset(0, 1)),
+                                              BoxShadow(
+                                                  color: Colors.black,
+                                                  blurStyle: BlurStyle.inner,
+                                                  offset: Offset(0, -1)),
+                                              BoxShadow(
+                                                  color: Colors.black,
+                                                  blurStyle: BlurStyle.inner,
+                                                  offset: Offset(1, 0)),
+                                              BoxShadow(
+                                                  color: Colors.black,
+                                                  blurStyle: BlurStyle.inner,
+                                                  offset: Offset(-1, 0)),
+                                            ]),
+                                        child: const Padding(
+                                          padding: EdgeInsets.only(bottom: 5),
+                                          child: Icon(
+                                            Icons.person,
+                                            color: Color.fromRGBO(221, 221, 221, 1),
+                                            size: 70,
+                                            shadows: [
+                                              BoxShadow(
+                                                  color: Colors.black,
+                                                  blurStyle: BlurStyle.inner,
+                                                  offset: Offset(0, 1)),
+                                              BoxShadow(
+                                                  color: Colors.black,
+                                                  blurStyle: BlurStyle.inner,
+                                                  offset: Offset(0, -1)),
+                                              BoxShadow(
+                                                  color: Colors.black,
+                                                  blurStyle: BlurStyle.inner,
+                                                  offset: Offset(1, 0)),
+                                              BoxShadow(
+                                                  color: Colors.black,
+                                                  blurStyle: BlurStyle.inner,
+                                                  offset: Offset(-1, 0)),
+                                            ],
+                                          ),
+                                        ),
                                       ),
                                     ),
-                                  ),
+                                    const Expanded(
+                                        child: Center(
+                                      child: Text(
+                                        'Kundennummer',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 20),
+                                      ),
+                                    ))
+                                  ],
                                 ),
-                                const Expanded(
-                                    child: Center(
-                                  child: Text(
-                                    'Kundennummer',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 20),
-                                  ),
-                                ))
-                              ],
+                              ),
                             ),
                           )
                         ],
