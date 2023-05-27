@@ -14,7 +14,6 @@ class $AssetsAppComponentsGen {
 
   $AssetsAppComponentsJpgGen get jpg => const $AssetsAppComponentsJpgGen();
   $AssetsAppComponentsPngGen get png => const $AssetsAppComponentsPngGen();
-  $AssetsAppComponentsSvgGen get svg => const $AssetsAppComponentsSvgGen();
 }
 
 class $AssetsCompanyGen {
@@ -57,16 +56,6 @@ class $AssetsAppComponentsPngGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [iconMenu];
-}
-
-class $AssetsAppComponentsSvgGen {
-  const $AssetsAppComponentsSvgGen();
-
-  /// File path: assets/appComponents/svg/menue_Icon.svg
-  String get menueIcon => 'assets/appComponents/svg/menue_Icon.svg';
-
-  /// List of all assets
-  List<String> get values => [menueIcon];
 }
 
 class Assets {
@@ -135,7 +124,16 @@ class AssetGenImage {
     );
   }
 
-  ImageProvider provider() => AssetImage(_assetName);
+  ImageProvider provider({
+    AssetBundle? bundle,
+    String? package,
+  }) {
+    return AssetImage(
+      _assetName,
+      bundle: bundle,
+      package: package,
+    );
+  }
 
   String get path => _assetName;
 
