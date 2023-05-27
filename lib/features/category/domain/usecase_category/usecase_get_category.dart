@@ -1,7 +1,8 @@
-import 'package:app_flutter_produkt_bestellen/features/category/domain/repository/repository_category.dart';
-import 'package:app_flutter_produkt_bestellen/features/category/presentation/widget/category_widget.dart';
 
 
+
+import '../../presentation/widget/category_widget.dart';
+import '../repository/repository_category.dart';
 
 class UseCaseGetCategory {
   const UseCaseGetCategory({required this.repositoryCategory});

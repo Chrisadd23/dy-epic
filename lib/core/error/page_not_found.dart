@@ -1,7 +1,9 @@
-import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
-import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../global_dependencies.dart';
+import '../routes/go_router.dart';
 
 class PageNotFound extends StatelessWidget {
   const PageNotFound(this.error, {super.key});

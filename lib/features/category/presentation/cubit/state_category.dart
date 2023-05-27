@@ -1,5 +1,7 @@
-import 'package:app_flutter_produkt_bestellen/features/category/presentation/widget/category_widget.dart';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../widget/category_widget.dart';
 part 'state_category.freezed.dart';
 
 @freezed

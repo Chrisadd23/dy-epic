@@ -1,9 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.app_flutter_produkt_bestellen">
    <application
-        android:label="app_flutter_produkt_bestellen"
+        android:label="Oberhaizinger"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/oberhaizinger">
         <activity
             android:name=".MainActivity"
             android:exported="true"

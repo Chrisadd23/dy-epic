@@ -1,8 +1,9 @@
 
-import 'package:app_flutter_produkt_bestellen/core/error/page_not_found.dart';
-import 'package:app_flutter_produkt_bestellen/features/category/presentation/page/category_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../features/category/presentation/page/category_page.dart';
+import '../error/page_not_found.dart';
 
 
 enum AppGoRouter

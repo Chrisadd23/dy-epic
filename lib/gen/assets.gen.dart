@@ -27,6 +27,17 @@ class $AssetsCompanyGen {
   List<AssetGenImage> get values => [appBarLogo];
 }
 
+class $AssetsIconGen {
+  const $AssetsIconGen();
+
+  /// File path: assets/icon/oberhaizinger_officesolution_app_icon.png
+  AssetGenImage get oberhaizingerOfficesolutionAppIcon => const AssetGenImage(
+      'assets/icon/oberhaizinger_officesolution_app_icon.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [oberhaizingerOfficesolutionAppIcon];
+}
+
 class $AssetsAppComponentsJpgGen {
   const $AssetsAppComponentsJpgGen();
 
@@ -64,6 +75,7 @@ class Assets {
   static const $AssetsAppComponentsGen appComponents =
       $AssetsAppComponentsGen();
   static const $AssetsCompanyGen company = $AssetsCompanyGen();
+  static const $AssetsIconGen icon = $AssetsIconGen();
 }
 
 class AssetGenImage {

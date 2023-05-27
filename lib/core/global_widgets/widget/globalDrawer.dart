@@ -1,7 +1,9 @@
-import 'package:app_flutter_produkt_bestellen/core/fix_widgets/drawer_button.dart';
-import 'package:app_flutter_produkt_bestellen/core/list_values/list_values.dart';
-import 'package:app_flutter_produkt_bestellen/gen/assets.gen.dart';
+
 import 'package:flutter/material.dart';
+
+import '../../../gen/assets.gen.dart';
+import '../../fix_widgets/drawer_button.dart';
+import '../../list_values/list_values.dart';
 
 class GlobalDrawer extends StatelessWidget {
   const GlobalDrawer({Key? key}) : super(key: key);

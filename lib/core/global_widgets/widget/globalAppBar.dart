@@ -1,5 +1,8 @@
-import 'package:app_flutter_produkt_bestellen/gen/assets.gen.dart';
+
+
 import 'package:flutter/material.dart';
+
+import '../../../gen/assets.gen.dart';
 
 class GlobalAppBar extends AppBar {
 
