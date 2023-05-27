@@ -12,7 +12,7 @@ class CategoryWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => GoRouter.of(context).push('/$title'), //=> selectMeal(context),
+      onTap: () => context.push('/$title'), //=> selectMeal(context),
       child: Container(
         margin: const EdgeInsets.all(15),
         decoration: BoxDecoration(
