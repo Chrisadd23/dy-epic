@@ -45,11 +45,11 @@ class CategoryWidget extends StatelessWidget {
                   child: Container(
                     decoration: const BoxDecoration(
                       borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(15),
-                          bottomLeft: Radius.circular(15)),
+                          topLeft: Radius.circular(0),
+                          bottomLeft: Radius.circular(0)),
                       color: Colors.black45,
                     ),
-                    width: 200,
+                    width: MediaQuery.of(context).size.width * 0.8,
                     padding: const EdgeInsets.symmetric(
                       vertical: 5,
                       horizontal: 20,
