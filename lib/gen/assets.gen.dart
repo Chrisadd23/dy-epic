@@ -53,9 +53,13 @@ class $AssetsAppComponentsJpgGen {
   AssetGenImage get konferenzstuehle =>
       const AssetGenImage('assets/appComponents/jpg/Konferenzstuehle.jpg');
 
+  /// File path: assets/appComponents/jpg/Konferenztische.jpg
+  AssetGenImage get konferenztische =>
+      const AssetGenImage('assets/appComponents/jpg/Konferenztische.jpg');
+
   /// List of all assets
   List<AssetGenImage> get values =>
-      [arbeitstisch, buerodrehstuehle, konferenzstuehle];
+      [arbeitstisch, buerodrehstuehle, konferenzstuehle, konferenztische];
 }
 
 class $AssetsAppComponentsPngGen {

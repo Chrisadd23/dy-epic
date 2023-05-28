@@ -20,7 +20,7 @@ class RepositoryCategoryImplementation implements RepositoryCategory
     ModelCategory(title: 'Arbeitstische', imgPath: Assets.appComponents.jpg.arbeitstisch.path, indexPositon: 0),
     ModelCategory(title: 'Bürostühle', imgPath: Assets.appComponents.jpg.buerodrehstuehle.path, indexPositon: 1),
     ModelCategory(title: 'Konferenzstühle', imgPath: Assets.appComponents.jpg.konferenzstuehle.path, indexPositon: 2),
-        ModelCategory(title: 'Konferenztische', imgPath: Assets.appComponents.jpg.konferenzstuehle.path, indexPositon: 2),
+        ModelCategory(title: 'Konferenztische', imgPath: Assets.appComponents.jpg.konferenztische.path, indexPositon: 3),
   ];
       
 
