@@ -1,11 +1,16 @@
+import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+
+
+import '../../../../gen/assets.gen.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const LoginPage();
   }
 }
 
@@ -14,7 +19,34 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: SafeArea(
+        child: Column(children: <Widget>[
+          Container(
+            width: double.infinity,
+            height: 150,
+            child: FittedBox(
+              fit: BoxFit.fitWidth,
+              child: Image.asset(
+                Assets.company.appBarLogo.path,
+                fit: BoxFit.fitWidth,
+              ),
+            ),
+          ),
+          InkWell(
+            onTap: () {
+
+              context.go('/${AppGoRouter.categoryPage.name}');
+            },
+            child: Center(child: Container(
+            decoration: BoxDecoration(color: Colors.grey[200],borderRadius: BorderRadius.all(Radius.circular(20))),
+            height: 70,
+            width: 200,
+            child: Center(child: Text('Kategorien')),
+          ),),)
+        ],
+        ),
+      ),
+    );
   }
 }
-
