@@ -7,7 +7,6 @@ import 'package:flutter/services.dart';
 
 
 import 'core/routes/go_router.dart';
-import 'features/category/presentation/page/category_page.dart';
 import 'global_dependencies.dart';
 
 Future<void> main() async {

@@ -1,12 +1,12 @@
 
+import 'package:app_flutter_produkt_bestellen/core/fix_widgets/failure_widget.dart';
+import 'package:app_flutter_produkt_bestellen/core/fix_widgets/loading_widget.dart';
+import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globalPageWidget.dart';
+import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/globalAppBar.dart';
+import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/fix_widgets/failure_widget.dart';
-import '../../../../core/fix_widgets/loading_widget.dart';
-import '../../../../core/global_widgets/page/globalPageWidget.dart';
-import '../../../../core/global_widgets/widget/globalAppBar.dart';
-import '../../../../global_dependencies.dart';
 import '../cubit/cubit_category.dart';
 import '../cubit/state_category.dart';
 

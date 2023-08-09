@@ -1,7 +1,7 @@
+import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/page/category_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../features/category/presentation/page/category_page.dart';
 import '../../features/login/presentation/page/login_page.dart';
 import '../error/page_not_found.dart';
 

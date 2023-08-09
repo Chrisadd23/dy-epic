@@ -1,7 +1,7 @@
 
 
 
-import '../../../../gen/assets.gen.dart';
+import '../../../../../gen/assets.gen.dart';
 import '../../domain/repository/repository_category.dart';
 import '../../presentation/widget/category_widget.dart';
 import '../model/model_category.dart';
