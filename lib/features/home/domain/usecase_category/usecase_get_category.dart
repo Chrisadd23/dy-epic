@@ -1,6 +1,3 @@
-
-
-
 import '../../presentation/widget/category_widget.dart';
 import '../repository/repository_category.dart';
 
@@ -10,5 +7,4 @@ class UseCaseGetCategory {
   final RepositoryCategory repositoryCategory;
 
   List<CategoryWidget> call() => repositoryCategory.getCategory();
-
 }

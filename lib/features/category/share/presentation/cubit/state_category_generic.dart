@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'state_category_generic.freezed.dart';
 
 @freezed
-class StateCategoryGeneric with _$StateCategoryGeneric {
+abstract class StateCategoryGeneric with _$StateCategoryGeneric {
   const StateCategoryGeneric._();
 
   const factory StateCategoryGeneric({

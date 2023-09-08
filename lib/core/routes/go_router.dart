@@ -1,4 +1,4 @@
-import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/page/category_page.dart';
+import 'package:app_flutter_produkt_bestellen/features/home/presentation/page/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -14,8 +14,8 @@ enum AppGoRouter {
   final String title;
 
   static Map<String, String> routeMap = {
-    'root' : AppGoRouter.root.title,
-    'category' : '/'+AppGoRouter.categoryPage.title
+    'root': AppGoRouter.root.title,
+    'category': '/' + AppGoRouter.categoryPage.title
   };
 
   static final GoRouter _router = GoRouter(
@@ -29,7 +29,7 @@ enum AppGoRouter {
               pageBuilder: (context, state) {
                 return CustomTransitionPage<void>(
                   key: state.pageKey,
-                  child: const Category(),
+                  child: const HomePage(),
                   transitionDuration: const Duration(milliseconds: 150),
                   transitionsBuilder: (BuildContext context,
                       Animation<double> animation,
@@ -48,10 +48,9 @@ enum AppGoRouter {
             ),
             GoRoute(
               path: 'Logout',
-              builder: (context,state) => LoginPage(),
+              builder: (context, state) => LoginPage(),
             )
           ]),
-
     ],
     errorBuilder: (context, state) => PageNotFound(state.error),
   );

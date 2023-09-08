@@ -1,4 +1,3 @@
-
 import 'package:app_flutter_produkt_bestellen/core/fix_widgets/failure_widget.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_widgets/loading_widget.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globalPageWidget.dart';
@@ -10,9 +9,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../cubit/cubit_category.dart';
 import '../cubit/state_category.dart';
 
-
-class Category extends StatelessWidget {
-  const Category({super.key});
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -50,10 +48,10 @@ class CategoryPage extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     return BlocProvider(
-      create: (context) => CubitCategory(getIt())..load(),
+      create: (context) => HomePageCubit(getIt())..load(),
       child: SizedBox(
           width: double.infinity,
-          child: BlocBuilder<CubitCategory, StateCategory>(
+          child: BlocBuilder<HomePageCubit, StateCategory>(
             builder: (context, state) => (state.maybeWhen(
                 loading: () => const LoadingWidget(),
                 failure: () => const FailureWidget(
