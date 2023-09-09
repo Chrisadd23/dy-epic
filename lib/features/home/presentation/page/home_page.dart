@@ -1,7 +1,6 @@
 import 'package:app_flutter_produkt_bestellen/core/fix_widgets/failure_widget.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_widgets/loading_widget.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globalPageWidget.dart';
-import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/globalAppBar.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,25 +14,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GlobalScaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(100),
-        child: SafeArea(
-          child: Container(
-            decoration: const BoxDecoration(
-                border: Border(
-                    top: BorderSide(color: Colors.black, width: 2),
-                    left: BorderSide(color: Colors.black, width: 1),
-                    right: BorderSide(color: Colors.black, width: 2),
-                    bottom: BorderSide(
-                        color: Colors.black,
-                        width: 0.3,
-                        style: BorderStyle.none))),
-            child: GlobalAppBar(
-              context: context,
-            ),
-          ),
-        ),
-      ),
+      appBarContext: context,
       body: const CategoryPage(),
     );
   }

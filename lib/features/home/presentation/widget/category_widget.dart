@@ -1,9 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class CategoryWidget extends StatelessWidget {
-  const CategoryWidget ({super.key, required this.img, required this.title});
+  const CategoryWidget({super.key, required this.img, required this.title});
 
   final String img;
   final String title;
@@ -11,7 +10,7 @@ class CategoryWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => context.push('/$title'), //=> selectMeal(context),
+      onTap: () => context.pushNamed('$title'), //=> selectMeal(context),
       child: Container(
         margin: const EdgeInsets.all(15),
         decoration: BoxDecoration(
@@ -32,12 +31,14 @@ class CategoryWidget extends StatelessWidget {
               children: [
                 ClipRRect(
                   borderRadius: const BorderRadius.all(Radius.circular(15)),
-                  child: img.isEmpty ? const SizedBox.shrink() : Image.asset(
-                    img,
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    height: MediaQuery.of(context).size.height * 0.25,
-                    fit: BoxFit.fill,
-                  ),
+                  child: img.isEmpty
+                      ? const SizedBox.shrink()
+                      : Image.asset(
+                          img,
+                          width: MediaQuery.of(context).size.width * 0.8,
+                          height: MediaQuery.of(context).size.height * 0.25,
+                          fit: BoxFit.fill,
+                        ),
                 ),
                 Positioned(
                   top: 30,

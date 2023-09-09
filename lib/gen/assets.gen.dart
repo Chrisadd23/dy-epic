@@ -69,8 +69,12 @@ class $AssetsAppComponentsPngGen {
   AssetGenImage get iconMenu =>
       const AssetGenImage('assets/appComponents/png/icon_menu.png');
 
+  /// File path: assets/appComponents/png/return_icon.png
+  AssetGenImage get returnIcon =>
+      const AssetGenImage('assets/appComponents/png/return_icon.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [iconMenu];
+  List<AssetGenImage> get values => [iconMenu, returnIcon];
 }
 
 class Assets {
