@@ -1,5 +1,5 @@
-import '../../presentation/widget/category_widget.dart';
-import '../repository/repository_category.dart';
+import 'package:app_flutter_produkt_bestellen/features/home/domain/repository/repository_category.dart';
+import 'package:app_flutter_produkt_bestellen/features/home/presentation/widget/category_widget.dart';
 
 class UseCaseGetCategory {
   const UseCaseGetCategory({required this.repositoryCategory});

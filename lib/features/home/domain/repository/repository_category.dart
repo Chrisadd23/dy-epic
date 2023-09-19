@@ -11,8 +11,7 @@ abstract class RepositoryCategory {
   List<CategoryWidget> getCategory();
 
   Future<Either<void, EntityCategory>> load() async {
-    return dataSourceCategory
-        .loadData()
-        .fold((left) => Left(null), (categoryData) => Right(categoryData));
+    return dataSourceCategory.loadData().fold(
+        (left) => const Left(null), (categoryData) => Right(categoryData));
   }
 }

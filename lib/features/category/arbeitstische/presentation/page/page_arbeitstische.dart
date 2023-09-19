@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globalPageWidget.dart';
+import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_page_widget.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/list_wheel_scroll_view_x.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +10,7 @@ class PageArbeitsTische extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GlobalScaffold(appBarContext: context, body: _Arbeitstische());
+    return GlobalScaffold(appBarContext: context, body: const _Arbeitstische());
   }
 }
 

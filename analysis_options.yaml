@@ -29,7 +29,6 @@ linter:
     - unnecessary_null_in_if_null_operators
     - unnecessary_nullable_for_final_variable_declarations
     - void_checks
-    - depend_on_referenced_packages
     - always_require_non_null_named_parameters
     - prefer_const_constructors_in_immutables
     - library_names

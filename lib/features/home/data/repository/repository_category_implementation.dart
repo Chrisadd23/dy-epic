@@ -8,13 +8,13 @@ class RepositoryCategoryImplementation implements RepositoryCategory {
   @override
   List<CategoryWidget> getCategory() {
     // TODO: implement getCategory
-    return CHOOSE_CATEGORRY
+    return chooseCategory
         .map((category) =>
             CategoryWidget(img: category.imgPath, title: category.title))
         .toList();
   }
 
-  List<ModelCategory> CHOOSE_CATEGORRY = [
+  List<ModelCategory> chooseCategory = [
     ModelCategory(
         title: 'Arbeitstische',
         imgPath: Assets.appComponents.jpg.arbeitstisch.path,
