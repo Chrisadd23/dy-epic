@@ -63,20 +63,18 @@ class GlobalAppBar extends AppBar {
                     padding: const EdgeInsets.only(
                         top: 18, bottom: 10, right: 5, left: 4),
                     child: Builder(builder: (context) {
-                      final currentRouteCanPop = getIt<GoRouter>().location;
+                      final currentRoute = getIt<GoRouter>().location;
                       return FittedBox(
                         fit: BoxFit.fitHeight,
                         child: IconButton(
                             onPressed: () {
-                              AppGoRouter.shouldntPop
-                                      .contains(getIt<GoRouter>().location)
+                              AppGoRouter.shouldntPop.contains(currentRoute)
                                   ? Scaffold.of(context).openDrawer()
                                   : context.pop();
-                              print(getIt<GoRouter>().location);
+                              print(currentRoute);
                             },
                             icon: Image.asset(
-                              AppGoRouter.shouldntPop
-                                      .contains(getIt<GoRouter>().location)
+                              AppGoRouter.shouldntPop.contains(currentRoute)
                                   ? Assets.appComponents.png.iconMenu.path
                                   : Assets.appComponents.png.returnIcon.path,
                             )),
