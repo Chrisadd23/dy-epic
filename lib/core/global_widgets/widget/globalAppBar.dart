@@ -1,16 +1,13 @@
 import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
+import 'package:app_flutter_produkt_bestellen/gen/assets.gen.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../gen/assets.gen.dart';
-
 class GlobalAppBar extends AppBar {
   GlobalAppBar({
     Key? key,
-    Widget? title,
     required BuildContext context,
-    Widget? leading,
   }) : super(
           key: key,
           leadingWidth: 0,
@@ -71,7 +68,6 @@ class GlobalAppBar extends AppBar {
                               AppGoRouter.shouldntPop.contains(currentRoute)
                                   ? Scaffold.of(context).openDrawer()
                                   : context.pop();
-                              print(currentRoute);
                             },
                             icon: Image.asset(
                               AppGoRouter.shouldntPop.contains(currentRoute)
