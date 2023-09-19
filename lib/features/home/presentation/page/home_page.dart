@@ -25,8 +25,6 @@ class CategoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: impconst Center(child: Text("hi"),)ter(child: Text("hi"),),);
-    final width = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height;
     return BlocProvider(
       create: (context) => HomePageCubit(getIt())..load(),
       child: SizedBox(

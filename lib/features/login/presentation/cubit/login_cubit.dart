@@ -6,7 +6,7 @@ class LoginCubit extends Cubit<LoginState> {
 
   Future<void> load() async {
     if (state != const LoginState.loading()) {
-      emit(LoginState.loading());
+      emit(const LoginState.loading());
     }
 
     const Duration(seconds: 1);

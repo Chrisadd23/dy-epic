@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -10,7 +11,7 @@ class CategoryWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => context.pushNamed('$title'), //=> selectMeal(context),
+      onTap: () => context.pushNamed(title), //=> selectMeal(context),
       child: Container(
         margin: const EdgeInsets.all(15),
         decoration: BoxDecoration(
@@ -73,5 +74,12 @@ class CategoryWidget extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(StringProperty('img', img));
+    properties.add(StringProperty('title', title));
   }
 }
