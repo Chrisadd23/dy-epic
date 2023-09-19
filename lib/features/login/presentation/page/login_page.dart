@@ -21,7 +21,7 @@ class LoginPage extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: <Widget>[
-            Container(
+            SizedBox(
               width: double.infinity,
               height: 150,
               child: FittedBox(
