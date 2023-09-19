@@ -19,10 +19,11 @@ class GlobalAppBar extends AppBar {
             height: 100,
             width: double.infinity,
             decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                    colors: [Color.fromRGBO(87, 87, 87, 0.0), Colors.white],
-                    begin: Alignment.bottomRight,
-                    end: Alignment.bottomLeft)),
+              gradient: LinearGradient(
+                  colors: [Color.fromRGBO(87, 87, 87, 0.0), Colors.white],
+                  begin: Alignment.bottomRight,
+                  end: Alignment.bottomLeft),
+            ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -58,22 +59,22 @@ class GlobalAppBar extends AppBar {
                       bottom: 8,
                     ),
                     padding: const EdgeInsets.only(
-                        top: 18, bottom: 10, right: 5, left: 4),
+                      top: 10,
+                    ),
                     child: Builder(builder: (context) {
                       final currentRoute = getIt<GoRouter>().location;
-                      return FittedBox(
-                        fit: BoxFit.fitHeight,
-                        child: IconButton(
-                            onPressed: () {
-                              AppGoRouter.shouldntPop.contains(currentRoute)
-                                  ? Scaffold.of(context).openDrawer()
-                                  : context.pop();
-                            },
-                            icon: Image.asset(
-                              AppGoRouter.shouldntPop.contains(currentRoute)
-                                  ? Assets.appComponents.png.iconMenu.path
-                                  : Assets.appComponents.png.returnIcon.path,
-                            )),
+                      return IconButton(
+                        onPressed: () {
+                          AppGoRouter.shouldntPop.contains(currentRoute)
+                              ? Scaffold.of(context).openDrawer()
+                              : context.pop();
+                        },
+                        icon: Image.asset(
+                          fit: BoxFit.fill,
+                          AppGoRouter.shouldntPop.contains(currentRoute)
+                              ? Assets.appComponents.png.iconMenu.path
+                              : Assets.appComponents.png.returnIcon.path,
+                        ),
                       );
                     }),
                   ),

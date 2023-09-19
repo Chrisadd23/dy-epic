@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globalPageWidget.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/list_wheel_scroll_view_x.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class PageArbeitsTische extends StatelessWidget {
@@ -14,7 +15,7 @@ class PageArbeitsTische extends StatelessWidget {
 }
 
 class _Arbeitstische extends StatefulWidget {
-  _Arbeitstische({super.key});
+  const _Arbeitstische();
 
   @override
   State<_Arbeitstische> createState() => _ArbeitstischeState();
@@ -133,5 +134,12 @@ class _ArbeitstischeState extends State<_Arbeitstische> {
     super.dispose();
     controller.dispose();
     log('dispose ArbeitstischeState');
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty<FixedExtentScrollController>(
+        'controller', controller));
   }
 }
