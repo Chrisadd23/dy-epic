@@ -1,10 +1,9 @@
+import 'package:app_flutter_produkt_bestellen/core/error/page_not_found.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/arbeitstische/presentation/page/page_arbeitstische.dart';
 import 'package:app_flutter_produkt_bestellen/features/home/presentation/page/home_page.dart';
+import 'package:app_flutter_produkt_bestellen/features/login/presentation/page/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
-import '../../features/login/presentation/page/login_page.dart';
-import '../error/page_not_found.dart';
 
 enum AppGoRouter {
   root('/'),
@@ -17,7 +16,7 @@ enum AppGoRouter {
 
   static Map<String, String> routeMap = {
     'root': AppGoRouter.root.title,
-    'home': '/' + AppGoRouter.homePage.title
+    'home': '/${AppGoRouter.homePage.title}'
   };
 
   static List<String> shouldntPop = ['/home'];
@@ -26,7 +25,7 @@ enum AppGoRouter {
     routes: <GoRoute>[
       GoRoute(
           path: root.title,
-          builder: (context, state) => Login(),
+          builder: (context, state) => const Login(),
           routes: <GoRoute>[
             GoRoute(
                 path: homePage.title,
@@ -54,11 +53,11 @@ enum AppGoRouter {
                   GoRoute(
                       path: arbeitstische.title,
                       name: arbeitstische.name,
-                      builder: (context, state) => PageArbeitsTische())
+                      builder: (context, state) => const PageArbeitsTische())
                 ]),
             GoRoute(
               path: 'Logout',
-              builder: (context, state) => LoginPage(),
+              builder: (context, state) => const LoginPage(),
             )
           ]),
     ],
