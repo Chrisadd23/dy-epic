@@ -47,7 +47,6 @@ linter:
     - avoid_types_as_parameter_names
     - diagnostic_describe_all_properties
     - avoid_print
-    - depend_on_referenced_packages: false
     # Uncomment to disable the `avoid_print` rule
   # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
 
