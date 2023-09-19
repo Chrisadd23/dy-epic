@@ -37,17 +37,90 @@ class _ArbeitstischeState extends State<_Arbeitstische> {
       child: ListWheelScrollViewX.useDelegate(
         controller: controller,
         diameterRatio: 10,
-        squeeze: 0.9,
+        squeeze: 0.95,
         physics: FixedExtentScrollPhysics(),
         scrollDirection: Axis.horizontal,
-        itemExtent: MediaQuery.sizeOf(context).width * 0.8,
+        itemExtent: MediaQuery.sizeOf(context).width * 0.75,
         childDelegate: ListWheelChildLoopingListDelegate(children: [
           Container(
             height: MediaQuery.sizeOf(context).height * 0.7,
             decoration: BoxDecoration(
-                color: Colors.white,
+                color: Colors.white.withOpacity(0.4),
                 borderRadius: BorderRadius.circular(20),
-                border: Border.all(color: Colors.black)),
+                border: Border.all(
+                    width: 2,
+                    color: Colors.black.withOpacity(0.2),
+                    style: BorderStyle.solid)),
+            child: Center(
+              child: Text(
+                '1',
+                style: TextStyle(fontSize: 100),
+              ),
+            ),
+          ),
+          Container(
+            height: MediaQuery.sizeOf(context).height * 0.7,
+            decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.4),
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(
+                    width: 2,
+                    color: Colors.black.withOpacity(0.2),
+                    style: BorderStyle.solid)),
+            child: Center(
+              child: Text(
+                '2',
+                style: TextStyle(fontSize: 100),
+              ),
+            ),
+          ),
+          Container(
+            height: MediaQuery.sizeOf(context).height * 0.7,
+            decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.4),
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(
+                    width: 2,
+                    color: Colors.black.withOpacity(0.2),
+                    style: BorderStyle.solid)),
+            child: Center(
+              child: Text(
+                '3',
+                style: TextStyle(fontSize: 100),
+              ),
+            ),
+          ),
+          Container(
+            height: MediaQuery.sizeOf(context).height * 0.7,
+            decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.4),
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(
+                    width: 2,
+                    color: Colors.black.withOpacity(0.2),
+                    style: BorderStyle.solid)),
+            child: Center(
+              child: Text(
+                '4',
+                style: TextStyle(fontSize: 100),
+              ),
+            ),
+          ),
+          Container(
+            height: MediaQuery.sizeOf(context).height * 0.7,
+            decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.4),
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(
+                    width: 2,
+                    color: Colors.black.withOpacity(0.2),
+                    style: BorderStyle.solid)),
+            child: Center(
+              child: Text(
+                '5',
+                style: TextStyle(fontSize: 100),
+              ),
+            ),
           ),
         ]),
       ),
@@ -59,5 +132,6 @@ class _ArbeitstischeState extends State<_Arbeitstische> {
     // TODO: implement dispose
     super.dispose();
     controller.dispose();
+    log('dispose ArbeitstischeState');
   }
 }
