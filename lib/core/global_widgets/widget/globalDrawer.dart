@@ -1,9 +1,7 @@
-
+import 'package:app_flutter_produkt_bestellen/core/fix_widgets/drawer_button.dart';
+import 'package:app_flutter_produkt_bestellen/core/list_values/list_values.dart';
+import 'package:app_flutter_produkt_bestellen/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
-
-import '../../../gen/assets.gen.dart';
-import '../../fix_widgets/drawer_button.dart';
-import '../../list_values/list_values.dart';
 
 class GlobalDrawer extends StatelessWidget {
   const GlobalDrawer({Key? key}) : super(key: key);
@@ -16,8 +14,7 @@ class GlobalDrawer extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
                 border: Border.all(color: Colors.black, width: 2),
-              color: Colors.white
-                ),
+                color: Colors.white),
             child: SafeArea(
               child: SingleChildScrollView(
                 child: Column(
@@ -59,7 +56,7 @@ class GlobalDrawer extends StatelessWidget {
                             ),
                           ),
                           InkWell(
-                            onTap: (){},
+                            onTap: () {},
                             child: SizedBox(
                               width: double.infinity,
                               height: 90,
@@ -72,7 +69,8 @@ class GlobalDrawer extends StatelessWidget {
                                         height: 75,
                                         width: 75,
                                         decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(100),
+                                            borderRadius:
+                                                BorderRadius.circular(100),
                                             color: const Color.fromRGBO(
                                                 247, 165, 64, 1.0),
                                             boxShadow: const [
@@ -97,7 +95,8 @@ class GlobalDrawer extends StatelessWidget {
                                           padding: EdgeInsets.only(bottom: 5),
                                           child: Icon(
                                             Icons.person,
-                                            color: Color.fromRGBO(221, 221, 221, 1),
+                                            color: Color.fromRGBO(
+                                                221, 221, 221, 1),
                                             size: 70,
                                             shadows: [
                                               BoxShadow(
@@ -139,9 +138,18 @@ class GlobalDrawer extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 70),
-                    Column(children:[...ListValues.DRAWER_LIST.map((e) => FixDrawerButton(title: e,)).toList()]),
+                    Column(children: [
+                      ...ListValues.DRAWER_LIST
+                          .map((e) => FixDrawerButton(
+                                title: e,
+                              ))
+                          .toList()
+                    ]),
                     const SizedBox(height: 50),
-                    const FixDrawerButton(title: 'Logout',height: 60,),
+                    const FixDrawerButton(
+                      title: 'Logout',
+                      height: 60,
+                    ),
                   ],
                 ),
               ),

@@ -1,9 +1,8 @@
-
+import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
+import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
-import '../../global_dependencies.dart';
-import '../routes/go_router.dart';
 
 class PageNotFound extends StatelessWidget {
   const PageNotFound(this.error, {super.key});
@@ -21,7 +20,7 @@ class PageNotFound extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 10,right: 10),
+              padding: const EdgeInsets.only(left: 10, right: 10),
               child: Text(
                 error.toString(),
                 style: const TextStyle(fontSize: 18),
@@ -53,5 +52,11 @@ class PageNotFound extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty<Exception?>('error', error));
   }
 }

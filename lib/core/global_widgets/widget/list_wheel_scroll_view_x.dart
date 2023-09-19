@@ -120,7 +120,7 @@ class ListWheelScrollViewX extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _childDelegate = children != null
+    final _listWheelChildDelegate = children != null
         ? ListWheelChildListDelegate(
             children: children!.map((child) {
             return RotatedBox(
@@ -153,7 +153,7 @@ class ListWheelScrollViewX extends StatelessWidget {
         onSelectedItemChanged: onSelectedItemChanged,
         renderChildrenOutsideViewport: renderChildrenOutsideViewport,
         clipBehavior: clipBehavior,
-        childDelegate: _childDelegate,
+        childDelegate: _listWheelChildDelegate,
       ),
     );
   }

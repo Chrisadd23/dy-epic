@@ -1,7 +1,6 @@
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/globalAppBar.dart';
+import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/globalDrawer.dart';
 import 'package:flutter/material.dart';
-
-import '../widget/globalDrawer.dart';
 
 class GlobalScaffold extends Scaffold {
   GlobalScaffold({

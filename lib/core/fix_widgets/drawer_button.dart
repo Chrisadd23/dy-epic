@@ -1,8 +1,6 @@
-import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
-import '../../global_dependencies.dart';
 
 class FixDrawerButton extends StatelessWidget {
   const FixDrawerButton({super.key, required this.title, this.height = 80});
@@ -13,7 +11,9 @@ class FixDrawerButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () { context.go('/$title');},
+      onTap: () {
+        context.go('/$title');
+      },
       child: Container(
         margin: const EdgeInsets.only(bottom: 10),
         height: height,
@@ -42,5 +42,12 @@ class FixDrawerButton extends StatelessWidget {
         )),
       ),
     );
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(StringProperty('title', title));
+    properties.add(DoubleProperty('height', height));
   }
 }
