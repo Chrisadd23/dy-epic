@@ -1,8 +1,7 @@
 import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
+import 'package:app_flutter_produkt_bestellen/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
-import '../../../../gen/assets.gen.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
@@ -35,16 +34,17 @@ class LoginPage extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                context.goNamed('${AppGoRouter.homePage.name}');
+                context.goNamed(AppGoRouter.homePage.name);
               },
               child: Center(
                 child: Container(
                   decoration: BoxDecoration(
                       color: Colors.grey[200],
-                      borderRadius: BorderRadius.all(Radius.circular(20))),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(20))),
                   height: 70,
                   width: 200,
-                  child: Center(child: Text('Kategorien')),
+                  child: const Center(child: Text('Kategorien')),
                 ),
               ),
             )

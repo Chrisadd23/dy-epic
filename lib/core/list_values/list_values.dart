@@ -2,7 +2,7 @@ import 'package:app_flutter_produkt_bestellen/features/home/data/model/model_cat
 import 'package:app_flutter_produkt_bestellen/gen/assets.gen.dart';
 
 class ListValues {
-  static final DRAWER_LIST = [
+  static final drawerList = [
     'Produkte',
     'Bestellungen',
     'Anfragen',
@@ -11,7 +11,7 @@ class ListValues {
   ];
 }
 
-List<ModelCategory> CHOOSE_CATEGORRY = [
+List<ModelCategory> chooseCategorry = [
   ModelCategory(
       title: 'Arbeitstische',
       imgPath: Assets.appComponents.jpg.arbeitstisch.path,

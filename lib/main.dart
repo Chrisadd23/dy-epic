@@ -1,18 +1,15 @@
 import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
-
-
+import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
+import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-
-import 'core/routes/go_router.dart';
-import 'global_dependencies.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   //await awconfigureAmplify();
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,overlays: []);
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
   setupMain();
   runApp(const MyApp());
 }
@@ -25,9 +22,10 @@ Future<void> awconfigureAmplify() async {
   //Add Configure Amplify
   try {
     //await Amplify.configure(amplifyconfig);
-  }
-  catch (e){
-    print('Amplify wurde bereits konfiguriert [ ${e.toString()} ]');
+  } catch (e) {
+    if (kDebugMode) {
+      print('Amplify wurde bereits konfiguriert [ ${e.toString()} ]');
+    }
   }
 }
 
@@ -37,7 +35,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp.router(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -68,6 +65,4 @@ class MyHomePage extends StatelessWidget {
       body: const SizedBox.shrink(),
     );
   }
-
 }
-

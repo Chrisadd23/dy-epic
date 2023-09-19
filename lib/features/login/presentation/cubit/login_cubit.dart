@@ -1,18 +1,16 @@
-
+import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_state.dart';
 import 'package:bloc/bloc.dart';
 
-import 'login_state.dart';
+class LoginCubit extends Cubit<LoginState> {
+  LoginCubit() : super(const LoginState.loggedOut());
 
-class LoginCubit extends Cubit<LoginState>
-{
-   LoginCubit() : super(const LoginState.loggedOut());
-
-   Future<void> load() async {
-      if(state != const LoginState.loading())
+  Future<void> load() async {
+    if (state != const LoginState.loading()) {
       emit(LoginState.loading());
+    }
 
-      Duration(seconds: 1);
+    const Duration(seconds: 1);
 
-      emit(const LoginState.loggedIn());
-   }
+    emit(const LoginState.loggedIn());
+  }
 }

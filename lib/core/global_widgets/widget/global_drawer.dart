@@ -139,7 +139,7 @@ class GlobalDrawer extends StatelessWidget {
                     ),
                     const SizedBox(height: 70),
                     Column(children: [
-                      ...ListValues.DRAWER_LIST
+                      ...ListValues.drawerList
                           .map((e) => FixDrawerButton(
                                 title: e,
                               ))

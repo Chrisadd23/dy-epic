@@ -1,9 +1,8 @@
+import 'package:app_flutter_produkt_bestellen/features/home/data/repository/repository_category_implementation.dart';
+import 'package:app_flutter_produkt_bestellen/features/home/domain/repository/repository_category.dart';
+import 'package:app_flutter_produkt_bestellen/features/home/domain/usecase_category/usecase_get_category.dart';
 import 'package:app_flutter_produkt_bestellen/features/home/presentation/cubit/cubit_category.dart';
-
-import '../../global_dependencies.dart';
-import 'data/repository/repository_category_implementation.dart';
-import 'domain/repository/repository_category.dart';
-import 'domain/usecase_category/usecase_get_category.dart';
+import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 
 void setUp() {
   //UseCase
