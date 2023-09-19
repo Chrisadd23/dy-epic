@@ -1,9 +1,8 @@
 import 'package:app_flutter_produkt_bestellen/features/category/share/data/datasource/datasource_category.dart';
+import 'package:app_flutter_produkt_bestellen/features/home/data/model/model_category.dart';
 import 'package:app_flutter_produkt_bestellen/features/home/domain/repository/repository_category.dart';
-
-import '../../../../../gen/assets.gen.dart';
-import '../../presentation/widget/category_widget.dart';
-import '../model/model_category.dart';
+import 'package:app_flutter_produkt_bestellen/features/home/presentation/widget/category_widget.dart';
+import 'package:app_flutter_produkt_bestellen/gen/assets.gen.dart';
 
 class RepositoryCategoryImplementation implements RepositoryCategory {
   @override

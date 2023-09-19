@@ -39,7 +39,7 @@ class _ArbeitstischeState extends State<_Arbeitstische> {
         controller: controller,
         diameterRatio: 10,
         squeeze: 0.95,
-        physics: FixedExtentScrollPhysics(),
+        physics: const FixedExtentScrollPhysics(),
         scrollDirection: Axis.horizontal,
         itemExtent: MediaQuery.sizeOf(context).width * 0.75,
         childDelegate: ListWheelChildLoopingListDelegate(children: [
@@ -52,7 +52,7 @@ class _ArbeitstischeState extends State<_Arbeitstische> {
                     width: 2,
                     color: Colors.black.withOpacity(0.2),
                     style: BorderStyle.solid)),
-            child: Center(
+            child: const Center(
               child: Text(
                 '1',
                 style: TextStyle(fontSize: 100),
@@ -68,7 +68,7 @@ class _ArbeitstischeState extends State<_Arbeitstische> {
                     width: 2,
                     color: Colors.black.withOpacity(0.2),
                     style: BorderStyle.solid)),
-            child: Center(
+            child: const Center(
               child: Text(
                 '2',
                 style: TextStyle(fontSize: 100),
@@ -84,7 +84,7 @@ class _ArbeitstischeState extends State<_Arbeitstische> {
                     width: 2,
                     color: Colors.black.withOpacity(0.2),
                     style: BorderStyle.solid)),
-            child: Center(
+            child: const Center(
               child: Text(
                 '3',
                 style: TextStyle(fontSize: 100),
@@ -100,7 +100,7 @@ class _ArbeitstischeState extends State<_Arbeitstische> {
                     width: 2,
                     color: Colors.black.withOpacity(0.2),
                     style: BorderStyle.solid)),
-            child: Center(
+            child: const Center(
               child: Text(
                 '4',
                 style: TextStyle(fontSize: 100),
@@ -116,7 +116,7 @@ class _ArbeitstischeState extends State<_Arbeitstische> {
                     width: 2,
                     color: Colors.black.withOpacity(0.2),
                     style: BorderStyle.solid)),
-            child: Center(
+            child: const Center(
               child: Text(
                 '5',
                 style: TextStyle(fontSize: 100),
