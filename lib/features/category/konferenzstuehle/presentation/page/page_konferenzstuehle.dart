@@ -5,23 +5,24 @@ import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/list_wh
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class PageArbeitstische extends StatelessWidget {
-  const PageArbeitstische({super.key});
+class PageKonferenzstuehle extends StatelessWidget {
+  const PageKonferenzstuehle({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return GlobalScaffold(appBarContext: context, body: const _Arbeitstische());
+    return GlobalScaffold(
+        appBarContext: context, body: const _Konferenzstuehle());
   }
 }
 
-class _Arbeitstische extends StatefulWidget {
-  const _Arbeitstische();
+class _Konferenzstuehle extends StatefulWidget {
+  const _Konferenzstuehle();
 
   @override
-  State<_Arbeitstische> createState() => _ArbeitstischeState();
+  State<_Konferenzstuehle> createState() => _KonferenzstuehleState();
 }
 
-class _ArbeitstischeState extends State<_Arbeitstische> {
+class _KonferenzstuehleState extends State<_Konferenzstuehle> {
   late FixedExtentScrollController controller;
 
   @override

@@ -3,15 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class CategoryWidget extends StatelessWidget {
-  const CategoryWidget({super.key, required this.img, required this.title});
+  const CategoryWidget(
+      {super.key,
+      required this.img,
+      required this.title,
+      required this.navigation});
 
   final String img;
   final String title;
+  final String navigation;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => context.pushNamed(title), //=> selectMeal(context),
+      onTap: () {
+        context.pushNamed(navigation);
+      }, //=> selectMeal(context),
       child: Container(
         margin: const EdgeInsets.all(15),
         decoration: BoxDecoration(
