@@ -88,5 +88,6 @@ class CategoryWidget extends StatelessWidget {
     super.debugFillProperties(properties);
     properties.add(StringProperty('img', img));
     properties.add(StringProperty('title', title));
+    properties.add(StringProperty('navigation', navigation));
   }
 }
