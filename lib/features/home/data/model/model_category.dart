@@ -1,10 +1,8 @@
-
 import 'package:equatable/equatable.dart';
 
-
-
-class ModelCategory extends Equatable{
-  const ModelCategory({required this.title, required this.imgPath, required this.indexPositon});
+class ModelCategory extends Equatable {
+  const ModelCategory(
+      {required this.title, required this.imgPath, required this.indexPositon});
 
   final String title;
   final String imgPath;
@@ -12,9 +10,5 @@ class ModelCategory extends Equatable{
 
   @override
   // TODO: implement props
-  List<Object?> get props => throw [title,imgPath,indexPositon];
-
-
-
+  List<Object?> get props => throw [title, imgPath, indexPositon];
 }
-
