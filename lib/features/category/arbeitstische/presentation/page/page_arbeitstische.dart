@@ -132,9 +132,7 @@ class _ArbeitstischeState extends State<_Arbeitstische> {
 }
 
 class _ProductContainer extends StatelessWidget {
-  const _ProductContainer({
-    super.key,
-  });
+  const _ProductContainer();
 
   @override
   Widget build(BuildContext context) {
