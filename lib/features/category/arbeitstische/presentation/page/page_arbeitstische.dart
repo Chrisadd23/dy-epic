@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_page_widget.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/list_wheel_scroll_view_x.dart';
+import 'package:app_flutter_produkt_bestellen/gen/assets.gen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -26,9 +27,9 @@ class _ArbeitstischeState extends State<_Arbeitstische> {
 
   @override
   void initState() {
-    // TODO: implement initState
-    super.initState();
     controller = FixedExtentScrollController();
+    super.initState();
+
     log('initState - createAnimationController');
   }
 
@@ -43,23 +44,8 @@ class _ArbeitstischeState extends State<_Arbeitstische> {
         scrollDirection: Axis.horizontal,
         itemExtent: MediaQuery.sizeOf(context).width * 0.75,
         childDelegate: ListWheelChildLoopingListDelegate(children: [
-          Container(
-            height: MediaQuery.sizeOf(context).height * 0.7,
-            decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.4),
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(
-                    width: 2,
-                    color: Colors.black.withOpacity(0.2),
-                    style: BorderStyle.solid)),
-            child: const Center(
-              child: Text(
-                '1',
-                style: TextStyle(fontSize: 100),
-              ),
-            ),
-          ),
-          Container(
+          const _ProductContainer(),
+          /* Container(
             height: MediaQuery.sizeOf(context).height * 0.7,
             decoration: BoxDecoration(
                 color: Colors.white.withOpacity(0.4),
@@ -122,7 +108,7 @@ class _ArbeitstischeState extends State<_Arbeitstische> {
                 style: TextStyle(fontSize: 100),
               ),
             ),
-          ),
+          ),*/
         ]),
       ),
     );
@@ -131,8 +117,9 @@ class _ArbeitstischeState extends State<_Arbeitstische> {
   @override
   void dispose() {
     // TODO: implement dispose
-    super.dispose();
     controller.dispose();
+    super.dispose();
+
     log('dispose ArbeitstischeState');
   }
 
@@ -141,5 +128,39 @@ class _ArbeitstischeState extends State<_Arbeitstische> {
     super.debugFillProperties(properties);
     properties.add(DiagnosticsProperty<FixedExtentScrollController>(
         'controller', controller));
+  }
+}
+
+class _ProductContainer extends StatelessWidget {
+  const _ProductContainer({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        height: MediaQuery.sizeOf(context).height * 0.7,
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(20),
+            boxShadow: const [
+              BoxShadow(offset: Offset(5, 5), color: Colors.grey)
+            ]),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Expanded(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Container(
+                  alignment: Alignment.topLeft,
+                  child: Image.asset(
+                    Assets.products.arbeitstische.slavonischeEicheSchwarz.path,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ));
   }
 }

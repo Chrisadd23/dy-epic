@@ -38,6 +38,13 @@ class $AssetsIconGen {
   List<AssetGenImage> get values => [oberhaizingerOfficesolutionAppIcon];
 }
 
+class $AssetsProductsGen {
+  const $AssetsProductsGen();
+
+  $AssetsProductsArbeitstischeGen get arbeitstische =>
+      const $AssetsProductsArbeitstischeGen();
+}
+
 class $AssetsAppComponentsJpgGen {
   const $AssetsAppComponentsJpgGen();
 
@@ -77,6 +84,89 @@ class $AssetsAppComponentsPngGen {
   List<AssetGenImage> get values => [iconMenu, returnIcon];
 }
 
+class $AssetsProductsArbeitstischeGen {
+  const $AssetsProductsArbeitstischeGen();
+
+  /// File path: assets/products/arbeitstische/ahornSchwarz.png
+  AssetGenImage get ahornSchwarz =>
+      const AssetGenImage('assets/products/arbeitstische/ahornSchwarz.png');
+
+  /// File path: assets/products/arbeitstische/ahornSilber.png
+  AssetGenImage get ahornSilber =>
+      const AssetGenImage('assets/products/arbeitstische/ahornSilber.png');
+
+  /// File path: assets/products/arbeitstische/ahornWeiss.png
+  AssetGenImage get ahornWeiss =>
+      const AssetGenImage('assets/products/arbeitstische/ahornWeiss.png');
+
+  /// File path: assets/products/arbeitstische/bucheSchwarz.png
+  AssetGenImage get bucheSchwarz =>
+      const AssetGenImage('assets/products/arbeitstische/bucheSchwarz.png');
+
+  /// File path: assets/products/arbeitstische/bucheSilber.png
+  AssetGenImage get bucheSilber =>
+      const AssetGenImage('assets/products/arbeitstische/bucheSilber.png');
+
+  /// File path: assets/products/arbeitstische/bucheWeiss.png
+  AssetGenImage get bucheWeiss =>
+      const AssetGenImage('assets/products/arbeitstische/bucheWeiss.png');
+
+  /// File path: assets/products/arbeitstische/lSchwarz.png
+  AssetGenImage get lSchwarz =>
+      const AssetGenImage('assets/products/arbeitstische/lSchwarz.png');
+
+  /// File path: assets/products/arbeitstische/lSilber.png
+  AssetGenImage get lSilber =>
+      const AssetGenImage('assets/products/arbeitstische/lSilber.png');
+
+  /// File path: assets/products/arbeitstische/lWeiss.png
+  AssetGenImage get lWeiss =>
+      const AssetGenImage('assets/products/arbeitstische/lWeiss.png');
+
+  /// File path: assets/products/arbeitstische/slavonischeEicheSchwarz.png
+  AssetGenImage get slavonischeEicheSchwarz => const AssetGenImage(
+      'assets/products/arbeitstische/slavonischeEicheSchwarz.png');
+
+  /// File path: assets/products/arbeitstische/slavonischeEicheSilber.png
+  AssetGenImage get slavonischeEicheSilber => const AssetGenImage(
+      'assets/products/arbeitstische/slavonischeEicheSilber.png');
+
+  /// File path: assets/products/arbeitstische/slavonischeEicheWeiss.png
+  AssetGenImage get slavonischeEicheWeiss => const AssetGenImage(
+      'assets/products/arbeitstische/slavonischeEicheWeiss.png');
+
+  /// File path: assets/products/arbeitstische/wSchwarz.png
+  AssetGenImage get wSchwarz =>
+      const AssetGenImage('assets/products/arbeitstische/wSchwarz.png');
+
+  /// File path: assets/products/arbeitstische/wSilber.png
+  AssetGenImage get wSilber =>
+      const AssetGenImage('assets/products/arbeitstische/wSilber.png');
+
+  /// File path: assets/products/arbeitstische/wWeiss.png
+  AssetGenImage get wWeiss =>
+      const AssetGenImage('assets/products/arbeitstische/wWeiss.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [
+        ahornSchwarz,
+        ahornSilber,
+        ahornWeiss,
+        bucheSchwarz,
+        bucheSilber,
+        bucheWeiss,
+        lSchwarz,
+        lSilber,
+        lWeiss,
+        slavonischeEicheSchwarz,
+        slavonischeEicheSilber,
+        slavonischeEicheWeiss,
+        wSchwarz,
+        wSilber,
+        wWeiss
+      ];
+}
+
 class Assets {
   Assets._();
 
@@ -84,6 +174,7 @@ class Assets {
       $AssetsAppComponentsGen();
   static const $AssetsCompanyGen company = $AssetsCompanyGen();
   static const $AssetsIconGen icon = $AssetsIconGen();
+  static const $AssetsProductsGen products = $AssetsProductsGen();
 }
 
 class AssetGenImage {
