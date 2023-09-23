@@ -38,6 +38,7 @@ class Product with _$Product {
   const factory Product({
     required String productName,
     required double price,
+    required String picturePath,
     int? offerInPercent,
     int? productCount,
   }) = _Product;

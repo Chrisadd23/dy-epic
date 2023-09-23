@@ -2,16 +2,22 @@ import 'dart:developer';
 
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_page_widget.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/list_wheel_scroll_view_x.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/arbeitstische/presentation/cubit/cubit_arbeitstische.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/arbeitstische/presentation/cubit/state_arbeitstische.dart';
 import 'package:app_flutter_produkt_bestellen/gen/assets.gen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PageArbeitstische extends StatelessWidget {
   const PageArbeitstische({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return GlobalScaffold(appBarContext: context, body: const _Arbeitstische());
+    return BlocProvider(
+        create: (context) => CubitArbeitstische()..load(),
+        child: GlobalScaffold(
+            appBarContext: context, body: const _Arbeitstische()));
   }
 }
 
@@ -35,8 +41,10 @@ class _ArbeitstischeState extends State<_Arbeitstische> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: ListWheelScrollViewX.useDelegate(
+    return BlocSelector<CubitArbeitstische, StateArbeitstische,
+        ProductCategory?>(
+      selector: (state) => state.productCategory,
+      builder: (context, state) => ListWheelScrollViewX.useDelegate(
         controller: controller,
         diameterRatio: 10,
         squeeze: 0.95,
@@ -44,71 +52,12 @@ class _ArbeitstischeState extends State<_Arbeitstische> {
         scrollDirection: Axis.horizontal,
         itemExtent: MediaQuery.sizeOf(context).width * 0.75,
         childDelegate: ListWheelChildLoopingListDelegate(children: [
-          const _ProductContainer(),
-          /* Container(
-            height: MediaQuery.sizeOf(context).height * 0.7,
-            decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.4),
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(
-                    width: 2,
-                    color: Colors.black.withOpacity(0.2),
-                    style: BorderStyle.solid)),
-            child: const Center(
-              child: Text(
-                '2',
-                style: TextStyle(fontSize: 100),
-              ),
-            ),
-          ),
-          Container(
-            height: MediaQuery.sizeOf(context).height * 0.7,
-            decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.4),
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(
-                    width: 2,
-                    color: Colors.black.withOpacity(0.2),
-                    style: BorderStyle.solid)),
-            child: const Center(
-              child: Text(
-                '3',
-                style: TextStyle(fontSize: 100),
-              ),
-            ),
-          ),
-          Container(
-            height: MediaQuery.sizeOf(context).height * 0.7,
-            decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.4),
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(
-                    width: 2,
-                    color: Colors.black.withOpacity(0.2),
-                    style: BorderStyle.solid)),
-            child: const Center(
-              child: Text(
-                '4',
-                style: TextStyle(fontSize: 100),
-              ),
-            ),
-          ),
-          Container(
-            height: MediaQuery.sizeOf(context).height * 0.7,
-            decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.4),
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(
-                    width: 2,
-                    color: Colors.black.withOpacity(0.2),
-                    style: BorderStyle.solid)),
-            child: const Center(
-              child: Text(
-                '5',
-                style: TextStyle(fontSize: 100),
-              ),
-            ),
-          ),*/
+          if (state?.listProduct != null)
+            ...state!.listProduct.map((product) {
+              return _Product(
+                picturePath: product.picturePath,
+              );
+            }).toList(),
         ]),
       ),
     );
@@ -117,9 +66,9 @@ class _ArbeitstischeState extends State<_Arbeitstische> {
   @override
   void dispose() {
     // TODO: implement dispose
-    controller.dispose();
-    super.dispose();
 
+    super.dispose();
+    controller.dispose();
     log('dispose ArbeitstischeState');
   }
 
@@ -131,8 +80,12 @@ class _ArbeitstischeState extends State<_Arbeitstische> {
   }
 }
 
-class _ProductContainer extends StatelessWidget {
-  const _ProductContainer();
+class _Product extends StatelessWidget {
+  const _Product({
+    required this.picturePath,
+  });
+
+  final String picturePath;
 
   @override
   Widget build(BuildContext context) {
@@ -152,13 +105,19 @@ class _ProductContainer extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
                 child: Container(
                   alignment: Alignment.topLeft,
-                  child: Image.asset(
-                    Assets.products.arbeitstische.slavonischeEicheSchwarz.path,
-                  ),
+                  child: Image(
+                      image: AssetImage(Assets.products.arbeitstische
+                          .slavonischeEicheSchwarz.path)),
                 ),
               ),
             ),
           ],
         ));
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(StringProperty('picturePath', picturePath));
   }
 }

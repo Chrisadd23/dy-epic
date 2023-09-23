@@ -1,13 +1,14 @@
-import 'package:app_flutter_produkt_bestellen/features/category/arbeitstische/data/model/model_arbeitstische.dart';
+import 'package:app_flutter_produkt_bestellen/core/error/failures.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/arbeitstische/domain/entity/entity_arbeitstische.dart';
 import 'package:either_dart/either.dart';
 
 abstract class DataSourceArbeitstische {
-  Future<Either<void, ModelArbeitstische>> getArbeitstischeData();
+  Future<Either<Failure, List<EntityArbeitstische>>> getArbeitstischeData();
 }
 
 class DataSourceArbeitstischeImplementation extends DataSourceArbeitstische {
   @override
-  Future<Either<void, ModelArbeitstische>> getArbeitstischeData() {
+  Future<Either<Failure, List<EntityArbeitstische>>> getArbeitstischeData() {
     // TODO: implement getArbeitstischeData
     throw UnimplementedError();
   }

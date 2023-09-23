@@ -12,6 +12,14 @@ class ListValues {
   ];
 }
 
+class ProductPictures {
+  static final Map<String, Map<String, String>> arbeitstischeMap = {
+    'slavonischeEiche': <String, String>{
+      'schwarz': Assets.products.arbeitstische.slavonischeEicheSchwarz.path,
+    }
+  };
+}
+
 List<ModelCategory> chooseCategorry = [
   ModelCategory(
       title: 'Arbeitstische',

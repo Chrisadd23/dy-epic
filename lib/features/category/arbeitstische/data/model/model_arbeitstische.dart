@@ -7,38 +7,20 @@ abstract class ModelArbeitstische with _$ModelArbeitstische {
   const ModelArbeitstische._();
 
   const factory ModelArbeitstische({
-    ChoosenDateTime? dateTime,
-    ProductCategory? productCategory,
+    required String categoryName,
+    required List<ModelProduct> listProduct,
   }) = _ModelArbeitstische;
 }
 
 @freezed
-class ChoosenDateTime with _$ChoosenDateTime {
-  const ChoosenDateTime._();
+class ModelProduct with _$ModelProduct {
+  const ModelProduct._();
 
-  const factory ChoosenDateTime({DateTime? selectedDateTime}) =
-      _ChoosenDateTime;
-}
-
-@freezed
-class ProductCategory with _$ProductCategory {
-  const ProductCategory._();
-
-  const factory ProductCategory({
-    required String categoryName,
-    required List<Product> listProduct,
-    Product? choosenProduct,
-  }) = _ProductCategory;
-}
-
-@freezed
-class Product with _$Product {
-  const Product._();
-
-  const factory Product({
+  const factory ModelProduct({
     required String productName,
     required double price,
+    required int indexNumber,
     int? offerInPercent,
     int? productCount,
-  }) = _Product;
+  }) = _ModelProduct;
 }

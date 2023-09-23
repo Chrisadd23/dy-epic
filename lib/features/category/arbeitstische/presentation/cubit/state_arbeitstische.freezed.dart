@@ -501,6 +501,7 @@ abstract class _ProductCategory extends ProductCategory {
 mixin _$Product {
   String get productName => throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
+  String get picturePath => throw _privateConstructorUsedError;
   int? get offerInPercent => throw _privateConstructorUsedError;
   int? get productCount => throw _privateConstructorUsedError;
 
@@ -516,6 +517,7 @@ abstract class $ProductCopyWith<$Res> {
   $Res call(
       {String productName,
       double price,
+      String picturePath,
       int? offerInPercent,
       int? productCount});
 }
@@ -535,6 +537,7 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
   $Res call({
     Object? productName = null,
     Object? price = null,
+    Object? picturePath = null,
     Object? offerInPercent = freezed,
     Object? productCount = freezed,
   }) {
@@ -547,6 +550,10 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double,
+      picturePath: null == picturePath
+          ? _value.picturePath
+          : picturePath // ignore: cast_nullable_to_non_nullable
+              as String,
       offerInPercent: freezed == offerInPercent
           ? _value.offerInPercent
           : offerInPercent // ignore: cast_nullable_to_non_nullable
@@ -569,6 +576,7 @@ abstract class _$$_ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
   $Res call(
       {String productName,
       double price,
+      String picturePath,
       int? offerInPercent,
       int? productCount});
 }
@@ -585,6 +593,7 @@ class __$$_ProductCopyWithImpl<$Res>
   $Res call({
     Object? productName = null,
     Object? price = null,
+    Object? picturePath = null,
     Object? offerInPercent = freezed,
     Object? productCount = freezed,
   }) {
@@ -597,6 +606,10 @@ class __$$_ProductCopyWithImpl<$Res>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double,
+      picturePath: null == picturePath
+          ? _value.picturePath
+          : picturePath // ignore: cast_nullable_to_non_nullable
+              as String,
       offerInPercent: freezed == offerInPercent
           ? _value.offerInPercent
           : offerInPercent // ignore: cast_nullable_to_non_nullable
@@ -615,6 +628,7 @@ class _$_Product extends _Product {
   const _$_Product(
       {required this.productName,
       required this.price,
+      required this.picturePath,
       this.offerInPercent,
       this.productCount})
       : super._();
@@ -624,13 +638,15 @@ class _$_Product extends _Product {
   @override
   final double price;
   @override
+  final String picturePath;
+  @override
   final int? offerInPercent;
   @override
   final int? productCount;
 
   @override
   String toString() {
-    return 'Product(productName: $productName, price: $price, offerInPercent: $offerInPercent, productCount: $productCount)';
+    return 'Product(productName: $productName, price: $price, picturePath: $picturePath, offerInPercent: $offerInPercent, productCount: $productCount)';
   }
 
   @override
@@ -641,6 +657,8 @@ class _$_Product extends _Product {
             (identical(other.productName, productName) ||
                 other.productName == productName) &&
             (identical(other.price, price) || other.price == price) &&
+            (identical(other.picturePath, picturePath) ||
+                other.picturePath == picturePath) &&
             (identical(other.offerInPercent, offerInPercent) ||
                 other.offerInPercent == offerInPercent) &&
             (identical(other.productCount, productCount) ||
@@ -648,8 +666,8 @@ class _$_Product extends _Product {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, productName, price, offerInPercent, productCount);
+  int get hashCode => Object.hash(runtimeType, productName, price, picturePath,
+      offerInPercent, productCount);
 
   @JsonKey(ignore: true)
   @override
@@ -662,6 +680,7 @@ abstract class _Product extends Product {
   const factory _Product(
       {required final String productName,
       required final double price,
+      required final String picturePath,
       final int? offerInPercent,
       final int? productCount}) = _$_Product;
   const _Product._() : super._();
@@ -670,6 +689,8 @@ abstract class _Product extends Product {
   String get productName;
   @override
   double get price;
+  @override
+  String get picturePath;
   @override
   int? get offerInPercent;
   @override
