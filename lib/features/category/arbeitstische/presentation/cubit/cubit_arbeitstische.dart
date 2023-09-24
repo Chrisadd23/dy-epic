@@ -2,8 +2,8 @@ import 'package:app_flutter_produkt_bestellen/features/category/arbeitstische/pr
 import 'package:app_flutter_produkt_bestellen/gen/assets.gen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CubitArbeitstische extends Cubit<StateArbeitstische> {
-  CubitArbeitstische() : super(const StateArbeitstische());
+class CubitWorkTables extends Cubit<StateWorkTable> {
+  CubitWorkTables() : super(const StateWorkTable());
 
   Future<void> load() async {
     final listProduct = [
@@ -29,10 +29,8 @@ class CubitArbeitstische extends Cubit<StateArbeitstische> {
           price: 0.0,
           picturePath: Assets.products.arbeitstische.wSchwarz.path)
     ];
-    final currentState = state.copyWith(
+    emit(state.copyWith(
         productCategory: ProductCategory(
-            listProduct: listProduct, categoryName: 'Arbeitstische'));
-
-    emit(currentState);
+            listProduct: listProduct, categoryName: 'Arbeitstische')));
   }
 }

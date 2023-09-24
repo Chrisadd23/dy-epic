@@ -15,5 +15,5 @@ void setUpArbeitstische() {
   getIt.registerLazySingleton<RepositoryArbeitstische>(() =>
       RepositoryArbeitstischeImplementation(dataSourceArbeitstische: getIt()));
 
-  getIt.registerFactory<CubitArbeitstische>(() => CubitArbeitstische());
+  getIt.registerFactory<CubitWorkTables>(() => CubitWorkTables());
 }

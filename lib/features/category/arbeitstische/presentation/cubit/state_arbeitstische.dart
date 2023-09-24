@@ -3,13 +3,13 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'state_arbeitstische.freezed.dart';
 
 @freezed
-abstract class StateArbeitstische with _$StateArbeitstische {
-  const StateArbeitstische._();
+abstract class StateWorkTable with _$StateWorkTable {
+  const StateWorkTable._();
 
-  const factory StateArbeitstische({
+  const factory StateWorkTable({
     ChoosenDateTime? dateTime,
     ProductCategory? productCategory,
-  }) = _StateArbeitstische;
+  }) = _StateWorkTable;
 }
 
 @freezed

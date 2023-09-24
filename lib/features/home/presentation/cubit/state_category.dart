@@ -1,3 +1,4 @@
+import 'package:app_flutter_produkt_bestellen/core/error/failures.dart';
 import 'package:app_flutter_produkt_bestellen/features/home/presentation/widget/category_widget.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -10,7 +11,7 @@ abstract class StateCategory with _$StateCategory {
   const factory StateCategory.loading() = _Loading;
 
   const factory StateCategory.success(List<CategoryWidget> listCategory) =
-      _Succes;
+      _Success;
 
-  const factory StateCategory.failure() = _Failure;
+  const factory StateCategory.failure(Failure failure) = _Failure;
 }

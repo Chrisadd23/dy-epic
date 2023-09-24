@@ -20,42 +20,42 @@ mixin _$StateCategory {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(List<CategoryWidget> listCategory) success,
-    required TResult Function() failure,
+    required TResult Function(Failure failure) failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(List<CategoryWidget> listCategory)? success,
-    TResult? Function()? failure,
+    TResult? Function(Failure failure)? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(List<CategoryWidget> listCategory)? success,
-    TResult Function()? failure,
+    TResult Function(Failure failure)? failure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Succes value) success,
+    required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_Succes value)? success,
+    TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
-    TResult Function(_Succes value)? success,
+    TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
     required TResult orElse(),
   }) =>
@@ -119,7 +119,7 @@ class _$_Loading extends _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(List<CategoryWidget> listCategory) success,
-    required TResult Function() failure,
+    required TResult Function(Failure failure) failure,
   }) {
     return loading();
   }
@@ -129,7 +129,7 @@ class _$_Loading extends _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(List<CategoryWidget> listCategory)? success,
-    TResult? Function()? failure,
+    TResult? Function(Failure failure)? failure,
   }) {
     return loading?.call();
   }
@@ -139,7 +139,7 @@ class _$_Loading extends _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(List<CategoryWidget> listCategory)? success,
-    TResult Function()? failure,
+    TResult Function(Failure failure)? failure,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -152,7 +152,7 @@ class _$_Loading extends _Loading {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Succes value) success,
+    required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
   }) {
     return loading(this);
@@ -162,7 +162,7 @@ class _$_Loading extends _Loading {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_Succes value)? success,
+    TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
   }) {
     return loading?.call(this);
@@ -172,7 +172,7 @@ class _$_Loading extends _Loading {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
-    TResult Function(_Succes value)? success,
+    TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
     required TResult orElse(),
   }) {
@@ -189,18 +189,19 @@ abstract class _Loading extends StateCategory {
 }
 
 /// @nodoc
-abstract class _$$_SuccesCopyWith<$Res> {
-  factory _$$_SuccesCopyWith(_$_Succes value, $Res Function(_$_Succes) then) =
-      __$$_SuccesCopyWithImpl<$Res>;
+abstract class _$$_SuccessCopyWith<$Res> {
+  factory _$$_SuccessCopyWith(
+          _$_Success value, $Res Function(_$_Success) then) =
+      __$$_SuccessCopyWithImpl<$Res>;
   @useResult
   $Res call({List<CategoryWidget> listCategory});
 }
 
 /// @nodoc
-class __$$_SuccesCopyWithImpl<$Res>
-    extends _$StateCategoryCopyWithImpl<$Res, _$_Succes>
-    implements _$$_SuccesCopyWith<$Res> {
-  __$$_SuccesCopyWithImpl(_$_Succes _value, $Res Function(_$_Succes) _then)
+class __$$_SuccessCopyWithImpl<$Res>
+    extends _$StateCategoryCopyWithImpl<$Res, _$_Success>
+    implements _$$_SuccessCopyWith<$Res> {
+  __$$_SuccessCopyWithImpl(_$_Success _value, $Res Function(_$_Success) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -208,7 +209,7 @@ class __$$_SuccesCopyWithImpl<$Res>
   $Res call({
     Object? listCategory = null,
   }) {
-    return _then(_$_Succes(
+    return _then(_$_Success(
       null == listCategory
           ? _value._listCategory
           : listCategory // ignore: cast_nullable_to_non_nullable
@@ -219,8 +220,8 @@ class __$$_SuccesCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Succes extends _Succes {
-  const _$_Succes(final List<CategoryWidget> listCategory)
+class _$_Success extends _Success {
+  const _$_Success(final List<CategoryWidget> listCategory)
       : _listCategory = listCategory,
         super._();
 
@@ -241,7 +242,7 @@ class _$_Succes extends _Succes {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Succes &&
+            other is _$_Success &&
             const DeepCollectionEquality()
                 .equals(other._listCategory, _listCategory));
   }
@@ -253,15 +254,15 @@ class _$_Succes extends _Succes {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SuccesCopyWith<_$_Succes> get copyWith =>
-      __$$_SuccesCopyWithImpl<_$_Succes>(this, _$identity);
+  _$$_SuccessCopyWith<_$_Success> get copyWith =>
+      __$$_SuccessCopyWithImpl<_$_Success>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(List<CategoryWidget> listCategory) success,
-    required TResult Function() failure,
+    required TResult Function(Failure failure) failure,
   }) {
     return success(listCategory);
   }
@@ -271,7 +272,7 @@ class _$_Succes extends _Succes {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(List<CategoryWidget> listCategory)? success,
-    TResult? Function()? failure,
+    TResult? Function(Failure failure)? failure,
   }) {
     return success?.call(listCategory);
   }
@@ -281,7 +282,7 @@ class _$_Succes extends _Succes {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(List<CategoryWidget> listCategory)? success,
-    TResult Function()? failure,
+    TResult Function(Failure failure)? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -294,7 +295,7 @@ class _$_Succes extends _Succes {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Succes value) success,
+    required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
   }) {
     return success(this);
@@ -304,7 +305,7 @@ class _$_Succes extends _Succes {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_Succes value)? success,
+    TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
   }) {
     return success?.call(this);
@@ -314,7 +315,7 @@ class _$_Succes extends _Succes {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
-    TResult Function(_Succes value)? success,
+    TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
     required TResult orElse(),
   }) {
@@ -325,13 +326,13 @@ class _$_Succes extends _Succes {
   }
 }
 
-abstract class _Succes extends StateCategory {
-  const factory _Succes(final List<CategoryWidget> listCategory) = _$_Succes;
-  const _Succes._() : super._();
+abstract class _Success extends StateCategory {
+  const factory _Success(final List<CategoryWidget> listCategory) = _$_Success;
+  const _Success._() : super._();
 
   List<CategoryWidget> get listCategory;
   @JsonKey(ignore: true)
-  _$$_SuccesCopyWith<_$_Succes> get copyWith =>
+  _$$_SuccessCopyWith<_$_Success> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -340,6 +341,8 @@ abstract class _$$_FailureCopyWith<$Res> {
   factory _$$_FailureCopyWith(
           _$_Failure value, $Res Function(_$_Failure) then) =
       __$$_FailureCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Failure failure});
 }
 
 /// @nodoc
@@ -348,35 +351,59 @@ class __$$_FailureCopyWithImpl<$Res>
     implements _$$_FailureCopyWith<$Res> {
   __$$_FailureCopyWithImpl(_$_Failure _value, $Res Function(_$_Failure) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? failure = null,
+  }) {
+    return _then(_$_Failure(
+      null == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as Failure,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_Failure extends _Failure {
-  const _$_Failure() : super._();
+  const _$_Failure(this.failure) : super._();
+
+  @override
+  final Failure failure;
 
   @override
   String toString() {
-    return 'StateCategory.failure()';
+    return 'StateCategory.failure(failure: $failure)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Failure);
+        (other.runtimeType == runtimeType &&
+            other is _$_Failure &&
+            (identical(other.failure, failure) || other.failure == failure));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, failure);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_FailureCopyWith<_$_Failure> get copyWith =>
+      __$$_FailureCopyWithImpl<_$_Failure>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(List<CategoryWidget> listCategory) success,
-    required TResult Function() failure,
+    required TResult Function(Failure failure) failure,
   }) {
-    return failure();
+    return failure(this.failure);
   }
 
   @override
@@ -384,9 +411,9 @@ class _$_Failure extends _Failure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(List<CategoryWidget> listCategory)? success,
-    TResult? Function()? failure,
+    TResult? Function(Failure failure)? failure,
   }) {
-    return failure?.call();
+    return failure?.call(this.failure);
   }
 
   @override
@@ -394,11 +421,11 @@ class _$_Failure extends _Failure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(List<CategoryWidget> listCategory)? success,
-    TResult Function()? failure,
+    TResult Function(Failure failure)? failure,
     required TResult orElse(),
   }) {
     if (failure != null) {
-      return failure();
+      return failure(this.failure);
     }
     return orElse();
   }
@@ -407,7 +434,7 @@ class _$_Failure extends _Failure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Succes value) success,
+    required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
   }) {
     return failure(this);
@@ -417,7 +444,7 @@ class _$_Failure extends _Failure {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_Succes value)? success,
+    TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
   }) {
     return failure?.call(this);
@@ -427,7 +454,7 @@ class _$_Failure extends _Failure {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
-    TResult Function(_Succes value)? success,
+    TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
     required TResult orElse(),
   }) {
@@ -439,6 +466,11 @@ class _$_Failure extends _Failure {
 }
 
 abstract class _Failure extends StateCategory {
-  const factory _Failure() = _$_Failure;
+  const factory _Failure(final Failure failure) = _$_Failure;
   const _Failure._() : super._();
+
+  Failure get failure;
+  @JsonKey(ignore: true)
+  _$$_FailureCopyWith<_$_Failure> get copyWith =>
+      throw _privateConstructorUsedError;
 }

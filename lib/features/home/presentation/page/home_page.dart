@@ -32,8 +32,8 @@ class CategoryPage extends StatelessWidget {
           child: BlocBuilder<HomePageCubit, StateCategory>(
             builder: (context, state) => (state.maybeWhen(
                 loading: () => const LoadingWidget(),
-                failure: () => const FailureWidget(
-                      failure: '',
+                failure: (failure) => FailureWidget(
+                      failure: failure.toString(),
                     ),
                 success: (listCategory) => SingleChildScrollView(
                       child: Column(

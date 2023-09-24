@@ -61,7 +61,7 @@ enum AppGoRouter {
                 GoRoute(
                   path: arbeitstische.title,
                   name: arbeitstische.name,
-                  builder: (context, state) => const PageArbeitstische(),
+                  builder: (context, state) => const PageWorkTables(),
                 ),
                 GoRoute(
                   path: buerostuehle.title,

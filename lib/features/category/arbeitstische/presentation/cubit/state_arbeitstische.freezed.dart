@@ -15,20 +15,20 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$StateArbeitstische {
+mixin _$StateWorkTable {
   ChoosenDateTime? get dateTime => throw _privateConstructorUsedError;
   ProductCategory? get productCategory => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $StateArbeitstischeCopyWith<StateArbeitstische> get copyWith =>
+  $StateWorkTableCopyWith<StateWorkTable> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $StateArbeitstischeCopyWith<$Res> {
-  factory $StateArbeitstischeCopyWith(
-          StateArbeitstische value, $Res Function(StateArbeitstische) then) =
-      _$StateArbeitstischeCopyWithImpl<$Res, StateArbeitstische>;
+abstract class $StateWorkTableCopyWith<$Res> {
+  factory $StateWorkTableCopyWith(
+          StateWorkTable value, $Res Function(StateWorkTable) then) =
+      _$StateWorkTableCopyWithImpl<$Res, StateWorkTable>;
   @useResult
   $Res call({ChoosenDateTime? dateTime, ProductCategory? productCategory});
 
@@ -37,9 +37,9 @@ abstract class $StateArbeitstischeCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$StateArbeitstischeCopyWithImpl<$Res, $Val extends StateArbeitstische>
-    implements $StateArbeitstischeCopyWith<$Res> {
-  _$StateArbeitstischeCopyWithImpl(this._value, this._then);
+class _$StateWorkTableCopyWithImpl<$Res, $Val extends StateWorkTable>
+    implements $StateWorkTableCopyWith<$Res> {
+  _$StateWorkTableCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -90,11 +90,11 @@ class _$StateArbeitstischeCopyWithImpl<$Res, $Val extends StateArbeitstische>
 }
 
 /// @nodoc
-abstract class _$$_StateArbeitstischeCopyWith<$Res>
-    implements $StateArbeitstischeCopyWith<$Res> {
-  factory _$$_StateArbeitstischeCopyWith(_$_StateArbeitstische value,
-          $Res Function(_$_StateArbeitstische) then) =
-      __$$_StateArbeitstischeCopyWithImpl<$Res>;
+abstract class _$$_StateWorkTableCopyWith<$Res>
+    implements $StateWorkTableCopyWith<$Res> {
+  factory _$$_StateWorkTableCopyWith(
+          _$_StateWorkTable value, $Res Function(_$_StateWorkTable) then) =
+      __$$_StateWorkTableCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({ChoosenDateTime? dateTime, ProductCategory? productCategory});
@@ -106,11 +106,11 @@ abstract class _$$_StateArbeitstischeCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_StateArbeitstischeCopyWithImpl<$Res>
-    extends _$StateArbeitstischeCopyWithImpl<$Res, _$_StateArbeitstische>
-    implements _$$_StateArbeitstischeCopyWith<$Res> {
-  __$$_StateArbeitstischeCopyWithImpl(
-      _$_StateArbeitstische _value, $Res Function(_$_StateArbeitstische) _then)
+class __$$_StateWorkTableCopyWithImpl<$Res>
+    extends _$StateWorkTableCopyWithImpl<$Res, _$_StateWorkTable>
+    implements _$$_StateWorkTableCopyWith<$Res> {
+  __$$_StateWorkTableCopyWithImpl(
+      _$_StateWorkTable _value, $Res Function(_$_StateWorkTable) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -119,7 +119,7 @@ class __$$_StateArbeitstischeCopyWithImpl<$Res>
     Object? dateTime = freezed,
     Object? productCategory = freezed,
   }) {
-    return _then(_$_StateArbeitstische(
+    return _then(_$_StateWorkTable(
       dateTime: freezed == dateTime
           ? _value.dateTime
           : dateTime // ignore: cast_nullable_to_non_nullable
@@ -134,9 +134,8 @@ class __$$_StateArbeitstischeCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_StateArbeitstische extends _StateArbeitstische {
-  const _$_StateArbeitstische({this.dateTime, this.productCategory})
-      : super._();
+class _$_StateWorkTable extends _StateWorkTable {
+  const _$_StateWorkTable({this.dateTime, this.productCategory}) : super._();
 
   @override
   final ChoosenDateTime? dateTime;
@@ -145,14 +144,14 @@ class _$_StateArbeitstische extends _StateArbeitstische {
 
   @override
   String toString() {
-    return 'StateArbeitstische(dateTime: $dateTime, productCategory: $productCategory)';
+    return 'StateWorkTable(dateTime: $dateTime, productCategory: $productCategory)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_StateArbeitstische &&
+            other is _$_StateWorkTable &&
             (identical(other.dateTime, dateTime) ||
                 other.dateTime == dateTime) &&
             (identical(other.productCategory, productCategory) ||
@@ -165,16 +164,15 @@ class _$_StateArbeitstische extends _StateArbeitstische {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_StateArbeitstischeCopyWith<_$_StateArbeitstische> get copyWith =>
-      __$$_StateArbeitstischeCopyWithImpl<_$_StateArbeitstische>(
-          this, _$identity);
+  _$$_StateWorkTableCopyWith<_$_StateWorkTable> get copyWith =>
+      __$$_StateWorkTableCopyWithImpl<_$_StateWorkTable>(this, _$identity);
 }
 
-abstract class _StateArbeitstische extends StateArbeitstische {
-  const factory _StateArbeitstische(
+abstract class _StateWorkTable extends StateWorkTable {
+  const factory _StateWorkTable(
       {final ChoosenDateTime? dateTime,
-      final ProductCategory? productCategory}) = _$_StateArbeitstische;
-  const _StateArbeitstische._() : super._();
+      final ProductCategory? productCategory}) = _$_StateWorkTable;
+  const _StateWorkTable._() : super._();
 
   @override
   ChoosenDateTime? get dateTime;
@@ -182,7 +180,7 @@ abstract class _StateArbeitstische extends StateArbeitstische {
   ProductCategory? get productCategory;
   @override
   @JsonKey(ignore: true)
-  _$$_StateArbeitstischeCopyWith<_$_StateArbeitstische> get copyWith =>
+  _$$_StateWorkTableCopyWith<_$_StateWorkTable> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
