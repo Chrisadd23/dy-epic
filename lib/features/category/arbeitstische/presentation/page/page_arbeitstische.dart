@@ -29,7 +29,7 @@ class _WorkTables extends StatelessWidget {
     return BlocSelector<CubitWorkTables, StateWorkTable, ProductCategory?>(
       selector: (state) => state.productCategory,
       builder: (context, state) {
-        final listProducts = state!.listProduct.map((product) {
+        final listProducts = state?.listProduct.map((product) {
           return Product(
             picturePath: product.picturePath,
           );
@@ -46,7 +46,7 @@ class ProductListWheel extends StatefulWidget {
     required this.listProducts,
   });
 
-  final List<Product> listProducts;
+  final List<Product>? listProducts;
 
   @override
   State<ProductListWheel> createState() => _ProductListWheelState();
@@ -73,8 +73,8 @@ class _ProductListWheelState extends State<ProductListWheel> {
       physics: const FixedExtentScrollPhysics(),
       scrollDirection: Axis.horizontal,
       itemExtent: MediaQuery.sizeOf(context).width * 0.75,
-      childDelegate:
-          ListWheelChildLoopingListDelegate(children: [...widget.listProducts]),
+      childDelegate: ListWheelChildLoopingListDelegate(
+          children: [...widget.listProducts ?? const Iterable.empty()]),
     );
   }
 
