@@ -63,6 +63,7 @@ enum AppGoRouter {
                   name: arbeitstische.name,
                   pageBuilder: (context, state) {
                     return CustomTransitionPage(
+                      key: state.pageKey,
                       child: const PageWorkTables(),
                       transitionsBuilder: (BuildContext context,
                           Animation<double> animation,
