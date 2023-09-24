@@ -16,19 +16,43 @@ class PageWorkTables extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
         create: (context) => getIt<CubitWorkTables>()..load(),
-        child: GlobalScaffold(
-            appBarContext: context, body: const _Arbeitstische()));
+        child:
+            GlobalScaffold(appBarContext: context, body: const _WorkTables()));
   }
 }
 
-class _Arbeitstische extends StatefulWidget {
-  const _Arbeitstische();
+class _WorkTables extends StatelessWidget {
+  const _WorkTables();
 
   @override
-  State<_Arbeitstische> createState() => _ArbeitstischeState();
+  Widget build(BuildContext context) {
+    return BlocSelector<CubitWorkTables, StateWorkTable, ProductCategory?>(
+      selector: (state) => state.productCategory,
+      builder: (context, state) {
+        final listProducts = state!.listProduct.map((product) {
+          return Product(
+            picturePath: product.picturePath,
+          );
+        }).toList();
+        return ProductListWheel(listProducts: listProducts);
+      },
+    );
+  }
 }
 
-class _ArbeitstischeState extends State<_Arbeitstische> {
+class ProductListWheel extends StatefulWidget {
+  const ProductListWheel({
+    super.key,
+    required this.listProducts,
+  });
+
+  final List<Product> listProducts;
+
+  @override
+  State<ProductListWheel> createState() => _ProductListWheelState();
+}
+
+class _ProductListWheelState extends State<ProductListWheel> {
   late FixedExtentScrollController controller;
 
   @override
@@ -41,17 +65,16 @@ class _ArbeitstischeState extends State<_Arbeitstische> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<CubitWorkTables, StateWorkTable, ProductCategory?>(
-      selector: (state) => state.productCategory,
-      builder: (context, state) {
-        final listProducts = state!.listProduct.map((product) {
-          return Product(
-            picturePath: product.picturePath,
-          );
-        }).toList();
-        return ProductListWheel(
-            controller: controller, listProducts: listProducts);
-      },
+    return ListWheelScrollViewX.useDelegate(
+      clipBehavior: Clip.none,
+      controller: controller,
+      diameterRatio: 10,
+      squeeze: 0.95,
+      physics: const FixedExtentScrollPhysics(),
+      scrollDirection: Axis.horizontal,
+      itemExtent: MediaQuery.sizeOf(context).width * 0.75,
+      childDelegate:
+          ListWheelChildLoopingListDelegate(children: [...widget.listProducts]),
     );
   }
 
@@ -62,39 +85,6 @@ class _ArbeitstischeState extends State<_Arbeitstische> {
     super.dispose();
     controller.dispose();
     log('dispose ArbeitstischeState');
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<FixedExtentScrollController>(
-        'controller', controller));
-  }
-}
-
-class ProductListWheel extends StatelessWidget {
-  const ProductListWheel({
-    super.key,
-    required this.controller,
-    required this.listProducts,
-  });
-
-  final FixedExtentScrollController controller;
-  final List<Product> listProducts;
-
-  @override
-  Widget build(BuildContext context) {
-    return ListWheelScrollViewX.useDelegate(
-      clipBehavior: Clip.none,
-      controller: controller,
-      diameterRatio: 10,
-      squeeze: 0.95,
-      physics: const FixedExtentScrollPhysics(),
-      scrollDirection: Axis.horizontal,
-      itemExtent: MediaQuery.sizeOf(context).width * 0.75,
-      childDelegate:
-          ListWheelChildLoopingListDelegate(children: [...listProducts]),
-    );
   }
 
   @override
