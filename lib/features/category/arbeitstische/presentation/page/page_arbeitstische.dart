@@ -139,17 +139,33 @@ class _ProductState extends State<Product> {
           children: [
             Align(
               alignment: Alignment.center,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Image(
-                  image: AssetImage(widget.picturePath),
-                ),
+              child: Container(
+                height: MediaQuery.sizeOf(context).height * 0.7,
+                width: MediaQuery.sizeOf(context).width * 0.7,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    shape: BoxShape.circle,
+                    boxShadow: const [
+                      BoxShadow(
+                          color: Colors.grey,
+                          offset: Offset(2, 3),
+                          blurStyle: BlurStyle.outer),
+                      BoxShadow(
+                          color: Colors.grey,
+                          offset: Offset(2, -3),
+                          blurStyle: BlurStyle.outer)
+                    ],
+                    border: Border.all(
+                        color: Colors.black45,
+                        strokeAlign: BorderSide.strokeAlignInside),
+                    image:
+                        DecorationImage(image: AssetImage(widget.picturePath))),
               ),
             ),
             Align(
                 alignment: Alignment.topCenter,
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 20.0),
+                  padding: const EdgeInsets.only(top: 25.0),
                   child: FittedBox(
                     fit: BoxFit.fill,
                     child: Text(
