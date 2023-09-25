@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_page_widget.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/list_wheel_scroll_view_x.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/arbeitstische/presentation/cubit/cubit_arbeitstische.dart';
@@ -138,46 +139,123 @@ class _ProductState extends State<Product> {
         child: Stack(
           children: [
             Align(
+              alignment: Alignment.bottomCenter,
+              child: LayoutBuilder(builder: (context, constraints) {
+                return Padding(
+                  padding: EdgeInsets.only(bottom: constraints.maxHeight * 0.1),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(
+                        width: constraints.maxWidth * 0.05,
+                      ),
+                      Expanded(
+                          child: Container(
+                        decoration: BoxDecoration(
+                            color: AppColors.whiteD6D6D7,
+                            borderRadius: BorderRadius.circular(20)),
+                        child: SizedBox(
+                          height: constraints.maxHeight * 0.1,
+                          width: constraints.maxWidth * 0.1,
+                        ),
+                      )),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Expanded(
+                          child: Container(
+                        decoration: BoxDecoration(
+                            color: AppColors.grey8D8D8E,
+                            borderRadius: BorderRadius.circular(20)),
+                        child: SizedBox(
+                          height: constraints.maxHeight * 0.1,
+                          width: constraints.maxWidth * 0.1,
+                        ),
+                      )),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Expanded(
+                          child: Container(
+                        decoration: BoxDecoration(
+                            color: AppColors.black080808,
+                            borderRadius: BorderRadius.circular(20)),
+                        child: SizedBox(
+                          height: constraints.maxHeight * 0.1,
+                          width: constraints.maxWidth * 0.1,
+                        ),
+                      )),
+                      SizedBox(
+                        width: constraints.maxWidth * 0.05,
+                      ),
+                    ],
+                  ),
+                );
+              }),
+            ),
+            Align(
               alignment: Alignment.center,
               child: LayoutBuilder(
-                builder: (context, constraints) => Container(
-                  height: constraints.maxHeight * 0.9,
-                  width: constraints.maxWidth * 0.9,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      shape: BoxShape.circle,
-                      boxShadow: const [
-                        BoxShadow(
-                            color: Colors.grey,
-                            offset: Offset(2, 3),
-                            blurStyle: BlurStyle.outer),
-                        BoxShadow(
-                            color: Colors.grey,
-                            offset: Offset(2, -3),
-                            blurStyle: BlurStyle.outer)
-                      ],
-                      border: Border.all(
-                          color: Colors.black45,
-                          strokeAlign: BorderSide.strokeAlignInside),
-                      image: DecorationImage(
-                        image: AssetImage(widget.picturePath),
-                      )),
+                builder: (context, constraints) => Padding(
+                  padding: EdgeInsets.only(bottom: constraints.maxHeight * 0.2),
+                  child: Container(
+                    height: constraints.maxHeight * 0.9,
+                    width: constraints.maxWidth * 0.9,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle,
+                        boxShadow: const [
+                          BoxShadow(
+                              color: Colors.grey,
+                              offset: Offset(2, 3),
+                              blurStyle: BlurStyle.outer),
+                          BoxShadow(
+                              color: Colors.grey,
+                              offset: Offset(2, -3),
+                              blurStyle: BlurStyle.outer)
+                        ],
+                        border: Border.all(
+                            color: Colors.black45,
+                            strokeAlign: BorderSide.strokeAlignInside),
+                        image: DecorationImage(
+                          image: AssetImage(widget.picturePath),
+                        )),
+                  ),
                 ),
               ),
             ),
             Align(
                 alignment: Alignment.topCenter,
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 25.0),
-                  child: FittedBox(
-                    fit: BoxFit.fill,
-                    child: Text(
-                      widget.productName,
-                      style: const TextStyle(
-                          fontSize: 25, fontWeight: FontWeight.bold),
+                child: LayoutBuilder(builder: (context, constraints) {
+                  return Padding(
+                    padding: EdgeInsets.only(top: constraints.maxHeight * 0.07),
+                    child: FittedBox(
+                      fit: BoxFit.fill,
+                      child: Text(
+                        widget.productName,
+                        style: const TextStyle(
+                            fontSize: 25, fontWeight: FontWeight.bold),
+                      ),
                     ),
-                  ),
-                )),
+                  );
+                })),
+            Align(
+                alignment: Alignment.centerLeft,
+                child: LayoutBuilder(builder: (context, constraints) {
+                  return Padding(
+                    padding: EdgeInsets.only(
+                        top: constraints.maxHeight * 0.43,
+                        left: constraints.maxWidth * 0.05),
+                    child: const FittedBox(
+                      fit: BoxFit.fill,
+                      child: Text(
+                        'Gestellfarben',
+                        style: TextStyle(
+                            fontSize: 25, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  );
+                })),
           ],
         ));
   }
