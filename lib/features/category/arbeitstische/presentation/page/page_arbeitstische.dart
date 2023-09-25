@@ -32,6 +32,7 @@ class _WorkTables extends StatelessWidget {
         final listProducts = state?.listProduct.map((product) {
           return Product(
             picturePath: product.picturePath,
+            productName: product.productName,
           );
         }).toList();
         return ProductListWheel(listProducts: listProducts);
@@ -99,9 +100,11 @@ class Product extends StatefulWidget {
   const Product({
     super.key,
     required this.picturePath,
+    required this.productName,
   });
 
   final String picturePath;
+  final String productName;
 
   @override
   State<Product> createState() => _ProductState();
@@ -110,6 +113,7 @@ class Product extends StatefulWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties.add(StringProperty('picturePath', picturePath));
+    properties.add(StringProperty('productName', productName));
   }
 }
 
@@ -131,18 +135,30 @@ class _ProductState extends State<Product> {
             boxShadow: const [
               BoxShadow(offset: Offset(5, 5), color: Colors.grey)
             ]),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+        child: Stack(
           children: [
-            Expanded(
+            Align(
+              alignment: Alignment.center,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
-                child: Container(
-                  alignment: Alignment.topLeft,
-                  child: Image(image: AssetImage(widget.picturePath)),
+                child: Image(
+                  image: AssetImage(widget.picturePath),
                 ),
               ),
             ),
+            Align(
+                alignment: Alignment.topCenter,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 20.0),
+                  child: FittedBox(
+                    fit: BoxFit.fill,
+                    child: Text(
+                      widget.productName,
+                      style: const TextStyle(
+                          fontSize: 25, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                )),
           ],
         ));
   }
