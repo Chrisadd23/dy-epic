@@ -139,27 +139,30 @@ class _ProductState extends State<Product> {
           children: [
             Align(
               alignment: Alignment.center,
-              child: Container(
-                height: MediaQuery.sizeOf(context).height * 0.7,
-                width: MediaQuery.sizeOf(context).width * 0.7,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    shape: BoxShape.circle,
-                    boxShadow: const [
-                      BoxShadow(
-                          color: Colors.grey,
-                          offset: Offset(2, 3),
-                          blurStyle: BlurStyle.outer),
-                      BoxShadow(
-                          color: Colors.grey,
-                          offset: Offset(2, -3),
-                          blurStyle: BlurStyle.outer)
-                    ],
-                    border: Border.all(
-                        color: Colors.black45,
-                        strokeAlign: BorderSide.strokeAlignInside),
-                    image:
-                        DecorationImage(image: AssetImage(widget.picturePath))),
+              child: LayoutBuilder(
+                builder: (context, constraints) => Container(
+                  height: constraints.maxHeight * 0.9,
+                  width: constraints.maxWidth * 0.9,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      shape: BoxShape.circle,
+                      boxShadow: const [
+                        BoxShadow(
+                            color: Colors.grey,
+                            offset: Offset(2, 3),
+                            blurStyle: BlurStyle.outer),
+                        BoxShadow(
+                            color: Colors.grey,
+                            offset: Offset(2, -3),
+                            blurStyle: BlurStyle.outer)
+                      ],
+                      border: Border.all(
+                          color: Colors.black45,
+                          strokeAlign: BorderSide.strokeAlignInside),
+                      image: DecorationImage(
+                        image: AssetImage(widget.picturePath),
+                      )),
+                ),
               ),
             ),
             Align(
