@@ -3,12 +3,14 @@ import 'dart:developer';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_page_widget.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/list_wheel_scroll_view_x.dart';
+import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/arbeitstische/presentation/cubit/cubit_arbeitstische.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/arbeitstische/presentation/cubit/state_arbeitstische.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class PageWorkTables extends StatelessWidget {
   const PageWorkTables({super.key});
@@ -198,28 +200,32 @@ class _ProductState extends State<Product> {
               child: LayoutBuilder(
                 builder: (context, constraints) => Padding(
                   padding: EdgeInsets.only(bottom: constraints.maxHeight * 0.2),
-                  child: Container(
-                    height: constraints.maxHeight * 0.9,
-                    width: constraints.maxWidth * 0.9,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        shape: BoxShape.circle,
-                        boxShadow: const [
-                          BoxShadow(
-                              color: Colors.grey,
-                              offset: Offset(2, 3),
-                              blurStyle: BlurStyle.outer),
-                          BoxShadow(
-                              color: Colors.grey,
-                              offset: Offset(2, -3),
-                              blurStyle: BlurStyle.outer)
-                        ],
-                        border: Border.all(
-                            color: Colors.black45,
-                            strokeAlign: BorderSide.strokeAlignInside),
-                        image: DecorationImage(
-                          image: AssetImage(widget.picturePath),
-                        )),
+                  child: InkWell(
+                    onTap: () => context.goNamed(AppGoRouter.homePage.name),
+                    // navigation Test
+                    child: Container(
+                      height: constraints.maxHeight * 0.9,
+                      width: constraints.maxWidth * 0.9,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          shape: BoxShape.circle,
+                          boxShadow: const [
+                            BoxShadow(
+                                color: Colors.grey,
+                                offset: Offset(2, 3),
+                                blurStyle: BlurStyle.outer),
+                            BoxShadow(
+                                color: Colors.grey,
+                                offset: Offset(2, -3),
+                                blurStyle: BlurStyle.outer)
+                          ],
+                          border: Border.all(
+                              color: Colors.black45,
+                              strokeAlign: BorderSide.strokeAlignInside),
+                          image: DecorationImage(
+                            image: AssetImage(widget.picturePath),
+                          )),
+                    ),
                   ),
                 ),
               ),
