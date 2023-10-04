@@ -269,8 +269,7 @@ class _ProductPicture extends StatelessWidget {
 }
 
 class _ProductColors extends StatelessWidget {
-  const _ProductColors({
-  });
+  const _ProductColors();
 
   @override
   Widget build(BuildContext context) {
