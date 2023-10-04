@@ -140,111 +140,9 @@ class _ProductState extends State<Product> {
             ]),
         child: Stack(
           children: [
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: LayoutBuilder(builder: (context, constraints) {
-                return Padding(
-                  padding: EdgeInsets.only(bottom: constraints.maxHeight * 0.1),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      SizedBox(
-                        width: constraints.maxWidth * 0.05,
-                      ),
-                      Expanded(
-                          child: Container(
-                        decoration: BoxDecoration(
-                            color: AppColors.whiteD6D6D7,
-                            borderRadius: BorderRadius.circular(20)),
-                        child: SizedBox(
-                          height: constraints.maxHeight * 0.1,
-                          width: constraints.maxWidth * 0.1,
-                        ),
-                      )),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Expanded(
-                          child: Container(
-                        decoration: BoxDecoration(
-                            color: AppColors.grey8D8D8E,
-                            borderRadius: BorderRadius.circular(20)),
-                        child: SizedBox(
-                          height: constraints.maxHeight * 0.1,
-                          width: constraints.maxWidth * 0.1,
-                        ),
-                      )),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Expanded(
-                          child: Container(
-                        decoration: BoxDecoration(
-                            color: AppColors.black080808,
-                            borderRadius: BorderRadius.circular(20)),
-                        child: SizedBox(
-                          height: constraints.maxHeight * 0.1,
-                          width: constraints.maxWidth * 0.1,
-                        ),
-                      )),
-                      SizedBox(
-                        width: constraints.maxWidth * 0.05,
-                      ),
-                    ],
-                  ),
-                );
-              }),
-            ),
-            Align(
-              alignment: Alignment.center,
-              child: LayoutBuilder(
-                builder: (context, constraints) => Padding(
-                  padding: EdgeInsets.only(bottom: constraints.maxHeight * 0.2),
-                  child: InkWell(
-                    onTap: () => context.goNamed(AppGoRouter.homePage.name),
-                    // navigation Test
-                    child: Container(
-                      height: constraints.maxHeight * 0.9,
-                      width: constraints.maxWidth * 0.9,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          shape: BoxShape.circle,
-                          boxShadow: const [
-                            BoxShadow(
-                                color: Colors.grey,
-                                offset: Offset(2, 3),
-                                blurStyle: BlurStyle.outer),
-                            BoxShadow(
-                                color: Colors.grey,
-                                offset: Offset(2, -3),
-                                blurStyle: BlurStyle.outer)
-                          ],
-                          border: Border.all(
-                              color: Colors.black45,
-                              strokeAlign: BorderSide.strokeAlignInside),
-                          image: DecorationImage(
-                            image: AssetImage(widget.picturePath),
-                          )),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Align(
-                alignment: Alignment.topCenter,
-                child: LayoutBuilder(builder: (context, constraints) {
-                  return Padding(
-                    padding: EdgeInsets.only(top: constraints.maxHeight * 0.07),
-                    child: FittedBox(
-                      fit: BoxFit.fill,
-                      child: Text(
-                        widget.productName,
-                        style: const TextStyle(
-                            fontSize: 25, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  );
-                })),
+            const _ProductColors(),
+            _ProductPicture(widget: widget),
+            _ProductName(widget: widget),
             Align(
                 alignment: Alignment.centerLeft,
                 child: LayoutBuilder(builder: (context, constraints) {
@@ -276,5 +174,160 @@ class _ProductState extends State<Product> {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties.add(StringProperty('picturePath', widget.picturePath));
+  }
+}
+
+class _ProductName extends StatelessWidget {
+  const _ProductName({
+    required this.widget,
+  });
+
+  final Product widget;
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+        alignment: Alignment.topCenter,
+        child: LayoutBuilder(builder: (context, constraints) {
+          return Padding(
+            padding: EdgeInsets.only(top: constraints.maxHeight * 0.07),
+            child: FittedBox(
+              fit: BoxFit.fill,
+              child: Text(
+                widget.productName,
+                style:
+                    const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+              ),
+            ),
+          );
+        }));
+  }
+}
+
+class _ProductPicture extends StatelessWidget {
+  const _ProductPicture({
+    required this.widget,
+  });
+
+  final Product widget;
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: <Widget>[
+        Align(
+          alignment: Alignment.center,
+          child: LayoutBuilder(
+            builder: (context, constraints) =>
+                // navigation Test
+                Container(
+              height: constraints.maxHeight * 0.9,
+              width: constraints.maxWidth * 0.9,
+              margin: EdgeInsets.only(bottom: constraints.maxHeight * 0.2),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                shape: BoxShape.circle,
+                boxShadow: const [
+                  BoxShadow(
+                      color: Colors.grey,
+                      offset: Offset(2, 3),
+                      blurStyle: BlurStyle.outer),
+                  BoxShadow(
+                      color: Colors.grey,
+                      offset: Offset(2, -3),
+                      blurStyle: BlurStyle.outer)
+                ],
+                border: Border.all(
+                    color: Colors.black45,
+                    strokeAlign: BorderSide.strokeAlignInside),
+                image: DecorationImage(
+                  image: AssetImage(widget.picturePath),
+                ),
+              ),
+            ),
+          ),
+        ),
+        Align(
+          alignment: Alignment.center,
+          child: LayoutBuilder(builder: (context, constraints) {
+            return Padding(
+              padding: EdgeInsets.only(bottom: constraints.maxHeight * 0.2),
+              child: CircleAvatar(
+                backgroundColor: Colors.white.withOpacity(0),
+                radius: constraints.maxHeight * 0.23,
+                child: InkWell(
+                  hoverColor: Colors.red,
+                  onTap: () => context.goNamed(AppGoRouter.homePage.name),
+                ),
+              ),
+            );
+          }),
+        )
+      ],
+    );
+  }
+}
+
+class _ProductColors extends StatelessWidget {
+  const _ProductColors({
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.bottomCenter,
+      child: LayoutBuilder(builder: (context, constraints) {
+        return Padding(
+          padding: EdgeInsets.only(bottom: constraints.maxHeight * 0.1),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SizedBox(
+                width: constraints.maxWidth * 0.05,
+              ),
+              Expanded(
+                  child: Container(
+                decoration: BoxDecoration(
+                    color: AppColors.whiteD6D6D7,
+                    borderRadius: BorderRadius.circular(20)),
+                child: SizedBox(
+                  height: constraints.maxHeight * 0.1,
+                  width: constraints.maxWidth * 0.1,
+                ),
+              )),
+              const SizedBox(
+                width: 10,
+              ),
+              Expanded(
+                  child: Container(
+                decoration: BoxDecoration(
+                    color: AppColors.grey8D8D8E,
+                    borderRadius: BorderRadius.circular(20)),
+                child: SizedBox(
+                  height: constraints.maxHeight * 0.1,
+                  width: constraints.maxWidth * 0.1,
+                ),
+              )),
+              const SizedBox(
+                width: 10,
+              ),
+              Expanded(
+                  child: Container(
+                decoration: BoxDecoration(
+                    color: AppColors.black080808,
+                    borderRadius: BorderRadius.circular(20)),
+                child: SizedBox(
+                  height: constraints.maxHeight * 0.1,
+                  width: constraints.maxWidth * 0.1,
+                ),
+              )),
+              SizedBox(
+                width: constraints.maxWidth * 0.05,
+              ),
+            ],
+          ),
+        );
+      }),
+    );
   }
 }
