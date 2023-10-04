@@ -20,7 +20,7 @@ class ProductPictures {
   };
 }
 
-List<ModelCategory> chooseCategorry = [
+List<ModelCategory> chooseCategory = [
   ModelCategory(
       title: 'Arbeitstische',
       imgPath: Assets.appComponents.jpg.arbeitstisch.path,
