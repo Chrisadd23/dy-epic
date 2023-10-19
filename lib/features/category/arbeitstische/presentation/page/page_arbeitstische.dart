@@ -257,7 +257,8 @@ class _ProductPicture extends StatelessWidget {
                 radius: constraints.maxHeight * 0.23,
                 child: InkWell(
                   hoverColor: Colors.red,
-                  onTap: () => context.goNamed(AppGoRouter.homePage.name),
+                  onTap: () => context.goNamed(AppGoRouter.product.name,
+                      extra: widget.picturePath),
                 ),
               ),
             );

@@ -5,6 +5,7 @@ import 'package:app_flutter_produkt_bestellen/features/category/konferenzstuehle
 import 'package:app_flutter_produkt_bestellen/features/category/konferenztische/presentation/page/page_konferenztische.dart';
 import 'package:app_flutter_produkt_bestellen/features/home/presentation/page/home_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/page/login_page.dart';
+import 'package:app_flutter_produkt_bestellen/features/products/presentation/page/product_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -14,17 +15,24 @@ enum AppGoRouter {
   arbeitstische('arbeitstische'),
   buerostuehle('buerostuehle'),
   konferenzstuehle('konferenzstuehle'),
-  konferenztische('konferenztische');
+  konferenztische('konferenztische'),
+  product('produkt');
 
   const AppGoRouter(this.title);
 
   final String title;
 
-  static Map<String, String> routeMap = {
-    'root': AppGoRouter.root.title,
-    'home': '/${AppGoRouter.homePage.title}',
-    'arbeitstische':
-        '/${AppGoRouter.homePage.title}/${AppGoRouter.arbeitstische.title}'
+  static Map<String, List<String>> routeMap = {
+    'root': [AppGoRouter.root.title],
+    'home': ['/${AppGoRouter.homePage.title}'],
+    'arbeitstische': [
+      '/${AppGoRouter.homePage.title}/${AppGoRouter.arbeitstische.title}'
+    ],
+    'product': [
+      '/${AppGoRouter.homePage.title}/${AppGoRouter.arbeitstische.title}/${AppGoRouter.product.title}',
+      '',
+      ''
+    ]
   };
 
   static List<String> shouldntPop = ['/home'];
@@ -59,27 +67,36 @@ enum AppGoRouter {
               },
               routes: [
                 GoRoute(
-                  path: arbeitstische.title,
-                  name: arbeitstische.name,
-                  pageBuilder: (context, state) {
-                    return CustomTransitionPage(
-                      key: state.pageKey,
-                      child: const PageWorkTables(),
-                      transitionsBuilder: (BuildContext context,
-                          Animation<double> animation,
-                          Animation<double> secondaryAnimation,
-                          Widget child) {
-                        // Change the opacity of the screen using a Curve based on the the animation's
-                        // value
-                        return FadeTransition(
-                          opacity: CurveTween(curve: Curves.easeInOut)
-                              .animate(animation),
-                          child: child,
-                        );
-                      },
-                    );
-                  },
-                ),
+                    path: arbeitstische.title,
+                    name: arbeitstische.name,
+                    pageBuilder: (context, state) {
+                      return CustomTransitionPage(
+                        key: state.pageKey,
+                        child: const PageWorkTables(),
+                        transitionsBuilder: (BuildContext context,
+                            Animation<double> animation,
+                            Animation<double> secondaryAnimation,
+                            Widget child) {
+                          // Change the opacity of the screen using a Curve based on the the animation's
+                          // value
+                          return FadeTransition(
+                            opacity: CurveTween(curve: Curves.easeInOut)
+                                .animate(animation),
+                            child: child,
+                          );
+                        },
+                      );
+                    },
+                    routes: [
+                      GoRoute(
+                        path: product.title,
+                        name: product.name,
+                        builder: (context, state) {
+                          final product = state.extra.toString();
+                          return ProductPage(product: product);
+                        },
+                      )
+                    ]),
                 GoRoute(
                   path: buerostuehle.title,
                   name: buerostuehle.name,
