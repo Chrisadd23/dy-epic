@@ -76,12 +76,29 @@ class $AssetsAppComponentsPngGen {
   AssetGenImage get iconMenu =>
       const AssetGenImage('assets/appComponents/png/icon_menu.png');
 
+  /// File path: assets/appComponents/png/minus_.png
+  AssetGenImage get minus =>
+      const AssetGenImage('assets/appComponents/png/minus_.png');
+
+  /// File path: assets/appComponents/png/plus_.png
+  AssetGenImage get plus =>
+      const AssetGenImage('assets/appComponents/png/plus_.png');
+
   /// File path: assets/appComponents/png/return_icon.png
   AssetGenImage get returnIcon =>
       const AssetGenImage('assets/appComponents/png/return_icon.png');
 
+  /// File path: assets/appComponents/png/vectorMinus.png
+  AssetGenImage get vectorMinus =>
+      const AssetGenImage('assets/appComponents/png/vectorMinus.png');
+
+  /// File path: assets/appComponents/png/vectorPlus.png
+  AssetGenImage get vectorPlus =>
+      const AssetGenImage('assets/appComponents/png/vectorPlus.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [iconMenu, returnIcon];
+  List<AssetGenImage> get values =>
+      [iconMenu, minus, plus, returnIcon, vectorMinus, vectorPlus];
 }
 
 class $AssetsProductsArbeitstischeGen {
