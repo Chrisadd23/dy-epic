@@ -176,7 +176,7 @@ class ProductCountWidget extends HookWidget {
                           context.read<CubitProduct>().decrement();
                         },
                         onTapUp: (details) =>
-                            context.read<CubitProduct>().ableToChangeCount(),
+                            context.read<CubitProduct>().stopCounting(),
                       ),
                     ),
                     Flexible(
@@ -197,7 +197,7 @@ class ProductCountWidget extends HookWidget {
                           context.read<CubitProduct>().increment();
                         },
                         onTapUp: (details) =>
-                            context.read<CubitProduct>().ableToChangeCount(),
+                            context.read<CubitProduct>().stopCounting(),
                       ),
                     ),
                     BlocBuilder<CubitProduct, StateProduct>(

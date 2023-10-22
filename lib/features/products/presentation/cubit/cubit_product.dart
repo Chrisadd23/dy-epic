@@ -23,7 +23,7 @@ class CubitProduct extends Cubit<StateProduct> {
     });
   }
 
-  void ableToChangeCount() => _timer?.cancel();
+  void stopCounting() => _timer?.cancel();
 
   @override
   Future<void> close() {
