@@ -8,22 +8,14 @@ class CubitProduct extends Cubit<StateProduct> {
 
   Timer? _timer;
 
-  Future<void> increment() async =>
-      emit(state.copyWith(productOrderCount: state.productOrderCount + 1));
-
-  Future<void> decrement() async => emit(state.copyWith(
-      productOrderCount: state.productOrderCount > 0
-          ? state.productOrderCount - 1
-          : state.productOrderCount));
-
-  Future<void> continueIncrementCount() async {
-    _timer = Timer.periodic(const Duration(milliseconds: 200), (timer) {
+  void increment(bool onPressed) async {
+    _timer = Timer.periodic(const Duration(milliseconds: 100), (timer) {
       emit(state.copyWith(productOrderCount: state.productOrderCount + 1));
     });
   }
 
-  Future<void> continueDecrementCount() async {
-    _timer = Timer.periodic(const Duration(milliseconds: 200), (timer) {
+  void decrement(bool onPressed) async {
+    _timer = Timer.periodic(const Duration(milliseconds: 100), (timer) {
       emit(state.copyWith(
           productOrderCount: state.productOrderCount > 0
               ? state.productOrderCount - 1
@@ -31,11 +23,10 @@ class CubitProduct extends Cubit<StateProduct> {
     });
   }
 
-  void ableToChangeCount() async => _timer?.cancel();
+  void ableToChangeCount() => _timer?.cancel();
 
   @override
   Future<void> close() {
-    // TODO: implement close
     _timer?.cancel();
     return super.close();
   }

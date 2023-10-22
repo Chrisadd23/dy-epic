@@ -174,9 +174,8 @@ class ProductCountWidget extends HookWidget {
                             ),
                           ),
                         ),
-                        onTap: () => context.read<CubitProduct>().decrement(),
                         onTapDown: (details) {
-                          context.read<CubitProduct>().continueDecrementCount();
+                          context.read<CubitProduct>().decrement();
                         },
                         onTapUp: (details) =>
                             context.read<CubitProduct>().ableToChangeCount(),
@@ -196,9 +195,8 @@ class ProductCountWidget extends HookWidget {
                             ),
                           ),
                         ),
-                        onTap: () => context.read<CubitProduct>().increment(),
                         onTapDown: (details) {
-                          context.read<CubitProduct>().continueIncrementCount();
+                          context.read<CubitProduct>().increment();
                         },
                         onTapUp: (details) =>
                             context.read<CubitProduct>().ableToChangeCount(),
