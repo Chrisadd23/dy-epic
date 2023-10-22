@@ -123,10 +123,10 @@ class ProductWidget extends HookWidget {
                 );
               }),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
-            Flexible(child: ProductCountWidget()),
+            const Flexible(child: ProductCountWidget()),
           ],
         ),
       );
@@ -145,8 +145,6 @@ class ProductCountWidget extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final count = useState<int>(0);
-    // Figma Flutter Generator ProductcountWidget - FRAME
     return BlocProvider(
         create: (context) => CubitProduct(const StateProduct()),
         child: LayoutBuilder(builder: (context, constraints) {

@@ -8,13 +8,13 @@ class CubitProduct extends Cubit<StateProduct> {
 
   Timer? _timer;
 
-  void increment(bool onPressed) async {
+  void increment() async {
     _timer = Timer.periodic(const Duration(milliseconds: 100), (timer) {
       emit(state.copyWith(productOrderCount: state.productOrderCount + 1));
     });
   }
 
-  void decrement(bool onPressed) async {
+  void decrement() async {
     _timer = Timer.periodic(const Duration(milliseconds: 100), (timer) {
       emit(state.copyWith(
           productOrderCount: state.productOrderCount > 0
