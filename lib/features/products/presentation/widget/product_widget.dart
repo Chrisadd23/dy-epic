@@ -175,6 +175,8 @@ class ProductCountWidget extends HookWidget {
                     },
                     onTapUp: (details) =>
                         context.read<CubitProduct>().stopCounting(),
+                    onTapCancel: () =>
+                        context.read<CubitProduct>().stopCounting(),
                   ),
                 ),
                 Flexible(
@@ -195,6 +197,8 @@ class ProductCountWidget extends HookWidget {
                       context.read<CubitProduct>().increment();
                     },
                     onTapUp: (details) =>
+                        context.read<CubitProduct>().stopCounting(),
+                    onTapCancel: () =>
                         context.read<CubitProduct>().stopCounting(),
                   ),
                 ),
