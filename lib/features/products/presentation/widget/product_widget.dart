@@ -19,31 +19,8 @@ class ProductWidget extends HookWidget {
         width: double.infinity,
         child: Column(
           children: <Widget>[
-            Flexible(
-              child: Container(
-                width: constraints.maxWidth,
-                height: constraints.maxHeight * 0.3,
-                decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.only(
-                      bottomRight: Radius.circular(20),
-                      bottomLeft: Radius.circular(20),
-                    ),
-                    color: Colors.white,
-                    image: product == null
-                        ? null
-                        : DecorationImage(
-                            image: AssetImage(product!),
-                          )),
-                child: product == null
-                    ? const SizedBox.shrink()
-                    : Image.asset(
-                        product!,
-                        fit: BoxFit.fitHeight,
-                      ),
-              ),
-            ),
             SizedBox(
-              height: constraints.maxHeight * 0.05,
+              height: constraints.maxHeight * 0.03,
             ),
             Container(
               height: constraints.maxHeight * 0.07,
@@ -68,65 +45,37 @@ class ProductWidget extends HookWidget {
               ),
             ),
             SizedBox(
+              height: constraints.maxHeight * 0.03,
+            ),
+            Flexible(
+              child: Container(
+                width: constraints.maxWidth * 0.9,
+                height: constraints.maxHeight * 0.3,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(color: Colors.black),
+                    color: Colors.white,
+                    image: product == null
+                        ? null
+                        : DecorationImage(
+                            image: AssetImage(product!),
+                          )),
+                child: product == null
+                    ? const SizedBox.shrink()
+                    : Image.asset(
+                        product!,
+                        fit: BoxFit.fitHeight,
+                      ),
+              ),
+            ),
+            SizedBox(
               height: constraints.maxHeight * 0.05,
             ),
-            Container(
-              width: constraints.maxWidth * 0.9,
-              height: constraints.maxHeight * 0.15,
-              decoration: BoxDecoration(
-                  color: AppColors.grey8D8D8E.withOpacity(0.4),
-                  borderRadius: BorderRadius.circular(20)),
-              child: LayoutBuilder(builder: (context, currentConstraints) {
-                return Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Flexible(
-                      child: Container(
-                        height: currentConstraints.maxHeight * 0.4,
-                        width: currentConstraints.maxWidth * 0.4,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(width: 2),
-                            color: AppColors.grey8D8D8E.withOpacity(0.4)),
-                        child: const Center(
-                            child: Text(
-                          'Farben',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 25,
-                              fontWeight: FontWeight.bold,
-                              shadows: [
-                                Shadow(
-                                    color: Colors.black, offset: Offset(1, 1)),
-                                Shadow(
-                                    color: Colors.black, offset: Offset(-1, 1)),
-                                Shadow(
-                                    color: Colors.black,
-                                    offset: Offset(-1, -1)),
-                                Shadow(
-                                    color: Colors.black, offset: Offset(1, -1)),
-                              ]),
-                        )),
-                      ),
-                    ),
-                    Flexible(
-                      child: Container(
-                        height: currentConstraints.maxHeight * 0.9,
-                        width: currentConstraints.maxWidth * 0.3,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            border: Border.all(width: 2),
-                            color: AppColors.whiteD6D6D7),
-                      ),
-                    ),
-                  ],
-                );
-              }),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
             const Flexible(child: ProductCountWidget()),
+            SizedBox(
+              height: constraints.maxHeight * 0.05,
+            ),
+            const ProductColorWidget(),
           ],
         ),
       );
@@ -137,6 +86,68 @@ class ProductWidget extends HookWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties.add(StringProperty('product', product));
+  }
+}
+
+class ProductColorWidget extends StatelessWidget {
+  const ProductColorWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Flexible(
+      child: LayoutBuilder(builder: (context, constraints) {
+        return Container(
+          width: constraints.maxWidth * 0.9,
+          height: constraints.maxHeight * 0.6,
+          decoration: BoxDecoration(
+              color: AppColors.grey8D8D8E.withOpacity(0.4),
+              borderRadius: BorderRadius.circular(20)),
+          child: LayoutBuilder(builder: (context, currentConstraints) {
+            return Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Flexible(
+                  child: Container(
+                    height: currentConstraints.maxHeight * 0.4,
+                    width: currentConstraints.maxWidth * 0.4,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(width: 2),
+                        color: AppColors.grey8D8D8E.withOpacity(0.4)),
+                    child: const Center(
+                        child: Text(
+                      'Farben',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                          shadows: [
+                            Shadow(color: Colors.black, offset: Offset(1, 1)),
+                            Shadow(color: Colors.black, offset: Offset(-1, 1)),
+                            Shadow(color: Colors.black, offset: Offset(-1, -1)),
+                            Shadow(color: Colors.black, offset: Offset(1, -1)),
+                          ]),
+                    )),
+                  ),
+                ),
+                Flexible(
+                  child: Container(
+                    height: currentConstraints.maxHeight * 0.9,
+                    width: currentConstraints.maxWidth * 0.3,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(width: 2),
+                        color: AppColors.whiteD6D6D7),
+                  ),
+                ),
+              ],
+            );
+          }),
+        );
+      }),
+    );
   }
 }
 
@@ -215,14 +226,14 @@ class ProductCountWidget extends HookWidget {
                         child: Text(
                       state.productOrderCount.toString(),
                       style: const TextStyle(
-                          color: Colors.white,
+                          color: Colors.black,
                           fontSize: 35,
                           fontWeight: FontWeight.bold,
                           shadows: [
-                            Shadow(color: Colors.black, offset: Offset(1, 1)),
-                            Shadow(color: Colors.black, offset: Offset(-1, 1)),
-                            Shadow(color: Colors.black, offset: Offset(-1, -1)),
-                            Shadow(color: Colors.black, offset: Offset(1, -1)),
+                            Shadow(color: Colors.white, offset: Offset(1, 1)),
+                            Shadow(color: Colors.white, offset: Offset(-1, 1)),
+                            Shadow(color: Colors.white, offset: Offset(-1, -1)),
+                            Shadow(color: Colors.white, offset: Offset(1, -1)),
                           ]),
                     )),
                   );
