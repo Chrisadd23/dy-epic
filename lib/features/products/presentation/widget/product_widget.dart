@@ -145,92 +145,85 @@ class ProductCountWidget extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-        create: (context) => CubitProduct(const StateProduct()),
-        child: LayoutBuilder(builder: (context, constraints) {
-          return Container(
-              width: constraints.maxWidth * 0.8,
-              height: constraints.maxHeight * 0.4,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: const Color.fromRGBO(87, 87, 87, 0.1),
-              ),
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    Flexible(
-                      child: InkWell(
-                        child: Container(
-                          width: constraints.maxWidth * 0.15,
-                          height: constraints.maxHeight * 0.3,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: const Color.fromRGBO(87, 87, 87, 0.4),
-                            image: DecorationImage(
-                              image: AssetImage(
-                                  Assets.appComponents.png.vectorMinus.path),
-                            ),
-                          ),
+    return LayoutBuilder(builder: (context, constraints) {
+      return Container(
+          width: constraints.maxWidth * 0.8,
+          height: constraints.maxHeight * 0.4,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            color: const Color.fromRGBO(87, 87, 87, 0.1),
+          ),
+          child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                Flexible(
+                  child: InkWell(
+                    child: Container(
+                      width: constraints.maxWidth * 0.15,
+                      height: constraints.maxHeight * 0.3,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: const Color.fromRGBO(87, 87, 87, 0.4),
+                        image: DecorationImage(
+                          image: AssetImage(
+                              Assets.appComponents.png.vectorMinus.path),
                         ),
-                        onTapDown: (details) {
-                          context.read<CubitProduct>().decrement();
-                        },
-                        onTapUp: (details) =>
-                            context.read<CubitProduct>().stopCounting(),
                       ),
                     ),
-                    Flexible(
-                      child: InkWell(
-                        child: Container(
-                          width: constraints.maxWidth * 0.15,
-                          height: constraints.maxHeight * 0.3,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: const Color.fromRGBO(87, 87, 87, 0.4),
-                            image: DecorationImage(
-                              image: AssetImage(
-                                  Assets.appComponents.png.vectorPlus.path),
-                            ),
-                          ),
+                    onTapDown: (details) {
+                      context.read<CubitProduct>().decrement();
+                    },
+                    onTapUp: (details) =>
+                        context.read<CubitProduct>().stopCounting(),
+                  ),
+                ),
+                Flexible(
+                  child: InkWell(
+                    child: Container(
+                      width: constraints.maxWidth * 0.15,
+                      height: constraints.maxHeight * 0.3,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: const Color.fromRGBO(87, 87, 87, 0.4),
+                        image: DecorationImage(
+                          image: AssetImage(
+                              Assets.appComponents.png.vectorPlus.path),
                         ),
-                        onTapDown: (details) {
-                          context.read<CubitProduct>().increment();
-                        },
-                        onTapUp: (details) =>
-                            context.read<CubitProduct>().stopCounting(),
                       ),
                     ),
-                    BlocBuilder<CubitProduct, StateProduct>(
-                        builder: (context, state) {
-                      return Container(
-                        width: constraints.maxWidth * 0.35,
-                        height: constraints.maxHeight * 0.25,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: const Color.fromRGBO(87, 87, 87, 0.4),
-                        ),
-                        child: Center(
-                            child: Text(
-                          state.productOrderCount.toString(),
-                          style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 35,
-                              fontWeight: FontWeight.bold,
-                              shadows: [
-                                Shadow(
-                                    color: Colors.black, offset: Offset(1, 1)),
-                                Shadow(
-                                    color: Colors.black, offset: Offset(-1, 1)),
-                                Shadow(
-                                    color: Colors.black,
-                                    offset: Offset(-1, -1)),
-                                Shadow(
-                                    color: Colors.black, offset: Offset(1, -1)),
-                              ]),
-                        )),
-                      );
-                    }),
-                  ]));
-        }));
+                    onTapDown: (details) {
+                      context.read<CubitProduct>().increment();
+                    },
+                    onTapUp: (details) =>
+                        context.read<CubitProduct>().stopCounting(),
+                  ),
+                ),
+                BlocBuilder<CubitProduct, StateProduct>(
+                    builder: (context, state) {
+                  return Container(
+                    width: constraints.maxWidth * 0.35,
+                    height: constraints.maxHeight * 0.25,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: const Color.fromRGBO(87, 87, 87, 0.4),
+                    ),
+                    child: Center(
+                        child: Text(
+                      state.productOrderCount.toString(),
+                      style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 35,
+                          fontWeight: FontWeight.bold,
+                          shadows: [
+                            Shadow(color: Colors.black, offset: Offset(1, 1)),
+                            Shadow(color: Colors.black, offset: Offset(-1, 1)),
+                            Shadow(color: Colors.black, offset: Offset(-1, -1)),
+                            Shadow(color: Colors.black, offset: Offset(1, -1)),
+                          ]),
+                    )),
+                  );
+                }),
+              ]));
+    });
   }
 }

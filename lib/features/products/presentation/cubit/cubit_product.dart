@@ -4,7 +4,7 @@ import 'package:app_flutter_produkt_bestellen/features/products/presentation/cub
 import 'package:bloc/bloc.dart';
 
 class CubitProduct extends Cubit<StateProduct> {
-  CubitProduct(super.initialState);
+  CubitProduct() : super(const StateProduct());
 
   Timer? _timer;
 
