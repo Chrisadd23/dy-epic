@@ -1,21 +1,12 @@
+import 'package:app_flutter_produkt_bestellen/features/products/share/domain/entity/entity_product.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'state_product.freezed.dart';
+part 'state_arbeitstische.freezed.dart';
 
 @freezed
-class StateProduct with _$StateProduct {
-  const factory StateProduct({
-    @Default('') String hashKey,
-    @Default('') String category,
-    @Default(0) int productOrderCount,
-    Product? product,
-  }) = _StateProduct;
-}
-
-@freezed
-class Product with _$Product {
-  const factory Product({
+class ArbeitsTischeProduct extends Product with _$ArbeitsTischeProduct {
+  const factory ArbeitsTischeProduct({
     required String name,
     required Gestell frameColors,
     required Platte plateColor,
@@ -26,7 +17,7 @@ class Product with _$Product {
     required Gerauscheentwicklung gerauscheentwicklung,
     required StandbyStromverbrauch standbyStromverbrauch,
     required bool kollisionsSchutz,
-  }) = _Product;
+  }) = _ArbeitsTischeProduct;
 }
 
 @freezed

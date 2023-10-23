@@ -1,6 +1,6 @@
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
-import 'package:app_flutter_produkt_bestellen/features/products/presentation/cubit/cubit_product.dart';
-import 'package:app_flutter_produkt_bestellen/features/products/presentation/cubit/state_product.dart';
+import 'package:app_flutter_produkt_bestellen/features/products/presentation/cubit/state_arbeitstische.dart';
+import 'package:app_flutter_produkt_bestellen/features/products/share/presentation/cubit/cubit_product.dart';
 import 'package:app_flutter_produkt_bestellen/gen/assets.gen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';

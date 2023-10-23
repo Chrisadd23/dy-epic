@@ -1,6 +1,6 @@
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_page_widget.dart';
-import 'package:app_flutter_produkt_bestellen/features/products/presentation/cubit/cubit_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/products/presentation/widget/product_widget.dart';
+import 'package:app_flutter_produkt_bestellen/features/products/share/presentation/cubit/cubit_product.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';

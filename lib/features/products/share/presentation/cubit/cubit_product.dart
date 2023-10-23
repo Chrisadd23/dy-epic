@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:app_flutter_produkt_bestellen/features/products/presentation/cubit/state_product.dart';
+import 'package:app_flutter_produkt_bestellen/features/products/share/presentation/cubit/state_product.dart';
 import 'package:bloc/bloc.dart';
 
 class CubitProduct extends Cubit<StateProduct> {
