@@ -59,7 +59,7 @@ class ProductWidget extends HookWidget {
                   top: MediaQuery.of(context).size.height * 0.08),
               child: Container(
                 width: MediaQuery.sizeOf(context).width * 0.9,
-                height: MediaQuery.sizeOf(context).height * 0.3,
+                height: MediaQuery.sizeOf(context).height * 0.25,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     border: Border.all(color: Colors.black),
@@ -85,7 +85,7 @@ class ProductWidget extends HookWidget {
               alignment: Alignment.center,
               child: Padding(
                 padding: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 0.1),
+                    bottom: MediaQuery.of(context).size.height * 0.04),
                 child: const ProductCountWidget(),
               )),
           // SizedBox(
@@ -95,7 +95,7 @@ class ProductWidget extends HookWidget {
             alignment: Alignment.center,
             child: Padding(
               padding: EdgeInsets.only(
-                  top: MediaQuery.sizeOf(context).height * 0.48),
+                  top: MediaQuery.sizeOf(context).height * 0.33),
               child: Container(
                 height: MediaQuery.sizeOf(context).height * 0.22,
                 decoration: BoxDecoration(
@@ -124,12 +124,105 @@ class ProductWidget extends HookWidget {
               ),
             ),
           ),
-          // Flexible(
-          //     child: Container(
-          //   height: MediaQuery.of(context).size.height * 0.1,
-          //   width: MediaQuery.of(context).size.width * 0.9,
-          //   color: Colors.green,
-          // ))
+          Align(
+              alignment: Alignment.bottomCenter,
+              child: Padding(
+                padding: EdgeInsets.only(
+                    bottom: MediaQuery.sizeOf(context).height * 0.03),
+                child: Container(
+                  height: MediaQuery.of(context).size.height * 0.08,
+                  width: MediaQuery.of(context).size.width * 0.9,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(color: Colors.black),
+                      color: AppColors.greyD7D7D7),
+                  child: LayoutBuilder(builder: (context, constraints) {
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        InkWell(
+                          child: Container(
+                            height: constraints.maxHeight * 0.8,
+                            width: constraints.maxWidth * 0.4,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: AppColors.greyA7A7A7,
+                            ),
+                            child: const Center(
+                              child: FittedBox(
+                                fit: BoxFit.fill,
+                                child: Padding(
+                                  padding: EdgeInsets.all(8.0),
+                                  child: Text(
+                                    'bestellen',
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 35,
+                                        fontWeight: FontWeight.bold,
+                                        shadows: [
+                                          Shadow(
+                                              color: Colors.white,
+                                              offset: Offset(1, 1)),
+                                          Shadow(
+                                              color: Colors.white,
+                                              offset: Offset(-1, 1)),
+                                          Shadow(
+                                              color: Colors.white,
+                                              offset: Offset(-1, -1)),
+                                          Shadow(
+                                              color: Colors.white,
+                                              offset: Offset(1, -1)),
+                                        ]),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        InkWell(
+                          child: Container(
+                            height: constraints.maxHeight * 0.8,
+                            width: constraints.maxWidth * 0.4,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: AppColors.greyA7A7A7,
+                            ),
+                            child: const Center(
+                              child: FittedBox(
+                                fit: BoxFit.fill,
+                                child: Padding(
+                                  padding: EdgeInsets.all(8.0),
+                                  child: Text(
+                                    'anfragen',
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 35,
+                                        fontWeight: FontWeight.bold,
+                                        shadows: [
+                                          Shadow(
+                                              color: Colors.white,
+                                              offset: Offset(1, 1)),
+                                          Shadow(
+                                              color: Colors.white,
+                                              offset: Offset(-1, 1)),
+                                          Shadow(
+                                              color: Colors.white,
+                                              offset: Offset(-1, -1)),
+                                          Shadow(
+                                              color: Colors.white,
+                                              offset: Offset(1, -1)),
+                                        ]),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    );
+                  }),
+                ),
+              ))
         ],
       ),
     );
@@ -234,9 +327,10 @@ class ProductCountWidget extends HookWidget {
     return LayoutBuilder(builder: (context, constraints) {
       return Container(
           width: constraints.maxWidth * 0.8,
-          height: constraints.maxHeight * 0.15,
+          height: constraints.maxHeight * 0.12,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
+            border: Border.all(color: Colors.black),
             color: AppColors.greyD7D7D7,
           ),
           child: Row(
@@ -245,7 +339,7 @@ class ProductCountWidget extends HookWidget {
                 InkWell(
                   child: Container(
                     width: constraints.maxWidth * 0.15,
-                    height: constraints.maxHeight * 0.1,
+                    height: constraints.maxHeight * 0.08,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: AppColors.greyA7A7A7,
@@ -266,7 +360,7 @@ class ProductCountWidget extends HookWidget {
                 InkWell(
                   child: Container(
                     width: constraints.maxWidth * 0.15,
-                    height: constraints.maxHeight * 0.1,
+                    height: constraints.maxHeight * 0.08,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: const Color.fromRGBO(87, 87, 87, 0.4),
@@ -288,7 +382,7 @@ class ProductCountWidget extends HookWidget {
                     builder: (context, state) {
                   return Container(
                     width: constraints.maxWidth * 0.35,
-                    height: constraints.maxHeight * 0.08,
+                    height: constraints.maxHeight * 0.06,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: const Color.fromRGBO(87, 87, 87, 0.4),
