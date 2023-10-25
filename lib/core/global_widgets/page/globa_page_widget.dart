@@ -1,3 +1,4 @@
+import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/global_appbar.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/global_drawer.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,7 @@ class GlobalScaffold extends Scaffold {
             ),
           ),
           body: body,
-          backgroundColor: const Color.fromRGBO(255, 255, 255, 0.8),
+          backgroundColor: AppColors.greyCACACA,
           drawer: const GlobalDrawer(),
         );
 }

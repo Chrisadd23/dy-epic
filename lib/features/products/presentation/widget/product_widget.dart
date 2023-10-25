@@ -19,68 +19,8 @@ class ProductWidget extends HookWidget {
       height: MediaQuery.of(context).size.height,
       child: Stack(
         children: <Widget>[
-          Align(
-            alignment: Alignment.topCenter,
-            child: Padding(
-              padding: EdgeInsets.only(
-                  top: MediaQuery.of(context).size.height * 0.015),
-              child: Container(
-                height: MediaQuery.sizeOf(context).height * 0.05,
-                width: MediaQuery.sizeOf(context).width * 0.5,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(40),
-                    color: AppColors.grey8D8D8E.withOpacity(0.4)),
-                child: const Center(
-                  child: Text(
-                    'Produkt',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 35,
-                        fontWeight: FontWeight.bold,
-                        shadows: [
-                          Shadow(color: Colors.black, offset: Offset(1, 1)),
-                          Shadow(color: Colors.black, offset: Offset(-1, 1)),
-                          Shadow(color: Colors.black, offset: Offset(-1, -1)),
-                          Shadow(color: Colors.black, offset: Offset(1, -1)),
-                        ]),
-                  ),
-                ),
-              ),
-            ),
-          ),
-          // ),
-          // SizedBox(
-          //   height: MediaQuery.sizeOf(context).height * 0.02,
-          // ),
-          Align(
-            alignment: Alignment.topCenter,
-            child: Padding(
-              padding: EdgeInsets.only(
-                  top: MediaQuery.of(context).size.height * 0.08),
-              child: Container(
-                width: MediaQuery.sizeOf(context).width * 0.9,
-                height: MediaQuery.sizeOf(context).height * 0.25,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(color: Colors.black),
-                    color: Colors.white,
-                    image: product == null
-                        ? null
-                        : DecorationImage(
-                            image: AssetImage(product!),
-                          )),
-                child: product == null
-                    ? const SizedBox.shrink()
-                    : Image.asset(
-                        product!,
-                        fit: BoxFit.fitHeight,
-                      ),
-              ),
-            ),
-          ),
-          // SizedBox(
-          //   height: MediaQuery.sizeOf(context).height * 0.02,
-          // ),
+          const ProductTitle(),
+          ProductPicture(product: product),
           Align(
               alignment: Alignment.center,
               child: Padding(
@@ -88,141 +28,8 @@ class ProductWidget extends HookWidget {
                     bottom: MediaQuery.of(context).size.height * 0.04),
                 child: const ProductCountWidget(),
               )),
-          // SizedBox(
-          //   height: MediaQuery.sizeOf(context).height * 0.02,
-          // ),
-          Align(
-            alignment: Alignment.center,
-            child: Padding(
-              padding: EdgeInsets.only(
-                  top: MediaQuery.sizeOf(context).height * 0.33),
-              child: Container(
-                height: MediaQuery.sizeOf(context).height * 0.22,
-                decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black),
-                    borderRadius: BorderRadius.circular(20)),
-                child: SingleChildScrollView(
-                  child: SizedBox(
-                    height: MediaQuery.sizeOf(context).height * 0.5,
-                    width: MediaQuery.sizeOf(context).width * 0.8,
-                    child: LayoutBuilder(builder: (context, scrollConstraints) {
-                      return Column(
-                        children: [
-                          ProductColorWidget(
-                              scrollConstraints: scrollConstraints),
-                          ProductColorWidget(
-                              scrollConstraints: scrollConstraints),
-                          ProductColorWidget(
-                              scrollConstraints: scrollConstraints),
-                          ProductColorWidget(
-                              scrollConstraints: scrollConstraints),
-                        ],
-                      );
-                    }),
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Align(
-              alignment: Alignment.bottomCenter,
-              child: Padding(
-                padding: EdgeInsets.only(
-                    bottom: MediaQuery.sizeOf(context).height * 0.03),
-                child: Container(
-                  height: MediaQuery.of(context).size.height * 0.08,
-                  width: MediaQuery.of(context).size.width * 0.9,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(color: Colors.black),
-                      color: AppColors.greyD7D7D7),
-                  child: LayoutBuilder(builder: (context, constraints) {
-                    return Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        InkWell(
-                          child: Container(
-                            height: constraints.maxHeight * 0.8,
-                            width: constraints.maxWidth * 0.4,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: AppColors.greyA7A7A7,
-                            ),
-                            child: const Center(
-                              child: FittedBox(
-                                fit: BoxFit.fill,
-                                child: Padding(
-                                  padding: EdgeInsets.all(8.0),
-                                  child: Text(
-                                    'bestellen',
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 35,
-                                        fontWeight: FontWeight.bold,
-                                        shadows: [
-                                          Shadow(
-                                              color: Colors.white,
-                                              offset: Offset(1, 1)),
-                                          Shadow(
-                                              color: Colors.white,
-                                              offset: Offset(-1, 1)),
-                                          Shadow(
-                                              color: Colors.white,
-                                              offset: Offset(-1, -1)),
-                                          Shadow(
-                                              color: Colors.white,
-                                              offset: Offset(1, -1)),
-                                        ]),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        InkWell(
-                          child: Container(
-                            height: constraints.maxHeight * 0.8,
-                            width: constraints.maxWidth * 0.4,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: AppColors.greyA7A7A7,
-                            ),
-                            child: const Center(
-                              child: FittedBox(
-                                fit: BoxFit.fill,
-                                child: Padding(
-                                  padding: EdgeInsets.all(8.0),
-                                  child: Text(
-                                    'anfragen',
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 35,
-                                        fontWeight: FontWeight.bold,
-                                        shadows: [
-                                          Shadow(
-                                              color: Colors.white,
-                                              offset: Offset(1, 1)),
-                                          Shadow(
-                                              color: Colors.white,
-                                              offset: Offset(-1, 1)),
-                                          Shadow(
-                                              color: Colors.white,
-                                              offset: Offset(-1, -1)),
-                                          Shadow(
-                                              color: Colors.white,
-                                              offset: Offset(1, -1)),
-                                        ]),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    );
-                  }),
-                ),
-              ))
+          const ProductAttributes(),
+          const OrderProductWidget()
         ],
       ),
     );
@@ -232,6 +39,234 @@ class ProductWidget extends HookWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties.add(StringProperty('product', product));
+  }
+}
+
+class ProductPicture extends StatelessWidget {
+  const ProductPicture({
+    super.key,
+    required this.product,
+  });
+
+  final String? product;
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.topCenter,
+      child: Padding(
+        padding:
+            EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.08),
+        child: Container(
+          width: MediaQuery.sizeOf(context).width * 0.9,
+          height: MediaQuery.sizeOf(context).height * 0.25,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(color: Colors.black),
+              color: Colors.white,
+              image: product == null
+                  ? null
+                  : DecorationImage(
+                      image: AssetImage(product!),
+                    )),
+          child: product == null
+              ? const SizedBox.shrink()
+              : Image.asset(
+                  product!,
+                  fit: BoxFit.fitHeight,
+                ),
+        ),
+      ),
+    );
+  }
+}
+
+class ProductTitle extends StatelessWidget {
+  const ProductTitle({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.topCenter,
+      child: Padding(
+        padding:
+            EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.015),
+        child: Container(
+          height: MediaQuery.sizeOf(context).height * 0.05,
+          width: MediaQuery.sizeOf(context).width * 0.5,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(40),
+              color: AppColors.grey8D8D8E.withOpacity(0.4)),
+          child: const Center(
+            child: Text(
+              'Produkt',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 35,
+                  fontWeight: FontWeight.bold,
+                  shadows: [
+                    Shadow(color: Colors.black, offset: Offset(1, 1)),
+                    Shadow(color: Colors.black, offset: Offset(-1, 1)),
+                    Shadow(color: Colors.black, offset: Offset(-1, -1)),
+                    Shadow(color: Colors.black, offset: Offset(1, -1)),
+                  ]),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ProductAttributes extends StatelessWidget {
+  const ProductAttributes({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.center,
+      child: Padding(
+        padding: EdgeInsets.only(top: MediaQuery.sizeOf(context).height * 0.33),
+        child: Container(
+          height: MediaQuery.sizeOf(context).height * 0.22,
+          decoration: BoxDecoration(
+              border: Border.all(color: Colors.black),
+              borderRadius: BorderRadius.circular(20)),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: SingleChildScrollView(
+              child: SizedBox(
+                height: MediaQuery.sizeOf(context).height * 0.5,
+                width: MediaQuery.sizeOf(context).width * 0.8,
+                child: LayoutBuilder(builder: (context, scrollConstraints) {
+                  return Column(
+                    children: [
+                      ProductColorWidget(scrollConstraints: scrollConstraints),
+                      ProductColorWidget(scrollConstraints: scrollConstraints),
+                      ProductColorWidget(scrollConstraints: scrollConstraints),
+                      ProductColorWidget(scrollConstraints: scrollConstraints),
+                    ],
+                  );
+                }),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class OrderProductWidget extends StatelessWidget {
+  const OrderProductWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+        alignment: Alignment.bottomCenter,
+        child: Padding(
+          padding:
+              EdgeInsets.only(bottom: MediaQuery.sizeOf(context).height * 0.03),
+          child: Container(
+            height: MediaQuery.of(context).size.height * 0.08,
+            width: MediaQuery.of(context).size.width * 0.9,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(color: Colors.black),
+                color: AppColors.greyD7D7D7),
+            child: LayoutBuilder(builder: (context, constraints) {
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  InkWell(
+                    child: Container(
+                      height: constraints.maxHeight * 0.8,
+                      width: constraints.maxWidth * 0.4,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: AppColors.greyA7A7A7,
+                      ),
+                      child: const Center(
+                        child: FittedBox(
+                          fit: BoxFit.fill,
+                          child: Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Text(
+                              'bestellen',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 35,
+                                  fontWeight: FontWeight.bold,
+                                  shadows: [
+                                    Shadow(
+                                        color: Colors.white,
+                                        offset: Offset(1, 1)),
+                                    Shadow(
+                                        color: Colors.white,
+                                        offset: Offset(-1, 1)),
+                                    Shadow(
+                                        color: Colors.white,
+                                        offset: Offset(-1, -1)),
+                                    Shadow(
+                                        color: Colors.white,
+                                        offset: Offset(1, -1)),
+                                  ]),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  InkWell(
+                    child: Container(
+                      height: constraints.maxHeight * 0.8,
+                      width: constraints.maxWidth * 0.4,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: AppColors.greyA7A7A7,
+                      ),
+                      child: const Center(
+                        child: FittedBox(
+                          fit: BoxFit.fill,
+                          child: Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Text(
+                              'anfragen',
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 35,
+                                  fontWeight: FontWeight.bold,
+                                  shadows: [
+                                    Shadow(
+                                        color: Colors.white,
+                                        offset: Offset(1, 1)),
+                                    Shadow(
+                                        color: Colors.white,
+                                        offset: Offset(-1, 1)),
+                                    Shadow(
+                                        color: Colors.white,
+                                        offset: Offset(-1, -1)),
+                                    Shadow(
+                                        color: Colors.white,
+                                        offset: Offset(1, -1)),
+                                  ]),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            }),
+          ),
+        ));
   }
 }
 
@@ -252,7 +287,7 @@ class ProductColorWidget extends StatelessWidget {
           width: scrollConstraints.maxWidth,
           height: scrollConstraints.maxHeight * 0.25,
           decoration: BoxDecoration(
-              color: AppColors.grey8D8D8E.withOpacity(0.4),
+              color: AppColors.greyC1C1C1,
               borderRadius: BorderRadius.circular(20)),
           child: LayoutBuilder(builder: (context, currentConstraints) {
             return Row(
@@ -265,7 +300,7 @@ class ProductColorWidget extends StatelessWidget {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(width: 2),
-                        color: AppColors.grey8D8D8E.withOpacity(0.4)),
+                        color: AppColors.greyA7A7A7),
                     child: const Center(
                         child: Padding(
                       padding: EdgeInsets.all(5.0),
