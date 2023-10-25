@@ -79,6 +79,12 @@ class ProductPicture extends StatelessWidget {
       ),
     );
   }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(StringProperty('product', product));
+  }
 }
 
 class ProductTitle extends StatelessWidget {
