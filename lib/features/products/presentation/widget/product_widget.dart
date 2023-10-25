@@ -316,7 +316,7 @@ class ProductColorWidget extends StatelessWidget {
                         color: AppColors.greyA7A7A7),
                     child: Center(
                         child: Padding(
-                      padding: EdgeInsets.all(5.0),
+                      padding: const EdgeInsets.all(5.0),
                       child: FittedBox(
                         fit: BoxFit.fill,
                         child: Text(
@@ -364,6 +364,7 @@ class ProductColorWidget extends StatelessWidget {
     super.debugFillProperties(properties);
     properties.add(DiagnosticsProperty<BoxConstraints>(
         'scrollConstraints', scrollConstraints));
+    properties.add(StringProperty('productAttribute', productAttribute));
   }
 }
 
