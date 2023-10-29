@@ -419,31 +419,37 @@ class ProductCountWidget extends HookWidget {
                   onTapCancel: () =>
                       context.read<CubitProduct>().stopCounting(),
                 ),
-                BlocBuilder<CubitProduct, StateProduct>(
-                    builder: (context, state) {
-                  return Container(
-                    width: constraints.maxWidth * 0.35,
-                    height: constraints.maxHeight * 0.06,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: const Color.fromRGBO(87, 87, 87, 0.4),
-                    ),
-                    child: Center(
-                        child: Text(
-                      state.productOrderCount.toString(),
-                      style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 35,
-                          fontWeight: FontWeight.bold,
-                          shadows: [
-                            Shadow(color: Colors.white, offset: Offset(1, 1)),
-                            Shadow(color: Colors.white, offset: Offset(-1, 1)),
-                            Shadow(color: Colors.white, offset: Offset(-1, -1)),
-                            Shadow(color: Colors.white, offset: Offset(1, -1)),
-                          ]),
-                    )),
-                  );
-                }),
+                BlocSelector<CubitProduct, StateProduct, int>(
+                    selector: (state) => state.productOrderCount,
+                    builder: (context, productCount) {
+                      return Container(
+                        width: constraints.maxWidth * 0.35,
+                        height: constraints.maxHeight * 0.06,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: const Color.fromRGBO(87, 87, 87, 0.4),
+                        ),
+                        child: Center(
+                            child: Text(
+                          productCount.toString(),
+                          style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 35,
+                              fontWeight: FontWeight.bold,
+                              shadows: [
+                                Shadow(
+                                    color: Colors.white, offset: Offset(1, 1)),
+                                Shadow(
+                                    color: Colors.white, offset: Offset(-1, 1)),
+                                Shadow(
+                                    color: Colors.white,
+                                    offset: Offset(-1, -1)),
+                                Shadow(
+                                    color: Colors.white, offset: Offset(1, -1)),
+                              ]),
+                        )),
+                      );
+                    }),
               ]));
     });
   }
