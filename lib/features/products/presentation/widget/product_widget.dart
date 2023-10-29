@@ -26,7 +26,7 @@ class ProductWidget extends HookWidget {
               child: Padding(
                 padding: EdgeInsets.only(
                     bottom: MediaQuery.of(context).size.height * 0.04),
-                child: const ProductCounterWidget(),
+                child: const ProductCountWidget(),
               )),
           const ProductAttributes(),
           const OrderProductWidget()
@@ -78,12 +78,6 @@ class ProductPicture extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(StringProperty('product', product));
   }
 }
 
@@ -151,13 +145,8 @@ class ProductAttributes extends StatelessWidget {
                 child: LayoutBuilder(builder: (context, scrollConstraints) {
                   return Column(
                     children: [
-                      ProductColorWidget(
-                          scrollConstraints: scrollConstraints,
-                          productAttribute: 'Gestellfarbe'),
-                      ProductColorWidget(
-                        scrollConstraints: scrollConstraints,
-                        productAttribute: 'Plattenfarbe',
-                      ),
+                      ProductColorWidget(scrollConstraints: scrollConstraints),
+                      ProductColorWidget(scrollConstraints: scrollConstraints),
                       ProductColorWidget(scrollConstraints: scrollConstraints),
                       ProductColorWidget(scrollConstraints: scrollConstraints),
                     ],
@@ -285,11 +274,9 @@ class ProductColorWidget extends StatelessWidget {
   const ProductColorWidget({
     required this.scrollConstraints,
     super.key,
-    this.productAttribute,
   });
 
   final BoxConstraints scrollConstraints;
-  final String? productAttribute;
 
   @override
   Widget build(BuildContext context) {
@@ -314,14 +301,14 @@ class ProductColorWidget extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(width: 2),
                         color: AppColors.greyA7A7A7),
-                    child: Center(
+                    child: const Center(
                         child: Padding(
-                      padding: const EdgeInsets.all(5.0),
+                      padding: EdgeInsets.all(5.0),
                       child: FittedBox(
                         fit: BoxFit.fill,
                         child: Text(
-                          productAttribute ?? '',
-                          style: const TextStyle(
+                          'Gestellfarbe',
+                          style: TextStyle(
                               color: Colors.white,
                               fontSize: 25,
                               fontWeight: FontWeight.bold,
@@ -364,12 +351,11 @@ class ProductColorWidget extends StatelessWidget {
     super.debugFillProperties(properties);
     properties.add(DiagnosticsProperty<BoxConstraints>(
         'scrollConstraints', scrollConstraints));
-    properties.add(StringProperty('productAttribute', productAttribute));
   }
 }
 
-class ProductCounterWidget extends HookWidget {
-  const ProductCounterWidget({super.key});
+class ProductCountWidget extends HookWidget {
+  const ProductCountWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -427,51 +413,32 @@ class ProductCounterWidget extends HookWidget {
                   onTapCancel: () =>
                       context.read<CubitProduct>().stopCounting(),
                 ),
-                _ProductCount(constraints: constraints),
+                BlocBuilder<CubitProduct, StateProduct>(
+                    builder: (context, state) {
+                  return Container(
+                    width: constraints.maxWidth * 0.35,
+                    height: constraints.maxHeight * 0.06,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: const Color.fromRGBO(87, 87, 87, 0.4),
+                    ),
+                    child: Center(
+                        child: Text(
+                      state.productOrderCount.toString(),
+                      style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 35,
+                          fontWeight: FontWeight.bold,
+                          shadows: [
+                            Shadow(color: Colors.white, offset: Offset(1, 1)),
+                            Shadow(color: Colors.white, offset: Offset(-1, 1)),
+                            Shadow(color: Colors.white, offset: Offset(-1, -1)),
+                            Shadow(color: Colors.white, offset: Offset(1, -1)),
+                          ]),
+                    )),
+                  );
+                }),
               ]));
     });
-  }
-}
-
-class _ProductCount extends StatelessWidget {
-  const _ProductCount({
-    required this.constraints,
-  });
-
-  final BoxConstraints constraints;
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<CubitProduct, StateProduct>(builder: (context, state) {
-      return Container(
-        width: constraints.maxWidth * 0.35,
-        height: constraints.maxHeight * 0.06,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: const Color.fromRGBO(87, 87, 87, 0.4),
-        ),
-        child: Center(
-            child: Text(
-          state.productOrderCount.toString(),
-          style: const TextStyle(
-              color: Colors.black,
-              fontSize: 35,
-              fontWeight: FontWeight.bold,
-              shadows: [
-                Shadow(color: Colors.white, offset: Offset(1, 1)),
-                Shadow(color: Colors.white, offset: Offset(-1, 1)),
-                Shadow(color: Colors.white, offset: Offset(-1, -1)),
-                Shadow(color: Colors.white, offset: Offset(1, -1)),
-              ]),
-        )),
-      );
-    });
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-        .add(DiagnosticsProperty<BoxConstraints>('constraints', constraints));
   }
 }
