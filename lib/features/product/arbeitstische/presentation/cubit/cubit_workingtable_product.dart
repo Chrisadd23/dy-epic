@@ -1,10 +1,11 @@
 import 'dart:async';
 
-import 'package:app_flutter_produkt_bestellen/features/products/share/presentation/cubit/state_product.dart';
+import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/presentation/cubit/state_workingtable.dart';
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
 
-class CubitProduct extends Cubit<StateProduct> {
-  CubitProduct() : super(const StateProduct());
+class CubitWorkingTableProduct extends Cubit<StateWorkingTable> {
+  CubitWorkingTableProduct() : super(const StateWorkingTable());
 
   Timer? _timer;
 
@@ -29,5 +30,9 @@ class CubitProduct extends Cubit<StateProduct> {
   Future<void> close() {
     _timer?.cancel();
     return super.close();
+  }
+
+  void changeColor(Color? color) {
+    debugPrint('change Color --< $color');
   }
 }

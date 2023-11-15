@@ -5,7 +5,7 @@ import 'package:app_flutter_produkt_bestellen/features/category/konferenzstuehle
 import 'package:app_flutter_produkt_bestellen/features/category/konferenztische/presentation/page/page_konferenztische.dart';
 import 'package:app_flutter_produkt_bestellen/features/home/presentation/page/home_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/page/login_page.dart';
-import 'package:app_flutter_produkt_bestellen/features/products/presentation/page/product_page.dart';
+import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/presentation/page/workingtable_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -93,7 +93,7 @@ enum AppGoRouter {
                         name: product.name,
                         builder: (context, state) {
                           final product = state.extra.toString();
-                          return ProductPage(product: product);
+                          return WorkingTablePage(product: product);
                         },
                       )
                     ]),

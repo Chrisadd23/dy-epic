@@ -4,7 +4,7 @@ import 'package:app_flutter_produkt_bestellen/features/category/dependencies.dar
     as category_dependencies;
 import 'package:app_flutter_produkt_bestellen/features/home/dependencies.dart'
     as home_dependencies;
-import 'package:app_flutter_produkt_bestellen/features/products/dependencies.dart'
+import 'package:app_flutter_produkt_bestellen/features/product/dependencies.dart'
     as product_dependencies;
 import 'package:get_it/get_it.dart';
 

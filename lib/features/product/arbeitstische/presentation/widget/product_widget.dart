@@ -1,6 +1,6 @@
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
-import 'package:app_flutter_produkt_bestellen/features/products/share/presentation/cubit/cubit_product.dart';
-import 'package:app_flutter_produkt_bestellen/features/products/share/presentation/cubit/state_product.dart';
+import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/presentation/cubit/cubit_workingtable_product.dart';
+import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/presentation/cubit/state_workingtable.dart';
 import 'package:app_flutter_produkt_bestellen/gen/assets.gen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -335,6 +335,15 @@ class ProductColorWidget extends StatelessWidget {
                   ),
                 ),
                 Flexible(
+                    child: InkWell(
+                  onTap: () async {
+                    final color = await _showColorMenu(context);
+                    if (context.mounted) {
+                      context
+                          .read<CubitWorkingTableProduct>()
+                          .changeColor(color);
+                    }
+                  },
                   child: Container(
                     height: currentConstraints.maxHeight * 0.9,
                     width: currentConstraints.maxWidth * 0.3,
@@ -343,7 +352,7 @@ class ProductColorWidget extends StatelessWidget {
                         border: Border.all(width: 2),
                         color: AppColors.whiteD6D6D7),
                   ),
-                ),
+                )),
               ],
             );
           }),
@@ -357,6 +366,82 @@ class ProductColorWidget extends StatelessWidget {
     super.debugFillProperties(properties);
     properties.add(DiagnosticsProperty<BoxConstraints>(
         'scrollConstraints', scrollConstraints));
+  }
+
+  Future<Color?> _showColorMenu(BuildContext context) {
+    return showDialog<Color>(
+        barrierColor: Colors.transparent,
+        context: context,
+        builder: (context) => Dialog(
+            backgroundColor: Colors.transparent,
+            shadowColor: Colors.transparent,
+            child: InkWell(
+              highlightColor: Colors.transparent,
+              splashColor: Colors.transparent,
+              onTap: () => Navigator.of(context).pop(),
+              child: Stack(
+                children: [
+                  Positioned(
+                    bottom: MediaQuery.of(context).size.height * 0.081,
+                    right: MediaQuery.of(context).size.width * 0.05,
+                    child: Container(
+                      height: MediaQuery.sizeOf(context).height * 0.21,
+                      width: MediaQuery.sizeOf(context).width * 0.3,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.transparent),
+                      child: Stack(children: [
+                        LayoutBuilder(
+                          builder: (context, constraints) =>
+                              SingleChildScrollView(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                ColorWidget(constraints: constraints),
+                                const Padding(padding: EdgeInsets.all(5)),
+                                ColorWidget(constraints: constraints)
+                              ],
+                            ),
+                          ),
+                        ),
+                      ]),
+                    ),
+                  ),
+                ],
+              ),
+            )));
+  }
+}
+
+// ===========> change Color from Dialog
+class ColorWidget extends StatelessWidget {
+  const ColorWidget({super.key, required this.constraints});
+
+  final BoxConstraints constraints;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      highlightColor: Colors.transparent,
+      splashColor: Colors.transparent,
+      onTap: () {
+        Navigator.of(context).pop(Colors.blue);
+      },
+      child: Container(
+          height: constraints.maxHeight * 0.8,
+          width: constraints.maxWidth,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            color: Colors.blue,
+          )),
+    );
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+        .add(DiagnosticsProperty<BoxConstraints>('constraints', constraints));
   }
 }
 
@@ -391,12 +476,12 @@ class ProductCountWidget extends HookWidget {
                     ),
                   ),
                   onTapDown: (details) {
-                    context.read<CubitProduct>().decrement();
+                    context.read<CubitWorkingTableProduct>().decrement();
                   },
                   onTapUp: (details) =>
-                      context.read<CubitProduct>().stopCounting(),
+                      context.read<CubitWorkingTableProduct>().stopCounting(),
                   onTapCancel: () =>
-                      context.read<CubitProduct>().stopCounting(),
+                      context.read<CubitWorkingTableProduct>().stopCounting(),
                 ),
                 InkWell(
                   child: Container(
@@ -412,14 +497,14 @@ class ProductCountWidget extends HookWidget {
                     ),
                   ),
                   onTapDown: (details) {
-                    context.read<CubitProduct>().increment();
+                    context.read<CubitWorkingTableProduct>().increment();
                   },
                   onTapUp: (details) =>
-                      context.read<CubitProduct>().stopCounting(),
+                      context.read<CubitWorkingTableProduct>().stopCounting(),
                   onTapCancel: () =>
-                      context.read<CubitProduct>().stopCounting(),
+                      context.read<CubitWorkingTableProduct>().stopCounting(),
                 ),
-                BlocSelector<CubitProduct, StateProduct, int>(
+                BlocSelector<CubitWorkingTableProduct, StateWorkingTable, int>(
                     selector: (state) => state.productOrderCount,
                     builder: (context, productCount) {
                       return Container(

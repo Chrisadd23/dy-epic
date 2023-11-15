@@ -15,18 +15,19 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$Product {}
+mixin _$EntityProduct {}
 
 /// @nodoc
-abstract class $ProductCopyWith<$Res> {
-  factory $ProductCopyWith(Product value, $Res Function(Product) then) =
-      _$ProductCopyWithImpl<$Res, Product>;
+abstract class $EntityProductCopyWith<$Res> {
+  factory $EntityProductCopyWith(
+          EntityProduct value, $Res Function(EntityProduct) then) =
+      _$EntityProductCopyWithImpl<$Res, EntityProduct>;
 }
 
 /// @nodoc
-class _$ProductCopyWithImpl<$Res, $Val extends Product>
-    implements $ProductCopyWith<$Res> {
-  _$ProductCopyWithImpl(this._value, this._then);
+class _$EntityProductCopyWithImpl<$Res, $Val extends EntityProduct>
+    implements $EntityProductCopyWith<$Res> {
+  _$EntityProductCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -35,40 +36,41 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
 }
 
 /// @nodoc
-abstract class _$$_ProductCopyWith<$Res> {
-  factory _$$_ProductCopyWith(
-          _$_Product value, $Res Function(_$_Product) then) =
-      __$$_ProductCopyWithImpl<$Res>;
+abstract class _$$_EntityProductCopyWith<$Res> {
+  factory _$$_EntityProductCopyWith(
+          _$_EntityProduct value, $Res Function(_$_EntityProduct) then) =
+      __$$_EntityProductCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ProductCopyWithImpl<$Res>
-    extends _$ProductCopyWithImpl<$Res, _$_Product>
-    implements _$$_ProductCopyWith<$Res> {
-  __$$_ProductCopyWithImpl(_$_Product _value, $Res Function(_$_Product) _then)
+class __$$_EntityProductCopyWithImpl<$Res>
+    extends _$EntityProductCopyWithImpl<$Res, _$_EntityProduct>
+    implements _$$_EntityProductCopyWith<$Res> {
+  __$$_EntityProductCopyWithImpl(
+      _$_EntityProduct _value, $Res Function(_$_EntityProduct) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Product implements _Product {
-  const _$_Product();
+class _$_EntityProduct implements _EntityProduct {
+  const _$_EntityProduct();
 
   @override
   String toString() {
-    return 'Product()';
+    return 'EntityProduct()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Product);
+        (other.runtimeType == runtimeType && other is _$_EntityProduct);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
 }
 
-abstract class _Product implements Product {
-  const factory _Product() = _$_Product;
+abstract class _EntityProduct implements EntityProduct {
+  const factory _EntityProduct() = _$_EntityProduct;
 }

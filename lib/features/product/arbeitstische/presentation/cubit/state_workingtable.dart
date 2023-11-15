@@ -1,11 +1,21 @@
-import 'package:app_flutter_produkt_bestellen/features/products/share/domain/entity/entity_product.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'state_arbeitstische.freezed.dart';
 
 @freezed
-class ArbeitsTischeProduct extends Product with _$ArbeitsTischeProduct {
+class StateWorkingTable with _$StateWorkingTable {
+  const factory StateWorkingTable({
+    @Default('') String hashKey,
+    @Default('') String category,
+    @Default(0) int productOrderCount,
+    @Default([]) List<ArbeitsTischeProduct>? workingTables,
+    ArbeitsTischeProduct? workingTable,
+  }) = _StateWorkingTable;
+}
+
+@freezed
+class ArbeitsTischeProduct with _$ArbeitsTischeProduct {
   const factory ArbeitsTischeProduct({
     required String name,
     required Gestell frameColors,
