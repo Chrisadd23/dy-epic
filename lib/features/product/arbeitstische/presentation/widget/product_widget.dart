@@ -152,9 +152,6 @@ class ProductAttributes extends StatelessWidget {
                   return Column(
                     children: [
                       ProductColorWidget(scrollConstraints: scrollConstraints),
-                      ProductColorWidget(scrollConstraints: scrollConstraints),
-                      ProductColorWidget(scrollConstraints: scrollConstraints),
-                      ProductColorWidget(scrollConstraints: scrollConstraints),
                     ],
                   );
                 }),
@@ -334,25 +331,32 @@ class ProductColorWidget extends StatelessWidget {
                     )),
                   ),
                 ),
-                Flexible(
-                    child: InkWell(
-                  onTap: () async {
-                    final color = await _showColorMenu(context);
-                    if (context.mounted) {
-                      context
-                          .read<CubitWorkingTableProduct>()
-                          .changeColor(color);
-                    }
-                  },
-                  child: Container(
-                    height: currentConstraints.maxHeight * 0.9,
-                    width: currentConstraints.maxWidth * 0.3,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        border: Border.all(width: 2),
-                        color: AppColors.whiteD6D6D7),
-                  ),
-                )),
+                BlocBuilder<CubitWorkingTableProduct, StateWorkingTable>(
+                    builder: (context, state) {
+                  return Flexible(
+                      child: InkWell(
+                    onTap: () async {
+                      final colors = state.workingTables
+                          ?.map((product) => product.frameColors?.color)
+                          .toList();
+                      final color = await _showColorMenu(context, colors);
+                      if (context.mounted) {
+                        context
+                            .read<CubitWorkingTableProduct>()
+                            .changeColor(color);
+                      }
+                    },
+                    child: Container(
+                      height: currentConstraints.maxHeight * 0.9,
+                      width: currentConstraints.maxWidth * 0.3,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(width: 2),
+                          color:
+                              state.selectedWorkingTable?.frameColors?.color),
+                    ),
+                  ));
+                }),
               ],
             );
           }),
@@ -368,13 +372,14 @@ class ProductColorWidget extends StatelessWidget {
         'scrollConstraints', scrollConstraints));
   }
 
-  Future<Color?> _showColorMenu(BuildContext context) {
+  Future<Color?> _showColorMenu(BuildContext context, List<Color?>? colors) {
     return showDialog<Color>(
         barrierColor: Colors.transparent,
         context: context,
         builder: (context) => Dialog(
             backgroundColor: Colors.transparent,
             shadowColor: Colors.transparent,
+            surfaceTintColor: Colors.transparent,
             child: InkWell(
               highlightColor: Colors.transparent,
               splashColor: Colors.transparent,
@@ -397,9 +402,10 @@ class ProductColorWidget extends StatelessWidget {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                ColorWidget(constraints: constraints),
-                                const Padding(padding: EdgeInsets.all(5)),
-                                ColorWidget(constraints: constraints)
+                                ...colors!
+                                    .map((color) => ColorWidget(
+                                        constraints: constraints, color: color))
+                                    .toList(),
                               ],
                             ),
                           ),
@@ -415,9 +421,11 @@ class ProductColorWidget extends StatelessWidget {
 
 // ===========> change Color from Dialog
 class ColorWidget extends StatelessWidget {
-  const ColorWidget({super.key, required this.constraints});
+  const ColorWidget(
+      {super.key, required this.constraints, required this.color});
 
   final BoxConstraints constraints;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -425,14 +433,15 @@ class ColorWidget extends StatelessWidget {
       highlightColor: Colors.transparent,
       splashColor: Colors.transparent,
       onTap: () {
-        Navigator.of(context).pop(Colors.blue);
+        debugPrint('color => $color');
+        Navigator.of(context).pop(color);
       },
       child: Container(
           height: constraints.maxHeight * 0.8,
           width: constraints.maxWidth,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            color: Colors.blue,
+            color: color,
           )),
     );
   }
@@ -442,6 +451,7 @@ class ColorWidget extends StatelessWidget {
     super.debugFillProperties(properties);
     properties
         .add(DiagnosticsProperty<BoxConstraints>('constraints', constraints));
+    properties.add(ColorProperty('color', color));
   }
 }
 

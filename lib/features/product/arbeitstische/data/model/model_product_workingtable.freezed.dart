@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'state_workingtable.dart';
+part of 'model_product_workingtable.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,418 +15,157 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$StateWorkingTable {
-  String get hashKey => throw _privateConstructorUsedError;
-
-  String get category => throw _privateConstructorUsedError;
-
-  int get productOrderCount => throw _privateConstructorUsedError;
-
-  List<ArbeitsTischeProduct>? get workingTables =>
+mixin _$EntityArbeitsTischeProduct {
+  String? get name => throw _privateConstructorUsedError;
+  Gestell? get frameColors => throw _privateConstructorUsedError;
+  Platte? get plateColor => throw _privateConstructorUsedError;
+  HoehenVerstellbarkeit? get hoehenVerstellbarkeit =>
       throw _privateConstructorUsedError;
-
-  ArbeitsTischeProduct? get workingTable => throw _privateConstructorUsedError;
+  GestellDimension? get gestellDimension => throw _privateConstructorUsedError;
+  Hubbereich? get hubbereich => throw _privateConstructorUsedError;
+  Hubgeschwindigkeit? get hubgeschwindigkeit =>
+      throw _privateConstructorUsedError;
+  Gerauscheentwicklung? get gerauscheentwicklung =>
+      throw _privateConstructorUsedError;
+  StandbyStromverbrauch? get standbyStromverbrauch =>
+      throw _privateConstructorUsedError;
+  bool? get kollisionsSchutz => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $StateWorkingTableCopyWith<StateWorkingTable> get copyWith =>
-      throw _privateConstructorUsedError;
+  $EntityArbeitsTischeProductCopyWith<EntityArbeitsTischeProduct>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $StateWorkingTableCopyWith<$Res> {
-  factory $StateWorkingTableCopyWith(
-          StateWorkingTable value, $Res Function(StateWorkingTable) then) =
-      _$StateWorkingTableCopyWithImpl<$Res, StateWorkingTable>;
-
+abstract class $EntityArbeitsTischeProductCopyWith<$Res> {
+  factory $EntityArbeitsTischeProductCopyWith(EntityArbeitsTischeProduct value,
+          $Res Function(EntityArbeitsTischeProduct) then) =
+      _$EntityArbeitsTischeProductCopyWithImpl<$Res,
+          EntityArbeitsTischeProduct>;
   @useResult
   $Res call(
-      {String hashKey,
-      String category,
-      int productOrderCount,
-      List<ArbeitsTischeProduct>? workingTables,
-      ArbeitsTischeProduct? workingTable});
+      {String? name,
+      Gestell? frameColors,
+      Platte? plateColor,
+      HoehenVerstellbarkeit? hoehenVerstellbarkeit,
+      GestellDimension? gestellDimension,
+      Hubbereich? hubbereich,
+      Hubgeschwindigkeit? hubgeschwindigkeit,
+      Gerauscheentwicklung? gerauscheentwicklung,
+      StandbyStromverbrauch? standbyStromverbrauch,
+      bool? kollisionsSchutz});
 
-  $ArbeitsTischeProductCopyWith<$Res>? get workingTable;
+  $GestellCopyWith<$Res>? get frameColors;
+  $PlatteCopyWith<$Res>? get plateColor;
+  $HoehenVerstellbarkeitCopyWith<$Res>? get hoehenVerstellbarkeit;
+  $GestellDimensionCopyWith<$Res>? get gestellDimension;
+  $HubbereichCopyWith<$Res>? get hubbereich;
+  $HubgeschwindigkeitCopyWith<$Res>? get hubgeschwindigkeit;
+  $GerauscheentwicklungCopyWith<$Res>? get gerauscheentwicklung;
+  $StandbyStromverbrauchCopyWith<$Res>? get standbyStromverbrauch;
 }
 
 /// @nodoc
-class _$StateWorkingTableCopyWithImpl<$Res, $Val extends StateWorkingTable>
-    implements $StateWorkingTableCopyWith<$Res> {
-  _$StateWorkingTableCopyWithImpl(this._value, this._then);
+class _$EntityArbeitsTischeProductCopyWithImpl<$Res,
+        $Val extends EntityArbeitsTischeProduct>
+    implements $EntityArbeitsTischeProductCopyWith<$Res> {
+  _$EntityArbeitsTischeProductCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? hashKey = null,
-    Object? category = null,
-    Object? productOrderCount = null,
-    Object? workingTables = freezed,
-    Object? workingTable = freezed,
+    Object? name = freezed,
+    Object? frameColors = freezed,
+    Object? plateColor = freezed,
+    Object? hoehenVerstellbarkeit = freezed,
+    Object? gestellDimension = freezed,
+    Object? hubbereich = freezed,
+    Object? hubgeschwindigkeit = freezed,
+    Object? gerauscheentwicklung = freezed,
+    Object? standbyStromverbrauch = freezed,
+    Object? kollisionsSchutz = freezed,
   }) {
     return _then(_value.copyWith(
-      hashKey: null == hashKey
-          ? _value.hashKey
-          : hashKey // ignore: cast_nullable_to_non_nullable
-              as String,
-      category: null == category
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as String,
-      productOrderCount: null == productOrderCount
-          ? _value.productOrderCount
-          : productOrderCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      workingTables: freezed == workingTables
-          ? _value.workingTables
-          : workingTables // ignore: cast_nullable_to_non_nullable
-              as List<ArbeitsTischeProduct>?,
-      workingTable: freezed == workingTable
-          ? _value.workingTable
-          : workingTable // ignore: cast_nullable_to_non_nullable
-              as ArbeitsTischeProduct?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      frameColors: freezed == frameColors
+          ? _value.frameColors
+          : frameColors // ignore: cast_nullable_to_non_nullable
+              as Gestell?,
+      plateColor: freezed == plateColor
+          ? _value.plateColor
+          : plateColor // ignore: cast_nullable_to_non_nullable
+              as Platte?,
+      hoehenVerstellbarkeit: freezed == hoehenVerstellbarkeit
+          ? _value.hoehenVerstellbarkeit
+          : hoehenVerstellbarkeit // ignore: cast_nullable_to_non_nullable
+              as HoehenVerstellbarkeit?,
+      gestellDimension: freezed == gestellDimension
+          ? _value.gestellDimension
+          : gestellDimension // ignore: cast_nullable_to_non_nullable
+              as GestellDimension?,
+      hubbereich: freezed == hubbereich
+          ? _value.hubbereich
+          : hubbereich // ignore: cast_nullable_to_non_nullable
+              as Hubbereich?,
+      hubgeschwindigkeit: freezed == hubgeschwindigkeit
+          ? _value.hubgeschwindigkeit
+          : hubgeschwindigkeit // ignore: cast_nullable_to_non_nullable
+              as Hubgeschwindigkeit?,
+      gerauscheentwicklung: freezed == gerauscheentwicklung
+          ? _value.gerauscheentwicklung
+          : gerauscheentwicklung // ignore: cast_nullable_to_non_nullable
+              as Gerauscheentwicklung?,
+      standbyStromverbrauch: freezed == standbyStromverbrauch
+          ? _value.standbyStromverbrauch
+          : standbyStromverbrauch // ignore: cast_nullable_to_non_nullable
+              as StandbyStromverbrauch?,
+      kollisionsSchutz: freezed == kollisionsSchutz
+          ? _value.kollisionsSchutz
+          : kollisionsSchutz // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $ArbeitsTischeProductCopyWith<$Res>? get workingTable {
-    if (_value.workingTable == null) {
+  $GestellCopyWith<$Res>? get frameColors {
+    if (_value.frameColors == null) {
       return null;
     }
 
-    return $ArbeitsTischeProductCopyWith<$Res>(_value.workingTable!, (value) {
-      return _then(_value.copyWith(workingTable: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$_StateWorkingTableCopyWith<$Res>
-    implements $StateWorkingTableCopyWith<$Res> {
-  factory _$$_StateWorkingTableCopyWith(_$_StateWorkingTable value,
-          $Res Function(_$_StateWorkingTable) then) =
-      __$$_StateWorkingTableCopyWithImpl<$Res>;
-
-  @override
-  @useResult
-  $Res call(
-      {String hashKey,
-      String category,
-      int productOrderCount,
-      List<ArbeitsTischeProduct>? workingTables,
-      ArbeitsTischeProduct? workingTable});
-
-  @override
-  $ArbeitsTischeProductCopyWith<$Res>? get workingTable;
-}
-
-/// @nodoc
-class __$$_StateWorkingTableCopyWithImpl<$Res>
-    extends _$StateWorkingTableCopyWithImpl<$Res, _$_StateWorkingTable>
-    implements _$$_StateWorkingTableCopyWith<$Res> {
-  __$$_StateWorkingTableCopyWithImpl(
-      _$_StateWorkingTable _value, $Res Function(_$_StateWorkingTable) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? hashKey = null,
-    Object? category = null,
-    Object? productOrderCount = null,
-    Object? workingTables = freezed,
-    Object? workingTable = freezed,
-  }) {
-    return _then(_$_StateWorkingTable(
-      hashKey: null == hashKey
-          ? _value.hashKey
-          : hashKey // ignore: cast_nullable_to_non_nullable
-              as String,
-      category: null == category
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as String,
-      productOrderCount: null == productOrderCount
-          ? _value.productOrderCount
-          : productOrderCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      workingTables: freezed == workingTables
-          ? _value._workingTables
-          : workingTables // ignore: cast_nullable_to_non_nullable
-              as List<ArbeitsTischeProduct>?,
-      workingTable: freezed == workingTable
-          ? _value.workingTable
-          : workingTable // ignore: cast_nullable_to_non_nullable
-              as ArbeitsTischeProduct?,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_StateWorkingTable implements _StateWorkingTable {
-  const _$_StateWorkingTable(
-      {this.hashKey = '',
-      this.category = '',
-      this.productOrderCount = 0,
-      final List<ArbeitsTischeProduct>? workingTables = const [],
-      this.workingTable})
-      : _workingTables = workingTables;
-
-  @override
-  @JsonKey()
-  final String hashKey;
-  @override
-  @JsonKey()
-  final String category;
-  @override
-  @JsonKey()
-  final int productOrderCount;
-  final List<ArbeitsTischeProduct>? _workingTables;
-
-  @override
-  @JsonKey()
-  List<ArbeitsTischeProduct>? get workingTables {
-    final value = _workingTables;
-    if (value == null) return null;
-    if (_workingTables is EqualUnmodifiableListView) return _workingTables;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  @override
-  final ArbeitsTischeProduct? workingTable;
-
-  @override
-  String toString() {
-    return 'StateWorkingTable(hashKey: $hashKey, category: $category, productOrderCount: $productOrderCount, workingTables: $workingTables, workingTable: $workingTable)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_StateWorkingTable &&
-            (identical(other.hashKey, hashKey) || other.hashKey == hashKey) &&
-            (identical(other.category, category) ||
-                other.category == category) &&
-            (identical(other.productOrderCount, productOrderCount) ||
-                other.productOrderCount == productOrderCount) &&
-            const DeepCollectionEquality()
-                .equals(other._workingTables, _workingTables) &&
-            (identical(other.workingTable, workingTable) ||
-                other.workingTable == workingTable));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      hashKey,
-      category,
-      productOrderCount,
-      const DeepCollectionEquality().hash(_workingTables),
-      workingTable);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_StateWorkingTableCopyWith<_$_StateWorkingTable> get copyWith =>
-      __$$_StateWorkingTableCopyWithImpl<_$_StateWorkingTable>(
-          this, _$identity);
-}
-
-abstract class _StateWorkingTable implements StateWorkingTable {
-  const factory _StateWorkingTable(
-      {final String hashKey,
-      final String category,
-      final int productOrderCount,
-      final List<ArbeitsTischeProduct>? workingTables,
-      final ArbeitsTischeProduct? workingTable}) = _$_StateWorkingTable;
-
-  @override
-  String get hashKey;
-
-  @override
-  String get category;
-
-  @override
-  int get productOrderCount;
-
-  @override
-  List<ArbeitsTischeProduct>? get workingTables;
-
-  @override
-  ArbeitsTischeProduct? get workingTable;
-
-  @override
-  @JsonKey(ignore: true)
-  _$$_StateWorkingTableCopyWith<_$_StateWorkingTable> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-mixin _$ArbeitsTischeProduct {
-  String get name => throw _privateConstructorUsedError;
-
-  Gestell get frameColors => throw _privateConstructorUsedError;
-
-  Platte get plateColor => throw _privateConstructorUsedError;
-
-  HoehenVerstellbarkeit get hoehenVerstellbarkeit =>
-      throw _privateConstructorUsedError;
-
-  GestellDimension get gestellDimension => throw _privateConstructorUsedError;
-
-  Hubbereich get hubbereich => throw _privateConstructorUsedError;
-
-  Hubgeschwindigkeit get hubgeschwindigkeit =>
-      throw _privateConstructorUsedError;
-
-  Gerauscheentwicklung get gerauscheentwicklung =>
-      throw _privateConstructorUsedError;
-
-  StandbyStromverbrauch get standbyStromverbrauch =>
-      throw _privateConstructorUsedError;
-
-  bool get kollisionsSchutz => throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $ArbeitsTischeProductCopyWith<ArbeitsTischeProduct> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $ArbeitsTischeProductCopyWith<$Res> {
-  factory $ArbeitsTischeProductCopyWith(ArbeitsTischeProduct value,
-          $Res Function(ArbeitsTischeProduct) then) =
-      _$ArbeitsTischeProductCopyWithImpl<$Res, ArbeitsTischeProduct>;
-
-  @useResult
-  $Res call(
-      {String name,
-      Gestell frameColors,
-      Platte plateColor,
-      HoehenVerstellbarkeit hoehenVerstellbarkeit,
-      GestellDimension gestellDimension,
-      Hubbereich hubbereich,
-      Hubgeschwindigkeit hubgeschwindigkeit,
-      Gerauscheentwicklung gerauscheentwicklung,
-      StandbyStromverbrauch standbyStromverbrauch,
-      bool kollisionsSchutz});
-
-  $GestellCopyWith<$Res> get frameColors;
-
-  $PlatteCopyWith<$Res> get plateColor;
-
-  $HoehenVerstellbarkeitCopyWith<$Res> get hoehenVerstellbarkeit;
-
-  $GestellDimensionCopyWith<$Res> get gestellDimension;
-
-  $HubbereichCopyWith<$Res> get hubbereich;
-
-  $HubgeschwindigkeitCopyWith<$Res> get hubgeschwindigkeit;
-
-  $GerauscheentwicklungCopyWith<$Res> get gerauscheentwicklung;
-
-  $StandbyStromverbrauchCopyWith<$Res> get standbyStromverbrauch;
-}
-
-/// @nodoc
-class _$ArbeitsTischeProductCopyWithImpl<$Res,
-        $Val extends ArbeitsTischeProduct>
-    implements $ArbeitsTischeProductCopyWith<$Res> {
-  _$ArbeitsTischeProductCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? name = null,
-    Object? frameColors = null,
-    Object? plateColor = null,
-    Object? hoehenVerstellbarkeit = null,
-    Object? gestellDimension = null,
-    Object? hubbereich = null,
-    Object? hubgeschwindigkeit = null,
-    Object? gerauscheentwicklung = null,
-    Object? standbyStromverbrauch = null,
-    Object? kollisionsSchutz = null,
-  }) {
-    return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      frameColors: null == frameColors
-          ? _value.frameColors
-          : frameColors // ignore: cast_nullable_to_non_nullable
-              as Gestell,
-      plateColor: null == plateColor
-          ? _value.plateColor
-          : plateColor // ignore: cast_nullable_to_non_nullable
-              as Platte,
-      hoehenVerstellbarkeit: null == hoehenVerstellbarkeit
-          ? _value.hoehenVerstellbarkeit
-          : hoehenVerstellbarkeit // ignore: cast_nullable_to_non_nullable
-              as HoehenVerstellbarkeit,
-      gestellDimension: null == gestellDimension
-          ? _value.gestellDimension
-          : gestellDimension // ignore: cast_nullable_to_non_nullable
-              as GestellDimension,
-      hubbereich: null == hubbereich
-          ? _value.hubbereich
-          : hubbereich // ignore: cast_nullable_to_non_nullable
-              as Hubbereich,
-      hubgeschwindigkeit: null == hubgeschwindigkeit
-          ? _value.hubgeschwindigkeit
-          : hubgeschwindigkeit // ignore: cast_nullable_to_non_nullable
-              as Hubgeschwindigkeit,
-      gerauscheentwicklung: null == gerauscheentwicklung
-          ? _value.gerauscheentwicklung
-          : gerauscheentwicklung // ignore: cast_nullable_to_non_nullable
-              as Gerauscheentwicklung,
-      standbyStromverbrauch: null == standbyStromverbrauch
-          ? _value.standbyStromverbrauch
-          : standbyStromverbrauch // ignore: cast_nullable_to_non_nullable
-              as StandbyStromverbrauch,
-      kollisionsSchutz: null == kollisionsSchutz
-          ? _value.kollisionsSchutz
-          : kollisionsSchutz // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $GestellCopyWith<$Res> get frameColors {
-    return $GestellCopyWith<$Res>(_value.frameColors, (value) {
+    return $GestellCopyWith<$Res>(_value.frameColors!, (value) {
       return _then(_value.copyWith(frameColors: value) as $Val);
     });
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $PlatteCopyWith<$Res> get plateColor {
-    return $PlatteCopyWith<$Res>(_value.plateColor, (value) {
+  $PlatteCopyWith<$Res>? get plateColor {
+    if (_value.plateColor == null) {
+      return null;
+    }
+
+    return $PlatteCopyWith<$Res>(_value.plateColor!, (value) {
       return _then(_value.copyWith(plateColor: value) as $Val);
     });
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $HoehenVerstellbarkeitCopyWith<$Res> get hoehenVerstellbarkeit {
-    return $HoehenVerstellbarkeitCopyWith<$Res>(_value.hoehenVerstellbarkeit,
+  $HoehenVerstellbarkeitCopyWith<$Res>? get hoehenVerstellbarkeit {
+    if (_value.hoehenVerstellbarkeit == null) {
+      return null;
+    }
+
+    return $HoehenVerstellbarkeitCopyWith<$Res>(_value.hoehenVerstellbarkeit!,
         (value) {
       return _then(_value.copyWith(hoehenVerstellbarkeit: value) as $Val);
     });
@@ -434,24 +173,36 @@ class _$ArbeitsTischeProductCopyWithImpl<$Res,
 
   @override
   @pragma('vm:prefer-inline')
-  $GestellDimensionCopyWith<$Res> get gestellDimension {
-    return $GestellDimensionCopyWith<$Res>(_value.gestellDimension, (value) {
+  $GestellDimensionCopyWith<$Res>? get gestellDimension {
+    if (_value.gestellDimension == null) {
+      return null;
+    }
+
+    return $GestellDimensionCopyWith<$Res>(_value.gestellDimension!, (value) {
       return _then(_value.copyWith(gestellDimension: value) as $Val);
     });
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $HubbereichCopyWith<$Res> get hubbereich {
-    return $HubbereichCopyWith<$Res>(_value.hubbereich, (value) {
+  $HubbereichCopyWith<$Res>? get hubbereich {
+    if (_value.hubbereich == null) {
+      return null;
+    }
+
+    return $HubbereichCopyWith<$Res>(_value.hubbereich!, (value) {
       return _then(_value.copyWith(hubbereich: value) as $Val);
     });
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $HubgeschwindigkeitCopyWith<$Res> get hubgeschwindigkeit {
-    return $HubgeschwindigkeitCopyWith<$Res>(_value.hubgeschwindigkeit,
+  $HubgeschwindigkeitCopyWith<$Res>? get hubgeschwindigkeit {
+    if (_value.hubgeschwindigkeit == null) {
+      return null;
+    }
+
+    return $HubgeschwindigkeitCopyWith<$Res>(_value.hubgeschwindigkeit!,
         (value) {
       return _then(_value.copyWith(hubgeschwindigkeit: value) as $Val);
     });
@@ -459,8 +210,12 @@ class _$ArbeitsTischeProductCopyWithImpl<$Res,
 
   @override
   @pragma('vm:prefer-inline')
-  $GerauscheentwicklungCopyWith<$Res> get gerauscheentwicklung {
-    return $GerauscheentwicklungCopyWith<$Res>(_value.gerauscheentwicklung,
+  $GerauscheentwicklungCopyWith<$Res>? get gerauscheentwicklung {
+    if (_value.gerauscheentwicklung == null) {
+      return null;
+    }
+
+    return $GerauscheentwicklungCopyWith<$Res>(_value.gerauscheentwicklung!,
         (value) {
       return _then(_value.copyWith(gerauscheentwicklung: value) as $Val);
     });
@@ -468,8 +223,12 @@ class _$ArbeitsTischeProductCopyWithImpl<$Res,
 
   @override
   @pragma('vm:prefer-inline')
-  $StandbyStromverbrauchCopyWith<$Res> get standbyStromverbrauch {
-    return $StandbyStromverbrauchCopyWith<$Res>(_value.standbyStromverbrauch,
+  $StandbyStromverbrauchCopyWith<$Res>? get standbyStromverbrauch {
+    if (_value.standbyStromverbrauch == null) {
+      return null;
+    }
+
+    return $StandbyStromverbrauchCopyWith<$Res>(_value.standbyStromverbrauch!,
         (value) {
       return _then(_value.copyWith(standbyStromverbrauch: value) as $Val);
     });
@@ -477,164 +236,159 @@ class _$ArbeitsTischeProductCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_ArbeitsTischeProductCopyWith<$Res>
-    implements $ArbeitsTischeProductCopyWith<$Res> {
-  factory _$$_ArbeitsTischeProductCopyWith(_$_ArbeitsTischeProduct value,
-          $Res Function(_$_ArbeitsTischeProduct) then) =
-      __$$_ArbeitsTischeProductCopyWithImpl<$Res>;
-
+abstract class _$$_EntityArbeitsTischeProductCopyWith<$Res>
+    implements $EntityArbeitsTischeProductCopyWith<$Res> {
+  factory _$$_EntityArbeitsTischeProductCopyWith(
+          _$_EntityArbeitsTischeProduct value,
+          $Res Function(_$_EntityArbeitsTischeProduct) then) =
+      __$$_EntityArbeitsTischeProductCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {String name,
-      Gestell frameColors,
-      Platte plateColor,
-      HoehenVerstellbarkeit hoehenVerstellbarkeit,
-      GestellDimension gestellDimension,
-      Hubbereich hubbereich,
-      Hubgeschwindigkeit hubgeschwindigkeit,
-      Gerauscheentwicklung gerauscheentwicklung,
-      StandbyStromverbrauch standbyStromverbrauch,
-      bool kollisionsSchutz});
+      {String? name,
+      Gestell? frameColors,
+      Platte? plateColor,
+      HoehenVerstellbarkeit? hoehenVerstellbarkeit,
+      GestellDimension? gestellDimension,
+      Hubbereich? hubbereich,
+      Hubgeschwindigkeit? hubgeschwindigkeit,
+      Gerauscheentwicklung? gerauscheentwicklung,
+      StandbyStromverbrauch? standbyStromverbrauch,
+      bool? kollisionsSchutz});
 
   @override
-  $GestellCopyWith<$Res> get frameColors;
-
+  $GestellCopyWith<$Res>? get frameColors;
   @override
-  $PlatteCopyWith<$Res> get plateColor;
-
+  $PlatteCopyWith<$Res>? get plateColor;
   @override
-  $HoehenVerstellbarkeitCopyWith<$Res> get hoehenVerstellbarkeit;
-
+  $HoehenVerstellbarkeitCopyWith<$Res>? get hoehenVerstellbarkeit;
   @override
-  $GestellDimensionCopyWith<$Res> get gestellDimension;
-
+  $GestellDimensionCopyWith<$Res>? get gestellDimension;
   @override
-  $HubbereichCopyWith<$Res> get hubbereich;
-
+  $HubbereichCopyWith<$Res>? get hubbereich;
   @override
-  $HubgeschwindigkeitCopyWith<$Res> get hubgeschwindigkeit;
-
+  $HubgeschwindigkeitCopyWith<$Res>? get hubgeschwindigkeit;
   @override
-  $GerauscheentwicklungCopyWith<$Res> get gerauscheentwicklung;
-
+  $GerauscheentwicklungCopyWith<$Res>? get gerauscheentwicklung;
   @override
-  $StandbyStromverbrauchCopyWith<$Res> get standbyStromverbrauch;
+  $StandbyStromverbrauchCopyWith<$Res>? get standbyStromverbrauch;
 }
 
 /// @nodoc
-class __$$_ArbeitsTischeProductCopyWithImpl<$Res>
-    extends _$ArbeitsTischeProductCopyWithImpl<$Res, _$_ArbeitsTischeProduct>
-    implements _$$_ArbeitsTischeProductCopyWith<$Res> {
-  __$$_ArbeitsTischeProductCopyWithImpl(_$_ArbeitsTischeProduct _value,
-      $Res Function(_$_ArbeitsTischeProduct) _then)
+class __$$_EntityArbeitsTischeProductCopyWithImpl<$Res>
+    extends _$EntityArbeitsTischeProductCopyWithImpl<$Res,
+        _$_EntityArbeitsTischeProduct>
+    implements _$$_EntityArbeitsTischeProductCopyWith<$Res> {
+  __$$_EntityArbeitsTischeProductCopyWithImpl(
+      _$_EntityArbeitsTischeProduct _value,
+      $Res Function(_$_EntityArbeitsTischeProduct) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
-    Object? frameColors = null,
-    Object? plateColor = null,
-    Object? hoehenVerstellbarkeit = null,
-    Object? gestellDimension = null,
-    Object? hubbereich = null,
-    Object? hubgeschwindigkeit = null,
-    Object? gerauscheentwicklung = null,
-    Object? standbyStromverbrauch = null,
-    Object? kollisionsSchutz = null,
+    Object? name = freezed,
+    Object? frameColors = freezed,
+    Object? plateColor = freezed,
+    Object? hoehenVerstellbarkeit = freezed,
+    Object? gestellDimension = freezed,
+    Object? hubbereich = freezed,
+    Object? hubgeschwindigkeit = freezed,
+    Object? gerauscheentwicklung = freezed,
+    Object? standbyStromverbrauch = freezed,
+    Object? kollisionsSchutz = freezed,
   }) {
-    return _then(_$_ArbeitsTischeProduct(
-      name: null == name
+    return _then(_$_EntityArbeitsTischeProduct(
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      frameColors: null == frameColors
+              as String?,
+      frameColors: freezed == frameColors
           ? _value.frameColors
           : frameColors // ignore: cast_nullable_to_non_nullable
-              as Gestell,
-      plateColor: null == plateColor
+              as Gestell?,
+      plateColor: freezed == plateColor
           ? _value.plateColor
           : plateColor // ignore: cast_nullable_to_non_nullable
-              as Platte,
-      hoehenVerstellbarkeit: null == hoehenVerstellbarkeit
+              as Platte?,
+      hoehenVerstellbarkeit: freezed == hoehenVerstellbarkeit
           ? _value.hoehenVerstellbarkeit
           : hoehenVerstellbarkeit // ignore: cast_nullable_to_non_nullable
-              as HoehenVerstellbarkeit,
-      gestellDimension: null == gestellDimension
+              as HoehenVerstellbarkeit?,
+      gestellDimension: freezed == gestellDimension
           ? _value.gestellDimension
           : gestellDimension // ignore: cast_nullable_to_non_nullable
-              as GestellDimension,
-      hubbereich: null == hubbereich
+              as GestellDimension?,
+      hubbereich: freezed == hubbereich
           ? _value.hubbereich
           : hubbereich // ignore: cast_nullable_to_non_nullable
-              as Hubbereich,
-      hubgeschwindigkeit: null == hubgeschwindigkeit
+              as Hubbereich?,
+      hubgeschwindigkeit: freezed == hubgeschwindigkeit
           ? _value.hubgeschwindigkeit
           : hubgeschwindigkeit // ignore: cast_nullable_to_non_nullable
-              as Hubgeschwindigkeit,
-      gerauscheentwicklung: null == gerauscheentwicklung
+              as Hubgeschwindigkeit?,
+      gerauscheentwicklung: freezed == gerauscheentwicklung
           ? _value.gerauscheentwicklung
           : gerauscheentwicklung // ignore: cast_nullable_to_non_nullable
-              as Gerauscheentwicklung,
-      standbyStromverbrauch: null == standbyStromverbrauch
+              as Gerauscheentwicklung?,
+      standbyStromverbrauch: freezed == standbyStromverbrauch
           ? _value.standbyStromverbrauch
           : standbyStromverbrauch // ignore: cast_nullable_to_non_nullable
-              as StandbyStromverbrauch,
-      kollisionsSchutz: null == kollisionsSchutz
+              as StandbyStromverbrauch?,
+      kollisionsSchutz: freezed == kollisionsSchutz
           ? _value.kollisionsSchutz
           : kollisionsSchutz // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_ArbeitsTischeProduct implements _ArbeitsTischeProduct {
-  const _$_ArbeitsTischeProduct(
-      {required this.name,
-      required this.frameColors,
-      required this.plateColor,
-      required this.hoehenVerstellbarkeit,
-      required this.gestellDimension,
-      required this.hubbereich,
-      required this.hubgeschwindigkeit,
-      required this.gerauscheentwicklung,
-      required this.standbyStromverbrauch,
-      required this.kollisionsSchutz});
+class _$_EntityArbeitsTischeProduct implements _EntityArbeitsTischeProduct {
+  const _$_EntityArbeitsTischeProduct(
+      {this.name,
+      this.frameColors,
+      this.plateColor,
+      this.hoehenVerstellbarkeit,
+      this.gestellDimension,
+      this.hubbereich,
+      this.hubgeschwindigkeit,
+      this.gerauscheentwicklung,
+      this.standbyStromverbrauch,
+      this.kollisionsSchutz});
 
   @override
-  final String name;
+  final String? name;
   @override
-  final Gestell frameColors;
+  final Gestell? frameColors;
   @override
-  final Platte plateColor;
+  final Platte? plateColor;
   @override
-  final HoehenVerstellbarkeit hoehenVerstellbarkeit;
+  final HoehenVerstellbarkeit? hoehenVerstellbarkeit;
   @override
-  final GestellDimension gestellDimension;
+  final GestellDimension? gestellDimension;
   @override
-  final Hubbereich hubbereich;
+  final Hubbereich? hubbereich;
   @override
-  final Hubgeschwindigkeit hubgeschwindigkeit;
+  final Hubgeschwindigkeit? hubgeschwindigkeit;
   @override
-  final Gerauscheentwicklung gerauscheentwicklung;
+  final Gerauscheentwicklung? gerauscheentwicklung;
   @override
-  final StandbyStromverbrauch standbyStromverbrauch;
+  final StandbyStromverbrauch? standbyStromverbrauch;
   @override
-  final bool kollisionsSchutz;
+  final bool? kollisionsSchutz;
 
   @override
   String toString() {
-    return 'ArbeitsTischeProduct(name: $name, frameColors: $frameColors, plateColor: $plateColor, hoehenVerstellbarkeit: $hoehenVerstellbarkeit, gestellDimension: $gestellDimension, hubbereich: $hubbereich, hubgeschwindigkeit: $hubgeschwindigkeit, gerauscheentwicklung: $gerauscheentwicklung, standbyStromverbrauch: $standbyStromverbrauch, kollisionsSchutz: $kollisionsSchutz)';
+    return 'EntityArbeitsTischeProduct(name: $name, frameColors: $frameColors, plateColor: $plateColor, hoehenVerstellbarkeit: $hoehenVerstellbarkeit, gestellDimension: $gestellDimension, hubbereich: $hubbereich, hubgeschwindigkeit: $hubgeschwindigkeit, gerauscheentwicklung: $gerauscheentwicklung, standbyStromverbrauch: $standbyStromverbrauch, kollisionsSchutz: $kollisionsSchutz)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ArbeitsTischeProduct &&
+            other is _$_EntityArbeitsTischeProduct &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.frameColors, frameColors) ||
                 other.frameColors == frameColors) &&
@@ -673,66 +427,55 @@ class _$_ArbeitsTischeProduct implements _ArbeitsTischeProduct {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ArbeitsTischeProductCopyWith<_$_ArbeitsTischeProduct> get copyWith =>
-      __$$_ArbeitsTischeProductCopyWithImpl<_$_ArbeitsTischeProduct>(
-          this, _$identity);
+  _$$_EntityArbeitsTischeProductCopyWith<_$_EntityArbeitsTischeProduct>
+      get copyWith => __$$_EntityArbeitsTischeProductCopyWithImpl<
+          _$_EntityArbeitsTischeProduct>(this, _$identity);
 }
 
-abstract class _ArbeitsTischeProduct implements ArbeitsTischeProduct {
-  const factory _ArbeitsTischeProduct(
-      {required final String name,
-      required final Gestell frameColors,
-      required final Platte plateColor,
-      required final HoehenVerstellbarkeit hoehenVerstellbarkeit,
-      required final GestellDimension gestellDimension,
-      required final Hubbereich hubbereich,
-      required final Hubgeschwindigkeit hubgeschwindigkeit,
-      required final Gerauscheentwicklung gerauscheentwicklung,
-      required final StandbyStromverbrauch standbyStromverbrauch,
-      required final bool kollisionsSchutz}) = _$_ArbeitsTischeProduct;
+abstract class _EntityArbeitsTischeProduct
+    implements EntityArbeitsTischeProduct {
+  const factory _EntityArbeitsTischeProduct(
+      {final String? name,
+      final Gestell? frameColors,
+      final Platte? plateColor,
+      final HoehenVerstellbarkeit? hoehenVerstellbarkeit,
+      final GestellDimension? gestellDimension,
+      final Hubbereich? hubbereich,
+      final Hubgeschwindigkeit? hubgeschwindigkeit,
+      final Gerauscheentwicklung? gerauscheentwicklung,
+      final StandbyStromverbrauch? standbyStromverbrauch,
+      final bool? kollisionsSchutz}) = _$_EntityArbeitsTischeProduct;
 
   @override
-  String get name;
-
+  String? get name;
   @override
-  Gestell get frameColors;
-
+  Gestell? get frameColors;
   @override
-  Platte get plateColor;
-
+  Platte? get plateColor;
   @override
-  HoehenVerstellbarkeit get hoehenVerstellbarkeit;
-
+  HoehenVerstellbarkeit? get hoehenVerstellbarkeit;
   @override
-  GestellDimension get gestellDimension;
-
+  GestellDimension? get gestellDimension;
   @override
-  Hubbereich get hubbereich;
-
+  Hubbereich? get hubbereich;
   @override
-  Hubgeschwindigkeit get hubgeschwindigkeit;
-
+  Hubgeschwindigkeit? get hubgeschwindigkeit;
   @override
-  Gerauscheentwicklung get gerauscheentwicklung;
-
+  Gerauscheentwicklung? get gerauscheentwicklung;
   @override
-  StandbyStromverbrauch get standbyStromverbrauch;
-
+  StandbyStromverbrauch? get standbyStromverbrauch;
   @override
-  bool get kollisionsSchutz;
-
+  bool? get kollisionsSchutz;
   @override
   @JsonKey(ignore: true)
-  _$$_ArbeitsTischeProductCopyWith<_$_ArbeitsTischeProduct> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_EntityArbeitsTischeProductCopyWith<_$_EntityArbeitsTischeProduct>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 mixin _$StandbyStromverbrauch {
   double get betrag => throw _privateConstructorUsedError;
-
   String get masseinheit => throw _privateConstructorUsedError;
-
   String? get name => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -745,7 +488,6 @@ abstract class $StandbyStromverbrauchCopyWith<$Res> {
   factory $StandbyStromverbrauchCopyWith(StandbyStromverbrauch value,
           $Res Function(StandbyStromverbrauch) then) =
       _$StandbyStromverbrauchCopyWithImpl<$Res, StandbyStromverbrauch>;
-
   @useResult
   $Res call({double betrag, String masseinheit, String? name});
 }
@@ -758,7 +500,6 @@ class _$StandbyStromverbrauchCopyWithImpl<$Res,
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -792,7 +533,6 @@ abstract class _$$_StandbyStromverbrauchCopyWith<$Res>
   factory _$$_StandbyStromverbrauchCopyWith(_$_StandbyStromverbrauch value,
           $Res Function(_$_StandbyStromverbrauch) then) =
       __$$_StandbyStromverbrauchCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({double betrag, String masseinheit, String? name});
@@ -878,13 +618,10 @@ abstract class _StandbyStromverbrauch implements StandbyStromverbrauch {
 
   @override
   double get betrag;
-
   @override
   String get masseinheit;
-
   @override
   String? get name;
-
   @override
   @JsonKey(ignore: true)
   _$$_StandbyStromverbrauchCopyWith<_$_StandbyStromverbrauch> get copyWith =>
@@ -894,9 +631,7 @@ abstract class _StandbyStromverbrauch implements StandbyStromverbrauch {
 /// @nodoc
 mixin _$Gerauscheentwicklung {
   int get betrag => throw _privateConstructorUsedError;
-
   String get masseinheit => throw _privateConstructorUsedError;
-
   String? get name => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -909,7 +644,6 @@ abstract class $GerauscheentwicklungCopyWith<$Res> {
   factory $GerauscheentwicklungCopyWith(Gerauscheentwicklung value,
           $Res Function(Gerauscheentwicklung) then) =
       _$GerauscheentwicklungCopyWithImpl<$Res, Gerauscheentwicklung>;
-
   @useResult
   $Res call({int betrag, String masseinheit, String? name});
 }
@@ -922,7 +656,6 @@ class _$GerauscheentwicklungCopyWithImpl<$Res,
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -956,7 +689,6 @@ abstract class _$$_GerauscheentwicklungCopyWith<$Res>
   factory _$$_GerauscheentwicklungCopyWith(_$_Gerauscheentwicklung value,
           $Res Function(_$_Gerauscheentwicklung) then) =
       __$$_GerauscheentwicklungCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({int betrag, String masseinheit, String? name});
@@ -1042,13 +774,10 @@ abstract class _Gerauscheentwicklung implements Gerauscheentwicklung {
 
   @override
   int get betrag;
-
   @override
   String get masseinheit;
-
   @override
   String? get name;
-
   @override
   @JsonKey(ignore: true)
   _$$_GerauscheentwicklungCopyWith<_$_Gerauscheentwicklung> get copyWith =>
@@ -1058,9 +787,7 @@ abstract class _Gerauscheentwicklung implements Gerauscheentwicklung {
 /// @nodoc
 mixin _$Hubgeschwindigkeit {
   int get betrag => throw _privateConstructorUsedError;
-
   String get masseinheit => throw _privateConstructorUsedError;
-
   String? get name => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -1073,7 +800,6 @@ abstract class $HubgeschwindigkeitCopyWith<$Res> {
   factory $HubgeschwindigkeitCopyWith(
           Hubgeschwindigkeit value, $Res Function(Hubgeschwindigkeit) then) =
       _$HubgeschwindigkeitCopyWithImpl<$Res, Hubgeschwindigkeit>;
-
   @useResult
   $Res call({int betrag, String masseinheit, String? name});
 }
@@ -1085,7 +811,6 @@ class _$HubgeschwindigkeitCopyWithImpl<$Res, $Val extends Hubgeschwindigkeit>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -1119,7 +844,6 @@ abstract class _$$_HubgeschwindigkeitCopyWith<$Res>
   factory _$$_HubgeschwindigkeitCopyWith(_$_Hubgeschwindigkeit value,
           $Res Function(_$_Hubgeschwindigkeit) then) =
       __$$_HubgeschwindigkeitCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({int betrag, String masseinheit, String? name});
@@ -1205,13 +929,10 @@ abstract class _Hubgeschwindigkeit implements Hubgeschwindigkeit {
 
   @override
   int get betrag;
-
   @override
   String get masseinheit;
-
   @override
   String? get name;
-
   @override
   @JsonKey(ignore: true)
   _$$_HubgeschwindigkeitCopyWith<_$_Hubgeschwindigkeit> get copyWith =>
@@ -1221,9 +942,7 @@ abstract class _Hubgeschwindigkeit implements Hubgeschwindigkeit {
 /// @nodoc
 mixin _$Hubbereich {
   int get breite => throw _privateConstructorUsedError;
-
   int get tiefe => throw _privateConstructorUsedError;
-
   String? get name => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -1236,7 +955,6 @@ abstract class $HubbereichCopyWith<$Res> {
   factory $HubbereichCopyWith(
           Hubbereich value, $Res Function(Hubbereich) then) =
       _$HubbereichCopyWithImpl<$Res, Hubbereich>;
-
   @useResult
   $Res call({int breite, int tiefe, String? name});
 }
@@ -1248,7 +966,6 @@ class _$HubbereichCopyWithImpl<$Res, $Val extends Hubbereich>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -1282,7 +999,6 @@ abstract class _$$_HubbereichCopyWith<$Res>
   factory _$$_HubbereichCopyWith(
           _$_Hubbereich value, $Res Function(_$_Hubbereich) then) =
       __$$_HubbereichCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({int breite, int tiefe, String? name});
@@ -1365,13 +1081,10 @@ abstract class _Hubbereich implements Hubbereich {
 
   @override
   int get breite;
-
   @override
   int get tiefe;
-
   @override
   String? get name;
-
   @override
   @JsonKey(ignore: true)
   _$$_HubbereichCopyWith<_$_Hubbereich> get copyWith =>
@@ -1381,9 +1094,7 @@ abstract class _Hubbereich implements Hubbereich {
 /// @nodoc
 mixin _$GestellDimension {
   int get breite => throw _privateConstructorUsedError;
-
   int get laenge => throw _privateConstructorUsedError;
-
   String? get name => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -1396,7 +1107,6 @@ abstract class $GestellDimensionCopyWith<$Res> {
   factory $GestellDimensionCopyWith(
           GestellDimension value, $Res Function(GestellDimension) then) =
       _$GestellDimensionCopyWithImpl<$Res, GestellDimension>;
-
   @useResult
   $Res call({int breite, int laenge, String? name});
 }
@@ -1408,7 +1118,6 @@ class _$GestellDimensionCopyWithImpl<$Res, $Val extends GestellDimension>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -1442,7 +1151,6 @@ abstract class _$$_GestellDimensionCopyWith<$Res>
   factory _$$_GestellDimensionCopyWith(
           _$_GestellDimension value, $Res Function(_$_GestellDimension) then) =
       __$$_GestellDimensionCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({int breite, int laenge, String? name});
@@ -1526,13 +1234,10 @@ abstract class _GestellDimension implements GestellDimension {
 
   @override
   int get breite;
-
   @override
   int get laenge;
-
   @override
   String? get name;
-
   @override
   @JsonKey(ignore: true)
   _$$_GestellDimensionCopyWith<_$_GestellDimension> get copyWith =>
@@ -1542,9 +1247,7 @@ abstract class _GestellDimension implements GestellDimension {
 /// @nodoc
 mixin _$HoehenVerstellbarkeit {
   int get von => throw _privateConstructorUsedError;
-
   int get bis => throw _privateConstructorUsedError;
-
   String? get name => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -1557,7 +1260,6 @@ abstract class $HoehenVerstellbarkeitCopyWith<$Res> {
   factory $HoehenVerstellbarkeitCopyWith(HoehenVerstellbarkeit value,
           $Res Function(HoehenVerstellbarkeit) then) =
       _$HoehenVerstellbarkeitCopyWithImpl<$Res, HoehenVerstellbarkeit>;
-
   @useResult
   $Res call({int von, int bis, String? name});
 }
@@ -1570,7 +1272,6 @@ class _$HoehenVerstellbarkeitCopyWithImpl<$Res,
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -1604,7 +1305,6 @@ abstract class _$$_HoehenVerstellabrkeitCopyWith<$Res>
   factory _$$_HoehenVerstellabrkeitCopyWith(_$_HoehenVerstellabrkeit value,
           $Res Function(_$_HoehenVerstellabrkeit) then) =
       __$$_HoehenVerstellabrkeitCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({int von, int bis, String? name});
@@ -1689,13 +1389,10 @@ abstract class _HoehenVerstellabrkeit implements HoehenVerstellbarkeit {
 
   @override
   int get von;
-
   @override
   int get bis;
-
   @override
   String? get name;
-
   @override
   @JsonKey(ignore: true)
   _$$_HoehenVerstellabrkeitCopyWith<_$_HoehenVerstellabrkeit> get copyWith =>
@@ -1705,9 +1402,7 @@ abstract class _HoehenVerstellabrkeit implements HoehenVerstellbarkeit {
 /// @nodoc
 mixin _$Gestell {
   Color get color => throw _privateConstructorUsedError;
-
   String get material => throw _privateConstructorUsedError;
-
   String? get name => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -1718,7 +1413,6 @@ mixin _$Gestell {
 abstract class $GestellCopyWith<$Res> {
   factory $GestellCopyWith(Gestell value, $Res Function(Gestell) then) =
       _$GestellCopyWithImpl<$Res, Gestell>;
-
   @useResult
   $Res call({Color color, String material, String? name});
 }
@@ -1730,7 +1424,6 @@ class _$GestellCopyWithImpl<$Res, $Val extends Gestell>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -1763,7 +1456,6 @@ abstract class _$$_GestellCopyWith<$Res> implements $GestellCopyWith<$Res> {
   factory _$$_GestellCopyWith(
           _$_Gestell value, $Res Function(_$_Gestell) then) =
       __$$_GestellCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({Color color, String material, String? name});
@@ -1846,13 +1538,10 @@ abstract class _Gestell implements Gestell {
 
   @override
   Color get color;
-
   @override
   String get material;
-
   @override
   String? get name;
-
   @override
   @JsonKey(ignore: true)
   _$$_GestellCopyWith<_$_Gestell> get copyWith =>
@@ -1862,13 +1551,9 @@ abstract class _Gestell implements Gestell {
 /// @nodoc
 mixin _$Platte {
   Color get color => throw _privateConstructorUsedError;
-
   int get breite => throw _privateConstructorUsedError;
-
   int get tiefe => throw _privateConstructorUsedError;
-
   Beschichtung get beschichtung => throw _privateConstructorUsedError;
-
   String? get name => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -1879,7 +1564,6 @@ mixin _$Platte {
 abstract class $PlatteCopyWith<$Res> {
   factory $PlatteCopyWith(Platte value, $Res Function(Platte) then) =
       _$PlatteCopyWithImpl<$Res, Platte>;
-
   @useResult
   $Res call(
       {Color color,
@@ -1898,7 +1582,6 @@ class _$PlatteCopyWithImpl<$Res, $Val extends Platte>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -1948,7 +1631,6 @@ class _$PlatteCopyWithImpl<$Res, $Val extends Platte>
 abstract class _$$_PlatteCopyWith<$Res> implements $PlatteCopyWith<$Res> {
   factory _$$_PlatteCopyWith(_$_Platte value, $Res Function(_$_Platte) then) =
       __$$_PlatteCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -2063,19 +1745,14 @@ abstract class _Platte implements Platte {
 
   @override
   Color get color;
-
   @override
   int get breite;
-
   @override
   int get tiefe;
-
   @override
   Beschichtung get beschichtung;
-
   @override
   String? get name;
-
   @override
   @JsonKey(ignore: true)
   _$$_PlatteCopyWith<_$_Platte> get copyWith =>
@@ -2085,7 +1762,6 @@ abstract class _Platte implements Platte {
 /// @nodoc
 mixin _$Beschichtung {
   int get hoehe => throw _privateConstructorUsedError;
-
   String? get name => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -2098,7 +1774,6 @@ abstract class $BeschichtungCopyWith<$Res> {
   factory $BeschichtungCopyWith(
           Beschichtung value, $Res Function(Beschichtung) then) =
       _$BeschichtungCopyWithImpl<$Res, Beschichtung>;
-
   @useResult
   $Res call({int hoehe, String? name});
 }
@@ -2110,7 +1785,6 @@ class _$BeschichtungCopyWithImpl<$Res, $Val extends Beschichtung>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -2139,7 +1813,6 @@ abstract class _$$_BeschichtungCopyWith<$Res>
   factory _$$_BeschichtungCopyWith(
           _$_Beschichtung value, $Res Function(_$_Beschichtung) then) =
       __$$_BeschichtungCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({int hoehe, String? name});
@@ -2212,10 +1885,8 @@ abstract class _Beschichtung implements Beschichtung {
 
   @override
   int get hoehe;
-
   @override
   String? get name;
-
   @override
   @JsonKey(ignore: true)
   _$$_BeschichtungCopyWith<_$_Beschichtung> get copyWith =>

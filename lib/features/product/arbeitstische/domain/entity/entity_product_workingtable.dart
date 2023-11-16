@@ -1,22 +1,12 @@
-import 'package:flutter/material.dart';
+import 'dart:ui';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'state_workingtable.freezed.dart';
+part 'entity_product_workingtable.freezed.dart';
 
 @freezed
-class StateWorkingTable with _$StateWorkingTable {
-  const factory StateWorkingTable({
-    @Default('') String hashKey,
-    @Default('') String category,
-    @Default(0) int productOrderCount,
-    @Default([]) List<ArbeitsTischeProduct>? workingTables,
-    ArbeitsTischeProduct? selectedWorkingTable,
-  }) = _StateWorkingTable;
-}
-
-@freezed
-class ArbeitsTischeProduct with _$ArbeitsTischeProduct {
-  const factory ArbeitsTischeProduct({
+class EntityArbeitsTischeProduct with _$EntityArbeitsTischeProduct {
+  const factory EntityArbeitsTischeProduct({
     String? name,
     Gestell? frameColors,
     Platte? plateColor,
@@ -27,7 +17,7 @@ class ArbeitsTischeProduct with _$ArbeitsTischeProduct {
     Gerauscheentwicklung? gerauscheentwicklung,
     StandbyStromverbrauch? standbyStromverbrauch,
     bool? kollisionsSchutz,
-  }) = _ArbeitsTischeProduct;
+  }) = _EntityArbeitsTischeProduct;
 }
 
 @freezed
