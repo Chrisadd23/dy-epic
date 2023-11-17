@@ -12,12 +12,12 @@ class CubitWorkingTableProduct extends Cubit<StateWorkingTable> {
 
   final RepositoryWorkingTable repositoryProductArbeitstische;
 
-  void load() {
+  void load(String? product) {
     if (state != const StateWorkingTable.loading()) {
       emit(const StateWorkingTable.loading());
     }
     final workingTables =
-        repositoryProductArbeitstische.getArbeitstischeProduct();
+        repositoryProductArbeitstische.getArbeitstischeProduct(product);
     workingTables.fold((failure) {}, (listWorkingTables) async {
       final list = listWorkingTables
           .map((workingTable) => ArbeitsTischeProduct(

@@ -13,9 +13,9 @@ class RepositoryProductWorkingtableImplementation
 
   @override
   Future<Either<Failure, List<EntityArbeitsTischeProduct>>>
-      getArbeitstischeProduct() {
+      getArbeitstischeProduct(String? product) {
     // TODO: implement getArbeitstischeProduct
-    final data = dataSourceArbeitstische.loadData();
+    final data = dataSourceArbeitstische.loadData(product);
     return data.fold(
         (failure) => Left(failure),
         (listEntityProductArbeitstische) =>

@@ -5,13 +5,15 @@ import 'package:either_dart/either.dart';
 import 'package:flutter/material.dart';
 
 abstract class DataSourceProductWorkingTable {
-  Future<Either<Failure, List<EntityArbeitsTischeProduct>>> loadData();
+  Future<Either<Failure, List<EntityArbeitsTischeProduct>>> loadData(
+      String? product);
 }
 
 class DataSourceProductWorkingtableImplementation
     extends DataSourceProductWorkingTable {
   @override
-  Future<Either<Failure, List<EntityArbeitsTischeProduct>>> loadData() async {
+  Future<Either<Failure, List<EntityArbeitsTischeProduct>>> loadData(
+      String? product) async {
     // TODO: implement loadData
     try {
       await Future.delayed(const Duration(seconds: 1));

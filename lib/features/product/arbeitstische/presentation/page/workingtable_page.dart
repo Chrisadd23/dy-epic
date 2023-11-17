@@ -17,7 +17,7 @@ class WorkingTablePage extends HookWidget {
     return GlobalScaffold(
       appBarContext: context,
       body: BlocProvider(
-        create: (context) => getIt<CubitWorkingTableProduct>()..load(),
+        create: (context) => getIt<CubitWorkingTableProduct>()..load(product),
         child: ProductWidget(product: product),
       ),
     );

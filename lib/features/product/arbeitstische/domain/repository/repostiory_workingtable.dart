@@ -4,5 +4,5 @@ import 'package:either_dart/either.dart';
 
 abstract class RepositoryWorkingTable {
   Future<Either<Failure, List<EntityArbeitsTischeProduct>>>
-      getArbeitstischeProduct();
+      getArbeitstischeProduct(String? product);
 }
