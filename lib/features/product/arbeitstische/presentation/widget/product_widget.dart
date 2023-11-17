@@ -1,4 +1,5 @@
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
+import 'package:app_flutter_produkt_bestellen/core/fix_widgets/loading_widget.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/presentation/cubit/cubit_workingtable_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/presentation/cubit/state_workingtable.dart';
 import 'package:app_flutter_produkt_bestellen/gen/assets.gen.dart';
@@ -336,14 +337,23 @@ class ProductColorWidget extends StatelessWidget {
                   return Flexible(
                       child: InkWell(
                     onTap: () async {
-                      final colors = state.workingTables
-                          ?.map((product) => product.frameColors?.color)
-                          .toList();
-                      final color = await _showColorMenu(context, colors);
-                      if (context.mounted) {
-                        context
-                            .read<CubitWorkingTableProduct>()
-                            .changeColor(color);
+                      debugPrint('start');
+                      final colors = state.maybeMap(
+                          orElse: () => null,
+                          success: (productColor) => productColor.workingTables
+                              ?.map((product) => product.frameColors?.color)
+                              .toList());
+                      debugPrint('wait => $colors');
+                      if (colors != null) {
+                        final color = await _showColorMenu(context, colors);
+                        debugPrint('chosen color $color');
+                        if (context.mounted) {
+                          debugPrint('continue');
+                          debugPrint('chosen color $color');
+                          context
+                              .read<CubitWorkingTableProduct>()
+                              .changeColor(color);
+                        }
                       }
                     },
                     child: Container(
@@ -352,8 +362,10 @@ class ProductColorWidget extends StatelessWidget {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           border: Border.all(width: 2),
-                          color:
-                              state.selectedWorkingTable?.frameColors?.color),
+                          color: state.maybeMap(
+                              orElse: () => null,
+                              success: (product) => product
+                                  .selectedWorkingTable?.frameColors?.color)),
                     ),
                   ));
                 }),
@@ -376,23 +388,37 @@ class ProductColorWidget extends StatelessWidget {
     return showDialog<Color>(
         barrierColor: Colors.transparent,
         context: context,
-        builder: (context) => Align(
-              alignment: Alignment.bottomCenter,
+        builder: (context) {
+          debugPrint('builder');
+          return Align(
+            alignment: Alignment.bottomCenter,
+            child: Padding(
+              padding: EdgeInsets.only(
+                  left: MediaQuery.of(context).size.width * 0.45,
+                  bottom: MediaQuery.of(context).size.height * 0.108),
               child: Container(
                 height: MediaQuery.sizeOf(context).height * 0.21,
-                width: MediaQuery.sizeOf(context).width * 0.3,
+                width: MediaQuery.sizeOf(context).width * 0.4,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: Colors.transparent),
                 child: SingleChildScrollView(
-                  child: Column(
-                    children: colors!
-                        .map((color) => ColorWidget(color: color))
-                        .toList(),
-                  ),
+                  child: Column(children: [
+                    ...colors!.map((color) {
+                      debugPrint('map');
+                      return Padding(
+                        padding: color == colors.last
+                            ? EdgeInsets.zero
+                            : const EdgeInsets.only(bottom: 8.0),
+                        child: ColorWidget(color: color),
+                      );
+                    }).toList(),
+                  ]),
                 ),
               ),
-            ));
+            ),
+          );
+        });
   }
 }
 
@@ -404,6 +430,7 @@ class ColorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint('ColorWidget');
     return Material(
       type: MaterialType.transparency,
       child: InkWell(
@@ -415,9 +442,14 @@ class ColorWidget extends StatelessWidget {
         },
         child: Container(
             height: MediaQuery.of(context).size.height * 0.13,
-            width: MediaQuery.of(context).size.width * 0.25,
+            width: MediaQuery.of(context).size.width * 0.3,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
+              border: Border.all(
+                  color: color == AppColors.black080808
+                      ? Colors.white
+                      : Colors.black,
+                  width: 2),
               color: color,
             )),
       ),
@@ -491,37 +523,45 @@ class ProductCountWidget extends HookWidget {
                   onTapCancel: () =>
                       context.read<CubitWorkingTableProduct>().stopCounting(),
                 ),
-                BlocSelector<CubitWorkingTableProduct, StateWorkingTable, int>(
-                    selector: (state) => state.productOrderCount,
-                    builder: (context, productCount) {
-                      return Container(
-                        width: constraints.maxWidth * 0.35,
-                        height: constraints.maxHeight * 0.06,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: const Color.fromRGBO(87, 87, 87, 0.4),
-                        ),
-                        child: Center(
-                            child: Text(
-                          productCount.toString(),
-                          style: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 35,
-                              fontWeight: FontWeight.bold,
-                              shadows: [
-                                Shadow(
-                                    color: Colors.white, offset: Offset(1, 1)),
-                                Shadow(
-                                    color: Colors.white, offset: Offset(-1, 1)),
-                                Shadow(
-                                    color: Colors.white,
-                                    offset: Offset(-1, -1)),
-                                Shadow(
-                                    color: Colors.white, offset: Offset(1, -1)),
-                              ]),
-                        )),
-                      );
-                    }),
+                Container(
+                  width: constraints.maxWidth * 0.35,
+                  height: constraints.maxHeight * 0.06,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: const Color.fromRGBO(87, 87, 87, 0.4),
+                  ),
+                  child: Center(
+                      child: BlocSelector<CubitWorkingTableProduct,
+                              StateWorkingTable, int?>(
+                          selector: (state) => state.maybeMap(
+                              orElse: () => null,
+                              success: (product) => product.productOrderCount),
+                          builder: (context, productCount) {
+                            return productCount == null
+                                ? const LoadingWidget()
+                                : Text(
+                                    productCount.toString(),
+                                    style: const TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 35,
+                                        fontWeight: FontWeight.bold,
+                                        shadows: [
+                                          Shadow(
+                                              color: Colors.white,
+                                              offset: Offset(1, 1)),
+                                          Shadow(
+                                              color: Colors.white,
+                                              offset: Offset(-1, 1)),
+                                          Shadow(
+                                              color: Colors.white,
+                                              offset: Offset(-1, -1)),
+                                          Shadow(
+                                              color: Colors.white,
+                                              offset: Offset(1, -1)),
+                                        ]),
+                                  );
+                          })),
+                ),
               ]));
     });
   }

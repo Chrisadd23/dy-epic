@@ -8,20 +8,24 @@ import 'package:flutter/material.dart';
 
 class CubitWorkingTableProduct extends Cubit<StateWorkingTable> {
   CubitWorkingTableProduct({required this.repositoryProductArbeitstische})
-      : super(const StateWorkingTable());
+      : super(const StateWorkingTable.loading());
 
   final RepositoryWorkingTable repositoryProductArbeitstische;
 
   void load() {
+    if (state != const StateWorkingTable.loading()) {
+      emit(const StateWorkingTable.loading());
+    }
     final workingTables =
         repositoryProductArbeitstische.getArbeitstischeProduct();
-    workingTables.fold((failure) {}, (listWorkingTables) {
+    workingTables.fold((failure) {}, (listWorkingTables) async {
       final list = listWorkingTables
           .map((workingTable) => ArbeitsTischeProduct(
               frameColors: Gestell(
                   color: workingTable.frameColors!.color, material: '')))
           .toList();
-      emit(state.copyWith(workingTables: list));
+      debugPrint(list.toString());
+      emit(StateWorkingTable.success(workingTables: list));
     });
   }
 
@@ -29,16 +33,21 @@ class CubitWorkingTableProduct extends Cubit<StateWorkingTable> {
 
   void increment() async {
     _timer = Timer.periodic(const Duration(milliseconds: 100), (timer) {
-      emit(state.copyWith(productOrderCount: state.productOrderCount + 1));
+      emit(state.maybeMap(
+          orElse: () => const StateWorkingTable.loading(),
+          success: (productOrderCount) => productOrderCount.copyWith(
+              productOrderCount: productOrderCount.productOrderCount + 1)));
     });
   }
 
   void decrement() async {
     _timer = Timer.periodic(const Duration(milliseconds: 100), (timer) {
-      emit(state.copyWith(
-          productOrderCount: state.productOrderCount > 0
-              ? state.productOrderCount - 1
-              : state.productOrderCount));
+      emit(state.maybeMap(
+          orElse: () => const StateWorkingTable.loading(),
+          success: (productOrderCount) => productOrderCount.copyWith(
+              productOrderCount: productOrderCount.productOrderCount > 0
+                  ? productOrderCount.productOrderCount - 1
+                  : productOrderCount.productOrderCount)));
     });
   }
 
@@ -52,12 +61,16 @@ class CubitWorkingTableProduct extends Cubit<StateWorkingTable> {
 
   void changeColor(Color? color) {
     debugPrint('change Color --< $color');
-    final product = state.workingTables
-        ?.where((element) => element.frameColors?.color == color)
-        .firstOrNull;
 
-    if (product != null) {
-      emit(state.copyWith(selectedWorkingTable: product));
+    final productState = state.maybeMap(
+        orElse: () => const StateWorkingTable.loading(),
+        success: (product) => product.copyWith(
+            selectedWorkingTable: product.workingTables
+                ?.where((element) => element.frameColors?.color == color)
+                .firstOrNull));
+
+    if (productState != const StateWorkingTable.loading()) {
+      emit(productState);
     }
   }
 }

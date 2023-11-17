@@ -16,16 +16,61 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$StateWorkingTable {
-  String get hashKey => throw _privateConstructorUsedError;
-  String get category => throw _privateConstructorUsedError;
-  int get productOrderCount => throw _privateConstructorUsedError;
-  List<ArbeitsTischeProduct>? get workingTables =>
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(
+            String hashKey,
+            String category,
+            int productOrderCount,
+            List<ArbeitsTischeProduct>? workingTables,
+            ArbeitsTischeProduct? selectedWorkingTable)
+        success,
+  }) =>
       throw _privateConstructorUsedError;
-  ArbeitsTischeProduct? get selectedWorkingTable =>
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(
+            String hashKey,
+            String category,
+            int productOrderCount,
+            List<ArbeitsTischeProduct>? workingTables,
+            ArbeitsTischeProduct? selectedWorkingTable)?
+        success,
+  }) =>
       throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $StateWorkingTableCopyWith<StateWorkingTable> get copyWith =>
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(
+            String hashKey,
+            String category,
+            int productOrderCount,
+            List<ArbeitsTischeProduct>? workingTables,
+            ArbeitsTischeProduct? selectedWorkingTable)?
+        success,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Success value)? success,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    required TResult orElse(),
+  }) =>
       throw _privateConstructorUsedError;
 }
 
@@ -34,15 +79,6 @@ abstract class $StateWorkingTableCopyWith<$Res> {
   factory $StateWorkingTableCopyWith(
           StateWorkingTable value, $Res Function(StateWorkingTable) then) =
       _$StateWorkingTableCopyWithImpl<$Res, StateWorkingTable>;
-  @useResult
-  $Res call(
-      {String hashKey,
-      String category,
-      int productOrderCount,
-      List<ArbeitsTischeProduct>? workingTables,
-      ArbeitsTischeProduct? selectedWorkingTable});
-
-  $ArbeitsTischeProductCopyWith<$Res>? get selectedWorkingTable;
 }
 
 /// @nodoc
@@ -54,61 +90,133 @@ class _$StateWorkingTableCopyWithImpl<$Res, $Val extends StateWorkingTable>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? hashKey = null,
-    Object? category = null,
-    Object? productOrderCount = null,
-    Object? workingTables = freezed,
-    Object? selectedWorkingTable = freezed,
-  }) {
-    return _then(_value.copyWith(
-      hashKey: null == hashKey
-          ? _value.hashKey
-          : hashKey // ignore: cast_nullable_to_non_nullable
-              as String,
-      category: null == category
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as String,
-      productOrderCount: null == productOrderCount
-          ? _value.productOrderCount
-          : productOrderCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      workingTables: freezed == workingTables
-          ? _value.workingTables
-          : workingTables // ignore: cast_nullable_to_non_nullable
-              as List<ArbeitsTischeProduct>?,
-      selectedWorkingTable: freezed == selectedWorkingTable
-          ? _value.selectedWorkingTable
-          : selectedWorkingTable // ignore: cast_nullable_to_non_nullable
-              as ArbeitsTischeProduct?,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ArbeitsTischeProductCopyWith<$Res>? get selectedWorkingTable {
-    if (_value.selectedWorkingTable == null) {
-      return null;
-    }
-
-    return $ArbeitsTischeProductCopyWith<$Res>(_value.selectedWorkingTable!,
-        (value) {
-      return _then(_value.copyWith(selectedWorkingTable: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$$_StateWorkingTableCopyWith<$Res>
-    implements $StateWorkingTableCopyWith<$Res> {
-  factory _$$_StateWorkingTableCopyWith(_$_StateWorkingTable value,
-          $Res Function(_$_StateWorkingTable) then) =
-      __$$_StateWorkingTableCopyWithImpl<$Res>;
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$StateWorkingTableCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LoadingImpl implements _Loading {
+  const _$LoadingImpl();
+
   @override
+  String toString() {
+    return 'StateWorkingTable.loading()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(
+            String hashKey,
+            String category,
+            int productOrderCount,
+            List<ArbeitsTischeProduct>? workingTables,
+            ArbeitsTischeProduct? selectedWorkingTable)
+        success,
+  }) {
+    return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(
+            String hashKey,
+            String category,
+            int productOrderCount,
+            List<ArbeitsTischeProduct>? workingTables,
+            ArbeitsTischeProduct? selectedWorkingTable)?
+        success,
+  }) {
+    return loading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(
+            String hashKey,
+            String category,
+            int productOrderCount,
+            List<ArbeitsTischeProduct>? workingTables,
+            ArbeitsTischeProduct? selectedWorkingTable)?
+        success,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+  }) {
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Success value)? success,
+  }) {
+    return loading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Loading implements StateWorkingTable {
+  const factory _Loading() = _$LoadingImpl;
+}
+
+/// @nodoc
+abstract class _$$SuccessImplCopyWith<$Res> {
+  factory _$$SuccessImplCopyWith(
+          _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
+      __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
       {String hashKey,
@@ -117,16 +225,15 @@ abstract class _$$_StateWorkingTableCopyWith<$Res>
       List<ArbeitsTischeProduct>? workingTables,
       ArbeitsTischeProduct? selectedWorkingTable});
 
-  @override
   $ArbeitsTischeProductCopyWith<$Res>? get selectedWorkingTable;
 }
 
 /// @nodoc
-class __$$_StateWorkingTableCopyWithImpl<$Res>
-    extends _$StateWorkingTableCopyWithImpl<$Res, _$_StateWorkingTable>
-    implements _$$_StateWorkingTableCopyWith<$Res> {
-  __$$_StateWorkingTableCopyWithImpl(
-      _$_StateWorkingTable _value, $Res Function(_$_StateWorkingTable) _then)
+class __$$SuccessImplCopyWithImpl<$Res>
+    extends _$StateWorkingTableCopyWithImpl<$Res, _$SuccessImpl>
+    implements _$$SuccessImplCopyWith<$Res> {
+  __$$SuccessImplCopyWithImpl(
+      _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -138,7 +245,7 @@ class __$$_StateWorkingTableCopyWithImpl<$Res>
     Object? workingTables = freezed,
     Object? selectedWorkingTable = freezed,
   }) {
-    return _then(_$_StateWorkingTable(
+    return _then(_$SuccessImpl(
       hashKey: null == hashKey
           ? _value.hashKey
           : hashKey // ignore: cast_nullable_to_non_nullable
@@ -161,12 +268,25 @@ class __$$_StateWorkingTableCopyWithImpl<$Res>
               as ArbeitsTischeProduct?,
     ));
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ArbeitsTischeProductCopyWith<$Res>? get selectedWorkingTable {
+    if (_value.selectedWorkingTable == null) {
+      return null;
+    }
+
+    return $ArbeitsTischeProductCopyWith<$Res>(_value.selectedWorkingTable!,
+        (value) {
+      return _then(_value.copyWith(selectedWorkingTable: value));
+    });
+  }
 }
 
 /// @nodoc
 
-class _$_StateWorkingTable implements _StateWorkingTable {
-  const _$_StateWorkingTable(
+class _$SuccessImpl implements _Success {
+  const _$SuccessImpl(
       {this.hashKey = '',
       this.category = '',
       this.productOrderCount = 0,
@@ -199,14 +319,14 @@ class _$_StateWorkingTable implements _StateWorkingTable {
 
   @override
   String toString() {
-    return 'StateWorkingTable(hashKey: $hashKey, category: $category, productOrderCount: $productOrderCount, workingTables: $workingTables, selectedWorkingTable: $selectedWorkingTable)';
+    return 'StateWorkingTable.success(hashKey: $hashKey, category: $category, productOrderCount: $productOrderCount, workingTables: $workingTables, selectedWorkingTable: $selectedWorkingTable)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_StateWorkingTable &&
+            other is _$SuccessImpl &&
             (identical(other.hashKey, hashKey) || other.hashKey == hashKey) &&
             (identical(other.category, category) ||
                 other.category == category) &&
@@ -230,32 +350,108 @@ class _$_StateWorkingTable implements _StateWorkingTable {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_StateWorkingTableCopyWith<_$_StateWorkingTable> get copyWith =>
-      __$$_StateWorkingTableCopyWithImpl<_$_StateWorkingTable>(
-          this, _$identity);
+  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
+      __$$SuccessImplCopyWithImpl<_$SuccessImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(
+            String hashKey,
+            String category,
+            int productOrderCount,
+            List<ArbeitsTischeProduct>? workingTables,
+            ArbeitsTischeProduct? selectedWorkingTable)
+        success,
+  }) {
+    return success(hashKey, category, productOrderCount, workingTables,
+        selectedWorkingTable);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(
+            String hashKey,
+            String category,
+            int productOrderCount,
+            List<ArbeitsTischeProduct>? workingTables,
+            ArbeitsTischeProduct? selectedWorkingTable)?
+        success,
+  }) {
+    return success?.call(hashKey, category, productOrderCount, workingTables,
+        selectedWorkingTable);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(
+            String hashKey,
+            String category,
+            int productOrderCount,
+            List<ArbeitsTischeProduct>? workingTables,
+            ArbeitsTischeProduct? selectedWorkingTable)?
+        success,
+    required TResult orElse(),
+  }) {
+    if (success != null) {
+      return success(hashKey, category, productOrderCount, workingTables,
+          selectedWorkingTable);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+  }) {
+    return success(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Success value)? success,
+  }) {
+    return success?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    required TResult orElse(),
+  }) {
+    if (success != null) {
+      return success(this);
+    }
+    return orElse();
+  }
 }
 
-abstract class _StateWorkingTable implements StateWorkingTable {
-  const factory _StateWorkingTable(
+abstract class _Success implements StateWorkingTable {
+  const factory _Success(
       {final String hashKey,
       final String category,
       final int productOrderCount,
       final List<ArbeitsTischeProduct>? workingTables,
-      final ArbeitsTischeProduct? selectedWorkingTable}) = _$_StateWorkingTable;
+      final ArbeitsTischeProduct? selectedWorkingTable}) = _$SuccessImpl;
 
-  @override
   String get hashKey;
-  @override
   String get category;
-  @override
   int get productOrderCount;
-  @override
   List<ArbeitsTischeProduct>? get workingTables;
-  @override
   ArbeitsTischeProduct? get selectedWorkingTable;
-  @override
   @JsonKey(ignore: true)
-  _$$_StateWorkingTableCopyWith<_$_StateWorkingTable> get copyWith =>
+  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -480,11 +676,11 @@ class _$ArbeitsTischeProductCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_ArbeitsTischeProductCopyWith<$Res>
+abstract class _$$ArbeitsTischeProductImplCopyWith<$Res>
     implements $ArbeitsTischeProductCopyWith<$Res> {
-  factory _$$_ArbeitsTischeProductCopyWith(_$_ArbeitsTischeProduct value,
-          $Res Function(_$_ArbeitsTischeProduct) then) =
-      __$$_ArbeitsTischeProductCopyWithImpl<$Res>;
+  factory _$$ArbeitsTischeProductImplCopyWith(_$ArbeitsTischeProductImpl value,
+          $Res Function(_$ArbeitsTischeProductImpl) then) =
+      __$$ArbeitsTischeProductImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -518,11 +714,11 @@ abstract class _$$_ArbeitsTischeProductCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ArbeitsTischeProductCopyWithImpl<$Res>
-    extends _$ArbeitsTischeProductCopyWithImpl<$Res, _$_ArbeitsTischeProduct>
-    implements _$$_ArbeitsTischeProductCopyWith<$Res> {
-  __$$_ArbeitsTischeProductCopyWithImpl(_$_ArbeitsTischeProduct _value,
-      $Res Function(_$_ArbeitsTischeProduct) _then)
+class __$$ArbeitsTischeProductImplCopyWithImpl<$Res>
+    extends _$ArbeitsTischeProductCopyWithImpl<$Res, _$ArbeitsTischeProductImpl>
+    implements _$$ArbeitsTischeProductImplCopyWith<$Res> {
+  __$$ArbeitsTischeProductImplCopyWithImpl(_$ArbeitsTischeProductImpl _value,
+      $Res Function(_$ArbeitsTischeProductImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -539,7 +735,7 @@ class __$$_ArbeitsTischeProductCopyWithImpl<$Res>
     Object? standbyStromverbrauch = freezed,
     Object? kollisionsSchutz = freezed,
   }) {
-    return _then(_$_ArbeitsTischeProduct(
+    return _then(_$ArbeitsTischeProductImpl(
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -586,8 +782,8 @@ class __$$_ArbeitsTischeProductCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ArbeitsTischeProduct implements _ArbeitsTischeProduct {
-  const _$_ArbeitsTischeProduct(
+class _$ArbeitsTischeProductImpl implements _ArbeitsTischeProduct {
+  const _$ArbeitsTischeProductImpl(
       {this.name,
       this.frameColors,
       this.plateColor,
@@ -629,7 +825,7 @@ class _$_ArbeitsTischeProduct implements _ArbeitsTischeProduct {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ArbeitsTischeProduct &&
+            other is _$ArbeitsTischeProductImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.frameColors, frameColors) ||
                 other.frameColors == frameColors) &&
@@ -668,9 +864,10 @@ class _$_ArbeitsTischeProduct implements _ArbeitsTischeProduct {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ArbeitsTischeProductCopyWith<_$_ArbeitsTischeProduct> get copyWith =>
-      __$$_ArbeitsTischeProductCopyWithImpl<_$_ArbeitsTischeProduct>(
-          this, _$identity);
+  _$$ArbeitsTischeProductImplCopyWith<_$ArbeitsTischeProductImpl>
+      get copyWith =>
+          __$$ArbeitsTischeProductImplCopyWithImpl<_$ArbeitsTischeProductImpl>(
+              this, _$identity);
 }
 
 abstract class _ArbeitsTischeProduct implements ArbeitsTischeProduct {
@@ -684,7 +881,7 @@ abstract class _ArbeitsTischeProduct implements ArbeitsTischeProduct {
       final Hubgeschwindigkeit? hubgeschwindigkeit,
       final Gerauscheentwicklung? gerauscheentwicklung,
       final StandbyStromverbrauch? standbyStromverbrauch,
-      final bool? kollisionsSchutz}) = _$_ArbeitsTischeProduct;
+      final bool? kollisionsSchutz}) = _$ArbeitsTischeProductImpl;
 
   @override
   String? get name;
@@ -708,8 +905,8 @@ abstract class _ArbeitsTischeProduct implements ArbeitsTischeProduct {
   bool? get kollisionsSchutz;
   @override
   @JsonKey(ignore: true)
-  _$$_ArbeitsTischeProductCopyWith<_$_ArbeitsTischeProduct> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ArbeitsTischeProductImplCopyWith<_$ArbeitsTischeProductImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -768,22 +965,24 @@ class _$StandbyStromverbrauchCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_StandbyStromverbrauchCopyWith<$Res>
+abstract class _$$StandbyStromverbrauchImplCopyWith<$Res>
     implements $StandbyStromverbrauchCopyWith<$Res> {
-  factory _$$_StandbyStromverbrauchCopyWith(_$_StandbyStromverbrauch value,
-          $Res Function(_$_StandbyStromverbrauch) then) =
-      __$$_StandbyStromverbrauchCopyWithImpl<$Res>;
+  factory _$$StandbyStromverbrauchImplCopyWith(
+          _$StandbyStromverbrauchImpl value,
+          $Res Function(_$StandbyStromverbrauchImpl) then) =
+      __$$StandbyStromverbrauchImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({double betrag, String masseinheit, String? name});
 }
 
 /// @nodoc
-class __$$_StandbyStromverbrauchCopyWithImpl<$Res>
-    extends _$StandbyStromverbrauchCopyWithImpl<$Res, _$_StandbyStromverbrauch>
-    implements _$$_StandbyStromverbrauchCopyWith<$Res> {
-  __$$_StandbyStromverbrauchCopyWithImpl(_$_StandbyStromverbrauch _value,
-      $Res Function(_$_StandbyStromverbrauch) _then)
+class __$$StandbyStromverbrauchImplCopyWithImpl<$Res>
+    extends _$StandbyStromverbrauchCopyWithImpl<$Res,
+        _$StandbyStromverbrauchImpl>
+    implements _$$StandbyStromverbrauchImplCopyWith<$Res> {
+  __$$StandbyStromverbrauchImplCopyWithImpl(_$StandbyStromverbrauchImpl _value,
+      $Res Function(_$StandbyStromverbrauchImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -793,7 +992,7 @@ class __$$_StandbyStromverbrauchCopyWithImpl<$Res>
     Object? masseinheit = null,
     Object? name = freezed,
   }) {
-    return _then(_$_StandbyStromverbrauch(
+    return _then(_$StandbyStromverbrauchImpl(
       betrag: null == betrag
           ? _value.betrag
           : betrag // ignore: cast_nullable_to_non_nullable
@@ -812,8 +1011,8 @@ class __$$_StandbyStromverbrauchCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_StandbyStromverbrauch implements _StandbyStromverbrauch {
-  const _$_StandbyStromverbrauch(
+class _$StandbyStromverbrauchImpl implements _StandbyStromverbrauch {
+  const _$StandbyStromverbrauchImpl(
       {required this.betrag, required this.masseinheit, this.name});
 
   @override
@@ -832,7 +1031,7 @@ class _$_StandbyStromverbrauch implements _StandbyStromverbrauch {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_StandbyStromverbrauch &&
+            other is _$StandbyStromverbrauchImpl &&
             (identical(other.betrag, betrag) || other.betrag == betrag) &&
             (identical(other.masseinheit, masseinheit) ||
                 other.masseinheit == masseinheit) &&
@@ -845,16 +1044,16 @@ class _$_StandbyStromverbrauch implements _StandbyStromverbrauch {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_StandbyStromverbrauchCopyWith<_$_StandbyStromverbrauch> get copyWith =>
-      __$$_StandbyStromverbrauchCopyWithImpl<_$_StandbyStromverbrauch>(
-          this, _$identity);
+  _$$StandbyStromverbrauchImplCopyWith<_$StandbyStromverbrauchImpl>
+      get copyWith => __$$StandbyStromverbrauchImplCopyWithImpl<
+          _$StandbyStromverbrauchImpl>(this, _$identity);
 }
 
 abstract class _StandbyStromverbrauch implements StandbyStromverbrauch {
   const factory _StandbyStromverbrauch(
       {required final double betrag,
       required final String masseinheit,
-      final String? name}) = _$_StandbyStromverbrauch;
+      final String? name}) = _$StandbyStromverbrauchImpl;
 
   @override
   double get betrag;
@@ -864,8 +1063,8 @@ abstract class _StandbyStromverbrauch implements StandbyStromverbrauch {
   String? get name;
   @override
   @JsonKey(ignore: true)
-  _$$_StandbyStromverbrauchCopyWith<_$_StandbyStromverbrauch> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$StandbyStromverbrauchImplCopyWith<_$StandbyStromverbrauchImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -924,22 +1123,22 @@ class _$GerauscheentwicklungCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_GerauscheentwicklungCopyWith<$Res>
+abstract class _$$GerauscheentwicklungImplCopyWith<$Res>
     implements $GerauscheentwicklungCopyWith<$Res> {
-  factory _$$_GerauscheentwicklungCopyWith(_$_Gerauscheentwicklung value,
-          $Res Function(_$_Gerauscheentwicklung) then) =
-      __$$_GerauscheentwicklungCopyWithImpl<$Res>;
+  factory _$$GerauscheentwicklungImplCopyWith(_$GerauscheentwicklungImpl value,
+          $Res Function(_$GerauscheentwicklungImpl) then) =
+      __$$GerauscheentwicklungImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int betrag, String masseinheit, String? name});
 }
 
 /// @nodoc
-class __$$_GerauscheentwicklungCopyWithImpl<$Res>
-    extends _$GerauscheentwicklungCopyWithImpl<$Res, _$_Gerauscheentwicklung>
-    implements _$$_GerauscheentwicklungCopyWith<$Res> {
-  __$$_GerauscheentwicklungCopyWithImpl(_$_Gerauscheentwicklung _value,
-      $Res Function(_$_Gerauscheentwicklung) _then)
+class __$$GerauscheentwicklungImplCopyWithImpl<$Res>
+    extends _$GerauscheentwicklungCopyWithImpl<$Res, _$GerauscheentwicklungImpl>
+    implements _$$GerauscheentwicklungImplCopyWith<$Res> {
+  __$$GerauscheentwicklungImplCopyWithImpl(_$GerauscheentwicklungImpl _value,
+      $Res Function(_$GerauscheentwicklungImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -949,7 +1148,7 @@ class __$$_GerauscheentwicklungCopyWithImpl<$Res>
     Object? masseinheit = null,
     Object? name = freezed,
   }) {
-    return _then(_$_Gerauscheentwicklung(
+    return _then(_$GerauscheentwicklungImpl(
       betrag: null == betrag
           ? _value.betrag
           : betrag // ignore: cast_nullable_to_non_nullable
@@ -968,8 +1167,8 @@ class __$$_GerauscheentwicklungCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Gerauscheentwicklung implements _Gerauscheentwicklung {
-  const _$_Gerauscheentwicklung(
+class _$GerauscheentwicklungImpl implements _Gerauscheentwicklung {
+  const _$GerauscheentwicklungImpl(
       {required this.betrag, required this.masseinheit, this.name});
 
   @override
@@ -988,7 +1187,7 @@ class _$_Gerauscheentwicklung implements _Gerauscheentwicklung {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Gerauscheentwicklung &&
+            other is _$GerauscheentwicklungImpl &&
             (identical(other.betrag, betrag) || other.betrag == betrag) &&
             (identical(other.masseinheit, masseinheit) ||
                 other.masseinheit == masseinheit) &&
@@ -1001,16 +1200,17 @@ class _$_Gerauscheentwicklung implements _Gerauscheentwicklung {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GerauscheentwicklungCopyWith<_$_Gerauscheentwicklung> get copyWith =>
-      __$$_GerauscheentwicklungCopyWithImpl<_$_Gerauscheentwicklung>(
-          this, _$identity);
+  _$$GerauscheentwicklungImplCopyWith<_$GerauscheentwicklungImpl>
+      get copyWith =>
+          __$$GerauscheentwicklungImplCopyWithImpl<_$GerauscheentwicklungImpl>(
+              this, _$identity);
 }
 
 abstract class _Gerauscheentwicklung implements Gerauscheentwicklung {
   const factory _Gerauscheentwicklung(
       {required final int betrag,
       required final String masseinheit,
-      final String? name}) = _$_Gerauscheentwicklung;
+      final String? name}) = _$GerauscheentwicklungImpl;
 
   @override
   int get betrag;
@@ -1020,8 +1220,8 @@ abstract class _Gerauscheentwicklung implements Gerauscheentwicklung {
   String? get name;
   @override
   @JsonKey(ignore: true)
-  _$$_GerauscheentwicklungCopyWith<_$_Gerauscheentwicklung> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$GerauscheentwicklungImplCopyWith<_$GerauscheentwicklungImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1079,22 +1279,22 @@ class _$HubgeschwindigkeitCopyWithImpl<$Res, $Val extends Hubgeschwindigkeit>
 }
 
 /// @nodoc
-abstract class _$$_HubgeschwindigkeitCopyWith<$Res>
+abstract class _$$HubgeschwindigkeitImplCopyWith<$Res>
     implements $HubgeschwindigkeitCopyWith<$Res> {
-  factory _$$_HubgeschwindigkeitCopyWith(_$_Hubgeschwindigkeit value,
-          $Res Function(_$_Hubgeschwindigkeit) then) =
-      __$$_HubgeschwindigkeitCopyWithImpl<$Res>;
+  factory _$$HubgeschwindigkeitImplCopyWith(_$HubgeschwindigkeitImpl value,
+          $Res Function(_$HubgeschwindigkeitImpl) then) =
+      __$$HubgeschwindigkeitImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int betrag, String masseinheit, String? name});
 }
 
 /// @nodoc
-class __$$_HubgeschwindigkeitCopyWithImpl<$Res>
-    extends _$HubgeschwindigkeitCopyWithImpl<$Res, _$_Hubgeschwindigkeit>
-    implements _$$_HubgeschwindigkeitCopyWith<$Res> {
-  __$$_HubgeschwindigkeitCopyWithImpl(
-      _$_Hubgeschwindigkeit _value, $Res Function(_$_Hubgeschwindigkeit) _then)
+class __$$HubgeschwindigkeitImplCopyWithImpl<$Res>
+    extends _$HubgeschwindigkeitCopyWithImpl<$Res, _$HubgeschwindigkeitImpl>
+    implements _$$HubgeschwindigkeitImplCopyWith<$Res> {
+  __$$HubgeschwindigkeitImplCopyWithImpl(_$HubgeschwindigkeitImpl _value,
+      $Res Function(_$HubgeschwindigkeitImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1104,7 +1304,7 @@ class __$$_HubgeschwindigkeitCopyWithImpl<$Res>
     Object? masseinheit = null,
     Object? name = freezed,
   }) {
-    return _then(_$_Hubgeschwindigkeit(
+    return _then(_$HubgeschwindigkeitImpl(
       betrag: null == betrag
           ? _value.betrag
           : betrag // ignore: cast_nullable_to_non_nullable
@@ -1123,8 +1323,8 @@ class __$$_HubgeschwindigkeitCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Hubgeschwindigkeit implements _Hubgeschwindigkeit {
-  const _$_Hubgeschwindigkeit(
+class _$HubgeschwindigkeitImpl implements _Hubgeschwindigkeit {
+  const _$HubgeschwindigkeitImpl(
       {required this.betrag, required this.masseinheit, this.name});
 
   @override
@@ -1143,7 +1343,7 @@ class _$_Hubgeschwindigkeit implements _Hubgeschwindigkeit {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Hubgeschwindigkeit &&
+            other is _$HubgeschwindigkeitImpl &&
             (identical(other.betrag, betrag) || other.betrag == betrag) &&
             (identical(other.masseinheit, masseinheit) ||
                 other.masseinheit == masseinheit) &&
@@ -1156,8 +1356,8 @@ class _$_Hubgeschwindigkeit implements _Hubgeschwindigkeit {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_HubgeschwindigkeitCopyWith<_$_Hubgeschwindigkeit> get copyWith =>
-      __$$_HubgeschwindigkeitCopyWithImpl<_$_Hubgeschwindigkeit>(
+  _$$HubgeschwindigkeitImplCopyWith<_$HubgeschwindigkeitImpl> get copyWith =>
+      __$$HubgeschwindigkeitImplCopyWithImpl<_$HubgeschwindigkeitImpl>(
           this, _$identity);
 }
 
@@ -1165,7 +1365,7 @@ abstract class _Hubgeschwindigkeit implements Hubgeschwindigkeit {
   const factory _Hubgeschwindigkeit(
       {required final int betrag,
       required final String masseinheit,
-      final String? name}) = _$_Hubgeschwindigkeit;
+      final String? name}) = _$HubgeschwindigkeitImpl;
 
   @override
   int get betrag;
@@ -1175,7 +1375,7 @@ abstract class _Hubgeschwindigkeit implements Hubgeschwindigkeit {
   String? get name;
   @override
   @JsonKey(ignore: true)
-  _$$_HubgeschwindigkeitCopyWith<_$_Hubgeschwindigkeit> get copyWith =>
+  _$$HubgeschwindigkeitImplCopyWith<_$HubgeschwindigkeitImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1234,22 +1434,22 @@ class _$HubbereichCopyWithImpl<$Res, $Val extends Hubbereich>
 }
 
 /// @nodoc
-abstract class _$$_HubbereichCopyWith<$Res>
+abstract class _$$HubbereichImplCopyWith<$Res>
     implements $HubbereichCopyWith<$Res> {
-  factory _$$_HubbereichCopyWith(
-          _$_Hubbereich value, $Res Function(_$_Hubbereich) then) =
-      __$$_HubbereichCopyWithImpl<$Res>;
+  factory _$$HubbereichImplCopyWith(
+          _$HubbereichImpl value, $Res Function(_$HubbereichImpl) then) =
+      __$$HubbereichImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int breite, int tiefe, String? name});
 }
 
 /// @nodoc
-class __$$_HubbereichCopyWithImpl<$Res>
-    extends _$HubbereichCopyWithImpl<$Res, _$_Hubbereich>
-    implements _$$_HubbereichCopyWith<$Res> {
-  __$$_HubbereichCopyWithImpl(
-      _$_Hubbereich _value, $Res Function(_$_Hubbereich) _then)
+class __$$HubbereichImplCopyWithImpl<$Res>
+    extends _$HubbereichCopyWithImpl<$Res, _$HubbereichImpl>
+    implements _$$HubbereichImplCopyWith<$Res> {
+  __$$HubbereichImplCopyWithImpl(
+      _$HubbereichImpl _value, $Res Function(_$HubbereichImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1259,7 +1459,7 @@ class __$$_HubbereichCopyWithImpl<$Res>
     Object? tiefe = null,
     Object? name = freezed,
   }) {
-    return _then(_$_Hubbereich(
+    return _then(_$HubbereichImpl(
       breite: null == breite
           ? _value.breite
           : breite // ignore: cast_nullable_to_non_nullable
@@ -1278,8 +1478,9 @@ class __$$_HubbereichCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Hubbereich implements _Hubbereich {
-  const _$_Hubbereich({required this.breite, required this.tiefe, this.name});
+class _$HubbereichImpl implements _Hubbereich {
+  const _$HubbereichImpl(
+      {required this.breite, required this.tiefe, this.name});
 
   @override
   final int breite;
@@ -1297,7 +1498,7 @@ class _$_Hubbereich implements _Hubbereich {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Hubbereich &&
+            other is _$HubbereichImpl &&
             (identical(other.breite, breite) || other.breite == breite) &&
             (identical(other.tiefe, tiefe) || other.tiefe == tiefe) &&
             (identical(other.name, name) || other.name == name));
@@ -1309,15 +1510,15 @@ class _$_Hubbereich implements _Hubbereich {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_HubbereichCopyWith<_$_Hubbereich> get copyWith =>
-      __$$_HubbereichCopyWithImpl<_$_Hubbereich>(this, _$identity);
+  _$$HubbereichImplCopyWith<_$HubbereichImpl> get copyWith =>
+      __$$HubbereichImplCopyWithImpl<_$HubbereichImpl>(this, _$identity);
 }
 
 abstract class _Hubbereich implements Hubbereich {
   const factory _Hubbereich(
       {required final int breite,
       required final int tiefe,
-      final String? name}) = _$_Hubbereich;
+      final String? name}) = _$HubbereichImpl;
 
   @override
   int get breite;
@@ -1327,7 +1528,7 @@ abstract class _Hubbereich implements Hubbereich {
   String? get name;
   @override
   @JsonKey(ignore: true)
-  _$$_HubbereichCopyWith<_$_Hubbereich> get copyWith =>
+  _$$HubbereichImplCopyWith<_$HubbereichImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1386,22 +1587,22 @@ class _$GestellDimensionCopyWithImpl<$Res, $Val extends GestellDimension>
 }
 
 /// @nodoc
-abstract class _$$_GestellDimensionCopyWith<$Res>
+abstract class _$$GestellDimensionImplCopyWith<$Res>
     implements $GestellDimensionCopyWith<$Res> {
-  factory _$$_GestellDimensionCopyWith(
-          _$_GestellDimension value, $Res Function(_$_GestellDimension) then) =
-      __$$_GestellDimensionCopyWithImpl<$Res>;
+  factory _$$GestellDimensionImplCopyWith(_$GestellDimensionImpl value,
+          $Res Function(_$GestellDimensionImpl) then) =
+      __$$GestellDimensionImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int breite, int laenge, String? name});
 }
 
 /// @nodoc
-class __$$_GestellDimensionCopyWithImpl<$Res>
-    extends _$GestellDimensionCopyWithImpl<$Res, _$_GestellDimension>
-    implements _$$_GestellDimensionCopyWith<$Res> {
-  __$$_GestellDimensionCopyWithImpl(
-      _$_GestellDimension _value, $Res Function(_$_GestellDimension) _then)
+class __$$GestellDimensionImplCopyWithImpl<$Res>
+    extends _$GestellDimensionCopyWithImpl<$Res, _$GestellDimensionImpl>
+    implements _$$GestellDimensionImplCopyWith<$Res> {
+  __$$GestellDimensionImplCopyWithImpl(_$GestellDimensionImpl _value,
+      $Res Function(_$GestellDimensionImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1411,7 +1612,7 @@ class __$$_GestellDimensionCopyWithImpl<$Res>
     Object? laenge = null,
     Object? name = freezed,
   }) {
-    return _then(_$_GestellDimension(
+    return _then(_$GestellDimensionImpl(
       breite: null == breite
           ? _value.breite
           : breite // ignore: cast_nullable_to_non_nullable
@@ -1430,8 +1631,8 @@ class __$$_GestellDimensionCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GestellDimension implements _GestellDimension {
-  const _$_GestellDimension(
+class _$GestellDimensionImpl implements _GestellDimension {
+  const _$GestellDimensionImpl(
       {required this.breite, required this.laenge, this.name});
 
   @override
@@ -1450,7 +1651,7 @@ class _$_GestellDimension implements _GestellDimension {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GestellDimension &&
+            other is _$GestellDimensionImpl &&
             (identical(other.breite, breite) || other.breite == breite) &&
             (identical(other.laenge, laenge) || other.laenge == laenge) &&
             (identical(other.name, name) || other.name == name));
@@ -1462,15 +1663,16 @@ class _$_GestellDimension implements _GestellDimension {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GestellDimensionCopyWith<_$_GestellDimension> get copyWith =>
-      __$$_GestellDimensionCopyWithImpl<_$_GestellDimension>(this, _$identity);
+  _$$GestellDimensionImplCopyWith<_$GestellDimensionImpl> get copyWith =>
+      __$$GestellDimensionImplCopyWithImpl<_$GestellDimensionImpl>(
+          this, _$identity);
 }
 
 abstract class _GestellDimension implements GestellDimension {
   const factory _GestellDimension(
       {required final int breite,
       required final int laenge,
-      final String? name}) = _$_GestellDimension;
+      final String? name}) = _$GestellDimensionImpl;
 
   @override
   int get breite;
@@ -1480,7 +1682,7 @@ abstract class _GestellDimension implements GestellDimension {
   String? get name;
   @override
   @JsonKey(ignore: true)
-  _$$_GestellDimensionCopyWith<_$_GestellDimension> get copyWith =>
+  _$$GestellDimensionImplCopyWith<_$GestellDimensionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1540,22 +1742,24 @@ class _$HoehenVerstellbarkeitCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_HoehenVerstellabrkeitCopyWith<$Res>
+abstract class _$$HoehenVerstellabrkeitImplCopyWith<$Res>
     implements $HoehenVerstellbarkeitCopyWith<$Res> {
-  factory _$$_HoehenVerstellabrkeitCopyWith(_$_HoehenVerstellabrkeit value,
-          $Res Function(_$_HoehenVerstellabrkeit) then) =
-      __$$_HoehenVerstellabrkeitCopyWithImpl<$Res>;
+  factory _$$HoehenVerstellabrkeitImplCopyWith(
+          _$HoehenVerstellabrkeitImpl value,
+          $Res Function(_$HoehenVerstellabrkeitImpl) then) =
+      __$$HoehenVerstellabrkeitImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int von, int bis, String? name});
 }
 
 /// @nodoc
-class __$$_HoehenVerstellabrkeitCopyWithImpl<$Res>
-    extends _$HoehenVerstellbarkeitCopyWithImpl<$Res, _$_HoehenVerstellabrkeit>
-    implements _$$_HoehenVerstellabrkeitCopyWith<$Res> {
-  __$$_HoehenVerstellabrkeitCopyWithImpl(_$_HoehenVerstellabrkeit _value,
-      $Res Function(_$_HoehenVerstellabrkeit) _then)
+class __$$HoehenVerstellabrkeitImplCopyWithImpl<$Res>
+    extends _$HoehenVerstellbarkeitCopyWithImpl<$Res,
+        _$HoehenVerstellabrkeitImpl>
+    implements _$$HoehenVerstellabrkeitImplCopyWith<$Res> {
+  __$$HoehenVerstellabrkeitImplCopyWithImpl(_$HoehenVerstellabrkeitImpl _value,
+      $Res Function(_$HoehenVerstellabrkeitImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1565,7 +1769,7 @@ class __$$_HoehenVerstellabrkeitCopyWithImpl<$Res>
     Object? bis = null,
     Object? name = freezed,
   }) {
-    return _then(_$_HoehenVerstellabrkeit(
+    return _then(_$HoehenVerstellabrkeitImpl(
       von: null == von
           ? _value.von
           : von // ignore: cast_nullable_to_non_nullable
@@ -1584,8 +1788,8 @@ class __$$_HoehenVerstellabrkeitCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_HoehenVerstellabrkeit implements _HoehenVerstellabrkeit {
-  const _$_HoehenVerstellabrkeit(
+class _$HoehenVerstellabrkeitImpl implements _HoehenVerstellabrkeit {
+  const _$HoehenVerstellabrkeitImpl(
       {required this.von, required this.bis, this.name});
 
   @override
@@ -1604,7 +1808,7 @@ class _$_HoehenVerstellabrkeit implements _HoehenVerstellabrkeit {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_HoehenVerstellabrkeit &&
+            other is _$HoehenVerstellabrkeitImpl &&
             (identical(other.von, von) || other.von == von) &&
             (identical(other.bis, bis) || other.bis == bis) &&
             (identical(other.name, name) || other.name == name));
@@ -1616,16 +1820,16 @@ class _$_HoehenVerstellabrkeit implements _HoehenVerstellabrkeit {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_HoehenVerstellabrkeitCopyWith<_$_HoehenVerstellabrkeit> get copyWith =>
-      __$$_HoehenVerstellabrkeitCopyWithImpl<_$_HoehenVerstellabrkeit>(
-          this, _$identity);
+  _$$HoehenVerstellabrkeitImplCopyWith<_$HoehenVerstellabrkeitImpl>
+      get copyWith => __$$HoehenVerstellabrkeitImplCopyWithImpl<
+          _$HoehenVerstellabrkeitImpl>(this, _$identity);
 }
 
 abstract class _HoehenVerstellabrkeit implements HoehenVerstellbarkeit {
   const factory _HoehenVerstellabrkeit(
       {required final int von,
       required final int bis,
-      final String? name}) = _$_HoehenVerstellabrkeit;
+      final String? name}) = _$HoehenVerstellabrkeitImpl;
 
   @override
   int get von;
@@ -1635,8 +1839,8 @@ abstract class _HoehenVerstellabrkeit implements HoehenVerstellbarkeit {
   String? get name;
   @override
   @JsonKey(ignore: true)
-  _$$_HoehenVerstellabrkeitCopyWith<_$_HoehenVerstellabrkeit> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$HoehenVerstellabrkeitImplCopyWith<_$HoehenVerstellabrkeitImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1692,20 +1896,21 @@ class _$GestellCopyWithImpl<$Res, $Val extends Gestell>
 }
 
 /// @nodoc
-abstract class _$$_GestellCopyWith<$Res> implements $GestellCopyWith<$Res> {
-  factory _$$_GestellCopyWith(
-          _$_Gestell value, $Res Function(_$_Gestell) then) =
-      __$$_GestellCopyWithImpl<$Res>;
+abstract class _$$GestellImplCopyWith<$Res> implements $GestellCopyWith<$Res> {
+  factory _$$GestellImplCopyWith(
+          _$GestellImpl value, $Res Function(_$GestellImpl) then) =
+      __$$GestellImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Color color, String material, String? name});
 }
 
 /// @nodoc
-class __$$_GestellCopyWithImpl<$Res>
-    extends _$GestellCopyWithImpl<$Res, _$_Gestell>
-    implements _$$_GestellCopyWith<$Res> {
-  __$$_GestellCopyWithImpl(_$_Gestell _value, $Res Function(_$_Gestell) _then)
+class __$$GestellImplCopyWithImpl<$Res>
+    extends _$GestellCopyWithImpl<$Res, _$GestellImpl>
+    implements _$$GestellImplCopyWith<$Res> {
+  __$$GestellImplCopyWithImpl(
+      _$GestellImpl _value, $Res Function(_$GestellImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1715,7 +1920,7 @@ class __$$_GestellCopyWithImpl<$Res>
     Object? material = null,
     Object? name = freezed,
   }) {
-    return _then(_$_Gestell(
+    return _then(_$GestellImpl(
       color: null == color
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
@@ -1734,8 +1939,8 @@ class __$$_GestellCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Gestell implements _Gestell {
-  const _$_Gestell({required this.color, required this.material, this.name});
+class _$GestellImpl implements _Gestell {
+  const _$GestellImpl({required this.color, required this.material, this.name});
 
   @override
   final Color color;
@@ -1753,7 +1958,7 @@ class _$_Gestell implements _Gestell {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Gestell &&
+            other is _$GestellImpl &&
             (identical(other.color, color) || other.color == color) &&
             (identical(other.material, material) ||
                 other.material == material) &&
@@ -1766,15 +1971,15 @@ class _$_Gestell implements _Gestell {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GestellCopyWith<_$_Gestell> get copyWith =>
-      __$$_GestellCopyWithImpl<_$_Gestell>(this, _$identity);
+  _$$GestellImplCopyWith<_$GestellImpl> get copyWith =>
+      __$$GestellImplCopyWithImpl<_$GestellImpl>(this, _$identity);
 }
 
 abstract class _Gestell implements Gestell {
   const factory _Gestell(
       {required final Color color,
       required final String material,
-      final String? name}) = _$_Gestell;
+      final String? name}) = _$GestellImpl;
 
   @override
   Color get color;
@@ -1784,7 +1989,7 @@ abstract class _Gestell implements Gestell {
   String? get name;
   @override
   @JsonKey(ignore: true)
-  _$$_GestellCopyWith<_$_Gestell> get copyWith =>
+  _$$GestellImplCopyWith<_$GestellImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1868,9 +2073,10 @@ class _$PlatteCopyWithImpl<$Res, $Val extends Platte>
 }
 
 /// @nodoc
-abstract class _$$_PlatteCopyWith<$Res> implements $PlatteCopyWith<$Res> {
-  factory _$$_PlatteCopyWith(_$_Platte value, $Res Function(_$_Platte) then) =
-      __$$_PlatteCopyWithImpl<$Res>;
+abstract class _$$PlatteImplCopyWith<$Res> implements $PlatteCopyWith<$Res> {
+  factory _$$PlatteImplCopyWith(
+          _$PlatteImpl value, $Res Function(_$PlatteImpl) then) =
+      __$$PlatteImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1885,10 +2091,11 @@ abstract class _$$_PlatteCopyWith<$Res> implements $PlatteCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_PlatteCopyWithImpl<$Res>
-    extends _$PlatteCopyWithImpl<$Res, _$_Platte>
-    implements _$$_PlatteCopyWith<$Res> {
-  __$$_PlatteCopyWithImpl(_$_Platte _value, $Res Function(_$_Platte) _then)
+class __$$PlatteImplCopyWithImpl<$Res>
+    extends _$PlatteCopyWithImpl<$Res, _$PlatteImpl>
+    implements _$$PlatteImplCopyWith<$Res> {
+  __$$PlatteImplCopyWithImpl(
+      _$PlatteImpl _value, $Res Function(_$PlatteImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1900,7 +2107,7 @@ class __$$_PlatteCopyWithImpl<$Res>
     Object? beschichtung = null,
     Object? name = freezed,
   }) {
-    return _then(_$_Platte(
+    return _then(_$PlatteImpl(
       color: null == color
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
@@ -1927,8 +2134,8 @@ class __$$_PlatteCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Platte implements _Platte {
-  const _$_Platte(
+class _$PlatteImpl implements _Platte {
+  const _$PlatteImpl(
       {required this.color,
       required this.breite,
       required this.tiefe,
@@ -1955,7 +2162,7 @@ class _$_Platte implements _Platte {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Platte &&
+            other is _$PlatteImpl &&
             (identical(other.color, color) || other.color == color) &&
             (identical(other.breite, breite) || other.breite == breite) &&
             (identical(other.tiefe, tiefe) || other.tiefe == tiefe) &&
@@ -1971,8 +2178,8 @@ class _$_Platte implements _Platte {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PlatteCopyWith<_$_Platte> get copyWith =>
-      __$$_PlatteCopyWithImpl<_$_Platte>(this, _$identity);
+  _$$PlatteImplCopyWith<_$PlatteImpl> get copyWith =>
+      __$$PlatteImplCopyWithImpl<_$PlatteImpl>(this, _$identity);
 }
 
 abstract class _Platte implements Platte {
@@ -1981,7 +2188,7 @@ abstract class _Platte implements Platte {
       required final int breite,
       required final int tiefe,
       required final Beschichtung beschichtung,
-      final String? name}) = _$_Platte;
+      final String? name}) = _$PlatteImpl;
 
   @override
   Color get color;
@@ -1995,7 +2202,7 @@ abstract class _Platte implements Platte {
   String? get name;
   @override
   @JsonKey(ignore: true)
-  _$$_PlatteCopyWith<_$_Platte> get copyWith =>
+  _$$PlatteImplCopyWith<_$PlatteImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -2048,22 +2255,22 @@ class _$BeschichtungCopyWithImpl<$Res, $Val extends Beschichtung>
 }
 
 /// @nodoc
-abstract class _$$_BeschichtungCopyWith<$Res>
+abstract class _$$BeschichtungImplCopyWith<$Res>
     implements $BeschichtungCopyWith<$Res> {
-  factory _$$_BeschichtungCopyWith(
-          _$_Beschichtung value, $Res Function(_$_Beschichtung) then) =
-      __$$_BeschichtungCopyWithImpl<$Res>;
+  factory _$$BeschichtungImplCopyWith(
+          _$BeschichtungImpl value, $Res Function(_$BeschichtungImpl) then) =
+      __$$BeschichtungImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int hoehe, String? name});
 }
 
 /// @nodoc
-class __$$_BeschichtungCopyWithImpl<$Res>
-    extends _$BeschichtungCopyWithImpl<$Res, _$_Beschichtung>
-    implements _$$_BeschichtungCopyWith<$Res> {
-  __$$_BeschichtungCopyWithImpl(
-      _$_Beschichtung _value, $Res Function(_$_Beschichtung) _then)
+class __$$BeschichtungImplCopyWithImpl<$Res>
+    extends _$BeschichtungCopyWithImpl<$Res, _$BeschichtungImpl>
+    implements _$$BeschichtungImplCopyWith<$Res> {
+  __$$BeschichtungImplCopyWithImpl(
+      _$BeschichtungImpl _value, $Res Function(_$BeschichtungImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2072,7 +2279,7 @@ class __$$_BeschichtungCopyWithImpl<$Res>
     Object? hoehe = null,
     Object? name = freezed,
   }) {
-    return _then(_$_Beschichtung(
+    return _then(_$BeschichtungImpl(
       hoehe: null == hoehe
           ? _value.hoehe
           : hoehe // ignore: cast_nullable_to_non_nullable
@@ -2087,8 +2294,8 @@ class __$$_BeschichtungCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Beschichtung implements _Beschichtung {
-  const _$_Beschichtung({required this.hoehe, this.name});
+class _$BeschichtungImpl implements _Beschichtung {
+  const _$BeschichtungImpl({required this.hoehe, this.name});
 
   @override
   final int hoehe;
@@ -2104,7 +2311,7 @@ class _$_Beschichtung implements _Beschichtung {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Beschichtung &&
+            other is _$BeschichtungImpl &&
             (identical(other.hoehe, hoehe) || other.hoehe == hoehe) &&
             (identical(other.name, name) || other.name == name));
   }
@@ -2115,13 +2322,13 @@ class _$_Beschichtung implements _Beschichtung {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_BeschichtungCopyWith<_$_Beschichtung> get copyWith =>
-      __$$_BeschichtungCopyWithImpl<_$_Beschichtung>(this, _$identity);
+  _$$BeschichtungImplCopyWith<_$BeschichtungImpl> get copyWith =>
+      __$$BeschichtungImplCopyWithImpl<_$BeschichtungImpl>(this, _$identity);
 }
 
 abstract class _Beschichtung implements Beschichtung {
   const factory _Beschichtung({required final int hoehe, final String? name}) =
-      _$_Beschichtung;
+      _$BeschichtungImpl;
 
   @override
   int get hoehe;
@@ -2129,6 +2336,6 @@ abstract class _Beschichtung implements Beschichtung {
   String? get name;
   @override
   @JsonKey(ignore: true)
-  _$$_BeschichtungCopyWith<_$_Beschichtung> get copyWith =>
+  _$$BeschichtungImplCopyWith<_$BeschichtungImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

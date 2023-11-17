@@ -87,25 +87,25 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
 }
 
 /// @nodoc
-abstract class _$$_LoggedOutCopyWith<$Res> {
-  factory _$$_LoggedOutCopyWith(
-          _$_LoggedOut value, $Res Function(_$_LoggedOut) then) =
-      __$$_LoggedOutCopyWithImpl<$Res>;
+abstract class _$$LoggedOutImplCopyWith<$Res> {
+  factory _$$LoggedOutImplCopyWith(
+          _$LoggedOutImpl value, $Res Function(_$LoggedOutImpl) then) =
+      __$$LoggedOutImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoggedOutCopyWithImpl<$Res>
-    extends _$LoginStateCopyWithImpl<$Res, _$_LoggedOut>
-    implements _$$_LoggedOutCopyWith<$Res> {
-  __$$_LoggedOutCopyWithImpl(
-      _$_LoggedOut _value, $Res Function(_$_LoggedOut) _then)
+class __$$LoggedOutImplCopyWithImpl<$Res>
+    extends _$LoginStateCopyWithImpl<$Res, _$LoggedOutImpl>
+    implements _$$LoggedOutImplCopyWith<$Res> {
+  __$$LoggedOutImplCopyWithImpl(
+      _$LoggedOutImpl _value, $Res Function(_$LoggedOutImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_LoggedOut implements _LoggedOut {
-  const _$_LoggedOut();
+class _$LoggedOutImpl implements _LoggedOut {
+  const _$LoggedOutImpl();
 
   @override
   String toString() {
@@ -115,7 +115,7 @@ class _$_LoggedOut implements _LoggedOut {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_LoggedOut);
+        (other.runtimeType == runtimeType && other is _$LoggedOutImpl);
   }
 
   @override
@@ -197,29 +197,29 @@ class _$_LoggedOut implements _LoggedOut {
 }
 
 abstract class _LoggedOut implements LoginState {
-  const factory _LoggedOut() = _$_LoggedOut;
+  const factory _LoggedOut() = _$LoggedOutImpl;
 }
 
 /// @nodoc
-abstract class _$$_LoggedInCopyWith<$Res> {
-  factory _$$_LoggedInCopyWith(
-          _$_LoggedIn value, $Res Function(_$_LoggedIn) then) =
-      __$$_LoggedInCopyWithImpl<$Res>;
+abstract class _$$LoggedInImplCopyWith<$Res> {
+  factory _$$LoggedInImplCopyWith(
+          _$LoggedInImpl value, $Res Function(_$LoggedInImpl) then) =
+      __$$LoggedInImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoggedInCopyWithImpl<$Res>
-    extends _$LoginStateCopyWithImpl<$Res, _$_LoggedIn>
-    implements _$$_LoggedInCopyWith<$Res> {
-  __$$_LoggedInCopyWithImpl(
-      _$_LoggedIn _value, $Res Function(_$_LoggedIn) _then)
+class __$$LoggedInImplCopyWithImpl<$Res>
+    extends _$LoginStateCopyWithImpl<$Res, _$LoggedInImpl>
+    implements _$$LoggedInImplCopyWith<$Res> {
+  __$$LoggedInImplCopyWithImpl(
+      _$LoggedInImpl _value, $Res Function(_$LoggedInImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_LoggedIn implements _LoggedIn {
-  const _$_LoggedIn();
+class _$LoggedInImpl implements _LoggedIn {
+  const _$LoggedInImpl();
 
   @override
   String toString() {
@@ -229,7 +229,7 @@ class _$_LoggedIn implements _LoggedIn {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_LoggedIn);
+        (other.runtimeType == runtimeType && other is _$LoggedInImpl);
   }
 
   @override
@@ -311,28 +311,29 @@ class _$_LoggedIn implements _LoggedIn {
 }
 
 abstract class _LoggedIn implements LoginState {
-  const factory _LoggedIn() = _$_LoggedIn;
+  const factory _LoggedIn() = _$LoggedInImpl;
 }
 
 /// @nodoc
-abstract class _$$_LoadingCopyWith<$Res> {
-  factory _$$_LoadingCopyWith(
-          _$_Loading value, $Res Function(_$_Loading) then) =
-      __$$_LoadingCopyWithImpl<$Res>;
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res>
-    extends _$LoginStateCopyWithImpl<$Res, _$_Loading>
-    implements _$$_LoadingCopyWith<$Res> {
-  __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$LoginStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Loading implements _Loading {
-  const _$_Loading();
+class _$LoadingImpl implements _Loading {
+  const _$LoadingImpl();
 
   @override
   String toString() {
@@ -342,7 +343,7 @@ class _$_Loading implements _Loading {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Loading);
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
   }
 
   @override
@@ -424,23 +425,24 @@ class _$_Loading implements _Loading {
 }
 
 abstract class _Loading implements LoginState {
-  const factory _Loading() = _$_Loading;
+  const factory _Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$_FailureCopyWith<$Res> {
-  factory _$$_FailureCopyWith(
-          _$_Failure value, $Res Function(_$_Failure) then) =
-      __$$_FailureCopyWithImpl<$Res>;
+abstract class _$$FailureImplCopyWith<$Res> {
+  factory _$$FailureImplCopyWith(
+          _$FailureImpl value, $Res Function(_$FailureImpl) then) =
+      __$$FailureImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Failure failure});
 }
 
 /// @nodoc
-class __$$_FailureCopyWithImpl<$Res>
-    extends _$LoginStateCopyWithImpl<$Res, _$_Failure>
-    implements _$$_FailureCopyWith<$Res> {
-  __$$_FailureCopyWithImpl(_$_Failure _value, $Res Function(_$_Failure) _then)
+class __$$FailureImplCopyWithImpl<$Res>
+    extends _$LoginStateCopyWithImpl<$Res, _$FailureImpl>
+    implements _$$FailureImplCopyWith<$Res> {
+  __$$FailureImplCopyWithImpl(
+      _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -448,7 +450,7 @@ class __$$_FailureCopyWithImpl<$Res>
   $Res call({
     Object? failure = null,
   }) {
-    return _then(_$_Failure(
+    return _then(_$FailureImpl(
       null == failure
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
@@ -459,8 +461,8 @@ class __$$_FailureCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Failure implements _Failure {
-  const _$_Failure(this.failure);
+class _$FailureImpl implements _Failure {
+  const _$FailureImpl(this.failure);
 
   @override
   final Failure failure;
@@ -474,7 +476,7 @@ class _$_Failure implements _Failure {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Failure &&
+            other is _$FailureImpl &&
             (identical(other.failure, failure) || other.failure == failure));
   }
 
@@ -484,8 +486,8 @@ class _$_Failure implements _Failure {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_FailureCopyWith<_$_Failure> get copyWith =>
-      __$$_FailureCopyWithImpl<_$_Failure>(this, _$identity);
+  _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
+      __$$FailureImplCopyWithImpl<_$FailureImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -563,10 +565,10 @@ class _$_Failure implements _Failure {
 }
 
 abstract class _Failure implements LoginState {
-  const factory _Failure(final Failure failure) = _$_Failure;
+  const factory _Failure(final Failure failure) = _$FailureImpl;
 
   Failure get failure;
   @JsonKey(ignore: true)
-  _$$_FailureCopyWith<_$_Failure> get copyWith =>
+  _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

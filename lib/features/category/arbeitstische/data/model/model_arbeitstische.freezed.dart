@@ -63,22 +63,22 @@ class _$ModelArbeitstischeCopyWithImpl<$Res, $Val extends ModelArbeitstische>
 }
 
 /// @nodoc
-abstract class _$$_ModelArbeitstischeCopyWith<$Res>
+abstract class _$$ModelArbeitstischeImplCopyWith<$Res>
     implements $ModelArbeitstischeCopyWith<$Res> {
-  factory _$$_ModelArbeitstischeCopyWith(_$_ModelArbeitstische value,
-          $Res Function(_$_ModelArbeitstische) then) =
-      __$$_ModelArbeitstischeCopyWithImpl<$Res>;
+  factory _$$ModelArbeitstischeImplCopyWith(_$ModelArbeitstischeImpl value,
+          $Res Function(_$ModelArbeitstischeImpl) then) =
+      __$$ModelArbeitstischeImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String categoryName, List<ModelProduct> listProduct});
 }
 
 /// @nodoc
-class __$$_ModelArbeitstischeCopyWithImpl<$Res>
-    extends _$ModelArbeitstischeCopyWithImpl<$Res, _$_ModelArbeitstische>
-    implements _$$_ModelArbeitstischeCopyWith<$Res> {
-  __$$_ModelArbeitstischeCopyWithImpl(
-      _$_ModelArbeitstische _value, $Res Function(_$_ModelArbeitstische) _then)
+class __$$ModelArbeitstischeImplCopyWithImpl<$Res>
+    extends _$ModelArbeitstischeCopyWithImpl<$Res, _$ModelArbeitstischeImpl>
+    implements _$$ModelArbeitstischeImplCopyWith<$Res> {
+  __$$ModelArbeitstischeImplCopyWithImpl(_$ModelArbeitstischeImpl _value,
+      $Res Function(_$ModelArbeitstischeImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$_ModelArbeitstischeCopyWithImpl<$Res>
     Object? categoryName = null,
     Object? listProduct = null,
   }) {
-    return _then(_$_ModelArbeitstische(
+    return _then(_$ModelArbeitstischeImpl(
       categoryName: null == categoryName
           ? _value.categoryName
           : categoryName // ignore: cast_nullable_to_non_nullable
@@ -102,8 +102,8 @@ class __$$_ModelArbeitstischeCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ModelArbeitstische extends _ModelArbeitstische {
-  const _$_ModelArbeitstische(
+class _$ModelArbeitstischeImpl extends _ModelArbeitstische {
+  const _$ModelArbeitstischeImpl(
       {required this.categoryName,
       required final List<ModelProduct> listProduct})
       : _listProduct = listProduct,
@@ -128,7 +128,7 @@ class _$_ModelArbeitstische extends _ModelArbeitstische {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ModelArbeitstische &&
+            other is _$ModelArbeitstischeImpl &&
             (identical(other.categoryName, categoryName) ||
                 other.categoryName == categoryName) &&
             const DeepCollectionEquality()
@@ -142,15 +142,16 @@ class _$_ModelArbeitstische extends _ModelArbeitstische {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ModelArbeitstischeCopyWith<_$_ModelArbeitstische> get copyWith =>
-      __$$_ModelArbeitstischeCopyWithImpl<_$_ModelArbeitstische>(
+  _$$ModelArbeitstischeImplCopyWith<_$ModelArbeitstischeImpl> get copyWith =>
+      __$$ModelArbeitstischeImplCopyWithImpl<_$ModelArbeitstischeImpl>(
           this, _$identity);
 }
 
 abstract class _ModelArbeitstische extends ModelArbeitstische {
   const factory _ModelArbeitstische(
-      {required final String categoryName,
-      required final List<ModelProduct> listProduct}) = _$_ModelArbeitstische;
+          {required final String categoryName,
+          required final List<ModelProduct> listProduct}) =
+      _$ModelArbeitstischeImpl;
   const _ModelArbeitstische._() : super._();
 
   @override
@@ -159,7 +160,7 @@ abstract class _ModelArbeitstische extends ModelArbeitstische {
   List<ModelProduct> get listProduct;
   @override
   @JsonKey(ignore: true)
-  _$$_ModelArbeitstischeCopyWith<_$_ModelArbeitstische> get copyWith =>
+  _$$ModelArbeitstischeImplCopyWith<_$ModelArbeitstischeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -235,11 +236,11 @@ class _$ModelProductCopyWithImpl<$Res, $Val extends ModelProduct>
 }
 
 /// @nodoc
-abstract class _$$_ModelProductCopyWith<$Res>
+abstract class _$$ModelProductImplCopyWith<$Res>
     implements $ModelProductCopyWith<$Res> {
-  factory _$$_ModelProductCopyWith(
-          _$_ModelProduct value, $Res Function(_$_ModelProduct) then) =
-      __$$_ModelProductCopyWithImpl<$Res>;
+  factory _$$ModelProductImplCopyWith(
+          _$ModelProductImpl value, $Res Function(_$ModelProductImpl) then) =
+      __$$ModelProductImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -251,11 +252,11 @@ abstract class _$$_ModelProductCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ModelProductCopyWithImpl<$Res>
-    extends _$ModelProductCopyWithImpl<$Res, _$_ModelProduct>
-    implements _$$_ModelProductCopyWith<$Res> {
-  __$$_ModelProductCopyWithImpl(
-      _$_ModelProduct _value, $Res Function(_$_ModelProduct) _then)
+class __$$ModelProductImplCopyWithImpl<$Res>
+    extends _$ModelProductCopyWithImpl<$Res, _$ModelProductImpl>
+    implements _$$ModelProductImplCopyWith<$Res> {
+  __$$ModelProductImplCopyWithImpl(
+      _$ModelProductImpl _value, $Res Function(_$ModelProductImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -267,7 +268,7 @@ class __$$_ModelProductCopyWithImpl<$Res>
     Object? offerInPercent = freezed,
     Object? productCount = freezed,
   }) {
-    return _then(_$_ModelProduct(
+    return _then(_$ModelProductImpl(
       productName: null == productName
           ? _value.productName
           : productName // ignore: cast_nullable_to_non_nullable
@@ -294,8 +295,8 @@ class __$$_ModelProductCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ModelProduct extends _ModelProduct {
-  const _$_ModelProduct(
+class _$ModelProductImpl extends _ModelProduct {
+  const _$ModelProductImpl(
       {required this.productName,
       required this.price,
       required this.indexNumber,
@@ -323,7 +324,7 @@ class _$_ModelProduct extends _ModelProduct {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ModelProduct &&
+            other is _$ModelProductImpl &&
             (identical(other.productName, productName) ||
                 other.productName == productName) &&
             (identical(other.price, price) || other.price == price) &&
@@ -342,8 +343,8 @@ class _$_ModelProduct extends _ModelProduct {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ModelProductCopyWith<_$_ModelProduct> get copyWith =>
-      __$$_ModelProductCopyWithImpl<_$_ModelProduct>(this, _$identity);
+  _$$ModelProductImplCopyWith<_$ModelProductImpl> get copyWith =>
+      __$$ModelProductImplCopyWithImpl<_$ModelProductImpl>(this, _$identity);
 }
 
 abstract class _ModelProduct extends ModelProduct {
@@ -352,7 +353,7 @@ abstract class _ModelProduct extends ModelProduct {
       required final double price,
       required final int indexNumber,
       final int? offerInPercent,
-      final int? productCount}) = _$_ModelProduct;
+      final int? productCount}) = _$ModelProductImpl;
   const _ModelProduct._() : super._();
 
   @override
@@ -367,6 +368,6 @@ abstract class _ModelProduct extends ModelProduct {
   int? get productCount;
   @override
   @JsonKey(ignore: true)
-  _$$_ModelProductCopyWith<_$_ModelProduct> get copyWith =>
+  _$$ModelProductImplCopyWith<_$ModelProductImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

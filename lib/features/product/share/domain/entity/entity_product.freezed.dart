@@ -36,25 +36,25 @@ class _$EntityProductCopyWithImpl<$Res, $Val extends EntityProduct>
 }
 
 /// @nodoc
-abstract class _$$_EntityProductCopyWith<$Res> {
-  factory _$$_EntityProductCopyWith(
-          _$_EntityProduct value, $Res Function(_$_EntityProduct) then) =
-      __$$_EntityProductCopyWithImpl<$Res>;
+abstract class _$$EntityProductImplCopyWith<$Res> {
+  factory _$$EntityProductImplCopyWith(
+          _$EntityProductImpl value, $Res Function(_$EntityProductImpl) then) =
+      __$$EntityProductImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_EntityProductCopyWithImpl<$Res>
-    extends _$EntityProductCopyWithImpl<$Res, _$_EntityProduct>
-    implements _$$_EntityProductCopyWith<$Res> {
-  __$$_EntityProductCopyWithImpl(
-      _$_EntityProduct _value, $Res Function(_$_EntityProduct) _then)
+class __$$EntityProductImplCopyWithImpl<$Res>
+    extends _$EntityProductCopyWithImpl<$Res, _$EntityProductImpl>
+    implements _$$EntityProductImplCopyWith<$Res> {
+  __$$EntityProductImplCopyWithImpl(
+      _$EntityProductImpl _value, $Res Function(_$EntityProductImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_EntityProduct implements _EntityProduct {
-  const _$_EntityProduct();
+class _$EntityProductImpl implements _EntityProduct {
+  const _$EntityProductImpl();
 
   @override
   String toString() {
@@ -64,7 +64,7 @@ class _$_EntityProduct implements _EntityProduct {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_EntityProduct);
+        (other.runtimeType == runtimeType && other is _$EntityProductImpl);
   }
 
   @override
@@ -72,5 +72,5 @@ class _$_EntityProduct implements _EntityProduct {
 }
 
 abstract class _EntityProduct implements EntityProduct {
-  const factory _EntityProduct() = _$_EntityProduct;
+  const factory _EntityProduct() = _$EntityProductImpl;
 }

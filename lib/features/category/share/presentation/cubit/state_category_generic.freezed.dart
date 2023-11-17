@@ -91,11 +91,11 @@ class _$StateCategoryGenericCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_StateCategoryGenericCopyWith<$Res>
+abstract class _$$StateCategoryGenericImplCopyWith<$Res>
     implements $StateCategoryGenericCopyWith<$Res> {
-  factory _$$_StateCategoryGenericCopyWith(_$_StateCategoryGeneric value,
-          $Res Function(_$_StateCategoryGeneric) then) =
-      __$$_StateCategoryGenericCopyWithImpl<$Res>;
+  factory _$$StateCategoryGenericImplCopyWith(_$StateCategoryGenericImpl value,
+          $Res Function(_$StateCategoryGenericImpl) then) =
+      __$$StateCategoryGenericImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({ChoosenDateTime? dateTime, ProductCategory? productCategory});
@@ -107,11 +107,11 @@ abstract class _$$_StateCategoryGenericCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_StateCategoryGenericCopyWithImpl<$Res>
-    extends _$StateCategoryGenericCopyWithImpl<$Res, _$_StateCategoryGeneric>
-    implements _$$_StateCategoryGenericCopyWith<$Res> {
-  __$$_StateCategoryGenericCopyWithImpl(_$_StateCategoryGeneric _value,
-      $Res Function(_$_StateCategoryGeneric) _then)
+class __$$StateCategoryGenericImplCopyWithImpl<$Res>
+    extends _$StateCategoryGenericCopyWithImpl<$Res, _$StateCategoryGenericImpl>
+    implements _$$StateCategoryGenericImplCopyWith<$Res> {
+  __$$StateCategoryGenericImplCopyWithImpl(_$StateCategoryGenericImpl _value,
+      $Res Function(_$StateCategoryGenericImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -120,7 +120,7 @@ class __$$_StateCategoryGenericCopyWithImpl<$Res>
     Object? dateTime = freezed,
     Object? productCategory = freezed,
   }) {
-    return _then(_$_StateCategoryGeneric(
+    return _then(_$StateCategoryGenericImpl(
       dateTime: freezed == dateTime
           ? _value.dateTime
           : dateTime // ignore: cast_nullable_to_non_nullable
@@ -135,8 +135,8 @@ class __$$_StateCategoryGenericCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_StateCategoryGeneric extends _StateCategoryGeneric {
-  const _$_StateCategoryGeneric({this.dateTime, this.productCategory})
+class _$StateCategoryGenericImpl extends _StateCategoryGeneric {
+  const _$StateCategoryGenericImpl({this.dateTime, this.productCategory})
       : super._();
 
   @override
@@ -153,7 +153,7 @@ class _$_StateCategoryGeneric extends _StateCategoryGeneric {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_StateCategoryGeneric &&
+            other is _$StateCategoryGenericImpl &&
             (identical(other.dateTime, dateTime) ||
                 other.dateTime == dateTime) &&
             (identical(other.productCategory, productCategory) ||
@@ -166,15 +166,16 @@ class _$_StateCategoryGeneric extends _StateCategoryGeneric {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_StateCategoryGenericCopyWith<_$_StateCategoryGeneric> get copyWith =>
-      __$$_StateCategoryGenericCopyWithImpl<_$_StateCategoryGeneric>(
-          this, _$identity);
+  _$$StateCategoryGenericImplCopyWith<_$StateCategoryGenericImpl>
+      get copyWith =>
+          __$$StateCategoryGenericImplCopyWithImpl<_$StateCategoryGenericImpl>(
+              this, _$identity);
 }
 
 abstract class _StateCategoryGeneric extends StateCategoryGeneric {
   const factory _StateCategoryGeneric(
       {final ChoosenDateTime? dateTime,
-      final ProductCategory? productCategory}) = _$_StateCategoryGeneric;
+      final ProductCategory? productCategory}) = _$StateCategoryGenericImpl;
   const _StateCategoryGeneric._() : super._();
 
   @override
@@ -183,8 +184,8 @@ abstract class _StateCategoryGeneric extends StateCategoryGeneric {
   ProductCategory? get productCategory;
   @override
   @JsonKey(ignore: true)
-  _$$_StateCategoryGenericCopyWith<_$_StateCategoryGeneric> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$StateCategoryGenericImplCopyWith<_$StateCategoryGenericImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -230,22 +231,22 @@ class _$ChoosenDateTimeCopyWithImpl<$Res, $Val extends ChoosenDateTime>
 }
 
 /// @nodoc
-abstract class _$$_ChoosenDateTimeCopyWith<$Res>
+abstract class _$$ChoosenDateTimeImplCopyWith<$Res>
     implements $ChoosenDateTimeCopyWith<$Res> {
-  factory _$$_ChoosenDateTimeCopyWith(
-          _$_ChoosenDateTime value, $Res Function(_$_ChoosenDateTime) then) =
-      __$$_ChoosenDateTimeCopyWithImpl<$Res>;
+  factory _$$ChoosenDateTimeImplCopyWith(_$ChoosenDateTimeImpl value,
+          $Res Function(_$ChoosenDateTimeImpl) then) =
+      __$$ChoosenDateTimeImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({DateTime? selectedDateTime});
 }
 
 /// @nodoc
-class __$$_ChoosenDateTimeCopyWithImpl<$Res>
-    extends _$ChoosenDateTimeCopyWithImpl<$Res, _$_ChoosenDateTime>
-    implements _$$_ChoosenDateTimeCopyWith<$Res> {
-  __$$_ChoosenDateTimeCopyWithImpl(
-      _$_ChoosenDateTime _value, $Res Function(_$_ChoosenDateTime) _then)
+class __$$ChoosenDateTimeImplCopyWithImpl<$Res>
+    extends _$ChoosenDateTimeCopyWithImpl<$Res, _$ChoosenDateTimeImpl>
+    implements _$$ChoosenDateTimeImplCopyWith<$Res> {
+  __$$ChoosenDateTimeImplCopyWithImpl(
+      _$ChoosenDateTimeImpl _value, $Res Function(_$ChoosenDateTimeImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -253,7 +254,7 @@ class __$$_ChoosenDateTimeCopyWithImpl<$Res>
   $Res call({
     Object? selectedDateTime = freezed,
   }) {
-    return _then(_$_ChoosenDateTime(
+    return _then(_$ChoosenDateTimeImpl(
       selectedDateTime: freezed == selectedDateTime
           ? _value.selectedDateTime
           : selectedDateTime // ignore: cast_nullable_to_non_nullable
@@ -264,8 +265,8 @@ class __$$_ChoosenDateTimeCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ChoosenDateTime extends _ChoosenDateTime {
-  const _$_ChoosenDateTime({this.selectedDateTime}) : super._();
+class _$ChoosenDateTimeImpl extends _ChoosenDateTime {
+  const _$ChoosenDateTimeImpl({this.selectedDateTime}) : super._();
 
   @override
   final DateTime? selectedDateTime;
@@ -279,7 +280,7 @@ class _$_ChoosenDateTime extends _ChoosenDateTime {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ChoosenDateTime &&
+            other is _$ChoosenDateTimeImpl &&
             (identical(other.selectedDateTime, selectedDateTime) ||
                 other.selectedDateTime == selectedDateTime));
   }
@@ -290,20 +291,21 @@ class _$_ChoosenDateTime extends _ChoosenDateTime {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ChoosenDateTimeCopyWith<_$_ChoosenDateTime> get copyWith =>
-      __$$_ChoosenDateTimeCopyWithImpl<_$_ChoosenDateTime>(this, _$identity);
+  _$$ChoosenDateTimeImplCopyWith<_$ChoosenDateTimeImpl> get copyWith =>
+      __$$ChoosenDateTimeImplCopyWithImpl<_$ChoosenDateTimeImpl>(
+          this, _$identity);
 }
 
 abstract class _ChoosenDateTime extends ChoosenDateTime {
   const factory _ChoosenDateTime({final DateTime? selectedDateTime}) =
-      _$_ChoosenDateTime;
+      _$ChoosenDateTimeImpl;
   const _ChoosenDateTime._() : super._();
 
   @override
   DateTime? get selectedDateTime;
   @override
   @JsonKey(ignore: true)
-  _$$_ChoosenDateTimeCopyWith<_$_ChoosenDateTime> get copyWith =>
+  _$$ChoosenDateTimeImplCopyWith<_$ChoosenDateTimeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -379,11 +381,11 @@ class _$ProductCategoryCopyWithImpl<$Res, $Val extends ProductCategory>
 }
 
 /// @nodoc
-abstract class _$$_ProductCategoryCopyWith<$Res>
+abstract class _$$ProductCategoryImplCopyWith<$Res>
     implements $ProductCategoryCopyWith<$Res> {
-  factory _$$_ProductCategoryCopyWith(
-          _$_ProductCategory value, $Res Function(_$_ProductCategory) then) =
-      __$$_ProductCategoryCopyWithImpl<$Res>;
+  factory _$$ProductCategoryImplCopyWith(_$ProductCategoryImpl value,
+          $Res Function(_$ProductCategoryImpl) then) =
+      __$$ProductCategoryImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -396,11 +398,11 @@ abstract class _$$_ProductCategoryCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ProductCategoryCopyWithImpl<$Res>
-    extends _$ProductCategoryCopyWithImpl<$Res, _$_ProductCategory>
-    implements _$$_ProductCategoryCopyWith<$Res> {
-  __$$_ProductCategoryCopyWithImpl(
-      _$_ProductCategory _value, $Res Function(_$_ProductCategory) _then)
+class __$$ProductCategoryImplCopyWithImpl<$Res>
+    extends _$ProductCategoryCopyWithImpl<$Res, _$ProductCategoryImpl>
+    implements _$$ProductCategoryImplCopyWith<$Res> {
+  __$$ProductCategoryImplCopyWithImpl(
+      _$ProductCategoryImpl _value, $Res Function(_$ProductCategoryImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -410,7 +412,7 @@ class __$$_ProductCategoryCopyWithImpl<$Res>
     Object? listProduct = null,
     Object? choosenProduct = freezed,
   }) {
-    return _then(_$_ProductCategory(
+    return _then(_$ProductCategoryImpl(
       categoryName: null == categoryName
           ? _value.categoryName
           : categoryName // ignore: cast_nullable_to_non_nullable
@@ -429,8 +431,8 @@ class __$$_ProductCategoryCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ProductCategory extends _ProductCategory {
-  const _$_ProductCategory(
+class _$ProductCategoryImpl extends _ProductCategory {
+  const _$ProductCategoryImpl(
       {required this.categoryName,
       required final List<Product> listProduct,
       this.choosenProduct})
@@ -459,7 +461,7 @@ class _$_ProductCategory extends _ProductCategory {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ProductCategory &&
+            other is _$ProductCategoryImpl &&
             (identical(other.categoryName, categoryName) ||
                 other.categoryName == categoryName) &&
             const DeepCollectionEquality()
@@ -475,15 +477,16 @@ class _$_ProductCategory extends _ProductCategory {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ProductCategoryCopyWith<_$_ProductCategory> get copyWith =>
-      __$$_ProductCategoryCopyWithImpl<_$_ProductCategory>(this, _$identity);
+  _$$ProductCategoryImplCopyWith<_$ProductCategoryImpl> get copyWith =>
+      __$$ProductCategoryImplCopyWithImpl<_$ProductCategoryImpl>(
+          this, _$identity);
 }
 
 abstract class _ProductCategory extends ProductCategory {
   const factory _ProductCategory(
       {required final String categoryName,
       required final List<Product> listProduct,
-      final Product? choosenProduct}) = _$_ProductCategory;
+      final Product? choosenProduct}) = _$ProductCategoryImpl;
   const _ProductCategory._() : super._();
 
   @override
@@ -494,7 +497,7 @@ abstract class _ProductCategory extends ProductCategory {
   Product? get choosenProduct;
   @override
   @JsonKey(ignore: true)
-  _$$_ProductCategoryCopyWith<_$_ProductCategory> get copyWith =>
+  _$$ProductCategoryImplCopyWith<_$ProductCategoryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -561,10 +564,10 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
 }
 
 /// @nodoc
-abstract class _$$_ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
-  factory _$$_ProductCopyWith(
-          _$_Product value, $Res Function(_$_Product) then) =
-      __$$_ProductCopyWithImpl<$Res>;
+abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
+  factory _$$ProductImplCopyWith(
+          _$ProductImpl value, $Res Function(_$ProductImpl) then) =
+      __$$ProductImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -575,10 +578,11 @@ abstract class _$$_ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ProductCopyWithImpl<$Res>
-    extends _$ProductCopyWithImpl<$Res, _$_Product>
-    implements _$$_ProductCopyWith<$Res> {
-  __$$_ProductCopyWithImpl(_$_Product _value, $Res Function(_$_Product) _then)
+class __$$ProductImplCopyWithImpl<$Res>
+    extends _$ProductCopyWithImpl<$Res, _$ProductImpl>
+    implements _$$ProductImplCopyWith<$Res> {
+  __$$ProductImplCopyWithImpl(
+      _$ProductImpl _value, $Res Function(_$ProductImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -589,7 +593,7 @@ class __$$_ProductCopyWithImpl<$Res>
     Object? offerInPercent = freezed,
     Object? productCount = freezed,
   }) {
-    return _then(_$_Product(
+    return _then(_$ProductImpl(
       productName: null == productName
           ? _value.productName
           : productName // ignore: cast_nullable_to_non_nullable
@@ -612,8 +616,8 @@ class __$$_ProductCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Product extends _Product {
-  const _$_Product(
+class _$ProductImpl extends _Product {
+  const _$ProductImpl(
       {required this.productName,
       required this.price,
       this.offerInPercent,
@@ -638,7 +642,7 @@ class _$_Product extends _Product {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Product &&
+            other is _$ProductImpl &&
             (identical(other.productName, productName) ||
                 other.productName == productName) &&
             (identical(other.price, price) || other.price == price) &&
@@ -655,8 +659,8 @@ class _$_Product extends _Product {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ProductCopyWith<_$_Product> get copyWith =>
-      __$$_ProductCopyWithImpl<_$_Product>(this, _$identity);
+  _$$ProductImplCopyWith<_$ProductImpl> get copyWith =>
+      __$$ProductImplCopyWithImpl<_$ProductImpl>(this, _$identity);
 }
 
 abstract class _Product extends Product {
@@ -664,7 +668,7 @@ abstract class _Product extends Product {
       {required final String productName,
       required final double price,
       final int? offerInPercent,
-      final int? productCount}) = _$_Product;
+      final int? productCount}) = _$ProductImpl;
   const _Product._() : super._();
 
   @override
@@ -677,6 +681,6 @@ abstract class _Product extends Product {
   int? get productCount;
   @override
   @JsonKey(ignore: true)
-  _$$_ProductCopyWith<_$_Product> get copyWith =>
+  _$$ProductImplCopyWith<_$ProductImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -5,13 +5,15 @@ part 'state_workingtable.freezed.dart';
 
 @freezed
 class StateWorkingTable with _$StateWorkingTable {
-  const factory StateWorkingTable({
+  const factory StateWorkingTable.loading() = _Loading;
+
+  const factory StateWorkingTable.success({
     @Default('') String hashKey,
     @Default('') String category,
     @Default(0) int productOrderCount,
     @Default([]) List<ArbeitsTischeProduct>? workingTables,
     ArbeitsTischeProduct? selectedWorkingTable,
-  }) = _StateWorkingTable;
+  }) = _Success;
 }
 
 @freezed

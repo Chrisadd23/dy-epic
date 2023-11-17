@@ -81,24 +81,25 @@ class _$StateCategoryCopyWithImpl<$Res, $Val extends StateCategory>
 }
 
 /// @nodoc
-abstract class _$$_LoadingCopyWith<$Res> {
-  factory _$$_LoadingCopyWith(
-          _$_Loading value, $Res Function(_$_Loading) then) =
-      __$$_LoadingCopyWithImpl<$Res>;
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res>
-    extends _$StateCategoryCopyWithImpl<$Res, _$_Loading>
-    implements _$$_LoadingCopyWith<$Res> {
-  __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$StateCategoryCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Loading extends _Loading {
-  const _$_Loading() : super._();
+class _$LoadingImpl extends _Loading {
+  const _$LoadingImpl() : super._();
 
   @override
   String toString() {
@@ -108,7 +109,7 @@ class _$_Loading extends _Loading {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Loading);
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
   }
 
   @override
@@ -184,24 +185,25 @@ class _$_Loading extends _Loading {
 }
 
 abstract class _Loading extends StateCategory {
-  const factory _Loading() = _$_Loading;
+  const factory _Loading() = _$LoadingImpl;
   const _Loading._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_SuccessCopyWith<$Res> {
-  factory _$$_SuccessCopyWith(
-          _$_Success value, $Res Function(_$_Success) then) =
-      __$$_SuccessCopyWithImpl<$Res>;
+abstract class _$$SuccessImplCopyWith<$Res> {
+  factory _$$SuccessImplCopyWith(
+          _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
+      __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<CategoryWidget> listCategory});
 }
 
 /// @nodoc
-class __$$_SuccessCopyWithImpl<$Res>
-    extends _$StateCategoryCopyWithImpl<$Res, _$_Success>
-    implements _$$_SuccessCopyWith<$Res> {
-  __$$_SuccessCopyWithImpl(_$_Success _value, $Res Function(_$_Success) _then)
+class __$$SuccessImplCopyWithImpl<$Res>
+    extends _$StateCategoryCopyWithImpl<$Res, _$SuccessImpl>
+    implements _$$SuccessImplCopyWith<$Res> {
+  __$$SuccessImplCopyWithImpl(
+      _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -209,7 +211,7 @@ class __$$_SuccessCopyWithImpl<$Res>
   $Res call({
     Object? listCategory = null,
   }) {
-    return _then(_$_Success(
+    return _then(_$SuccessImpl(
       null == listCategory
           ? _value._listCategory
           : listCategory // ignore: cast_nullable_to_non_nullable
@@ -220,8 +222,8 @@ class __$$_SuccessCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Success extends _Success {
-  const _$_Success(final List<CategoryWidget> listCategory)
+class _$SuccessImpl extends _Success {
+  const _$SuccessImpl(final List<CategoryWidget> listCategory)
       : _listCategory = listCategory,
         super._();
 
@@ -242,7 +244,7 @@ class _$_Success extends _Success {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Success &&
+            other is _$SuccessImpl &&
             const DeepCollectionEquality()
                 .equals(other._listCategory, _listCategory));
   }
@@ -254,8 +256,8 @@ class _$_Success extends _Success {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SuccessCopyWith<_$_Success> get copyWith =>
-      __$$_SuccessCopyWithImpl<_$_Success>(this, _$identity);
+  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
+      __$$SuccessImplCopyWithImpl<_$SuccessImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -327,29 +329,31 @@ class _$_Success extends _Success {
 }
 
 abstract class _Success extends StateCategory {
-  const factory _Success(final List<CategoryWidget> listCategory) = _$_Success;
+  const factory _Success(final List<CategoryWidget> listCategory) =
+      _$SuccessImpl;
   const _Success._() : super._();
 
   List<CategoryWidget> get listCategory;
   @JsonKey(ignore: true)
-  _$$_SuccessCopyWith<_$_Success> get copyWith =>
+  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_FailureCopyWith<$Res> {
-  factory _$$_FailureCopyWith(
-          _$_Failure value, $Res Function(_$_Failure) then) =
-      __$$_FailureCopyWithImpl<$Res>;
+abstract class _$$FailureImplCopyWith<$Res> {
+  factory _$$FailureImplCopyWith(
+          _$FailureImpl value, $Res Function(_$FailureImpl) then) =
+      __$$FailureImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Failure failure});
 }
 
 /// @nodoc
-class __$$_FailureCopyWithImpl<$Res>
-    extends _$StateCategoryCopyWithImpl<$Res, _$_Failure>
-    implements _$$_FailureCopyWith<$Res> {
-  __$$_FailureCopyWithImpl(_$_Failure _value, $Res Function(_$_Failure) _then)
+class __$$FailureImplCopyWithImpl<$Res>
+    extends _$StateCategoryCopyWithImpl<$Res, _$FailureImpl>
+    implements _$$FailureImplCopyWith<$Res> {
+  __$$FailureImplCopyWithImpl(
+      _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -357,7 +361,7 @@ class __$$_FailureCopyWithImpl<$Res>
   $Res call({
     Object? failure = null,
   }) {
-    return _then(_$_Failure(
+    return _then(_$FailureImpl(
       null == failure
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
@@ -368,8 +372,8 @@ class __$$_FailureCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Failure extends _Failure {
-  const _$_Failure(this.failure) : super._();
+class _$FailureImpl extends _Failure {
+  const _$FailureImpl(this.failure) : super._();
 
   @override
   final Failure failure;
@@ -383,7 +387,7 @@ class _$_Failure extends _Failure {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Failure &&
+            other is _$FailureImpl &&
             (identical(other.failure, failure) || other.failure == failure));
   }
 
@@ -393,8 +397,8 @@ class _$_Failure extends _Failure {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_FailureCopyWith<_$_Failure> get copyWith =>
-      __$$_FailureCopyWithImpl<_$_Failure>(this, _$identity);
+  _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
+      __$$FailureImplCopyWithImpl<_$FailureImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -466,11 +470,11 @@ class _$_Failure extends _Failure {
 }
 
 abstract class _Failure extends StateCategory {
-  const factory _Failure(final Failure failure) = _$_Failure;
+  const factory _Failure(final Failure failure) = _$FailureImpl;
   const _Failure._() : super._();
 
   Failure get failure;
   @JsonKey(ignore: true)
-  _$$_FailureCopyWith<_$_Failure> get copyWith =>
+  _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
