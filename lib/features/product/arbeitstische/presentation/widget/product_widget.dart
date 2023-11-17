@@ -376,81 +376,58 @@ class ProductColorWidget extends StatelessWidget {
     return showDialog<Color>(
         barrierColor: Colors.transparent,
         context: context,
-        builder: (context) => Dialog(
-            backgroundColor: Colors.transparent,
-            shadowColor: Colors.transparent,
-            surfaceTintColor: Colors.transparent,
-            child: InkWell(
-              highlightColor: Colors.transparent,
-              splashColor: Colors.transparent,
-              onTap: () => Navigator.of(context).pop(),
-              child: Stack(
-                children: [
-                  Positioned(
-                    bottom: MediaQuery.of(context).size.height * 0.081,
-                    right: MediaQuery.of(context).size.width * 0.05,
-                    child: Container(
-                      height: MediaQuery.sizeOf(context).height * 0.21,
-                      width: MediaQuery.sizeOf(context).width * 0.3,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.transparent),
-                      child: Stack(children: [
-                        LayoutBuilder(
-                          builder: (context, constraints) =>
-                              SingleChildScrollView(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                ...colors!
-                                    .map((color) => ColorWidget(
-                                        constraints: constraints, color: color))
-                                    .toList(),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ]),
-                    ),
+        builder: (context) => Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                height: MediaQuery.sizeOf(context).height * 0.21,
+                width: MediaQuery.sizeOf(context).width * 0.3,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.transparent),
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: colors!
+                        .map((color) => ColorWidget(color: color))
+                        .toList(),
                   ),
-                ],
+                ),
               ),
-            )));
+            ));
   }
 }
 
 // ===========> change Color from Dialog
 class ColorWidget extends StatelessWidget {
-  const ColorWidget(
-      {super.key, required this.constraints, required this.color});
+  const ColorWidget({super.key, required this.color});
 
-  final BoxConstraints constraints;
   final Color? color;
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      highlightColor: Colors.transparent,
-      splashColor: Colors.transparent,
-      onTap: () {
-        debugPrint('color => $color');
-        Navigator.of(context).pop(color);
-      },
-      child: Container(
-          height: constraints.maxHeight * 0.8,
-          width: constraints.maxWidth,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: color,
-          )),
+    return Material(
+      type: MaterialType.transparency,
+      child: InkWell(
+        highlightColor: Colors.transparent,
+        splashColor: Colors.transparent,
+        onTap: () {
+          debugPrint('color => $color');
+          Navigator.of(context).pop(color);
+        },
+        child: Container(
+            height: MediaQuery.of(context).size.height * 0.13,
+            width: MediaQuery.of(context).size.width * 0.25,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: color,
+            )),
+      ),
     );
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties
-        .add(DiagnosticsProperty<BoxConstraints>('constraints', constraints));
+
     properties.add(ColorProperty('color', color));
   }
 }
