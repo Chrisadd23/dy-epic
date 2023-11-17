@@ -335,39 +335,43 @@ class ProductColorWidget extends StatelessWidget {
                 BlocBuilder<CubitWorkingTableProduct, StateWorkingTable>(
                     builder: (context, state) {
                   return Flexible(
-                      child: InkWell(
-                    onTap: () async {
-                      debugPrint('start');
-                      final colors = state.maybeMap(
-                          orElse: () => null,
-                          success: (productColor) => productColor.workingTables
-                              ?.map((product) => product.frameColors?.color)
-                              .toList());
-                      debugPrint('wait => $colors');
-                      if (colors != null) {
-                        final color = await _showColorMenu(context, colors);
-                        debugPrint('chosen color $color');
-                        if (context.mounted) {
-                          debugPrint('continue');
-                          debugPrint('chosen color $color');
-                          context
-                              .read<CubitWorkingTableProduct>()
-                              .changeColor(color);
-                        }
-                      }
-                    },
-                    child: Container(
-                      height: currentConstraints.maxHeight * 0.9,
-                      width: currentConstraints.maxWidth * 0.3,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          border: Border.all(width: 2),
-                          color: state.maybeMap(
-                              orElse: () => null,
-                              success: (product) => product
-                                  .selectedWorkingTable?.frameColors?.color)),
-                    ),
-                  ));
+                      child: Container(
+                          height: currentConstraints.maxHeight * 0.9,
+                          width: currentConstraints.maxWidth * 0.3,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              border: Border.all(width: 2),
+                              color: state.maybeMap(
+                                  orElse: () => null,
+                                  success: (product) => product
+                                      .selectedWorkingTable
+                                      ?.frameColors
+                                      ?.color)),
+                          child: state.maybeMap(
+                            orElse: () => const LoadingWidget(),
+                            success: (product) => InkWell(
+                              onTap: () async {
+                                debugPrint('start');
+                                final colors = product.workingTables
+                                    ?.map(
+                                        (product) => product.frameColors?.color)
+                                    .toList();
+                                debugPrint('wait => $colors');
+                                if (colors != null) {
+                                  final color =
+                                      await _showColorMenu(context, colors);
+                                  debugPrint('chosen color $color');
+                                  if (context.mounted) {
+                                    debugPrint('continue');
+                                    debugPrint('chosen color $color');
+                                    context
+                                        .read<CubitWorkingTableProduct>()
+                                        .changeColor(color);
+                                  }
+                                }
+                              },
+                            ),
+                          )));
                 }),
               ],
             );

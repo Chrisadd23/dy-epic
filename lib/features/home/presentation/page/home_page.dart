@@ -31,7 +31,10 @@ class CategoryPage extends StatelessWidget {
           width: double.infinity,
           child: BlocBuilder<HomePageCubit, StateCategory>(
             builder: (context, state) => (state.maybeWhen(
-                loading: () => const LoadingWidget(),
+                loading: () => const LoadingWidget(
+                      firstWidth: 110,
+                      secondWidth: 60,
+                    ),
                 failure: (failure) => FailureWidget(
                       failure: failure.toString(),
                     ),

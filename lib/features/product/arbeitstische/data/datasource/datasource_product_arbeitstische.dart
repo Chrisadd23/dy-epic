@@ -14,7 +14,6 @@ class DataSourceProductWorkingtableImplementation
   @override
   Future<Either<Failure, List<EntityArbeitsTischeProduct>>> loadData(
       String? product) async {
-    // TODO: implement loadData
     try {
       await Future.delayed(const Duration(seconds: 1));
       return Right(dummyListProductArbeitstische);
