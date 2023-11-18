@@ -4,19 +4,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'state_workingtable.freezed.dart';
 
 @freezed
-class StateWorkingTable with _$StateWorkingTable {
-  const factory StateWorkingTable.loading() = _Loading;
-
-  const factory StateWorkingTable.success({
-    @Default('') String hashKey,
-    @Default('') String category,
-    @Default(0) int productOrderCount,
-    @Default([]) List<ArbeitsTischeProduct>? workingTables,
-    ArbeitsTischeProduct? selectedWorkingTable,
-  }) = _Success;
-}
-
-@freezed
 class ArbeitsTischeProduct with _$ArbeitsTischeProduct {
   const factory ArbeitsTischeProduct({
     String? name,

@@ -23,7 +23,8 @@ class ColorProductWidget extends StatelessWidget {
             return Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                BlocBuilder<CubitWorkingTableProduct, StateWorkingTable>(
+                BlocBuilder<CubitWorkingTableProduct,
+                        StateProduct<ArbeitsTischeProduct>>(
                     builder: (context, state) {
                   return Flexible(
                     child: Container(
@@ -90,7 +91,7 @@ class ColorProductWidget extends StatelessWidget {
                     ),
                   );
                 }),
-                BlocBuilder<CubitWorkingTableProduct, StateWorkingTable>(
+                BlocBuilder<CubitWorkingTableProduct, StateProduct>(
                     builder: (context, state) {
                   return Flexible(
                       child: Container(
