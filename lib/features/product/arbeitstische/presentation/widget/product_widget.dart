@@ -55,11 +55,6 @@ class ProductPicture extends StatelessWidget {
       return _PictureWidget(state: state);
     });
   }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-  }
 }
 
 class _PictureWidget extends StatelessWidget {
