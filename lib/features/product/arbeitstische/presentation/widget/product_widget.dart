@@ -504,7 +504,7 @@ class ColorWidget extends StatelessWidget {
     super.debugFillProperties(properties);
 
     properties.add(ColorProperty('color', color));
-    properties.add(DiagnosticsProperty<bool?>('dontPop', dontPop));
+    properties.add(ObjectFlagProperty<VoidCallback>.has('onTap', onTap));
   }
 }
 
