@@ -17,6 +17,7 @@ class EntityArbeitsTischeProduct with _$EntityArbeitsTischeProduct {
     Gerauscheentwicklung? gerauscheentwicklung,
     StandbyStromverbrauch? standbyStromverbrauch,
     bool? kollisionsSchutz,
+    String? picturePath,
   }) = _EntityArbeitsTischeProduct;
 }
 

@@ -1,6 +1,7 @@
 import 'package:app_flutter_produkt_bestellen/core/error/failures.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/domain/entity/entity_product_workingtable.dart';
+import 'package:app_flutter_produkt_bestellen/gen/assets.gen.dart';
 import 'package:either_dart/either.dart';
 import 'package:flutter/material.dart';
 
@@ -25,10 +26,16 @@ class DataSourceProductWorkingtableImplementation
 }
 
 final List<EntityArbeitsTischeProduct> dummyListProductArbeitstische = [
-  const EntityArbeitsTischeProduct(
-      frameColors: Gestell(color: AppColors.whiteD6D6D7, material: '')),
-  const EntityArbeitsTischeProduct(
-      frameColors: Gestell(color: AppColors.greyC1C1C1, material: '')),
-  const EntityArbeitsTischeProduct(
-      frameColors: Gestell(color: AppColors.black080808, material: '')),
+  EntityArbeitsTischeProduct(
+      frameColors: const Gestell(
+        color: AppColors.whiteD6D6D7,
+        material: '',
+      ),
+      picturePath: Assets.products.arbeitstische.slavonischeEicheWeiss.path),
+  EntityArbeitsTischeProduct(
+      frameColors: const Gestell(color: AppColors.greyC1C1C1, material: ''),
+      picturePath: Assets.products.arbeitstische.slavonischeEicheSilber.path),
+  EntityArbeitsTischeProduct(
+      frameColors: const Gestell(color: AppColors.black080808, material: ''),
+      picturePath: Assets.products.arbeitstische.slavonischeEicheSchwarz.path),
 ];

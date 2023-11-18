@@ -21,11 +21,13 @@ class CubitWorkingTableProduct extends Cubit<StateWorkingTable> {
     workingTables.fold((failure) {}, (listWorkingTables) async {
       final list = listWorkingTables
           .map((workingTable) => ArbeitsTischeProduct(
-              frameColors: Gestell(
-                  color: workingTable.frameColors!.color, material: '')))
+              frameColors:
+                  Gestell(color: workingTable.frameColors!.color, material: ''),
+              picturePath: workingTable.picturePath))
           .toList();
       debugPrint(list.toString());
-      emit(StateWorkingTable.success(workingTables: list));
+      emit(StateWorkingTable.success(
+          workingTables: list, selectedWorkingTable: list[0]));
     });
   }
 

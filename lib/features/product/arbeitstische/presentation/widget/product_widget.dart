@@ -53,38 +53,81 @@ class ProductPicture extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.topCenter,
-      child: Padding(
-        padding:
-            EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.08),
-        child: Container(
-          width: MediaQuery.sizeOf(context).width * 0.9,
-          height: MediaQuery.sizeOf(context).height * 0.25,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              border: Border.all(color: Colors.black),
-              color: Colors.white,
-              image: product == null
-                  ? null
-                  : DecorationImage(
-                      image: AssetImage(product!),
-                    )),
-          child: product == null
-              ? const SizedBox.shrink()
-              : Image.asset(
-                  product!,
-                  fit: BoxFit.fitHeight,
-                ),
-        ),
-      ),
-    );
+    return BlocBuilder<CubitWorkingTableProduct, StateWorkingTable>(
+        builder: (context, state) {
+      return _PictureWidget(product: product, state: state);
+    });
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties.add(StringProperty('product', product));
+  }
+}
+
+class _PictureWidget extends StatefulWidget {
+  const _PictureWidget({
+    super.key,
+    required this.product,
+    required this.state,
+  });
+
+  final String? product;
+  final StateWorkingTable state;
+
+  @override
+  State<_PictureWidget> createState() => _PictureWidgetState();
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(StringProperty('product', product));
+    properties.add(DiagnosticsProperty<StateWorkingTable>('state', state));
+  }
+}
+
+class _PictureWidgetState extends State<_PictureWidget> {
+  @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
+    final picture = widget.state.maybeMap(
+        orElse: () => '',
+        success: (product) => product.selectedWorkingTable!.picturePath!);
+    //precacheImage(AssetImage(picture), context);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.topCenter,
+      child: Padding(
+          padding:
+              EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.08),
+          child: Container(
+            width: MediaQuery.sizeOf(context).width * 0.9,
+            height: MediaQuery.sizeOf(context).height * 0.25,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(color: Colors.black),
+              color: Colors.white,
+            ),
+            child: widget.state.maybeMap(
+              orElse: () => LoadingWidget(
+                firstWidth: MediaQuery.of(context).size.width * 0.5,
+                secondWidth: MediaQuery.of(context).size.width * 0.3,
+              ),
+              success: (product) =>
+                  product.selectedWorkingTable?.picturePath == null
+                      ? const Center(child: LoadingWidget())
+                      : Image.asset(
+                          product.selectedWorkingTable!.picturePath!,
+                          fit: BoxFit.fitHeight,
+                        ),
+            ),
+          )),
+    );
   }
 }
 
@@ -364,9 +407,11 @@ class ProductColorWidget extends StatelessWidget {
                                   if (context.mounted) {
                                     debugPrint('continue');
                                     debugPrint('chosen color $color');
-                                    context
-                                        .read<CubitWorkingTableProduct>()
-                                        .changeColor(color);
+                                    if (color != null) {
+                                      context
+                                          .read<CubitWorkingTableProduct>()
+                                          .changeColor(color);
+                                    }
                                   }
                                 }
                               },

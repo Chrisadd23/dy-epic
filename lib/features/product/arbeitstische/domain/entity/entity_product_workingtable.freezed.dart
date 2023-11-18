@@ -30,6 +30,7 @@ mixin _$EntityArbeitsTischeProduct {
   StandbyStromverbrauch? get standbyStromverbrauch =>
       throw _privateConstructorUsedError;
   bool? get kollisionsSchutz => throw _privateConstructorUsedError;
+  String? get picturePath => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EntityArbeitsTischeProductCopyWith<EntityArbeitsTischeProduct>
@@ -53,7 +54,8 @@ abstract class $EntityArbeitsTischeProductCopyWith<$Res> {
       Hubgeschwindigkeit? hubgeschwindigkeit,
       Gerauscheentwicklung? gerauscheentwicklung,
       StandbyStromverbrauch? standbyStromverbrauch,
-      bool? kollisionsSchutz});
+      bool? kollisionsSchutz,
+      String? picturePath});
 
   $GestellCopyWith<$Res>? get frameColors;
   $PlatteCopyWith<$Res>? get plateColor;
@@ -89,6 +91,7 @@ class _$EntityArbeitsTischeProductCopyWithImpl<$Res,
     Object? gerauscheentwicklung = freezed,
     Object? standbyStromverbrauch = freezed,
     Object? kollisionsSchutz = freezed,
+    Object? picturePath = freezed,
   }) {
     return _then(_value.copyWith(
       name: freezed == name
@@ -131,6 +134,10 @@ class _$EntityArbeitsTischeProductCopyWithImpl<$Res,
           ? _value.kollisionsSchutz
           : kollisionsSchutz // ignore: cast_nullable_to_non_nullable
               as bool?,
+      picturePath: freezed == picturePath
+          ? _value.picturePath
+          : picturePath // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
@@ -254,7 +261,8 @@ abstract class _$$EntityArbeitsTischeProductImplCopyWith<$Res>
       Hubgeschwindigkeit? hubgeschwindigkeit,
       Gerauscheentwicklung? gerauscheentwicklung,
       StandbyStromverbrauch? standbyStromverbrauch,
-      bool? kollisionsSchutz});
+      bool? kollisionsSchutz,
+      String? picturePath});
 
   @override
   $GestellCopyWith<$Res>? get frameColors;
@@ -297,6 +305,7 @@ class __$$EntityArbeitsTischeProductImplCopyWithImpl<$Res>
     Object? gerauscheentwicklung = freezed,
     Object? standbyStromverbrauch = freezed,
     Object? kollisionsSchutz = freezed,
+    Object? picturePath = freezed,
   }) {
     return _then(_$EntityArbeitsTischeProductImpl(
       name: freezed == name
@@ -339,6 +348,10 @@ class __$$EntityArbeitsTischeProductImplCopyWithImpl<$Res>
           ? _value.kollisionsSchutz
           : kollisionsSchutz // ignore: cast_nullable_to_non_nullable
               as bool?,
+      picturePath: freezed == picturePath
+          ? _value.picturePath
+          : picturePath // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -356,7 +369,8 @@ class _$EntityArbeitsTischeProductImpl implements _EntityArbeitsTischeProduct {
       this.hubgeschwindigkeit,
       this.gerauscheentwicklung,
       this.standbyStromverbrauch,
-      this.kollisionsSchutz});
+      this.kollisionsSchutz,
+      this.picturePath});
 
   @override
   final String? name;
@@ -378,10 +392,12 @@ class _$EntityArbeitsTischeProductImpl implements _EntityArbeitsTischeProduct {
   final StandbyStromverbrauch? standbyStromverbrauch;
   @override
   final bool? kollisionsSchutz;
+  @override
+  final String? picturePath;
 
   @override
   String toString() {
-    return 'EntityArbeitsTischeProduct(name: $name, frameColors: $frameColors, plateColor: $plateColor, hoehenVerstellbarkeit: $hoehenVerstellbarkeit, gestellDimension: $gestellDimension, hubbereich: $hubbereich, hubgeschwindigkeit: $hubgeschwindigkeit, gerauscheentwicklung: $gerauscheentwicklung, standbyStromverbrauch: $standbyStromverbrauch, kollisionsSchutz: $kollisionsSchutz)';
+    return 'EntityArbeitsTischeProduct(name: $name, frameColors: $frameColors, plateColor: $plateColor, hoehenVerstellbarkeit: $hoehenVerstellbarkeit, gestellDimension: $gestellDimension, hubbereich: $hubbereich, hubgeschwindigkeit: $hubgeschwindigkeit, gerauscheentwicklung: $gerauscheentwicklung, standbyStromverbrauch: $standbyStromverbrauch, kollisionsSchutz: $kollisionsSchutz, picturePath: $picturePath)';
   }
 
   @override
@@ -407,7 +423,9 @@ class _$EntityArbeitsTischeProductImpl implements _EntityArbeitsTischeProduct {
             (identical(other.standbyStromverbrauch, standbyStromverbrauch) ||
                 other.standbyStromverbrauch == standbyStromverbrauch) &&
             (identical(other.kollisionsSchutz, kollisionsSchutz) ||
-                other.kollisionsSchutz == kollisionsSchutz));
+                other.kollisionsSchutz == kollisionsSchutz) &&
+            (identical(other.picturePath, picturePath) ||
+                other.picturePath == picturePath));
   }
 
   @override
@@ -422,7 +440,8 @@ class _$EntityArbeitsTischeProductImpl implements _EntityArbeitsTischeProduct {
       hubgeschwindigkeit,
       gerauscheentwicklung,
       standbyStromverbrauch,
-      kollisionsSchutz);
+      kollisionsSchutz,
+      picturePath);
 
   @JsonKey(ignore: true)
   @override
@@ -444,7 +463,8 @@ abstract class _EntityArbeitsTischeProduct
       final Hubgeschwindigkeit? hubgeschwindigkeit,
       final Gerauscheentwicklung? gerauscheentwicklung,
       final StandbyStromverbrauch? standbyStromverbrauch,
-      final bool? kollisionsSchutz}) = _$EntityArbeitsTischeProductImpl;
+      final bool? kollisionsSchutz,
+      final String? picturePath}) = _$EntityArbeitsTischeProductImpl;
 
   @override
   String? get name;
@@ -466,6 +486,8 @@ abstract class _EntityArbeitsTischeProduct
   StandbyStromverbrauch? get standbyStromverbrauch;
   @override
   bool? get kollisionsSchutz;
+  @override
+  String? get picturePath;
   @override
   @JsonKey(ignore: true)
   _$$EntityArbeitsTischeProductImplCopyWith<_$EntityArbeitsTischeProductImpl>

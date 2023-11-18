@@ -29,6 +29,7 @@ class ArbeitsTischeProduct with _$ArbeitsTischeProduct {
     Gerauscheentwicklung? gerauscheentwicklung,
     StandbyStromverbrauch? standbyStromverbrauch,
     bool? kollisionsSchutz,
+    String? picturePath,
   }) = _ArbeitsTischeProduct;
 }
 

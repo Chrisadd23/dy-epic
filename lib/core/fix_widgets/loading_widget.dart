@@ -14,29 +14,35 @@ class LoadingWidget extends StatelessWidget {
       return Center(
         child: Stack(
           children: [
-            SpinKitCircle(
-              duration: const Duration(seconds: 2),
-              size: firstWidth ?? constraints.maxWidth * 0.7,
-              itemBuilder: (context, index) {
-                final colors = [
-                  const Color.fromRGBO(247, 165, 64, 1),
-                  const Color.fromRGBO(95, 95, 95, 0.6)
-                ];
-                final color = colors[index % colors.length];
+            Align(
+              alignment: Alignment.center,
+              child: SpinKitCircle(
+                duration: const Duration(seconds: 2),
+                size: firstWidth ?? constraints.maxWidth * 0.7,
+                itemBuilder: (context, index) {
+                  final colors = [
+                    const Color.fromRGBO(247, 165, 64, 1),
+                    const Color.fromRGBO(95, 95, 95, 0.6)
+                  ];
+                  final color = colors[index % colors.length];
 
-                return DecoratedBox(
-                    decoration: BoxDecoration(
-                  color: color,
-                  shape: BoxShape.circle,
-                  border: Border.all(color: Colors.black, width: 1),
-                ));
-              },
+                  return DecoratedBox(
+                      decoration: BoxDecoration(
+                    color: color,
+                    shape: BoxShape.circle,
+                    border: Border.all(color: Colors.black, width: 1),
+                  ));
+                },
+              ),
             ),
-            SpinKitSpinningLines(
-              color: Colors.white,
-              size: secondWidth ?? constraints.maxWidth * 0.3,
-              itemCount: 8,
-              duration: const Duration(seconds: 5),
+            Align(
+              alignment: Alignment.center,
+              child: SpinKitSpinningLines(
+                color: Colors.white,
+                size: secondWidth ?? constraints.maxWidth * 0.3,
+                itemCount: 8,
+                duration: const Duration(seconds: 5),
+              ),
             )
           ],
         ),
