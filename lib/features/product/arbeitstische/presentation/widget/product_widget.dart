@@ -66,37 +66,14 @@ class ProductPicture extends StatelessWidget {
   }
 }
 
-class _PictureWidget extends StatefulWidget {
+class _PictureWidget extends StatelessWidget {
   const _PictureWidget({
-    super.key,
     required this.product,
     required this.state,
   });
 
   final String? product;
   final StateWorkingTable state;
-
-  @override
-  State<_PictureWidget> createState() => _PictureWidgetState();
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(StringProperty('product', product));
-    properties.add(DiagnosticsProperty<StateWorkingTable>('state', state));
-  }
-}
-
-class _PictureWidgetState extends State<_PictureWidget> {
-  @override
-  void didChangeDependencies() {
-    // TODO: implement didChangeDependencies
-    super.didChangeDependencies();
-    final picture = widget.state.maybeMap(
-        orElse: () => '',
-        success: (product) => product.selectedWorkingTable!.picturePath!);
-    //precacheImage(AssetImage(picture), context);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -113,7 +90,7 @@ class _PictureWidgetState extends State<_PictureWidget> {
               border: Border.all(color: Colors.black),
               color: Colors.white,
             ),
-            child: widget.state.maybeMap(
+            child: state.maybeMap(
               orElse: () => LoadingWidget(
                 firstWidth: MediaQuery.of(context).size.width * 0.5,
                 secondWidth: MediaQuery.of(context).size.width * 0.3,
@@ -128,6 +105,13 @@ class _PictureWidgetState extends State<_PictureWidget> {
             ),
           )),
     );
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty<StateWorkingTable>('state', state));
+    properties.add(StringProperty('product', product));
   }
 }
 
