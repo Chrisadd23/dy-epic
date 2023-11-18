@@ -1,7 +1,7 @@
 part of my_product_widget;
 
-class ProductColorWidget extends StatelessWidget {
-  const ProductColorWidget({
+class ColorProductWidget extends StatelessWidget {
+  const ColorProductWidget({
     required this.scrollConstraints,
     super.key,
   });

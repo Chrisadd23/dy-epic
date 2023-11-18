@@ -33,7 +33,7 @@ class ProductWidget extends HookWidget {
               child: Padding(
                 padding: EdgeInsets.only(
                     bottom: MediaQuery.of(context).size.height * 0.04),
-                child: const ProductCountWidget(),
+                child: const CounterProductWidget(),
               )),
           const ProductAttributes(),
           const OrderProductWidget()
@@ -173,7 +173,7 @@ class ProductAttributes extends StatelessWidget {
                 child: LayoutBuilder(builder: (context, scrollConstraints) {
                   return Column(
                     children: [
-                      ProductColorWidget(scrollConstraints: scrollConstraints),
+                      ColorProductWidget(scrollConstraints: scrollConstraints),
                     ],
                   );
                 }),

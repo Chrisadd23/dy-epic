@@ -1,7 +1,7 @@
 part of my_product_widget;
 
-class ProductCountWidget extends HookWidget {
-  const ProductCountWidget({super.key});
+class CounterProductWidget extends HookWidget {
+  const CounterProductWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
