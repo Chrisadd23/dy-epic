@@ -1,3 +1,4 @@
+import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/arbeitstische/presentation/cubit/state_arbeitstische.dart';
 import 'package:app_flutter_produkt_bestellen/gen/assets.gen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,24 +9,24 @@ class CubitWorkTables extends Cubit<StateWorkTable> {
   Future<void> load() async {
     final listProduct = [
       Product(
-          productName: 'Slavonische Eiche',
+          productType: EnumCategoryWorkingTable.slavonischeEiche,
           price: 0.0,
           picturePath:
               Assets.products.arbeitstische.slavonischeEicheSchwarz.path),
       Product(
-          productName: 'Ahorn',
+          productType: EnumCategoryWorkingTable.ahorn,
           price: 0.0,
           picturePath: Assets.products.arbeitstische.ahornSchwarz.path),
       Product(
-          productName: 'Buche',
+          productType: EnumCategoryWorkingTable.buche,
           price: 0.0,
           picturePath: Assets.products.arbeitstische.bucheSchwarz.path),
       Product(
-          productName: 'lSchwarz',
+          productType: EnumCategoryWorkingTable.lSchwarz,
           price: 0.0,
           picturePath: Assets.products.arbeitstische.lSchwarz.path),
       Product(
-          productName: 'wSchwarz',
+          productType: EnumCategoryWorkingTable.wSchwarz,
           price: 0.0,
           picturePath: Assets.products.arbeitstische.wSchwarz.path)
     ];

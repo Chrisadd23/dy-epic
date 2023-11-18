@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
+import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_page_widget.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/list_wheel_scroll_view_x.dart';
 import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
@@ -35,7 +36,7 @@ class _WorkTables extends StatelessWidget {
         final listProducts = state?.listProduct.map((product) {
           return Product(
             picturePath: product.picturePath,
-            productName: product.productName,
+            productType: product.productType,
           );
         }).toList();
         return ProductListWheel(listProducts: listProducts);
@@ -103,11 +104,11 @@ class Product extends StatefulWidget {
   const Product({
     super.key,
     required this.picturePath,
-    required this.productName,
+    required this.productType,
   });
 
   final String picturePath;
-  final String productName;
+  final EnumCategoryWorkingTable productType;
 
   @override
   State<Product> createState() => _ProductState();
@@ -116,7 +117,8 @@ class Product extends StatefulWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties.add(StringProperty('picturePath', picturePath));
-    properties.add(StringProperty('productName', productName));
+    properties.add(
+        EnumProperty<EnumCategoryWorkingTable>('productType', productType));
   }
 }
 
@@ -194,7 +196,7 @@ class _ProductName extends StatelessWidget {
             child: FittedBox(
               fit: BoxFit.fill,
               child: Text(
-                widget.productName,
+                widget.productType.type,
                 style:
                     const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
               ),
@@ -258,7 +260,7 @@ class _ProductPicture extends StatelessWidget {
                 child: InkWell(
                   hoverColor: Colors.red,
                   onTap: () => context.goNamed(AppGoRouter.product.name,
-                      extra: widget.picturePath),
+                      extra: widget.productType),
                 ),
               ),
             );

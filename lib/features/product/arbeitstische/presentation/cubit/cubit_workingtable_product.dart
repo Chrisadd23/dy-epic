@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/domain/repository/repostiory_workingtable.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/presentation/cubit/state_workingtable.dart';
 import 'package:bloc/bloc.dart';
@@ -12,7 +13,7 @@ class CubitWorkingTableProduct extends Cubit<StateWorkingTable> {
 
   final RepositoryWorkingTable repositoryProductArbeitstische;
 
-  void load(String? product) {
+  void load(EnumCategoryWorkingTable? product) {
     if (state != const StateWorkingTable.loading()) {
       emit(const StateWorkingTable.loading());
     }

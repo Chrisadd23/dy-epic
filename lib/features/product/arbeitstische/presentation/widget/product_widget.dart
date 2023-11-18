@@ -21,7 +21,7 @@ class ProductWidget extends HookWidget {
       child: Stack(
         children: <Widget>[
           const ProductTitle(),
-          ProductPicture(product: product),
+          const ProductPicture(),
           Align(
               alignment: Alignment.center,
               child: Padding(
@@ -46,33 +46,27 @@ class ProductWidget extends HookWidget {
 class ProductPicture extends StatelessWidget {
   const ProductPicture({
     super.key,
-    required this.product,
   });
-
-  final String? product;
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CubitWorkingTableProduct, StateWorkingTable>(
         builder: (context, state) {
-      return _PictureWidget(product: product, state: state);
+      return _PictureWidget(state: state);
     });
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(StringProperty('product', product));
   }
 }
 
 class _PictureWidget extends StatelessWidget {
   const _PictureWidget({
-    required this.product,
     required this.state,
   });
 
-  final String? product;
   final StateWorkingTable state;
 
   @override
@@ -111,7 +105,6 @@ class _PictureWidget extends StatelessWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties.add(DiagnosticsProperty<StateWorkingTable>('state', state));
-    properties.add(StringProperty('product', product));
   }
 }
 
@@ -409,7 +402,6 @@ class ProductColorWidget extends StatelessWidget {
                         success: (product) => ColorWidget(
                               color: product
                                   .selectedWorkingTable?.frameColors?.color,
-                              onTap: () {},
                             )),
                   ));
                 }),
@@ -469,10 +461,10 @@ class ProductColorWidget extends StatelessWidget {
 
 // ===========> change Color from Dialog
 class ColorWidget extends StatelessWidget {
-  const ColorWidget({super.key, required this.color, required this.onTap});
+  const ColorWidget({super.key, required this.color, this.onTap});
 
   final Color? color;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {

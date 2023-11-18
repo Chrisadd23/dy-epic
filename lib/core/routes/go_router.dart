@@ -1,4 +1,5 @@
 import 'package:app_flutter_produkt_bestellen/core/error/page_not_found.dart';
+import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/arbeitstische/presentation/page/page_arbeitstische.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/buerostuehle/presentation/page/page_buerostuehle.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/konferenzstuehle/presentation/page/page_konferenzstuehle.dart';
@@ -92,7 +93,8 @@ enum AppGoRouter {
                         path: product.title,
                         name: product.name,
                         builder: (context, state) {
-                          final product = state.extra.toString();
+                          final product =
+                              state.extra as EnumCategoryWorkingTable;
                           return WorkingTablePage(product: product);
                         },
                       )

@@ -1,3 +1,4 @@
+import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'state_arbeitstische.freezed.dart';
@@ -36,7 +37,7 @@ class Product with _$Product {
   const Product._();
 
   const factory Product({
-    required String productName,
+    required EnumCategoryWorkingTable productType,
     required double price,
     required String picturePath,
     int? offerInPercent,

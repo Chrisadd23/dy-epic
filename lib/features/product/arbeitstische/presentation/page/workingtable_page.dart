@@ -1,3 +1,4 @@
+import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_page_widget.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/presentation/cubit/cubit_workingtable_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/presentation/widget/product_widget.dart';
@@ -10,7 +11,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 class WorkingTablePage extends HookWidget {
   const WorkingTablePage({super.key, this.product});
 
-  final String? product;
+  final EnumCategoryWorkingTable? product;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class WorkingTablePage extends HookWidget {
       appBarContext: context,
       body: BlocProvider(
         create: (context) => getIt<CubitWorkingTableProduct>()..load(product),
-        child: ProductWidget(product: product),
+        child: const ProductWidget(),
       ),
     );
   }
@@ -26,6 +27,6 @@ class WorkingTablePage extends HookWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(StringProperty('product', product));
+    properties.add(EnumProperty<EnumCategoryWorkingTable?>('product', product));
   }
 }
