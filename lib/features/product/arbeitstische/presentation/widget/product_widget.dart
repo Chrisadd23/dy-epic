@@ -399,11 +399,17 @@ class ProductColorWidget extends StatelessWidget {
                     width: currentConstraints.maxWidth * 0.3,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
-                        border: Border.all(width: 2),
-                        color: state.maybeMap(
-                            orElse: () => null,
-                            success: (product) => product
-                                .selectedWorkingTable?.frameColors?.color)),
+                        border: state.maybeMap(
+                          orElse: () =>
+                              Border.all(color: Colors.black, width: 2),
+                          success: (product) => null,
+                        )),
+                    child: state.maybeMap(
+                        orElse: () => const LoadingWidget(),
+                        success: (product) => ColorWidget(
+                            color: product
+                                .selectedWorkingTable?.frameColors?.color,
+                            dontPop: true)),
                   ));
                 }),
               ],
@@ -460,9 +466,10 @@ class ProductColorWidget extends StatelessWidget {
 
 // ===========> change Color from Dialog
 class ColorWidget extends StatelessWidget {
-  const ColorWidget({super.key, required this.color});
+  const ColorWidget({super.key, required this.color, this.dontPop = false});
 
   final Color? color;
+  final bool dontPop;
 
   @override
   Widget build(BuildContext context) {
@@ -472,10 +479,12 @@ class ColorWidget extends StatelessWidget {
       child: InkWell(
         highlightColor: Colors.transparent,
         splashColor: Colors.transparent,
-        onTap: () {
-          debugPrint('color => $color');
-          Navigator.of(context).pop(color);
-        },
+        onTap: dontPop
+            ? () {}
+            : () {
+                debugPrint('color => $color');
+                Navigator.of(context).pop(color);
+              },
         child: Container(
             height: MediaQuery.of(context).size.height * 0.1,
             width: MediaQuery.of(context).size.width * 0.25,
@@ -497,6 +506,7 @@ class ColorWidget extends StatelessWidget {
     super.debugFillProperties(properties);
 
     properties.add(ColorProperty('color', color));
+    properties.add(DiagnosticsProperty<bool?>('dontPop', dontPop));
   }
 }
 
