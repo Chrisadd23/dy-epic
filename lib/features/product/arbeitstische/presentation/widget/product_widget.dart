@@ -407,9 +407,10 @@ class ProductColorWidget extends StatelessWidget {
                     child: state.maybeMap(
                         orElse: () => const LoadingWidget(),
                         success: (product) => ColorWidget(
-                            color: product
-                                .selectedWorkingTable?.frameColors?.color,
-                            dontPop: true)),
+                              color: product
+                                  .selectedWorkingTable?.frameColors?.color,
+                              onTap: () {},
+                            )),
                   ));
                 }),
               ],
@@ -452,7 +453,9 @@ class ProductColorWidget extends StatelessWidget {
                         padding: color == colors.last
                             ? EdgeInsets.zero
                             : const EdgeInsets.only(right: 8.0),
-                        child: ColorWidget(color: color),
+                        child: ColorWidget(
+                            color: color,
+                            onTap: () => Navigator.of(context).pop(color)),
                       ),
                     );
                   }).toList(),
@@ -466,10 +469,10 @@ class ProductColorWidget extends StatelessWidget {
 
 // ===========> change Color from Dialog
 class ColorWidget extends StatelessWidget {
-  const ColorWidget({super.key, required this.color, this.dontPop = false});
+  const ColorWidget({super.key, required this.color, required this.onTap});
 
   final Color? color;
-  final bool dontPop;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -479,12 +482,7 @@ class ColorWidget extends StatelessWidget {
       child: InkWell(
         highlightColor: Colors.transparent,
         splashColor: Colors.transparent,
-        onTap: dontPop
-            ? () {}
-            : () {
-                debugPrint('color => $color');
-                Navigator.of(context).pop(color);
-              },
+        onTap: onTap,
         child: Container(
             height: MediaQuery.of(context).size.height * 0.1,
             width: MediaQuery.of(context).size.width * 0.25,
