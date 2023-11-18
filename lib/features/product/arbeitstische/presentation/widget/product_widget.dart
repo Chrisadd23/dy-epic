@@ -166,7 +166,7 @@ class ProductAttributes extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.only(top: MediaQuery.sizeOf(context).height * 0.33),
         child: Container(
-          height: MediaQuery.sizeOf(context).height * 0.22,
+          height: MediaQuery.sizeOf(context).height * 0.23,
           decoration: BoxDecoration(
               border: Border.all(color: Colors.black),
               borderRadius: BorderRadius.circular(20)),
@@ -316,7 +316,7 @@ class ProductColorWidget extends StatelessWidget {
         padding: const EdgeInsets.only(bottom: 15),
         child: Container(
           width: scrollConstraints.maxWidth,
-          height: scrollConstraints.maxHeight * 0.25,
+          height: scrollConstraints.maxHeight * 0.23,
           decoration: BoxDecoration(
               color: AppColors.greyC1C1C1,
               borderRadius: BorderRadius.circular(20)),
@@ -324,83 +324,87 @@ class ProductColorWidget extends StatelessWidget {
             return Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Flexible(
-                  child: Container(
-                    height: currentConstraints.maxHeight * 0.5,
-                    width: currentConstraints.maxWidth * 0.4,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(width: 2),
-                        color: AppColors.greyA7A7A7),
-                    child: const Center(
-                        child: Padding(
-                      padding: EdgeInsets.all(5.0),
-                      child: FittedBox(
-                        fit: BoxFit.fill,
-                        child: Text(
-                          'Gestellfarbe',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 25,
-                              fontWeight: FontWeight.bold,
-                              shadows: [
-                                Shadow(
-                                    color: Colors.black, offset: Offset(1, 1)),
-                                Shadow(
-                                    color: Colors.black, offset: Offset(-1, 1)),
-                                Shadow(
-                                    color: Colors.black,
-                                    offset: Offset(-1, -1)),
-                                Shadow(
-                                    color: Colors.black, offset: Offset(1, -1)),
-                              ]),
+                BlocBuilder<CubitWorkingTableProduct, StateWorkingTable>(
+                    builder: (context, state) {
+                  return Flexible(
+                    child: Container(
+                      height: currentConstraints.maxHeight * 0.5,
+                      width: currentConstraints.maxWidth * 0.4,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(width: 2),
+                          color: AppColors.greyA7A7A7),
+                      child: InkWell(
+                        onTap: state.maybeMap(
+                          orElse: () => () {},
+                          success: (product) => () async {
+                            debugPrint('start');
+                            final colors = product.workingTables
+                                ?.map((product) => product.frameColors?.color)
+                                .toList();
+                            debugPrint('wait => $colors');
+                            if (colors != null) {
+                              final color =
+                                  await _showColorMenu(context, colors);
+                              debugPrint('chosen color $color');
+                              if (context.mounted) {
+                                debugPrint('continue');
+                                debugPrint('chosen color $color');
+                                if (color != null) {
+                                  context
+                                      .read<CubitWorkingTableProduct>()
+                                      .changeColor(color);
+                                }
+                              }
+                            }
+                          },
                         ),
+                        child: const Center(
+                            child: Padding(
+                          padding: EdgeInsets.all(5.0),
+                          child: FittedBox(
+                            fit: BoxFit.fill,
+                            child: Text(
+                              'Gestellfarbe',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.bold,
+                                  shadows: [
+                                    Shadow(
+                                        color: Colors.black,
+                                        offset: Offset(1, 1)),
+                                    Shadow(
+                                        color: Colors.black,
+                                        offset: Offset(-1, 1)),
+                                    Shadow(
+                                        color: Colors.black,
+                                        offset: Offset(-1, -1)),
+                                    Shadow(
+                                        color: Colors.black,
+                                        offset: Offset(1, -1)),
+                                  ]),
+                            ),
+                          ),
+                        )),
                       ),
-                    )),
-                  ),
-                ),
+                    ),
+                  );
+                }),
                 BlocBuilder<CubitWorkingTableProduct, StateWorkingTable>(
                     builder: (context, state) {
                   return Flexible(
                       child: Container(
-                          height: currentConstraints.maxHeight * 0.9,
-                          width: currentConstraints.maxWidth * 0.3,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              border: Border.all(width: 2),
-                              color: state.maybeMap(
-                                  orElse: () => null,
-                                  success: (product) => product
-                                      .selectedWorkingTable
-                                      ?.frameColors
-                                      ?.color)),
-                          child: state.maybeMap(
-                            orElse: () => const LoadingWidget(),
-                            success: (product) => InkWell(
-                              onTap: () async {
-                                debugPrint('start');
-                                final colors = product.workingTables
-                                    ?.map(
-                                        (product) => product.frameColors?.color)
-                                    .toList();
-                                debugPrint('wait => $colors');
-                                if (colors != null) {
-                                  final color =
-                                      await _showColorMenu(context, colors);
-                                  debugPrint('chosen color $color');
-                                  if (context.mounted) {
-                                    debugPrint('continue');
-                                    debugPrint('chosen color $color');
-                                    if (color != null) {
-                                      context
-                                          .read<CubitWorkingTableProduct>()
-                                          .changeColor(color);
-                                    }
-                                  }
-                                }
-                              },
-                            ),
-                          )));
+                    height: currentConstraints.maxHeight * 0.8,
+                    width: currentConstraints.maxWidth * 0.3,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(width: 2),
+                        color: state.maybeMap(
+                            orElse: () => null,
+                            success: (product) => product
+                                .selectedWorkingTable?.frameColors?.color)),
+                  ));
                 }),
               ],
             );
@@ -427,27 +431,26 @@ class ProductColorWidget extends StatelessWidget {
             alignment: Alignment.bottomCenter,
             child: Padding(
               padding: EdgeInsets.only(
-                  left: MediaQuery.of(context).size.width * 0.45,
-                  bottom: MediaQuery.of(context).size.height * 0.108),
+                  bottom: MediaQuery.of(context).size.height * 0.1),
               child: Container(
-                height: MediaQuery.sizeOf(context).height * 0.21,
-                width: MediaQuery.sizeOf(context).width * 0.4,
+                height: MediaQuery.sizeOf(context).height * 0.11,
+                width: MediaQuery.sizeOf(context).width * 0.785,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: Colors.transparent),
-                child: SingleChildScrollView(
-                  child: Column(children: [
-                    ...colors!.map((color) {
-                      debugPrint('map');
-                      return Padding(
+                child: Row(children: [
+                  ...colors!.map((color) {
+                    debugPrint('map');
+                    return Flexible(
+                      child: Padding(
                         padding: color == colors.last
                             ? EdgeInsets.zero
-                            : const EdgeInsets.only(bottom: 8.0),
+                            : const EdgeInsets.only(right: 8.0),
                         child: ColorWidget(color: color),
-                      );
-                    }).toList(),
-                  ]),
-                ),
+                      ),
+                    );
+                  }).toList(),
+                ]),
               ),
             ),
           );
@@ -474,8 +477,8 @@ class ColorWidget extends StatelessWidget {
           Navigator.of(context).pop(color);
         },
         child: Container(
-            height: MediaQuery.of(context).size.height * 0.13,
-            width: MediaQuery.of(context).size.width * 0.3,
+            height: MediaQuery.of(context).size.height * 0.1,
+            width: MediaQuery.of(context).size.width * 0.25,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               border: Border.all(
