@@ -95,9 +95,7 @@ enum AppGoRouter {
                         builder: (context, state) {
                           final product =
                               state.extra as EnumCategoryWorkingTable;
-                          debugPrint('color ---- ${state.queryParameters}');
                           final selctedColor = state.queryParameters;
-                          final color = state.path;
                           return WorkingTablePage(
                               product: product, color: selctedColor);
                         },
