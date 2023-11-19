@@ -280,7 +280,7 @@ class SizeProductWidget extends StatelessWidget {
                             border: Border.all(width: 2),
                             color: AppColors.greyA7A7A7),
                         child: Padding(
-                          padding: EdgeInsets.all(5),
+                          padding: const EdgeInsets.all(5),
                           child: FittedBox(
                             fit: BoxFit.fitWidth,
                             child: product == null
