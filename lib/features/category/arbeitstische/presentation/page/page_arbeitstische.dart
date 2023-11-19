@@ -142,7 +142,7 @@ class _ProductState extends State<Product> {
             ]),
         child: Stack(
           children: [
-            const _ProductColors(),
+            _ProductColors(product: widget),
             _ProductPicture(widget: widget),
             _ProductName(widget: widget),
             Align(
@@ -272,7 +272,9 @@ class _ProductPicture extends StatelessWidget {
 }
 
 class _ProductColors extends StatelessWidget {
-  const _ProductColors();
+  const _ProductColors({required this.product});
+
+  final Product product;
 
   @override
   Widget build(BuildContext context) {
@@ -288,39 +290,56 @@ class _ProductColors extends StatelessWidget {
                 width: constraints.maxWidth * 0.05,
               ),
               Expanded(
-                  child: Container(
-                decoration: BoxDecoration(
-                    color: AppColors.whiteD6D6D7,
-                    borderRadius: BorderRadius.circular(20)),
-                child: SizedBox(
-                  height: constraints.maxHeight * 0.1,
-                  width: constraints.maxWidth * 0.1,
+                  child: InkWell(
+                onTap: () => context.goNamed(AppGoRouter.product.name,
+                    extra: product.productType,
+                    queryParameters: {
+                      'color': AppColors.whiteD6D6D7.toString()
+                    }),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: AppColors.whiteD6D6D7,
+                      borderRadius: BorderRadius.circular(20)),
+                  child: SizedBox(
+                    height: constraints.maxHeight * 0.1,
+                    width: constraints.maxWidth * 0.1,
+                  ),
                 ),
               )),
               const SizedBox(
                 width: 10,
               ),
               Expanded(
-                  child: Container(
-                decoration: BoxDecoration(
-                    color: AppColors.grey8D8D8E,
-                    borderRadius: BorderRadius.circular(20)),
-                child: SizedBox(
-                  height: constraints.maxHeight * 0.1,
-                  width: constraints.maxWidth * 0.1,
+                  child: InkWell(
+                onTap: () => context.goNamed(AppGoRouter.product.name,
+                    extra: product.productType,
+                    queryParameters: {'color': '${AppColors.grey8D8D8E}'}),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: AppColors.grey8D8D8E,
+                      borderRadius: BorderRadius.circular(20)),
+                  child: SizedBox(
+                    height: constraints.maxHeight * 0.1,
+                    width: constraints.maxWidth * 0.1,
+                  ),
                 ),
               )),
               const SizedBox(
                 width: 10,
               ),
               Expanded(
-                  child: Container(
-                decoration: BoxDecoration(
-                    color: AppColors.black080808,
-                    borderRadius: BorderRadius.circular(20)),
-                child: SizedBox(
-                  height: constraints.maxHeight * 0.1,
-                  width: constraints.maxWidth * 0.1,
+                  child: InkWell(
+                onTap: () => context.goNamed(AppGoRouter.product.name,
+                    extra: product.productType,
+                    queryParameters: {'color': '${AppColors.black080808}'}),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: AppColors.black080808,
+                      borderRadius: BorderRadius.circular(20)),
+                  child: SizedBox(
+                    height: constraints.maxHeight * 0.1,
+                    width: constraints.maxWidth * 0.1,
+                  ),
                 ),
               )),
               SizedBox(

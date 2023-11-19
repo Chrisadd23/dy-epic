@@ -2,8 +2,8 @@ enum EnumCategoryWorkingTable {
   slavonischeEiche(type: 'Slavonische Eiche'),
   ahorn(type: 'Ahorn'),
   buche(type: 'Buche'),
-  lSchwarz(type: 'lSchwarz'),
-  wSchwarz(type: 'wSchwarz');
+  lSchwarz(type: 'Lichtgrau'),
+  wSchwarz(type: 'Weiß');
 
   const EnumCategoryWorkingTable({required this.type});
 

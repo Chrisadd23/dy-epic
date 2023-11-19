@@ -15,12 +15,14 @@ class CubitWorkingTableProduct
 
   final RepositoryWorkingTable repositoryProductArbeitstische;
 
-  void load(EnumCategoryWorkingTable? product) {
+  void load(EnumCategoryWorkingTable? product, Map<String, String>? color) {
     if (state != const StateProduct.loading()) {
       emit(const StateProduct.loading());
     }
     final workingTables =
         repositoryProductArbeitstische.getArbeitstischeProduct(product);
+
+    ArbeitsTischeProduct? selectedWorkingTable;
     workingTables.fold((failure) {}, (listWorkingTables) async {
       final list = listWorkingTables
           .map((workingTable) => ArbeitsTischeProduct(
@@ -29,8 +31,17 @@ class CubitWorkingTableProduct
               picturePath: workingTable.picturePath))
           .toList();
       debugPrint(list.toString());
+
+      if (color != null && list.isNotEmpty) {
+        selectedWorkingTable = list
+            .where((table) =>
+                table.frameColors?.color.toString() == color.values.firstOrNull)
+            .firstOrNull;
+      }
+
       emit(StateProduct.success(
-          workingTables: list, selectedWorkingTable: list[0]));
+          workingTables: list,
+          selectedWorkingTable: selectedWorkingTable ?? list[0]));
     });
   }
 

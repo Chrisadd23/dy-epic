@@ -129,18 +129,21 @@ class ProductTitle extends StatelessWidget {
               borderRadius: BorderRadius.circular(40),
               color: AppColors.grey8D8D8E.withOpacity(0.4)),
           child: const Center(
-            child: Text(
-              'Produkt',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 35,
-                  fontWeight: FontWeight.bold,
-                  shadows: [
-                    Shadow(color: Colors.black, offset: Offset(1, 1)),
-                    Shadow(color: Colors.black, offset: Offset(-1, 1)),
-                    Shadow(color: Colors.black, offset: Offset(-1, -1)),
-                    Shadow(color: Colors.black, offset: Offset(1, -1)),
-                  ]),
+            child: FittedBox(
+              fit: BoxFit.fill,
+              child: Text(
+                'Produkt',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 35,
+                    fontWeight: FontWeight.bold,
+                    shadows: [
+                      Shadow(color: Colors.black, offset: Offset(1, 1)),
+                      Shadow(color: Colors.black, offset: Offset(-1, 1)),
+                      Shadow(color: Colors.black, offset: Offset(-1, -1)),
+                      Shadow(color: Colors.black, offset: Offset(1, -1)),
+                    ]),
+              ),
             ),
           ),
         ),

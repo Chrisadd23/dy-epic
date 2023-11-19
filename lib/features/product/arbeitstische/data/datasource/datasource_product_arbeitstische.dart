@@ -39,7 +39,7 @@ final Map<EnumCategoryWorkingTable, List<EntityArbeitsTischeProduct>>
       picturePath: Assets.products.arbeitstische.slavonischeEicheWeiss.path,
     ),
     EntityArbeitsTischeProduct(
-        frameColors: const Gestell(color: AppColors.greyC1C1C1, material: ''),
+        frameColors: const Gestell(color: AppColors.grey8D8D8E, material: ''),
         picturePath: Assets.products.arbeitstische.slavonischeEicheSilber.path),
     EntityArbeitsTischeProduct(
         frameColors: const Gestell(color: AppColors.black080808, material: ''),

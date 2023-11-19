@@ -61,7 +61,7 @@ class CounterProductWidget extends HookWidget {
                 ),
                 Container(
                   width: constraints.maxWidth * 0.35,
-                  height: constraints.maxHeight * 0.06,
+                  height: constraints.maxHeight * 0.07,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     color: const Color.fromRGBO(87, 87, 87, 0.4),
@@ -75,26 +75,29 @@ class CounterProductWidget extends HookWidget {
                           builder: (context, productCount) {
                             return productCount == null
                                 ? const LoadingWidget()
-                                : Text(
-                                    productCount.toString(),
-                                    style: const TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 35,
-                                        fontWeight: FontWeight.bold,
-                                        shadows: [
-                                          Shadow(
-                                              color: Colors.white,
-                                              offset: Offset(1, 1)),
-                                          Shadow(
-                                              color: Colors.white,
-                                              offset: Offset(-1, 1)),
-                                          Shadow(
-                                              color: Colors.white,
-                                              offset: Offset(-1, -1)),
-                                          Shadow(
-                                              color: Colors.white,
-                                              offset: Offset(1, -1)),
-                                        ]),
+                                : FittedBox(
+                                    fit: BoxFit.fill,
+                                    child: Text(
+                                      productCount.toString(),
+                                      style: const TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 35,
+                                          fontWeight: FontWeight.bold,
+                                          shadows: [
+                                            Shadow(
+                                                color: Colors.white,
+                                                offset: Offset(1, 1)),
+                                            Shadow(
+                                                color: Colors.white,
+                                                offset: Offset(-1, 1)),
+                                            Shadow(
+                                                color: Colors.white,
+                                                offset: Offset(-1, -1)),
+                                            Shadow(
+                                                color: Colors.white,
+                                                offset: Offset(1, -1)),
+                                          ]),
+                                    ),
                                   );
                           })),
                 ),
