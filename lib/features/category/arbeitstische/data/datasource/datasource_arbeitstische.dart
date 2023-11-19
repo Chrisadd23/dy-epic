@@ -14,14 +14,14 @@ class DataSourceArbeitstischeImplementation extends DataSourceArbeitstische {
       getArbeitstischeData() async {
     // TODO: implement getArbeitstischeData
     try {
-      return Right(_list_product_sortiment);
+      return Right(_listProductSortiment);
     } catch (e) {
       return Left('Sortiment konnte nicht geladen werden' as Failure);
     }
   }
 }
 
-final _list_product_sortiment = [
+final _listProductSortiment = [
   EntityArbeitstische(categoryName: 'Arbeitstische', listProduct: [
     EntityProduct(
         indexNumber: 0,
