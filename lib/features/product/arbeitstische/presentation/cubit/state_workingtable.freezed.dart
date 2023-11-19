@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ArbeitsTischeProduct {
   String? get name => throw _privateConstructorUsedError;
+  BreiteXTiefe? get breiteXTiefe => throw _privateConstructorUsedError;
   Gestell? get frameColors => throw _privateConstructorUsedError;
   Platte? get plateColor => throw _privateConstructorUsedError;
   HoehenVerstellbarkeit? get hoehenVerstellbarkeit =>
@@ -45,6 +46,7 @@ abstract class $ArbeitsTischeProductCopyWith<$Res> {
   @useResult
   $Res call(
       {String? name,
+      BreiteXTiefe? breiteXTiefe,
       Gestell? frameColors,
       Platte? plateColor,
       HoehenVerstellbarkeit? hoehenVerstellbarkeit,
@@ -56,6 +58,7 @@ abstract class $ArbeitsTischeProductCopyWith<$Res> {
       bool? kollisionsSchutz,
       String? picturePath});
 
+  $BreiteXTiefeCopyWith<$Res>? get breiteXTiefe;
   $GestellCopyWith<$Res>? get frameColors;
   $PlatteCopyWith<$Res>? get plateColor;
   $HoehenVerstellbarkeitCopyWith<$Res>? get hoehenVerstellbarkeit;
@@ -81,6 +84,7 @@ class _$ArbeitsTischeProductCopyWithImpl<$Res,
   @override
   $Res call({
     Object? name = freezed,
+    Object? breiteXTiefe = freezed,
     Object? frameColors = freezed,
     Object? plateColor = freezed,
     Object? hoehenVerstellbarkeit = freezed,
@@ -97,6 +101,10 @@ class _$ArbeitsTischeProductCopyWithImpl<$Res,
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
+      breiteXTiefe: freezed == breiteXTiefe
+          ? _value.breiteXTiefe
+          : breiteXTiefe // ignore: cast_nullable_to_non_nullable
+              as BreiteXTiefe?,
       frameColors: freezed == frameColors
           ? _value.frameColors
           : frameColors // ignore: cast_nullable_to_non_nullable
@@ -138,6 +146,18 @@ class _$ArbeitsTischeProductCopyWithImpl<$Res,
           : picturePath // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $BreiteXTiefeCopyWith<$Res>? get breiteXTiefe {
+    if (_value.breiteXTiefe == null) {
+      return null;
+    }
+
+    return $BreiteXTiefeCopyWith<$Res>(_value.breiteXTiefe!, (value) {
+      return _then(_value.copyWith(breiteXTiefe: value) as $Val);
+    });
   }
 
   @override
@@ -251,6 +271,7 @@ abstract class _$$ArbeitsTischeProductImplCopyWith<$Res>
   @useResult
   $Res call(
       {String? name,
+      BreiteXTiefe? breiteXTiefe,
       Gestell? frameColors,
       Platte? plateColor,
       HoehenVerstellbarkeit? hoehenVerstellbarkeit,
@@ -262,6 +283,8 @@ abstract class _$$ArbeitsTischeProductImplCopyWith<$Res>
       bool? kollisionsSchutz,
       String? picturePath});
 
+  @override
+  $BreiteXTiefeCopyWith<$Res>? get breiteXTiefe;
   @override
   $GestellCopyWith<$Res>? get frameColors;
   @override
@@ -292,6 +315,7 @@ class __$$ArbeitsTischeProductImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = freezed,
+    Object? breiteXTiefe = freezed,
     Object? frameColors = freezed,
     Object? plateColor = freezed,
     Object? hoehenVerstellbarkeit = freezed,
@@ -308,6 +332,10 @@ class __$$ArbeitsTischeProductImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
+      breiteXTiefe: freezed == breiteXTiefe
+          ? _value.breiteXTiefe
+          : breiteXTiefe // ignore: cast_nullable_to_non_nullable
+              as BreiteXTiefe?,
       frameColors: freezed == frameColors
           ? _value.frameColors
           : frameColors // ignore: cast_nullable_to_non_nullable
@@ -357,6 +385,7 @@ class __$$ArbeitsTischeProductImplCopyWithImpl<$Res>
 class _$ArbeitsTischeProductImpl implements _ArbeitsTischeProduct {
   const _$ArbeitsTischeProductImpl(
       {this.name,
+      this.breiteXTiefe,
       this.frameColors,
       this.plateColor,
       this.hoehenVerstellbarkeit,
@@ -370,6 +399,8 @@ class _$ArbeitsTischeProductImpl implements _ArbeitsTischeProduct {
 
   @override
   final String? name;
+  @override
+  final BreiteXTiefe? breiteXTiefe;
   @override
   final Gestell? frameColors;
   @override
@@ -393,7 +424,7 @@ class _$ArbeitsTischeProductImpl implements _ArbeitsTischeProduct {
 
   @override
   String toString() {
-    return 'ArbeitsTischeProduct(name: $name, frameColors: $frameColors, plateColor: $plateColor, hoehenVerstellbarkeit: $hoehenVerstellbarkeit, gestellDimension: $gestellDimension, hubbereich: $hubbereich, hubgeschwindigkeit: $hubgeschwindigkeit, gerauscheentwicklung: $gerauscheentwicklung, standbyStromverbrauch: $standbyStromverbrauch, kollisionsSchutz: $kollisionsSchutz, picturePath: $picturePath)';
+    return 'ArbeitsTischeProduct(name: $name, breiteXTiefe: $breiteXTiefe, frameColors: $frameColors, plateColor: $plateColor, hoehenVerstellbarkeit: $hoehenVerstellbarkeit, gestellDimension: $gestellDimension, hubbereich: $hubbereich, hubgeschwindigkeit: $hubgeschwindigkeit, gerauscheentwicklung: $gerauscheentwicklung, standbyStromverbrauch: $standbyStromverbrauch, kollisionsSchutz: $kollisionsSchutz, picturePath: $picturePath)';
   }
 
   @override
@@ -402,6 +433,8 @@ class _$ArbeitsTischeProductImpl implements _ArbeitsTischeProduct {
         (other.runtimeType == runtimeType &&
             other is _$ArbeitsTischeProductImpl &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.breiteXTiefe, breiteXTiefe) ||
+                other.breiteXTiefe == breiteXTiefe) &&
             (identical(other.frameColors, frameColors) ||
                 other.frameColors == frameColors) &&
             (identical(other.plateColor, plateColor) ||
@@ -428,6 +461,7 @@ class _$ArbeitsTischeProductImpl implements _ArbeitsTischeProduct {
   int get hashCode => Object.hash(
       runtimeType,
       name,
+      breiteXTiefe,
       frameColors,
       plateColor,
       hoehenVerstellbarkeit,
@@ -451,6 +485,7 @@ class _$ArbeitsTischeProductImpl implements _ArbeitsTischeProduct {
 abstract class _ArbeitsTischeProduct implements ArbeitsTischeProduct {
   const factory _ArbeitsTischeProduct(
       {final String? name,
+      final BreiteXTiefe? breiteXTiefe,
       final Gestell? frameColors,
       final Platte? plateColor,
       final HoehenVerstellbarkeit? hoehenVerstellbarkeit,
@@ -464,6 +499,8 @@ abstract class _ArbeitsTischeProduct implements ArbeitsTischeProduct {
 
   @override
   String? get name;
+  @override
+  BreiteXTiefe? get breiteXTiefe;
   @override
   Gestell? get frameColors;
   @override
@@ -488,6 +525,141 @@ abstract class _ArbeitsTischeProduct implements ArbeitsTischeProduct {
   @JsonKey(ignore: true)
   _$$ArbeitsTischeProductImplCopyWith<_$ArbeitsTischeProductImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$BreiteXTiefe {
+  int get breite => throw _privateConstructorUsedError;
+  int get tiefe => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $BreiteXTiefeCopyWith<BreiteXTiefe> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $BreiteXTiefeCopyWith<$Res> {
+  factory $BreiteXTiefeCopyWith(
+          BreiteXTiefe value, $Res Function(BreiteXTiefe) then) =
+      _$BreiteXTiefeCopyWithImpl<$Res, BreiteXTiefe>;
+  @useResult
+  $Res call({int breite, int tiefe});
+}
+
+/// @nodoc
+class _$BreiteXTiefeCopyWithImpl<$Res, $Val extends BreiteXTiefe>
+    implements $BreiteXTiefeCopyWith<$Res> {
+  _$BreiteXTiefeCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? breite = null,
+    Object? tiefe = null,
+  }) {
+    return _then(_value.copyWith(
+      breite: null == breite
+          ? _value.breite
+          : breite // ignore: cast_nullable_to_non_nullable
+              as int,
+      tiefe: null == tiefe
+          ? _value.tiefe
+          : tiefe // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$BreiteXTiefeImplCopyWith<$Res>
+    implements $BreiteXTiefeCopyWith<$Res> {
+  factory _$$BreiteXTiefeImplCopyWith(
+          _$BreiteXTiefeImpl value, $Res Function(_$BreiteXTiefeImpl) then) =
+      __$$BreiteXTiefeImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int breite, int tiefe});
+}
+
+/// @nodoc
+class __$$BreiteXTiefeImplCopyWithImpl<$Res>
+    extends _$BreiteXTiefeCopyWithImpl<$Res, _$BreiteXTiefeImpl>
+    implements _$$BreiteXTiefeImplCopyWith<$Res> {
+  __$$BreiteXTiefeImplCopyWithImpl(
+      _$BreiteXTiefeImpl _value, $Res Function(_$BreiteXTiefeImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? breite = null,
+    Object? tiefe = null,
+  }) {
+    return _then(_$BreiteXTiefeImpl(
+      breite: null == breite
+          ? _value.breite
+          : breite // ignore: cast_nullable_to_non_nullable
+              as int,
+      tiefe: null == tiefe
+          ? _value.tiefe
+          : tiefe // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$BreiteXTiefeImpl implements _BreiteXTiefe {
+  const _$BreiteXTiefeImpl({required this.breite, required this.tiefe});
+
+  @override
+  final int breite;
+  @override
+  final int tiefe;
+
+  @override
+  String toString() {
+    return 'BreiteXTiefe(breite: $breite, tiefe: $tiefe)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$BreiteXTiefeImpl &&
+            (identical(other.breite, breite) || other.breite == breite) &&
+            (identical(other.tiefe, tiefe) || other.tiefe == tiefe));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, breite, tiefe);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$BreiteXTiefeImplCopyWith<_$BreiteXTiefeImpl> get copyWith =>
+      __$$BreiteXTiefeImplCopyWithImpl<_$BreiteXTiefeImpl>(this, _$identity);
+}
+
+abstract class _BreiteXTiefe implements BreiteXTiefe {
+  const factory _BreiteXTiefe(
+      {required final int breite,
+      required final int tiefe}) = _$BreiteXTiefeImpl;
+
+  @override
+  int get breite;
+  @override
+  int get tiefe;
+  @override
+  @JsonKey(ignore: true)
+  _$$BreiteXTiefeImplCopyWith<_$BreiteXTiefeImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

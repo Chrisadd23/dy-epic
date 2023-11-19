@@ -7,6 +7,7 @@ part 'state_workingtable.freezed.dart';
 class ArbeitsTischeProduct with _$ArbeitsTischeProduct {
   const factory ArbeitsTischeProduct({
     String? name,
+    BreiteXTiefe? breiteXTiefe,
     Gestell? frameColors,
     Platte? plateColor,
     HoehenVerstellbarkeit? hoehenVerstellbarkeit,
@@ -18,6 +19,14 @@ class ArbeitsTischeProduct with _$ArbeitsTischeProduct {
     bool? kollisionsSchutz,
     String? picturePath,
   }) = _ArbeitsTischeProduct;
+}
+
+@freezed
+class BreiteXTiefe with _$BreiteXTiefe {
+  const factory BreiteXTiefe({
+    required int breite,
+    required int tiefe,
+  }) = _BreiteXTiefe;
 }
 
 @freezed

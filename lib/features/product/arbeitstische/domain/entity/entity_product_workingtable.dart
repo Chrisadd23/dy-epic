@@ -8,6 +8,7 @@ part 'entity_product_workingtable.freezed.dart';
 class EntityArbeitsTischeProduct with _$EntityArbeitsTischeProduct {
   const factory EntityArbeitsTischeProduct({
     String? name,
+    BreiteXTiefe? breiteXTiefe,
     Gestell? frameColors,
     Platte? plateColor,
     HoehenVerstellbarkeit? hoehenVerstellbarkeit,
@@ -19,6 +20,14 @@ class EntityArbeitsTischeProduct with _$EntityArbeitsTischeProduct {
     bool? kollisionsSchutz,
     String? picturePath,
   }) = _EntityArbeitsTischeProduct;
+}
+
+@freezed
+class BreiteXTiefe with _$BreiteXTiefe {
+  const factory BreiteXTiefe({
+    required int breite,
+    required int tiefe,
+  }) = _BreiteXTiefe;
 }
 
 @freezed
