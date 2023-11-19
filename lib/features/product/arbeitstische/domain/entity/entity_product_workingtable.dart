@@ -25,8 +25,8 @@ class EntityArbeitsTischeProduct with _$EntityArbeitsTischeProduct {
 @freezed
 class BreiteXTiefe with _$BreiteXTiefe {
   const factory BreiteXTiefe({
-    required int breite,
-    required int tiefe,
+    required String breite,
+    required String tiefe,
   }) = _BreiteXTiefe;
 }
 

@@ -1,6 +1,7 @@
 import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
 import 'package:app_flutter_produkt_bestellen/gen/assets.gen.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -62,7 +63,12 @@ class GlobalAppBar extends AppBar {
                       top: 10,
                     ),
                     child: Builder(builder: (context) {
-                      return const AppBarMenuButton();
+                      return AppBarMenuButton(
+                        imagePath: AppGoRouter.shouldntPop
+                                .contains(getIt<GoRouter>().location)
+                            ? Assets.appComponents.png.iconMenu.path
+                            : Assets.appComponents.png.returnIcon.path,
+                      );
                     }),
                   ),
                 ),
@@ -78,38 +84,39 @@ class GlobalAppBar extends AppBar {
 class AppBarMenuButton extends StatefulWidget {
   const AppBarMenuButton({
     super.key,
+    required this.imagePath,
   });
+
+  final String imagePath;
 
   @override
   State<AppBarMenuButton> createState() => _AppBarMenuButtonState();
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(StringProperty('imagePath', imagePath));
+  }
 }
 
 class _AppBarMenuButtonState extends State<AppBarMenuButton> {
   @override
   void didChangeDependencies() {
-    // TODO: implement didChangeDependencies
     super.didChangeDependencies();
 
-    final picture = AppGoRouter.shouldntPop.contains(getIt<GoRouter>().location)
-        ? Assets.appComponents.png.iconMenu.path
-        : Assets.appComponents.png.returnIcon.path;
-    precacheImage(AssetImage(picture), context);
+    precacheImage(AssetImage(widget.imagePath), context);
   }
 
   @override
   Widget build(BuildContext context) {
     return IconButton(
       onPressed: () {
+        debugPrint('====> ${GoRouter.of(context).location.toString()}');
         AppGoRouter.shouldntPop.contains(getIt<GoRouter>().location)
             ? Scaffold.of(context).openDrawer()
             : context.pop();
       },
-      icon: Image.asset(
-        fit: BoxFit.fill,
-        AppGoRouter.shouldntPop.contains(getIt<GoRouter>().location)
-            ? Assets.appComponents.png.iconMenu.path
-            : Assets.appComponents.png.returnIcon.path,
-      ),
+      icon: Image.asset(fit: BoxFit.fill, widget.imagePath),
     );
   }
 }

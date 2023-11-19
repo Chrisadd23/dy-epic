@@ -529,8 +529,8 @@ abstract class _ArbeitsTischeProduct implements ArbeitsTischeProduct {
 
 /// @nodoc
 mixin _$BreiteXTiefe {
-  int get breite => throw _privateConstructorUsedError;
-  int get tiefe => throw _privateConstructorUsedError;
+  String get breite => throw _privateConstructorUsedError;
+  String get tiefe => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $BreiteXTiefeCopyWith<BreiteXTiefe> get copyWith =>
@@ -543,7 +543,7 @@ abstract class $BreiteXTiefeCopyWith<$Res> {
           BreiteXTiefe value, $Res Function(BreiteXTiefe) then) =
       _$BreiteXTiefeCopyWithImpl<$Res, BreiteXTiefe>;
   @useResult
-  $Res call({int breite, int tiefe});
+  $Res call({String breite, String tiefe});
 }
 
 /// @nodoc
@@ -566,11 +566,11 @@ class _$BreiteXTiefeCopyWithImpl<$Res, $Val extends BreiteXTiefe>
       breite: null == breite
           ? _value.breite
           : breite // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       tiefe: null == tiefe
           ? _value.tiefe
           : tiefe // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
     ) as $Val);
   }
 }
@@ -583,7 +583,7 @@ abstract class _$$BreiteXTiefeImplCopyWith<$Res>
       __$$BreiteXTiefeImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int breite, int tiefe});
+  $Res call({String breite, String tiefe});
 }
 
 /// @nodoc
@@ -604,11 +604,11 @@ class __$$BreiteXTiefeImplCopyWithImpl<$Res>
       breite: null == breite
           ? _value.breite
           : breite // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       tiefe: null == tiefe
           ? _value.tiefe
           : tiefe // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
     ));
   }
 }
@@ -619,9 +619,9 @@ class _$BreiteXTiefeImpl implements _BreiteXTiefe {
   const _$BreiteXTiefeImpl({required this.breite, required this.tiefe});
 
   @override
-  final int breite;
+  final String breite;
   @override
-  final int tiefe;
+  final String tiefe;
 
   @override
   String toString() {
@@ -649,13 +649,13 @@ class _$BreiteXTiefeImpl implements _BreiteXTiefe {
 
 abstract class _BreiteXTiefe implements BreiteXTiefe {
   const factory _BreiteXTiefe(
-      {required final int breite,
-      required final int tiefe}) = _$BreiteXTiefeImpl;
+      {required final String breite,
+      required final String tiefe}) = _$BreiteXTiefeImpl;
 
   @override
-  int get breite;
+  String get breite;
   @override
-  int get tiefe;
+  String get tiefe;
   @override
   @JsonKey(ignore: true)
   _$$BreiteXTiefeImplCopyWith<_$BreiteXTiefeImpl> get copyWith =>

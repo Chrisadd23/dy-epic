@@ -26,6 +26,9 @@ class CubitWorkingTableProduct
     workingTables.fold((failure) {}, (listWorkingTables) async {
       final list = listWorkingTables
           .map((workingTable) => ArbeitsTischeProduct(
+              breiteXTiefe: BreiteXTiefe(
+                  breite: workingTable.breiteXTiefe!.breite,
+                  tiefe: workingTable.breiteXTiefe!.tiefe),
               name: workingTable.name,
               frameColors:
                   Gestell(color: workingTable.frameColors!.color, material: ''),

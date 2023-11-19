@@ -133,41 +133,36 @@ class ProductTitle extends StatelessWidget {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(40),
               color: AppColors.grey8D8D8E.withOpacity(0.4)),
-          child: FittedBox(
-            fit: BoxFit.fitHeight,
-            child: BlocSelector<CubitWorkingTableProduct,
-                    StateProduct<ArbeitsTischeProduct>, String?>(
-                selector: (state) => state.maybeMap(
-                    orElse: () => null,
-                    success: (product) => product.selectedWorkingTable?.name),
-                builder: (context, productName) {
-                  return Center(
-                    child: productName == null
-                        ? const LoadingWidget()
-                        : Text(
-                            productName,
-                            style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 35,
-                                fontWeight: FontWeight.bold,
-                                shadows: [
-                                  Shadow(
-                                      color: Colors.black,
-                                      offset: Offset(1, 1)),
-                                  Shadow(
-                                      color: Colors.black,
-                                      offset: Offset(-1, 1)),
-                                  Shadow(
-                                      color: Colors.black,
-                                      offset: Offset(-1, -1)),
-                                  Shadow(
-                                      color: Colors.black,
-                                      offset: Offset(1, -1)),
-                                ]),
-                          ),
-                  );
-                }),
-          ),
+          child: BlocSelector<CubitWorkingTableProduct,
+                  StateProduct<ArbeitsTischeProduct>, String?>(
+              selector: (state) => state.maybeMap(
+                  orElse: () => null,
+                  success: (product) => product.selectedWorkingTable?.name),
+              builder: (context, productName) {
+                return FittedBox(
+                  fit: BoxFit.fitHeight,
+                  child: productName == null
+                      ? const LoadingWidget()
+                      : Text(
+                          productName,
+                          style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 35,
+                              fontWeight: FontWeight.bold,
+                              shadows: [
+                                Shadow(
+                                    color: Colors.black, offset: Offset(1, 1)),
+                                Shadow(
+                                    color: Colors.black, offset: Offset(-1, 1)),
+                                Shadow(
+                                    color: Colors.black,
+                                    offset: Offset(-1, -1)),
+                                Shadow(
+                                    color: Colors.black, offset: Offset(1, -1)),
+                              ]),
+                        ),
+                );
+              }),
         ),
       ),
     );
@@ -200,6 +195,7 @@ class ProductAttributes extends StatelessWidget {
                   return Column(
                     children: [
                       ColorProductWidget(scrollConstraints: scrollConstraints),
+                      SizeProductWidget(scrollConstraints: scrollConstraints),
                     ],
                   );
                 }),
@@ -209,6 +205,127 @@ class ProductAttributes extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class SizeProductWidget extends StatelessWidget {
+  const SizeProductWidget({super.key, required this.scrollConstraints});
+
+  final BoxConstraints scrollConstraints;
+
+  @override
+  Widget build(BuildContext context) {
+    return Flexible(
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 15),
+        child: Container(
+          width: scrollConstraints.maxWidth,
+          height: scrollConstraints.maxHeight * 0.23,
+          decoration: BoxDecoration(
+              color: AppColors.greyC1C1C1,
+              borderRadius: BorderRadius.circular(20)),
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Flexible(
+                    child: Container(
+                      height: constraints.maxHeight * 0.5,
+                      width: constraints.maxWidth * 0.4,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(width: 2),
+                          color: AppColors.greyA7A7A7),
+                      child: const Padding(
+                        padding: EdgeInsets.all(5),
+                        child: FittedBox(
+                          fit: BoxFit.fitWidth,
+                          child: Text(
+                            'Breite x Tiefe',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold,
+                              shadows: [
+                                Shadow(
+                                    color: Colors.black, offset: Offset(1, 1)),
+                                Shadow(
+                                    color: Colors.black, offset: Offset(-1, 1)),
+                                Shadow(
+                                    color: Colors.black,
+                                    offset: Offset(-1, -1)),
+                                Shadow(
+                                    color: Colors.black, offset: Offset(1, -1)),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  BlocSelector<
+                      CubitWorkingTableProduct,
+                      StateProduct<ArbeitsTischeProduct>,
+                      ArbeitsTischeProduct?>(
+                    selector: (state) => state.maybeMap(
+                        orElse: () => null,
+                        success: (product) => product.selectedWorkingTable),
+                    builder: (context, product) => Flexible(
+                      child: Container(
+                        height: constraints.maxHeight * 0.5,
+                        width: constraints.maxWidth * 0.4,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(width: 2),
+                            color: AppColors.greyA7A7A7),
+                        child: Padding(
+                          padding: EdgeInsets.all(5),
+                          child: FittedBox(
+                            fit: BoxFit.fitWidth,
+                            child: product == null
+                                ? const LoadingWidget()
+                                : Text(
+                                    '${product.breiteXTiefe?.breite} x ${product.breiteXTiefe?.tiefe}',
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.bold,
+                                      shadows: [
+                                        Shadow(
+                                            color: Colors.black,
+                                            offset: Offset(1, 1)),
+                                        Shadow(
+                                            color: Colors.black,
+                                            offset: Offset(-1, 1)),
+                                        Shadow(
+                                            color: Colors.black,
+                                            offset: Offset(-1, -1)),
+                                        Shadow(
+                                            color: Colors.black,
+                                            offset: Offset(1, -1)),
+                                      ],
+                                    ),
+                                  ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              );
+            },
+          ),
+        ),
+      ),
+    );
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty<BoxConstraints>(
+        'scrollConstraints', scrollConstraints));
   }
 }
 
