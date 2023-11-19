@@ -57,56 +57,60 @@ class ProductPicture extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CubitWorkingTableProduct, StateProduct>(
-        builder: (context, state) {
-      return _PictureWidget(state: state);
-    });
+    return BlocSelector<CubitWorkingTableProduct,
+            StateProduct<ArbeitsTischeProduct>, String?>(
+        selector: (state) => state.maybeMap(
+            orElse: () {
+              return;
+            },
+            success: (product) => product.selectedWorkingTable?.picturePath),
+        builder: (context, picturePath) {
+          return _PictureWidget(picturePath: picturePath);
+        });
   }
 }
 
 class _PictureWidget extends StatelessWidget {
   const _PictureWidget({
-    required this.state,
+    required this.picturePath,
   });
 
-  final StateProduct state;
+  final String? picturePath;
 
   @override
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.topCenter,
       child: Padding(
-          padding:
-              EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.08),
-          child: Container(
-            width: MediaQuery.sizeOf(context).width * 0.9,
-            height: MediaQuery.sizeOf(context).height * 0.25,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              border: Border.all(color: Colors.black),
-              color: Colors.white,
-            ),
-            child: state.maybeMap(
-              orElse: () => LoadingWidget(
-                firstWidth: MediaQuery.of(context).size.width * 0.5,
-                secondWidth: MediaQuery.of(context).size.width * 0.3,
-              ),
-              success: (product) =>
-                  product.selectedWorkingTable?.picturePath == null
-                      ? const Center(child: LoadingWidget())
-                      : Image.asset(
-                          product.selectedWorkingTable!.picturePath!,
-                          fit: BoxFit.fitHeight,
-                        ),
-            ),
-          )),
+        padding:
+            EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.08),
+        child: Container(
+          width: MediaQuery.sizeOf(context).width * 0.9,
+          height: MediaQuery.sizeOf(context).height * 0.25,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(color: Colors.black),
+            color: Colors.white,
+          ),
+          child: picturePath == null
+              ? LoadingWidget(
+                  firstWidth: MediaQuery.of(context).size.width * 0.5,
+                  secondWidth: MediaQuery.of(context).size.width * 0.3,
+                )
+              : Image.asset(
+                  picturePath!,
+                  fit: BoxFit.fitHeight,
+                ),
+        ),
+      ),
     );
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<StateProduct>('state', state));
+
+    properties.add(StringProperty('picturePath', picturePath));
   }
 }
 
@@ -128,23 +132,40 @@ class ProductTitle extends StatelessWidget {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(40),
               color: AppColors.grey8D8D8E.withOpacity(0.4)),
-          child: const Center(
-            child: FittedBox(
-              fit: BoxFit.fill,
-              child: Text(
-                'Produkt',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 35,
-                    fontWeight: FontWeight.bold,
-                    shadows: [
-                      Shadow(color: Colors.black, offset: Offset(1, 1)),
-                      Shadow(color: Colors.black, offset: Offset(-1, 1)),
-                      Shadow(color: Colors.black, offset: Offset(-1, -1)),
-                      Shadow(color: Colors.black, offset: Offset(1, -1)),
-                    ]),
-              ),
-            ),
+          child: FittedBox(
+            fit: BoxFit.fitHeight,
+            child: BlocSelector<CubitWorkingTableProduct,
+                    StateProduct<ArbeitsTischeProduct>, String?>(
+                selector: (state) => state.maybeMap(
+                    orElse: () => null,
+                    success: (product) => product.selectedWorkingTable?.name),
+                builder: (context, productName) {
+                  return Center(
+                    child: productName == null
+                        ? const LoadingWidget()
+                        : Text(
+                            productName,
+                            style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 35,
+                                fontWeight: FontWeight.bold,
+                                shadows: [
+                                  Shadow(
+                                      color: Colors.black,
+                                      offset: Offset(1, 1)),
+                                  Shadow(
+                                      color: Colors.black,
+                                      offset: Offset(-1, 1)),
+                                  Shadow(
+                                      color: Colors.black,
+                                      offset: Offset(-1, -1)),
+                                  Shadow(
+                                      color: Colors.black,
+                                      offset: Offset(1, -1)),
+                                ]),
+                          ),
+                  );
+                }),
           ),
         ),
       ),

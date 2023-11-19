@@ -22,7 +22,7 @@ class DataSourceArbeitstischeImplementation extends DataSourceArbeitstische {
 }
 
 final _listProductSortiment = [
-  EntityArbeitstische(categoryName: 'Arbeitstische', listProduct: [
+  EntityArbeitstische(categoryName: 'E-Smart', listProduct: [
     EntityProduct(
         indexNumber: 0,
         productType: EnumCategoryWorkingTable.slavonischeEiche,

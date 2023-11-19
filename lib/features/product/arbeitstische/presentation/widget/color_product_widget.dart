@@ -23,74 +23,77 @@ class ColorProductWidget extends StatelessWidget {
             return Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                BlocBuilder<CubitWorkingTableProduct,
-                        StateProduct<ArbeitsTischeProduct>>(
-                    builder: (context, state) {
-                  return Flexible(
-                    child: Container(
-                      height: currentConstraints.maxHeight * 0.5,
-                      width: currentConstraints.maxWidth * 0.4,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(width: 2),
-                          color: AppColors.greyA7A7A7),
-                      child: InkWell(
-                        onTap: state.maybeMap(
-                          orElse: () => () {},
-                          success: (product) => () async {
-                            debugPrint('start');
-                            final colors = product.workingTables
-                                ?.map((product) => product.frameColors?.color)
-                                .toList();
-                            debugPrint('wait => $colors');
-                            if (colors != null) {
-                              final color =
-                                  await _showColorMenu(context, colors);
-                              debugPrint('chosen color $color');
-                              if (context.mounted) {
-                                debugPrint('continue');
-                                debugPrint('chosen color $color');
-                                if (color != null) {
-                                  context
-                                      .read<CubitWorkingTableProduct>()
-                                      .changeColor(color);
-                                }
-                              }
-                            }
-                          },
-                        ),
-                        child: const Center(
-                            child: Padding(
-                          padding: EdgeInsets.all(5.0),
-                          child: FittedBox(
-                            fit: BoxFit.fill,
-                            child: Text(
-                              'Gestellfarbe',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.bold,
-                                  shadows: [
-                                    Shadow(
-                                        color: Colors.black,
-                                        offset: Offset(1, 1)),
-                                    Shadow(
-                                        color: Colors.black,
-                                        offset: Offset(-1, 1)),
-                                    Shadow(
-                                        color: Colors.black,
-                                        offset: Offset(-1, -1)),
-                                    Shadow(
-                                        color: Colors.black,
-                                        offset: Offset(1, -1)),
-                                  ]),
-                            ),
+                BlocSelector<
+                        CubitWorkingTableProduct,
+                        StateProduct<ArbeitsTischeProduct>,
+                        List<ArbeitsTischeProduct>?>(
+                    selector: (state) => state.maybeMap(
+                        orElse: () => null,
+                        success: (product) => product.workingTables),
+                    builder: (context, workingTables) {
+                      return Flexible(
+                        child: Container(
+                          height: currentConstraints.maxHeight * 0.5,
+                          width: currentConstraints.maxWidth * 0.4,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all(width: 2),
+                              color: AppColors.greyA7A7A7),
+                          child: InkWell(
+                            onTap: workingTables == null
+                                ? () {}
+                                : () async {
+                                    debugPrint('start');
+                                    final colors = workingTables
+                                        .map((product) =>
+                                            product.frameColors?.color)
+                                        .toList();
+                                    debugPrint('wait => $colors');
+                                    final color =
+                                        await _showColorMenu(context, colors);
+                                    debugPrint('chosen color $color');
+                                    if (context.mounted) {
+                                      debugPrint('continue');
+                                      debugPrint('chosen color $color');
+                                      if (color != null) {
+                                        context
+                                            .read<CubitWorkingTableProduct>()
+                                            .changeColor(color);
+                                      }
+                                    }
+                                  },
+                            child: const Center(
+                                child: Padding(
+                              padding: EdgeInsets.all(5.0),
+                              child: FittedBox(
+                                fit: BoxFit.fill,
+                                child: Text(
+                                  'Gestellfarbe',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.bold,
+                                      shadows: [
+                                        Shadow(
+                                            color: Colors.black,
+                                            offset: Offset(1, 1)),
+                                        Shadow(
+                                            color: Colors.black,
+                                            offset: Offset(-1, 1)),
+                                        Shadow(
+                                            color: Colors.black,
+                                            offset: Offset(-1, -1)),
+                                        Shadow(
+                                            color: Colors.black,
+                                            offset: Offset(1, -1)),
+                                      ]),
+                                ),
+                              ),
+                            )),
                           ),
-                        )),
-                      ),
-                    ),
-                  );
-                }),
+                        ),
+                      );
+                    }),
                 BlocBuilder<CubitWorkingTableProduct, StateProduct>(
                     builder: (context, state) {
                   return Flexible(

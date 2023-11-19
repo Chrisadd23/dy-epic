@@ -32,6 +32,7 @@ final Map<EnumCategoryWorkingTable, List<EntityArbeitsTischeProduct>>
     dummyListProductArbeitstische = {
   EnumCategoryWorkingTable.slavonischeEiche: [
     EntityArbeitsTischeProduct(
+      name: 'E-Smart',
       frameColors: const Gestell(
         color: AppColors.whiteD6D6D7,
         material: '',
@@ -39,9 +40,11 @@ final Map<EnumCategoryWorkingTable, List<EntityArbeitsTischeProduct>>
       picturePath: Assets.products.arbeitstische.slavonischeEicheWeiss.path,
     ),
     EntityArbeitsTischeProduct(
+        name: 'E-Smart',
         frameColors: const Gestell(color: AppColors.grey8D8D8E, material: ''),
         picturePath: Assets.products.arbeitstische.slavonischeEicheSilber.path),
     EntityArbeitsTischeProduct(
+        name: 'E-Smart',
         frameColors: const Gestell(color: AppColors.black080808, material: ''),
         picturePath:
             Assets.products.arbeitstische.slavonischeEicheSchwarz.path),
