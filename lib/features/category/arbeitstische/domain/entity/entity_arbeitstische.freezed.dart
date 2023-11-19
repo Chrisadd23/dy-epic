@@ -166,7 +166,8 @@ abstract class _EntityArbeitstische extends EntityArbeitstische {
 
 /// @nodoc
 mixin _$EntityProduct {
-  String get productName => throw _privateConstructorUsedError;
+  EnumCategoryWorkingTable get productType =>
+      throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
   int get indexNumber => throw _privateConstructorUsedError;
   String get picturePath => throw _privateConstructorUsedError;
@@ -185,7 +186,7 @@ abstract class $EntityProductCopyWith<$Res> {
       _$EntityProductCopyWithImpl<$Res, EntityProduct>;
   @useResult
   $Res call(
-      {String productName,
+      {EnumCategoryWorkingTable productType,
       double price,
       int indexNumber,
       String picturePath,
@@ -206,7 +207,7 @@ class _$EntityProductCopyWithImpl<$Res, $Val extends EntityProduct>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? productName = null,
+    Object? productType = null,
     Object? price = null,
     Object? indexNumber = null,
     Object? picturePath = null,
@@ -214,10 +215,10 @@ class _$EntityProductCopyWithImpl<$Res, $Val extends EntityProduct>
     Object? productCount = freezed,
   }) {
     return _then(_value.copyWith(
-      productName: null == productName
-          ? _value.productName
-          : productName // ignore: cast_nullable_to_non_nullable
-              as String,
+      productType: null == productType
+          ? _value.productType
+          : productType // ignore: cast_nullable_to_non_nullable
+              as EnumCategoryWorkingTable,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -251,7 +252,7 @@ abstract class _$$EntityProductImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String productName,
+      {EnumCategoryWorkingTable productType,
       double price,
       int indexNumber,
       String picturePath,
@@ -270,7 +271,7 @@ class __$$EntityProductImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? productName = null,
+    Object? productType = null,
     Object? price = null,
     Object? indexNumber = null,
     Object? picturePath = null,
@@ -278,10 +279,10 @@ class __$$EntityProductImplCopyWithImpl<$Res>
     Object? productCount = freezed,
   }) {
     return _then(_$EntityProductImpl(
-      productName: null == productName
-          ? _value.productName
-          : productName // ignore: cast_nullable_to_non_nullable
-              as String,
+      productType: null == productType
+          ? _value.productType
+          : productType // ignore: cast_nullable_to_non_nullable
+              as EnumCategoryWorkingTable,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -310,7 +311,7 @@ class __$$EntityProductImplCopyWithImpl<$Res>
 
 class _$EntityProductImpl extends _EntityProduct {
   const _$EntityProductImpl(
-      {required this.productName,
+      {required this.productType,
       required this.price,
       required this.indexNumber,
       required this.picturePath,
@@ -319,7 +320,7 @@ class _$EntityProductImpl extends _EntityProduct {
       : super._();
 
   @override
-  final String productName;
+  final EnumCategoryWorkingTable productType;
   @override
   final double price;
   @override
@@ -333,7 +334,7 @@ class _$EntityProductImpl extends _EntityProduct {
 
   @override
   String toString() {
-    return 'EntityProduct(productName: $productName, price: $price, indexNumber: $indexNumber, picturePath: $picturePath, offerInPercent: $offerInPercent, productCount: $productCount)';
+    return 'EntityProduct(productType: $productType, price: $price, indexNumber: $indexNumber, picturePath: $picturePath, offerInPercent: $offerInPercent, productCount: $productCount)';
   }
 
   @override
@@ -341,8 +342,8 @@ class _$EntityProductImpl extends _EntityProduct {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EntityProductImpl &&
-            (identical(other.productName, productName) ||
-                other.productName == productName) &&
+            (identical(other.productType, productType) ||
+                other.productType == productType) &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.indexNumber, indexNumber) ||
                 other.indexNumber == indexNumber) &&
@@ -355,7 +356,7 @@ class _$EntityProductImpl extends _EntityProduct {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, productName, price, indexNumber,
+  int get hashCode => Object.hash(runtimeType, productType, price, indexNumber,
       picturePath, offerInPercent, productCount);
 
   @JsonKey(ignore: true)
@@ -367,7 +368,7 @@ class _$EntityProductImpl extends _EntityProduct {
 
 abstract class _EntityProduct extends EntityProduct {
   const factory _EntityProduct(
-      {required final String productName,
+      {required final EnumCategoryWorkingTable productType,
       required final double price,
       required final int indexNumber,
       required final String picturePath,
@@ -376,7 +377,7 @@ abstract class _EntityProduct extends EntityProduct {
   const _EntityProduct._() : super._();
 
   @override
-  String get productName;
+  EnumCategoryWorkingTable get productType;
   @override
   double get price;
   @override

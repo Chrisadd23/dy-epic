@@ -8,6 +8,6 @@ class UseCaseGetProduct {
 
   final RepositoryArbeitstische repositoryArbeitstische;
 
-  Future<Either<Failure, EntityArbeitstische>> call() =>
+  Future<Either<Failure, List<EntityArbeitstische>>> call() =>
       repositoryArbeitstische.getArbeitstische();
 }

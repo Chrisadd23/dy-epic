@@ -142,16 +142,16 @@ class _ProductState extends State<Product> {
             ]),
         child: Stack(
           children: [
-            _ProductColors(product: widget),
             _ProductPicture(widget: widget),
+            _ProductColors(product: widget),
             _ProductName(widget: widget),
             Align(
-                alignment: Alignment.centerLeft,
+                alignment: Alignment.center,
                 child: LayoutBuilder(builder: (context, constraints) {
                   return Padding(
                     padding: EdgeInsets.only(
-                        top: constraints.maxHeight * 0.43,
-                        left: constraints.maxWidth * 0.05),
+                      top: constraints.maxHeight * 0.43,
+                    ),
                     child: const FittedBox(
                       fit: BoxFit.fill,
                       child: Text(
@@ -189,16 +189,21 @@ class _ProductName extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Align(
-        alignment: Alignment.topCenter,
+        alignment: Alignment.center,
         child: LayoutBuilder(builder: (context, constraints) {
           return Padding(
-            padding: EdgeInsets.only(top: constraints.maxHeight * 0.07),
+            padding: EdgeInsets.only(
+                top: constraints.maxHeight * 0.15,
+                left: constraints.maxWidth * 0.05,
+                right: constraints.maxWidth * 0.05),
             child: FittedBox(
               fit: BoxFit.fill,
               child: Text(
-                widget.productType.type,
-                style:
-                    const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                'Dekor ${widget.productType.type}',
+                style: const TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           );
@@ -219,31 +224,35 @@ class _ProductPicture extends StatelessWidget {
       children: <Widget>[
         Align(
           alignment: Alignment.center,
-          child: LayoutBuilder(
-            builder: (context, constraints) =>
-                // navigation Test
-                Container(
-              height: constraints.maxHeight * 0.9,
-              width: constraints.maxWidth * 0.9,
-              margin: EdgeInsets.only(bottom: constraints.maxHeight * 0.2),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                shape: BoxShape.circle,
-                boxShadow: const [
-                  BoxShadow(
-                      color: Colors.grey,
-                      offset: Offset(2, 3),
-                      blurStyle: BlurStyle.outer),
-                  BoxShadow(
-                      color: Colors.grey,
-                      offset: Offset(2, -3),
-                      blurStyle: BlurStyle.outer)
-                ],
-                border: Border.all(
-                    color: Colors.black45,
-                    strokeAlign: BorderSide.strokeAlignInside),
-                image: DecorationImage(
-                  image: AssetImage(widget.picturePath),
+          child: Padding(
+            padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).size.height * 0.2),
+            child: LayoutBuilder(
+              builder: (context, constraints) =>
+                  // navigation Test
+                  Container(
+                height: constraints.maxHeight * 0.9,
+                width: constraints.maxWidth * 0.9,
+                margin: EdgeInsets.only(bottom: constraints.maxHeight * 0.2),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.circle,
+                  boxShadow: const [
+                    BoxShadow(
+                        color: Colors.grey,
+                        offset: Offset(2, 3),
+                        blurStyle: BlurStyle.outer),
+                    BoxShadow(
+                        color: Colors.grey,
+                        offset: Offset(2, -3),
+                        blurStyle: BlurStyle.outer)
+                  ],
+                  border: Border.all(
+                      color: Colors.black45,
+                      strokeAlign: BorderSide.strokeAlignInside),
+                  image: DecorationImage(
+                    image: AssetImage(widget.picturePath),
+                  ),
                 ),
               ),
             ),
@@ -253,10 +262,11 @@ class _ProductPicture extends StatelessWidget {
           alignment: Alignment.center,
           child: LayoutBuilder(builder: (context, constraints) {
             return Padding(
-              padding: EdgeInsets.only(bottom: constraints.maxHeight * 0.2),
+              padding: EdgeInsets.only(bottom: constraints.maxHeight * 0.43),
               child: CircleAvatar(
-                backgroundColor: Colors.white.withOpacity(0),
+                backgroundColor: Colors.transparent,
                 radius: constraints.maxHeight * 0.23,
+                foregroundColor: Colors.transparent,
                 child: InkWell(
                   hoverColor: Colors.red,
                   onTap: () => context.goNamed(AppGoRouter.product.name,
@@ -299,7 +309,8 @@ class _ProductColors extends StatelessWidget {
                 child: Container(
                   decoration: BoxDecoration(
                       color: AppColors.whiteD6D6D7,
-                      borderRadius: BorderRadius.circular(20)),
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(color: Colors.black, width: 2)),
                   child: SizedBox(
                     height: constraints.maxHeight * 0.1,
                     width: constraints.maxWidth * 0.1,
@@ -317,7 +328,8 @@ class _ProductColors extends StatelessWidget {
                 child: Container(
                   decoration: BoxDecoration(
                       color: AppColors.grey8D8D8E,
-                      borderRadius: BorderRadius.circular(20)),
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(color: Colors.black, width: 2)),
                   child: SizedBox(
                     height: constraints.maxHeight * 0.1,
                     width: constraints.maxWidth * 0.1,
@@ -335,7 +347,8 @@ class _ProductColors extends StatelessWidget {
                 child: Container(
                   decoration: BoxDecoration(
                       color: AppColors.black080808,
-                      borderRadius: BorderRadius.circular(20)),
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(color: Colors.grey, width: 2)),
                   child: SizedBox(
                     height: constraints.maxHeight * 0.1,
                     width: constraints.maxWidth * 0.1,

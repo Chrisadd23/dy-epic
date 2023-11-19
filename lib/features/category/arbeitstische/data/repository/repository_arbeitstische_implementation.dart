@@ -13,8 +13,8 @@ class RepositoryArbeitstischeImplementation extends RepositoryArbeitstische {
   final DataSourceArbeitstische dataSourceArbeitstische;
 
   @override
-  Future<Either<Failure, EntityArbeitstische>> getArbeitstische() {
+  Future<Either<Failure, List<EntityArbeitstische>>> getArbeitstische() {
     // TODO: implement getArbeitstische
-    throw UnimplementedError();
+    return dataSourceArbeitstische.getArbeitstischeData();
   }
 }

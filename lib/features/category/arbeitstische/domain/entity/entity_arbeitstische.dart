@@ -1,3 +1,4 @@
+import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'entity_arbeitstische.freezed.dart';
@@ -17,7 +18,7 @@ class EntityProduct with _$EntityProduct {
   const EntityProduct._();
 
   const factory EntityProduct({
-    required String productName,
+    required EnumCategoryWorkingTable productType,
     required double price,
     required int indexNumber,
     required String picturePath,

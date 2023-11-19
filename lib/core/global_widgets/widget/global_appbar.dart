@@ -62,20 +62,7 @@ class GlobalAppBar extends AppBar {
                       top: 10,
                     ),
                     child: Builder(builder: (context) {
-                      final currentRoute = getIt<GoRouter>().location;
-                      return IconButton(
-                        onPressed: () {
-                          AppGoRouter.shouldntPop.contains(currentRoute)
-                              ? Scaffold.of(context).openDrawer()
-                              : context.pop();
-                        },
-                        icon: Image.asset(
-                          fit: BoxFit.fill,
-                          AppGoRouter.shouldntPop.contains(currentRoute)
-                              ? Assets.appComponents.png.iconMenu.path
-                              : Assets.appComponents.png.returnIcon.path,
-                        ),
-                      );
+                      return const AppBarMenuButton();
                     }),
                   ),
                 ),
@@ -86,4 +73,43 @@ class GlobalAppBar extends AppBar {
           backgroundColor: Colors.white,
           elevation: 1,
         );
+}
+
+class AppBarMenuButton extends StatefulWidget {
+  const AppBarMenuButton({
+    super.key,
+  });
+
+  @override
+  State<AppBarMenuButton> createState() => _AppBarMenuButtonState();
+}
+
+class _AppBarMenuButtonState extends State<AppBarMenuButton> {
+  @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
+
+    final picture = AppGoRouter.shouldntPop.contains(getIt<GoRouter>().location)
+        ? Assets.appComponents.png.iconMenu.path
+        : Assets.appComponents.png.returnIcon.path;
+    precacheImage(AssetImage(picture), context);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      onPressed: () {
+        AppGoRouter.shouldntPop.contains(getIt<GoRouter>().location)
+            ? Scaffold.of(context).openDrawer()
+            : context.pop();
+      },
+      icon: Image.asset(
+        fit: BoxFit.fill,
+        AppGoRouter.shouldntPop.contains(getIt<GoRouter>().location)
+            ? Assets.appComponents.png.iconMenu.path
+            : Assets.appComponents.png.returnIcon.path,
+      ),
+    );
+  }
 }
