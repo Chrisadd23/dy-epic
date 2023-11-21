@@ -62,14 +62,7 @@ class GlobalAppBar extends AppBar {
                     padding: const EdgeInsets.only(
                       top: 10,
                     ),
-                    child: Builder(builder: (context) {
-                      return AppBarMenuButton(
-                        imagePath: AppGoRouter.shouldntPop
-                                .contains(getIt<GoRouter>().location)
-                            ? Assets.appComponents.png.iconMenu.path
-                            : Assets.appComponents.png.returnIcon.path,
-                      );
-                    }),
+                    child: const AppBarMenuButton(),
                   ),
                 ),
               ],
@@ -84,10 +77,12 @@ class GlobalAppBar extends AppBar {
 class AppBarMenuButton extends StatefulWidget {
   const AppBarMenuButton({
     super.key,
-    required this.imagePath,
   });
 
-  final String imagePath;
+  String get imagePath =>
+      AppGoRouter.shouldntPop.contains(getIt<GoRouter>().location)
+          ? Assets.appComponents.png.iconMenu.path
+          : Assets.appComponents.png.returnIcon.path;
 
   @override
   State<AppBarMenuButton> createState() => _AppBarMenuButtonState();
@@ -111,7 +106,6 @@ class _AppBarMenuButtonState extends State<AppBarMenuButton> {
   Widget build(BuildContext context) {
     return IconButton(
       onPressed: () {
-        debugPrint('====> ${GoRouter.of(context).location.toString()}');
         AppGoRouter.shouldntPop.contains(getIt<GoRouter>().location)
             ? Scaffold.of(context).openDrawer()
             : context.pop();
