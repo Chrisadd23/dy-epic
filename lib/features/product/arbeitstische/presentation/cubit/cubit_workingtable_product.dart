@@ -22,30 +22,56 @@ class CubitWorkingTableProduct
     final workingTables =
         repositoryProductArbeitstische.getArbeitstischeProduct(product);
 
-    ArbeitsTischeProduct? selectedWorkingTable;
-    workingTables.fold((failure) {}, (listWorkingTables) async {
-      final list = listWorkingTables
-          .map((workingTable) => ArbeitsTischeProduct(
-              breiteXTiefe: BreiteXTiefe(
-                  breite: workingTable.breiteXTiefe!.breite,
-                  tiefe: workingTable.breiteXTiefe!.tiefe),
-              name: workingTable.name,
-              frameColors:
-                  Gestell(color: workingTable.frameColors!.color, material: ''),
-              picturePath: workingTable.picturePath))
-          .toList();
-      debugPrint(list.toString());
+    workingTables.fold((failure) {}, (workingTable) async {
+      Map<TableChangeableCharacteristics, dynamic> mapCharacteristics = {};
 
-      if (color != null && list.isNotEmpty) {
-        selectedWorkingTable = list
-            .where((table) =>
-                table.frameColors?.color.toString() == color.values.firstOrNull)
-            .firstOrNull;
+      debugPrint('listWorkingTables ===> $workingTable');
+
+      if (color != null &&
+          color.isNotEmpty &&
+          (workingTable.frameColors?.isNotEmpty ?? false)) {
+        debugPrint('if color : color == $color');
+        Color? choosenColor = workingTable.frameColors
+            ?.where(
+                (tableColor) => tableColor.color.toString() == color['color'])
+            .firstOrNull
+            ?.color;
+        debugPrint('color == $choosenColor');
+        mapCharacteristics[TableChangeableCharacteristics.frameColors] =
+            choosenColor;
+      } else if (workingTable.frameColors?.isNotEmpty ?? false) {
+        debugPrint('else if color');
+        mapCharacteristics[TableChangeableCharacteristics.frameColors] =
+            workingTable.frameColors?.first.color;
       }
 
+      if (workingTable.breiteXTiefe?.isNotEmpty ?? false) {
+        mapCharacteristics[TableChangeableCharacteristics.breiteXTiefe] =
+            BreiteXTiefe(
+                breite: workingTable.breiteXTiefe!.first.breite,
+                tiefe: workingTable.breiteXTiefe!.first.tiefe);
+      }
+
+      debugPrint(mapCharacteristics.toString());
+      final product = ArbeitsTischeProduct(
+          name: workingTable.name,
+          breiteXTiefe: workingTable.breiteXTiefe
+              ?.map(
+                (breitXTiefe) => BreiteXTiefe(
+                    breite: breitXTiefe.breite, tiefe: breitXTiefe.tiefe),
+              )
+              .toList(),
+          frameColors: workingTable.frameColors
+              ?.map((gestell) => Gestell(
+                    color: gestell.color,
+                    name: gestell.name,
+                    material: gestell.material,
+                  ))
+              .toList(),
+          picturePath: workingTable.picturePath);
+
       emit(StateProduct.success(
-          workingTables: list,
-          selectedWorkingTable: selectedWorkingTable ?? list[0]));
+          product: product, selectedCharacteristics: mapCharacteristics));
     });
   }
 
@@ -79,14 +105,20 @@ class CubitWorkingTableProduct
     return super.close();
   }
 
-  void changeColor(Color? color) {
+  void changeColor(Color color) async {
     debugPrint('change Color --< $color');
 
     emit(state.maybeMap(
         orElse: () => const StateProduct.loading(),
-        success: (product) => product.copyWith(
-            selectedWorkingTable: product.workingTables
-                ?.where((element) => element.frameColors?.color == color)
-                .firstOrNull)));
+        success: (product) {
+          final newSelectedCharacteristics =
+              Map<Enum, dynamic>.from(product.selectedCharacteristics);
+
+          newSelectedCharacteristics[
+              TableChangeableCharacteristics.frameColors] = color;
+
+          return product.copyWith(
+              selectedCharacteristics: newSelectedCharacteristics);
+        }));
   }
 }

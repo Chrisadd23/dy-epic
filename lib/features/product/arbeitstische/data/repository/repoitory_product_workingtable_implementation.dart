@@ -13,8 +13,8 @@ class RepositoryProductWorkingtableImplementation
   final DataSourceProductWorkingTable dataSourceArbeitstische;
 
   @override
-  Future<Either<Failure, List<EntityArbeitsTischeProduct>>>
-      getArbeitstischeProduct(EnumCategoryWorkingTable? product) {
+  Future<Either<Failure, EntityArbeitsTischeProduct>> getArbeitstischeProduct(
+      EnumCategoryWorkingTable? product) {
     // TODO: implement getArbeitstischeProduct
     final data = dataSourceArbeitstische.loadData(product);
     return data.fold(

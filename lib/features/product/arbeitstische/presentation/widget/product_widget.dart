@@ -64,7 +64,7 @@ class ProductPicture extends StatelessWidget {
             orElse: () {
               return;
             },
-            success: (product) => product.selectedWorkingTable?.picturePath),
+            success: (product) => product.product?.picturePath),
         builder: (context, picturePath) {
           return _PictureWidget(picturePath: picturePath);
         });
@@ -137,7 +137,7 @@ class ProductTitle extends StatelessWidget {
                   StateProduct<ArbeitsTischeProduct>, String?>(
               selector: (state) => state.maybeMap(
                   orElse: () => null,
-                  success: (product) => product.selectedWorkingTable?.name),
+                  success: (product) => product.product?.name),
               builder: (context, productName) {
                 return FittedBox(
                   fit: BoxFit.fitHeight,
@@ -264,14 +264,13 @@ class SizeProductWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-                  BlocSelector<
-                      CubitWorkingTableProduct,
-                      StateProduct<ArbeitsTischeProduct>,
-                      ArbeitsTischeProduct?>(
+                  BlocSelector<CubitWorkingTableProduct,
+                      StateProduct<ArbeitsTischeProduct>, BreiteXTiefe?>(
                     selector: (state) => state.maybeMap(
                         orElse: () => null,
-                        success: (product) => product.selectedWorkingTable),
-                    builder: (context, product) => Flexible(
+                        success: (product) => product.selectedCharacteristics[
+                            TableChangeableCharacteristics.breiteXTiefe]),
+                    builder: (context, breiteXTiefe) => Flexible(
                       child: Container(
                         height: constraints.maxHeight * 0.5,
                         width: constraints.maxWidth * 0.4,
@@ -283,10 +282,10 @@ class SizeProductWidget extends StatelessWidget {
                           padding: const EdgeInsets.all(5),
                           child: FittedBox(
                             fit: BoxFit.fitWidth,
-                            child: product == null
+                            child: breiteXTiefe == null
                                 ? const LoadingWidget()
                                 : Text(
-                                    '${product.breiteXTiefe?.breite} x ${product.breiteXTiefe?.tiefe}',
+                                    '${breiteXTiefe.breite} x ${breiteXTiefe.tiefe}',
                                     style: const TextStyle(
                                       color: Colors.white,
                                       fontSize: 25,

@@ -3,12 +3,27 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'state_workingtable.freezed.dart';
 
+enum TableChangeableCharacteristics {
+  name,
+  breiteXTiefe,
+  frameColors,
+  plateColor,
+  hoehenVerstellbarkeit,
+  gestellDimension,
+  hubbereich,
+  hubgeschwindigkeit,
+  gerauscheentwicklung,
+  standbyStromverbrauch,
+  kollisionsSchutz,
+  picturePath,
+}
+
 @freezed
 class ArbeitsTischeProduct with _$ArbeitsTischeProduct {
   const factory ArbeitsTischeProduct({
     String? name,
-    BreiteXTiefe? breiteXTiefe,
-    Gestell? frameColors,
+    List<BreiteXTiefe>? breiteXTiefe,
+    List<Gestell>? frameColors,
     Platte? plateColor,
     HoehenVerstellbarkeit? hoehenVerstellbarkeit,
     GestellDimension? gestellDimension,

@@ -23,14 +23,19 @@ class ColorProductWidget extends StatelessWidget {
             return Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                BlocSelector<
-                        CubitWorkingTableProduct,
-                        StateProduct<ArbeitsTischeProduct>,
-                        List<ArbeitsTischeProduct>?>(
+                BlocSelector<CubitWorkingTableProduct,
+                        StateProduct<ArbeitsTischeProduct>, List<Color>?>(
                     selector: (state) => state.maybeMap(
                         orElse: () => null,
-                        success: (product) => product.workingTables),
+                        success: (workingTable) {
+                          debugPrint(
+                              '==> listColor: ${workingTable.product?.frameColors}');
+                          return workingTable.product?.frameColors
+                              ?.map((gestell) => gestell.color)
+                              .toList();
+                        }),
                     builder: (context, workingTables) {
+                      debugPrint(workingTables.toString());
                       return Flexible(
                         child: Container(
                           height: currentConstraints.maxHeight * 0.5,
@@ -44,8 +49,7 @@ class ColorProductWidget extends StatelessWidget {
                                 ? () {}
                                 : () async {
                                     final colors = workingTables
-                                        .map((product) =>
-                                            product.frameColors?.color)
+                                        .map((color) => color)
                                         .toList();
                                     final color = await showColorMenu<Color?>(
                                         context,
@@ -118,29 +122,32 @@ class ColorProductWidget extends StatelessWidget {
                         ),
                       );
                     }),
-                BlocSelector<
-                        CubitWorkingTableProduct,
-                        StateProduct<ArbeitsTischeProduct>,
-                        ArbeitsTischeProduct?>(
+                BlocSelector<CubitWorkingTableProduct,
+                        StateProduct<ArbeitsTischeProduct>, Color?>(
                     selector: (state) => state.maybeMap(
-                        orElse: () => null,
-                        success: (product) => product.selectedWorkingTable),
-                    builder: (context, selectedWorkingTable) {
+                          orElse: () => null,
+                          success: (product) {
+                            debugPrint(
+                                '===> ${product.selectedCharacteristics[TableChangeableCharacteristics.frameColors]}');
+                            return product.selectedCharacteristics[
+                                TableChangeableCharacteristics.frameColors];
+                          },
+                        ),
+                    builder: (context, color) {
                       return Flexible(
                           child: Container(
                               height: currentConstraints.maxHeight * 0.8,
                               width: currentConstraints.maxWidth * 0.3,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(20),
-                                border: selectedWorkingTable == null
+                                border: color == null
                                     ? Border.all(color: Colors.black, width: 2)
                                     : null,
                               ),
-                              child: selectedWorkingTable == null
+                              child: color == null
                                   ? const LoadingWidget()
                                   : ColorWidget(
-                                      color: selectedWorkingTable
-                                          .frameColors?.color,
+                                      color: color,
                                     )));
                     }),
               ],

@@ -7,14 +7,14 @@ import 'package:either_dart/either.dart';
 import 'package:flutter/material.dart';
 
 abstract class DataSourceProductWorkingTable {
-  Future<Either<Failure, List<EntityArbeitsTischeProduct>>> loadData(
+  Future<Either<Failure, EntityArbeitsTischeProduct>> loadData(
       EnumCategoryWorkingTable? product);
 }
 
 class DataSourceProductWorkingtableImplementation
     extends DataSourceProductWorkingTable {
   @override
-  Future<Either<Failure, List<EntityArbeitsTischeProduct>>> loadData(
+  Future<Either<Failure, EntityArbeitsTischeProduct>> loadData(
       EnumCategoryWorkingTable? product) async {
     try {
       await Future.delayed(const Duration(seconds: 1));
@@ -28,124 +28,86 @@ class DataSourceProductWorkingtableImplementation
   }
 }
 
-final Map<EnumCategoryWorkingTable, List<EntityArbeitsTischeProduct>>
+final Map<EnumCategoryWorkingTable, EntityArbeitsTischeProduct>
     dummyListProductArbeitstische = {
-  EnumCategoryWorkingTable.slavonischeEiche: [
-    EntityArbeitsTischeProduct(
-        name: 'E-Smart',
-        frameColors: const Gestell(
+  EnumCategoryWorkingTable.slavonischeEiche: EntityArbeitsTischeProduct(
+      name: 'E-Smart',
+      frameColors: [
+        const Gestell(
           color: AppColors.whiteD6D6D7,
           material: '',
         ),
-        picturePath: Assets.products.arbeitstische.slavonischeEicheWeiss.path,
-        breiteXTiefe: const BreiteXTiefe(breite: '1.800', tiefe: '800')),
-    EntityArbeitsTischeProduct(
-        name: 'E-Smart',
-        frameColors: const Gestell(color: AppColors.grey8D8D8E, material: ''),
-        picturePath: Assets.products.arbeitstische.slavonischeEicheSilber.path,
-        breiteXTiefe: const BreiteXTiefe(breite: '1.800', tiefe: '800')),
-    EntityArbeitsTischeProduct(
-        name: 'E-Smart',
-        frameColors: const Gestell(color: AppColors.black080808, material: ''),
-        picturePath: Assets.products.arbeitstische.slavonischeEicheSchwarz.path,
-        breiteXTiefe: const BreiteXTiefe(breite: '1.800', tiefe: '800')),
-
-    //------
-    /*
-    EntityArbeitsTischeProduct(
-        frameColors: const Gestell(
+        const Gestell(color: AppColors.grey8D8D8E, material: ''),
+        const Gestell(color: AppColors.black080808, material: ''),
+      ],
+      picturePath: Assets.products.arbeitstische.slavonischeEicheWeiss.path,
+      breiteXTiefe: [
+        const BreiteXTiefe(breite: '1.600', tiefe: '800'),
+        const BreiteXTiefe(breite: '1.800', tiefe: '800'),
+        const BreiteXTiefe(breite: '2.000', tiefe: '800'),
+      ]),
+  EnumCategoryWorkingTable.ahorn: EntityArbeitsTischeProduct(
+      name: 'E-Smart',
+      frameColors: [
+        const Gestell(
           color: AppColors.whiteD6D6D7,
           material: '',
         ),
-        picturePath: Assets.products.arbeitstische.slavonischeEicheWeiss.path),
-    EntityArbeitsTischeProduct(
-        frameColors: const Gestell(color: AppColors.greyC1C1C1, material: ''),
-        picturePath: Assets.products.arbeitstische.slavonischeEicheSilber.path),
-    EntityArbeitsTischeProduct(
-        frameColors: const Gestell(color: AppColors.black080808, material: ''),
-        picturePath:
-            Assets.products.arbeitstische.slavonischeEicheSchwarz.path),
-    //----
-    */
-  ],
-  EnumCategoryWorkingTable.ahorn: [
-    EntityArbeitsTischeProduct(
-        name: 'E-Smart',
-        frameColors: const Gestell(
+        const Gestell(color: AppColors.grey8D8D8E, material: ''),
+        const Gestell(color: AppColors.black080808, material: ''),
+      ],
+      picturePath: Assets.products.arbeitstische.ahornWeiss.path,
+      breiteXTiefe: [
+        const BreiteXTiefe(breite: '1.600', tiefe: '800'),
+        const BreiteXTiefe(breite: '1.800', tiefe: '800'),
+        const BreiteXTiefe(breite: '2.000', tiefe: '800'),
+      ]),
+  EnumCategoryWorkingTable.buche: EntityArbeitsTischeProduct(
+      name: 'E-Smart',
+      frameColors: [
+        const Gestell(
           color: AppColors.whiteD6D6D7,
           material: '',
         ),
-        picturePath: Assets.products.arbeitstische.ahornWeiss.path,
-        breiteXTiefe: const BreiteXTiefe(breite: '1.800', tiefe: '800')),
-    EntityArbeitsTischeProduct(
-        name: 'E-Smart',
-        frameColors: const Gestell(color: AppColors.grey8D8D8E, material: ''),
-        picturePath: Assets.products.arbeitstische.ahornSilber.path,
-        breiteXTiefe: const BreiteXTiefe(breite: '1.800', tiefe: '800')),
-    EntityArbeitsTischeProduct(
-        name: 'E-Smart',
-        frameColors: const Gestell(color: AppColors.black080808, material: ''),
-        picturePath: Assets.products.arbeitstische.ahornSchwarz.path,
-        breiteXTiefe: const BreiteXTiefe(breite: '1.800', tiefe: '800')),
-  ],
-  EnumCategoryWorkingTable.buche: [
-    EntityArbeitsTischeProduct(
-        name: 'E-Smart',
-        frameColors: const Gestell(
+        const Gestell(color: AppColors.grey8D8D8E, material: ''),
+        const Gestell(color: AppColors.black080808, material: ''),
+      ],
+      picturePath: Assets.products.arbeitstische.bucheWeiss.path,
+      breiteXTiefe: [
+        const BreiteXTiefe(breite: '1.600', tiefe: '800'),
+        const BreiteXTiefe(breite: '1.800', tiefe: '800'),
+        const BreiteXTiefe(breite: '2.000', tiefe: '800'),
+      ]),
+  EnumCategoryWorkingTable.lSchwarz: EntityArbeitsTischeProduct(
+      name: 'E-Smart',
+      frameColors: [
+        const Gestell(
           color: AppColors.whiteD6D6D7,
           material: '',
         ),
-        picturePath: Assets.products.arbeitstische.bucheWeiss.path,
-        breiteXTiefe: const BreiteXTiefe(breite: '1.800', tiefe: '800')),
-    EntityArbeitsTischeProduct(
-        name: 'E-Smart',
-        frameColors: const Gestell(color: AppColors.grey8D8D8E, material: ''),
-        picturePath: Assets.products.arbeitstische.bucheSilber.path,
-        breiteXTiefe: const BreiteXTiefe(breite: '1.800', tiefe: '800')),
-    EntityArbeitsTischeProduct(
-        name: 'E-Smart',
-        frameColors: const Gestell(color: AppColors.black080808, material: ''),
-        picturePath: Assets.products.arbeitstische.bucheSchwarz.path,
-        breiteXTiefe: const BreiteXTiefe(breite: '1.800', tiefe: '800')),
-  ],
-  EnumCategoryWorkingTable.lSchwarz: [
-    EntityArbeitsTischeProduct(
-        name: 'E-Smart',
-        frameColors: const Gestell(
+        const Gestell(color: AppColors.grey8D8D8E, material: ''),
+        const Gestell(color: AppColors.black080808, material: ''),
+      ],
+      picturePath: Assets.products.arbeitstische.lWeiss.path,
+      breiteXTiefe: [
+        const BreiteXTiefe(breite: '1.600', tiefe: '800'),
+        const BreiteXTiefe(breite: '1.800', tiefe: '800'),
+        const BreiteXTiefe(breite: '2.000', tiefe: '800'),
+      ]),
+  EnumCategoryWorkingTable.wSchwarz: EntityArbeitsTischeProduct(
+      name: 'E-Smart',
+      frameColors: [
+        const Gestell(
           color: AppColors.whiteD6D6D7,
           material: '',
         ),
-        picturePath: Assets.products.arbeitstische.lWeiss.path,
-        breiteXTiefe: const BreiteXTiefe(breite: '1.800', tiefe: '800')),
-    EntityArbeitsTischeProduct(
-        name: 'E-Smart',
-        frameColors: const Gestell(color: AppColors.grey8D8D8E, material: ''),
-        picturePath: Assets.products.arbeitstische.lSilber.path,
-        breiteXTiefe: const BreiteXTiefe(breite: '1.800', tiefe: '800')),
-    EntityArbeitsTischeProduct(
-        name: 'E-Smart',
-        frameColors: const Gestell(color: AppColors.black080808, material: ''),
-        picturePath: Assets.products.arbeitstische.lSchwarz.path,
-        breiteXTiefe: const BreiteXTiefe(breite: '1.800', tiefe: '800')),
-  ],
-  EnumCategoryWorkingTable.wSchwarz: [
-    EntityArbeitsTischeProduct(
-        name: 'E-Smart',
-        frameColors: const Gestell(
-          color: AppColors.whiteD6D6D7,
-          material: '',
-        ),
-        picturePath: Assets.products.arbeitstische.wWeiss.path,
-        breiteXTiefe: const BreiteXTiefe(breite: '1.800', tiefe: '800')),
-    EntityArbeitsTischeProduct(
-        name: 'E-Smart',
-        frameColors: const Gestell(color: AppColors.grey8D8D8E, material: ''),
-        picturePath: Assets.products.arbeitstische.wSilber.path,
-        breiteXTiefe: const BreiteXTiefe(breite: '1.800', tiefe: '800')),
-    EntityArbeitsTischeProduct(
-        name: 'E-Smart',
-        frameColors: const Gestell(color: AppColors.black080808, material: ''),
-        picturePath: Assets.products.arbeitstische.wSchwarz.path,
-        breiteXTiefe: const BreiteXTiefe(breite: '1.800', tiefe: '800')),
-  ]
+        const Gestell(color: AppColors.grey8D8D8E, material: ''),
+        const Gestell(color: AppColors.black080808, material: ''),
+      ],
+      picturePath: Assets.products.arbeitstische.wWeiss.path,
+      breiteXTiefe: [
+        const BreiteXTiefe(breite: '1.600', tiefe: '800'),
+        const BreiteXTiefe(breite: '1.800', tiefe: '800'),
+        const BreiteXTiefe(breite: '2.000', tiefe: '800'),
+      ]),
 };

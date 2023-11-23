@@ -17,8 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$EntityArbeitsTischeProduct {
   String? get name => throw _privateConstructorUsedError;
-  BreiteXTiefe? get breiteXTiefe => throw _privateConstructorUsedError;
-  Gestell? get frameColors => throw _privateConstructorUsedError;
+  List<BreiteXTiefe>? get breiteXTiefe => throw _privateConstructorUsedError;
+  List<Gestell>? get frameColors => throw _privateConstructorUsedError;
   Platte? get plateColor => throw _privateConstructorUsedError;
   HoehenVerstellbarkeit? get hoehenVerstellbarkeit =>
       throw _privateConstructorUsedError;
@@ -47,8 +47,8 @@ abstract class $EntityArbeitsTischeProductCopyWith<$Res> {
   @useResult
   $Res call(
       {String? name,
-      BreiteXTiefe? breiteXTiefe,
-      Gestell? frameColors,
+      List<BreiteXTiefe>? breiteXTiefe,
+      List<Gestell>? frameColors,
       Platte? plateColor,
       HoehenVerstellbarkeit? hoehenVerstellbarkeit,
       GestellDimension? gestellDimension,
@@ -59,8 +59,6 @@ abstract class $EntityArbeitsTischeProductCopyWith<$Res> {
       bool? kollisionsSchutz,
       String? picturePath});
 
-  $BreiteXTiefeCopyWith<$Res>? get breiteXTiefe;
-  $GestellCopyWith<$Res>? get frameColors;
   $PlatteCopyWith<$Res>? get plateColor;
   $HoehenVerstellbarkeitCopyWith<$Res>? get hoehenVerstellbarkeit;
   $GestellDimensionCopyWith<$Res>? get gestellDimension;
@@ -105,11 +103,11 @@ class _$EntityArbeitsTischeProductCopyWithImpl<$Res,
       breiteXTiefe: freezed == breiteXTiefe
           ? _value.breiteXTiefe
           : breiteXTiefe // ignore: cast_nullable_to_non_nullable
-              as BreiteXTiefe?,
+              as List<BreiteXTiefe>?,
       frameColors: freezed == frameColors
           ? _value.frameColors
           : frameColors // ignore: cast_nullable_to_non_nullable
-              as Gestell?,
+              as List<Gestell>?,
       plateColor: freezed == plateColor
           ? _value.plateColor
           : plateColor // ignore: cast_nullable_to_non_nullable
@@ -147,30 +145,6 @@ class _$EntityArbeitsTischeProductCopyWithImpl<$Res,
           : picturePath // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $BreiteXTiefeCopyWith<$Res>? get breiteXTiefe {
-    if (_value.breiteXTiefe == null) {
-      return null;
-    }
-
-    return $BreiteXTiefeCopyWith<$Res>(_value.breiteXTiefe!, (value) {
-      return _then(_value.copyWith(breiteXTiefe: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $GestellCopyWith<$Res>? get frameColors {
-    if (_value.frameColors == null) {
-      return null;
-    }
-
-    return $GestellCopyWith<$Res>(_value.frameColors!, (value) {
-      return _then(_value.copyWith(frameColors: value) as $Val);
-    });
   }
 
   @override
@@ -273,8 +247,8 @@ abstract class _$$EntityArbeitsTischeProductImplCopyWith<$Res>
   @useResult
   $Res call(
       {String? name,
-      BreiteXTiefe? breiteXTiefe,
-      Gestell? frameColors,
+      List<BreiteXTiefe>? breiteXTiefe,
+      List<Gestell>? frameColors,
       Platte? plateColor,
       HoehenVerstellbarkeit? hoehenVerstellbarkeit,
       GestellDimension? gestellDimension,
@@ -285,10 +259,6 @@ abstract class _$$EntityArbeitsTischeProductImplCopyWith<$Res>
       bool? kollisionsSchutz,
       String? picturePath});
 
-  @override
-  $BreiteXTiefeCopyWith<$Res>? get breiteXTiefe;
-  @override
-  $GestellCopyWith<$Res>? get frameColors;
   @override
   $PlatteCopyWith<$Res>? get plateColor;
   @override
@@ -337,13 +307,13 @@ class __$$EntityArbeitsTischeProductImplCopyWithImpl<$Res>
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
       breiteXTiefe: freezed == breiteXTiefe
-          ? _value.breiteXTiefe
+          ? _value._breiteXTiefe
           : breiteXTiefe // ignore: cast_nullable_to_non_nullable
-              as BreiteXTiefe?,
+              as List<BreiteXTiefe>?,
       frameColors: freezed == frameColors
-          ? _value.frameColors
+          ? _value._frameColors
           : frameColors // ignore: cast_nullable_to_non_nullable
-              as Gestell?,
+              as List<Gestell>?,
       plateColor: freezed == plateColor
           ? _value.plateColor
           : plateColor // ignore: cast_nullable_to_non_nullable
@@ -389,8 +359,8 @@ class __$$EntityArbeitsTischeProductImplCopyWithImpl<$Res>
 class _$EntityArbeitsTischeProductImpl implements _EntityArbeitsTischeProduct {
   const _$EntityArbeitsTischeProductImpl(
       {this.name,
-      this.breiteXTiefe,
-      this.frameColors,
+      final List<BreiteXTiefe>? breiteXTiefe,
+      final List<Gestell>? frameColors,
       this.plateColor,
       this.hoehenVerstellbarkeit,
       this.gestellDimension,
@@ -399,14 +369,32 @@ class _$EntityArbeitsTischeProductImpl implements _EntityArbeitsTischeProduct {
       this.gerauscheentwicklung,
       this.standbyStromverbrauch,
       this.kollisionsSchutz,
-      this.picturePath});
+      this.picturePath})
+      : _breiteXTiefe = breiteXTiefe,
+        _frameColors = frameColors;
 
   @override
   final String? name;
+  final List<BreiteXTiefe>? _breiteXTiefe;
   @override
-  final BreiteXTiefe? breiteXTiefe;
+  List<BreiteXTiefe>? get breiteXTiefe {
+    final value = _breiteXTiefe;
+    if (value == null) return null;
+    if (_breiteXTiefe is EqualUnmodifiableListView) return _breiteXTiefe;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<Gestell>? _frameColors;
   @override
-  final Gestell? frameColors;
+  List<Gestell>? get frameColors {
+    final value = _frameColors;
+    if (value == null) return null;
+    if (_frameColors is EqualUnmodifiableListView) return _frameColors;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   final Platte? plateColor;
   @override
@@ -437,10 +425,10 @@ class _$EntityArbeitsTischeProductImpl implements _EntityArbeitsTischeProduct {
         (other.runtimeType == runtimeType &&
             other is _$EntityArbeitsTischeProductImpl &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.breiteXTiefe, breiteXTiefe) ||
-                other.breiteXTiefe == breiteXTiefe) &&
-            (identical(other.frameColors, frameColors) ||
-                other.frameColors == frameColors) &&
+            const DeepCollectionEquality()
+                .equals(other._breiteXTiefe, _breiteXTiefe) &&
+            const DeepCollectionEquality()
+                .equals(other._frameColors, _frameColors) &&
             (identical(other.plateColor, plateColor) ||
                 other.plateColor == plateColor) &&
             (identical(other.hoehenVerstellbarkeit, hoehenVerstellbarkeit) ||
@@ -465,8 +453,8 @@ class _$EntityArbeitsTischeProductImpl implements _EntityArbeitsTischeProduct {
   int get hashCode => Object.hash(
       runtimeType,
       name,
-      breiteXTiefe,
-      frameColors,
+      const DeepCollectionEquality().hash(_breiteXTiefe),
+      const DeepCollectionEquality().hash(_frameColors),
       plateColor,
       hoehenVerstellbarkeit,
       gestellDimension,
@@ -489,8 +477,8 @@ abstract class _EntityArbeitsTischeProduct
     implements EntityArbeitsTischeProduct {
   const factory _EntityArbeitsTischeProduct(
       {final String? name,
-      final BreiteXTiefe? breiteXTiefe,
-      final Gestell? frameColors,
+      final List<BreiteXTiefe>? breiteXTiefe,
+      final List<Gestell>? frameColors,
       final Platte? plateColor,
       final HoehenVerstellbarkeit? hoehenVerstellbarkeit,
       final GestellDimension? gestellDimension,
@@ -504,9 +492,9 @@ abstract class _EntityArbeitsTischeProduct
   @override
   String? get name;
   @override
-  BreiteXTiefe? get breiteXTiefe;
+  List<BreiteXTiefe>? get breiteXTiefe;
   @override
-  Gestell? get frameColors;
+  List<Gestell>? get frameColors;
   @override
   Platte? get plateColor;
   @override

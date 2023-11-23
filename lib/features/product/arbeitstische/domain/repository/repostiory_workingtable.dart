@@ -4,6 +4,6 @@ import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/dom
 import 'package:either_dart/either.dart';
 
 abstract class RepositoryWorkingTable {
-  Future<Either<Failure, List<EntityArbeitsTischeProduct>>>
-      getArbeitstischeProduct(EnumCategoryWorkingTable? product);
+  Future<Either<Failure, EntityArbeitsTischeProduct>> getArbeitstischeProduct(
+      EnumCategoryWorkingTable? product);
 }
