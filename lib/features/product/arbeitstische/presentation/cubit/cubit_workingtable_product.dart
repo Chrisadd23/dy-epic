@@ -130,4 +130,21 @@ class CubitWorkingTableProduct
               selectedCharacteristics: newSelectedCharacteristics);
         }));
   }
+
+  void changeBreiteXTiefe(BreiteXTiefe choosenBreiteXTiefe) {
+    debugPrint('change Color --< $choosenBreiteXTiefe');
+
+    emit(state.maybeMap(
+        orElse: () => const StateProduct.loading(),
+        success: (product) {
+          final newSelectedCharacteristics =
+              Map<Enum, dynamic>.from(product.selectedCharacteristics);
+
+          newSelectedCharacteristics[TableChangeableCharacteristics
+              .breiteXTiefe] = choosenBreiteXTiefe;
+
+          return product.copyWith(
+              selectedCharacteristics: newSelectedCharacteristics);
+        }));
+  }
 }

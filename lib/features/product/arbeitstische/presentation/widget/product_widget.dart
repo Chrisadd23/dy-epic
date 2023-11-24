@@ -210,6 +210,79 @@ class ProductAttributes extends StatelessWidget {
   }
 }
 
+// ==========> change BreiteXTiefe from Dialog
+class BreiteXTiefeWidget extends StatelessWidget {
+  const BreiteXTiefeWidget({required this.breiteXTiefe, required this.onTap});
+
+  final BreiteXTiefe breiteXTiefe;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      type: MaterialType.transparency,
+      child: InkWell(
+        highlightColor: Colors.transparent,
+        splashColor: Colors.transparent,
+        onTap: onTap,
+        child: Container(
+          height: MediaQuery.of(context).size.height * 0.1,
+          width: MediaQuery.of(context).size.width * 0.25,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(color: Colors.black, width: 2),
+            color: AppColors.greyA7A7A7,
+          ),
+          child: FittedBox(
+            child: RichText(
+              textAlign: TextAlign.center,
+              text: TextSpan(children: <TextSpan>[
+                TextSpan(
+                  text: breiteXTiefe.breite,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    shadows: [
+                      Shadow(color: Colors.black, offset: Offset(0.5, 0.5)),
+                      Shadow(color: Colors.black, offset: Offset(-0.5, 0.5)),
+                      Shadow(color: Colors.black, offset: Offset(-0.5, -0.5)),
+                      Shadow(color: Colors.black, offset: Offset(0.5, -0.5)),
+                    ],
+                  ),
+                ),
+                const TextSpan(text: '\n x \n'),
+                TextSpan(
+                  text: breiteXTiefe.tiefe,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    shadows: [
+                      Shadow(color: Colors.black, offset: Offset(0.5, 0.5)),
+                      Shadow(color: Colors.black, offset: Offset(-0.5, 0.5)),
+                      Shadow(color: Colors.black, offset: Offset(-0.5, -0.5)),
+                      Shadow(color: Colors.black, offset: Offset(0.5, -0.5)),
+                    ],
+                  ),
+                )
+              ]),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+        .add(DiagnosticsProperty<BreiteXTiefe>('breiteXTiefe', breiteXTiefe));
+    properties.add(ObjectFlagProperty<VoidCallback>.has('onTap', onTap));
+  }
+}
+
 // ===========> change Color from Dialog
 class ColorWidget extends StatelessWidget {
   const ColorWidget({super.key, required this.color, this.onTap});
