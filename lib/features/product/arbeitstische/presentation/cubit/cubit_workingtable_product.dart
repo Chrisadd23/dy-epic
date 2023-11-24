@@ -30,19 +30,20 @@ class CubitWorkingTableProduct
       if (color != null &&
           color.isNotEmpty &&
           (workingTable.frameColors?.isNotEmpty ?? false)) {
-        debugPrint('if color : color == $color');
-        Color? choosenColor = workingTable.frameColors
+        final frameColor = workingTable.frameColors
             ?.where(
                 (tableColor) => tableColor.color.toString() == color['color'])
-            .firstOrNull
-            ?.color;
-        debugPrint('color == $choosenColor');
+            .firstOrNull;
+
         mapCharacteristics[TableChangeableCharacteristics.frameColors] =
-            choosenColor;
+            frameColor?.color;
+        mapCharacteristics[TableChangeableCharacteristics.picturePath] =
+            frameColor?.picturePath;
       } else if (workingTable.frameColors?.isNotEmpty ?? false) {
-        debugPrint('else if color');
         mapCharacteristics[TableChangeableCharacteristics.frameColors] =
             workingTable.frameColors?.first.color;
+        mapCharacteristics[TableChangeableCharacteristics.picturePath] =
+            workingTable.frameColors?.first.picturePath;
       }
 
       if (workingTable.breiteXTiefe?.isNotEmpty ?? false) {
@@ -54,21 +55,21 @@ class CubitWorkingTableProduct
 
       debugPrint(mapCharacteristics.toString());
       final product = ArbeitsTischeProduct(
-          name: workingTable.name,
-          breiteXTiefe: workingTable.breiteXTiefe
-              ?.map(
-                (breitXTiefe) => BreiteXTiefe(
-                    breite: breitXTiefe.breite, tiefe: breitXTiefe.tiefe),
-              )
-              .toList(),
-          frameColors: workingTable.frameColors
-              ?.map((gestell) => Gestell(
-                    color: gestell.color,
-                    name: gestell.name,
-                    material: gestell.material,
-                  ))
-              .toList(),
-          picturePath: workingTable.picturePath);
+        name: workingTable.name,
+        breiteXTiefe: workingTable.breiteXTiefe
+            ?.map(
+              (breitXTiefe) => BreiteXTiefe(
+                  breite: breitXTiefe.breite, tiefe: breitXTiefe.tiefe),
+            )
+            .toList(),
+        frameColors: workingTable.frameColors
+            ?.map((gestell) => Gestell(
+                color: gestell.color,
+                name: gestell.name,
+                material: gestell.material,
+                pictuePath: gestell.picturePath))
+            .toList(),
+      );
 
       emit(StateProduct.success(
           product: product, selectedCharacteristics: mapCharacteristics));
@@ -116,6 +117,14 @@ class CubitWorkingTableProduct
 
           newSelectedCharacteristics[
               TableChangeableCharacteristics.frameColors] = color;
+          newSelectedCharacteristics[
+                  TableChangeableCharacteristics.picturePath] =
+              state.maybeMap(
+                  orElse: () => null,
+                  success: (product) => product.product?.frameColors
+                      ?.where((element) => element.color == color)
+                      .firstOrNull
+                      ?.pictuePath);
 
           return product.copyWith(
               selectedCharacteristics: newSelectedCharacteristics);

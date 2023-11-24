@@ -102,6 +102,7 @@ class Gestell with _$Gestell {
   const factory Gestell({
     required Color color,
     required String material,
+    required String pictuePath,
     String? name,
   }) = _Gestell;
 }

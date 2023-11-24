@@ -18,7 +18,6 @@ class EntityArbeitsTischeProduct with _$EntityArbeitsTischeProduct {
     Gerauscheentwicklung? gerauscheentwicklung,
     StandbyStromverbrauch? standbyStromverbrauch,
     bool? kollisionsSchutz,
-    String? picturePath,
   }) = _EntityArbeitsTischeProduct;
 }
 
@@ -88,6 +87,7 @@ class Gestell with _$Gestell {
   const factory Gestell({
     required Color color,
     required String material,
+    required String picturePath,
     String? name,
   }) = _Gestell;
 }

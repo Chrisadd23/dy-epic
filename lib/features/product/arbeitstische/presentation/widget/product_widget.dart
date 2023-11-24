@@ -64,7 +64,8 @@ class ProductPicture extends StatelessWidget {
             orElse: () {
               return;
             },
-            success: (product) => product.product?.picturePath),
+            success: (product) => product.selectedCharacteristics[
+                TableChangeableCharacteristics.picturePath]),
         builder: (context, picturePath) {
           return _PictureWidget(picturePath: picturePath);
         });

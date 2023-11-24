@@ -1588,6 +1588,7 @@ abstract class _HoehenVerstellabrkeit implements HoehenVerstellbarkeit {
 mixin _$Gestell {
   Color get color => throw _privateConstructorUsedError;
   String get material => throw _privateConstructorUsedError;
+  String get pictuePath => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -1599,7 +1600,7 @@ abstract class $GestellCopyWith<$Res> {
   factory $GestellCopyWith(Gestell value, $Res Function(Gestell) then) =
       _$GestellCopyWithImpl<$Res, Gestell>;
   @useResult
-  $Res call({Color color, String material, String? name});
+  $Res call({Color color, String material, String pictuePath, String? name});
 }
 
 /// @nodoc
@@ -1617,6 +1618,7 @@ class _$GestellCopyWithImpl<$Res, $Val extends Gestell>
   $Res call({
     Object? color = null,
     Object? material = null,
+    Object? pictuePath = null,
     Object? name = freezed,
   }) {
     return _then(_value.copyWith(
@@ -1627,6 +1629,10 @@ class _$GestellCopyWithImpl<$Res, $Val extends Gestell>
       material: null == material
           ? _value.material
           : material // ignore: cast_nullable_to_non_nullable
+              as String,
+      pictuePath: null == pictuePath
+          ? _value.pictuePath
+          : pictuePath // ignore: cast_nullable_to_non_nullable
               as String,
       name: freezed == name
           ? _value.name
@@ -1643,7 +1649,7 @@ abstract class _$$GestellImplCopyWith<$Res> implements $GestellCopyWith<$Res> {
       __$$GestellImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Color color, String material, String? name});
+  $Res call({Color color, String material, String pictuePath, String? name});
 }
 
 /// @nodoc
@@ -1659,6 +1665,7 @@ class __$$GestellImplCopyWithImpl<$Res>
   $Res call({
     Object? color = null,
     Object? material = null,
+    Object? pictuePath = null,
     Object? name = freezed,
   }) {
     return _then(_$GestellImpl(
@@ -1669,6 +1676,10 @@ class __$$GestellImplCopyWithImpl<$Res>
       material: null == material
           ? _value.material
           : material // ignore: cast_nullable_to_non_nullable
+              as String,
+      pictuePath: null == pictuePath
+          ? _value.pictuePath
+          : pictuePath // ignore: cast_nullable_to_non_nullable
               as String,
       name: freezed == name
           ? _value.name
@@ -1681,18 +1692,24 @@ class __$$GestellImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GestellImpl implements _Gestell {
-  const _$GestellImpl({required this.color, required this.material, this.name});
+  const _$GestellImpl(
+      {required this.color,
+      required this.material,
+      required this.pictuePath,
+      this.name});
 
   @override
   final Color color;
   @override
   final String material;
   @override
+  final String pictuePath;
+  @override
   final String? name;
 
   @override
   String toString() {
-    return 'Gestell(color: $color, material: $material, name: $name)';
+    return 'Gestell(color: $color, material: $material, pictuePath: $pictuePath, name: $name)';
   }
 
   @override
@@ -1703,11 +1720,14 @@ class _$GestellImpl implements _Gestell {
             (identical(other.color, color) || other.color == color) &&
             (identical(other.material, material) ||
                 other.material == material) &&
+            (identical(other.pictuePath, pictuePath) ||
+                other.pictuePath == pictuePath) &&
             (identical(other.name, name) || other.name == name));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, color, material, name);
+  int get hashCode =>
+      Object.hash(runtimeType, color, material, pictuePath, name);
 
   @JsonKey(ignore: true)
   @override
@@ -1720,12 +1740,15 @@ abstract class _Gestell implements Gestell {
   const factory _Gestell(
       {required final Color color,
       required final String material,
+      required final String pictuePath,
       final String? name}) = _$GestellImpl;
 
   @override
   Color get color;
   @override
   String get material;
+  @override
+  String get pictuePath;
   @override
   String? get name;
   @override

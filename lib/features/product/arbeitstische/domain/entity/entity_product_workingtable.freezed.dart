@@ -31,7 +31,6 @@ mixin _$EntityArbeitsTischeProduct {
   StandbyStromverbrauch? get standbyStromverbrauch =>
       throw _privateConstructorUsedError;
   bool? get kollisionsSchutz => throw _privateConstructorUsedError;
-  String? get picturePath => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EntityArbeitsTischeProductCopyWith<EntityArbeitsTischeProduct>
@@ -56,8 +55,7 @@ abstract class $EntityArbeitsTischeProductCopyWith<$Res> {
       Hubgeschwindigkeit? hubgeschwindigkeit,
       Gerauscheentwicklung? gerauscheentwicklung,
       StandbyStromverbrauch? standbyStromverbrauch,
-      bool? kollisionsSchutz,
-      String? picturePath});
+      bool? kollisionsSchutz});
 
   $PlatteCopyWith<$Res>? get plateColor;
   $HoehenVerstellbarkeitCopyWith<$Res>? get hoehenVerstellbarkeit;
@@ -93,7 +91,6 @@ class _$EntityArbeitsTischeProductCopyWithImpl<$Res,
     Object? gerauscheentwicklung = freezed,
     Object? standbyStromverbrauch = freezed,
     Object? kollisionsSchutz = freezed,
-    Object? picturePath = freezed,
   }) {
     return _then(_value.copyWith(
       name: freezed == name
@@ -140,10 +137,6 @@ class _$EntityArbeitsTischeProductCopyWithImpl<$Res,
           ? _value.kollisionsSchutz
           : kollisionsSchutz // ignore: cast_nullable_to_non_nullable
               as bool?,
-      picturePath: freezed == picturePath
-          ? _value.picturePath
-          : picturePath // ignore: cast_nullable_to_non_nullable
-              as String?,
     ) as $Val);
   }
 
@@ -256,8 +249,7 @@ abstract class _$$EntityArbeitsTischeProductImplCopyWith<$Res>
       Hubgeschwindigkeit? hubgeschwindigkeit,
       Gerauscheentwicklung? gerauscheentwicklung,
       StandbyStromverbrauch? standbyStromverbrauch,
-      bool? kollisionsSchutz,
-      String? picturePath});
+      bool? kollisionsSchutz});
 
   @override
   $PlatteCopyWith<$Res>? get plateColor;
@@ -299,7 +291,6 @@ class __$$EntityArbeitsTischeProductImplCopyWithImpl<$Res>
     Object? gerauscheentwicklung = freezed,
     Object? standbyStromverbrauch = freezed,
     Object? kollisionsSchutz = freezed,
-    Object? picturePath = freezed,
   }) {
     return _then(_$EntityArbeitsTischeProductImpl(
       name: freezed == name
@@ -346,10 +337,6 @@ class __$$EntityArbeitsTischeProductImplCopyWithImpl<$Res>
           ? _value.kollisionsSchutz
           : kollisionsSchutz // ignore: cast_nullable_to_non_nullable
               as bool?,
-      picturePath: freezed == picturePath
-          ? _value.picturePath
-          : picturePath // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -368,8 +355,7 @@ class _$EntityArbeitsTischeProductImpl implements _EntityArbeitsTischeProduct {
       this.hubgeschwindigkeit,
       this.gerauscheentwicklung,
       this.standbyStromverbrauch,
-      this.kollisionsSchutz,
-      this.picturePath})
+      this.kollisionsSchutz})
       : _breiteXTiefe = breiteXTiefe,
         _frameColors = frameColors;
 
@@ -411,12 +397,10 @@ class _$EntityArbeitsTischeProductImpl implements _EntityArbeitsTischeProduct {
   final StandbyStromverbrauch? standbyStromverbrauch;
   @override
   final bool? kollisionsSchutz;
-  @override
-  final String? picturePath;
 
   @override
   String toString() {
-    return 'EntityArbeitsTischeProduct(name: $name, breiteXTiefe: $breiteXTiefe, frameColors: $frameColors, plateColor: $plateColor, hoehenVerstellbarkeit: $hoehenVerstellbarkeit, gestellDimension: $gestellDimension, hubbereich: $hubbereich, hubgeschwindigkeit: $hubgeschwindigkeit, gerauscheentwicklung: $gerauscheentwicklung, standbyStromverbrauch: $standbyStromverbrauch, kollisionsSchutz: $kollisionsSchutz, picturePath: $picturePath)';
+    return 'EntityArbeitsTischeProduct(name: $name, breiteXTiefe: $breiteXTiefe, frameColors: $frameColors, plateColor: $plateColor, hoehenVerstellbarkeit: $hoehenVerstellbarkeit, gestellDimension: $gestellDimension, hubbereich: $hubbereich, hubgeschwindigkeit: $hubgeschwindigkeit, gerauscheentwicklung: $gerauscheentwicklung, standbyStromverbrauch: $standbyStromverbrauch, kollisionsSchutz: $kollisionsSchutz)';
   }
 
   @override
@@ -444,9 +428,7 @@ class _$EntityArbeitsTischeProductImpl implements _EntityArbeitsTischeProduct {
             (identical(other.standbyStromverbrauch, standbyStromverbrauch) ||
                 other.standbyStromverbrauch == standbyStromverbrauch) &&
             (identical(other.kollisionsSchutz, kollisionsSchutz) ||
-                other.kollisionsSchutz == kollisionsSchutz) &&
-            (identical(other.picturePath, picturePath) ||
-                other.picturePath == picturePath));
+                other.kollisionsSchutz == kollisionsSchutz));
   }
 
   @override
@@ -462,8 +444,7 @@ class _$EntityArbeitsTischeProductImpl implements _EntityArbeitsTischeProduct {
       hubgeschwindigkeit,
       gerauscheentwicklung,
       standbyStromverbrauch,
-      kollisionsSchutz,
-      picturePath);
+      kollisionsSchutz);
 
   @JsonKey(ignore: true)
   @override
@@ -486,8 +467,7 @@ abstract class _EntityArbeitsTischeProduct
       final Hubgeschwindigkeit? hubgeschwindigkeit,
       final Gerauscheentwicklung? gerauscheentwicklung,
       final StandbyStromverbrauch? standbyStromverbrauch,
-      final bool? kollisionsSchutz,
-      final String? picturePath}) = _$EntityArbeitsTischeProductImpl;
+      final bool? kollisionsSchutz}) = _$EntityArbeitsTischeProductImpl;
 
   @override
   String? get name;
@@ -511,8 +491,6 @@ abstract class _EntityArbeitsTischeProduct
   StandbyStromverbrauch? get standbyStromverbrauch;
   @override
   bool? get kollisionsSchutz;
-  @override
-  String? get picturePath;
   @override
   @JsonKey(ignore: true)
   _$$EntityArbeitsTischeProductImplCopyWith<_$EntityArbeitsTischeProductImpl>
@@ -1592,6 +1570,7 @@ abstract class _HoehenVerstellabrkeit implements HoehenVerstellbarkeit {
 mixin _$Gestell {
   Color get color => throw _privateConstructorUsedError;
   String get material => throw _privateConstructorUsedError;
+  String get picturePath => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -1603,7 +1582,7 @@ abstract class $GestellCopyWith<$Res> {
   factory $GestellCopyWith(Gestell value, $Res Function(Gestell) then) =
       _$GestellCopyWithImpl<$Res, Gestell>;
   @useResult
-  $Res call({Color color, String material, String? name});
+  $Res call({Color color, String material, String picturePath, String? name});
 }
 
 /// @nodoc
@@ -1621,6 +1600,7 @@ class _$GestellCopyWithImpl<$Res, $Val extends Gestell>
   $Res call({
     Object? color = null,
     Object? material = null,
+    Object? picturePath = null,
     Object? name = freezed,
   }) {
     return _then(_value.copyWith(
@@ -1631,6 +1611,10 @@ class _$GestellCopyWithImpl<$Res, $Val extends Gestell>
       material: null == material
           ? _value.material
           : material // ignore: cast_nullable_to_non_nullable
+              as String,
+      picturePath: null == picturePath
+          ? _value.picturePath
+          : picturePath // ignore: cast_nullable_to_non_nullable
               as String,
       name: freezed == name
           ? _value.name
@@ -1647,7 +1631,7 @@ abstract class _$$GestellImplCopyWith<$Res> implements $GestellCopyWith<$Res> {
       __$$GestellImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Color color, String material, String? name});
+  $Res call({Color color, String material, String picturePath, String? name});
 }
 
 /// @nodoc
@@ -1663,6 +1647,7 @@ class __$$GestellImplCopyWithImpl<$Res>
   $Res call({
     Object? color = null,
     Object? material = null,
+    Object? picturePath = null,
     Object? name = freezed,
   }) {
     return _then(_$GestellImpl(
@@ -1673,6 +1658,10 @@ class __$$GestellImplCopyWithImpl<$Res>
       material: null == material
           ? _value.material
           : material // ignore: cast_nullable_to_non_nullable
+              as String,
+      picturePath: null == picturePath
+          ? _value.picturePath
+          : picturePath // ignore: cast_nullable_to_non_nullable
               as String,
       name: freezed == name
           ? _value.name
@@ -1685,18 +1674,24 @@ class __$$GestellImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GestellImpl implements _Gestell {
-  const _$GestellImpl({required this.color, required this.material, this.name});
+  const _$GestellImpl(
+      {required this.color,
+      required this.material,
+      required this.picturePath,
+      this.name});
 
   @override
   final Color color;
   @override
   final String material;
   @override
+  final String picturePath;
+  @override
   final String? name;
 
   @override
   String toString() {
-    return 'Gestell(color: $color, material: $material, name: $name)';
+    return 'Gestell(color: $color, material: $material, picturePath: $picturePath, name: $name)';
   }
 
   @override
@@ -1707,11 +1702,14 @@ class _$GestellImpl implements _Gestell {
             (identical(other.color, color) || other.color == color) &&
             (identical(other.material, material) ||
                 other.material == material) &&
+            (identical(other.picturePath, picturePath) ||
+                other.picturePath == picturePath) &&
             (identical(other.name, name) || other.name == name));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, color, material, name);
+  int get hashCode =>
+      Object.hash(runtimeType, color, material, picturePath, name);
 
   @JsonKey(ignore: true)
   @override
@@ -1724,12 +1722,15 @@ abstract class _Gestell implements Gestell {
   const factory _Gestell(
       {required final Color color,
       required final String material,
+      required final String picturePath,
       final String? name}) = _$GestellImpl;
 
   @override
   Color get color;
   @override
   String get material;
+  @override
+  String get picturePath;
   @override
   String? get name;
   @override
