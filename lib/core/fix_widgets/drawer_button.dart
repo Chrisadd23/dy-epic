@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class FixDrawerButton extends StatelessWidget {
-  const FixDrawerButton({super.key, required this.title, this.height = 80});
+  const FixDrawerButton({super.key, required this.title, this.height = 50});
 
   final String title;
   final double height;

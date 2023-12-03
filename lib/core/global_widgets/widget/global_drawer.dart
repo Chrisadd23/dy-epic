@@ -12,9 +12,7 @@ class GlobalDrawer extends StatelessWidget {
         width: MediaQuery.of(context).size.width * 0.704,
         child: Drawer(
           child: Container(
-            decoration: BoxDecoration(
-                border: Border.all(color: Colors.black, width: 2),
-                color: Colors.white),
+            decoration: const BoxDecoration(color: Colors.white),
             child: SafeArea(
               child: SingleChildScrollView(
                 child: Column(
@@ -34,7 +32,7 @@ class GlobalDrawer extends StatelessWidget {
                       child: Column(
                         children: [
                           Container(
-                            height: 97,
+                            height: 68,
                             width: double.infinity,
                             decoration: const BoxDecoration(
                                 color: Colors.white,
@@ -59,15 +57,15 @@ class GlobalDrawer extends StatelessWidget {
                             onTap: () {},
                             child: SizedBox(
                               width: double.infinity,
-                              height: 90,
+                              height: 70,
                               child: InkWell(
                                 child: Row(
                                   children: [
                                     Padding(
                                       padding: const EdgeInsets.only(left: 8),
                                       child: Container(
-                                        height: 75,
-                                        width: 75,
+                                        height: 50,
+                                        width: 50,
                                         decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(100),
@@ -97,7 +95,7 @@ class GlobalDrawer extends StatelessWidget {
                                             Icons.person,
                                             color: Color.fromRGBO(
                                                 221, 221, 221, 1),
-                                            size: 70,
+                                            size: 45,
                                             shadows: [
                                               BoxShadow(
                                                   color: Colors.black,
@@ -148,7 +146,7 @@ class GlobalDrawer extends StatelessWidget {
                     const SizedBox(height: 50),
                     const FixDrawerButton(
                       title: 'Logout',
-                      height: 60,
+                      height: 40,
                     ),
                   ],
                 ),

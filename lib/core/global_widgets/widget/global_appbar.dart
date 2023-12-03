@@ -3,6 +3,7 @@ import 'package:app_flutter_produkt_bestellen/gen/assets.gen.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 class GlobalAppBar extends AppBar {
@@ -17,7 +18,7 @@ class GlobalAppBar extends AppBar {
           automaticallyImplyLeading: false,
           titleSpacing: 0,
           title: Container(
-            height: 100,
+            height: 70,
             width: double.infinity,
             decoration: const BoxDecoration(
               gradient: LinearGradient(
@@ -29,7 +30,7 @@ class GlobalAppBar extends AppBar {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  height: 97,
+                  height: 67,
                   width: MediaQuery.of(context).size.width * 0.7,
                   decoration: const BoxDecoration(
                       color: Colors.white,
@@ -55,7 +56,7 @@ class GlobalAppBar extends AppBar {
                 ),
                 Expanded(
                   child: Container(
-                    height: 100,
+                    height: 70,
                     margin: const EdgeInsets.only(
                       bottom: 8,
                     ),
@@ -68,7 +69,7 @@ class GlobalAppBar extends AppBar {
               ],
             ),
           ),
-          toolbarHeight: 100,
+          toolbarHeight: 70,
           backgroundColor: Colors.white,
           elevation: 1,
         );
@@ -81,8 +82,8 @@ class AppBarMenuButton extends StatefulWidget {
 
   String get imagePath =>
       AppGoRouter.shouldntPop.contains(getIt<GoRouter>().location)
-          ? Assets.appComponents.png.iconMenu.path
-          : Assets.appComponents.png.returnIcon.path;
+          ? Assets.appComponents.svg.iconMenu
+          : Assets.appComponents.svg.returnIcon;
 
   @override
   State<AppBarMenuButton> createState() => _AppBarMenuButtonState();
@@ -96,13 +97,6 @@ class AppBarMenuButton extends StatefulWidget {
 
 class _AppBarMenuButtonState extends State<AppBarMenuButton> {
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-
-    precacheImage(AssetImage(widget.imagePath), context);
-  }
-
-  @override
   Widget build(BuildContext context) {
     return IconButton(
       onPressed: () {
@@ -110,7 +104,9 @@ class _AppBarMenuButtonState extends State<AppBarMenuButton> {
             ? Scaffold.of(context).openDrawer()
             : context.pop();
       },
-      icon: Image.asset(fit: BoxFit.fill, widget.imagePath),
+      icon: SvgPicture.asset(
+        widget.imagePath,
+      ),
     );
   }
 }

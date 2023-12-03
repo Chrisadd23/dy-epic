@@ -11,7 +11,7 @@ class GlobalScaffold extends Scaffold {
   }) : super(
           key: key,
           appBar: PreferredSize(
-            preferredSize: const Size.fromHeight(100),
+            preferredSize: const Size.fromHeight(70),
             child: SafeArea(
               child: Container(
                 decoration: const BoxDecoration(

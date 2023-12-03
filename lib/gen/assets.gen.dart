@@ -14,6 +14,7 @@ class $AssetsAppComponentsGen {
 
   $AssetsAppComponentsJpgGen get jpg => const $AssetsAppComponentsJpgGen();
   $AssetsAppComponentsPngGen get png => const $AssetsAppComponentsPngGen();
+  $AssetsAppComponentsSvgGen get svg => const $AssetsAppComponentsSvgGen();
 }
 
 class $AssetsCompanyGen {
@@ -99,6 +100,19 @@ class $AssetsAppComponentsPngGen {
   /// List of all assets
   List<AssetGenImage> get values =>
       [iconMenu, minus, plus, returnIcon, vectorMinus, vectorPlus];
+}
+
+class $AssetsAppComponentsSvgGen {
+  const $AssetsAppComponentsSvgGen();
+
+  /// File path: assets/appComponents/svg/icon_menu.svg
+  String get iconMenu => 'assets/appComponents/svg/icon_menu.svg';
+
+  /// File path: assets/appComponents/svg/return_icon.svg
+  String get returnIcon => 'assets/appComponents/svg/return_icon.svg';
+
+  /// List of all assets
+  List<String> get values => [iconMenu, returnIcon];
 }
 
 class $AssetsProductsArbeitstischeGen {
