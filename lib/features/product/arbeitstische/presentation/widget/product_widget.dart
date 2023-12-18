@@ -24,21 +24,39 @@ class ProductWidget extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      height: MediaQuery.of(context).size.height,
+    final expandMenu = useState((color: false, txb: false));
+
+    return GestureDetector(
+      onTap: () => expandMenu.value = (color: false, txb: false),
       child: Stack(
-        children: <Widget>[
-          const ProductTitle(),
-          const ProductPicture(),
-          Align(
-              alignment: Alignment.center,
-              child: Padding(
-                padding: EdgeInsets.only(
-                    bottom: MediaQuery.of(context).size.height * 0.04),
-                child: const CounterProductWidget(),
-              )),
-          const ProductAttributes(),
+        children: [
+          SingleChildScrollView(
+            child: SizedBox(
+              width: double.infinity,
+              height: MediaQuery.of(context).size.height,
+              child: Column(
+                children: <Widget>[
+                  const ProductTitle(),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const ProductPicture(),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const CounterProductWidget(),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  ColorProductWidget(expandMenu: expandMenu),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const SizeProductWidget(),
+                ],
+              ),
+            ),
+          ),
           const OrderProductWidget()
         ],
       ),
@@ -82,30 +100,23 @@ class _PictureWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.topCenter,
-      child: Padding(
-        padding:
-            EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.08),
-        child: Container(
-          width: MediaQuery.sizeOf(context).width * 0.9,
-          height: MediaQuery.sizeOf(context).height * 0.25,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: Colors.black),
-            color: Colors.white,
-          ),
-          child: picturePath == null
-              ? LoadingWidget(
-                  firstWidth: MediaQuery.of(context).size.width * 0.5,
-                  secondWidth: MediaQuery.of(context).size.width * 0.3,
-                )
-              : Image.asset(
-                  picturePath!,
-                  fit: BoxFit.fitHeight,
-                ),
-        ),
+    return Container(
+      width: MediaQuery.sizeOf(context).width * 0.9,
+      height: MediaQuery.sizeOf(context).height * 0.25,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: Colors.black),
+        color: Colors.white,
       ),
+      child: picturePath == null
+          ? LoadingWidget(
+              firstWidth: MediaQuery.of(context).size.width * 0.5,
+              secondWidth: MediaQuery.of(context).size.width * 0.3,
+            )
+          : Image.asset(
+              picturePath!,
+              fit: BoxFit.fitHeight,
+            ),
     );
   }
 
@@ -124,87 +135,42 @@ class ProductTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.topCenter,
-      child: Padding(
-        padding:
-            EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.015),
-        child: Container(
-          height: MediaQuery.sizeOf(context).height * 0.05,
-          width: MediaQuery.sizeOf(context).width * 0.5,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(40),
-              color: AppColors.grey8D8D8E.withOpacity(0.4)),
-          child: BlocSelector<CubitWorkingTableProduct,
-                  StateProduct<ArbeitsTischeProduct>, String?>(
-              selector: (state) => state.maybeMap(
-                  orElse: () => null,
-                  success: (product) => product.product?.name),
-              builder: (context, productName) {
-                return FittedBox(
-                  fit: BoxFit.fitHeight,
-                  child: productName == null
-                      ? const LoadingWidget()
-                      : Text(
-                          productName,
-                          style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 35,
-                              fontWeight: FontWeight.bold,
-                              shadows: [
-                                Shadow(
-                                    color: Colors.black, offset: Offset(1, 1)),
-                                Shadow(
-                                    color: Colors.black, offset: Offset(-1, 1)),
-                                Shadow(
-                                    color: Colors.black,
-                                    offset: Offset(-1, -1)),
-                                Shadow(
-                                    color: Colors.black, offset: Offset(1, -1)),
-                              ]),
-                        ),
-                );
-              }),
-        ),
-      ),
-    );
-  }
-}
-
-class ProductAttributes extends StatelessWidget {
-  const ProductAttributes({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.center,
-      child: Padding(
-        padding: EdgeInsets.only(top: MediaQuery.sizeOf(context).height * 0.33),
-        child: Container(
-          height: MediaQuery.sizeOf(context).height * 0.23,
-          decoration: BoxDecoration(
-              border: Border.all(color: Colors.black),
-              borderRadius: BorderRadius.circular(20)),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(20),
-            child: SingleChildScrollView(
-              child: SizedBox(
-                height: MediaQuery.sizeOf(context).height * 0.5,
-                width: MediaQuery.sizeOf(context).width * 0.8,
-                child: LayoutBuilder(builder: (context, scrollConstraints) {
-                  return Column(
-                    children: [
-                      ColorProductWidget(scrollConstraints: scrollConstraints),
-                      SizeProductWidget(scrollConstraints: scrollConstraints),
-                    ],
-                  );
-                }),
-              ),
-            ),
-          ),
-        ),
+    return Padding(
+      padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.015),
+      child: Container(
+        height: MediaQuery.sizeOf(context).height * 0.05,
+        width: MediaQuery.sizeOf(context).width * 0.5,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(40),
+            color: AppColors.grey8D8D8E.withOpacity(0.4)),
+        child: BlocSelector<CubitWorkingTableProduct,
+                StateProduct<ArbeitsTischeProduct>, String?>(
+            selector: (state) => state.maybeMap(
+                orElse: () => null,
+                success: (product) => product.product?.name),
+            builder: (context, productName) {
+              return FittedBox(
+                fit: BoxFit.fitHeight,
+                child: productName == null
+                    ? const LoadingWidget()
+                    : Text(
+                        productName,
+                        style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 35,
+                            fontWeight: FontWeight.bold,
+                            shadows: [
+                              Shadow(color: Colors.black, offset: Offset(1, 1)),
+                              Shadow(
+                                  color: Colors.black, offset: Offset(-1, 1)),
+                              Shadow(
+                                  color: Colors.black, offset: Offset(-1, -1)),
+                              Shadow(
+                                  color: Colors.black, offset: Offset(1, -1)),
+                            ]),
+                      ),
+              );
+            }),
       ),
     );
   }

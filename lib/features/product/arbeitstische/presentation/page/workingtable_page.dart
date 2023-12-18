@@ -29,7 +29,10 @@ class WorkingTablePage extends HookWidget {
                       firstWidth: 110,
                       secondWidth: 60,
                     ),
-                success: (_) => const ProductWidget())),
+                success: (_) => SizedBox(
+                    height: MediaQuery.of(context).size.height,
+                    width: double.infinity,
+                    child: const ProductWidget()))),
       ),
     );
   }
