@@ -178,7 +178,8 @@ class ProductTitle extends StatelessWidget {
 
 // ==========> change BreiteXTiefe from Dialog
 class BreiteXTiefeWidget extends StatelessWidget {
-  const BreiteXTiefeWidget({required this.breiteXTiefe, required this.onTap});
+  const BreiteXTiefeWidget(
+      {super.key, required this.breiteXTiefe, required this.onTap});
 
   final BreiteXTiefe breiteXTiefe;
   final VoidCallback onTap;

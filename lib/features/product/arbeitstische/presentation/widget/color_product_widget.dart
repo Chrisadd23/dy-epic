@@ -111,7 +111,7 @@ class ColorProductWidget extends HookWidget {
                   state != null
                       ? Row(
                           children: List.generate(
-                            state.length ?? 1,
+                            state.length,
                             (index) => Flexible(
                               child: Padding(
                                 padding: index < state.length
