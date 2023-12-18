@@ -52,7 +52,7 @@ class ProductWidget extends HookWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  const SizeProductWidget(),
+                  SizeProductWidget(expandMenu: expandMenu),
                 ],
               ),
             ),

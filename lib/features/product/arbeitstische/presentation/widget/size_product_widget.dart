@@ -3,7 +3,9 @@ part of my_product_widget;
 // =======> Product size Breite x Tiefe
 
 class SizeProductWidget extends StatelessWidget {
-  const SizeProductWidget({super.key});
+  const SizeProductWidget({super.key, required this.expandMenu});
+
+  final ValueNotifier<({bool color, bool txb})> expandMenu;
 
   @override
   Widget build(BuildContext context) {
@@ -157,5 +159,12 @@ class SizeProductWidget extends StatelessWidget {
         },
       ),
     );
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty<ValueNotifier<({bool color, bool txb})>>(
+        'expandMenu', expandMenu));
   }
 }
