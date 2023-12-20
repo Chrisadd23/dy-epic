@@ -7,7 +7,7 @@ class CounterProductWidget extends HookWidget {
   Widget build(BuildContext context) {
     return Container(
         width: MediaQuery.of(context).size.width * 0.8,
-        height: MediaQuery.of(context).size.height * 0.12,
+        height: MediaQuery.of(context).size.height * 0.08,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           border: Border.all(color: Colors.black),
@@ -19,7 +19,7 @@ class CounterProductWidget extends HookWidget {
               InkWell(
                 child: Container(
                   width: MediaQuery.of(context).size.width * 0.15,
-                  height: MediaQuery.of(context).size.height * 0.08,
+                  height: MediaQuery.of(context).size.height * 0.06,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     color: AppColors.greyA7A7A7,
@@ -40,7 +40,7 @@ class CounterProductWidget extends HookWidget {
               InkWell(
                 child: Container(
                   width: MediaQuery.of(context).size.width * 0.15,
-                  height: MediaQuery.of(context).size.height * 0.08,
+                  height: MediaQuery.of(context).size.height * 0.06,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     color: const Color.fromRGBO(87, 87, 87, 0.4),
@@ -60,7 +60,7 @@ class CounterProductWidget extends HookWidget {
               ),
               Container(
                 width: MediaQuery.of(context).size.width * 0.35,
-                height: MediaQuery.of(context).size.height * 0.07,
+                height: MediaQuery.of(context).size.height * 0.05,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: const Color.fromRGBO(87, 87, 87, 0.4),

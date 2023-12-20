@@ -34,7 +34,7 @@ class ProductWidget extends HookWidget {
             child: SizedBox(
               height: MediaQuery.of(context).size.height * 0.75,
               child: SingleChildScrollView(
-                physics: ClampingScrollPhysics(),
+                physics: const ClampingScrollPhysics(),
                 child: SizedBox(
                   width: double.infinity,
                   child: Column(
