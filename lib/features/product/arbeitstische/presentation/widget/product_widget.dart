@@ -2,7 +2,6 @@ library my_product_widget;
 
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_widgets/loading_widget.dart';
-import 'package:app_flutter_produkt_bestellen/core/functions/global_functions.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/presentation/cubit/cubit_workingtable_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/presentation/cubit/state_workingtable.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/state_product.dart';
@@ -30,30 +29,39 @@ class ProductWidget extends HookWidget {
       onTap: () => expandMenu.value = (color: false, txb: false),
       child: Stack(
         children: [
-          SingleChildScrollView(
+          Align(
+            alignment: Alignment.topCenter,
             child: SizedBox(
-              width: double.infinity,
-              height: MediaQuery.of(context).size.height,
-              child: Column(
-                children: <Widget>[
-                  const ProductTitle(),
-                  const SizedBox(
-                    height: 20,
+              height: MediaQuery.of(context).size.height * 0.75,
+              child: SingleChildScrollView(
+                physics: ClampingScrollPhysics(),
+                child: SizedBox(
+                  width: double.infinity,
+                  child: Column(
+                    children: <Widget>[
+                      const ProductTitle(),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      const ProductPicture(),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      const CounterProductWidget(),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      ColorProductWidget(expandMenu: expandMenu),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      SizeProductWidget(expandMenu: expandMenu),
+                      const SizedBox(
+                        height: 40,
+                      ),
+                    ],
                   ),
-                  const ProductPicture(),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  const CounterProductWidget(),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  ColorProductWidget(expandMenu: expandMenu),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  SizeProductWidget(expandMenu: expandMenu),
-                ],
+                ),
               ),
             ),
           ),
@@ -178,11 +186,10 @@ class ProductTitle extends StatelessWidget {
 
 // ==========> change BreiteXTiefe from Dialog
 class BreiteXTiefeWidget extends StatelessWidget {
-  const BreiteXTiefeWidget(
-      {super.key, required this.breiteXTiefe, required this.onTap});
+  const BreiteXTiefeWidget({super.key, required this.breiteXTiefe, this.onTap});
 
-  final BreiteXTiefe breiteXTiefe;
-  final VoidCallback onTap;
+  final BreiteXTiefe? breiteXTiefe;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -205,7 +212,7 @@ class BreiteXTiefeWidget extends StatelessWidget {
               textAlign: TextAlign.center,
               text: TextSpan(children: <TextSpan>[
                 TextSpan(
-                  text: breiteXTiefe.breite,
+                  text: breiteXTiefe?.breite,
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 12,
@@ -220,7 +227,7 @@ class BreiteXTiefeWidget extends StatelessWidget {
                 ),
                 const TextSpan(text: '\n x \n'),
                 TextSpan(
-                  text: breiteXTiefe.tiefe,
+                  text: breiteXTiefe?.tiefe,
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 12,

@@ -32,8 +32,10 @@ class ColorProductWidget extends HookWidget {
                           border: Border.all(width: 2),
                           color: AppColors.greyA7A7A7),
                       child: InkWell(
-                        onTap: () => expandMenu.value =
-                            (color: true, txb: expandMenu.value.txb),
+                        onTap: () => expandMenu.value = (
+                          color: !expandMenu.value.color,
+                          txb: expandMenu.value.txb
+                        ),
                         child: const Center(
                             child: Padding(
                           padding: EdgeInsets.all(5.0),
