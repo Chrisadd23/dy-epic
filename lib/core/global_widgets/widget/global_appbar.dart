@@ -80,8 +80,13 @@ class AppBarMenuButton extends StatefulWidget {
     super.key,
   });
 
-  String get imagePath =>
-      AppGoRouter.shouldntPop.contains(getIt<GoRouter>().location)
+  String get imagePath => getIt<GoRouter>().location.contains('?')
+      ? AppGoRouter.shouldntPop.contains(RegExp(r'^(.*?)\?')
+              .firstMatch(getIt<GoRouter>().location)
+              ?.group(1))
+          ? Assets.appComponents.svg.iconMenu
+          : Assets.appComponents.svg.returnIcon
+      : AppGoRouter.shouldntPop.contains(getIt<GoRouter>().location)
           ? Assets.appComponents.svg.iconMenu
           : Assets.appComponents.svg.returnIcon;
 
@@ -100,7 +105,7 @@ class _AppBarMenuButtonState extends State<AppBarMenuButton> {
   Widget build(BuildContext context) {
     return IconButton(
       onPressed: () {
-        AppGoRouter.shouldntPop.contains(getIt<GoRouter>().location)
+        widget.imagePath == Assets.appComponents.svg.iconMenu
             ? Scaffold.of(context).openDrawer()
             : context.pop();
       },

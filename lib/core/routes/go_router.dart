@@ -39,93 +39,96 @@ enum AppGoRouter {
   static List<String> shouldntPop = ['/home'];
 
   static final GoRouter _router = GoRouter(
-    routes: <GoRoute>[
-      GoRoute(
-          path: root.title,
-          builder: (context, state) => const Login(),
-          routes: <GoRoute>[
-            GoRoute(
-              path: homePage.title,
-              name: homePage.name,
-              pageBuilder: (context, state) {
-                return CustomTransitionPage<void>(
-                  key: state.pageKey,
-                  child: const HomePage(),
-                  transitionDuration: const Duration(milliseconds: 150),
-                  transitionsBuilder: (BuildContext context,
-                      Animation<double> animation,
-                      Animation<double> secondaryAnimation,
-                      Widget child) {
-                    // Change the opacity of the screen using a Curve based on the the animation's
-                    // value
-                    return FadeTransition(
-                      opacity: CurveTween(curve: Curves.easeInOut)
-                          .animate(animation),
-                      child: child,
-                    );
-                  },
-                );
-              },
-              routes: [
-                GoRoute(
-                    path: arbeitstische.title,
-                    name: arbeitstische.name,
-                    pageBuilder: (context, state) {
-                      return CustomTransitionPage(
-                        key: state.pageKey,
-                        child: const PageWorkTables(),
-                        transitionsBuilder: (BuildContext context,
-                            Animation<double> animation,
-                            Animation<double> secondaryAnimation,
-                            Widget child) {
-                          // Change the opacity of the screen using a Curve based on the the animation's
-                          // value
-                          return FadeTransition(
-                            opacity: CurveTween(curve: Curves.easeInOut)
-                                .animate(animation),
-                            child: child,
-                          );
-                        },
+      debugLogDiagnostics: true,
+      routes: <GoRoute>[
+        GoRoute(
+            path: root.title,
+            builder: (context, state) => const Login(),
+            routes: <GoRoute>[
+              GoRoute(
+                path: homePage.title,
+                name: homePage.name,
+                pageBuilder: (context, state) {
+                  return CustomTransitionPage<void>(
+                    key: state.pageKey,
+                    child: const HomePage(),
+                    transitionDuration: const Duration(milliseconds: 150),
+                    transitionsBuilder: (BuildContext context,
+                        Animation<double> animation,
+                        Animation<double> secondaryAnimation,
+                        Widget child) {
+                      // Change the opacity of the screen using a Curve based on the the animation's
+                      // value
+                      return FadeTransition(
+                        opacity: CurveTween(curve: Curves.easeInOut)
+                            .animate(animation),
+                        child: child,
                       );
                     },
-                    routes: [
-                      GoRoute(
-                        path: product.title,
-                        name: product.name,
-                        builder: (context, state) {
-                          final product =
-                              state.extra as EnumCategoryWorkingTable;
-                          final selctedColor = state.queryParameters;
-                          return WorkingTablePage(
-                              product: product, color: selctedColor);
-                        },
-                      )
-                    ]),
-                GoRoute(
-                  path: buerostuehle.title,
-                  name: buerostuehle.name,
-                  builder: (context, state) => const PageBuerostuehle(),
-                ),
-                GoRoute(
-                  path: konferenzstuehle.title,
-                  name: konferenzstuehle.name,
-                  builder: (context, state) => const PageKonferenzstuehle(),
-                ),
-                GoRoute(
-                  path: konferenztische.title,
-                  name: konferenztische.name,
-                  builder: (context, state) => const PageKonferenztische(),
-                )
-              ],
-            ),
-            GoRoute(
-              path: 'Logout',
-              builder: (context, state) => const LoginPage(),
-            )
-          ]),
-    ],
-    errorBuilder: (context, state) => PageNotFound(state.error),
-  );
+                  );
+                },
+                routes: [
+                  GoRoute(
+                      path: arbeitstische.title,
+                      name: arbeitstische.name,
+                      pageBuilder: (context, state) {
+                        return CustomTransitionPage(
+                          key: state.pageKey,
+                          child: const PageWorkTables(),
+                          transitionsBuilder: (BuildContext context,
+                              Animation<double> animation,
+                              Animation<double> secondaryAnimation,
+                              Widget child) {
+                            // Change the opacity of the screen using a Curve based on the the animation's
+                            // value
+                            return FadeTransition(
+                              opacity: CurveTween(curve: Curves.easeInOut)
+                                  .animate(animation),
+                              child: child,
+                            );
+                          },
+                        );
+                      },
+                      routes: [
+                        GoRoute(
+                          path: product.title,
+                          name: product.name,
+                          builder: (context, state) {
+                            final product =
+                                state.extra as EnumCategoryWorkingTable;
+                            final selctedColor = state.queryParameters;
+                            return WorkingTablePage(
+                                product: product, color: selctedColor);
+                          },
+                        )
+                      ]),
+                  GoRoute(
+                    path: buerostuehle.title,
+                    name: buerostuehle.name,
+                    builder: (context, state) => const PageBuerostuehle(),
+                  ),
+                  GoRoute(
+                    path: konferenzstuehle.title,
+                    name: konferenzstuehle.name,
+                    builder: (context, state) => const PageKonferenzstuehle(),
+                  ),
+                  GoRoute(
+                    path: konferenztische.title,
+                    name: konferenztische.name,
+                    builder: (context, state) => const PageKonferenztische(),
+                  )
+                ],
+              ),
+              GoRoute(
+                path: 'Logout',
+                builder: (context, state) => const LoginPage(),
+              )
+            ]),
+      ],
+      errorBuilder: (context, state) => PageNotFound(state.error),
+      redirect: (context, state) {
+        return null;
+      });
 
   static GoRouter get router => _router;
 }
