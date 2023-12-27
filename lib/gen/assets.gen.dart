@@ -44,6 +44,8 @@ class $AssetsProductsGen {
 
   $AssetsProductsArbeitstischeGen get arbeitstische =>
       const $AssetsProductsArbeitstischeGen();
+  $AssetsProductsBuerodrehstuehleGen get buerodrehstuehle =>
+      const $AssetsProductsBuerodrehstuehleGen();
 }
 
 class $AssetsAppComponentsJpgGen {
@@ -196,6 +198,34 @@ class $AssetsProductsArbeitstischeGen {
         wSilber,
         wWeiss
       ];
+}
+
+class $AssetsProductsBuerodrehstuehleGen {
+  const $AssetsProductsBuerodrehstuehleGen();
+
+  /// File path: assets/products/buerodrehstuehle/Kyra_hochlehner.png
+  AssetGenImage get kyraHochlehner => const AssetGenImage(
+      'assets/products/buerodrehstuehle/Kyra_hochlehner.png');
+
+  /// File path: assets/products/buerodrehstuehle/camiro_hochlehner.png
+  AssetGenImage get camiroHochlehner => const AssetGenImage(
+      'assets/products/buerodrehstuehle/camiro_hochlehner.png');
+
+  /// File path: assets/products/buerodrehstuehle/kyra.png
+  AssetGenImage get kyra =>
+      const AssetGenImage('assets/products/buerodrehstuehle/kyra.png');
+
+  /// File path: assets/products/buerodrehstuehle/lo_punk133.png
+  AssetGenImage get loPunk133 =>
+      const AssetGenImage('assets/products/buerodrehstuehle/lo_punk133.png');
+
+  /// File path: assets/products/buerodrehstuehle/xenon_net.png
+  AssetGenImage get xenonNet =>
+      const AssetGenImage('assets/products/buerodrehstuehle/xenon_net.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values =>
+      [kyraHochlehner, camiroHochlehner, kyra, loPunk133, xenonNet];
 }
 
 class Assets {
