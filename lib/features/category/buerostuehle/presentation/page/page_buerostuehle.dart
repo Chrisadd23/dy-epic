@@ -127,9 +127,7 @@ class _BlocBuilderBuerostuehle extends StatelessWidget {
 }
 
 class _ChooseOfficeChaireCategory extends StatelessWidget {
-  const _ChooseOfficeChaireCategory({
-    super.key,
-  });
+  const _ChooseOfficeChaireCategory();
 
   @override
   Widget build(BuildContext context) {
