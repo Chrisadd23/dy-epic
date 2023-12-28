@@ -18,7 +18,7 @@ class PageKonferenzstuehle extends StatelessWidget {
     return BlocProvider(
       create: (BuildContext context) => getIt<CubitConferenceChair>()..load(),
       child: GlobalScaffold(
-          appBarContext: context, body: _BlocBuilderConferenceChair()),
+          appBarContext: context, body: const _BlocBuilderConferenceChair()),
     );
   }
 }
@@ -40,7 +40,6 @@ class _BlocBuilderConferenceChair extends StatelessWidget {
         return _Konferenzstuehle(listProducts: listProducts);
       },
     );
-    ;
   }
 }
 
