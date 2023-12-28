@@ -10,6 +10,8 @@ abstract class DataSourceBuerostuehle {
 }
 
 class DataSourceBuerostuehleImplementation extends DataSourceBuerostuehle {
+  DataSourceBuerostuehleImplementation();
+
   @override
   Future<Either<Failure, List<EntityBuerodrehstuehle>>> getBuerodrehstuehle(
       {String? officeChairCategory}) async {

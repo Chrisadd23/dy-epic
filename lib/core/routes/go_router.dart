@@ -38,6 +38,23 @@ enum AppGoRouter {
 
   static List<String> shouldntPop = ['/home'];
 
+  static CustomTransitionPage<void> _getCustomerTransition(
+          Widget page, GoRouterState state) =>
+      CustomTransitionPage<void>(
+        key: state.pageKey,
+        child: page,
+        transitionDuration: const Duration(milliseconds: 150),
+        transitionsBuilder: (BuildContext context, Animation<double> animation,
+            Animation<double> secondaryAnimation, Widget child) {
+          // Change the opacity of the screen using a Curve based on the the animation's
+          // value
+          return FadeTransition(
+            opacity: CurveTween(curve: Curves.easeInOut).animate(animation),
+            child: child,
+          );
+        },
+      );
+
   static final GoRouter _router = GoRouter(
       debugLogDiagnostics: true,
       routes: <GoRoute>[
@@ -48,47 +65,14 @@ enum AppGoRouter {
               GoRoute(
                 path: homePage.title,
                 name: homePage.name,
-                pageBuilder: (context, state) {
-                  return CustomTransitionPage<void>(
-                    key: state.pageKey,
-                    child: const HomePage(),
-                    transitionDuration: const Duration(milliseconds: 150),
-                    transitionsBuilder: (BuildContext context,
-                        Animation<double> animation,
-                        Animation<double> secondaryAnimation,
-                        Widget child) {
-                      // Change the opacity of the screen using a Curve based on the the animation's
-                      // value
-                      return FadeTransition(
-                        opacity: CurveTween(curve: Curves.easeInOut)
-                            .animate(animation),
-                        child: child,
-                      );
-                    },
-                  );
-                },
+                pageBuilder: (context, state) =>
+                    _getCustomerTransition(const HomePage(), state),
                 routes: [
                   GoRoute(
                       path: arbeitstische.title,
                       name: arbeitstische.name,
-                      pageBuilder: (context, state) {
-                        return CustomTransitionPage(
-                          key: state.pageKey,
-                          child: const PageWorkTables(),
-                          transitionsBuilder: (BuildContext context,
-                              Animation<double> animation,
-                              Animation<double> secondaryAnimation,
-                              Widget child) {
-                            // Change the opacity of the screen using a Curve based on the the animation's
-                            // value
-                            return FadeTransition(
-                              opacity: CurveTween(curve: Curves.easeInOut)
-                                  .animate(animation),
-                              child: child,
-                            );
-                          },
-                        );
-                      },
+                      pageBuilder: (context, state) =>
+                          _getCustomerTransition(const PageWorkTables(), state),
                       routes: [
                         GoRoute(
                           path: product.title,
@@ -105,12 +89,14 @@ enum AppGoRouter {
                   GoRoute(
                     path: buerostuehle.title,
                     name: buerostuehle.name,
-                    builder: (context, state) => const PageBuerostuehle(),
+                    pageBuilder: (context, state) =>
+                        _getCustomerTransition(const PageBuerostuehle(), state),
                   ),
                   GoRoute(
                     path: konferenzstuehle.title,
                     name: konferenzstuehle.name,
-                    builder: (context, state) => const PageKonferenzstuehle(),
+                    pageBuilder: (context, state) => _getCustomerTransition(
+                        const PageKonferenzstuehle(), state),
                   ),
                   GoRoute(
                     path: konferenztische.title,

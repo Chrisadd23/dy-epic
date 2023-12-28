@@ -1,10 +1,8 @@
 import 'dart:developer';
 
-import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_page_widget.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/list_wheel_scroll_view_x.dart';
-import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/buerostuehle/domain/entity/entity_buerodrehstuehle.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/buerostuehle/presentation/cubit/cubit_buerostuehle.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/buerostuehle/presentation/cubit/cubit_choose_office_chair.dart';
@@ -16,7 +14,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:go_router/go_router.dart';
 
 class PageBuerostuehle extends HookWidget {
   const PageBuerostuehle({super.key, this.enumSelectOfficeChairCategory});
@@ -294,7 +291,6 @@ class _ProductState extends State<Product> {
         child: Stack(
           children: [
             _ProductPicture(widget: widget),
-            _ProductColors(product: widget),
             _ProductName(widget: widget),
             Align(
                 alignment: Alignment.center,
@@ -421,99 +417,16 @@ class _ProductPicture extends StatelessWidget {
                 foregroundColor: Colors.transparent,
                 child: InkWell(
                   hoverColor: Colors.red,
-                  onTap: () => context.goNamed(AppGoRouter.product.name,
-                      extra: widget.productType),
+                  onTap: () {
+                    // context.goNamed(AppGoRouter.product.name,
+                    //   extra: widget.productType);
+                  },
                 ),
               ),
             );
           }),
         )
       ],
-    );
-  }
-}
-
-class _ProductColors extends StatelessWidget {
-  const _ProductColors({required this.product});
-
-  final Product product;
-
-  @override
-  Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.bottomCenter,
-      child: LayoutBuilder(builder: (context, constraints) {
-        return Padding(
-          padding: EdgeInsets.only(bottom: constraints.maxHeight * 0.1),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              SizedBox(
-                width: constraints.maxWidth * 0.05,
-              ),
-              Expanded(
-                  child: InkWell(
-                onTap: () => context.goNamed(AppGoRouter.product.name,
-                    extra: product.productType,
-                    queryParameters: {
-                      'color': AppColors.whiteD6D6D7.toString()
-                    }),
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: AppColors.whiteD6D6D7,
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(color: Colors.black, width: 2)),
-                  child: SizedBox(
-                    height: constraints.maxHeight * 0.1,
-                    width: constraints.maxWidth * 0.1,
-                  ),
-                ),
-              )),
-              const SizedBox(
-                width: 10,
-              ),
-              Expanded(
-                  child: InkWell(
-                onTap: () => context.goNamed(AppGoRouter.product.name,
-                    extra: product.productType,
-                    queryParameters: {'color': '${AppColors.grey8D8D8E}'}),
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: AppColors.grey8D8D8E,
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(color: Colors.black, width: 2)),
-                  child: SizedBox(
-                    height: constraints.maxHeight * 0.1,
-                    width: constraints.maxWidth * 0.1,
-                  ),
-                ),
-              )),
-              const SizedBox(
-                width: 10,
-              ),
-              Expanded(
-                  child: InkWell(
-                onTap: () => context.goNamed(AppGoRouter.product.name,
-                    extra: product.productType,
-                    queryParameters: {'color': '${AppColors.black080808}'}),
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: AppColors.black080808,
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(color: Colors.grey, width: 2)),
-                  child: SizedBox(
-                    height: constraints.maxHeight * 0.1,
-                    width: constraints.maxWidth * 0.1,
-                  ),
-                ),
-              )),
-              SizedBox(
-                width: constraints.maxWidth * 0.05,
-              ),
-            ],
-          ),
-        );
-      }),
     );
   }
 }

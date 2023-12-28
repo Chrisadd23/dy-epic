@@ -46,6 +46,8 @@ class $AssetsProductsGen {
       const $AssetsProductsArbeitstischeGen();
   $AssetsProductsBuerodrehstuehleGen get buerodrehstuehle =>
       const $AssetsProductsBuerodrehstuehleGen();
+  $AssetsProductsKonferenzstuehleGen get konferenzstuehle =>
+      const $AssetsProductsKonferenzstuehleGen();
 }
 
 class $AssetsAppComponentsJpgGen {
@@ -242,6 +244,22 @@ class $AssetsProductsBuerodrehstuehleGen {
   /// List of all assets
   List<AssetGenImage> get values =>
       [kyraHochlehner, camiroHochlehner, kyra, loPunk133, xenonNet];
+}
+
+class $AssetsProductsKonferenzstuehleGen {
+  const $AssetsProductsKonferenzstuehleGen();
+
+  /// File path: assets/products/konferenzstuehle/camiroFreischwingerNetz.png
+  AssetGenImage get camiroFreischwingerNetz => const AssetGenImage(
+      'assets/products/konferenzstuehle/camiroFreischwingerNetz.png');
+
+  /// File path: assets/products/konferenzstuehle/camiroFreischwingerPolster.png
+  AssetGenImage get camiroFreischwingerPolster => const AssetGenImage(
+      'assets/products/konferenzstuehle/camiroFreischwingerPolster.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values =>
+      [camiroFreischwingerNetz, camiroFreischwingerPolster];
 }
 
 class Assets {

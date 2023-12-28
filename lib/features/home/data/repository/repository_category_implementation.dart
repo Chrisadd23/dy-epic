@@ -25,7 +25,7 @@ class RepositoryCategoryImplementation implements RepositoryCategory {
         navigation: AppGoRouter.arbeitstische.name,
         indexPositon: 0),
     ModelCategory(
-        title: 'Bürostühle',
+        title: 'Bürodrehstühle',
         imgPath: Assets.appComponents.jpg.buerodrehstuehle.path,
         navigation: AppGoRouter.buerostuehle.name,
         indexPositon: 1),
@@ -34,11 +34,11 @@ class RepositoryCategoryImplementation implements RepositoryCategory {
         imgPath: Assets.appComponents.jpg.konferenzstuehle.path,
         navigation: AppGoRouter.konferenzstuehle.name,
         indexPositon: 2),
-    ModelCategory(
+    /*ModelCategory(
         title: 'Konferenztische',
         navigation: AppGoRouter.konferenztische.name,
         imgPath: Assets.appComponents.jpg.konferenztische.path,
-        indexPositon: 3),
+        indexPositon: 3),*/
   ];
 
   @override

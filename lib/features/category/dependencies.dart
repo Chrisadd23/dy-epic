@@ -8,11 +8,16 @@ import 'package:app_flutter_produkt_bestellen/features/category/buerostuehle/dat
 import 'package:app_flutter_produkt_bestellen/features/category/buerostuehle/domain/repository/repository_buerostuehle.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/buerostuehle/presentation/cubit/cubit_buerostuehle.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/buerostuehle/presentation/cubit/cubit_choose_office_chair.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/konferenzstuehle/data/datasource/datasource_konferenzstuehle.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/konferenzstuehle/data/repository/repository_konferenzstuehle_implementation.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/konferenzstuehle/domain/repository/repository_konferenzstuehle.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/konferenzstuehle/presentation/cubit/cubit_conference_chair.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 
 void setUp() {
   setUpArbeitstische();
   setUpOfficeChair();
+  setUpConferenceChair();
 }
 
 void setUpArbeitstische() {
@@ -47,4 +52,22 @@ void setUpOfficeChair() {
             repositoryOfficeChair: getIt(),
           ),
       instanceName: EnumSelectOfficeChairCategory.hochlehner.name);
+}
+
+void setUpConferenceChair() {
+  getIt.registerLazySingleton<DataSourceConferenceChair>(
+    () => DataSourceConferenceChairImplementation(),
+  );
+
+  getIt.registerLazySingleton<RepositoryConferenceChair>(
+    () => RepositoryConferenceChairImplementation(
+      dataSourceConferenceChair: getIt(),
+    ),
+  );
+
+  getIt.registerFactory<CubitConferenceChair>(
+    () => CubitConferenceChair(
+      repositoryConferenceChair: getIt(),
+    ),
+  );
 }
