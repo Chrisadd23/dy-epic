@@ -3,13 +3,13 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'state_category_generic.freezed.dart';
 
 @freezed
-abstract class StateCategoryGeneric with _$StateCategoryGeneric {
-  const StateCategoryGeneric._();
+abstract class StateProduct with _$StateProduct {
+  const StateProduct._();
 
-  const factory StateCategoryGeneric({
+  const factory StateProduct({
     ChoosenDateTime? dateTime,
     ProductCategory? productCategory,
-  }) = _StateCategoryGeneric;
+  }) = _StateProduct;
 }
 
 @freezed
@@ -36,8 +36,9 @@ class Product with _$Product {
   const Product._();
 
   const factory Product({
-    required String productName,
+    required Enum productType,
     required double price,
+    required String picturePath,
     int? offerInPercent,
     int? productCount,
   }) = _Product;

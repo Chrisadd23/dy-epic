@@ -6,7 +6,7 @@ import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_pag
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/list_wheel_scroll_view_x.dart';
 import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/arbeitstische/presentation/cubit/cubit_arbeitstische.dart';
-import 'package:app_flutter_produkt_bestellen/features/category/arbeitstische/presentation/cubit/state_arbeitstische.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/cubit/state_category_generic.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -30,13 +30,13 @@ class _WorkTables extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<CubitWorkTables, StateWorkTable, ProductCategory?>(
+    return BlocSelector<CubitWorkTables, StateProduct, ProductCategory?>(
       selector: (state) => state.productCategory,
       builder: (context, state) {
         final listProducts = state?.listProduct.map((product) {
           return Product(
             picturePath: product.picturePath,
-            productType: product.productType,
+            productType: product.productType as EnumCategoryWorkingTable,
           );
         }).toList();
         return ProductListWheel(listProducts: listProducts);

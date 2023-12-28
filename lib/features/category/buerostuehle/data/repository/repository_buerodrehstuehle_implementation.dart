@@ -12,9 +12,10 @@ class RepositoryBuerodrehstuehleImplementation
   final DataSourceBuerostuehle dataSourceBuerostuehle;
 
   @override
-  Future<Either<Failure, List<EntityBuerodrehstuehle>>>
-      getBuerodrehstuehle() async {
+  Future<Either<Failure, List<EntityBuerodrehstuehle>>> getBuerodrehstuehle(
+      {String? officeChairCategory}) async {
     // TODO: implement getBuerodrehstuehle
-    return dataSourceBuerostuehle.getBuerodrehstuehle();
+    return dataSourceBuerostuehle.getBuerodrehstuehle(
+        officeChairCategory: officeChairCategory);
   }
 }

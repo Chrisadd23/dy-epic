@@ -15,20 +15,20 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$StateCategoryGeneric {
+mixin _$StateProduct {
   ChoosenDateTime? get dateTime => throw _privateConstructorUsedError;
   ProductCategory? get productCategory => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $StateCategoryGenericCopyWith<StateCategoryGeneric> get copyWith =>
+  $StateProductCopyWith<StateProduct> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $StateCategoryGenericCopyWith<$Res> {
-  factory $StateCategoryGenericCopyWith(StateCategoryGeneric value,
-          $Res Function(StateCategoryGeneric) then) =
-      _$StateCategoryGenericCopyWithImpl<$Res, StateCategoryGeneric>;
+abstract class $StateProductCopyWith<$Res> {
+  factory $StateProductCopyWith(
+          StateProduct value, $Res Function(StateProduct) then) =
+      _$StateProductCopyWithImpl<$Res, StateProduct>;
   @useResult
   $Res call({ChoosenDateTime? dateTime, ProductCategory? productCategory});
 
@@ -37,10 +37,9 @@ abstract class $StateCategoryGenericCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$StateCategoryGenericCopyWithImpl<$Res,
-        $Val extends StateCategoryGeneric>
-    implements $StateCategoryGenericCopyWith<$Res> {
-  _$StateCategoryGenericCopyWithImpl(this._value, this._then);
+class _$StateProductCopyWithImpl<$Res, $Val extends StateProduct>
+    implements $StateProductCopyWith<$Res> {
+  _$StateProductCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -91,11 +90,11 @@ class _$StateCategoryGenericCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$StateCategoryGenericImplCopyWith<$Res>
-    implements $StateCategoryGenericCopyWith<$Res> {
-  factory _$$StateCategoryGenericImplCopyWith(_$StateCategoryGenericImpl value,
-          $Res Function(_$StateCategoryGenericImpl) then) =
-      __$$StateCategoryGenericImplCopyWithImpl<$Res>;
+abstract class _$$StateProductImplCopyWith<$Res>
+    implements $StateProductCopyWith<$Res> {
+  factory _$$StateProductImplCopyWith(
+          _$StateProductImpl value, $Res Function(_$StateProductImpl) then) =
+      __$$StateProductImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({ChoosenDateTime? dateTime, ProductCategory? productCategory});
@@ -107,11 +106,11 @@ abstract class _$$StateCategoryGenericImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$StateCategoryGenericImplCopyWithImpl<$Res>
-    extends _$StateCategoryGenericCopyWithImpl<$Res, _$StateCategoryGenericImpl>
-    implements _$$StateCategoryGenericImplCopyWith<$Res> {
-  __$$StateCategoryGenericImplCopyWithImpl(_$StateCategoryGenericImpl _value,
-      $Res Function(_$StateCategoryGenericImpl) _then)
+class __$$StateProductImplCopyWithImpl<$Res>
+    extends _$StateProductCopyWithImpl<$Res, _$StateProductImpl>
+    implements _$$StateProductImplCopyWith<$Res> {
+  __$$StateProductImplCopyWithImpl(
+      _$StateProductImpl _value, $Res Function(_$StateProductImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -120,7 +119,7 @@ class __$$StateCategoryGenericImplCopyWithImpl<$Res>
     Object? dateTime = freezed,
     Object? productCategory = freezed,
   }) {
-    return _then(_$StateCategoryGenericImpl(
+    return _then(_$StateProductImpl(
       dateTime: freezed == dateTime
           ? _value.dateTime
           : dateTime // ignore: cast_nullable_to_non_nullable
@@ -135,9 +134,8 @@ class __$$StateCategoryGenericImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$StateCategoryGenericImpl extends _StateCategoryGeneric {
-  const _$StateCategoryGenericImpl({this.dateTime, this.productCategory})
-      : super._();
+class _$StateProductImpl extends _StateProduct {
+  const _$StateProductImpl({this.dateTime, this.productCategory}) : super._();
 
   @override
   final ChoosenDateTime? dateTime;
@@ -146,14 +144,14 @@ class _$StateCategoryGenericImpl extends _StateCategoryGeneric {
 
   @override
   String toString() {
-    return 'StateCategoryGeneric(dateTime: $dateTime, productCategory: $productCategory)';
+    return 'StateProduct(dateTime: $dateTime, productCategory: $productCategory)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$StateCategoryGenericImpl &&
+            other is _$StateProductImpl &&
             (identical(other.dateTime, dateTime) ||
                 other.dateTime == dateTime) &&
             (identical(other.productCategory, productCategory) ||
@@ -166,17 +164,15 @@ class _$StateCategoryGenericImpl extends _StateCategoryGeneric {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$StateCategoryGenericImplCopyWith<_$StateCategoryGenericImpl>
-      get copyWith =>
-          __$$StateCategoryGenericImplCopyWithImpl<_$StateCategoryGenericImpl>(
-              this, _$identity);
+  _$$StateProductImplCopyWith<_$StateProductImpl> get copyWith =>
+      __$$StateProductImplCopyWithImpl<_$StateProductImpl>(this, _$identity);
 }
 
-abstract class _StateCategoryGeneric extends StateCategoryGeneric {
-  const factory _StateCategoryGeneric(
+abstract class _StateProduct extends StateProduct {
+  const factory _StateProduct(
       {final ChoosenDateTime? dateTime,
-      final ProductCategory? productCategory}) = _$StateCategoryGenericImpl;
-  const _StateCategoryGeneric._() : super._();
+      final ProductCategory? productCategory}) = _$StateProductImpl;
+  const _StateProduct._() : super._();
 
   @override
   ChoosenDateTime? get dateTime;
@@ -184,8 +180,8 @@ abstract class _StateCategoryGeneric extends StateCategoryGeneric {
   ProductCategory? get productCategory;
   @override
   @JsonKey(ignore: true)
-  _$$StateCategoryGenericImplCopyWith<_$StateCategoryGenericImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$StateProductImplCopyWith<_$StateProductImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -503,8 +499,9 @@ abstract class _ProductCategory extends ProductCategory {
 
 /// @nodoc
 mixin _$Product {
-  String get productName => throw _privateConstructorUsedError;
+  Enum get productType => throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
+  String get picturePath => throw _privateConstructorUsedError;
   int? get offerInPercent => throw _privateConstructorUsedError;
   int? get productCount => throw _privateConstructorUsedError;
 
@@ -518,8 +515,9 @@ abstract class $ProductCopyWith<$Res> {
       _$ProductCopyWithImpl<$Res, Product>;
   @useResult
   $Res call(
-      {String productName,
+      {Enum productType,
       double price,
+      String picturePath,
       int? offerInPercent,
       int? productCount});
 }
@@ -537,20 +535,25 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? productName = null,
+    Object? productType = null,
     Object? price = null,
+    Object? picturePath = null,
     Object? offerInPercent = freezed,
     Object? productCount = freezed,
   }) {
     return _then(_value.copyWith(
-      productName: null == productName
-          ? _value.productName
-          : productName // ignore: cast_nullable_to_non_nullable
-              as String,
+      productType: null == productType
+          ? _value.productType
+          : productType // ignore: cast_nullable_to_non_nullable
+              as Enum,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double,
+      picturePath: null == picturePath
+          ? _value.picturePath
+          : picturePath // ignore: cast_nullable_to_non_nullable
+              as String,
       offerInPercent: freezed == offerInPercent
           ? _value.offerInPercent
           : offerInPercent // ignore: cast_nullable_to_non_nullable
@@ -571,8 +574,9 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String productName,
+      {Enum productType,
       double price,
+      String picturePath,
       int? offerInPercent,
       int? productCount});
 }
@@ -588,20 +592,25 @@ class __$$ProductImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? productName = null,
+    Object? productType = null,
     Object? price = null,
+    Object? picturePath = null,
     Object? offerInPercent = freezed,
     Object? productCount = freezed,
   }) {
     return _then(_$ProductImpl(
-      productName: null == productName
-          ? _value.productName
-          : productName // ignore: cast_nullable_to_non_nullable
-              as String,
+      productType: null == productType
+          ? _value.productType
+          : productType // ignore: cast_nullable_to_non_nullable
+              as Enum,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double,
+      picturePath: null == picturePath
+          ? _value.picturePath
+          : picturePath // ignore: cast_nullable_to_non_nullable
+              as String,
       offerInPercent: freezed == offerInPercent
           ? _value.offerInPercent
           : offerInPercent // ignore: cast_nullable_to_non_nullable
@@ -618,16 +627,19 @@ class __$$ProductImplCopyWithImpl<$Res>
 
 class _$ProductImpl extends _Product {
   const _$ProductImpl(
-      {required this.productName,
+      {required this.productType,
       required this.price,
+      required this.picturePath,
       this.offerInPercent,
       this.productCount})
       : super._();
 
   @override
-  final String productName;
+  final Enum productType;
   @override
   final double price;
+  @override
+  final String picturePath;
   @override
   final int? offerInPercent;
   @override
@@ -635,7 +647,7 @@ class _$ProductImpl extends _Product {
 
   @override
   String toString() {
-    return 'Product(productName: $productName, price: $price, offerInPercent: $offerInPercent, productCount: $productCount)';
+    return 'Product(productType: $productType, price: $price, picturePath: $picturePath, offerInPercent: $offerInPercent, productCount: $productCount)';
   }
 
   @override
@@ -643,9 +655,11 @@ class _$ProductImpl extends _Product {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProductImpl &&
-            (identical(other.productName, productName) ||
-                other.productName == productName) &&
+            (identical(other.productType, productType) ||
+                other.productType == productType) &&
             (identical(other.price, price) || other.price == price) &&
+            (identical(other.picturePath, picturePath) ||
+                other.picturePath == picturePath) &&
             (identical(other.offerInPercent, offerInPercent) ||
                 other.offerInPercent == offerInPercent) &&
             (identical(other.productCount, productCount) ||
@@ -653,8 +667,8 @@ class _$ProductImpl extends _Product {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, productName, price, offerInPercent, productCount);
+  int get hashCode => Object.hash(runtimeType, productType, price, picturePath,
+      offerInPercent, productCount);
 
   @JsonKey(ignore: true)
   @override
@@ -665,16 +679,19 @@ class _$ProductImpl extends _Product {
 
 abstract class _Product extends Product {
   const factory _Product(
-      {required final String productName,
+      {required final Enum productType,
       required final double price,
+      required final String picturePath,
       final int? offerInPercent,
       final int? productCount}) = _$ProductImpl;
   const _Product._() : super._();
 
   @override
-  String get productName;
+  Enum get productType;
   @override
   double get price;
+  @override
+  String get picturePath;
   @override
   int? get offerInPercent;
   @override

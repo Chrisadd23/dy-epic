@@ -1,11 +1,11 @@
 import 'package:app_flutter_produkt_bestellen/features/category/arbeitstische/domain/repository/repository_arbeitstische.dart';
-import 'package:app_flutter_produkt_bestellen/features/category/arbeitstische/presentation/cubit/state_arbeitstische.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/cubit/state_category_generic.dart';
 import 'package:either_dart/either.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CubitWorkTables extends Cubit<StateWorkTable> {
+class CubitWorkTables extends Cubit<StateProduct> {
   CubitWorkTables({required this.repositoryArbeitstische})
-      : super(const StateWorkTable());
+      : super(const StateProduct());
 
   final RepositoryArbeitstische repositoryArbeitstische;
 

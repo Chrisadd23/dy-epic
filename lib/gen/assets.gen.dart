@@ -107,6 +107,21 @@ class $AssetsAppComponentsPngGen {
 class $AssetsAppComponentsSvgGen {
   const $AssetsAppComponentsSvgGen();
 
+  /// File path: assets/appComponents/svg/chair1.svg
+  String get chair1 => 'assets/appComponents/svg/chair1.svg';
+
+  /// File path: assets/appComponents/svg/chair3.svg
+  String get chair3 => 'assets/appComponents/svg/chair3.svg';
+
+  /// File path: assets/appComponents/svg/chair4.svg
+  String get chair4 => 'assets/appComponents/svg/chair4.svg';
+
+  /// File path: assets/appComponents/svg/chairHochlehner.svg
+  String get chairHochlehner => 'assets/appComponents/svg/chairHochlehner.svg';
+
+  /// File path: assets/appComponents/svg/char2.svg
+  String get char2 => 'assets/appComponents/svg/char2.svg';
+
   /// File path: assets/appComponents/svg/icon_menu.svg
   String get iconMenu => 'assets/appComponents/svg/icon_menu.svg';
 
@@ -114,7 +129,8 @@ class $AssetsAppComponentsSvgGen {
   String get returnIcon => 'assets/appComponents/svg/return_icon.svg';
 
   /// List of all assets
-  List<String> get values => [iconMenu, returnIcon];
+  List<String> get values =>
+      [chair1, chair3, chair4, chairHochlehner, char2, iconMenu, returnIcon];
 }
 
 class $AssetsProductsArbeitstischeGen {
