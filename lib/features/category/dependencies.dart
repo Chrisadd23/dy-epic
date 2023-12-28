@@ -34,8 +34,7 @@ void setUpOfficeChair() {
       RepositoryBuerodrehstuehleImplementation(
           dataSourceBuerostuehle: getIt()));
 
-  getIt.registerLazySingleton<CubitChooseOfficeChair>(
-      () => CubitChooseOfficeChair());
+  getIt.registerFactory<CubitChooseOfficeChair>(() => CubitChooseOfficeChair());
 
   getIt.registerFactory<CubitOfficeChair>(
       () => CubitOfficeChair(
