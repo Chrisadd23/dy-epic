@@ -11,7 +11,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 class WorkingTablePage extends HookWidget {
-  const WorkingTablePage({super.key, this.product, required this.color});
+  const WorkingTablePage({super.key, this.product, this.color});
 
   final EnumCategoryWorkingTable? product;
   final Map<String, String>? color;

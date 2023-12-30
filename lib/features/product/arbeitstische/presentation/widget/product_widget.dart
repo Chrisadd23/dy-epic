@@ -86,7 +86,7 @@ class ProductPicture extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocSelector<CubitWorkingTableProduct,
-            StateProduct<ArbeitsTischeProduct>, String?>(
+            StateProduct<StateArbeitsTischeProduct>, String?>(
         selector: (state) => state.maybeMap(
             orElse: () {
               return;
@@ -152,7 +152,7 @@ class ProductTitle extends StatelessWidget {
             borderRadius: BorderRadius.circular(40),
             color: AppColors.grey8D8D8E.withOpacity(0.4)),
         child: BlocSelector<CubitWorkingTableProduct,
-                StateProduct<ArbeitsTischeProduct>, String?>(
+                StateProduct<StateArbeitsTischeProduct>, String?>(
             selector: (state) => state.maybeMap(
                 orElse: () => null,
                 success: (product) => product.product?.name),

@@ -3,13 +3,13 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'state_category_generic.freezed.dart';
 
 @freezed
-abstract class StateProduct with _$StateProduct {
-  const StateProduct._();
+abstract class StateCategory with _$StateCategory {
+  const StateCategory._();
 
-  const factory StateProduct({
+  const factory StateCategory({
     ChoosenDateTime? dateTime,
     ProductCategory? productCategory,
-  }) = _StateProduct;
+  }) = _StateCategory;
 }
 
 @freezed

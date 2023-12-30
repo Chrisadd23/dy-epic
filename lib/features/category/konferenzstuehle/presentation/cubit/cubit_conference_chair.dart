@@ -3,14 +3,14 @@ import 'package:app_flutter_produkt_bestellen/features/category/share/presentati
 import 'package:either_dart/either.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CubitConferenceChair extends Cubit<StateProduct> {
+class CubitConferenceChair extends Cubit<StateCategory> {
   CubitConferenceChair({required this.repositoryConferenceChair})
-      : super(const StateProduct());
+      : super(const StateCategory());
 
   final RepositoryConferenceChair repositoryConferenceChair;
 
   Future<void> load([String? conferenceChairCategory]) async {
-    repositoryConferenceChair.getConferencChaire().fold((failure) {},
+    await repositoryConferenceChair.getConferencChaire().fold((failure) {},
         (listConferenceChair) {
       final products = listConferenceChair
           .map((conferenceChair) => {

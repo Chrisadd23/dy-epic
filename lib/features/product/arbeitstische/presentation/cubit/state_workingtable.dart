@@ -19,8 +19,8 @@ enum TableChangeableCharacteristics {
 }
 
 @freezed
-class ArbeitsTischeProduct with _$ArbeitsTischeProduct {
-  const factory ArbeitsTischeProduct({
+class StateArbeitsTischeProduct with _$StateArbeitsTischeProduct {
+  const factory StateArbeitsTischeProduct({
     String? name,
     List<BreiteXTiefe>? breiteXTiefe,
     List<Gestell>? frameColors,
@@ -33,7 +33,7 @@ class ArbeitsTischeProduct with _$ArbeitsTischeProduct {
     StandbyStromverbrauch? standbyStromverbrauch,
     bool? kollisionsSchutz,
     String? picturePath,
-  }) = _ArbeitsTischeProduct;
+  }) = _StateArbeitsTischeProduct;
 }
 
 @freezed

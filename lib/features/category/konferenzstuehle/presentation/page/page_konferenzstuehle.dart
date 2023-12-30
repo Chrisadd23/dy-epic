@@ -28,7 +28,7 @@ class _BlocBuilderConferenceChair extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<CubitConferenceChair, StateProduct, ProductCategory?>(
+    return BlocSelector<CubitConferenceChair, StateCategory, ProductCategory?>(
       selector: (state) => state.productCategory,
       builder: (context, state) {
         final listProducts = state?.listProduct.map((product) {

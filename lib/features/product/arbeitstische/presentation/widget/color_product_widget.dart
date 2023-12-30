@@ -68,7 +68,7 @@ class ColorProductWidget extends HookWidget {
                     ),
                   ),
                   BlocSelector<CubitWorkingTableProduct,
-                          StateProduct<ArbeitsTischeProduct>, Color?>(
+                          StateProduct<StateArbeitsTischeProduct>, Color?>(
                       selector: (state) => state.maybeMap(
                             orElse: () => null,
                             success: (product) {
@@ -105,7 +105,7 @@ class ColorProductWidget extends HookWidget {
               height: 10,
             ),
             BlocSelector<CubitWorkingTableProduct,
-                StateProduct<ArbeitsTischeProduct>, List<Gestell>?>(
+                StateProduct<StateArbeitsTischeProduct>, List<Gestell>?>(
               selector: (state) => state.maybeMap(
                   orElse: () => null,
                   success: (product) => product.product?.frameColors),

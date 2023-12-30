@@ -15,20 +15,20 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$StateProduct {
+mixin _$StateCategory {
   ChoosenDateTime? get dateTime => throw _privateConstructorUsedError;
   ProductCategory? get productCategory => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $StateProductCopyWith<StateProduct> get copyWith =>
+  $StateCategoryCopyWith<StateCategory> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $StateProductCopyWith<$Res> {
-  factory $StateProductCopyWith(
-          StateProduct value, $Res Function(StateProduct) then) =
-      _$StateProductCopyWithImpl<$Res, StateProduct>;
+abstract class $StateCategoryCopyWith<$Res> {
+  factory $StateCategoryCopyWith(
+          StateCategory value, $Res Function(StateCategory) then) =
+      _$StateCategoryCopyWithImpl<$Res, StateCategory>;
   @useResult
   $Res call({ChoosenDateTime? dateTime, ProductCategory? productCategory});
 
@@ -37,9 +37,9 @@ abstract class $StateProductCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$StateProductCopyWithImpl<$Res, $Val extends StateProduct>
-    implements $StateProductCopyWith<$Res> {
-  _$StateProductCopyWithImpl(this._value, this._then);
+class _$StateCategoryCopyWithImpl<$Res, $Val extends StateCategory>
+    implements $StateCategoryCopyWith<$Res> {
+  _$StateCategoryCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -90,11 +90,11 @@ class _$StateProductCopyWithImpl<$Res, $Val extends StateProduct>
 }
 
 /// @nodoc
-abstract class _$$StateProductImplCopyWith<$Res>
-    implements $StateProductCopyWith<$Res> {
-  factory _$$StateProductImplCopyWith(
-          _$StateProductImpl value, $Res Function(_$StateProductImpl) then) =
-      __$$StateProductImplCopyWithImpl<$Res>;
+abstract class _$$StateCategoryImplCopyWith<$Res>
+    implements $StateCategoryCopyWith<$Res> {
+  factory _$$StateCategoryImplCopyWith(
+          _$StateCategoryImpl value, $Res Function(_$StateCategoryImpl) then) =
+      __$$StateCategoryImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({ChoosenDateTime? dateTime, ProductCategory? productCategory});
@@ -106,11 +106,11 @@ abstract class _$$StateProductImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$StateProductImplCopyWithImpl<$Res>
-    extends _$StateProductCopyWithImpl<$Res, _$StateProductImpl>
-    implements _$$StateProductImplCopyWith<$Res> {
-  __$$StateProductImplCopyWithImpl(
-      _$StateProductImpl _value, $Res Function(_$StateProductImpl) _then)
+class __$$StateCategoryImplCopyWithImpl<$Res>
+    extends _$StateCategoryCopyWithImpl<$Res, _$StateCategoryImpl>
+    implements _$$StateCategoryImplCopyWith<$Res> {
+  __$$StateCategoryImplCopyWithImpl(
+      _$StateCategoryImpl _value, $Res Function(_$StateCategoryImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -119,7 +119,7 @@ class __$$StateProductImplCopyWithImpl<$Res>
     Object? dateTime = freezed,
     Object? productCategory = freezed,
   }) {
-    return _then(_$StateProductImpl(
+    return _then(_$StateCategoryImpl(
       dateTime: freezed == dateTime
           ? _value.dateTime
           : dateTime // ignore: cast_nullable_to_non_nullable
@@ -134,8 +134,8 @@ class __$$StateProductImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$StateProductImpl extends _StateProduct {
-  const _$StateProductImpl({this.dateTime, this.productCategory}) : super._();
+class _$StateCategoryImpl extends _StateCategory {
+  const _$StateCategoryImpl({this.dateTime, this.productCategory}) : super._();
 
   @override
   final ChoosenDateTime? dateTime;
@@ -144,14 +144,14 @@ class _$StateProductImpl extends _StateProduct {
 
   @override
   String toString() {
-    return 'StateProduct(dateTime: $dateTime, productCategory: $productCategory)';
+    return 'StateCategory(dateTime: $dateTime, productCategory: $productCategory)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$StateProductImpl &&
+            other is _$StateCategoryImpl &&
             (identical(other.dateTime, dateTime) ||
                 other.dateTime == dateTime) &&
             (identical(other.productCategory, productCategory) ||
@@ -164,15 +164,15 @@ class _$StateProductImpl extends _StateProduct {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$StateProductImplCopyWith<_$StateProductImpl> get copyWith =>
-      __$$StateProductImplCopyWithImpl<_$StateProductImpl>(this, _$identity);
+  _$$StateCategoryImplCopyWith<_$StateCategoryImpl> get copyWith =>
+      __$$StateCategoryImplCopyWithImpl<_$StateCategoryImpl>(this, _$identity);
 }
 
-abstract class _StateProduct extends StateProduct {
-  const factory _StateProduct(
+abstract class _StateCategory extends StateCategory {
+  const factory _StateCategory(
       {final ChoosenDateTime? dateTime,
-      final ProductCategory? productCategory}) = _$StateProductImpl;
-  const _StateProduct._() : super._();
+      final ProductCategory? productCategory}) = _$StateCategoryImpl;
+  const _StateCategory._() : super._();
 
   @override
   ChoosenDateTime? get dateTime;
@@ -180,7 +180,7 @@ abstract class _StateProduct extends StateProduct {
   ProductCategory? get productCategory;
   @override
   @JsonKey(ignore: true)
-  _$$StateProductImplCopyWith<_$StateProductImpl> get copyWith =>
+  _$$StateCategoryImplCopyWith<_$StateCategoryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

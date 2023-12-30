@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$ArbeitsTischeProduct {
+mixin _$StateArbeitsTischeProduct {
   String? get name => throw _privateConstructorUsedError;
   List<BreiteXTiefe>? get breiteXTiefe => throw _privateConstructorUsedError;
   List<Gestell>? get frameColors => throw _privateConstructorUsedError;
@@ -34,15 +34,15 @@ mixin _$ArbeitsTischeProduct {
   String? get picturePath => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ArbeitsTischeProductCopyWith<ArbeitsTischeProduct> get copyWith =>
+  $StateArbeitsTischeProductCopyWith<StateArbeitsTischeProduct> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ArbeitsTischeProductCopyWith<$Res> {
-  factory $ArbeitsTischeProductCopyWith(ArbeitsTischeProduct value,
-          $Res Function(ArbeitsTischeProduct) then) =
-      _$ArbeitsTischeProductCopyWithImpl<$Res, ArbeitsTischeProduct>;
+abstract class $StateArbeitsTischeProductCopyWith<$Res> {
+  factory $StateArbeitsTischeProductCopyWith(StateArbeitsTischeProduct value,
+          $Res Function(StateArbeitsTischeProduct) then) =
+      _$StateArbeitsTischeProductCopyWithImpl<$Res, StateArbeitsTischeProduct>;
   @useResult
   $Res call(
       {String? name,
@@ -68,10 +68,10 @@ abstract class $ArbeitsTischeProductCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ArbeitsTischeProductCopyWithImpl<$Res,
-        $Val extends ArbeitsTischeProduct>
-    implements $ArbeitsTischeProductCopyWith<$Res> {
-  _$ArbeitsTischeProductCopyWithImpl(this._value, this._then);
+class _$StateArbeitsTischeProductCopyWithImpl<$Res,
+        $Val extends StateArbeitsTischeProduct>
+    implements $StateArbeitsTischeProductCopyWith<$Res> {
+  _$StateArbeitsTischeProductCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -236,11 +236,12 @@ class _$ArbeitsTischeProductCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$ArbeitsTischeProductImplCopyWith<$Res>
-    implements $ArbeitsTischeProductCopyWith<$Res> {
-  factory _$$ArbeitsTischeProductImplCopyWith(_$ArbeitsTischeProductImpl value,
-          $Res Function(_$ArbeitsTischeProductImpl) then) =
-      __$$ArbeitsTischeProductImplCopyWithImpl<$Res>;
+abstract class _$$StateArbeitsTischeProductImplCopyWith<$Res>
+    implements $StateArbeitsTischeProductCopyWith<$Res> {
+  factory _$$StateArbeitsTischeProductImplCopyWith(
+          _$StateArbeitsTischeProductImpl value,
+          $Res Function(_$StateArbeitsTischeProductImpl) then) =
+      __$$StateArbeitsTischeProductImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -274,11 +275,13 @@ abstract class _$$ArbeitsTischeProductImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$ArbeitsTischeProductImplCopyWithImpl<$Res>
-    extends _$ArbeitsTischeProductCopyWithImpl<$Res, _$ArbeitsTischeProductImpl>
-    implements _$$ArbeitsTischeProductImplCopyWith<$Res> {
-  __$$ArbeitsTischeProductImplCopyWithImpl(_$ArbeitsTischeProductImpl _value,
-      $Res Function(_$ArbeitsTischeProductImpl) _then)
+class __$$StateArbeitsTischeProductImplCopyWithImpl<$Res>
+    extends _$StateArbeitsTischeProductCopyWithImpl<$Res,
+        _$StateArbeitsTischeProductImpl>
+    implements _$$StateArbeitsTischeProductImplCopyWith<$Res> {
+  __$$StateArbeitsTischeProductImplCopyWithImpl(
+      _$StateArbeitsTischeProductImpl _value,
+      $Res Function(_$StateArbeitsTischeProductImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -297,7 +300,7 @@ class __$$ArbeitsTischeProductImplCopyWithImpl<$Res>
     Object? kollisionsSchutz = freezed,
     Object? picturePath = freezed,
   }) {
-    return _then(_$ArbeitsTischeProductImpl(
+    return _then(_$StateArbeitsTischeProductImpl(
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -352,8 +355,8 @@ class __$$ArbeitsTischeProductImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ArbeitsTischeProductImpl implements _ArbeitsTischeProduct {
-  const _$ArbeitsTischeProductImpl(
+class _$StateArbeitsTischeProductImpl implements _StateArbeitsTischeProduct {
+  const _$StateArbeitsTischeProductImpl(
       {this.name,
       final List<BreiteXTiefe>? breiteXTiefe,
       final List<Gestell>? frameColors,
@@ -412,14 +415,14 @@ class _$ArbeitsTischeProductImpl implements _ArbeitsTischeProduct {
 
   @override
   String toString() {
-    return 'ArbeitsTischeProduct(name: $name, breiteXTiefe: $breiteXTiefe, frameColors: $frameColors, plateColor: $plateColor, hoehenVerstellbarkeit: $hoehenVerstellbarkeit, gestellDimension: $gestellDimension, hubbereich: $hubbereich, hubgeschwindigkeit: $hubgeschwindigkeit, gerauscheentwicklung: $gerauscheentwicklung, standbyStromverbrauch: $standbyStromverbrauch, kollisionsSchutz: $kollisionsSchutz, picturePath: $picturePath)';
+    return 'StateArbeitsTischeProduct(name: $name, breiteXTiefe: $breiteXTiefe, frameColors: $frameColors, plateColor: $plateColor, hoehenVerstellbarkeit: $hoehenVerstellbarkeit, gestellDimension: $gestellDimension, hubbereich: $hubbereich, hubgeschwindigkeit: $hubgeschwindigkeit, gerauscheentwicklung: $gerauscheentwicklung, standbyStromverbrauch: $standbyStromverbrauch, kollisionsSchutz: $kollisionsSchutz, picturePath: $picturePath)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ArbeitsTischeProductImpl &&
+            other is _$StateArbeitsTischeProductImpl &&
             (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality()
                 .equals(other._breiteXTiefe, _breiteXTiefe) &&
@@ -464,14 +467,13 @@ class _$ArbeitsTischeProductImpl implements _ArbeitsTischeProduct {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ArbeitsTischeProductImplCopyWith<_$ArbeitsTischeProductImpl>
-      get copyWith =>
-          __$$ArbeitsTischeProductImplCopyWithImpl<_$ArbeitsTischeProductImpl>(
-              this, _$identity);
+  _$$StateArbeitsTischeProductImplCopyWith<_$StateArbeitsTischeProductImpl>
+      get copyWith => __$$StateArbeitsTischeProductImplCopyWithImpl<
+          _$StateArbeitsTischeProductImpl>(this, _$identity);
 }
 
-abstract class _ArbeitsTischeProduct implements ArbeitsTischeProduct {
-  const factory _ArbeitsTischeProduct(
+abstract class _StateArbeitsTischeProduct implements StateArbeitsTischeProduct {
+  const factory _StateArbeitsTischeProduct(
       {final String? name,
       final List<BreiteXTiefe>? breiteXTiefe,
       final List<Gestell>? frameColors,
@@ -483,7 +485,7 @@ abstract class _ArbeitsTischeProduct implements ArbeitsTischeProduct {
       final Gerauscheentwicklung? gerauscheentwicklung,
       final StandbyStromverbrauch? standbyStromverbrauch,
       final bool? kollisionsSchutz,
-      final String? picturePath}) = _$ArbeitsTischeProductImpl;
+      final String? picturePath}) = _$StateArbeitsTischeProductImpl;
 
   @override
   String? get name;
@@ -511,7 +513,7 @@ abstract class _ArbeitsTischeProduct implements ArbeitsTischeProduct {
   String? get picturePath;
   @override
   @JsonKey(ignore: true)
-  _$$ArbeitsTischeProductImplCopyWith<_$ArbeitsTischeProductImpl>
+  _$$StateArbeitsTischeProductImplCopyWith<_$StateArbeitsTischeProductImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 

@@ -4,15 +4,15 @@ import 'package:bloc/bloc.dart';
 import 'package:either_dart/either.dart';
 import 'package:flutter/material.dart';
 
-class CubitOfficeChair extends Cubit<StateProduct> {
+class CubitOfficeChair extends Cubit<StateCategory> {
   CubitOfficeChair({required this.repositoryOfficeChair})
-      : super(const StateProduct());
+      : super(const StateCategory());
 
   final RepositoryBuerodrehstuehle repositoryOfficeChair;
 
   Future<void> load(String instanceName) async {
     debugPrint('instanceName ==> $instanceName');
-    repositoryOfficeChair
+    await repositoryOfficeChair
         .getBuerodrehstuehle(officeChairCategory: instanceName)
         .fold((failure) {}, (listOfficeChair) {
       final products = listOfficeChair

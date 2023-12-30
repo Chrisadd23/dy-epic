@@ -5,22 +5,22 @@ import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/dom
 import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/presentation/cubit/state_workingtable.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/state_product.dart';
 import 'package:bloc/bloc.dart';
-import 'package:either_dart/either.dart';
 import 'package:flutter/material.dart';
 
 class CubitWorkingTableProduct
-    extends Cubit<StateProduct<ArbeitsTischeProduct>> {
+    extends Cubit<StateProduct<StateArbeitsTischeProduct>> {
   CubitWorkingTableProduct({required this.repositoryProductArbeitstische})
       : super(const StateProduct.loading());
 
   final RepositoryWorkingTable repositoryProductArbeitstische;
 
-  void load(EnumCategoryWorkingTable? product, Map<String, String>? color) {
+  Future<void> load(
+      EnumCategoryWorkingTable? product, Map<String, String>? color) async {
     if (state != const StateProduct.loading()) {
       emit(const StateProduct.loading());
     }
     final workingTables =
-        repositoryProductArbeitstische.getArbeitstischeProduct(product);
+        await repositoryProductArbeitstische.getArbeitstischeProduct(product);
 
     workingTables.fold((failure) {}, (workingTable) async {
       Map<TableChangeableCharacteristics, dynamic> mapCharacteristics = {};
@@ -54,7 +54,7 @@ class CubitWorkingTableProduct
       }
 
       debugPrint(mapCharacteristics.toString());
-      final product = ArbeitsTischeProduct(
+      final product = StateArbeitsTischeProduct(
         name: workingTable.name,
         breiteXTiefe: workingTable.breiteXTiefe
             ?.map(

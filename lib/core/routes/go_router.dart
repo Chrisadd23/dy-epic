@@ -91,12 +91,26 @@ enum AppGoRouter {
                     name: buerostuehle.name,
                     pageBuilder: (context, state) =>
                         _getCustomerTransition(const PageBuerostuehle(), state),
+                    routes: [
+                      GoRoute(
+                        path: product.title,
+                        name: product.name,
+                        builder: (context, state) => const WorkingTablePage(),
+                      )
+                    ],
                   ),
                   GoRoute(
                     path: konferenzstuehle.title,
                     name: konferenzstuehle.name,
                     pageBuilder: (context, state) => _getCustomerTransition(
                         const PageKonferenzstuehle(), state),
+                    routes: [
+                      GoRoute(
+                        path: product.title,
+                        name: product.name,
+                        builder: (context, state) => const WorkingTablePage(),
+                      )
+                    ],
                   ),
                   GoRoute(
                     path: konferenztische.title,

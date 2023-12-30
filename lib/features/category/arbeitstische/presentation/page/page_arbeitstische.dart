@@ -30,7 +30,7 @@ class _WorkTables extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<CubitWorkTables, StateProduct, ProductCategory?>(
+    return BlocSelector<CubitWorkTables, StateCategory, ProductCategory?>(
       selector: (state) => state.productCategory,
       builder: (context, state) {
         final listProducts = state?.listProduct.map((product) {

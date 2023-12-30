@@ -3,14 +3,14 @@ import 'package:app_flutter_produkt_bestellen/features/category/share/presentati
 import 'package:either_dart/either.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CubitWorkTables extends Cubit<StateProduct> {
+class CubitWorkTables extends Cubit<StateCategory> {
   CubitWorkTables({required this.repositoryArbeitstische})
-      : super(const StateProduct());
+      : super(const StateCategory());
 
   final RepositoryArbeitstische repositoryArbeitstische;
 
   Future<void> load() async {
-    repositoryArbeitstische.getArbeitstische().fold((failure) {},
+    await repositoryArbeitstische.getArbeitstische().fold((failure) {},
         (listArbeitsTische) {
       final products = listArbeitsTische
           .map((arbeitsTische) => {
