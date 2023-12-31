@@ -16,6 +16,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:intl/intl.dart';
 
 class PageBuerostuehle extends HookWidget {
   const PageBuerostuehle({super.key, this.enumSelectOfficeChairCategory});
@@ -115,6 +116,7 @@ class _BlocBuilderBuerostuehle extends StatelessWidget {
           .map((product) => Product(
                 productType: product.productType as EnumCategoryOfficeChair,
                 picturePath: product.picturePath,
+                price: product.price,
               ))
           .toList();
       return Stack(children: [
@@ -251,14 +253,15 @@ class _ProductListWheelState extends State<ProductListWheel> {
 }
 
 class Product extends StatefulWidget {
-  const Product({
-    super.key,
-    required this.picturePath,
-    required this.productType,
-  });
+  const Product(
+      {super.key,
+      required this.picturePath,
+      required this.productType,
+      required this.price});
 
   final String picturePath;
   final EnumCategoryOfficeChair productType;
+  final double price;
 
   @override
   State<Product> createState() => _ProductState();
@@ -269,6 +272,7 @@ class Product extends StatefulWidget {
     properties.add(StringProperty('picturePath', picturePath));
     properties
         .add(EnumProperty<EnumCategoryOfficeChair>('productType', productType));
+    properties.add(DoubleProperty('price', price));
   }
 }
 
@@ -283,36 +287,45 @@ class _ProductState extends State<Product> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: MediaQuery.sizeOf(context).height * 0.6,
-        decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(20),
-            boxShadow: const [
-              BoxShadow(offset: Offset(5, 5), color: Colors.grey)
-            ]),
-        child: Stack(
-          children: [
-            _ProductPicture(widget: widget),
-            _ProductName(widget: widget),
-            Align(
-                alignment: Alignment.center,
-                child: LayoutBuilder(builder: (context, constraints) {
-                  return Padding(
-                    padding: EdgeInsets.only(
-                      top: constraints.maxHeight * 0.43,
-                    ),
-                    child: const FittedBox(
-                      fit: BoxFit.fill,
-                      child: Text(
-                        'Gestellfarben',
-                        style: TextStyle(
-                            fontSize: 25, fontWeight: FontWeight.bold),
+      height: MediaQuery.sizeOf(context).height * 0.6,
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: const [
+            BoxShadow(offset: Offset(5, 5), color: Colors.grey)
+          ]),
+      child: Stack(
+        children: [
+          _ProductPicture(widget: widget),
+          _ProductName(widget: widget),
+          Align(
+            alignment: Alignment.center,
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                return Padding(
+                  padding: EdgeInsets.only(
+                    top: constraints.maxHeight * 0.43,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      FittedBox(
+                        fit: BoxFit.fill,
+                        child: Text(
+                          'Preis:  ${NumberFormat.currency(locale: 'de_DE', symbol: '€', decimalDigits: 2).format(widget.price)}',
+                          style: const TextStyle(
+                              fontSize: 25, fontWeight: FontWeight.bold),
+                        ),
                       ),
-                    ),
-                  );
-                })),
-          ],
-        ));
+                    ],
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   @override

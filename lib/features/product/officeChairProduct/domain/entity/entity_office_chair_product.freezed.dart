@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$EntityOfficeChairProduct {
   String get name => throw _privateConstructorUsedError;
+  double get price => throw _privateConstructorUsedError;
   List<String> get attributes => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -30,7 +31,7 @@ abstract class $EntityOfficeChairProductCopyWith<$Res> {
           $Res Function(EntityOfficeChairProduct) then) =
       _$EntityOfficeChairProductCopyWithImpl<$Res, EntityOfficeChairProduct>;
   @useResult
-  $Res call({String name, List<String> attributes});
+  $Res call({String name, double price, List<String> attributes});
 }
 
 /// @nodoc
@@ -48,6 +49,7 @@ class _$EntityOfficeChairProductCopyWithImpl<$Res,
   @override
   $Res call({
     Object? name = null,
+    Object? price = null,
     Object? attributes = null,
   }) {
     return _then(_value.copyWith(
@@ -55,6 +57,10 @@ class _$EntityOfficeChairProductCopyWithImpl<$Res,
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      price: null == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as double,
       attributes: null == attributes
           ? _value.attributes
           : attributes // ignore: cast_nullable_to_non_nullable
@@ -72,7 +78,7 @@ abstract class _$$EntityOfficeChairProductImplCopyWith<$Res>
       __$$EntityOfficeChairProductImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, List<String> attributes});
+  $Res call({String name, double price, List<String> attributes});
 }
 
 /// @nodoc
@@ -89,6 +95,7 @@ class __$$EntityOfficeChairProductImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = null,
+    Object? price = null,
     Object? attributes = null,
   }) {
     return _then(_$EntityOfficeChairProductImpl(
@@ -96,6 +103,10 @@ class __$$EntityOfficeChairProductImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      price: null == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as double,
       attributes: null == attributes
           ? _value._attributes
           : attributes // ignore: cast_nullable_to_non_nullable
@@ -108,11 +119,15 @@ class __$$EntityOfficeChairProductImplCopyWithImpl<$Res>
 
 class _$EntityOfficeChairProductImpl implements _EntityOfficeChairProduct {
   const _$EntityOfficeChairProductImpl(
-      {required this.name, required final List<String> attributes})
+      {required this.name,
+      required this.price,
+      required final List<String> attributes})
       : _attributes = attributes;
 
   @override
   final String name;
+  @override
+  final double price;
   final List<String> _attributes;
   @override
   List<String> get attributes {
@@ -123,7 +138,7 @@ class _$EntityOfficeChairProductImpl implements _EntityOfficeChairProduct {
 
   @override
   String toString() {
-    return 'EntityOfficeChairProduct(name: $name, attributes: $attributes)';
+    return 'EntityOfficeChairProduct(name: $name, price: $price, attributes: $attributes)';
   }
 
   @override
@@ -132,13 +147,14 @@ class _$EntityOfficeChairProductImpl implements _EntityOfficeChairProduct {
         (other.runtimeType == runtimeType &&
             other is _$EntityOfficeChairProductImpl &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.price, price) || other.price == price) &&
             const DeepCollectionEquality()
                 .equals(other._attributes, _attributes));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, name, const DeepCollectionEquality().hash(_attributes));
+  int get hashCode => Object.hash(runtimeType, name, price,
+      const DeepCollectionEquality().hash(_attributes));
 
   @JsonKey(ignore: true)
   @override
@@ -151,10 +167,13 @@ class _$EntityOfficeChairProductImpl implements _EntityOfficeChairProduct {
 abstract class _EntityOfficeChairProduct implements EntityOfficeChairProduct {
   const factory _EntityOfficeChairProduct(
       {required final String name,
+      required final double price,
       required final List<String> attributes}) = _$EntityOfficeChairProductImpl;
 
   @override
   String get name;
+  @override
+  double get price;
   @override
   List<String> get attributes;
   @override

@@ -21,5 +21,17 @@ class DataSourceOfficeChairProductImplementation
 }
 
 final _dummyListProductConferenceChair = [
-  const EntityOfficeChairProduct(name: 'name', attributes: ['---'])
+  const EntityOfficeChairProduct(
+      name: 'Xenon Net Bürodrehstuhl',
+      attributes: [
+        'Höhen- und Tiefenverstellbare Lumbalstütze'
+            'Schiebesitz'
+            'Netzrückenlehne und Synchronmechanik'
+            'flexible atmungsaktive Rückenlehne'
+            'Widerstand der Rückenlehne einstellbar'
+            'Fußkreuz Kunststoff schwarz'
+            'Gasfeder schwarz'
+            'Bezugsfarbe schwarz'
+      ],
+      price: 329.00)
 ];

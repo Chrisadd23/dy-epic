@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$EntityConferenceChairProduct {
   String get name => throw _privateConstructorUsedError;
+  double get price => throw _privateConstructorUsedError;
   List<String> get attributes => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -32,7 +33,7 @@ abstract class $EntityConferenceChairProductCopyWith<$Res> {
       _$EntityConferenceChairProductCopyWithImpl<$Res,
           EntityConferenceChairProduct>;
   @useResult
-  $Res call({String name, List<String> attributes});
+  $Res call({String name, double price, List<String> attributes});
 }
 
 /// @nodoc
@@ -50,6 +51,7 @@ class _$EntityConferenceChairProductCopyWithImpl<$Res,
   @override
   $Res call({
     Object? name = null,
+    Object? price = null,
     Object? attributes = null,
   }) {
     return _then(_value.copyWith(
@@ -57,6 +59,10 @@ class _$EntityConferenceChairProductCopyWithImpl<$Res,
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      price: null == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as double,
       attributes: null == attributes
           ? _value.attributes
           : attributes // ignore: cast_nullable_to_non_nullable
@@ -74,7 +80,7 @@ abstract class _$$EntityConferenceChairProductImplCopyWith<$Res>
       __$$EntityConferenceChairProductImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, List<String> attributes});
+  $Res call({String name, double price, List<String> attributes});
 }
 
 /// @nodoc
@@ -91,6 +97,7 @@ class __$$EntityConferenceChairProductImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = null,
+    Object? price = null,
     Object? attributes = null,
   }) {
     return _then(_$EntityConferenceChairProductImpl(
@@ -98,6 +105,10 @@ class __$$EntityConferenceChairProductImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      price: null == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as double,
       attributes: null == attributes
           ? _value._attributes
           : attributes // ignore: cast_nullable_to_non_nullable
@@ -111,11 +122,15 @@ class __$$EntityConferenceChairProductImplCopyWithImpl<$Res>
 class _$EntityConferenceChairProductImpl
     implements _EntityConferenceChairProduct {
   const _$EntityConferenceChairProductImpl(
-      {required this.name, required final List<String> attributes})
+      {required this.name,
+      required this.price,
+      required final List<String> attributes})
       : _attributes = attributes;
 
   @override
   final String name;
+  @override
+  final double price;
   final List<String> _attributes;
   @override
   List<String> get attributes {
@@ -126,7 +141,7 @@ class _$EntityConferenceChairProductImpl
 
   @override
   String toString() {
-    return 'EntityConferenceChairProduct(name: $name, attributes: $attributes)';
+    return 'EntityConferenceChairProduct(name: $name, price: $price, attributes: $attributes)';
   }
 
   @override
@@ -135,13 +150,14 @@ class _$EntityConferenceChairProductImpl
         (other.runtimeType == runtimeType &&
             other is _$EntityConferenceChairProductImpl &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.price, price) || other.price == price) &&
             const DeepCollectionEquality()
                 .equals(other._attributes, _attributes));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, name, const DeepCollectionEquality().hash(_attributes));
+  int get hashCode => Object.hash(runtimeType, name, price,
+      const DeepCollectionEquality().hash(_attributes));
 
   @JsonKey(ignore: true)
   @override
@@ -156,11 +172,14 @@ abstract class _EntityConferenceChairProduct
     implements EntityConferenceChairProduct {
   const factory _EntityConferenceChairProduct(
           {required final String name,
+          required final double price,
           required final List<String> attributes}) =
       _$EntityConferenceChairProductImpl;
 
   @override
   String get name;
+  @override
+  double get price;
   @override
   List<String> get attributes;
   @override

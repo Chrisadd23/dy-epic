@@ -6,6 +6,7 @@ part 'entity_conference_chair_product.freezed.dart';
 class EntityConferenceChairProduct with _$EntityConferenceChairProduct {
   const factory EntityConferenceChairProduct({
     required String name,
+    required double price,
     required List<String> attributes,
   }) = _EntityConferenceChairProduct;
 }

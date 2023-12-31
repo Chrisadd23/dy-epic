@@ -22,5 +22,16 @@ class DataSourceConferenceChairProductImplementation
 }
 
 final _dummyListProductConferenceChair = [
-  const EntityConferenceChairProduct(name: 'name', attributes: ['---'])
+  const EntityConferenceChairProduct(
+      name: 'CAMIRO Freischwinger Netz',
+      attributes: [
+        'Rücken Netz - Sitz Polster'
+            'Rücken Stoff Comf Style 4341 schwarz'
+            'Armlehnen fest mit Kunststoffarmauflage'
+            'Sitz Stoff Just 60999 schwarz'
+            'Label OS'
+            'Gestell Ausführung: stapelbar verchromt'
+            'Filzgleiter für harte Böden'
+      ],
+      price: 329.00)
 ];

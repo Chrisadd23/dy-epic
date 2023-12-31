@@ -11,6 +11,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:intl/intl.dart';
 
 class PageKonferenzstuehle extends StatelessWidget {
   const PageKonferenzstuehle({super.key});
@@ -35,9 +36,9 @@ class _BlocBuilderConferenceChair extends StatelessWidget {
       builder: (context, state) {
         final listProducts = state?.listProduct.map((product) {
           return Product(
-            picturePath: product.picturePath,
-            productType: product.productType as EnumCategoryConferenceChair,
-          );
+              picturePath: product.picturePath,
+              productType: product.productType as EnumCategoryConferenceChair,
+              price: product.price);
         }).toList();
         return _Konferenzstuehle(listProducts: listProducts);
       },
@@ -101,8 +102,10 @@ class Product extends StatefulWidget {
     super.key,
     required this.picturePath,
     required this.productType,
+    required this.price,
   });
 
+  final double price;
   final String picturePath;
   final EnumCategoryConferenceChair productType;
 
@@ -115,6 +118,7 @@ class Product extends StatefulWidget {
     properties.add(StringProperty('picturePath', picturePath));
     properties.add(
         EnumProperty<EnumCategoryConferenceChair>('productType', productType));
+    properties.add(DoubleProperty('price', price));
   }
 }
 
@@ -140,6 +144,31 @@ class _ProductState extends State<Product> {
           children: [
             _ProductPicture(widget: widget),
             _ProductName(widget: widget),
+            Align(
+              alignment: Alignment.center,
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  return Padding(
+                    padding: EdgeInsets.only(
+                      top: constraints.maxHeight * 0.43,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        FittedBox(
+                          fit: BoxFit.fill,
+                          child: Text(
+                            'Preis:  ${NumberFormat.currency(locale: 'de_DE', symbol: '€', decimalDigits: 2).format(widget.price)}',
+                            style: const TextStyle(
+                                fontSize: 25, fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ),
           ],
         ));
   }
