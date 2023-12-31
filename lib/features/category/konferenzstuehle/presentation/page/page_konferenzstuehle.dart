@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_page_widget.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/list_wheel_scroll_view_x.dart';
+import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/konferenzstuehle/domain/entity/entity_konferenzstuehle.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/konferenzstuehle/presentation/cubit/cubit_conference_chair.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/cubit/state_category_generic.dart';
@@ -9,6 +10,7 @@ import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class PageKonferenzstuehle extends StatelessWidget {
   const PageKonferenzstuehle({super.key});
@@ -246,8 +248,9 @@ class _ProductPicture extends StatelessWidget {
                 child: InkWell(
                   hoverColor: Colors.red,
                   onTap: () {
-                    // context.goNamed(AppGoRouter.product.name,
-                    //   extra: widget.productType);
+                    context.goNamed(
+                      '${AppGoRouter.konferenzstuehle.name}/${AppGoRouter.product.name}',
+                    );
                   },
                 ),
               ),

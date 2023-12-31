@@ -7,6 +7,7 @@ import 'package:app_flutter_produkt_bestellen/features/category/konferenztische/
 import 'package:app_flutter_produkt_bestellen/features/home/presentation/page/home_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/page/login_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/presentation/page/workingtable_page.dart';
+import 'package:app_flutter_produkt_bestellen/features/product/conferenceChairProduct/presentation/page/page_conference_chair_product.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -69,23 +70,24 @@ enum AppGoRouter {
                     _getCustomerTransition(const HomePage(), state),
                 routes: [
                   GoRoute(
-                      path: arbeitstische.title,
-                      name: arbeitstische.name,
-                      pageBuilder: (context, state) =>
-                          _getCustomerTransition(const PageWorkTables(), state),
-                      routes: [
-                        GoRoute(
-                          path: product.title,
-                          name: product.name,
-                          builder: (context, state) {
-                            final product =
-                                state.extra as EnumCategoryWorkingTable;
-                            final selctedColor = state.queryParameters;
-                            return WorkingTablePage(
-                                product: product, color: selctedColor);
-                          },
-                        )
-                      ]),
+                    path: arbeitstische.title,
+                    name: arbeitstische.name,
+                    pageBuilder: (context, state) =>
+                        _getCustomerTransition(const PageWorkTables(), state),
+                    routes: [
+                      GoRoute(
+                        path: product.title,
+                        name: '${arbeitstische.name}/${product.name}',
+                        builder: (context, state) {
+                          final product =
+                              state.extra as EnumCategoryWorkingTable;
+                          final selctedColor = state.queryParameters;
+                          return PageWorkingTableProduct(
+                              product: product, color: selctedColor);
+                        },
+                      )
+                    ],
+                  ),
                   GoRoute(
                     path: buerostuehle.title,
                     name: buerostuehle.name,
@@ -94,8 +96,9 @@ enum AppGoRouter {
                     routes: [
                       GoRoute(
                         path: product.title,
-                        name: product.name,
-                        builder: (context, state) => const WorkingTablePage(),
+                        name: '${buerostuehle.name}/${product.name}',
+                        builder: (context, state) =>
+                            const PageConferenceChairProduct(),
                       )
                     ],
                   ),
@@ -107,8 +110,9 @@ enum AppGoRouter {
                     routes: [
                       GoRoute(
                         path: product.title,
-                        name: product.name,
-                        builder: (context, state) => const WorkingTablePage(),
+                        name: '${konferenzstuehle.name}/${product.name}',
+                        builder: (context, state) =>
+                            const PageConferenceChairProduct(),
                       )
                     ],
                   ),

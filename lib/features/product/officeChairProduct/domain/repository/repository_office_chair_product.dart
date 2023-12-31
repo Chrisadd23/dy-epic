@@ -1,0 +1,7 @@
+import 'package:app_flutter_produkt_bestellen/core/error/failures.dart';
+import 'package:app_flutter_produkt_bestellen/features/product/officeChairProduct/domain/entity/entity_office_chair_product.dart';
+import 'package:either_dart/either.dart';
+
+abstract class RepositoryOfficeChairProduct {
+  Future<Either<Failure, EntityOfficeChairProduct>> getOfficeChairProduct();
+}

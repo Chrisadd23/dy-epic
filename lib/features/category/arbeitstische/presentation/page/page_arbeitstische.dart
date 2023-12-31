@@ -269,7 +269,8 @@ class _ProductPicture extends StatelessWidget {
                 foregroundColor: Colors.transparent,
                 child: InkWell(
                   hoverColor: Colors.red,
-                  onTap: () => context.goNamed(AppGoRouter.product.name,
+                  onTap: () => context.goNamed(
+                      '${AppGoRouter.arbeitstische.name}/${AppGoRouter.product.name}',
                       extra: widget.productType),
                 ),
               ),

@@ -10,8 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
-class WorkingTablePage extends HookWidget {
-  const WorkingTablePage({super.key, this.product, this.color});
+class PageWorkingTableProduct extends HookWidget {
+  const PageWorkingTableProduct({super.key, this.product, this.color});
 
   final EnumCategoryWorkingTable? product;
   final Map<String, String>? color;

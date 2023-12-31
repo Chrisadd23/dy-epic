@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_page_widget.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/list_wheel_scroll_view_x.dart';
+import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/buerostuehle/domain/entity/entity_buerodrehstuehle.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/buerostuehle/presentation/cubit/cubit_buerostuehle.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/buerostuehle/presentation/cubit/cubit_choose_office_chair.dart';
@@ -14,6 +15,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
 class PageBuerostuehle extends HookWidget {
   const PageBuerostuehle({super.key, this.enumSelectOfficeChairCategory});
@@ -408,23 +410,26 @@ class _ProductPicture extends StatelessWidget {
         ),
         Align(
           alignment: Alignment.center,
-          child: LayoutBuilder(builder: (context, constraints) {
-            return Padding(
-              padding: EdgeInsets.only(bottom: constraints.maxHeight * 0.43),
-              child: CircleAvatar(
-                backgroundColor: Colors.transparent,
-                radius: constraints.maxHeight * 0.23,
-                foregroundColor: Colors.transparent,
-                child: InkWell(
-                  hoverColor: Colors.red,
-                  onTap: () {
-                    // context.goNamed(AppGoRouter.product.name,
-                    //   extra: widget.productType);
-                  },
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              return Padding(
+                padding: EdgeInsets.only(bottom: constraints.maxHeight * 0.43),
+                child: CircleAvatar(
+                  backgroundColor: Colors.transparent,
+                  radius: constraints.maxHeight * 0.23,
+                  foregroundColor: Colors.transparent,
+                  child: InkWell(
+                    hoverColor: Colors.red,
+                    onTap: () {
+                      context.goNamed(
+                        '${AppGoRouter.buerostuehle.name}/${AppGoRouter.product.name}',
+                      );
+                    },
+                  ),
                 ),
-              ),
-            );
-          }),
+              );
+            },
+          ),
         )
       ],
     );
