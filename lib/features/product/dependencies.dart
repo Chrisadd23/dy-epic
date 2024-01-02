@@ -8,6 +8,7 @@ import 'package:app_flutter_produkt_bestellen/features/product/conferenceChairPr
 import 'package:app_flutter_produkt_bestellen/features/product/conferenceChairProduct/presentation/cubit/cubit_conference_chair_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/officeChairProduct/data/datasource/datasource_office_chaire_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/officeChairProduct/data/repository/repository_office_chair_product_implementation.dart';
+import 'package:app_flutter_produkt_bestellen/features/product/officeChairProduct/domain/repository/repository_office_chair_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/officeChairProduct/presentation/cubit/cubit_office_chair_product.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 
@@ -55,13 +56,13 @@ _setUpOfficeChair() {
     () => DataSourceOfficeChairProductImplementation(),
   );
 
-  getIt.registerLazySingleton(
+  getIt.registerLazySingleton<RepositoryOfficeChairProduct>(
     () => RepositoryOfficeChairProductImplementation(
       dataSourceOfficeChairProduct: getIt(),
     ),
   );
 
-  getIt.registerFactory(
+  getIt.registerFactory<CubitOfficeChairProduct>(
     () => CubitOfficeChairProduct(
       repositoryOfficeChairProduct: getIt(),
     ),

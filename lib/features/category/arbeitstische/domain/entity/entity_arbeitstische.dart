@@ -22,6 +22,7 @@ class EntityProduct with _$EntityProduct {
     required double price,
     required int indexNumber,
     required String picturePath,
+    required String name,
     int? offerInPercent,
     int? productCount,
   }) = _EntityProduct;

@@ -12,9 +12,9 @@ class RepositoryOfficeChairProductImplementation
   final DataSourceOfficeChairProduct dataSourceOfficeChairProduct;
 
   @override
-  Future<Either<Failure, EntityOfficeChairProduct>>
-      getOfficeChairProduct() async {
+  Future<Either<Failure, EntityOfficeChairProduct>> getOfficeChairProduct(
+      {required String product}) async {
     // TODO: implement getOfficeChairProduct
-    return dataSourceOfficeChairProduct.getOfficeChairProduct();
+    return dataSourceOfficeChairProduct.getOfficeChairProduct(product: product);
   }
 }

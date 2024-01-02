@@ -117,6 +117,7 @@ class _BlocBuilderBuerostuehle extends StatelessWidget {
                 productType: product.productType as EnumCategoryOfficeChair,
                 picturePath: product.picturePath,
                 price: product.price,
+                name: product.name,
               ))
           .toList();
       return Stack(children: [
@@ -257,9 +258,11 @@ class Product extends StatefulWidget {
       {super.key,
       required this.picturePath,
       required this.productType,
-      required this.price});
+      required this.price,
+      required this.name});
 
   final String picturePath;
+  final String name;
   final EnumCategoryOfficeChair productType;
   final double price;
 
@@ -273,6 +276,7 @@ class Product extends StatefulWidget {
     properties
         .add(EnumProperty<EnumCategoryOfficeChair>('productType', productType));
     properties.add(DoubleProperty('price', price));
+    properties.add(StringProperty('name', name));
   }
 }
 
@@ -435,8 +439,8 @@ class _ProductPicture extends StatelessWidget {
                     hoverColor: Colors.red,
                     onTap: () {
                       context.goNamed(
-                        '${AppGoRouter.buerostuehle.name}/${AppGoRouter.product.name}',
-                      );
+                          '${AppGoRouter.buerostuehle.name}/${AppGoRouter.product.name}',
+                          extra: widget.name);
                     },
                   ),
                 ),

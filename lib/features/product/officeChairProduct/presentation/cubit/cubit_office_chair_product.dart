@@ -3,6 +3,7 @@ import 'package:app_flutter_produkt_bestellen/features/product/officeChairProduc
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/state_product.dart';
 import 'package:bloc/bloc.dart';
 import 'package:either_dart/either.dart';
+import 'package:flutter/cupertino.dart';
 
 class CubitOfficeChairProduct
     extends Cubit<StateProduct<StateOfficeChairProduct>> {
@@ -11,10 +12,11 @@ class CubitOfficeChairProduct
 
   final RepositoryOfficeChairProduct repositoryOfficeChairProduct;
 
-  Future<void> load() async {
+  Future<void> load({required String product}) async {
     await repositoryOfficeChairProduct
-        .getOfficeChairProduct()
+        .getOfficeChairProduct(product: product)
         .fold((failure) {}, (officeChair) {
+      debugPrint('officeChair => $officeChair');
       emit(
         StateProduct.success(
           product: StateOfficeChairProduct(

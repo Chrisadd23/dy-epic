@@ -21,6 +21,7 @@ class EntityProduct with _$EntityProduct {
     required EnumCategoryConferenceChair productType,
     required double price,
     required int indexNumber,
+    required String name,
     required String picturePath,
     int? offerInPercent,
     int? productCount,

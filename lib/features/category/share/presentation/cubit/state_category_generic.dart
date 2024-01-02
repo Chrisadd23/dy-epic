@@ -36,6 +36,7 @@ class Product with _$Product {
   const Product._();
 
   const factory Product({
+    required String name,
     required Enum productType,
     required double price,
     required String picturePath,

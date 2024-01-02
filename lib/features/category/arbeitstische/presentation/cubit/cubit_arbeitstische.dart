@@ -18,7 +18,8 @@ class CubitWorkTables extends Cubit<StateCategory> {
                     .map((arbeitstisch) => Product(
                         productType: arbeitstisch.productType,
                         price: arbeitstisch.price,
-                        picturePath: arbeitstisch.picturePath))
+                        picturePath: arbeitstisch.picturePath,
+                        name: arbeitstisch.name))
                     .toList()
               })
           .toList();

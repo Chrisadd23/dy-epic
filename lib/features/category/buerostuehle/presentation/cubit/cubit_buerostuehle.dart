@@ -21,7 +21,8 @@ class CubitOfficeChair extends Cubit<StateCategory> {
                     .map((chair) => Product(
                         productType: chair.productType,
                         price: chair.price,
-                        picturePath: chair.picturePath))
+                        picturePath: chair.picturePath,
+                        name: chair.name))
                     .toList()
               })
           .toList();

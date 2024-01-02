@@ -24,15 +24,18 @@ class PageWorkingTableProduct extends HookWidget {
         create: (context) =>
             getIt<CubitWorkingTableProduct>()..load(product, color),
         child: BlocBuilder<CubitWorkingTableProduct, StateProduct>(
-            builder: (context, state) => state.maybeMap(
-                orElse: () => const LoadingWidget(
-                      firstWidth: 110,
-                      secondWidth: 60,
-                    ),
-                success: (_) => SizedBox(
-                    height: MediaQuery.of(context).size.height,
-                    width: double.infinity,
-                    child: const ProductWidget()))),
+          builder: (context, state) => state.maybeMap(
+            orElse: () => const LoadingWidget(
+              firstWidth: 110,
+              secondWidth: 60,
+            ),
+            success: (_) => SizedBox(
+              height: MediaQuery.of(context).size.height,
+              width: double.infinity,
+              child: const ProductWidget(),
+            ),
+          ),
+        ),
       ),
     );
   }

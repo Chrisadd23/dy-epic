@@ -8,6 +8,7 @@ import 'package:app_flutter_produkt_bestellen/features/home/presentation/page/ho
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/page/login_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/presentation/page/workingtable_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/conferenceChairProduct/presentation/page/page_conference_chair_product.dart';
+import 'package:app_flutter_produkt_bestellen/features/product/officeChairProduct/presentation/page/page_office_chair_product.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -97,8 +98,11 @@ enum AppGoRouter {
                       GoRoute(
                         path: product.title,
                         name: '${buerostuehle.name}/${product.name}',
-                        builder: (context, state) =>
-                            const PageConferenceChairProduct(),
+                        builder: (context, state) {
+                          final product = state.extra as String;
+
+                          return PageOfficeChairProduct(product: product);
+                        },
                       )
                     ],
                   ),
@@ -111,8 +115,12 @@ enum AppGoRouter {
                       GoRoute(
                         path: product.title,
                         name: '${konferenzstuehle.name}/${product.name}',
-                        builder: (context, state) =>
-                            const PageConferenceChairProduct(),
+                        builder: (context, state) {
+                          final product = state.extra as String;
+                          return PageConferenceChairProduct(
+                            product: product,
+                          );
+                        },
                       )
                     ],
                   ),

@@ -3,14 +3,15 @@ import 'package:app_flutter_produkt_bestellen/features/product/officeChairProduc
 import 'package:either_dart/either.dart';
 
 abstract class DataSourceOfficeChairProduct {
-  Future<Either<Failure, EntityOfficeChairProduct>> getOfficeChairProduct();
+  Future<Either<Failure, EntityOfficeChairProduct>> getOfficeChairProduct(
+      {required String product});
 }
 
 class DataSourceOfficeChairProductImplementation
     extends DataSourceOfficeChairProduct {
   @override
-  Future<Either<Failure, EntityOfficeChairProduct>>
-      getOfficeChairProduct() async {
+  Future<Either<Failure, EntityOfficeChairProduct>> getOfficeChairProduct(
+      {required String product}) async {
     // TODO: implement getOfficeChairProduct
     try {
       return Right(_dummyListProductConferenceChair[0]);

@@ -13,8 +13,9 @@ class RepositoryConferenceChairProductImplementation
 
   @override
   Future<Either<Failure, EntityConferenceChairProduct>>
-      getConferenceChairProduct() async {
+      getConferenceChairProduct({required String product}) async {
     // TODO: implement getConferenceChairProduct
-    return dataSourceConferenceChairProduct.getConferenceChairProduct();
+    return dataSourceConferenceChairProduct.getConferenceChairProduct(
+        product: product);
   }
 }

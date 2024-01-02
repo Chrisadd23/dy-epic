@@ -11,9 +11,9 @@ class CubitConferenceChairProduct
 
   final RepositoryConferenceChairProduct repositoryConferenceChairProduct;
 
-  Future<void> load() async {
+  Future<void> load({required String product}) async {
     await repositoryConferenceChairProduct
-        .getConferenceChairProduct()
+        .getConferenceChairProduct(product: product)
         .fold((failure) {}, (conferenceChaire) {
       emit(
         StateProduct.success(

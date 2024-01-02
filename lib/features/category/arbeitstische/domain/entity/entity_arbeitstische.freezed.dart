@@ -171,6 +171,7 @@ mixin _$EntityProduct {
   double get price => throw _privateConstructorUsedError;
   int get indexNumber => throw _privateConstructorUsedError;
   String get picturePath => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
   int? get offerInPercent => throw _privateConstructorUsedError;
   int? get productCount => throw _privateConstructorUsedError;
 
@@ -190,6 +191,7 @@ abstract class $EntityProductCopyWith<$Res> {
       double price,
       int indexNumber,
       String picturePath,
+      String name,
       int? offerInPercent,
       int? productCount});
 }
@@ -211,6 +213,7 @@ class _$EntityProductCopyWithImpl<$Res, $Val extends EntityProduct>
     Object? price = null,
     Object? indexNumber = null,
     Object? picturePath = null,
+    Object? name = null,
     Object? offerInPercent = freezed,
     Object? productCount = freezed,
   }) {
@@ -230,6 +233,10 @@ class _$EntityProductCopyWithImpl<$Res, $Val extends EntityProduct>
       picturePath: null == picturePath
           ? _value.picturePath
           : picturePath // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
       offerInPercent: freezed == offerInPercent
           ? _value.offerInPercent
@@ -256,6 +263,7 @@ abstract class _$$EntityProductImplCopyWith<$Res>
       double price,
       int indexNumber,
       String picturePath,
+      String name,
       int? offerInPercent,
       int? productCount});
 }
@@ -275,6 +283,7 @@ class __$$EntityProductImplCopyWithImpl<$Res>
     Object? price = null,
     Object? indexNumber = null,
     Object? picturePath = null,
+    Object? name = null,
     Object? offerInPercent = freezed,
     Object? productCount = freezed,
   }) {
@@ -294,6 +303,10 @@ class __$$EntityProductImplCopyWithImpl<$Res>
       picturePath: null == picturePath
           ? _value.picturePath
           : picturePath // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
       offerInPercent: freezed == offerInPercent
           ? _value.offerInPercent
@@ -315,6 +328,7 @@ class _$EntityProductImpl extends _EntityProduct {
       required this.price,
       required this.indexNumber,
       required this.picturePath,
+      required this.name,
       this.offerInPercent,
       this.productCount})
       : super._();
@@ -328,13 +342,15 @@ class _$EntityProductImpl extends _EntityProduct {
   @override
   final String picturePath;
   @override
+  final String name;
+  @override
   final int? offerInPercent;
   @override
   final int? productCount;
 
   @override
   String toString() {
-    return 'EntityProduct(productType: $productType, price: $price, indexNumber: $indexNumber, picturePath: $picturePath, offerInPercent: $offerInPercent, productCount: $productCount)';
+    return 'EntityProduct(productType: $productType, price: $price, indexNumber: $indexNumber, picturePath: $picturePath, name: $name, offerInPercent: $offerInPercent, productCount: $productCount)';
   }
 
   @override
@@ -349,6 +365,7 @@ class _$EntityProductImpl extends _EntityProduct {
                 other.indexNumber == indexNumber) &&
             (identical(other.picturePath, picturePath) ||
                 other.picturePath == picturePath) &&
+            (identical(other.name, name) || other.name == name) &&
             (identical(other.offerInPercent, offerInPercent) ||
                 other.offerInPercent == offerInPercent) &&
             (identical(other.productCount, productCount) ||
@@ -357,7 +374,7 @@ class _$EntityProductImpl extends _EntityProduct {
 
   @override
   int get hashCode => Object.hash(runtimeType, productType, price, indexNumber,
-      picturePath, offerInPercent, productCount);
+      picturePath, name, offerInPercent, productCount);
 
   @JsonKey(ignore: true)
   @override
@@ -372,6 +389,7 @@ abstract class _EntityProduct extends EntityProduct {
       required final double price,
       required final int indexNumber,
       required final String picturePath,
+      required final String name,
       final int? offerInPercent,
       final int? productCount}) = _$EntityProductImpl;
   const _EntityProduct._() : super._();
@@ -384,6 +402,8 @@ abstract class _EntityProduct extends EntityProduct {
   int get indexNumber;
   @override
   String get picturePath;
+  @override
+  String get name;
   @override
   int? get offerInPercent;
   @override

@@ -4,14 +4,14 @@ import 'package:either_dart/either.dart';
 
 abstract class DataSourceConferenceChairProduct {
   Future<Either<Failure, EntityConferenceChairProduct>>
-      getConferenceChairProduct();
+      getConferenceChairProduct({required String product});
 }
 
 class DataSourceConferenceChairProductImplementation
     extends DataSourceConferenceChairProduct {
   @override
   Future<Either<Failure, EntityConferenceChairProduct>>
-      getConferenceChairProduct() async {
+      getConferenceChairProduct({required String product}) async {
     // TODO: implement getConferenceChairProduct
     try {
       return Right(_dummyListProductConferenceChair[0]);

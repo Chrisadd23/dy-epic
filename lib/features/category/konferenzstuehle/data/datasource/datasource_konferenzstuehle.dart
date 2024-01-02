@@ -25,12 +25,14 @@ class DataSourceConferenceChairImplementation
 final _listProductSortiment = [
   EntityConferenceChair(categoryName: 'Konferenzstühle', listProduct: [
     EntityProduct(
+        name: ' ',
         productType: EnumCategoryConferenceChair.camiro,
         price: 329.00,
         indexNumber: 0,
         picturePath:
             Assets.products.konferenzstuehle.camiroFreischwingerNetz.path),
     EntityProduct(
+        name: ' ',
         productType: EnumCategoryConferenceChair.camiro,
         price: 330.00,
         indexNumber: 0,

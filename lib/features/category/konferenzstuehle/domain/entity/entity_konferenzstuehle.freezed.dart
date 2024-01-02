@@ -173,6 +173,7 @@ mixin _$EntityProduct {
       throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
   int get indexNumber => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
   String get picturePath => throw _privateConstructorUsedError;
   int? get offerInPercent => throw _privateConstructorUsedError;
   int? get productCount => throw _privateConstructorUsedError;
@@ -192,6 +193,7 @@ abstract class $EntityProductCopyWith<$Res> {
       {EnumCategoryConferenceChair productType,
       double price,
       int indexNumber,
+      String name,
       String picturePath,
       int? offerInPercent,
       int? productCount});
@@ -213,6 +215,7 @@ class _$EntityProductCopyWithImpl<$Res, $Val extends EntityProduct>
     Object? productType = null,
     Object? price = null,
     Object? indexNumber = null,
+    Object? name = null,
     Object? picturePath = null,
     Object? offerInPercent = freezed,
     Object? productCount = freezed,
@@ -230,6 +233,10 @@ class _$EntityProductCopyWithImpl<$Res, $Val extends EntityProduct>
           ? _value.indexNumber
           : indexNumber // ignore: cast_nullable_to_non_nullable
               as int,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
       picturePath: null == picturePath
           ? _value.picturePath
           : picturePath // ignore: cast_nullable_to_non_nullable
@@ -258,6 +265,7 @@ abstract class _$$EntityProductImplCopyWith<$Res>
       {EnumCategoryConferenceChair productType,
       double price,
       int indexNumber,
+      String name,
       String picturePath,
       int? offerInPercent,
       int? productCount});
@@ -277,6 +285,7 @@ class __$$EntityProductImplCopyWithImpl<$Res>
     Object? productType = null,
     Object? price = null,
     Object? indexNumber = null,
+    Object? name = null,
     Object? picturePath = null,
     Object? offerInPercent = freezed,
     Object? productCount = freezed,
@@ -294,6 +303,10 @@ class __$$EntityProductImplCopyWithImpl<$Res>
           ? _value.indexNumber
           : indexNumber // ignore: cast_nullable_to_non_nullable
               as int,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
       picturePath: null == picturePath
           ? _value.picturePath
           : picturePath // ignore: cast_nullable_to_non_nullable
@@ -317,6 +330,7 @@ class _$EntityProductImpl extends _EntityProduct {
       {required this.productType,
       required this.price,
       required this.indexNumber,
+      required this.name,
       required this.picturePath,
       this.offerInPercent,
       this.productCount})
@@ -329,6 +343,8 @@ class _$EntityProductImpl extends _EntityProduct {
   @override
   final int indexNumber;
   @override
+  final String name;
+  @override
   final String picturePath;
   @override
   final int? offerInPercent;
@@ -337,7 +353,7 @@ class _$EntityProductImpl extends _EntityProduct {
 
   @override
   String toString() {
-    return 'EntityProduct(productType: $productType, price: $price, indexNumber: $indexNumber, picturePath: $picturePath, offerInPercent: $offerInPercent, productCount: $productCount)';
+    return 'EntityProduct(productType: $productType, price: $price, indexNumber: $indexNumber, name: $name, picturePath: $picturePath, offerInPercent: $offerInPercent, productCount: $productCount)';
   }
 
   @override
@@ -350,6 +366,7 @@ class _$EntityProductImpl extends _EntityProduct {
             (identical(other.price, price) || other.price == price) &&
             (identical(other.indexNumber, indexNumber) ||
                 other.indexNumber == indexNumber) &&
+            (identical(other.name, name) || other.name == name) &&
             (identical(other.picturePath, picturePath) ||
                 other.picturePath == picturePath) &&
             (identical(other.offerInPercent, offerInPercent) ||
@@ -360,7 +377,7 @@ class _$EntityProductImpl extends _EntityProduct {
 
   @override
   int get hashCode => Object.hash(runtimeType, productType, price, indexNumber,
-      picturePath, offerInPercent, productCount);
+      name, picturePath, offerInPercent, productCount);
 
   @JsonKey(ignore: true)
   @override
@@ -374,6 +391,7 @@ abstract class _EntityProduct extends EntityProduct {
       {required final EnumCategoryConferenceChair productType,
       required final double price,
       required final int indexNumber,
+      required final String name,
       required final String picturePath,
       final int? offerInPercent,
       final int? productCount}) = _$EntityProductImpl;
@@ -385,6 +403,8 @@ abstract class _EntityProduct extends EntityProduct {
   double get price;
   @override
   int get indexNumber;
+  @override
+  String get name;
   @override
   String get picturePath;
   @override

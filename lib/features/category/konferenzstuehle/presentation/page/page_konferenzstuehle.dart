@@ -36,9 +36,11 @@ class _BlocBuilderConferenceChair extends StatelessWidget {
       builder: (context, state) {
         final listProducts = state?.listProduct.map((product) {
           return Product(
-              picturePath: product.picturePath,
-              productType: product.productType as EnumCategoryConferenceChair,
-              price: product.price);
+            picturePath: product.picturePath,
+            productType: product.productType as EnumCategoryConferenceChair,
+            price: product.price,
+            name: product.name,
+          );
         }).toList();
         return _Konferenzstuehle(listProducts: listProducts);
       },
@@ -103,11 +105,13 @@ class Product extends StatefulWidget {
     required this.picturePath,
     required this.productType,
     required this.price,
+    required this.name,
   });
 
   final double price;
   final String picturePath;
   final EnumCategoryConferenceChair productType;
+  final String name;
 
   @override
   State<Product> createState() => _ProductState();
@@ -119,6 +123,7 @@ class Product extends StatefulWidget {
     properties.add(
         EnumProperty<EnumCategoryConferenceChair>('productType', productType));
     properties.add(DoubleProperty('price', price));
+    properties.add(StringProperty('name', name));
   }
 }
 
@@ -278,8 +283,8 @@ class _ProductPicture extends StatelessWidget {
                   hoverColor: Colors.red,
                   onTap: () {
                     context.goNamed(
-                      '${AppGoRouter.konferenzstuehle.name}/${AppGoRouter.product.name}',
-                    );
+                        '${AppGoRouter.konferenzstuehle.name}/${AppGoRouter.product.name}',
+                        extra: widget.name);
                   },
                 ),
               ),

@@ -18,6 +18,7 @@ class EntityProduct with _$EntityProduct {
   const EntityProduct._();
 
   const factory EntityProduct({
+    required String name,
     required EnumCategoryOfficeChair productType,
     required double price,
     required int indexNumber,
