@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "723074710528",
+    "firebase_url": "https://appproduktebestellen-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "appproduktebestellen",
+    "storage_bucket": "appproduktebestellen.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:723074710528:android:39800dfcf1fd4b87886ce5",
+        "android_client_info": {
+          "package_name": "com.example.app_flutter_produkt_bestellen"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7Ot1z-ztfdOaWArD03RO27wfTXLt-GXY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

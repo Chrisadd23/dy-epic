@@ -10,7 +10,7 @@ import 'package:get_it/get_it.dart';
 
 final getIt = GetIt.instance;
 
-void setupMain() {
+void setUpMainDependencies() {
   //Features
   home_dependencies.setUp();
   category_dependencies.setUp();
