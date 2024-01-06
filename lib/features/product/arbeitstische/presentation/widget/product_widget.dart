@@ -4,7 +4,6 @@ import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_widgets/loading_widget.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/presentation/cubit/cubit_workingtable_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/presentation/cubit/state_workingtable.dart';
-import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/cubit_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/state_product.dart';
 import 'package:app_flutter_produkt_bestellen/gen/assets.gen.dart';
 import 'package:flutter/foundation.dart';
