@@ -5,7 +5,8 @@ import 'package:app_flutter_produkt_bestellen/features/product/share/presentatio
 import 'package:either_dart/either.dart';
 import 'package:flutter/cupertino.dart';
 
-class CubitOfficeChairProduct extends CubitProduct<CubitOfficeChairProduct> {
+class CubitOfficeChairProduct
+    extends CubitProduct<CubitOfficeChairProduct, StateOfficeChairProduct> {
   CubitOfficeChairProduct({required this.repositoryOfficeChairProduct});
 
   final RepositoryOfficeChairProduct repositoryOfficeChairProduct;

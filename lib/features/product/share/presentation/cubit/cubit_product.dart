@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/state_product.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-abstract class CubitProduct<T> extends Cubit<StateProduct> {
+abstract class CubitProduct<T, S> extends Cubit<StateProduct<S>> {
   CubitProduct() : super(const StateProduct.loading());
 
   Future<void> load({required String product}) async {}

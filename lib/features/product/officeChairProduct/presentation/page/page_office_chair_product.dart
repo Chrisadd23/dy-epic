@@ -29,6 +29,8 @@ class PageOfficeChairProduct extends StatelessWidget {
         providers: [
           BlocProvider<CubitProduct>.value(
               value: getIt<CubitOfficeChairProduct>()..load(product: product)),
+          BlocProvider<CubitOfficeChairProduct>.value(
+              value: getIt<CubitOfficeChairProduct>()),
         ],
         child: const _OfficeChairBlocBuilder(),
       ),
