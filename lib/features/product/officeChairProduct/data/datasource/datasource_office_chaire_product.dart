@@ -1,5 +1,6 @@
 import 'package:app_flutter_produkt_bestellen/core/error/failures.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/officeChairProduct/domain/entity/entity_office_chair_product.dart';
+import 'package:app_flutter_produkt_bestellen/gen/assets.gen.dart';
 import 'package:either_dart/either.dart';
 
 abstract class DataSourceOfficeChairProduct {
@@ -22,7 +23,7 @@ class DataSourceOfficeChairProductImplementation
 }
 
 final _dummyListProductConferenceChair = [
-  const EntityOfficeChairProduct(
+  EntityOfficeChairProduct(
       name: 'Xenon Net Bürodrehstuhl',
       attributes: [
         'Höhen- und Tiefenverstellbare Lumbalstütze'
@@ -34,5 +35,6 @@ final _dummyListProductConferenceChair = [
             'Gasfeder schwarz'
             'Bezugsfarbe schwarz'
       ],
-      price: 329.00)
+      price: 329.00,
+      picturePath: Assets.products.buerodrehstuehle.xenonNet.path)
 ];
