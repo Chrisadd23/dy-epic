@@ -1,7 +1,8 @@
-part of my_product_widget;
+import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
+import 'package:flutter/material.dart';
 
-class OrderProductWidget extends StatelessWidget {
-  const OrderProductWidget({
+class WidgetOrderProduct extends StatelessWidget {
+  const WidgetOrderProduct({
     super.key,
   });
 

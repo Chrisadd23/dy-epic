@@ -12,7 +12,7 @@ class CubitOfficeChairProduct
   final RepositoryOfficeChairProduct repositoryOfficeChairProduct;
 
   @override
-  Future<void> load({required String product}) async {
+  Future<void> load({required dynamic product}) async {
     await repositoryOfficeChairProduct
         .getOfficeChairProduct(product: product)
         .fold((failure) {}, (officeChair) {

@@ -5,6 +5,7 @@ import 'package:app_flutter_produkt_bestellen/core/fix_widgets/loading_widget.da
 import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/presentation/cubit/cubit_workingtable_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/presentation/cubit/state_workingtable.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/state_product.dart';
+import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/widget/widget_order_product.dart';
 import 'package:app_flutter_produkt_bestellen/gen/assets.gen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,6 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 
 part 'color_product_widget.dart';
 part 'counter_product_widget.dart';
-part 'order_product_widget.dart';
 part 'size_product_widget.dart';
 
 class ProductWidget extends HookWidget {
@@ -65,7 +65,7 @@ class ProductWidget extends HookWidget {
               ),
             ),
           ),
-          const OrderProductWidget()
+          const WidgetOrderProduct()
         ],
       ),
     );

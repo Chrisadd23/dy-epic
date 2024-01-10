@@ -1,5 +1,13 @@
+import 'package:app_flutter_produkt_bestellen/core/fix_widgets/loading_widget.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_page_widget.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/conferenceChairProduct/presentation/cubit/cubit_conference_chair_product.dart';
+import 'package:app_flutter_produkt_bestellen/features/product/conferenceChairProduct/presentation/cubit/state_conference_chair_product.dart';
+import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/cubit_product.dart';
+import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/state_product.dart';
+import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/widget/widget_order_product.dart';
+import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/widget/widget_picture_area.dart';
+import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/widget/widget_product_counter.dart';
+import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/widget/widget_product_title.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -14,10 +22,14 @@ class PageConferenceChairProduct extends StatelessWidget {
   Widget build(BuildContext context) {
     return GlobalScaffold(
       appBarContext: context,
-      body: BlocProvider<CubitConferenceChairProduct>(
-          create: (BuildContext context) =>
-              getIt<CubitConferenceChairProduct>()..load(product: product),
-          child: const SizedBox.shrink()),
+      body: MultiBlocProvider(providers: [
+        BlocProvider<CubitProduct>.value(
+          value: getIt<CubitConferenceChairProduct>()..load(product: product),
+        ),
+        BlocProvider<CubitConferenceChairProduct>.value(
+          value: getIt<CubitConferenceChairProduct>(),
+        ),
+      ], child: const _ConferenceChairBlocBuilder()),
     );
   }
 
@@ -25,5 +37,73 @@ class PageConferenceChairProduct extends StatelessWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties.add(StringProperty('product', product));
+  }
+}
+
+class _ConferenceChairBlocBuilder extends StatelessWidget {
+  const _ConferenceChairBlocBuilder();
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<CubitProduct, StateProduct>(
+      builder: (context, state) => state.maybeMap(
+        orElse: () => const LoadingWidget(
+          firstWidth: 110,
+          secondWidth: 60,
+        ),
+        success: (_) => SizedBox(
+          height: MediaQuery.of(context).size.height,
+          width: double.infinity,
+          child: const _ProductWidget(),
+        ),
+      ),
+    );
+  }
+}
+
+class _ProductWidget extends StatelessWidget {
+  const _ProductWidget();
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Align(
+          alignment: Alignment.topCenter,
+          child: SizedBox(
+            height: MediaQuery.of(context).size.height * 0.75,
+            child: const SingleChildScrollView(
+              physics: ClampingScrollPhysics(),
+              child: Column(
+                children: [
+                  WidgetProductTitle(),
+                  _ProductPicture(),
+                  WidgetProductCounter(),
+                ],
+              ),
+            ),
+          ),
+        ),
+        const WidgetOrderProduct()
+      ],
+    );
+  }
+}
+
+class _ProductPicture extends StatelessWidget {
+  const _ProductPicture();
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocSelector<CubitProduct, StateProduct, String?>(
+        selector: (state) => state.maybeMap(
+            orElse: () {
+              return;
+            },
+            success: (product) => product.selectedCharacteristics[
+                EnumConferenceChairProduct.picturePath]),
+        builder: (context, picturePath) {
+          return WidgetPictureArea(picturePath: picturePath);
+        });
   }
 }

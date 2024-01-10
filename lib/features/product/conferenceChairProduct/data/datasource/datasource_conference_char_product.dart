@@ -1,5 +1,6 @@
 import 'package:app_flutter_produkt_bestellen/core/error/failures.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/conferenceChairProduct/domain/entity/entity_conference_chair_product.dart';
+import 'package:app_flutter_produkt_bestellen/gen/assets.gen.dart';
 import 'package:either_dart/either.dart';
 
 abstract class DataSourceConferenceChairProduct {
@@ -22,7 +23,7 @@ class DataSourceConferenceChairProductImplementation
 }
 
 final _dummyListProductConferenceChair = [
-  const EntityConferenceChairProduct(
+  EntityConferenceChairProduct(
       name: 'CAMIRO Freischwinger Netz',
       attributes: [
         'Rücken Netz - Sitz Polster'
@@ -33,5 +34,7 @@ final _dummyListProductConferenceChair = [
             'Gestell Ausführung: stapelbar verchromt'
             'Filzgleiter für harte Böden'
       ],
-      price: 329.00)
+      price: 329.00,
+      picturePath:
+          Assets.products.konferenzstuehle.camiroFreischwingerNetz.path)
 ];

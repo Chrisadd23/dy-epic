@@ -19,6 +19,7 @@ mixin _$EntityConferenceChairProduct {
   String get name => throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
   List<String> get attributes => throw _privateConstructorUsedError;
+  String get picturePath => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EntityConferenceChairProductCopyWith<EntityConferenceChairProduct>
@@ -33,7 +34,8 @@ abstract class $EntityConferenceChairProductCopyWith<$Res> {
       _$EntityConferenceChairProductCopyWithImpl<$Res,
           EntityConferenceChairProduct>;
   @useResult
-  $Res call({String name, double price, List<String> attributes});
+  $Res call(
+      {String name, double price, List<String> attributes, String picturePath});
 }
 
 /// @nodoc
@@ -53,6 +55,7 @@ class _$EntityConferenceChairProductCopyWithImpl<$Res,
     Object? name = null,
     Object? price = null,
     Object? attributes = null,
+    Object? picturePath = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -67,6 +70,10 @@ class _$EntityConferenceChairProductCopyWithImpl<$Res,
           ? _value.attributes
           : attributes // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      picturePath: null == picturePath
+          ? _value.picturePath
+          : picturePath // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -80,7 +87,8 @@ abstract class _$$EntityConferenceChairProductImplCopyWith<$Res>
       __$$EntityConferenceChairProductImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, double price, List<String> attributes});
+  $Res call(
+      {String name, double price, List<String> attributes, String picturePath});
 }
 
 /// @nodoc
@@ -99,6 +107,7 @@ class __$$EntityConferenceChairProductImplCopyWithImpl<$Res>
     Object? name = null,
     Object? price = null,
     Object? attributes = null,
+    Object? picturePath = null,
   }) {
     return _then(_$EntityConferenceChairProductImpl(
       name: null == name
@@ -113,6 +122,10 @@ class __$$EntityConferenceChairProductImplCopyWithImpl<$Res>
           ? _value._attributes
           : attributes // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      picturePath: null == picturePath
+          ? _value.picturePath
+          : picturePath // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -124,7 +137,8 @@ class _$EntityConferenceChairProductImpl
   const _$EntityConferenceChairProductImpl(
       {required this.name,
       required this.price,
-      required final List<String> attributes})
+      required final List<String> attributes,
+      required this.picturePath})
       : _attributes = attributes;
 
   @override
@@ -140,8 +154,11 @@ class _$EntityConferenceChairProductImpl
   }
 
   @override
+  final String picturePath;
+
+  @override
   String toString() {
-    return 'EntityConferenceChairProduct(name: $name, price: $price, attributes: $attributes)';
+    return 'EntityConferenceChairProduct(name: $name, price: $price, attributes: $attributes, picturePath: $picturePath)';
   }
 
   @override
@@ -152,12 +169,14 @@ class _$EntityConferenceChairProductImpl
             (identical(other.name, name) || other.name == name) &&
             (identical(other.price, price) || other.price == price) &&
             const DeepCollectionEquality()
-                .equals(other._attributes, _attributes));
+                .equals(other._attributes, _attributes) &&
+            (identical(other.picturePath, picturePath) ||
+                other.picturePath == picturePath));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, name, price,
-      const DeepCollectionEquality().hash(_attributes));
+      const DeepCollectionEquality().hash(_attributes), picturePath);
 
   @JsonKey(ignore: true)
   @override
@@ -171,10 +190,10 @@ class _$EntityConferenceChairProductImpl
 abstract class _EntityConferenceChairProduct
     implements EntityConferenceChairProduct {
   const factory _EntityConferenceChairProduct(
-          {required final String name,
-          required final double price,
-          required final List<String> attributes}) =
-      _$EntityConferenceChairProductImpl;
+      {required final String name,
+      required final double price,
+      required final List<String> attributes,
+      required final String picturePath}) = _$EntityConferenceChairProductImpl;
 
   @override
   String get name;
@@ -182,6 +201,8 @@ abstract class _EntityConferenceChairProduct
   double get price;
   @override
   List<String> get attributes;
+  @override
+  String get picturePath;
   @override
   @JsonKey(ignore: true)
   _$$EntityConferenceChairProductImplCopyWith<
