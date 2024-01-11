@@ -23,6 +23,7 @@ mixin _$StateProduct<T> {
             String hashKey,
             String category,
             int productOrderCount,
+            double price,
             T? product,
             Map<Enum, dynamic> selectedCharacteristics)
         success,
@@ -31,16 +32,26 @@ mixin _$StateProduct<T> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(String hashKey, String category, int productOrderCount,
-            T? product, Map<Enum, dynamic> selectedCharacteristics)?
+    TResult? Function(
+            String hashKey,
+            String category,
+            int productOrderCount,
+            double price,
+            T? product,
+            Map<Enum, dynamic> selectedCharacteristics)?
         success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(String hashKey, String category, int productOrderCount,
-            T? product, Map<Enum, dynamic> selectedCharacteristics)?
+    TResult Function(
+            String hashKey,
+            String category,
+            int productOrderCount,
+            double price,
+            T? product,
+            Map<Enum, dynamic> selectedCharacteristics)?
         success,
     required TResult orElse(),
   }) =>
@@ -127,6 +138,7 @@ class _$LoadingImpl<T> implements _Loading<T> {
             String hashKey,
             String category,
             int productOrderCount,
+            double price,
             T? product,
             Map<Enum, dynamic> selectedCharacteristics)
         success,
@@ -138,8 +150,13 @@ class _$LoadingImpl<T> implements _Loading<T> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(String hashKey, String category, int productOrderCount,
-            T? product, Map<Enum, dynamic> selectedCharacteristics)?
+    TResult? Function(
+            String hashKey,
+            String category,
+            int productOrderCount,
+            double price,
+            T? product,
+            Map<Enum, dynamic> selectedCharacteristics)?
         success,
   }) {
     return loading?.call();
@@ -149,8 +166,13 @@ class _$LoadingImpl<T> implements _Loading<T> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(String hashKey, String category, int productOrderCount,
-            T? product, Map<Enum, dynamic> selectedCharacteristics)?
+    TResult Function(
+            String hashKey,
+            String category,
+            int productOrderCount,
+            double price,
+            T? product,
+            Map<Enum, dynamic> selectedCharacteristics)?
         success,
     required TResult orElse(),
   }) {
@@ -206,6 +228,7 @@ abstract class _$$SuccessImplCopyWith<T, $Res> {
       {String hashKey,
       String category,
       int productOrderCount,
+      double price,
       T? product,
       Map<Enum, dynamic> selectedCharacteristics});
 }
@@ -224,6 +247,7 @@ class __$$SuccessImplCopyWithImpl<T, $Res>
     Object? hashKey = null,
     Object? category = null,
     Object? productOrderCount = null,
+    Object? price = null,
     Object? product = freezed,
     Object? selectedCharacteristics = null,
   }) {
@@ -240,6 +264,10 @@ class __$$SuccessImplCopyWithImpl<T, $Res>
           ? _value.productOrderCount
           : productOrderCount // ignore: cast_nullable_to_non_nullable
               as int,
+      price: null == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as double,
       product: freezed == product
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
@@ -259,7 +287,8 @@ class _$SuccessImpl<T> implements _Success<T> {
       {this.hashKey = '',
       this.category = '',
       this.productOrderCount = 0,
-      this.product = null,
+      this.price = 0.00,
+      this.product,
       final Map<Enum, dynamic> selectedCharacteristics = const {}})
       : _selectedCharacteristics = selectedCharacteristics;
 
@@ -274,6 +303,8 @@ class _$SuccessImpl<T> implements _Success<T> {
   final int productOrderCount;
   @override
   @JsonKey()
+  final double price;
+  @override
   final T? product;
   final Map<Enum, dynamic> _selectedCharacteristics;
   @override
@@ -287,7 +318,7 @@ class _$SuccessImpl<T> implements _Success<T> {
 
   @override
   String toString() {
-    return 'StateProduct<$T>.success(hashKey: $hashKey, category: $category, productOrderCount: $productOrderCount, product: $product, selectedCharacteristics: $selectedCharacteristics)';
+    return 'StateProduct<$T>.success(hashKey: $hashKey, category: $category, productOrderCount: $productOrderCount, price: $price, product: $product, selectedCharacteristics: $selectedCharacteristics)';
   }
 
   @override
@@ -300,6 +331,7 @@ class _$SuccessImpl<T> implements _Success<T> {
                 other.category == category) &&
             (identical(other.productOrderCount, productOrderCount) ||
                 other.productOrderCount == productOrderCount) &&
+            (identical(other.price, price) || other.price == price) &&
             const DeepCollectionEquality().equals(other.product, product) &&
             const DeepCollectionEquality().equals(
                 other._selectedCharacteristics, _selectedCharacteristics));
@@ -311,6 +343,7 @@ class _$SuccessImpl<T> implements _Success<T> {
       hashKey,
       category,
       productOrderCount,
+      price,
       const DeepCollectionEquality().hash(product),
       const DeepCollectionEquality().hash(_selectedCharacteristics));
 
@@ -328,37 +361,48 @@ class _$SuccessImpl<T> implements _Success<T> {
             String hashKey,
             String category,
             int productOrderCount,
+            double price,
             T? product,
             Map<Enum, dynamic> selectedCharacteristics)
         success,
   }) {
-    return success(
-        hashKey, category, productOrderCount, product, selectedCharacteristics);
+    return success(hashKey, category, productOrderCount, price, product,
+        selectedCharacteristics);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(String hashKey, String category, int productOrderCount,
-            T? product, Map<Enum, dynamic> selectedCharacteristics)?
+    TResult? Function(
+            String hashKey,
+            String category,
+            int productOrderCount,
+            double price,
+            T? product,
+            Map<Enum, dynamic> selectedCharacteristics)?
         success,
   }) {
-    return success?.call(
-        hashKey, category, productOrderCount, product, selectedCharacteristics);
+    return success?.call(hashKey, category, productOrderCount, price, product,
+        selectedCharacteristics);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(String hashKey, String category, int productOrderCount,
-            T? product, Map<Enum, dynamic> selectedCharacteristics)?
+    TResult Function(
+            String hashKey,
+            String category,
+            int productOrderCount,
+            double price,
+            T? product,
+            Map<Enum, dynamic> selectedCharacteristics)?
         success,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(hashKey, category, productOrderCount, product,
+      return success(hashKey, category, productOrderCount, price, product,
           selectedCharacteristics);
     }
     return orElse();
@@ -401,12 +445,14 @@ abstract class _Success<T> implements StateProduct<T> {
       {final String hashKey,
       final String category,
       final int productOrderCount,
+      final double price,
       final T? product,
       final Map<Enum, dynamic> selectedCharacteristics}) = _$SuccessImpl<T>;
 
   String get hashKey;
   String get category;
   int get productOrderCount;
+  double get price;
   T? get product;
   Map<Enum, dynamic> get selectedCharacteristics;
   @JsonKey(ignore: true)

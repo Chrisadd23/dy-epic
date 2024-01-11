@@ -13,7 +13,9 @@ class WidgetProductTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.015),
+      padding: EdgeInsets.only(
+          top: MediaQuery.of(context).size.height * 0.015,
+          bottom: MediaQuery.sizeOf(context).height * 0.015),
       child: Container(
         height: MediaQuery.sizeOf(context).height * 0.05,
         width: MediaQuery.sizeOf(context).width * 0.5,

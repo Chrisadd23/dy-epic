@@ -24,7 +24,8 @@ class CubitConferenceChairProduct extends CubitProduct<
             product: StateConferenceChairProduct(
                 name: conferenceChaire.name,
                 attributes: conferenceChaire.attributes),
-            selectedCharacteristics: characteristics),
+            selectedCharacteristics: characteristics,
+            price: conferenceChaire.price),
       );
     });
   }

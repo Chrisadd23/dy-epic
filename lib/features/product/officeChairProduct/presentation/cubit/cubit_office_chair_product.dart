@@ -23,10 +23,10 @@ class CubitOfficeChairProduct
       };
       emit(
         StateProduct.success(
-          product: StateOfficeChairProduct(
-              name: officeChair.name, attributes: officeChair.attributes),
-          selectedCharacteristics: characteristics,
-        ),
+            product: StateOfficeChairProduct(
+                name: officeChair.name, attributes: officeChair.attributes),
+            selectedCharacteristics: characteristics,
+            price: officeChair.price),
       );
     });
   }

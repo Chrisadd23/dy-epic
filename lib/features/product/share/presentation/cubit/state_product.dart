@@ -10,7 +10,8 @@ class StateProduct<T> with _$StateProduct<T> {
     @Default('') String hashKey,
     @Default('') String category,
     @Default(0) int productOrderCount,
-    @Default(null) T? product,
+    @Default(0.00) double price,
+    T? product,
     @Default({}) Map<Enum, dynamic> selectedCharacteristics,
   }) = _Success;
 }

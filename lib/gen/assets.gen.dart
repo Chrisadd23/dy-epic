@@ -124,6 +124,12 @@ class $AssetsAppComponentsSvgGen {
   /// File path: assets/appComponents/svg/char2.svg
   String get char2 => 'assets/appComponents/svg/char2.svg';
 
+  /// File path: assets/appComponents/svg/icon _minus.svg
+  String get iconMinus => 'assets/appComponents/svg/icon _minus.svg';
+
+  /// File path: assets/appComponents/svg/icon _plus.svg
+  String get iconPlus => 'assets/appComponents/svg/icon _plus.svg';
+
   /// File path: assets/appComponents/svg/icon_menu.svg
   String get iconMenu => 'assets/appComponents/svg/icon_menu.svg';
 
@@ -131,8 +137,17 @@ class $AssetsAppComponentsSvgGen {
   String get returnIcon => 'assets/appComponents/svg/return_icon.svg';
 
   /// List of all assets
-  List<String> get values =>
-      [chair1, chair3, chair4, chairHochlehner, char2, iconMenu, returnIcon];
+  List<String> get values => [
+        chair1,
+        chair3,
+        chair4,
+        chairHochlehner,
+        char2,
+        iconMinus,
+        iconPlus,
+        iconMenu,
+        returnIcon
+      ];
 }
 
 class $AssetsProductsArbeitstischeGen {
