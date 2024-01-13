@@ -9,6 +9,7 @@ import 'package:app_flutter_produkt_bestellen/features/product/share/presentatio
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/widget/widget_order_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/widget/widget_picture_area.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/widget/widget_product_counter.dart';
+import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/widget/widget_product_info.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/widget/widget_product_title.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/foundation.dart';
@@ -98,38 +99,6 @@ class _ProductWidget extends StatelessWidget {
         const WidgetOrderProduct()
       ],
     );
-  }
-}
-
-class WidgetProductInfo extends StatelessWidget {
-  const WidgetProductInfo({super.key, required this.productInfo});
-
-  final List<String>? productInfo;
-
-  @override
-  Widget build(BuildContext context) {
-    return productInfo == null || productInfo!.isEmpty
-        ? const SizedBox.shrink()
-        : Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: MediaQuery.sizeOf(context).width * 0.05),
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                border: Border.all(),
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Column(
-                children: productInfo!.map((info) => Text(info)).toList(),
-              ),
-            ),
-          );
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(IterableProperty<String>('productInfo', productInfo));
   }
 }
 

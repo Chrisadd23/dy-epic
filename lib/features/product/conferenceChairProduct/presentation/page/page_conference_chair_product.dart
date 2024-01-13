@@ -7,6 +7,7 @@ import 'package:app_flutter_produkt_bestellen/features/product/share/presentatio
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/widget/widget_order_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/widget/widget_picture_area.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/widget/widget_product_counter.dart';
+import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/widget/widget_product_info.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/widget/widget_product_title.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/foundation.dart';
@@ -72,13 +73,23 @@ class _ProductWidget extends StatelessWidget {
           alignment: Alignment.topCenter,
           child: SizedBox(
             height: MediaQuery.of(context).size.height * 0.75,
-            child: const SingleChildScrollView(
-              physics: ClampingScrollPhysics(),
+            child: SingleChildScrollView(
+              physics: const ClampingScrollPhysics(),
               child: Column(
                 children: [
-                  WidgetProductTitle(),
-                  _ProductPicture(),
-                  WidgetProductCounter(),
+                  const WidgetProductTitle(),
+                  const _ProductPicture(),
+                  const WidgetProductCounter(),
+                  BlocSelector<CubitProduct, StateProduct, List<String>?>(
+                      selector: (state) => state.mapOrNull(
+                          success: (successState) =>
+                              successState.product?.attributes),
+                      builder: (context, productAttributes) {
+                        debugPrint("productAttributes => $productAttributes");
+                        return WidgetProductInfo(
+                          productInfo: productAttributes,
+                        );
+                      }),
                 ],
               ),
             ),
