@@ -28,8 +28,6 @@ class PageOfficeChairProduct extends StatelessWidget {
         providers: [
           BlocProvider<CubitProduct>.value(
               value: getIt<CubitOfficeChairProduct>()..load(product: product)),
-          BlocProvider<CubitOfficeChairProduct>.value(
-              value: getIt<CubitOfficeChairProduct>()),
         ],
         child: const _OfficeChairBlocBuilder(),
       ),
@@ -75,13 +73,23 @@ class _ProductWidget extends StatelessWidget {
           alignment: Alignment.topCenter,
           child: SizedBox(
             height: MediaQuery.of(context).size.height * 0.75,
-            child: const SingleChildScrollView(
-              physics: ClampingScrollPhysics(),
+            child: SingleChildScrollView(
+              physics: const ClampingScrollPhysics(),
               child: Column(
                 children: [
-                  WidgetProductTitle(),
-                  _ProductPicture(),
-                  WidgetProductCounter(),
+                  const WidgetProductTitle(),
+                  const _ProductPicture(),
+                  const WidgetProductCounter(),
+                  BlocSelector<CubitProduct, StateProduct, List<String>?>(
+                      selector: (state) => state.mapOrNull(
+                          success: (successState) =>
+                              successState.product?.attributes),
+                      builder: (context, productAttributes) {
+                        debugPrint("productAttributes => $productAttributes");
+                        return WidgetProductInfo(
+                          productInfo: productAttributes,
+                        );
+                      }),
                 ],
               ),
             ),
@@ -90,6 +98,38 @@ class _ProductWidget extends StatelessWidget {
         const WidgetOrderProduct()
       ],
     );
+  }
+}
+
+class WidgetProductInfo extends StatelessWidget {
+  const WidgetProductInfo({super.key, required this.productInfo});
+
+  final List<String>? productInfo;
+
+  @override
+  Widget build(BuildContext context) {
+    return productInfo == null || productInfo!.isEmpty
+        ? const SizedBox.shrink()
+        : Padding(
+            padding: EdgeInsets.symmetric(
+                horizontal: MediaQuery.sizeOf(context).width * 0.05),
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Column(
+                children: productInfo!.map((info) => Text(info)).toList(),
+              ),
+            ),
+          );
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(IterableProperty<String>('productInfo', productInfo));
   }
 }
 

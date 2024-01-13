@@ -21,6 +21,7 @@ class CubitOfficeChairProduct
         EnumOfficeChairProduct.name: officeChair.name,
         EnumOfficeChairProduct.picturePath: officeChair.picturePath,
       };
+      debugPrint("productAttributes => ${officeChair.attributes}");
       emit(
         StateProduct.success(
             product: StateOfficeChairProduct(
