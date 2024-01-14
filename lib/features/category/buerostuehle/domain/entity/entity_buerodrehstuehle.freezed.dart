@@ -170,6 +170,7 @@ abstract class _EntityBuerodrehstuehle extends EntityBuerodrehstuehle {
 
 /// @nodoc
 mixin _$EntityProduct {
+  String get productNumber => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   EnumCategoryOfficeChair get productType => throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
@@ -190,7 +191,8 @@ abstract class $EntityProductCopyWith<$Res> {
       _$EntityProductCopyWithImpl<$Res, EntityProduct>;
   @useResult
   $Res call(
-      {String name,
+      {String productNumber,
+      String name,
       EnumCategoryOfficeChair productType,
       double price,
       int indexNumber,
@@ -212,6 +214,7 @@ class _$EntityProductCopyWithImpl<$Res, $Val extends EntityProduct>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? productNumber = null,
     Object? name = null,
     Object? productType = null,
     Object? price = null,
@@ -221,6 +224,10 @@ class _$EntityProductCopyWithImpl<$Res, $Val extends EntityProduct>
     Object? productCount = freezed,
   }) {
     return _then(_value.copyWith(
+      productNumber: null == productNumber
+          ? _value.productNumber
+          : productNumber // ignore: cast_nullable_to_non_nullable
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -262,7 +269,8 @@ abstract class _$$EntityProductImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String name,
+      {String productNumber,
+      String name,
       EnumCategoryOfficeChair productType,
       double price,
       int indexNumber,
@@ -282,6 +290,7 @@ class __$$EntityProductImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? productNumber = null,
     Object? name = null,
     Object? productType = null,
     Object? price = null,
@@ -291,6 +300,10 @@ class __$$EntityProductImplCopyWithImpl<$Res>
     Object? productCount = freezed,
   }) {
     return _then(_$EntityProductImpl(
+      productNumber: null == productNumber
+          ? _value.productNumber
+          : productNumber // ignore: cast_nullable_to_non_nullable
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -327,7 +340,8 @@ class __$$EntityProductImplCopyWithImpl<$Res>
 
 class _$EntityProductImpl extends _EntityProduct {
   const _$EntityProductImpl(
-      {required this.name,
+      {required this.productNumber,
+      required this.name,
       required this.productType,
       required this.price,
       required this.indexNumber,
@@ -336,6 +350,8 @@ class _$EntityProductImpl extends _EntityProduct {
       this.productCount})
       : super._();
 
+  @override
+  final String productNumber;
   @override
   final String name;
   @override
@@ -353,7 +369,7 @@ class _$EntityProductImpl extends _EntityProduct {
 
   @override
   String toString() {
-    return 'EntityProduct(name: $name, productType: $productType, price: $price, indexNumber: $indexNumber, picturePath: $picturePath, offerInPercent: $offerInPercent, productCount: $productCount)';
+    return 'EntityProduct(productNumber: $productNumber, name: $name, productType: $productType, price: $price, indexNumber: $indexNumber, picturePath: $picturePath, offerInPercent: $offerInPercent, productCount: $productCount)';
   }
 
   @override
@@ -361,6 +377,8 @@ class _$EntityProductImpl extends _EntityProduct {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EntityProductImpl &&
+            (identical(other.productNumber, productNumber) ||
+                other.productNumber == productNumber) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.productType, productType) ||
                 other.productType == productType) &&
@@ -376,8 +394,8 @@ class _$EntityProductImpl extends _EntityProduct {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, productType, price,
-      indexNumber, picturePath, offerInPercent, productCount);
+  int get hashCode => Object.hash(runtimeType, productNumber, name, productType,
+      price, indexNumber, picturePath, offerInPercent, productCount);
 
   @JsonKey(ignore: true)
   @override
@@ -388,7 +406,8 @@ class _$EntityProductImpl extends _EntityProduct {
 
 abstract class _EntityProduct extends EntityProduct {
   const factory _EntityProduct(
-      {required final String name,
+      {required final String productNumber,
+      required final String name,
       required final EnumCategoryOfficeChair productType,
       required final double price,
       required final int indexNumber,
@@ -397,6 +416,8 @@ abstract class _EntityProduct extends EntityProduct {
       final int? productCount}) = _$EntityProductImpl;
   const _EntityProduct._() : super._();
 
+  @override
+  String get productNumber;
   @override
   String get name;
   @override

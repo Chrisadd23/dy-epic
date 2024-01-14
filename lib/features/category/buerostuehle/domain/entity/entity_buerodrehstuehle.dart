@@ -2,7 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'entity_buerodrehstuehle.freezed.dart';
 
-enum EnumCategoryOfficeChair { xenon, kyra, lo, camiro }
+enum EnumCategoryOfficeChair { xenon, kyra, lo, camiro, none }
 
 @freezed
 abstract class EntityBuerodrehstuehle with _$EntityBuerodrehstuehle {
@@ -18,6 +18,7 @@ class EntityProduct with _$EntityProduct {
   const EntityProduct._();
 
   const factory EntityProduct({
+    required String productNumber,
     required String name,
     required EnumCategoryOfficeChair productType,
     required double price,
