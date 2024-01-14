@@ -34,7 +34,23 @@ class WidgetProductInfo extends StatelessWidget {
                   ...productInfo!.map((info) => Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 15.0, vertical: 5),
-                        child: FittedBox(fit: BoxFit.fill, child: Text(info)),
+                        child: FittedBox(
+                            fit: BoxFit.fill,
+                            child: Row(
+                              children: [
+                                Container(
+                                  height: 5,
+                                  width: 5,
+                                  decoration: const BoxDecoration(
+                                      color: Colors.black,
+                                      shape: BoxShape.circle),
+                                ),
+                                const SizedBox(
+                                  width: 5,
+                                ),
+                                Text(info),
+                              ],
+                            )),
                       ))
                 ],
               ),
