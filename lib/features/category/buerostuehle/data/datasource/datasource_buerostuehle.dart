@@ -1,7 +1,6 @@
 import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
 import 'package:app_flutter_produkt_bestellen/core/error/failures.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/buerostuehle/domain/entity/entity_buerodrehstuehle.dart';
-import 'package:app_flutter_produkt_bestellen/gen/assets.gen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:either_dart/either.dart';
 import 'package:flutter/material.dart';
@@ -67,6 +66,7 @@ class DataSourceBuerostuehleImplementation extends DataSourceBuerostuehle {
     }
   }
 }
+/*
 
 final _listProducthochlehner = [
   EntityBuerodrehstuehle(categoryName: 'Bürodrehstühle', listProduct: [
@@ -112,3 +112,4 @@ final _listProductSortiment = [
         productNumber: ''),
   ])
 ];
+*/
