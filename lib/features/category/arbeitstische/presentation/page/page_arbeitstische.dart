@@ -2,6 +2,8 @@ import 'dart:developer';
 
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
+import 'package:app_flutter_produkt_bestellen/core/fix_widgets/failure_widget.dart';
+import 'package:app_flutter_produkt_bestellen/core/fix_widgets/loading_widget.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_page_widget.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/list_wheel_scroll_view_x.dart';
 import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
@@ -30,18 +32,21 @@ class _WorkTables extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<CubitWorkTables, StateCategory, ProductCategory?>(
-      selector: (state) => state.productCategory,
-      builder: (context, state) {
-        final listProducts = state?.listProduct.map((product) {
-          return Product(
-            picturePath: product.picturePath,
-            productType: product.productType as EnumCategoryWorkingTable,
-          );
-        }).toList();
-        return ProductListWheel(listProducts: listProducts);
-      },
-    );
+    return BlocBuilder<CubitWorkTables, StateCategory>(
+        builder: (context, state) => state.map(
+            loading: (_) => const LoadingWidget(),
+            failure: (failure) =>
+                FailureWidget(failure: failure.failure.toString()),
+            success: (successState) {
+              final listProducts =
+                  successState.productCategory?.listProduct.map((product) {
+                return Product(
+                  picturePath: product.picturePath,
+                  productType: product.productType as EnumCategoryWorkingTable,
+                );
+              }).toList();
+              return ProductListWheel(listProducts: listProducts);
+            }));
   }
 }
 

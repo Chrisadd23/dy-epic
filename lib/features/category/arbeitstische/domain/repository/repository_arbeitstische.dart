@@ -3,5 +3,5 @@ import 'package:app_flutter_produkt_bestellen/features/category/arbeitstische/do
 import 'package:either_dart/either.dart';
 
 abstract class RepositoryArbeitstische {
-  Future<Either<Failure, List<EntityArbeitstische>>> getArbeitstische();
+  Future<Either<Failure, EntityArbeitstische>> getArbeitstische();
 }

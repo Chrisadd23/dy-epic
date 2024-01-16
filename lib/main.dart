@@ -1,3 +1,4 @@
+import 'package:app_flutter_produkt_bestellen/core/firebase/firebase_configuration.dart';
 import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
 import 'package:app_flutter_produkt_bestellen/firebase_options.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
@@ -9,6 +10,7 @@ abstract class MainConfiguration {
         await Firebase.initializeApp(
           options: DefaultFirebaseOptions.currentPlatform,
         );
+        FirebaseConfiguration.initFirebaseStorage();
         //SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
         setUpMainDependencies();
         runApp(const MyApp());

@@ -1,15 +1,22 @@
+import 'dart:typed_data';
+
+import 'package:app_flutter_produkt_bestellen/core/error/failures.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'state_category_generic.freezed.dart';
 
 @freezed
-abstract class StateCategory with _$StateCategory {
+class StateCategory with _$StateCategory {
   const StateCategory._();
 
-  const factory StateCategory({
+  const factory StateCategory.loading() = _Loading;
+
+  const factory StateCategory.success({
     ChoosenDateTime? dateTime,
     ProductCategory? productCategory,
-  }) = _StateCategory;
+  }) = _Success;
+
+  const factory StateCategory.failure({required Failure failure}) = _Failure;
 }
 
 @freezed
@@ -40,6 +47,7 @@ class Product with _$Product {
     required Enum productType,
     required double price,
     required String picturePath,
+    Uint8List? pictureByte,
     int? offerInPercent,
     int? productCount,
   }) = _Product;

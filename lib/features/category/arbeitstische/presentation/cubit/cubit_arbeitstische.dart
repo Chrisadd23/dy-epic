@@ -5,29 +5,27 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CubitWorkTables extends Cubit<StateCategory> {
   CubitWorkTables({required this.repositoryArbeitstische})
-      : super(const StateCategory());
+      : super(const StateCategory.loading());
 
   final RepositoryArbeitstische repositoryArbeitstische;
 
   Future<void> load() async {
+    if (state != const StateCategory.loading()) {
+      emit(const StateCategory.loading());
+    }
     await repositoryArbeitstische.getArbeitstische().fold((failure) {},
         (listArbeitsTische) {
-      final products = listArbeitsTische
-          .map((arbeitsTische) => {
-                arbeitsTische.categoryName: arbeitsTische.listProduct
-                    .map((arbeitstisch) => Product(
-                        productType: arbeitstisch.productType,
-                        price: arbeitstisch.price,
-                        picturePath: arbeitstisch.picturePath,
-                        name: arbeitstisch.name))
-                    .toList()
-              })
-          .toList();
+      final productCategory = ProductCategory(
+          categoryName: listArbeitsTische.categoryName,
+          listProduct: listArbeitsTische.listProduct
+              .map((arbeitstisch) => Product(
+                  productType: arbeitstisch.productType,
+                  price: arbeitstisch.price,
+                  picturePath: arbeitstisch.picturePath,
+                  name: arbeitstisch.name))
+              .toList());
 
-      emit(state.copyWith(
-          productCategory: ProductCategory(
-              listProduct: products[0].values.first,
-              categoryName: products[0].keys.first)));
+      emit(StateCategory.success(productCategory: productCategory));
     });
   }
 }

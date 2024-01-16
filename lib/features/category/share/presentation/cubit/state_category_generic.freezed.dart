@@ -16,11 +16,55 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$StateCategory {
-  ChoosenDateTime? get dateTime => throw _privateConstructorUsedError;
-  ProductCategory? get productCategory => throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $StateCategoryCopyWith<StateCategory> get copyWith =>
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(
+            ChoosenDateTime? dateTime, ProductCategory? productCategory)
+        success,
+    required TResult Function(Failure failure) failure,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(
+            ChoosenDateTime? dateTime, ProductCategory? productCategory)?
+        success,
+    TResult? Function(Failure failure)? failure,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(
+            ChoosenDateTime? dateTime, ProductCategory? productCategory)?
+        success,
+    TResult Function(Failure failure)? failure,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Failure value) failure,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Failure value)? failure,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Failure value)? failure,
+    required TResult orElse(),
+  }) =>
       throw _privateConstructorUsedError;
 }
 
@@ -29,11 +73,6 @@ abstract class $StateCategoryCopyWith<$Res> {
   factory $StateCategoryCopyWith(
           StateCategory value, $Res Function(StateCategory) then) =
       _$StateCategoryCopyWithImpl<$Res, StateCategory>;
-  @useResult
-  $Res call({ChoosenDateTime? dateTime, ProductCategory? productCategory});
-
-  $ChoosenDateTimeCopyWith<$Res>? get dateTime;
-  $ProductCategoryCopyWith<$Res>? get productCategory;
 }
 
 /// @nodoc
@@ -45,6 +84,142 @@ class _$StateCategoryCopyWithImpl<$Res, $Val extends StateCategory>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$StateCategoryCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LoadingImpl extends _Loading {
+  const _$LoadingImpl() : super._();
+
+  @override
+  String toString() {
+    return 'StateCategory.loading()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(
+            ChoosenDateTime? dateTime, ProductCategory? productCategory)
+        success,
+    required TResult Function(Failure failure) failure,
+  }) {
+    return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(
+            ChoosenDateTime? dateTime, ProductCategory? productCategory)?
+        success,
+    TResult? Function(Failure failure)? failure,
+  }) {
+    return loading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(
+            ChoosenDateTime? dateTime, ProductCategory? productCategory)?
+        success,
+    TResult Function(Failure failure)? failure,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Failure value) failure,
+  }) {
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Failure value)? failure,
+  }) {
+    return loading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Failure value)? failure,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Loading extends StateCategory {
+  const factory _Loading() = _$LoadingImpl;
+  const _Loading._() : super._();
+}
+
+/// @nodoc
+abstract class _$$SuccessImplCopyWith<$Res> {
+  factory _$$SuccessImplCopyWith(
+          _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
+      __$$SuccessImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ChoosenDateTime? dateTime, ProductCategory? productCategory});
+
+  $ChoosenDateTimeCopyWith<$Res>? get dateTime;
+  $ProductCategoryCopyWith<$Res>? get productCategory;
+}
+
+/// @nodoc
+class __$$SuccessImplCopyWithImpl<$Res>
+    extends _$StateCategoryCopyWithImpl<$Res, _$SuccessImpl>
+    implements _$$SuccessImplCopyWith<$Res> {
+  __$$SuccessImplCopyWithImpl(
+      _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -52,7 +227,7 @@ class _$StateCategoryCopyWithImpl<$Res, $Val extends StateCategory>
     Object? dateTime = freezed,
     Object? productCategory = freezed,
   }) {
-    return _then(_value.copyWith(
+    return _then(_$SuccessImpl(
       dateTime: freezed == dateTime
           ? _value.dateTime
           : dateTime // ignore: cast_nullable_to_non_nullable
@@ -61,7 +236,7 @@ class _$StateCategoryCopyWithImpl<$Res, $Val extends StateCategory>
           ? _value.productCategory
           : productCategory // ignore: cast_nullable_to_non_nullable
               as ProductCategory?,
-    ) as $Val);
+    ));
   }
 
   @override
@@ -72,7 +247,7 @@ class _$StateCategoryCopyWithImpl<$Res, $Val extends StateCategory>
     }
 
     return $ChoosenDateTimeCopyWith<$Res>(_value.dateTime!, (value) {
-      return _then(_value.copyWith(dateTime: value) as $Val);
+      return _then(_value.copyWith(dateTime: value));
     });
   }
 
@@ -84,58 +259,15 @@ class _$StateCategoryCopyWithImpl<$Res, $Val extends StateCategory>
     }
 
     return $ProductCategoryCopyWith<$Res>(_value.productCategory!, (value) {
-      return _then(_value.copyWith(productCategory: value) as $Val);
+      return _then(_value.copyWith(productCategory: value));
     });
   }
 }
 
 /// @nodoc
-abstract class _$$StateCategoryImplCopyWith<$Res>
-    implements $StateCategoryCopyWith<$Res> {
-  factory _$$StateCategoryImplCopyWith(
-          _$StateCategoryImpl value, $Res Function(_$StateCategoryImpl) then) =
-      __$$StateCategoryImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({ChoosenDateTime? dateTime, ProductCategory? productCategory});
 
-  @override
-  $ChoosenDateTimeCopyWith<$Res>? get dateTime;
-  @override
-  $ProductCategoryCopyWith<$Res>? get productCategory;
-}
-
-/// @nodoc
-class __$$StateCategoryImplCopyWithImpl<$Res>
-    extends _$StateCategoryCopyWithImpl<$Res, _$StateCategoryImpl>
-    implements _$$StateCategoryImplCopyWith<$Res> {
-  __$$StateCategoryImplCopyWithImpl(
-      _$StateCategoryImpl _value, $Res Function(_$StateCategoryImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? dateTime = freezed,
-    Object? productCategory = freezed,
-  }) {
-    return _then(_$StateCategoryImpl(
-      dateTime: freezed == dateTime
-          ? _value.dateTime
-          : dateTime // ignore: cast_nullable_to_non_nullable
-              as ChoosenDateTime?,
-      productCategory: freezed == productCategory
-          ? _value.productCategory
-          : productCategory // ignore: cast_nullable_to_non_nullable
-              as ProductCategory?,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$StateCategoryImpl extends _StateCategory {
-  const _$StateCategoryImpl({this.dateTime, this.productCategory}) : super._();
+class _$SuccessImpl extends _Success {
+  const _$SuccessImpl({this.dateTime, this.productCategory}) : super._();
 
   @override
   final ChoosenDateTime? dateTime;
@@ -144,14 +276,14 @@ class _$StateCategoryImpl extends _StateCategory {
 
   @override
   String toString() {
-    return 'StateCategory(dateTime: $dateTime, productCategory: $productCategory)';
+    return 'StateCategory.success(dateTime: $dateTime, productCategory: $productCategory)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$StateCategoryImpl &&
+            other is _$SuccessImpl &&
             (identical(other.dateTime, dateTime) ||
                 other.dateTime == dateTime) &&
             (identical(other.productCategory, productCategory) ||
@@ -164,23 +296,240 @@ class _$StateCategoryImpl extends _StateCategory {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$StateCategoryImplCopyWith<_$StateCategoryImpl> get copyWith =>
-      __$$StateCategoryImplCopyWithImpl<_$StateCategoryImpl>(this, _$identity);
+  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
+      __$$SuccessImplCopyWithImpl<_$SuccessImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(
+            ChoosenDateTime? dateTime, ProductCategory? productCategory)
+        success,
+    required TResult Function(Failure failure) failure,
+  }) {
+    return success(dateTime, productCategory);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(
+            ChoosenDateTime? dateTime, ProductCategory? productCategory)?
+        success,
+    TResult? Function(Failure failure)? failure,
+  }) {
+    return success?.call(dateTime, productCategory);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(
+            ChoosenDateTime? dateTime, ProductCategory? productCategory)?
+        success,
+    TResult Function(Failure failure)? failure,
+    required TResult orElse(),
+  }) {
+    if (success != null) {
+      return success(dateTime, productCategory);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Failure value) failure,
+  }) {
+    return success(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Failure value)? failure,
+  }) {
+    return success?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Failure value)? failure,
+    required TResult orElse(),
+  }) {
+    if (success != null) {
+      return success(this);
+    }
+    return orElse();
+  }
 }
 
-abstract class _StateCategory extends StateCategory {
-  const factory _StateCategory(
+abstract class _Success extends StateCategory {
+  const factory _Success(
       {final ChoosenDateTime? dateTime,
-      final ProductCategory? productCategory}) = _$StateCategoryImpl;
-  const _StateCategory._() : super._();
+      final ProductCategory? productCategory}) = _$SuccessImpl;
+  const _Success._() : super._();
+
+  ChoosenDateTime? get dateTime;
+  ProductCategory? get productCategory;
+  @JsonKey(ignore: true)
+  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$FailureImplCopyWith<$Res> {
+  factory _$$FailureImplCopyWith(
+          _$FailureImpl value, $Res Function(_$FailureImpl) then) =
+      __$$FailureImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Failure failure});
+}
+
+/// @nodoc
+class __$$FailureImplCopyWithImpl<$Res>
+    extends _$StateCategoryCopyWithImpl<$Res, _$FailureImpl>
+    implements _$$FailureImplCopyWith<$Res> {
+  __$$FailureImplCopyWithImpl(
+      _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? failure = null,
+  }) {
+    return _then(_$FailureImpl(
+      failure: null == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as Failure,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FailureImpl extends _Failure {
+  const _$FailureImpl({required this.failure}) : super._();
 
   @override
-  ChoosenDateTime? get dateTime;
+  final Failure failure;
+
   @override
-  ProductCategory? get productCategory;
+  String toString() {
+    return 'StateCategory.failure(failure: $failure)';
+  }
+
   @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FailureImpl &&
+            (identical(other.failure, failure) || other.failure == failure));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, failure);
+
   @JsonKey(ignore: true)
-  _$$StateCategoryImplCopyWith<_$StateCategoryImpl> get copyWith =>
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
+      __$$FailureImplCopyWithImpl<_$FailureImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(
+            ChoosenDateTime? dateTime, ProductCategory? productCategory)
+        success,
+    required TResult Function(Failure failure) failure,
+  }) {
+    return failure(this.failure);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(
+            ChoosenDateTime? dateTime, ProductCategory? productCategory)?
+        success,
+    TResult? Function(Failure failure)? failure,
+  }) {
+    return failure?.call(this.failure);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(
+            ChoosenDateTime? dateTime, ProductCategory? productCategory)?
+        success,
+    TResult Function(Failure failure)? failure,
+    required TResult orElse(),
+  }) {
+    if (failure != null) {
+      return failure(this.failure);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Failure value) failure,
+  }) {
+    return failure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Failure value)? failure,
+  }) {
+    return failure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Failure value)? failure,
+    required TResult orElse(),
+  }) {
+    if (failure != null) {
+      return failure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Failure extends StateCategory {
+  const factory _Failure({required final Failure failure}) = _$FailureImpl;
+  const _Failure._() : super._();
+
+  Failure get failure;
+  @JsonKey(ignore: true)
+  _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -503,6 +852,7 @@ mixin _$Product {
   Enum get productType => throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
   String get picturePath => throw _privateConstructorUsedError;
+  Uint8List? get pictureByte => throw _privateConstructorUsedError;
   int? get offerInPercent => throw _privateConstructorUsedError;
   int? get productCount => throw _privateConstructorUsedError;
 
@@ -520,6 +870,7 @@ abstract class $ProductCopyWith<$Res> {
       Enum productType,
       double price,
       String picturePath,
+      Uint8List? pictureByte,
       int? offerInPercent,
       int? productCount});
 }
@@ -541,6 +892,7 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
     Object? productType = null,
     Object? price = null,
     Object? picturePath = null,
+    Object? pictureByte = freezed,
     Object? offerInPercent = freezed,
     Object? productCount = freezed,
   }) {
@@ -561,6 +913,10 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
           ? _value.picturePath
           : picturePath // ignore: cast_nullable_to_non_nullable
               as String,
+      pictureByte: freezed == pictureByte
+          ? _value.pictureByte
+          : pictureByte // ignore: cast_nullable_to_non_nullable
+              as Uint8List?,
       offerInPercent: freezed == offerInPercent
           ? _value.offerInPercent
           : offerInPercent // ignore: cast_nullable_to_non_nullable
@@ -585,6 +941,7 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
       Enum productType,
       double price,
       String picturePath,
+      Uint8List? pictureByte,
       int? offerInPercent,
       int? productCount});
 }
@@ -604,6 +961,7 @@ class __$$ProductImplCopyWithImpl<$Res>
     Object? productType = null,
     Object? price = null,
     Object? picturePath = null,
+    Object? pictureByte = freezed,
     Object? offerInPercent = freezed,
     Object? productCount = freezed,
   }) {
@@ -624,6 +982,10 @@ class __$$ProductImplCopyWithImpl<$Res>
           ? _value.picturePath
           : picturePath // ignore: cast_nullable_to_non_nullable
               as String,
+      pictureByte: freezed == pictureByte
+          ? _value.pictureByte
+          : pictureByte // ignore: cast_nullable_to_non_nullable
+              as Uint8List?,
       offerInPercent: freezed == offerInPercent
           ? _value.offerInPercent
           : offerInPercent // ignore: cast_nullable_to_non_nullable
@@ -644,6 +1006,7 @@ class _$ProductImpl extends _Product {
       required this.productType,
       required this.price,
       required this.picturePath,
+      this.pictureByte,
       this.offerInPercent,
       this.productCount})
       : super._();
@@ -657,13 +1020,15 @@ class _$ProductImpl extends _Product {
   @override
   final String picturePath;
   @override
+  final Uint8List? pictureByte;
+  @override
   final int? offerInPercent;
   @override
   final int? productCount;
 
   @override
   String toString() {
-    return 'Product(name: $name, productType: $productType, price: $price, picturePath: $picturePath, offerInPercent: $offerInPercent, productCount: $productCount)';
+    return 'Product(name: $name, productType: $productType, price: $price, picturePath: $picturePath, pictureByte: $pictureByte, offerInPercent: $offerInPercent, productCount: $productCount)';
   }
 
   @override
@@ -677,6 +1042,8 @@ class _$ProductImpl extends _Product {
             (identical(other.price, price) || other.price == price) &&
             (identical(other.picturePath, picturePath) ||
                 other.picturePath == picturePath) &&
+            const DeepCollectionEquality()
+                .equals(other.pictureByte, pictureByte) &&
             (identical(other.offerInPercent, offerInPercent) ||
                 other.offerInPercent == offerInPercent) &&
             (identical(other.productCount, productCount) ||
@@ -684,8 +1051,15 @@ class _$ProductImpl extends _Product {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, productType, price,
-      picturePath, offerInPercent, productCount);
+  int get hashCode => Object.hash(
+      runtimeType,
+      name,
+      productType,
+      price,
+      picturePath,
+      const DeepCollectionEquality().hash(pictureByte),
+      offerInPercent,
+      productCount);
 
   @JsonKey(ignore: true)
   @override
@@ -700,6 +1074,7 @@ abstract class _Product extends Product {
       required final Enum productType,
       required final double price,
       required final String picturePath,
+      final Uint8List? pictureByte,
       final int? offerInPercent,
       final int? productCount}) = _$ProductImpl;
   const _Product._() : super._();
@@ -712,6 +1087,8 @@ abstract class _Product extends Product {
   double get price;
   @override
   String get picturePath;
+  @override
+  Uint8List? get pictureByte;
   @override
   int? get offerInPercent;
   @override

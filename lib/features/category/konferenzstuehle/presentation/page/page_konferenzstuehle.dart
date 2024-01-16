@@ -1,5 +1,7 @@
 import 'dart:developer';
 
+import 'package:app_flutter_produkt_bestellen/core/fix_widgets/failure_widget.dart';
+import 'package:app_flutter_produkt_bestellen/core/fix_widgets/loading_widget.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_page_widget.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/list_wheel_scroll_view_x.dart';
 import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
@@ -31,20 +33,25 @@ class _BlocBuilderConferenceChair extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<CubitConferenceChair, StateCategory, ProductCategory?>(
-      selector: (state) => state.productCategory,
-      builder: (context, state) {
-        final listProducts = state?.listProduct.map((product) {
-          return Product(
-            picturePath: product.picturePath,
-            productType: product.productType as EnumCategoryConferenceChair,
-            price: product.price,
-            name: product.name,
-          );
-        }).toList();
-        return _Konferenzstuehle(listProducts: listProducts);
-      },
-    );
+    return BlocBuilder<CubitConferenceChair, StateCategory>(
+        builder: (context, state) => state.map(
+              loading: (loading) => const LoadingWidget(),
+              failure: (failure) =>
+                  FailureWidget(failure: failure.failure.toString()),
+              success: (successState) {
+                final listProducts =
+                    successState.productCategory?.listProduct.map((product) {
+                  return Product(
+                    picturePath: product.picturePath,
+                    productType:
+                        product.productType as EnumCategoryConferenceChair,
+                    price: product.price,
+                    name: product.name,
+                  );
+                }).toList();
+                return _Konferenzstuehle(listProducts: listProducts);
+              },
+            ));
   }
 }
 

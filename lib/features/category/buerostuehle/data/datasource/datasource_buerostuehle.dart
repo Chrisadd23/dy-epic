@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
 import 'package:app_flutter_produkt_bestellen/core/error/failures.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/buerostuehle/domain/entity/entity_buerodrehstuehle.dart';
@@ -6,21 +8,29 @@ import 'package:either_dart/either.dart';
 import 'package:flutter/material.dart';
 
 abstract class DataSourceBuerostuehle {
-  Future<Either<Failure, List<EntityBuerodrehstuehle>>> getBuerodrehstuehle(
+  Future<Either<Failure, EntityBuerodrehstuehle>> getBuerodrehstuehle(
       {String? officeChairCategory});
+
+  Future<Either<Failure, Uint8List?>> getPicturePath(
+      {required List<String> productTypes});
 }
 
 class DataSourceBuerostuehleImplementation extends DataSourceBuerostuehle {
-  DataSourceBuerostuehleImplementation();
+  DataSourceBuerostuehleImplementation(
+    this._firebaseFirestore,
+  );
+
+  final FirebaseFirestore _firebaseFirestore;
 
   @override
-  Future<Either<Failure, List<EntityBuerodrehstuehle>>> getBuerodrehstuehle(
+  Future<Either<Failure, EntityBuerodrehstuehle>> getBuerodrehstuehle(
       {String? officeChairCategory}) async {
     debugPrint('start datassource request');
     try {
       Failure? failure;
       List<EntityProduct> officeChairs = [];
-      await FirebaseFirestore.instance
+
+      await _firebaseFirestore
           .collection('Product')
           .doc('kbLDlq3ItPF7onHoQnYL')
           .collection('officeChair')
@@ -43,7 +53,7 @@ class DataSourceBuerostuehleImplementation extends DataSourceBuerostuehle {
                   EnumCategoryOfficeChair.none,
               price: double.parse(data['price'].toString()),
               indexNumber: 0,
-              picturePath: 'product_${data['productNumber']}'));
+              picturePath: 'product_${data['productNumber']}.png'));
         }).toList();
       }, onError: (error) {
         debugPrint('dataSource error ===> ${error.toString()}');
@@ -55,14 +65,34 @@ class DataSourceBuerostuehleImplementation extends DataSourceBuerostuehle {
         return Left(failure!);
       } else {
         debugPrint("return list officeChairs ${officeChairs.toString()}");
-        return Right([
-          EntityBuerodrehstuehle(
-              categoryName: 'Bürodrehstühle', listProduct: officeChairs)
-        ]);
+
+        return Right(EntityBuerodrehstuehle(
+            categoryName: 'Bürodrehstühle', listProduct: officeChairs));
       }
     } catch (e) {
       return const Left(
           FailureState.message('Sortiment konnte nicht geladen werden'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, Uint8List?>> getPicturePath(
+      {required List<String> productTypes}) async {
+    // TODO: implement getPicturePath
+    Map<String, Uint8List?> mapProducts = {};
+
+    try {
+      /*final list = productTypes.map((chair) async {
+        final pictureByte = await FirebaseConfiguration.getImagePath(chair);
+        mapProducts[chair] = pictureByte;
+        return mapProducts[chair];
+      }).toList();*/
+
+      debugPrint("mapProducts = ${mapProducts.values.toString()}");
+      //debugPrint("lig = ${list.toString()}");
+      return const Right(null);
+    } catch (e) {
+      return Left(FailureState.databaseError(e.toString()));
     }
   }
 }

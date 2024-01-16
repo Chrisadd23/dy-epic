@@ -5,29 +5,28 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CubitConferenceChair extends Cubit<StateCategory> {
   CubitConferenceChair({required this.repositoryConferenceChair})
-      : super(const StateCategory());
+      : super(const StateCategory.loading());
 
   final RepositoryConferenceChair repositoryConferenceChair;
 
   Future<void> load([String? conferenceChairCategory]) async {
+    if (state != const StateCategory.loading()) {
+      emit(const StateCategory.loading());
+    }
     await repositoryConferenceChair.getConferencChaire().fold((failure) {},
         (listConferenceChair) {
-      final products = listConferenceChair
-          .map((conferenceChair) => {
-                conferenceChair.categoryName: conferenceChair.listProduct
-                    .map((chair) => Product(
-                        productType: chair.productType,
-                        price: chair.price,
-                        picturePath: chair.picturePath,
-                        name: chair.name))
-                    .toList()
-              })
-          .toList();
+      final productCategory = ProductCategory(
+        categoryName: listConferenceChair.categoryName,
+        listProduct: listConferenceChair.listProduct
+            .map((chair) => Product(
+                productType: chair.productType,
+                price: chair.price,
+                picturePath: chair.picturePath,
+                name: chair.name))
+            .toList(),
+      );
 
-      emit(state.copyWith(
-          productCategory: ProductCategory(
-              listProduct: products[0].values.first,
-              categoryName: products[0].keys.first)));
+      emit(StateCategory.success(productCategory: productCategory));
     });
   }
 }

@@ -13,6 +13,7 @@ import 'package:app_flutter_produkt_bestellen/features/category/konferenzstuehle
 import 'package:app_flutter_produkt_bestellen/features/category/konferenzstuehle/domain/repository/repository_konferenzstuehle.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/konferenzstuehle/presentation/cubit/cubit_conference_chair.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 void setUp() {
   setUpArbeitstische();
@@ -33,7 +34,7 @@ void setUpArbeitstische() {
 
 void setUpOfficeChair() {
   getIt.registerLazySingleton<DataSourceBuerostuehle>(
-      () => DataSourceBuerostuehleImplementation());
+      () => DataSourceBuerostuehleImplementation(FirebaseFirestore.instance));
 
   getIt.registerLazySingleton<RepositoryBuerodrehstuehle>(() =>
       RepositoryBuerodrehstuehleImplementation(

@@ -4,14 +4,14 @@ import 'package:app_flutter_produkt_bestellen/gen/assets.gen.dart';
 import 'package:either_dart/either.dart';
 
 abstract class DataSourceConferenceChair {
-  Future<Either<Failure, List<EntityConferenceChair>>> getConferenceChair(
+  Future<Either<Failure, EntityConferenceChair>> getConferenceChair(
       {String? officeChairCategory});
 }
 
 class DataSourceConferenceChairImplementation
     extends DataSourceConferenceChair {
   @override
-  Future<Either<Failure, List<EntityConferenceChair>>> getConferenceChair(
+  Future<Either<Failure, EntityConferenceChair>> getConferenceChair(
       {String? officeChairCategory}) async {
     // TODO: implement getConferenceChair
     try {
@@ -22,21 +22,20 @@ class DataSourceConferenceChairImplementation
   }
 }
 
-final _listProductSortiment = [
-  EntityConferenceChair(categoryName: 'Konferenzstühle', listProduct: [
-    EntityProduct(
-        name: ' ',
-        productType: EnumCategoryConferenceChair.camiro,
-        price: 329.00,
-        indexNumber: 0,
-        picturePath:
-            Assets.products.konferenzstuehle.camiroFreischwingerNetz.path),
-    EntityProduct(
-        name: ' ',
-        productType: EnumCategoryConferenceChair.camiro,
-        price: 330.00,
-        indexNumber: 0,
-        picturePath:
-            Assets.products.konferenzstuehle.camiroFreischwingerPolster.path),
-  ])
-];
+final _listProductSortiment =
+    EntityConferenceChair(categoryName: 'Konferenzstühle', listProduct: [
+  EntityProduct(
+      name: ' ',
+      productType: EnumCategoryConferenceChair.camiro,
+      price: 329.00,
+      indexNumber: 0,
+      picturePath:
+          Assets.products.konferenzstuehle.camiroFreischwingerNetz.path),
+  EntityProduct(
+      name: ' ',
+      productType: EnumCategoryConferenceChair.camiro,
+      price: 330.00,
+      indexNumber: 0,
+      picturePath:
+          Assets.products.konferenzstuehle.camiroFreischwingerPolster.path),
+]);

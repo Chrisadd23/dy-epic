@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   Flavor.setFlavorOnce(flavor: Flavor.development);
   MainConfiguration.configuration();
 }

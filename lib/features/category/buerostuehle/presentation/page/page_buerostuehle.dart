@@ -1,6 +1,8 @@
 import 'dart:developer';
 
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
+import 'package:app_flutter_produkt_bestellen/core/fix_widgets/failure_widget.dart';
+import 'package:app_flutter_produkt_bestellen/core/fix_widgets/loading_widget.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_page_widget.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/list_wheel_scroll_view_x.dart';
 import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
@@ -89,7 +91,7 @@ class _BlocPrividerCubitChairNormal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
+    return BlocProvider<CubitOfficeChair>(
         create: (context) =>
             getIt<CubitOfficeChair>(instanceName: selectedCategory.name)
               ..load(selectedCategory.name),
@@ -111,20 +113,29 @@ class _BlocBuilderBuerostuehle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CubitOfficeChair, StateCategory>(
-        builder: (context, state) {
-      final listProducts = state.productCategory?.listProduct
-          .map((product) => Product(
-                productType: product.productType as EnumCategoryOfficeChair,
-                picturePath: product.picturePath,
-                price: product.price,
-                name: product.name,
-              ))
-          .toList();
-      return Stack(children: [
-        ProductListWheel(listProducts: listProducts),
-        const _ChooseOfficeChaireCategory(),
-      ]);
-    });
+        builder: (context, state) => state.map(
+            loading: (loading) => const LoadingWidget(
+                  firstWidth: 110,
+                  secondWidth: 60,
+                ),
+            failure: (failure) =>
+                FailureWidget(failure: failure.failure.toString()),
+            success: (success) {
+              final listProducts = success.productCategory?.listProduct
+                  .map((product) => Product(
+                        productType:
+                            product.productType as EnumCategoryOfficeChair,
+                        picturePath: product.picturePath,
+                        price: product.price,
+                        name: product.name,
+                      ))
+                  .toList();
+              debugPrint("Products ===> $listProducts");
+              return Stack(children: [
+                ProductListWheel(listProducts: listProducts),
+                const _ChooseOfficeChaireCategory(),
+              ]);
+            }));
   }
 }
 
@@ -337,12 +348,6 @@ class _ProductState extends State<Product> {
     // TODO: implement dispose
     super.dispose();
   }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(StringProperty('picturePath', widget.picturePath));
-  }
 }
 
 class _ProductName extends StatelessWidget {
@@ -377,7 +382,7 @@ class _ProductName extends StatelessWidget {
   }
 }
 
-class _ProductPicture extends StatelessWidget {
+class _ProductPicture extends StatefulWidget {
   const _ProductPicture({
     required this.widget,
   });
@@ -385,70 +390,101 @@ class _ProductPicture extends StatelessWidget {
   final Product widget;
 
   @override
+  State<_ProductPicture> createState() => _ProductPictureState();
+}
+
+class _ProductPictureState extends State<_ProductPicture> {
+  @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        Align(
-          alignment: Alignment.center,
-          child: Padding(
-            padding: EdgeInsets.only(
-                bottom: MediaQuery.of(context).size.height * 0.2),
-            child: LayoutBuilder(
-              builder: (context, constraints) =>
-                  // navigation Test
-                  Container(
-                height: constraints.maxHeight * 0.9,
-                width: constraints.maxWidth * 0.9,
-                margin: EdgeInsets.only(bottom: constraints.maxHeight * 0.2),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  shape: BoxShape.circle,
-                  boxShadow: const [
-                    BoxShadow(
-                        color: Colors.grey,
-                        offset: Offset(2, 3),
-                        blurStyle: BlurStyle.outer),
-                    BoxShadow(
-                        color: Colors.grey,
-                        offset: Offset(2, -3),
-                        blurStyle: BlurStyle.outer)
-                  ],
-                  border: Border.all(
-                      color: Colors.black45,
-                      strokeAlign: BorderSide.strokeAlignInside),
-                  image: DecorationImage(
-                    fit: BoxFit.contain,
-                    image: AssetImage(widget.picturePath),
+    return BlocSelector<CubitOfficeChair, StateCategory, Uint8List?>(
+        selector: (state) => state.mapOrNull(
+            success: (stateSuccess) => stateSuccess.productCategory?.listProduct
+                .where((element) => element.name == widget.widget.name)
+                .first
+                .pictureByte),
+        builder: (context, state) {
+          debugPrint("state ===> ${state.toString()}");
+          return Stack(
+            children: <Widget>[
+              Align(
+                alignment: Alignment.center,
+                child: Padding(
+                  padding: EdgeInsets.only(
+                      bottom: MediaQuery.of(context).size.height * 0.2),
+                  child: LayoutBuilder(
+                    builder: (context, constraints) =>
+                        // navigation Test
+                        BlocSelector<CubitOfficeChair, StateCategory,
+                                Uint8List?>(
+                            selector: (state) => state.mapOrNull(
+                                success: (successState) => successState
+                                    .productCategory?.listProduct
+                                    .where((element) =>
+                                        widget.widget.name == element.name)
+                                    .firstOrNull
+                                    ?.pictureByte),
+                            builder: (context, state) {
+                              return Container(
+                                height: constraints.maxHeight * 0.9,
+                                width: constraints.maxWidth * 0.9,
+                                margin: EdgeInsets.only(
+                                    bottom: constraints.maxHeight * 0.2),
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  shape: BoxShape.circle,
+                                  boxShadow: const [
+                                    BoxShadow(
+                                        color: Colors.grey,
+                                        offset: Offset(2, 3),
+                                        blurStyle: BlurStyle.outer),
+                                    BoxShadow(
+                                        color: Colors.grey,
+                                        offset: Offset(2, -3),
+                                        blurStyle: BlurStyle.outer)
+                                  ],
+                                  border: Border.all(
+                                      color: Colors.black45,
+                                      strokeAlign:
+                                          BorderSide.strokeAlignInside),
+                                  image: state != null
+                                      ? DecorationImage(
+                                          fit: BoxFit.contain,
+                                          image: MemoryImage(state),
+                                          onError: (object, stackTrace) =>
+                                              const LoadingWidget())
+                                      : null,
+                                ),
+                              );
+                            }),
                   ),
                 ),
               ),
-            ),
-          ),
-        ),
-        Align(
-          alignment: Alignment.center,
-          child: LayoutBuilder(
-            builder: (context, constraints) {
-              return Padding(
-                padding: EdgeInsets.only(bottom: constraints.maxHeight * 0.43),
-                child: CircleAvatar(
-                  backgroundColor: Colors.transparent,
-                  radius: constraints.maxHeight * 0.23,
-                  foregroundColor: Colors.transparent,
-                  child: InkWell(
-                    hoverColor: Colors.red,
-                    onTap: () {
-                      context.goNamed(
-                          '${AppGoRouter.buerostuehle.name}/${AppGoRouter.product.name}',
-                          extra: widget.name);
-                    },
-                  ),
+              Align(
+                alignment: Alignment.center,
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    return Padding(
+                      padding:
+                          EdgeInsets.only(bottom: constraints.maxHeight * 0.43),
+                      child: CircleAvatar(
+                        backgroundColor: Colors.transparent,
+                        radius: constraints.maxHeight * 0.23,
+                        foregroundColor: Colors.transparent,
+                        child: InkWell(
+                          hoverColor: Colors.red,
+                          onTap: () {
+                            context.goNamed(
+                                '${AppGoRouter.buerostuehle.name}/${AppGoRouter.product.name}',
+                                extra: widget.widget.name);
+                          },
+                        ),
+                      ),
+                    );
+                  },
                 ),
-              );
-            },
-          ),
-        )
-      ],
-    );
+              )
+            ],
+          );
+        });
   }
 }

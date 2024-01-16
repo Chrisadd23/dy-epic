@@ -3,6 +3,6 @@ import 'package:app_flutter_produkt_bestellen/features/category/konferenzstuehle
 import 'package:either_dart/either.dart';
 
 abstract class RepositoryConferenceChair {
-  Future<Either<Failure, List<EntityConferenceChair>>> getConferencChaire(
+  Future<Either<Failure, EntityConferenceChair>> getConferencChaire(
       {String? officeChairCategory});
 }
