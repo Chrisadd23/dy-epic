@@ -10,7 +10,7 @@ abstract class FirebaseConfiguration {
     _firebaseStorage = FirebaseStorage.instance;
   }
 
-  static Future<Map<String, Uint8List?>> getImagePath(String filename) async {
+  static Future<Map<String, Uint8List?>> getImageBytes(String filename) async {
     /*
     Map<String, Uint8List?> mapUnit8 = {};
     if (listFileName != null && listFileName.isNotEmpty) {

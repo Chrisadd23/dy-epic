@@ -46,7 +46,7 @@ class CubitOfficeChair extends Cubit<StateCategory> {
               .toList() ??
           [];
       final st = await Future.wait<Map<String, Uint8List?>>(listProduct
-          .map((filename) => FirebaseConfiguration.getImagePath(filename)));
+          .map((filename) => FirebaseConfiguration.getImageBytes(filename)));
 
       successState = successState.copyWith(
           productCategory: successState.productCategory?.copyWith(
