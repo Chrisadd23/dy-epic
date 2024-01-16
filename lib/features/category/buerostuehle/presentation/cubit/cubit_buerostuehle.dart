@@ -13,13 +13,12 @@ class CubitOfficeChair extends Cubit<StateCategory> {
       : super(const StateCategory.loading());
 
   final RepositoryBuerodrehstuehle repositoryOfficeChair;
-  StreamSubscription<StateCategory>? _streamSubscription;
 
   Future<void> load(String instanceName) async {
     if (state != const StateCategory.loading()) {
       emit(const StateCategory.loading());
     }
-    _streamSubscription?.resume();
+
     debugPrint('instanceName ==> $instanceName');
     var newState = state;
     await repositoryOfficeChair
