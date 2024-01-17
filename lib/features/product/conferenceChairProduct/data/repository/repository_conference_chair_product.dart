@@ -16,6 +16,6 @@ class RepositoryConferenceChairProductImplementation
       getConferenceChairProduct({required String product}) async {
     // TODO: implement getConferenceChairProduct
     return dataSourceConferenceChairProduct.getConferenceChairProduct(
-        product: product);
+        productNumber: product);
   }
 }

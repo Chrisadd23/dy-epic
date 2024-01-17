@@ -13,8 +13,9 @@ class RepositoryOfficeChairProductImplementation
 
   @override
   Future<Either<Failure, EntityOfficeChairProduct>> getOfficeChairProduct(
-      {required String product}) async {
+      {required String productNumber}) async {
     // TODO: implement getOfficeChairProduct
-    return dataSourceOfficeChairProduct.getOfficeChairProduct(product: product);
+    return dataSourceOfficeChairProduct.getOfficeChairProduct(
+        productNumber: productNumber);
   }
 }

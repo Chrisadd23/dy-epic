@@ -5,10 +5,11 @@ import 'package:flutter/material.dart';
 class WidgetPictureArea extends StatelessWidget {
   const WidgetPictureArea({
     super.key,
-    required this.picturePath,
+    required this.pictureBytes,
   });
 
-  final String? picturePath;
+  //ignore
+  final Uint8List? pictureBytes;
 
   @override
   Widget build(BuildContext context) {
@@ -20,14 +21,14 @@ class WidgetPictureArea extends StatelessWidget {
         border: Border.all(color: Colors.black),
         color: Colors.white,
       ),
-      child: picturePath == null
+      child: pictureBytes == null
           ? LoadingWidget(
               firstWidth: MediaQuery.of(context).size.width * 0.5,
               secondWidth: MediaQuery.of(context).size.width * 0.3,
             )
-          : Image.asset(
-              picturePath!,
+          : Image(
               fit: BoxFit.fitHeight,
+              image: MemoryImage(pictureBytes!),
             ),
     );
   }
@@ -35,7 +36,7 @@ class WidgetPictureArea extends StatelessWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-
-    properties.add(StringProperty('picturePath', picturePath));
+    properties
+        .add(DiagnosticsProperty<Uint8List>('pictureBytes', pictureBytes));
   }
 }

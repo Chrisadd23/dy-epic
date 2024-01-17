@@ -3,7 +3,6 @@ library office_chair_product;
 import 'package:app_flutter_produkt_bestellen/core/fix_widgets/loading_widget.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_page_widget.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/officeChairProduct/presentation/cubit/cubit_office_chair_product.dart';
-import 'package:app_flutter_produkt_bestellen/features/product/officeChairProduct/presentation/cubit/state_office_chair_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/cubit_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/state_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/widget/widget_order_product.dart';
@@ -107,15 +106,14 @@ class _ProductPicture extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<CubitProduct, StateProduct, String?>(
+    return BlocSelector<CubitProduct, StateProduct, Uint8List?>(
         selector: (state) => state.maybeMap(
             orElse: () {
               return;
             },
-            success: (product) => product
-                .selectedCharacteristics[EnumOfficeChairProduct.picturePath]),
-        builder: (context, picturePath) {
-          return WidgetPictureArea(picturePath: picturePath);
+            success: (product) => product.product?.pictureBytes),
+        builder: (context, pictureBytes) {
+          return WidgetPictureArea(pictureBytes: pictureBytes);
         });
   }
 }

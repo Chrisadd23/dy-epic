@@ -27,6 +27,7 @@ mixin _$StateProduct<T> {
             T? product,
             Map<Enum, dynamic> selectedCharacteristics)
         success,
+    required TResult Function(Failure failure) failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -40,6 +41,7 @@ mixin _$StateProduct<T> {
             T? product,
             Map<Enum, dynamic> selectedCharacteristics)?
         success,
+    TResult? Function(Failure failure)? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -53,6 +55,7 @@ mixin _$StateProduct<T> {
             T? product,
             Map<Enum, dynamic> selectedCharacteristics)?
         success,
+    TResult Function(Failure failure)? failure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -60,18 +63,21 @@ mixin _$StateProduct<T> {
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading<T> value) loading,
     required TResult Function(_Success<T> value) success,
+    required TResult Function(_Failure<T> value) failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Loading<T> value)? loading,
     TResult? Function(_Success<T> value)? success,
+    TResult? Function(_Failure<T> value)? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading<T> value)? loading,
     TResult Function(_Success<T> value)? success,
+    TResult Function(_Failure<T> value)? failure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -142,6 +148,7 @@ class _$LoadingImpl<T> implements _Loading<T> {
             T? product,
             Map<Enum, dynamic> selectedCharacteristics)
         success,
+    required TResult Function(Failure failure) failure,
   }) {
     return loading();
   }
@@ -158,6 +165,7 @@ class _$LoadingImpl<T> implements _Loading<T> {
             T? product,
             Map<Enum, dynamic> selectedCharacteristics)?
         success,
+    TResult? Function(Failure failure)? failure,
   }) {
     return loading?.call();
   }
@@ -174,6 +182,7 @@ class _$LoadingImpl<T> implements _Loading<T> {
             T? product,
             Map<Enum, dynamic> selectedCharacteristics)?
         success,
+    TResult Function(Failure failure)? failure,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -187,6 +196,7 @@ class _$LoadingImpl<T> implements _Loading<T> {
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading<T> value) loading,
     required TResult Function(_Success<T> value) success,
+    required TResult Function(_Failure<T> value) failure,
   }) {
     return loading(this);
   }
@@ -196,6 +206,7 @@ class _$LoadingImpl<T> implements _Loading<T> {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Loading<T> value)? loading,
     TResult? Function(_Success<T> value)? success,
+    TResult? Function(_Failure<T> value)? failure,
   }) {
     return loading?.call(this);
   }
@@ -205,6 +216,7 @@ class _$LoadingImpl<T> implements _Loading<T> {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading<T> value)? loading,
     TResult Function(_Success<T> value)? success,
+    TResult Function(_Failure<T> value)? failure,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -365,6 +377,7 @@ class _$SuccessImpl<T> implements _Success<T> {
             T? product,
             Map<Enum, dynamic> selectedCharacteristics)
         success,
+    required TResult Function(Failure failure) failure,
   }) {
     return success(hashKey, category, productOrderCount, price, product,
         selectedCharacteristics);
@@ -382,6 +395,7 @@ class _$SuccessImpl<T> implements _Success<T> {
             T? product,
             Map<Enum, dynamic> selectedCharacteristics)?
         success,
+    TResult? Function(Failure failure)? failure,
   }) {
     return success?.call(hashKey, category, productOrderCount, price, product,
         selectedCharacteristics);
@@ -399,6 +413,7 @@ class _$SuccessImpl<T> implements _Success<T> {
             T? product,
             Map<Enum, dynamic> selectedCharacteristics)?
         success,
+    TResult Function(Failure failure)? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -413,6 +428,7 @@ class _$SuccessImpl<T> implements _Success<T> {
   TResult map<TResult extends Object?>({
     required TResult Function(_Loading<T> value) loading,
     required TResult Function(_Success<T> value) success,
+    required TResult Function(_Failure<T> value) failure,
   }) {
     return success(this);
   }
@@ -422,6 +438,7 @@ class _$SuccessImpl<T> implements _Success<T> {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Loading<T> value)? loading,
     TResult? Function(_Success<T> value)? success,
+    TResult? Function(_Failure<T> value)? failure,
   }) {
     return success?.call(this);
   }
@@ -431,6 +448,7 @@ class _$SuccessImpl<T> implements _Success<T> {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading<T> value)? loading,
     TResult Function(_Success<T> value)? success,
+    TResult Function(_Failure<T> value)? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -457,5 +475,165 @@ abstract class _Success<T> implements StateProduct<T> {
   Map<Enum, dynamic> get selectedCharacteristics;
   @JsonKey(ignore: true)
   _$$SuccessImplCopyWith<T, _$SuccessImpl<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$FailureImplCopyWith<T, $Res> {
+  factory _$$FailureImplCopyWith(
+          _$FailureImpl<T> value, $Res Function(_$FailureImpl<T>) then) =
+      __$$FailureImplCopyWithImpl<T, $Res>;
+  @useResult
+  $Res call({Failure failure});
+}
+
+/// @nodoc
+class __$$FailureImplCopyWithImpl<T, $Res>
+    extends _$StateProductCopyWithImpl<T, $Res, _$FailureImpl<T>>
+    implements _$$FailureImplCopyWith<T, $Res> {
+  __$$FailureImplCopyWithImpl(
+      _$FailureImpl<T> _value, $Res Function(_$FailureImpl<T>) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? failure = null,
+  }) {
+    return _then(_$FailureImpl<T>(
+      failure: null == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as Failure,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FailureImpl<T> implements _Failure<T> {
+  const _$FailureImpl({required this.failure});
+
+  @override
+  final Failure failure;
+
+  @override
+  String toString() {
+    return 'StateProduct<$T>.failure(failure: $failure)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FailureImpl<T> &&
+            (identical(other.failure, failure) || other.failure == failure));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, failure);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FailureImplCopyWith<T, _$FailureImpl<T>> get copyWith =>
+      __$$FailureImplCopyWithImpl<T, _$FailureImpl<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(
+            String hashKey,
+            String category,
+            int productOrderCount,
+            double price,
+            T? product,
+            Map<Enum, dynamic> selectedCharacteristics)
+        success,
+    required TResult Function(Failure failure) failure,
+  }) {
+    return failure(this.failure);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(
+            String hashKey,
+            String category,
+            int productOrderCount,
+            double price,
+            T? product,
+            Map<Enum, dynamic> selectedCharacteristics)?
+        success,
+    TResult? Function(Failure failure)? failure,
+  }) {
+    return failure?.call(this.failure);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(
+            String hashKey,
+            String category,
+            int productOrderCount,
+            double price,
+            T? product,
+            Map<Enum, dynamic> selectedCharacteristics)?
+        success,
+    TResult Function(Failure failure)? failure,
+    required TResult orElse(),
+  }) {
+    if (failure != null) {
+      return failure(this.failure);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loading<T> value) loading,
+    required TResult Function(_Success<T> value) success,
+    required TResult Function(_Failure<T> value) failure,
+  }) {
+    return failure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Loading<T> value)? loading,
+    TResult? Function(_Success<T> value)? success,
+    TResult? Function(_Failure<T> value)? failure,
+  }) {
+    return failure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loading<T> value)? loading,
+    TResult Function(_Success<T> value)? success,
+    TResult Function(_Failure<T> value)? failure,
+    required TResult orElse(),
+  }) {
+    if (failure != null) {
+      return failure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Failure<T> implements StateProduct<T> {
+  const factory _Failure({required final Failure failure}) = _$FailureImpl<T>;
+
+  Failure get failure;
+  @JsonKey(ignore: true)
+  _$$FailureImplCopyWith<T, _$FailureImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }

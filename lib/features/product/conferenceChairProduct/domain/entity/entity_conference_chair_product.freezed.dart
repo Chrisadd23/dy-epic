@@ -20,6 +20,8 @@ mixin _$EntityConferenceChairProduct {
   double get price => throw _privateConstructorUsedError;
   List<String> get attributes => throw _privateConstructorUsedError;
   String get picturePath => throw _privateConstructorUsedError;
+  String get productNumber => throw _privateConstructorUsedError;
+  Uint8List? get pictureBytes => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EntityConferenceChairProductCopyWith<EntityConferenceChairProduct>
@@ -35,7 +37,12 @@ abstract class $EntityConferenceChairProductCopyWith<$Res> {
           EntityConferenceChairProduct>;
   @useResult
   $Res call(
-      {String name, double price, List<String> attributes, String picturePath});
+      {String name,
+      double price,
+      List<String> attributes,
+      String picturePath,
+      String productNumber,
+      Uint8List? pictureBytes});
 }
 
 /// @nodoc
@@ -56,6 +63,8 @@ class _$EntityConferenceChairProductCopyWithImpl<$Res,
     Object? price = null,
     Object? attributes = null,
     Object? picturePath = null,
+    Object? productNumber = null,
+    Object? pictureBytes = freezed,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -74,6 +83,14 @@ class _$EntityConferenceChairProductCopyWithImpl<$Res,
           ? _value.picturePath
           : picturePath // ignore: cast_nullable_to_non_nullable
               as String,
+      productNumber: null == productNumber
+          ? _value.productNumber
+          : productNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      pictureBytes: freezed == pictureBytes
+          ? _value.pictureBytes
+          : pictureBytes // ignore: cast_nullable_to_non_nullable
+              as Uint8List?,
     ) as $Val);
   }
 }
@@ -88,7 +105,12 @@ abstract class _$$EntityConferenceChairProductImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String name, double price, List<String> attributes, String picturePath});
+      {String name,
+      double price,
+      List<String> attributes,
+      String picturePath,
+      String productNumber,
+      Uint8List? pictureBytes});
 }
 
 /// @nodoc
@@ -108,6 +130,8 @@ class __$$EntityConferenceChairProductImplCopyWithImpl<$Res>
     Object? price = null,
     Object? attributes = null,
     Object? picturePath = null,
+    Object? productNumber = null,
+    Object? pictureBytes = freezed,
   }) {
     return _then(_$EntityConferenceChairProductImpl(
       name: null == name
@@ -126,6 +150,14 @@ class __$$EntityConferenceChairProductImplCopyWithImpl<$Res>
           ? _value.picturePath
           : picturePath // ignore: cast_nullable_to_non_nullable
               as String,
+      productNumber: null == productNumber
+          ? _value.productNumber
+          : productNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      pictureBytes: freezed == pictureBytes
+          ? _value.pictureBytes
+          : pictureBytes // ignore: cast_nullable_to_non_nullable
+              as Uint8List?,
     ));
   }
 }
@@ -138,7 +170,9 @@ class _$EntityConferenceChairProductImpl
       {required this.name,
       required this.price,
       required final List<String> attributes,
-      required this.picturePath})
+      required this.picturePath,
+      required this.productNumber,
+      this.pictureBytes})
       : _attributes = attributes;
 
   @override
@@ -155,10 +189,14 @@ class _$EntityConferenceChairProductImpl
 
   @override
   final String picturePath;
+  @override
+  final String productNumber;
+  @override
+  final Uint8List? pictureBytes;
 
   @override
   String toString() {
-    return 'EntityConferenceChairProduct(name: $name, price: $price, attributes: $attributes, picturePath: $picturePath)';
+    return 'EntityConferenceChairProduct(name: $name, price: $price, attributes: $attributes, picturePath: $picturePath, productNumber: $productNumber, pictureBytes: $pictureBytes)';
   }
 
   @override
@@ -171,12 +209,22 @@ class _$EntityConferenceChairProductImpl
             const DeepCollectionEquality()
                 .equals(other._attributes, _attributes) &&
             (identical(other.picturePath, picturePath) ||
-                other.picturePath == picturePath));
+                other.picturePath == picturePath) &&
+            (identical(other.productNumber, productNumber) ||
+                other.productNumber == productNumber) &&
+            const DeepCollectionEquality()
+                .equals(other.pictureBytes, pictureBytes));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, price,
-      const DeepCollectionEquality().hash(_attributes), picturePath);
+  int get hashCode => Object.hash(
+      runtimeType,
+      name,
+      price,
+      const DeepCollectionEquality().hash(_attributes),
+      picturePath,
+      productNumber,
+      const DeepCollectionEquality().hash(pictureBytes));
 
   @JsonKey(ignore: true)
   @override
@@ -193,7 +241,9 @@ abstract class _EntityConferenceChairProduct
       {required final String name,
       required final double price,
       required final List<String> attributes,
-      required final String picturePath}) = _$EntityConferenceChairProductImpl;
+      required final String picturePath,
+      required final String productNumber,
+      final Uint8List? pictureBytes}) = _$EntityConferenceChairProductImpl;
 
   @override
   String get name;
@@ -203,6 +253,10 @@ abstract class _EntityConferenceChairProduct
   List<String> get attributes;
   @override
   String get picturePath;
+  @override
+  String get productNumber;
+  @override
+  Uint8List? get pictureBytes;
   @override
   @JsonKey(ignore: true)
   _$$EntityConferenceChairProductImplCopyWith<

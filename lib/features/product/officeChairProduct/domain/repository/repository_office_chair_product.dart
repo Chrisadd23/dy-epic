@@ -4,5 +4,5 @@ import 'package:either_dart/either.dart';
 
 abstract class RepositoryOfficeChairProduct {
   Future<Either<Failure, EntityOfficeChairProduct>> getOfficeChairProduct(
-      {required String product});
+      {required String productNumber});
 }

@@ -1,3 +1,4 @@
+import 'package:app_flutter_produkt_bestellen/core/error/failures.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'state_product.freezed.dart';
@@ -14,4 +15,6 @@ class StateProduct<T> with _$StateProduct<T> {
     T? product,
     @Default({}) Map<Enum, dynamic> selectedCharacteristics,
   }) = _Success;
+
+  const factory StateProduct.failure({required Failure failure}) = _Failure;
 }

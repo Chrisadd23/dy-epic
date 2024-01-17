@@ -40,7 +40,7 @@ void setUpOfficeChair() {
       RepositoryBuerodrehstuehleImplementation(
           dataSourceBuerostuehle: getIt()));
 
-  getIt.registerFactory<CubitChooseOfficeChair>(() => CubitChooseOfficeChair());
+  getIt.registerSingleton(CubitChooseOfficeChair());
 
   getIt.registerFactory<CubitOfficeChair>(
       () => CubitOfficeChair(

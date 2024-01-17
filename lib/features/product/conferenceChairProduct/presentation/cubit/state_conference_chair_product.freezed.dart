@@ -17,6 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$StateConferenceChairProduct {
   String get name => throw _privateConstructorUsedError;
+  String get productNumber => throw _privateConstructorUsedError;
+  Uint8List? get pictureBytes => throw _privateConstructorUsedError;
   List<String> get attributes => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -32,7 +34,11 @@ abstract class $StateConferenceChairProductCopyWith<$Res> {
       _$StateConferenceChairProductCopyWithImpl<$Res,
           StateConferenceChairProduct>;
   @useResult
-  $Res call({String name, List<String> attributes});
+  $Res call(
+      {String name,
+      String productNumber,
+      Uint8List? pictureBytes,
+      List<String> attributes});
 }
 
 /// @nodoc
@@ -50,6 +56,8 @@ class _$StateConferenceChairProductCopyWithImpl<$Res,
   @override
   $Res call({
     Object? name = null,
+    Object? productNumber = null,
+    Object? pictureBytes = freezed,
     Object? attributes = null,
   }) {
     return _then(_value.copyWith(
@@ -57,6 +65,14 @@ class _$StateConferenceChairProductCopyWithImpl<$Res,
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      productNumber: null == productNumber
+          ? _value.productNumber
+          : productNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      pictureBytes: freezed == pictureBytes
+          ? _value.pictureBytes
+          : pictureBytes // ignore: cast_nullable_to_non_nullable
+              as Uint8List?,
       attributes: null == attributes
           ? _value.attributes
           : attributes // ignore: cast_nullable_to_non_nullable
@@ -74,7 +90,11 @@ abstract class _$$StateConferenceChairProductImplCopyWith<$Res>
       __$$StateConferenceChairProductImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, List<String> attributes});
+  $Res call(
+      {String name,
+      String productNumber,
+      Uint8List? pictureBytes,
+      List<String> attributes});
 }
 
 /// @nodoc
@@ -91,6 +111,8 @@ class __$$StateConferenceChairProductImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = null,
+    Object? productNumber = null,
+    Object? pictureBytes = freezed,
     Object? attributes = null,
   }) {
     return _then(_$StateConferenceChairProductImpl(
@@ -98,6 +120,14 @@ class __$$StateConferenceChairProductImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      productNumber: null == productNumber
+          ? _value.productNumber
+          : productNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      pictureBytes: freezed == pictureBytes
+          ? _value.pictureBytes
+          : pictureBytes // ignore: cast_nullable_to_non_nullable
+              as Uint8List?,
       attributes: null == attributes
           ? _value._attributes
           : attributes // ignore: cast_nullable_to_non_nullable
@@ -111,11 +141,18 @@ class __$$StateConferenceChairProductImplCopyWithImpl<$Res>
 class _$StateConferenceChairProductImpl
     implements _StateConferenceChairProduct {
   const _$StateConferenceChairProductImpl(
-      {required this.name, required final List<String> attributes})
+      {required this.name,
+      required this.productNumber,
+      this.pictureBytes,
+      required final List<String> attributes})
       : _attributes = attributes;
 
   @override
   final String name;
+  @override
+  final String productNumber;
+  @override
+  final Uint8List? pictureBytes;
   final List<String> _attributes;
   @override
   List<String> get attributes {
@@ -126,7 +163,7 @@ class _$StateConferenceChairProductImpl
 
   @override
   String toString() {
-    return 'StateConferenceChairProduct(name: $name, attributes: $attributes)';
+    return 'StateConferenceChairProduct(name: $name, productNumber: $productNumber, pictureBytes: $pictureBytes, attributes: $attributes)';
   }
 
   @override
@@ -135,13 +172,21 @@ class _$StateConferenceChairProductImpl
         (other.runtimeType == runtimeType &&
             other is _$StateConferenceChairProductImpl &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.productNumber, productNumber) ||
+                other.productNumber == productNumber) &&
+            const DeepCollectionEquality()
+                .equals(other.pictureBytes, pictureBytes) &&
             const DeepCollectionEquality()
                 .equals(other._attributes, _attributes));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, name, const DeepCollectionEquality().hash(_attributes));
+      runtimeType,
+      name,
+      productNumber,
+      const DeepCollectionEquality().hash(pictureBytes),
+      const DeepCollectionEquality().hash(_attributes));
 
   @JsonKey(ignore: true)
   @override
@@ -155,11 +200,17 @@ abstract class _StateConferenceChairProduct
     implements StateConferenceChairProduct {
   const factory _StateConferenceChairProduct(
           {required final String name,
+          required final String productNumber,
+          final Uint8List? pictureBytes,
           required final List<String> attributes}) =
       _$StateConferenceChairProductImpl;
 
   @override
   String get name;
+  @override
+  String get productNumber;
+  @override
+  Uint8List? get pictureBytes;
   @override
   List<String> get attributes;
   @override

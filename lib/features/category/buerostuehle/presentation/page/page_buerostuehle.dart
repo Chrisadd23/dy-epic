@@ -46,8 +46,8 @@ class _BlocProviderCubitChooseOfficeChair extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<CubitChooseOfficeChair>(
-      create: (context) => getIt<CubitChooseOfficeChair>(),
+    return BlocProvider<CubitChooseOfficeChair>.value(
+      value: getIt<CubitChooseOfficeChair>(),
       child: const _BlocBuilderChooseOfficeChair(),
     );
   }
@@ -469,7 +469,7 @@ class _ProductPicture extends StatelessWidget {
                           onTap: () {
                             context.goNamed(
                                 '${AppGoRouter.buerostuehle.name}/${AppGoRouter.product.name}',
-                                extra: widget.name);
+                                extra: widget.picturePath);
                           },
                         ),
                       ),

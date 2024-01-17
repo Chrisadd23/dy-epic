@@ -303,7 +303,7 @@ class _ProductPicture extends StatelessWidget {
                         onTap: () {
                           context.goNamed(
                               '${AppGoRouter.konferenzstuehle.name}/${AppGoRouter.product.name}',
-                              extra: widget.name);
+                              extra: widget.picturePath);
                         },
                       ),
                     ),

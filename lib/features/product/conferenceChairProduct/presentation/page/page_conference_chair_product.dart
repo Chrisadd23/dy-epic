@@ -1,7 +1,6 @@
 import 'package:app_flutter_produkt_bestellen/core/fix_widgets/loading_widget.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_page_widget.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/conferenceChairProduct/presentation/cubit/cubit_conference_chair_product.dart';
-import 'package:app_flutter_produkt_bestellen/features/product/conferenceChairProduct/presentation/cubit/state_conference_chair_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/cubit_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/state_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/widget/widget_order_product.dart';
@@ -26,9 +25,6 @@ class PageConferenceChairProduct extends StatelessWidget {
       body: MultiBlocProvider(providers: [
         BlocProvider<CubitProduct>.value(
           value: getIt<CubitConferenceChairProduct>()..load(product: product),
-        ),
-        BlocProvider<CubitConferenceChairProduct>.value(
-          value: getIt<CubitConferenceChairProduct>(),
         ),
       ], child: const _ConferenceChairBlocBuilder()),
     );
@@ -106,15 +102,12 @@ class _ProductPicture extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<CubitProduct, StateProduct, String?>(
+    return BlocSelector<CubitProduct, StateProduct, Uint8List?>(
         selector: (state) => state.maybeMap(
-            orElse: () {
-              return;
-            },
-            success: (product) => product.selectedCharacteristics[
-                EnumConferenceChairProduct.picturePath]),
-        builder: (context, picturePath) {
-          return WidgetPictureArea(picturePath: picturePath);
+            orElse: () => null,
+            success: (product) => product.product?.pictureBytes),
+        builder: (context, pictureBytes) {
+          return WidgetPictureArea(pictureBytes: pictureBytes);
         });
   }
 }
