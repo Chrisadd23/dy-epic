@@ -4,15 +4,17 @@ import 'package:app_flutter_produkt_bestellen/features/home/domain/usecase_categ
 import 'package:app_flutter_produkt_bestellen/features/home/presentation/cubit/cubit_category.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 
-void setUp() {
-  //UseCase
-  getIt.registerLazySingleton<UseCaseGetCategory>(
-      () => UseCaseGetCategory(repositoryCategory: getIt()));
+abstract class HomeDependencies {
+  static setUp() {
+    //UseCase
+    getIt.registerLazySingleton<UseCaseGetCategory>(
+        () => UseCaseGetCategory(repositoryCategory: getIt()));
 
-  //repository
-  getIt.registerLazySingleton<RepositoryCategory>(
-      () => RepositoryCategoryImplementation());
+    //repository
+    getIt.registerLazySingleton<RepositoryCategory>(
+        () => RepositoryCategoryImplementation());
 
-  //cubit
-  getIt.registerFactory<HomePageCubit>(() => HomePageCubit(getIt()));
+    //cubit
+    getIt.registerFactory<HomePageCubit>(() => HomePageCubit(getIt()));
+  }
 }

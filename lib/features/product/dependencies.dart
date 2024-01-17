@@ -12,10 +12,12 @@ import 'package:app_flutter_produkt_bestellen/features/product/officeChairProduc
 import 'package:app_flutter_produkt_bestellen/features/product/officeChairProduct/presentation/cubit/cubit_office_chair_product.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 
-setUp() {
-  _setUpWorkingTable();
-  _setUpConferenceChair();
-  _setUpOfficeChair();
+abstract class ProductDependencies {
+  static setUp() {
+    _setUpWorkingTable();
+    _setUpConferenceChair();
+    _setUpOfficeChair();
+  }
 }
 
 _setUpWorkingTable() {

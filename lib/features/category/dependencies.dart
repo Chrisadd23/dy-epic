@@ -15,10 +15,12 @@ import 'package:app_flutter_produkt_bestellen/features/category/konferenzstuehle
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-void setUp() {
-  setUpArbeitstische();
-  setUpOfficeChair();
-  setUpConferenceChair();
+abstract class CategoryDependencies {
+  static setUp() {
+    setUpArbeitstische();
+    setUpOfficeChair();
+    setUpConferenceChair();
+  }
 }
 
 void setUpArbeitstische() {

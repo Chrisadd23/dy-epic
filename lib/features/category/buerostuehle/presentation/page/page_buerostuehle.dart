@@ -11,6 +11,7 @@ import 'package:app_flutter_produkt_bestellen/features/category/buerostuehle/dom
 import 'package:app_flutter_produkt_bestellen/features/category/buerostuehle/presentation/cubit/cubit_buerostuehle.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/buerostuehle/presentation/cubit/cubit_choose_office_chair.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/cubit/state_category_generic.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/cubit_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/gen/assets.gen.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/foundation.dart';
@@ -28,9 +29,14 @@ class PageBuerostuehle extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider.value(
+    return MultiBlocProvider(providers: [
+      BlocProvider<CubitShoppingBasket>.value(
+        value: getIt<CubitShoppingBasket>(),
+      ),
+      BlocProvider<CubitPictures>.value(
         value: getIt<CubitPictures>(),
-        child: const _BlocProviderCubitChooseOfficeChair());
+      )
+    ], child: const _BlocProviderCubitChooseOfficeChair());
   }
 
   @override

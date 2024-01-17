@@ -136,6 +136,9 @@ class $AssetsAppComponentsSvgGen {
   /// File path: assets/appComponents/svg/return_icon.svg
   String get returnIcon => 'assets/appComponents/svg/return_icon.svg';
 
+  /// File path: assets/appComponents/svg/shoppingBasket.svg
+  String get shoppingBasket => 'assets/appComponents/svg/shoppingBasket.svg';
+
   /// List of all assets
   List<String> get values => [
         chair1,
@@ -146,7 +149,8 @@ class $AssetsAppComponentsSvgGen {
         iconMinus,
         iconPlus,
         iconMenu,
-        returnIcon
+        returnIcon,
+        shoppingBasket
       ];
 }
 

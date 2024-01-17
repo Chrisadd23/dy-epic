@@ -3,6 +3,7 @@ import 'package:app_flutter_produkt_bestellen/core/fix_widgets/loading_widget.da
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_page_widget.dart';
 import 'package:app_flutter_produkt_bestellen/features/home/presentation/cubit/cubit_category.dart';
 import 'package:app_flutter_produkt_bestellen/features/home/presentation/cubit/state_category.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/cubit_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,7 +15,8 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return GlobalScaffold(
       appBarContext: context,
-      body: const CategoryPage(),
+      body: BlocProvider<CubitShoppingBasket>.value(
+          value: getIt<CubitShoppingBasket>(), child: const CategoryPage()),
     );
   }
 }

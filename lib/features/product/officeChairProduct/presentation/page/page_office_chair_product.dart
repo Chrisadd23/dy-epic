@@ -10,6 +10,7 @@ import 'package:app_flutter_produkt_bestellen/features/product/share/presentatio
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/widget/widget_product_counter.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/widget/widget_product_info.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/widget/widget_product_title.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/cubit_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,28 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PageOfficeChairProduct extends StatelessWidget {
   const PageOfficeChairProduct({super.key, required this.product});
+
+  final String product;
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider<CubitShoppingBasket>.value(
+        value: getIt<CubitShoppingBasket>(),
+        child: _BlocProviderOfficeChairProduct(product: product));
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(StringProperty('product', product));
+  }
+}
+
+class _BlocProviderOfficeChairProduct extends StatelessWidget {
+  const _BlocProviderOfficeChairProduct({
+    super.key,
+    required this.product,
+  });
 
   final String product;
 
@@ -32,12 +55,6 @@ class PageOfficeChairProduct extends StatelessWidget {
         child: const _OfficeChairBlocBuilder(),
       ),
     );
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(StringProperty('product', product));
   }
 }
 
