@@ -42,9 +42,7 @@ class PageBuerostuehle extends HookWidget {
 }
 
 class _BlocProviderCubitChooseOfficeChair extends StatelessWidget {
-  const _BlocProviderCubitChooseOfficeChair({
-    super.key,
-  });
+  const _BlocProviderCubitChooseOfficeChair();
 
   @override
   Widget build(BuildContext context) {
