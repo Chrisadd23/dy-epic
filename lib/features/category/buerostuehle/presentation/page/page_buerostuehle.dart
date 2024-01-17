@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_widgets/failure_widget.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_widgets/loading_widget.dart';
+import 'package:app_flutter_produkt_bestellen/core/global_cubits/cubit_pictures.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_page_widget.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/list_wheel_scroll_view_x.dart';
 import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
@@ -27,10 +28,9 @@ class PageBuerostuehle extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<CubitChooseOfficeChair>(
-      create: (context) => getIt<CubitChooseOfficeChair>(),
-      child: const _BlocBuilderChooseOfficeChair(),
-    );
+    return BlocProvider.value(
+        value: getIt<CubitPictures>(),
+        child: const _BlocProviderCubitChooseOfficeChair());
   }
 
   @override
@@ -38,6 +38,20 @@ class PageBuerostuehle extends HookWidget {
     super.debugFillProperties(properties);
     properties.add(EnumProperty<EnumSelectOfficeChairCategory?>(
         'enumSelectOfficeChairCategory', enumSelectOfficeChairCategory));
+  }
+}
+
+class _BlocProviderCubitChooseOfficeChair extends StatelessWidget {
+  const _BlocProviderCubitChooseOfficeChair({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider<CubitChooseOfficeChair>(
+      create: (context) => getIt<CubitChooseOfficeChair>(),
+      child: const _BlocBuilderChooseOfficeChair(),
+    );
   }
 }
 

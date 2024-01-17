@@ -2,8 +2,10 @@ import 'dart:async';
 import 'dart:typed_data';
 
 import 'package:app_flutter_produkt_bestellen/core/firebase/firebase_configuration.dart';
+import 'package:app_flutter_produkt_bestellen/core/global_cubits/cubit_pictures.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/buerostuehle/domain/repository/repository_buerostuehle.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/cubit/state_category_generic.dart';
+import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:bloc/bloc.dart';
 import 'package:either_dart/either.dart';
 import 'package:flutter/material.dart';
@@ -45,8 +47,22 @@ class CubitOfficeChair extends Cubit<StateCategory> {
               .map((e) => e.picturePath)
               .toList() ??
           [];
-      final st = await Future.wait<Map<String, Uint8List?>>(listProduct
-          .map((filename) => FirebaseConfiguration.getImageBytes(filename)));
+      final st = await Future.wait<Map<String, Uint8List?>>(
+          listProduct.map((filename) async {
+        final containsPictureLocal =
+            getIt<CubitPictures>().state.containsKey(filename) &&
+                getIt<CubitPictures>().state[filename] != null;
+        debugPrint("containsPictureLocal ==> $containsPictureLocal");
+        if (containsPictureLocal) {
+          return {filename: getIt<CubitPictures>().state[filename]};
+        } else {
+          final imageBytes =
+              await FirebaseConfiguration.getImageBytes(filename);
+          getIt<CubitPictures>().addPicture(
+              key: imageBytes.keys.first, value: imageBytes.values.first);
+          return imageBytes;
+        }
+      }));
 
       successState = successState.copyWith(
           productCategory: successState.productCategory?.copyWith(
