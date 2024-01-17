@@ -1,27 +1,71 @@
+import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
 import 'package:app_flutter_produkt_bestellen/core/error/failures.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/konferenzstuehle/domain/entity/entity_konferenzstuehle.dart';
-import 'package:app_flutter_produkt_bestellen/gen/assets.gen.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/share/domain/entity/entity_category.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:either_dart/either.dart';
+import 'package:flutter/material.dart';
 
 abstract class DataSourceConferenceChair {
   Future<Either<Failure, EntityConferenceChair>> getConferenceChair(
-      {String? officeChairCategory});
+      {String? conferenceChairCategory});
 }
 
 class DataSourceConferenceChairImplementation
     extends DataSourceConferenceChair {
   @override
   Future<Either<Failure, EntityConferenceChair>> getConferenceChair(
-      {String? officeChairCategory}) async {
-    // TODO: implement getConferenceChair
+      {String? conferenceChairCategory}) async {
+    debugPrint('start datasource request');
     try {
-      return Right(_listProductSortiment);
+      Failure? failure;
+      List<EntityProduct> officeChairs = [];
+      // TODO: implement getConferenceChair
+      await FirebaseFirestore.instance
+          .collection('Product')
+          .doc('kbLDlq3ItPF7onHoQnYL')
+          .collection('conferenceChair')
+          .get()
+          .then((QuerySnapshot querySnapshot) {
+        querySnapshot.docs.map((document) async {
+          final Map<String, dynamic> data =
+              document.data() as Map<String, dynamic>;
+          debugPrint("index =>  document ==> $data");
+          officeChairs.add(EntityProduct(
+              productNumber: data['productNumber'] ?? '',
+              name: data['productTitle'] ?? '',
+              productType: EnumCategoryConferenceChair.values
+                      .where((category) =>
+                          category.name.toLowerCase() ==
+                          data['type'].toString().toLowerCase())
+                      .firstOrNull ??
+                  EnumCategoryConferenceChair.none,
+              price: double.parse(data['price'].toString()),
+              indexNumber: 0,
+              picturePath: 'product_${data['productNumber']}.png'));
+        }).toList();
+      }, onError: (error) {
+        debugPrint('dataSource error ===> ${error.toString()}');
+        failure = FailureState.databaseError(error.toString());
+        return failure;
+      });
+
+      if (failure != null) {
+        return Left(failure!);
+      } else {
+        debugPrint("return list officeChairs ${officeChairs.toString()}");
+
+        return Right(EntityConferenceChair(
+            categoryName: 'Bürodrehstühle', listProduct: officeChairs));
+      }
     } catch (e) {
-      return Left('Sortiment konnte nicht geladen werden' as Failure);
+      return const Left(
+          FailureState.message('Sortiment konnte nicht geladen werden'));
     }
   }
 }
 
+/*
 final _listProductSortiment =
     EntityConferenceChair(categoryName: 'Konferenzstühle', listProduct: [
   EntityProduct(
@@ -39,3 +83,4 @@ final _listProductSortiment =
       picturePath:
           Assets.products.konferenzstuehle.camiroFreischwingerPolster.path),
 ]);
+*/

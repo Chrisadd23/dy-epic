@@ -4,5 +4,5 @@ import 'package:either_dart/either.dart';
 
 abstract class RepositoryConferenceChair {
   Future<Either<Failure, EntityConferenceChair>> getConferencChaire(
-      {String? officeChairCategory});
+      {String? conferenceChairCategory});
 }

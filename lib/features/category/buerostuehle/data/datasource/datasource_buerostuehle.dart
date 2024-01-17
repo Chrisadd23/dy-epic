@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
 import 'package:app_flutter_produkt_bestellen/core/error/failures.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/buerostuehle/domain/entity/entity_buerodrehstuehle.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/share/domain/entity/entity_category.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:either_dart/either.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +26,7 @@ class DataSourceBuerostuehleImplementation extends DataSourceBuerostuehle {
   @override
   Future<Either<Failure, EntityBuerodrehstuehle>> getBuerodrehstuehle(
       {String? officeChairCategory}) async {
-    debugPrint('start datassource request');
+    debugPrint('start datasource request');
     try {
       Failure? failure;
       List<EntityProduct> officeChairs = [];

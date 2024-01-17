@@ -420,48 +420,36 @@ class _ProductPicture extends StatelessWidget {
                   child: LayoutBuilder(
                     builder: (context, constraints) =>
                         // navigation Test
-                        BlocSelector<CubitOfficeChair, StateCategory,
-                                Uint8List?>(
-                            selector: (state) => state.mapOrNull(
-                                success: (successState) => successState
-                                    .productCategory?.listProduct
-                                    .where((element) =>
-                                        widget.name == element.name)
-                                    .firstOrNull
-                                    ?.pictureByte),
-                            builder: (context, state) {
-                              return Container(
-                                height: constraints.maxHeight * 0.9,
-                                width: constraints.maxWidth * 0.9,
-                                margin: EdgeInsets.only(
-                                    bottom: constraints.maxHeight * 0.2),
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  shape: BoxShape.circle,
-                                  boxShadow: const [
-                                    BoxShadow(
-                                        color: Colors.grey,
-                                        offset: Offset(2, 3),
-                                        blurStyle: BlurStyle.outer),
-                                    BoxShadow(
-                                        color: Colors.grey,
-                                        offset: Offset(2, -3),
-                                        blurStyle: BlurStyle.outer)
-                                  ],
-                                  border: Border.all(
-                                      color: Colors.black45,
-                                      strokeAlign:
-                                          BorderSide.strokeAlignInside),
-                                  image: state != null
-                                      ? DecorationImage(
-                                          fit: BoxFit.contain,
-                                          image: MemoryImage(state),
-                                          onError: (object, stackTrace) =>
-                                              const LoadingWidget())
-                                      : null,
-                                ),
-                              );
-                            }),
+                        Container(
+                      height: constraints.maxHeight * 0.9,
+                      width: constraints.maxWidth * 0.9,
+                      margin:
+                          EdgeInsets.only(bottom: constraints.maxHeight * 0.2),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle,
+                        boxShadow: const [
+                          BoxShadow(
+                              color: Colors.grey,
+                              offset: Offset(2, 3),
+                              blurStyle: BlurStyle.outer),
+                          BoxShadow(
+                              color: Colors.grey,
+                              offset: Offset(2, -3),
+                              blurStyle: BlurStyle.outer)
+                        ],
+                        border: Border.all(
+                            color: Colors.black45,
+                            strokeAlign: BorderSide.strokeAlignInside),
+                        image: state != null
+                            ? DecorationImage(
+                                fit: BoxFit.contain,
+                                image: MemoryImage(state),
+                                onError: (object, stackTrace) =>
+                                    const LoadingWidget())
+                            : null,
+                      ),
+                    ),
                   ),
                 ),
               ),

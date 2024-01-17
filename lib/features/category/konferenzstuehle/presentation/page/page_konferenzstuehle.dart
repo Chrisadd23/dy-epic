@@ -20,7 +20,7 @@ class PageKonferenzstuehle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
+    return BlocProvider<CubitConferenceChair>(
       create: (BuildContext context) => getIt<CubitConferenceChair>()..load(),
       child: GlobalScaffold(
           appBarContext: context, body: const _BlocBuilderConferenceChair()),
@@ -139,7 +139,6 @@ class _ProductState extends State<Product> {
   void didChangeDependencies() {
     // TODO: implement didChangeDependencies
     super.didChangeDependencies();
-    precacheImage(AssetImage(widget.picturePath), context);
   }
 
   @override
@@ -239,66 +238,80 @@ class _ProductPicture extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        Align(
-          alignment: Alignment.center,
-          child: Padding(
-            padding: EdgeInsets.only(
-                bottom: MediaQuery.of(context).size.height * 0.2),
-            child: LayoutBuilder(
-              builder: (context, constraints) =>
-                  // navigation Test
-                  Container(
-                height: constraints.maxHeight * 0.9,
-                width: constraints.maxWidth * 0.9,
-                margin: EdgeInsets.only(bottom: constraints.maxHeight * 0.2),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  shape: BoxShape.circle,
-                  boxShadow: const [
-                    BoxShadow(
-                        color: Colors.grey,
-                        offset: Offset(2, 3),
-                        blurStyle: BlurStyle.outer),
-                    BoxShadow(
-                        color: Colors.grey,
-                        offset: Offset(2, -3),
-                        blurStyle: BlurStyle.outer)
-                  ],
-                  border: Border.all(
-                      color: Colors.black45,
-                      strokeAlign: BorderSide.strokeAlignInside),
-                  image: DecorationImage(
-                    image: AssetImage(widget.picturePath),
+    return BlocSelector<CubitConferenceChair, StateCategory, Uint8List?>(
+        selector: (state) => state.mapOrNull(
+            success: (stateSuccess) => stateSuccess.productCategory?.listProduct
+                .where((element) => element.name == widget.name)
+                .first
+                .pictureByte),
+        builder: (context, state) {
+          return Stack(
+            children: <Widget>[
+              Align(
+                alignment: Alignment.center,
+                child: Padding(
+                  padding: EdgeInsets.only(
+                      bottom: MediaQuery.of(context).size.height * 0.2),
+                  child: LayoutBuilder(
+                    builder: (context, constraints) =>
+                        // navigation Test
+                        Container(
+                      height: constraints.maxHeight * 0.9,
+                      width: constraints.maxWidth * 0.9,
+                      margin:
+                          EdgeInsets.only(bottom: constraints.maxHeight * 0.2),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle,
+                        boxShadow: const [
+                          BoxShadow(
+                              color: Colors.grey,
+                              offset: Offset(2, 3),
+                              blurStyle: BlurStyle.outer),
+                          BoxShadow(
+                              color: Colors.grey,
+                              offset: Offset(2, -3),
+                              blurStyle: BlurStyle.outer)
+                        ],
+                        border: Border.all(
+                            color: Colors.black45,
+                            strokeAlign: BorderSide.strokeAlignInside),
+                        image: state != null
+                            ? DecorationImage(
+                                image: MemoryImage(state),
+                                onError: (object, stackTrace) =>
+                                    const LoadingWidget(),
+                              )
+                            : null,
+                      ),
+                    ),
                   ),
                 ),
               ),
-            ),
-          ),
-        ),
-        Align(
-          alignment: Alignment.center,
-          child: LayoutBuilder(builder: (context, constraints) {
-            return Padding(
-              padding: EdgeInsets.only(bottom: constraints.maxHeight * 0.43),
-              child: CircleAvatar(
-                backgroundColor: Colors.transparent,
-                radius: constraints.maxHeight * 0.23,
-                foregroundColor: Colors.transparent,
-                child: InkWell(
-                  hoverColor: Colors.red,
-                  onTap: () {
-                    context.goNamed(
-                        '${AppGoRouter.konferenzstuehle.name}/${AppGoRouter.product.name}',
-                        extra: widget.name);
-                  },
-                ),
-              ),
-            );
-          }),
-        )
-      ],
-    );
+              Align(
+                alignment: Alignment.center,
+                child: LayoutBuilder(builder: (context, constraints) {
+                  return Padding(
+                    padding:
+                        EdgeInsets.only(bottom: constraints.maxHeight * 0.43),
+                    child: CircleAvatar(
+                      backgroundColor: Colors.transparent,
+                      radius: constraints.maxHeight * 0.23,
+                      foregroundColor: Colors.transparent,
+                      child: InkWell(
+                        hoverColor: Colors.red,
+                        onTap: () {
+                          context.goNamed(
+                              '${AppGoRouter.konferenzstuehle.name}/${AppGoRouter.product.name}',
+                              extra: widget.name);
+                        },
+                      ),
+                    ),
+                  );
+                }),
+              )
+            ],
+          );
+        });
   }
 }

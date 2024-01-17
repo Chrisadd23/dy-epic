@@ -13,7 +13,7 @@ class RepositoryConferenceChairImplementation
 
   @override
   Future<Either<Failure, EntityConferenceChair>> getConferencChaire(
-      {String? officeChairCategory}) async {
+      {String? conferenceChairCategory}) async {
     // TODO: implement getConferencChaire
     return dataSourceConferenceChair.getConferenceChair();
   }

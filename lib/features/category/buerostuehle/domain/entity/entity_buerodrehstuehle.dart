@@ -1,3 +1,4 @@
+import 'package:app_flutter_produkt_bestellen/features/category/share/domain/entity/entity_category.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'entity_buerodrehstuehle.freezed.dart';
@@ -11,20 +12,4 @@ abstract class EntityBuerodrehstuehle with _$EntityBuerodrehstuehle {
   const factory EntityBuerodrehstuehle(
       {required String categoryName,
       required List<EntityProduct> listProduct}) = _EntityBuerodrehstuehle;
-}
-
-@freezed
-class EntityProduct with _$EntityProduct {
-  const EntityProduct._();
-
-  const factory EntityProduct({
-    required String productNumber,
-    required String name,
-    required EnumCategoryOfficeChair productType,
-    required double price,
-    required int indexNumber,
-    required String picturePath,
-    int? offerInPercent,
-    int? productCount,
-  }) = _EntityProduct;
 }
