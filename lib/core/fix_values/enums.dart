@@ -14,3 +14,15 @@ enum EnumSelectOfficeChairCategory {
   normal,
   hochlehner,
 }
+
+enum EnumOrderType { bestellen, anfragen }
+
+enum EnumShoppingBasketOrder {
+  dateDesc,
+  dateAsc,
+  priceDesc,
+  priceAsc,
+  bestellen,
+  anfragen,
+  category
+}
