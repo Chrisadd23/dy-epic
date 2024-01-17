@@ -28,9 +28,7 @@ class PageWorkTables extends StatelessWidget {
 }
 
 class _BlocProviderWorkTables extends StatelessWidget {
-  const _BlocProviderWorkTables({
-    super.key,
-  });
+  const _BlocProviderWorkTables();
 
   @override
   Widget build(BuildContext context) {

@@ -37,7 +37,6 @@ class PageOfficeChairProduct extends StatelessWidget {
 
 class _BlocProviderOfficeChairProduct extends StatelessWidget {
   const _BlocProviderOfficeChairProduct({
-    super.key,
     required this.product,
   });
 
@@ -55,6 +54,12 @@ class _BlocProviderOfficeChairProduct extends StatelessWidget {
         child: const _OfficeChairBlocBuilder(),
       ),
     );
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(StringProperty('product', product));
   }
 }
 

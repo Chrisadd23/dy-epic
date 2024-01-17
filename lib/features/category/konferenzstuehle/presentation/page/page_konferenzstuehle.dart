@@ -28,9 +28,7 @@ class PageKonferenzstuehle extends StatelessWidget {
 }
 
 class _BlocProviderConferenceChair extends StatelessWidget {
-  const _BlocProviderConferenceChair({
-    super.key,
-  });
+  const _BlocProviderConferenceChair();
 
   @override
   Widget build(BuildContext context) {

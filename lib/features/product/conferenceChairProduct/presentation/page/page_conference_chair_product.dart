@@ -35,7 +35,6 @@ class PageConferenceChairProduct extends StatelessWidget {
 
 class _BlocProviderConferenceChair extends StatelessWidget {
   const _BlocProviderConferenceChair({
-    super.key,
     required this.product,
   });
 
@@ -51,6 +50,12 @@ class _BlocProviderConferenceChair extends StatelessWidget {
         ),
       ], child: const _ConferenceChairBlocBuilder()),
     );
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(StringProperty('product', product));
   }
 }
 

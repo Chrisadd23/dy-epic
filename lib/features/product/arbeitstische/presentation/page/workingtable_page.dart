@@ -34,7 +34,6 @@ class PageWorkingTableProduct extends HookWidget {
 
 class _BlocProviderWorkingTable extends StatelessWidget {
   const _BlocProviderWorkingTable({
-    super.key,
     required this.product,
     required this.color,
   });
@@ -64,5 +63,12 @@ class _BlocProviderWorkingTable extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(EnumProperty<EnumCategoryWorkingTable?>('product', product));
+    properties.add(DiagnosticsProperty<Map<String, String>?>('color', color));
   }
 }
