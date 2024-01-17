@@ -57,7 +57,7 @@ class CubitOfficeChair extends Cubit<StateCategory> {
                               positionMap.keys.first == product.picturePath)
                           .first
                           .values
-                          .first))
+                          .firstOrNull))
                   .toList()));
 
       emit(successState);

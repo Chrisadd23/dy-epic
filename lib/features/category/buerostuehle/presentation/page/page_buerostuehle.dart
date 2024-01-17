@@ -296,7 +296,7 @@ class _ProductState extends State<Product> {
   void didChangeDependencies() {
     // TODO: implement didChangeDependencies
     super.didChangeDependencies();
-    precacheImage(AssetImage(widget.picturePath), context);
+    //precacheImage(AssetImage(widget.picturePath), context);
   }
 
   @override
@@ -382,7 +382,7 @@ class _ProductName extends StatelessWidget {
   }
 }
 
-class _ProductPicture extends StatefulWidget {
+class _ProductPicture extends StatelessWidget {
   const _ProductPicture({
     required this.widget,
   });
@@ -390,20 +390,14 @@ class _ProductPicture extends StatefulWidget {
   final Product widget;
 
   @override
-  State<_ProductPicture> createState() => _ProductPictureState();
-}
-
-class _ProductPictureState extends State<_ProductPicture> {
-  @override
   Widget build(BuildContext context) {
     return BlocSelector<CubitOfficeChair, StateCategory, Uint8List?>(
         selector: (state) => state.mapOrNull(
             success: (stateSuccess) => stateSuccess.productCategory?.listProduct
-                .where((element) => element.name == widget.widget.name)
+                .where((element) => element.name == widget.name)
                 .first
                 .pictureByte),
         builder: (context, state) {
-          debugPrint("state ===> ${state.toString()}");
           return Stack(
             children: <Widget>[
               Align(
@@ -420,7 +414,7 @@ class _ProductPictureState extends State<_ProductPicture> {
                                 success: (successState) => successState
                                     .productCategory?.listProduct
                                     .where((element) =>
-                                        widget.widget.name == element.name)
+                                        widget.name == element.name)
                                     .firstOrNull
                                     ?.pictureByte),
                             builder: (context, state) {
@@ -475,7 +469,7 @@ class _ProductPictureState extends State<_ProductPicture> {
                           onTap: () {
                             context.goNamed(
                                 '${AppGoRouter.buerostuehle.name}/${AppGoRouter.product.name}',
-                                extra: widget.widget.name);
+                                extra: widget.name);
                           },
                         ),
                       ),
