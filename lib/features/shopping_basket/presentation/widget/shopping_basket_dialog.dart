@@ -1,8 +1,7 @@
-import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/cubit_shopping_basket.dart';
-import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/event_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/state_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/gen/assets.gen.dart';
+import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -12,67 +11,75 @@ class DialogShoppingBasket extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 15, right: 15),
-      child: Align(
-        alignment: Alignment.topRight,
-        child: InkWell(
-          child: Stack(
-            children: [
-              Align(
-                  alignment: Alignment.topRight,
+    return BlocBuilder<BlocShoppingBasket, StateShoppingBasket>(
+      builder: (context, state) => state.listChosenProduct.isNotEmpty
+          ? Padding(
+              padding: const EdgeInsets.only(top: 15, right: 15),
+              child: Align(
+                alignment: Alignment.topRight,
+                child: InkWell(
                   child: SizedBox(
-                    child: SvgPicture.asset(
-                        Assets.appComponents.svg.shoppingBasket),
-                  )),
-              Padding(
-                padding: const EdgeInsets.only(top: 40, right: 20),
-                child: Align(
-                    alignment: Alignment.topRight,
-                    child: FittedBox(
-                      fit: BoxFit.fill,
-                      child:
-                          BlocBuilder<BlocShoppingBasket, StateShoppingBasket>(
-                              builder: (context, state) {
-                        return Text(
-                          state.listChosenProduct.length.toString(),
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                              shadows: [
-                                BoxShadow(offset: Offset(0, 1)),
-                                BoxShadow(offset: Offset(0, -1)),
-                                BoxShadow(offset: Offset(1, 0)),
-                                BoxShadow(offset: Offset(-1, 0)),
-                              ],
-                              color: Colors.white),
-                        );
-                      }),
-                    )),
-              )
-            ],
-          ),
-          onTap: () {
-            debugPrint("onTap");
-            context.read<BlocShoppingBasket>().add(
-                const EventShoppingBasket.add(
-                    chosenProduct: ChosenProduct(
-                        category: '',
-                        name: '',
-                        price: 0.0,
-                        attributes: [],
-                        count: 0,
-                        productNumber: '',
-                        orderType: EnumOrderType.anfragen)));
-          },
-        ),
-      ),
+                    width: 70,
+                    height: 70,
+                    child: LayoutBuilder(builder: (context, constraints) {
+                      return const _ShoppingBasketStack();
+                    }),
+                  ),
+                  onTap: () {
+                    debugPrint("onTap");
+                    _ShoppingBasketDialog.show(context: context);
+                  },
+                ),
+              ),
+            )
+          : const SizedBox.shrink(),
+    );
+  }
+}
+
+class _ShoppingBasketStack extends StatelessWidget {
+  const _ShoppingBasketStack({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Align(
+            alignment: Alignment.center,
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 15.0),
+              child: SvgPicture.asset(Assets.appComponents.svg.shoppingBasket),
+            )),
+        Align(
+            alignment: Alignment.bottomCenter,
+            child: FittedBox(
+              fit: BoxFit.fill,
+              child: BlocBuilder<BlocShoppingBasket, StateShoppingBasket>(
+                  builder: (context, state) {
+                return Text(
+                  state.listChosenProduct.length.toString(),
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      shadows: [
+                        BoxShadow(offset: Offset(0, 1)),
+                        BoxShadow(offset: Offset(0, -1)),
+                        BoxShadow(offset: Offset(1, 0)),
+                        BoxShadow(offset: Offset(-1, 0)),
+                      ],
+                      color: Colors.white),
+                );
+              }),
+            ))
+      ],
     );
   }
 }
 
 //Start with Bloc logic
-/*class _ShoppingBasketDialog extends StatelessWidget {
+class _ShoppingBasketDialog extends StatelessWidget {
   const _ShoppingBasketDialog._();
 
   static show({required BuildContext context}) => showDialog(
@@ -106,4 +113,4 @@ class _ShoppingBasketWidget extends StatelessWidget {
       );
     });
   }
-}*/
+}

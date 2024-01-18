@@ -1,5 +1,10 @@
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
+import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/cubit_shopping_basket.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/event_shopping_basket.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/state_shopping_basket.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class WidgetOrderProduct extends StatelessWidget {
   const WidgetOrderProduct({
@@ -62,6 +67,17 @@ class WidgetOrderProduct extends StatelessWidget {
                       ),
                     ),
                   ),
+                  onTap: () => context.read<BlocShoppingBasket>().add(
+                        const EventShoppingBasket.add(
+                            chosenProduct: ChosenProduct(
+                                category: '',
+                                name: '',
+                                price: 0.0,
+                                attributes: [],
+                                count: 0,
+                                productNumber: '',
+                                orderType: EnumOrderType.bestellen)),
+                      ),
                 ),
                 InkWell(
                   child: Container(
@@ -101,6 +117,17 @@ class WidgetOrderProduct extends StatelessWidget {
                       ),
                     ),
                   ),
+                  onTap: () => context.read<BlocShoppingBasket>().add(
+                        const EventShoppingBasket.add(
+                            chosenProduct: ChosenProduct(
+                                category: '',
+                                name: '',
+                                price: 0.0,
+                                attributes: [],
+                                count: 0,
+                                productNumber: '',
+                                orderType: EnumOrderType.anfragen)),
+                      ),
                 ),
               ],
             );

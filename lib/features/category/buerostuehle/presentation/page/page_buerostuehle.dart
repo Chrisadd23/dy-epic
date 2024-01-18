@@ -12,6 +12,8 @@ import 'package:app_flutter_produkt_bestellen/features/category/buerostuehle/pre
 import 'package:app_flutter_produkt_bestellen/features/category/buerostuehle/presentation/cubit/cubit_choose_office_chair.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/cubit/state_category_generic.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/cubit_shopping_basket.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/state_shopping_basket.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/widget/shopping_basket_dialog.dart';
 import 'package:app_flutter_produkt_bestellen/gen/assets.gen.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/foundation.dart';
@@ -130,30 +132,38 @@ class _BlocBuilderBuerostuehle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CubitOfficeChair, StateCategory>(
-        builder: (context, state) => state.map(
-            loading: (loading) => const LoadingWidget(
-                  firstWidth: 110,
-                  secondWidth: 60,
-                ),
-            failure: (failure) =>
-                FailureWidget(failure: failure.failure.toString()),
-            success: (success) {
-              final listProducts = success.productCategory?.listProduct
-                  .map((product) => Product(
-                        productType:
-                            product.productType as EnumCategoryOfficeChair,
-                        picturePath: product.picturePath,
-                        price: product.price,
-                        name: product.name,
-                      ))
-                  .toList();
-              debugPrint("Products ===> $listProducts");
-              return Stack(children: [
-                ProductListWheel(listProducts: listProducts),
-                const _ChooseOfficeChaireCategory(),
-              ]);
-            }));
+    return Stack(
+      children: [
+        BlocBuilder<CubitOfficeChair, StateCategory>(
+            builder: (context, state) => state.map(
+                loading: (loading) => const LoadingWidget(
+                      firstWidth: 110,
+                      secondWidth: 60,
+                    ),
+                failure: (failure) =>
+                    FailureWidget(failure: failure.failure.toString()),
+                success: (success) {
+                  final listProducts = success.productCategory?.listProduct
+                      .map((product) => Product(
+                            productType:
+                                product.productType as EnumCategoryOfficeChair,
+                            picturePath: product.picturePath,
+                            price: product.price,
+                            name: product.name,
+                          ))
+                      .toList();
+                  debugPrint("Products ===> $listProducts");
+                  return Stack(children: [
+                    ProductListWheel(listProducts: listProducts),
+                    const _ChooseOfficeChaireCategory(),
+                  ]);
+                })),
+        BlocBuilder<BlocShoppingBasket, StateShoppingBasket>(
+            builder: (context, state) {
+          return const DialogShoppingBasket();
+        }),
+      ],
+    );
   }
 }
 
