@@ -54,20 +54,16 @@ class _ShoppingBasketOffer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Dismissible(
       key: Key(DateTime.now().toString()),
-      onDismissed: (direction) {
+      confirmDismiss: (direction) {
+        if (direction == DismissDirection.endToStart) {
+          context.pop();
+        }
         if (direction == DismissDirection.startToEnd) {
           context
               .read<BlocShoppingBasket>()
               .add(EventShoppingBasket.remove(position: index));
         }
-      },
-      confirmDismiss: (direction) {
-        if (direction == DismissDirection.endToStart) {
-          context.pop();
-          return Future.value(false);
-        }
-
-        return Future.value(true);
+        return Future.value(false);
       },
       secondaryBackground: ClipRRect(
         borderRadius: BorderRadius.circular(20),
