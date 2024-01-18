@@ -38,9 +38,7 @@ class DialogShoppingBasket extends StatelessWidget {
 }
 
 class _ShoppingBasketStack extends StatelessWidget {
-  const _ShoppingBasketStack({
-    super.key,
-  });
+  const _ShoppingBasketStack();
 
   @override
   Widget build(BuildContext context) {
