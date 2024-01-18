@@ -45,18 +45,13 @@ class _ShoppingBasketOffer extends StatelessWidget {
           horizontal: constraints.maxWidth * 0.05,
           vertical: constraints.maxHeight * 0.02),
       child: Container(
-        height: constraints.maxHeight * 0.15,
+        height: constraints.maxHeight * 0.2,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           border: Border.all(),
           color: Colors.white,
         ),
-        child: FittedBox(
-            child: Center(
-                child: Text(
-          'index: $index, name: ${item.name}',
-          style: const TextStyle(fontSize: 16),
-        ))),
+        child: _Offer(item: item),
       ),
     );
   }
@@ -67,6 +62,38 @@ class _ShoppingBasketOffer extends StatelessWidget {
     properties.add(IntProperty('index', index));
     properties
         .add(DiagnosticsProperty<BoxConstraints>('constraints', constraints));
+    properties.add(DiagnosticsProperty<ChosenProduct>('item', item));
+  }
+}
+
+class _Offer extends StatelessWidget {
+  const _Offer({
+    super.key,
+    required this.item,
+  });
+
+  final ChosenProduct item;
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(builder: (context, constraints) {
+      return Padding(
+        padding: EdgeInsets.symmetric(
+            vertical: constraints.maxHeight * 0.01,
+            horizontal: constraints.maxWidth * 0.05),
+        child: FittedBox(
+            child: Center(
+                child: Text(
+          'number: ${item.productNumber}, name: ${item.name}',
+          style: const TextStyle(fontSize: 16),
+        ))),
+      );
+    });
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
     properties.add(DiagnosticsProperty<ChosenProduct>('item', item));
   }
 }

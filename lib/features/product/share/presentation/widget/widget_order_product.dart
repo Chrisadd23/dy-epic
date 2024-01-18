@@ -84,7 +84,8 @@ class WidgetOrderProduct extends StatelessWidget {
                                                 .product!.attributes,
                                             count:
                                                 successState.productOrderCount,
-                                            productNumber: successState.hashKey,
+                                            productNumber: successState
+                                                .product!.productNumber,
                                             orderType:
                                                 EnumOrderType.bestellen)),
                                   ),
