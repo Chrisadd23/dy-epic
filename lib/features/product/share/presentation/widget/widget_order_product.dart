@@ -71,24 +71,28 @@ class WidgetOrderProduct extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              onTap: () => context
-                                  .read<BlocShoppingBasket>()
-                                  .add(
-                                    EventShoppingBasket.add(
-                                        chosenProduct: ChosenProduct(
-                                            category:
-                                                successState.product!.name,
-                                            name: successState.product!.name,
-                                            price: successState.price,
-                                            attributes: successState
-                                                .product!.attributes,
-                                            count:
-                                                successState.productOrderCount,
-                                            productNumber: successState
-                                                .product!.productNumber,
-                                            orderType:
-                                                EnumOrderType.bestellen)),
-                                  ),
+                              onTap: () {
+                                if (successState.productOrderCount > 0) {
+                                  context.read<BlocShoppingBasket>().add(
+                                        EventShoppingBasket.add(
+                                            chosenProduct: ChosenProduct(
+                                                category:
+                                                    successState.product!.name,
+                                                name:
+                                                    successState.product!.name,
+                                                price: successState.price,
+                                                attributes: successState
+                                                    .product!.attributes,
+                                                count: successState
+                                                    .productOrderCount,
+                                                productNumber: successState
+                                                    .product!.productNumber,
+                                                orderType:
+                                                    EnumOrderType.bestellen)),
+                                      );
+                                }
+                                context.read<CubitProduct>().reset();
+                              },
                             ),
                             InkWell(
                               child: Container(
@@ -128,22 +132,30 @@ class WidgetOrderProduct extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              onTap: () => context
-                                  .read<BlocShoppingBasket>()
-                                  .add(
-                                    EventShoppingBasket.add(
-                                        chosenProduct: ChosenProduct(
-                                            category:
-                                                successState.product!.name,
-                                            name: successState.product!.name,
-                                            price: successState.price,
-                                            attributes: successState
-                                                .product!.attributes,
-                                            count:
-                                                successState.productOrderCount,
-                                            productNumber: successState.hashKey,
-                                            orderType: EnumOrderType.anfragen)),
-                                  ),
+                              onTap: () {
+                                debugPrint("start adding");
+                                if (successState.productOrderCount > 0) {
+                                  context.read<BlocShoppingBasket>().add(
+                                        EventShoppingBasket.add(
+                                            chosenProduct: ChosenProduct(
+                                                category:
+                                                    successState.product!.name,
+                                                name:
+                                                    successState.product!.name,
+                                                price: successState.price,
+                                                attributes: successState
+                                                    .product!.attributes,
+                                                count: successState
+                                                    .productOrderCount,
+                                                productNumber:
+                                                    successState.hashKey,
+                                                orderType:
+                                                    EnumOrderType.anfragen)),
+                                      );
+                                }
+                                debugPrint("start reset");
+                                context.read<CubitProduct>().reset();
+                              },
                             ),
                           ],
                         );
