@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$StateShoppingBasket {
-  List<ChosenProduct>? get listChosenProduct =>
+  List<ChosenProduct> get listChosenProduct =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -30,7 +30,7 @@ abstract class $StateShoppingBasketCopyWith<$Res> {
           StateShoppingBasket value, $Res Function(StateShoppingBasket) then) =
       _$StateShoppingBasketCopyWithImpl<$Res, StateShoppingBasket>;
   @useResult
-  $Res call({List<ChosenProduct>? listChosenProduct});
+  $Res call({List<ChosenProduct> listChosenProduct});
 }
 
 /// @nodoc
@@ -46,13 +46,13 @@ class _$StateShoppingBasketCopyWithImpl<$Res, $Val extends StateShoppingBasket>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? listChosenProduct = freezed,
+    Object? listChosenProduct = null,
   }) {
     return _then(_value.copyWith(
-      listChosenProduct: freezed == listChosenProduct
+      listChosenProduct: null == listChosenProduct
           ? _value.listChosenProduct
           : listChosenProduct // ignore: cast_nullable_to_non_nullable
-              as List<ChosenProduct>?,
+              as List<ChosenProduct>,
     ) as $Val);
   }
 }
@@ -65,7 +65,7 @@ abstract class _$$StateShoppingBasketImplCopyWith<$Res>
       __$$StateShoppingBasketImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<ChosenProduct>? listChosenProduct});
+  $Res call({List<ChosenProduct> listChosenProduct});
 }
 
 /// @nodoc
@@ -79,13 +79,13 @@ class __$$StateShoppingBasketImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? listChosenProduct = freezed,
+    Object? listChosenProduct = null,
   }) {
     return _then(_$StateShoppingBasketImpl(
-      listChosenProduct: freezed == listChosenProduct
+      listChosenProduct: null == listChosenProduct
           ? _value._listChosenProduct
           : listChosenProduct // ignore: cast_nullable_to_non_nullable
-              as List<ChosenProduct>?,
+              as List<ChosenProduct>,
     ));
   }
 }
@@ -94,18 +94,16 @@ class __$$StateShoppingBasketImplCopyWithImpl<$Res>
 
 class _$StateShoppingBasketImpl implements _StateShoppingBasket {
   const _$StateShoppingBasketImpl(
-      {final List<ChosenProduct>? listChosenProduct})
+      {required final List<ChosenProduct> listChosenProduct})
       : _listChosenProduct = listChosenProduct;
 
-  final List<ChosenProduct>? _listChosenProduct;
+  final List<ChosenProduct> _listChosenProduct;
   @override
-  List<ChosenProduct>? get listChosenProduct {
-    final value = _listChosenProduct;
-    if (value == null) return null;
+  List<ChosenProduct> get listChosenProduct {
     if (_listChosenProduct is EqualUnmodifiableListView)
       return _listChosenProduct;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableListView(_listChosenProduct);
   }
 
   @override
@@ -136,11 +134,11 @@ class _$StateShoppingBasketImpl implements _StateShoppingBasket {
 
 abstract class _StateShoppingBasket implements StateShoppingBasket {
   const factory _StateShoppingBasket(
-          {final List<ChosenProduct>? listChosenProduct}) =
+          {required final List<ChosenProduct> listChosenProduct}) =
       _$StateShoppingBasketImpl;
 
   @override
-  List<ChosenProduct>? get listChosenProduct;
+  List<ChosenProduct> get listChosenProduct;
   @override
   @JsonKey(ignore: true)
   _$$StateShoppingBasketImplCopyWith<_$StateShoppingBasketImpl> get copyWith =>

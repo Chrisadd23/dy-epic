@@ -65,9 +65,8 @@ enum AppGoRouter {
       routes: <GoRoute>[
         GoRoute(
             path: root.title,
-            builder: (context, state) =>
-                BlocProvider<CubitShoppingBasket>.value(
-                    value: getIt<CubitShoppingBasket>(), child: const Login()),
+            builder: (context, state) => BlocProvider<BlocShoppingBasket>.value(
+                value: getIt<BlocShoppingBasket>(), child: const Login()),
             routes: <GoRoute>[
               GoRoute(
                 path: homePage.title,

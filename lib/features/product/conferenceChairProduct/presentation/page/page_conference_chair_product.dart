@@ -21,8 +21,8 @@ class PageConferenceChairProduct extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<CubitShoppingBasket>.value(
-        value: getIt<CubitShoppingBasket>(),
+    return BlocProvider<BlocShoppingBasket>.value(
+        value: getIt<BlocShoppingBasket>(),
         child: _BlocProviderConferenceChair(product: product));
   }
 

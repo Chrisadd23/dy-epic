@@ -12,7 +12,7 @@ class StateCategory with _$StateCategory {
   const factory StateCategory.loading() = _Loading;
 
   const factory StateCategory.success({
-    ChoosenDateTime? dateTime,
+    ChosenDateTime? dateTime,
     ProductCategory? productCategory,
   }) = _Success;
 
@@ -20,11 +20,10 @@ class StateCategory with _$StateCategory {
 }
 
 @freezed
-class ChoosenDateTime with _$ChoosenDateTime {
-  const ChoosenDateTime._();
+class ChosenDateTime with _$ChosenDateTime {
+  const ChosenDateTime._();
 
-  const factory ChoosenDateTime({DateTime? selectedDateTime}) =
-      _ChoosenDateTime;
+  const factory ChosenDateTime({DateTime? selectedDateTime}) = _ChosenDateTime;
 }
 
 @freezed
@@ -34,7 +33,7 @@ class ProductCategory with _$ProductCategory {
   const factory ProductCategory({
     required String categoryName,
     required List<Product> listProduct,
-    Product? choosenProduct,
+    Product? chosenProduct,
   }) = _ProductCategory;
 }
 

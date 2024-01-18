@@ -4,6 +4,8 @@ import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_pag
 import 'package:app_flutter_produkt_bestellen/features/home/presentation/cubit/cubit_category.dart';
 import 'package:app_flutter_produkt_bestellen/features/home/presentation/cubit/state_category.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/cubit_shopping_basket.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/state_shopping_basket.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/widget/shopping_basket_dialog.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,8 +17,8 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return GlobalScaffold(
       appBarContext: context,
-      body: BlocProvider<CubitShoppingBasket>.value(
-          value: getIt<CubitShoppingBasket>(), child: const CategoryPage()),
+      body: BlocProvider<BlocShoppingBasket>.value(
+          value: getIt<BlocShoppingBasket>(), child: const CategoryPage()),
     );
   }
 }
@@ -31,21 +33,30 @@ class CategoryPage extends StatelessWidget {
       create: (context) => HomePageCubit(getIt())..load(),
       child: SizedBox(
           width: double.infinity,
-          child: BlocBuilder<HomePageCubit, StateCategory>(
-            builder: (context, state) => (state.maybeWhen(
-                loading: () => const LoadingWidget(
-                      firstWidth: 110,
-                      secondWidth: 60,
-                    ),
-                failure: (failure) => FailureWidget(
-                      failure: failure.toString(),
-                    ),
-                success: (listCategory) => SingleChildScrollView(
-                      child: Column(
-                        children: [...listCategory],
-                      ),
-                    ),
-                orElse: () => const SizedBox.shrink())),
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              BlocBuilder<HomePageCubit, StateCategory>(
+                builder: (context, state) => (state.maybeWhen(
+                    loading: () => const LoadingWidget(
+                          firstWidth: 110,
+                          secondWidth: 60,
+                        ),
+                    failure: (failure) => FailureWidget(
+                          failure: failure.toString(),
+                        ),
+                    success: (listCategory) => SingleChildScrollView(
+                          child: Column(
+                            children: [...listCategory],
+                          ),
+                        ),
+                    orElse: () => const SizedBox.shrink())),
+              ),
+              BlocBuilder<BlocShoppingBasket, StateShoppingBasket>(
+                  builder: (context, state) {
+                return const DialogShoppingBasket();
+              })
+            ],
           )),
     );
   }

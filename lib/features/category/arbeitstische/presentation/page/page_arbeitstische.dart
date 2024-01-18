@@ -21,8 +21,8 @@ class PageWorkTables extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<CubitShoppingBasket>.value(
-        value: getIt<CubitShoppingBasket>(),
+    return BlocProvider<BlocShoppingBasket>.value(
+        value: getIt<BlocShoppingBasket>(),
         child: const _BlocProviderWorkTables());
   }
 }
@@ -46,7 +46,10 @@ class _WorkTables extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<CubitWorkTables, StateCategory>(
         builder: (context, state) => state.map(
-            loading: (_) => const LoadingWidget(),
+            loading: (_) => const LoadingWidget(
+                  firstWidth: 110,
+                  secondWidth: 60,
+                ),
             failure: (failure) =>
                 FailureWidget(failure: failure.failure.toString()),
             success: (successState) {

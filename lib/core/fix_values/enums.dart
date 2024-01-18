@@ -18,11 +18,12 @@ enum EnumSelectOfficeChairCategory {
 enum EnumOrderType { bestellen, anfragen }
 
 enum EnumShoppingBasketOrder {
-  dateDesc,
-  dateAsc,
-  priceDesc,
-  priceAsc,
-  bestellen,
-  anfragen,
-  category
+  sortNormal,
+  sortDateDesc,
+  sortDateAsc,
+  sortPriceDesc,
+  sortPriceAsc,
+  sortBestellen,
+  sortAnfragen,
+  sortCategory
 }

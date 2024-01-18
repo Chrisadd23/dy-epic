@@ -19,8 +19,8 @@ class PageWorkingTableProduct extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<CubitShoppingBasket>.value(
-        value: getIt<CubitShoppingBasket>(),
+    return BlocProvider<BlocShoppingBasket>.value(
+        value: getIt<BlocShoppingBasket>(),
         child: _BlocProviderWorkingTable(product: product, color: color));
   }
 

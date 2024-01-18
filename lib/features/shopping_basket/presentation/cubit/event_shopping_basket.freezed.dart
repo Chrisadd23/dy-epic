@@ -1,0 +1,510 @@
+// coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+
+part of 'event_shopping_basket.dart';
+
+// **************************************************************************
+// FreezedGenerator
+// **************************************************************************
+
+T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
+/// @nodoc
+mixin _$EventShoppingBasket {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ChosenProduct chosenProduct) add,
+    required TResult Function(int position) remove,
+    required TResult Function(EnumShoppingBasketOrder orderList) orderList,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(ChosenProduct chosenProduct)? add,
+    TResult? Function(int position)? remove,
+    TResult? Function(EnumShoppingBasketOrder orderList)? orderList,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ChosenProduct chosenProduct)? add,
+    TResult Function(int position)? remove,
+    TResult Function(EnumShoppingBasketOrder orderList)? orderList,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Add value) add,
+    required TResult Function(_Remove value) remove,
+    required TResult Function(_OrderList value) orderList,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Add value)? add,
+    TResult? Function(_Remove value)? remove,
+    TResult? Function(_OrderList value)? orderList,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Add value)? add,
+    TResult Function(_Remove value)? remove,
+    TResult Function(_OrderList value)? orderList,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $EventShoppingBasketCopyWith<$Res> {
+  factory $EventShoppingBasketCopyWith(
+          EventShoppingBasket value, $Res Function(EventShoppingBasket) then) =
+      _$EventShoppingBasketCopyWithImpl<$Res, EventShoppingBasket>;
+}
+
+/// @nodoc
+class _$EventShoppingBasketCopyWithImpl<$Res, $Val extends EventShoppingBasket>
+    implements $EventShoppingBasketCopyWith<$Res> {
+  _$EventShoppingBasketCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$AddImplCopyWith<$Res> {
+  factory _$$AddImplCopyWith(_$AddImpl value, $Res Function(_$AddImpl) then) =
+      __$$AddImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ChosenProduct chosenProduct});
+
+  $ChosenProductCopyWith<$Res> get chosenProduct;
+}
+
+/// @nodoc
+class __$$AddImplCopyWithImpl<$Res>
+    extends _$EventShoppingBasketCopyWithImpl<$Res, _$AddImpl>
+    implements _$$AddImplCopyWith<$Res> {
+  __$$AddImplCopyWithImpl(_$AddImpl _value, $Res Function(_$AddImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? chosenProduct = null,
+  }) {
+    return _then(_$AddImpl(
+      chosenProduct: null == chosenProduct
+          ? _value.chosenProduct
+          : chosenProduct // ignore: cast_nullable_to_non_nullable
+              as ChosenProduct,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ChosenProductCopyWith<$Res> get chosenProduct {
+    return $ChosenProductCopyWith<$Res>(_value.chosenProduct, (value) {
+      return _then(_value.copyWith(chosenProduct: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$AddImpl implements _Add {
+  const _$AddImpl({required this.chosenProduct});
+
+  @override
+  final ChosenProduct chosenProduct;
+
+  @override
+  String toString() {
+    return 'EventShoppingBasket.add(chosenProduct: $chosenProduct)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddImpl &&
+            (identical(other.chosenProduct, chosenProduct) ||
+                other.chosenProduct == chosenProduct));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, chosenProduct);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddImplCopyWith<_$AddImpl> get copyWith =>
+      __$$AddImplCopyWithImpl<_$AddImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ChosenProduct chosenProduct) add,
+    required TResult Function(int position) remove,
+    required TResult Function(EnumShoppingBasketOrder orderList) orderList,
+  }) {
+    return add(chosenProduct);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(ChosenProduct chosenProduct)? add,
+    TResult? Function(int position)? remove,
+    TResult? Function(EnumShoppingBasketOrder orderList)? orderList,
+  }) {
+    return add?.call(chosenProduct);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ChosenProduct chosenProduct)? add,
+    TResult Function(int position)? remove,
+    TResult Function(EnumShoppingBasketOrder orderList)? orderList,
+    required TResult orElse(),
+  }) {
+    if (add != null) {
+      return add(chosenProduct);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Add value) add,
+    required TResult Function(_Remove value) remove,
+    required TResult Function(_OrderList value) orderList,
+  }) {
+    return add(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Add value)? add,
+    TResult? Function(_Remove value)? remove,
+    TResult? Function(_OrderList value)? orderList,
+  }) {
+    return add?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Add value)? add,
+    TResult Function(_Remove value)? remove,
+    TResult Function(_OrderList value)? orderList,
+    required TResult orElse(),
+  }) {
+    if (add != null) {
+      return add(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Add implements EventShoppingBasket {
+  const factory _Add({required final ChosenProduct chosenProduct}) = _$AddImpl;
+
+  ChosenProduct get chosenProduct;
+  @JsonKey(ignore: true)
+  _$$AddImplCopyWith<_$AddImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RemoveImplCopyWith<$Res> {
+  factory _$$RemoveImplCopyWith(
+          _$RemoveImpl value, $Res Function(_$RemoveImpl) then) =
+      __$$RemoveImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int position});
+}
+
+/// @nodoc
+class __$$RemoveImplCopyWithImpl<$Res>
+    extends _$EventShoppingBasketCopyWithImpl<$Res, _$RemoveImpl>
+    implements _$$RemoveImplCopyWith<$Res> {
+  __$$RemoveImplCopyWithImpl(
+      _$RemoveImpl _value, $Res Function(_$RemoveImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? position = null,
+  }) {
+    return _then(_$RemoveImpl(
+      position: null == position
+          ? _value.position
+          : position // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$RemoveImpl implements _Remove {
+  const _$RemoveImpl({required this.position});
+
+  @override
+  final int position;
+
+  @override
+  String toString() {
+    return 'EventShoppingBasket.remove(position: $position)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RemoveImpl &&
+            (identical(other.position, position) ||
+                other.position == position));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, position);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RemoveImplCopyWith<_$RemoveImpl> get copyWith =>
+      __$$RemoveImplCopyWithImpl<_$RemoveImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ChosenProduct chosenProduct) add,
+    required TResult Function(int position) remove,
+    required TResult Function(EnumShoppingBasketOrder orderList) orderList,
+  }) {
+    return remove(position);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(ChosenProduct chosenProduct)? add,
+    TResult? Function(int position)? remove,
+    TResult? Function(EnumShoppingBasketOrder orderList)? orderList,
+  }) {
+    return remove?.call(position);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ChosenProduct chosenProduct)? add,
+    TResult Function(int position)? remove,
+    TResult Function(EnumShoppingBasketOrder orderList)? orderList,
+    required TResult orElse(),
+  }) {
+    if (remove != null) {
+      return remove(position);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Add value) add,
+    required TResult Function(_Remove value) remove,
+    required TResult Function(_OrderList value) orderList,
+  }) {
+    return remove(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Add value)? add,
+    TResult? Function(_Remove value)? remove,
+    TResult? Function(_OrderList value)? orderList,
+  }) {
+    return remove?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Add value)? add,
+    TResult Function(_Remove value)? remove,
+    TResult Function(_OrderList value)? orderList,
+    required TResult orElse(),
+  }) {
+    if (remove != null) {
+      return remove(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Remove implements EventShoppingBasket {
+  const factory _Remove({required final int position}) = _$RemoveImpl;
+
+  int get position;
+  @JsonKey(ignore: true)
+  _$$RemoveImplCopyWith<_$RemoveImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$OrderListImplCopyWith<$Res> {
+  factory _$$OrderListImplCopyWith(
+          _$OrderListImpl value, $Res Function(_$OrderListImpl) then) =
+      __$$OrderListImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({EnumShoppingBasketOrder orderList});
+}
+
+/// @nodoc
+class __$$OrderListImplCopyWithImpl<$Res>
+    extends _$EventShoppingBasketCopyWithImpl<$Res, _$OrderListImpl>
+    implements _$$OrderListImplCopyWith<$Res> {
+  __$$OrderListImplCopyWithImpl(
+      _$OrderListImpl _value, $Res Function(_$OrderListImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? orderList = null,
+  }) {
+    return _then(_$OrderListImpl(
+      orderList: null == orderList
+          ? _value.orderList
+          : orderList // ignore: cast_nullable_to_non_nullable
+              as EnumShoppingBasketOrder,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$OrderListImpl implements _OrderList {
+  const _$OrderListImpl({required this.orderList});
+
+  @override
+  final EnumShoppingBasketOrder orderList;
+
+  @override
+  String toString() {
+    return 'EventShoppingBasket.orderList(orderList: $orderList)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OrderListImpl &&
+            (identical(other.orderList, orderList) ||
+                other.orderList == orderList));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, orderList);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OrderListImplCopyWith<_$OrderListImpl> get copyWith =>
+      __$$OrderListImplCopyWithImpl<_$OrderListImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ChosenProduct chosenProduct) add,
+    required TResult Function(int position) remove,
+    required TResult Function(EnumShoppingBasketOrder orderList) orderList,
+  }) {
+    return orderList(this.orderList);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(ChosenProduct chosenProduct)? add,
+    TResult? Function(int position)? remove,
+    TResult? Function(EnumShoppingBasketOrder orderList)? orderList,
+  }) {
+    return orderList?.call(this.orderList);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ChosenProduct chosenProduct)? add,
+    TResult Function(int position)? remove,
+    TResult Function(EnumShoppingBasketOrder orderList)? orderList,
+    required TResult orElse(),
+  }) {
+    if (orderList != null) {
+      return orderList(this.orderList);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Add value) add,
+    required TResult Function(_Remove value) remove,
+    required TResult Function(_OrderList value) orderList,
+  }) {
+    return orderList(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Add value)? add,
+    TResult? Function(_Remove value)? remove,
+    TResult? Function(_OrderList value)? orderList,
+  }) {
+    return orderList?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Add value)? add,
+    TResult Function(_Remove value)? remove,
+    TResult Function(_OrderList value)? orderList,
+    required TResult orElse(),
+  }) {
+    if (orderList != null) {
+      return orderList(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OrderList implements EventShoppingBasket {
+  const factory _OrderList({required final EnumShoppingBasketOrder orderList}) =
+      _$OrderListImpl;
+
+  EnumShoppingBasketOrder get orderList;
+  @JsonKey(ignore: true)
+  _$$OrderListImplCopyWith<_$OrderListImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

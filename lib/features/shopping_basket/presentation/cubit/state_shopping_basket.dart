@@ -5,8 +5,8 @@ part 'state_shopping_basket.freezed.dart';
 
 @freezed
 class StateShoppingBasket with _$StateShoppingBasket {
-  const factory StateShoppingBasket({List<ChosenProduct>? listChosenProduct}) =
-      _StateShoppingBasket;
+  const factory StateShoppingBasket(
+      {required List<ChosenProduct> listChosenProduct}) = _StateShoppingBasket;
 }
 
 @freezed

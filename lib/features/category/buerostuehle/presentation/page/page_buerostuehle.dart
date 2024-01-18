@@ -30,8 +30,8 @@ class PageBuerostuehle extends HookWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(providers: [
-      BlocProvider<CubitShoppingBasket>.value(
-        value: getIt<CubitShoppingBasket>(),
+      BlocProvider<BlocShoppingBasket>.value(
+        value: getIt<BlocShoppingBasket>(),
       ),
       BlocProvider<CubitPictures>.value(
         value: getIt<CubitPictures>(),

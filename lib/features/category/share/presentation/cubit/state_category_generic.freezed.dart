@@ -20,7 +20,7 @@ mixin _$StateCategory {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(
-            ChoosenDateTime? dateTime, ProductCategory? productCategory)
+            ChosenDateTime? dateTime, ProductCategory? productCategory)
         success,
     required TResult Function(Failure failure) failure,
   }) =>
@@ -29,7 +29,7 @@ mixin _$StateCategory {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(
-            ChoosenDateTime? dateTime, ProductCategory? productCategory)?
+            ChosenDateTime? dateTime, ProductCategory? productCategory)?
         success,
     TResult? Function(Failure failure)? failure,
   }) =>
@@ -38,7 +38,7 @@ mixin _$StateCategory {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(
-            ChoosenDateTime? dateTime, ProductCategory? productCategory)?
+            ChosenDateTime? dateTime, ProductCategory? productCategory)?
         success,
     TResult Function(Failure failure)? failure,
     required TResult orElse(),
@@ -126,7 +126,7 @@ class _$LoadingImpl extends _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(
-            ChoosenDateTime? dateTime, ProductCategory? productCategory)
+            ChosenDateTime? dateTime, ProductCategory? productCategory)
         success,
     required TResult Function(Failure failure) failure,
   }) {
@@ -138,7 +138,7 @@ class _$LoadingImpl extends _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(
-            ChoosenDateTime? dateTime, ProductCategory? productCategory)?
+            ChosenDateTime? dateTime, ProductCategory? productCategory)?
         success,
     TResult? Function(Failure failure)? failure,
   }) {
@@ -150,7 +150,7 @@ class _$LoadingImpl extends _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(
-            ChoosenDateTime? dateTime, ProductCategory? productCategory)?
+            ChosenDateTime? dateTime, ProductCategory? productCategory)?
         success,
     TResult Function(Failure failure)? failure,
     required TResult orElse(),
@@ -207,9 +207,9 @@ abstract class _$$SuccessImplCopyWith<$Res> {
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({ChoosenDateTime? dateTime, ProductCategory? productCategory});
+  $Res call({ChosenDateTime? dateTime, ProductCategory? productCategory});
 
-  $ChoosenDateTimeCopyWith<$Res>? get dateTime;
+  $ChosenDateTimeCopyWith<$Res>? get dateTime;
   $ProductCategoryCopyWith<$Res>? get productCategory;
 }
 
@@ -231,7 +231,7 @@ class __$$SuccessImplCopyWithImpl<$Res>
       dateTime: freezed == dateTime
           ? _value.dateTime
           : dateTime // ignore: cast_nullable_to_non_nullable
-              as ChoosenDateTime?,
+              as ChosenDateTime?,
       productCategory: freezed == productCategory
           ? _value.productCategory
           : productCategory // ignore: cast_nullable_to_non_nullable
@@ -241,12 +241,12 @@ class __$$SuccessImplCopyWithImpl<$Res>
 
   @override
   @pragma('vm:prefer-inline')
-  $ChoosenDateTimeCopyWith<$Res>? get dateTime {
+  $ChosenDateTimeCopyWith<$Res>? get dateTime {
     if (_value.dateTime == null) {
       return null;
     }
 
-    return $ChoosenDateTimeCopyWith<$Res>(_value.dateTime!, (value) {
+    return $ChosenDateTimeCopyWith<$Res>(_value.dateTime!, (value) {
       return _then(_value.copyWith(dateTime: value));
     });
   }
@@ -270,7 +270,7 @@ class _$SuccessImpl extends _Success {
   const _$SuccessImpl({this.dateTime, this.productCategory}) : super._();
 
   @override
-  final ChoosenDateTime? dateTime;
+  final ChosenDateTime? dateTime;
   @override
   final ProductCategory? productCategory;
 
@@ -304,7 +304,7 @@ class _$SuccessImpl extends _Success {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(
-            ChoosenDateTime? dateTime, ProductCategory? productCategory)
+            ChosenDateTime? dateTime, ProductCategory? productCategory)
         success,
     required TResult Function(Failure failure) failure,
   }) {
@@ -316,7 +316,7 @@ class _$SuccessImpl extends _Success {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(
-            ChoosenDateTime? dateTime, ProductCategory? productCategory)?
+            ChosenDateTime? dateTime, ProductCategory? productCategory)?
         success,
     TResult? Function(Failure failure)? failure,
   }) {
@@ -328,7 +328,7 @@ class _$SuccessImpl extends _Success {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(
-            ChoosenDateTime? dateTime, ProductCategory? productCategory)?
+            ChosenDateTime? dateTime, ProductCategory? productCategory)?
         success,
     TResult Function(Failure failure)? failure,
     required TResult orElse(),
@@ -376,11 +376,11 @@ class _$SuccessImpl extends _Success {
 
 abstract class _Success extends StateCategory {
   const factory _Success(
-      {final ChoosenDateTime? dateTime,
+      {final ChosenDateTime? dateTime,
       final ProductCategory? productCategory}) = _$SuccessImpl;
   const _Success._() : super._();
 
-  ChoosenDateTime? get dateTime;
+  ChosenDateTime? get dateTime;
   ProductCategory? get productCategory;
   @JsonKey(ignore: true)
   _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
@@ -453,7 +453,7 @@ class _$FailureImpl extends _Failure {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function(
-            ChoosenDateTime? dateTime, ProductCategory? productCategory)
+            ChosenDateTime? dateTime, ProductCategory? productCategory)
         success,
     required TResult Function(Failure failure) failure,
   }) {
@@ -465,7 +465,7 @@ class _$FailureImpl extends _Failure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function(
-            ChoosenDateTime? dateTime, ProductCategory? productCategory)?
+            ChosenDateTime? dateTime, ProductCategory? productCategory)?
         success,
     TResult? Function(Failure failure)? failure,
   }) {
@@ -477,7 +477,7 @@ class _$FailureImpl extends _Failure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function(
-            ChoosenDateTime? dateTime, ProductCategory? productCategory)?
+            ChosenDateTime? dateTime, ProductCategory? productCategory)?
         success,
     TResult Function(Failure failure)? failure,
     required TResult orElse(),
@@ -534,27 +534,27 @@ abstract class _Failure extends StateCategory {
 }
 
 /// @nodoc
-mixin _$ChoosenDateTime {
+mixin _$ChosenDateTime {
   DateTime? get selectedDateTime => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ChoosenDateTimeCopyWith<ChoosenDateTime> get copyWith =>
+  $ChosenDateTimeCopyWith<ChosenDateTime> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ChoosenDateTimeCopyWith<$Res> {
-  factory $ChoosenDateTimeCopyWith(
-          ChoosenDateTime value, $Res Function(ChoosenDateTime) then) =
-      _$ChoosenDateTimeCopyWithImpl<$Res, ChoosenDateTime>;
+abstract class $ChosenDateTimeCopyWith<$Res> {
+  factory $ChosenDateTimeCopyWith(
+          ChosenDateTime value, $Res Function(ChosenDateTime) then) =
+      _$ChosenDateTimeCopyWithImpl<$Res, ChosenDateTime>;
   @useResult
   $Res call({DateTime? selectedDateTime});
 }
 
 /// @nodoc
-class _$ChoosenDateTimeCopyWithImpl<$Res, $Val extends ChoosenDateTime>
-    implements $ChoosenDateTimeCopyWith<$Res> {
-  _$ChoosenDateTimeCopyWithImpl(this._value, this._then);
+class _$ChosenDateTimeCopyWithImpl<$Res, $Val extends ChosenDateTime>
+    implements $ChosenDateTimeCopyWith<$Res> {
+  _$ChosenDateTimeCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -576,22 +576,22 @@ class _$ChoosenDateTimeCopyWithImpl<$Res, $Val extends ChoosenDateTime>
 }
 
 /// @nodoc
-abstract class _$$ChoosenDateTimeImplCopyWith<$Res>
-    implements $ChoosenDateTimeCopyWith<$Res> {
-  factory _$$ChoosenDateTimeImplCopyWith(_$ChoosenDateTimeImpl value,
-          $Res Function(_$ChoosenDateTimeImpl) then) =
-      __$$ChoosenDateTimeImplCopyWithImpl<$Res>;
+abstract class _$$ChosenDateTimeImplCopyWith<$Res>
+    implements $ChosenDateTimeCopyWith<$Res> {
+  factory _$$ChosenDateTimeImplCopyWith(_$ChosenDateTimeImpl value,
+          $Res Function(_$ChosenDateTimeImpl) then) =
+      __$$ChosenDateTimeImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({DateTime? selectedDateTime});
 }
 
 /// @nodoc
-class __$$ChoosenDateTimeImplCopyWithImpl<$Res>
-    extends _$ChoosenDateTimeCopyWithImpl<$Res, _$ChoosenDateTimeImpl>
-    implements _$$ChoosenDateTimeImplCopyWith<$Res> {
-  __$$ChoosenDateTimeImplCopyWithImpl(
-      _$ChoosenDateTimeImpl _value, $Res Function(_$ChoosenDateTimeImpl) _then)
+class __$$ChosenDateTimeImplCopyWithImpl<$Res>
+    extends _$ChosenDateTimeCopyWithImpl<$Res, _$ChosenDateTimeImpl>
+    implements _$$ChosenDateTimeImplCopyWith<$Res> {
+  __$$ChosenDateTimeImplCopyWithImpl(
+      _$ChosenDateTimeImpl _value, $Res Function(_$ChosenDateTimeImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -599,7 +599,7 @@ class __$$ChoosenDateTimeImplCopyWithImpl<$Res>
   $Res call({
     Object? selectedDateTime = freezed,
   }) {
-    return _then(_$ChoosenDateTimeImpl(
+    return _then(_$ChosenDateTimeImpl(
       selectedDateTime: freezed == selectedDateTime
           ? _value.selectedDateTime
           : selectedDateTime // ignore: cast_nullable_to_non_nullable
@@ -610,22 +610,22 @@ class __$$ChoosenDateTimeImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ChoosenDateTimeImpl extends _ChoosenDateTime {
-  const _$ChoosenDateTimeImpl({this.selectedDateTime}) : super._();
+class _$ChosenDateTimeImpl extends _ChosenDateTime {
+  const _$ChosenDateTimeImpl({this.selectedDateTime}) : super._();
 
   @override
   final DateTime? selectedDateTime;
 
   @override
   String toString() {
-    return 'ChoosenDateTime(selectedDateTime: $selectedDateTime)';
+    return 'ChosenDateTime(selectedDateTime: $selectedDateTime)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ChoosenDateTimeImpl &&
+            other is _$ChosenDateTimeImpl &&
             (identical(other.selectedDateTime, selectedDateTime) ||
                 other.selectedDateTime == selectedDateTime));
   }
@@ -636,21 +636,21 @@ class _$ChoosenDateTimeImpl extends _ChoosenDateTime {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ChoosenDateTimeImplCopyWith<_$ChoosenDateTimeImpl> get copyWith =>
-      __$$ChoosenDateTimeImplCopyWithImpl<_$ChoosenDateTimeImpl>(
+  _$$ChosenDateTimeImplCopyWith<_$ChosenDateTimeImpl> get copyWith =>
+      __$$ChosenDateTimeImplCopyWithImpl<_$ChosenDateTimeImpl>(
           this, _$identity);
 }
 
-abstract class _ChoosenDateTime extends ChoosenDateTime {
-  const factory _ChoosenDateTime({final DateTime? selectedDateTime}) =
-      _$ChoosenDateTimeImpl;
-  const _ChoosenDateTime._() : super._();
+abstract class _ChosenDateTime extends ChosenDateTime {
+  const factory _ChosenDateTime({final DateTime? selectedDateTime}) =
+      _$ChosenDateTimeImpl;
+  const _ChosenDateTime._() : super._();
 
   @override
   DateTime? get selectedDateTime;
   @override
   @JsonKey(ignore: true)
-  _$$ChoosenDateTimeImplCopyWith<_$ChoosenDateTimeImpl> get copyWith =>
+  _$$ChosenDateTimeImplCopyWith<_$ChosenDateTimeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -658,7 +658,7 @@ abstract class _ChoosenDateTime extends ChoosenDateTime {
 mixin _$ProductCategory {
   String get categoryName => throw _privateConstructorUsedError;
   List<Product> get listProduct => throw _privateConstructorUsedError;
-  Product? get choosenProduct => throw _privateConstructorUsedError;
+  Product? get chosenProduct => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProductCategoryCopyWith<ProductCategory> get copyWith =>
@@ -672,11 +672,9 @@ abstract class $ProductCategoryCopyWith<$Res> {
       _$ProductCategoryCopyWithImpl<$Res, ProductCategory>;
   @useResult
   $Res call(
-      {String categoryName,
-      List<Product> listProduct,
-      Product? choosenProduct});
+      {String categoryName, List<Product> listProduct, Product? chosenProduct});
 
-  $ProductCopyWith<$Res>? get choosenProduct;
+  $ProductCopyWith<$Res>? get chosenProduct;
 }
 
 /// @nodoc
@@ -694,7 +692,7 @@ class _$ProductCategoryCopyWithImpl<$Res, $Val extends ProductCategory>
   $Res call({
     Object? categoryName = null,
     Object? listProduct = null,
-    Object? choosenProduct = freezed,
+    Object? chosenProduct = freezed,
   }) {
     return _then(_value.copyWith(
       categoryName: null == categoryName
@@ -705,22 +703,22 @@ class _$ProductCategoryCopyWithImpl<$Res, $Val extends ProductCategory>
           ? _value.listProduct
           : listProduct // ignore: cast_nullable_to_non_nullable
               as List<Product>,
-      choosenProduct: freezed == choosenProduct
-          ? _value.choosenProduct
-          : choosenProduct // ignore: cast_nullable_to_non_nullable
+      chosenProduct: freezed == chosenProduct
+          ? _value.chosenProduct
+          : chosenProduct // ignore: cast_nullable_to_non_nullable
               as Product?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $ProductCopyWith<$Res>? get choosenProduct {
-    if (_value.choosenProduct == null) {
+  $ProductCopyWith<$Res>? get chosenProduct {
+    if (_value.chosenProduct == null) {
       return null;
     }
 
-    return $ProductCopyWith<$Res>(_value.choosenProduct!, (value) {
-      return _then(_value.copyWith(choosenProduct: value) as $Val);
+    return $ProductCopyWith<$Res>(_value.chosenProduct!, (value) {
+      return _then(_value.copyWith(chosenProduct: value) as $Val);
     });
   }
 }
@@ -734,12 +732,10 @@ abstract class _$$ProductCategoryImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String categoryName,
-      List<Product> listProduct,
-      Product? choosenProduct});
+      {String categoryName, List<Product> listProduct, Product? chosenProduct});
 
   @override
-  $ProductCopyWith<$Res>? get choosenProduct;
+  $ProductCopyWith<$Res>? get chosenProduct;
 }
 
 /// @nodoc
@@ -755,7 +751,7 @@ class __$$ProductCategoryImplCopyWithImpl<$Res>
   $Res call({
     Object? categoryName = null,
     Object? listProduct = null,
-    Object? choosenProduct = freezed,
+    Object? chosenProduct = freezed,
   }) {
     return _then(_$ProductCategoryImpl(
       categoryName: null == categoryName
@@ -766,9 +762,9 @@ class __$$ProductCategoryImplCopyWithImpl<$Res>
           ? _value._listProduct
           : listProduct // ignore: cast_nullable_to_non_nullable
               as List<Product>,
-      choosenProduct: freezed == choosenProduct
-          ? _value.choosenProduct
-          : choosenProduct // ignore: cast_nullable_to_non_nullable
+      chosenProduct: freezed == chosenProduct
+          ? _value.chosenProduct
+          : chosenProduct // ignore: cast_nullable_to_non_nullable
               as Product?,
     ));
   }
@@ -780,7 +776,7 @@ class _$ProductCategoryImpl extends _ProductCategory {
   const _$ProductCategoryImpl(
       {required this.categoryName,
       required final List<Product> listProduct,
-      this.choosenProduct})
+      this.chosenProduct})
       : _listProduct = listProduct,
         super._();
 
@@ -795,11 +791,11 @@ class _$ProductCategoryImpl extends _ProductCategory {
   }
 
   @override
-  final Product? choosenProduct;
+  final Product? chosenProduct;
 
   @override
   String toString() {
-    return 'ProductCategory(categoryName: $categoryName, listProduct: $listProduct, choosenProduct: $choosenProduct)';
+    return 'ProductCategory(categoryName: $categoryName, listProduct: $listProduct, chosenProduct: $chosenProduct)';
   }
 
   @override
@@ -811,13 +807,13 @@ class _$ProductCategoryImpl extends _ProductCategory {
                 other.categoryName == categoryName) &&
             const DeepCollectionEquality()
                 .equals(other._listProduct, _listProduct) &&
-            (identical(other.choosenProduct, choosenProduct) ||
-                other.choosenProduct == choosenProduct));
+            (identical(other.chosenProduct, chosenProduct) ||
+                other.chosenProduct == chosenProduct));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, categoryName,
-      const DeepCollectionEquality().hash(_listProduct), choosenProduct);
+      const DeepCollectionEquality().hash(_listProduct), chosenProduct);
 
   @JsonKey(ignore: true)
   @override
@@ -831,7 +827,7 @@ abstract class _ProductCategory extends ProductCategory {
   const factory _ProductCategory(
       {required final String categoryName,
       required final List<Product> listProduct,
-      final Product? choosenProduct}) = _$ProductCategoryImpl;
+      final Product? chosenProduct}) = _$ProductCategoryImpl;
   const _ProductCategory._() : super._();
 
   @override
@@ -839,7 +835,7 @@ abstract class _ProductCategory extends ProductCategory {
   @override
   List<Product> get listProduct;
   @override
-  Product? get choosenProduct;
+  Product? get chosenProduct;
   @override
   @JsonKey(ignore: true)
   _$$ProductCategoryImplCopyWith<_$ProductCategoryImpl> get copyWith =>

@@ -21,8 +21,8 @@ class PageKonferenzstuehle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<CubitShoppingBasket>.value(
-        value: getIt<CubitShoppingBasket>(),
+    return BlocProvider<BlocShoppingBasket>.value(
+        value: getIt<BlocShoppingBasket>(),
         child: const _BlocProviderConferenceChair());
   }
 }
@@ -47,7 +47,10 @@ class _BlocBuilderConferenceChair extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<CubitConferenceChair, StateCategory>(
         builder: (context, state) => state.map(
-              loading: (loading) => const LoadingWidget(),
+              loading: (loading) => const LoadingWidget(
+                firstWidth: 110,
+                secondWidth: 60,
+              ),
               failure: (failure) =>
                   FailureWidget(failure: failure.failure.toString()),
               success: (successState) {
