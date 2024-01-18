@@ -18,7 +18,15 @@ class BlocShoppingBasket
             emitState(newState);
           },
           change: (index) {},
-          remove: (index) {},
+          remove: (index) {
+            debugPrint("remove $index");
+            List<ChosenProduct> newList = List.from(state.listChosenProduct);
+            newList.removeAt(index);
+
+            final newState = state.copyWith(listChosenProduct: newList);
+            debugPrint("newState ==> ${newState.toString()}");
+            emitState(newState);
+          },
           orderList: (enumOrder) {});
     });
   }
