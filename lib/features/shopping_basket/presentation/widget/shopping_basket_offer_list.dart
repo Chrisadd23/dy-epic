@@ -61,6 +61,14 @@ class _ShoppingBasketOffer extends StatelessWidget {
               .add(EventShoppingBasket.remove(position: index));
         }
       },
+      confirmDismiss: (direction) {
+        if (direction == DismissDirection.endToStart) {
+          context.pop();
+          return Future.value(false);
+        }
+
+        return Future.value(true);
+      },
       secondaryBackground: ClipRRect(
         borderRadius: BorderRadius.circular(20),
         child: Container(
