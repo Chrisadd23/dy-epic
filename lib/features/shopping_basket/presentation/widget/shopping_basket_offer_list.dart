@@ -154,7 +154,7 @@ class _Offer extends StatelessWidget {
         child: FittedBox(
             child: Center(
                 child: Text(
-          'index: ${index}, name: ${item.name}',
+          'index: $index, name: ${item.name}',
           style: const TextStyle(fontSize: 16),
         ))),
       );
@@ -165,5 +165,6 @@ class _Offer extends StatelessWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties.add(DiagnosticsProperty<ChosenProduct>('item', item));
+    properties.add(IntProperty('index', index));
   }
 }
