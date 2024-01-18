@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:swipeable_tile/swipeable_tile.dart';
 
 class ShoppingBasketOfferList extends StatelessWidget {
   const ShoppingBasketOfferList({super.key});
@@ -52,63 +53,78 @@ class _ShoppingBasketOffer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Dismissible(
-      key: Key(DateTime.now().toString()),
-      confirmDismiss: (direction) {
-        if (direction == DismissDirection.endToStart) {
-          context.pop();
-        }
-        if (direction == DismissDirection.startToEnd) {
-          context
-              .read<BlocShoppingBasket>()
-              .add(EventShoppingBasket.remove(position: index));
-        }
-        return Future.value(false);
-      },
-      secondaryBackground: ClipRRect(
-        borderRadius: BorderRadius.circular(20),
-        child: Container(
-          height: constraints.maxHeight * 0.2,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            border: Border.all(),
-            color: Colors.green,
-          ),
-          alignment: Alignment.centerRight,
-          child: const Padding(
-            padding: EdgeInsets.all(20.0),
-            child: Icon(Icons.archive),
-          ),
-        ),
-      ),
-      background: ClipRRect(
-        borderRadius: BorderRadius.circular(20),
-        child: Container(
-          height: constraints.maxHeight * 0.2,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            border: Border.all(),
-            color: Colors.red,
-          ),
-          alignment: Alignment.centerLeft,
-          child: const Padding(
-            padding: EdgeInsets.all(20.0),
-            child: Icon(Icons.delete),
-          ),
-        ),
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(20),
-        child: Container(
-          height: constraints.maxHeight * 0.2,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            border: Border.all(),
+    return Stack(
+      children: [
+        SwipeableTile.swipeToTriggerCard(
+            borderRadius: 20,
+            key: Key(DateTime.now().toString()),
+            direction: SwipeDirection.horizontal,
+            backgroundBuilder: (context, direction, progress) {
+              return direction == SwipeDirection.endToStart
+                  ? ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: Container(
+                        height: constraints.maxHeight * 0.2,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(),
+                          color: Colors.green,
+                        ),
+                        alignment: Alignment.centerRight,
+                        child: const Padding(
+                          padding: EdgeInsets.all(20.0),
+                          child: Icon(Icons.archive),
+                        ),
+                      ),
+                    )
+                  : ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: Container(
+                        height: constraints.maxHeight * 0.2,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(),
+                          color: Colors.red,
+                        ),
+                        alignment: Alignment.centerLeft,
+                        child: const Padding(
+                          padding: EdgeInsets.all(20.0),
+                          child: Icon(Icons.delete),
+                        ),
+                      ),
+                    );
+            },
             color: Colors.white,
-          ),
-          child: _Offer(item: item),
-        ),
-      ),
+            onSwiped: (direction) {
+              if (direction == SwipeDirection.endToStart) {
+                context.pop();
+              }
+              if (direction == SwipeDirection.startToEnd) {
+                context
+                    .read<BlocShoppingBasket>()
+                    .add(EventShoppingBasket.remove(position: index));
+              }
+            },
+            horizontalPadding: 0,
+            verticalPadding: 0,
+            shadow: BoxShadow(
+              color: Colors.black.withOpacity(0.35),
+              blurRadius: 0,
+              offset: Offset.zero,
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Container(
+                height: constraints.maxHeight * 0.2,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(),
+                  color: Colors.white,
+                ),
+                child: _Offer(item: item, index: index),
+              ),
+            ))
+      ],
     );
   }
 
@@ -123,11 +139,10 @@ class _ShoppingBasketOffer extends StatelessWidget {
 }
 
 class _Offer extends StatelessWidget {
-  const _Offer({
-    required this.item,
-  });
+  const _Offer({required this.item, required this.index});
 
   final ChosenProduct item;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -139,7 +154,7 @@ class _Offer extends StatelessWidget {
         child: FittedBox(
             child: Center(
                 child: Text(
-          'number: ${item.productNumber}, name: ${item.name}',
+          'index: ${index}, name: ${item.name}',
           style: const TextStyle(fontSize: 16),
         ))),
       );
