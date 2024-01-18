@@ -4,6 +4,7 @@ import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentat
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:swipeable_tile/swipeable_tile.dart';
 
@@ -40,7 +41,7 @@ class ShoppingBasketOfferList extends StatelessWidget {
   }
 }
 
-class _ShoppingBasketOffer extends StatelessWidget {
+class _ShoppingBasketOffer extends HookWidget {
   const _ShoppingBasketOffer({
     required this.constraints,
     required this.index,
@@ -53,84 +54,99 @@ class _ShoppingBasketOffer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final expand = useState<bool>(false);
     return Stack(
       children: [
-        SwipeableTile.swipeToTriggerCard(
-            borderRadius: 20,
-            key: Key(DateTime.now().toString()),
-            direction: SwipeDirection.horizontal,
-            backgroundBuilder: (context, direction, progress) {
-              return direction == SwipeDirection.endToStart
-                  ? ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: Container(
-                        height: constraints.maxHeight * 0.2,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          border: Border.all(),
-                          color: Colors.green,
-                        ),
-                        alignment: Alignment.centerRight,
-                        child: const Padding(
-                          padding: EdgeInsets.all(20.0),
-                          child: Icon(
-                            Icons.archive,
-                            size: 40,
+        GestureDetector(
+          onTap: () => expand.value = !expand.value,
+          child: SwipeableTile.swipeToTriggerCard(
+              borderRadius: 20,
+              key: Key(DateTime.now().toString()),
+              direction: SwipeDirection.horizontal,
+              backgroundBuilder: (context, direction, progress) {
+                return direction == SwipeDirection.endToStart
+                    ? ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Container(
+                          height: constraints.maxHeight * 0.2,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            border: Border.all(),
+                            color: Colors.green,
+                          ),
+                          alignment: Alignment.centerRight,
+                          child: const Padding(
+                            padding: EdgeInsets.all(20.0),
+                            child: Icon(
+                              Icons.archive,
+                              size: 40,
+                            ),
                           ),
                         ),
-                      ),
-                    )
-                  : ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: Container(
-                        height: constraints.maxHeight * 0.2,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          border: Border.all(),
-                          color: Colors.red,
-                        ),
-                        alignment: Alignment.centerLeft,
-                        child: const Padding(
-                          padding: EdgeInsets.all(20.0),
-                          child: Icon(
-                            Icons.delete,
-                            size: 40,
+                      )
+                    : ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Container(
+                          height: constraints.maxHeight * 0.2,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            border: Border.all(),
+                            color: Colors.red,
+                          ),
+                          alignment: Alignment.centerLeft,
+                          child: const Padding(
+                            padding: EdgeInsets.all(20.0),
+                            child: Icon(
+                              Icons.delete,
+                              size: 40,
+                            ),
                           ),
                         ),
-                      ),
-                    );
-            },
-            color: Colors.white,
-            onSwiped: (direction) {
-              if (direction == SwipeDirection.endToStart) {
-                context.pop();
-              }
-              if (direction == SwipeDirection.startToEnd) {
-                context
-                    .read<BlocShoppingBasket>()
-                    .add(EventShoppingBasket.remove(position: index));
-              }
-            },
-            horizontalPadding: 0,
-            verticalPadding: 0,
-            shadow: BoxShadow(
-              color: Colors.black.withOpacity(0.35),
-              blurRadius: 2,
-              offset: const Offset(2, 4),
-            ),
-            swipeThreshold: 0.5,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: Container(
-                height: constraints.maxHeight * 0.2,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  border: Border.all(),
-                  color: Colors.white,
-                ),
-                child: _Offer(item: item, index: index),
+                      );
+              },
+              color: Colors.white,
+              onSwiped: (direction) {
+                if (direction == SwipeDirection.endToStart) {
+                  context.pop();
+                }
+                if (direction == SwipeDirection.startToEnd) {
+                  context
+                      .read<BlocShoppingBasket>()
+                      .add(EventShoppingBasket.remove(position: index));
+                }
+              },
+              horizontalPadding: 0,
+              verticalPadding: 0,
+              shadow: BoxShadow(
+                color: Colors.black.withOpacity(0.35),
+                blurRadius: 2,
+                offset: const Offset(2, 4),
               ),
-            ))
+              swipeThreshold: 0.5,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(),
+                    color: Colors.white,
+                  ),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: constraints.maxHeight * 0.2,
+                        child: _Offer(item: item, index: index),
+                      ),
+                      expand.value
+                          ? SizedBox(
+                              height: constraints.maxHeight * 0.2,
+                            )
+                          : const SizedBox.shrink(),
+                    ],
+                  ),
+                ),
+              )),
+        )
       ],
     );
   }
