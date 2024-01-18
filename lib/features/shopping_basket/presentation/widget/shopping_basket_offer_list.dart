@@ -67,5 +67,6 @@ class _ShoppingBasketOffer extends StatelessWidget {
     properties.add(IntProperty('index', index));
     properties
         .add(DiagnosticsProperty<BoxConstraints>('constraints', constraints));
+    properties.add(DiagnosticsProperty<ChosenProduct>('item', item));
   }
 }
