@@ -1,5 +1,7 @@
+import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/cubit_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/state_shopping_basket.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/widget/shopping_basket_offer_list.dart';
 import 'package:app_flutter_produkt_bestellen/gen/assets.gen.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/material.dart';
@@ -96,19 +98,17 @@ class _ShoppingBasketWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<BlocShoppingBasket, StateShoppingBasket>(
-        builder: (context, state) {
-      return Padding(
-        padding: EdgeInsets.symmetric(
-            horizontal: MediaQuery.sizeOf(context).width * 0.1,
-            vertical: MediaQuery.sizeOf(context).height * 0.15),
-        child: Container(
-          decoration: BoxDecoration(
-              border: Border.all(),
-              borderRadius: BorderRadius.circular(20),
-              color: Colors.white),
-        ),
-      );
-    });
+    return Padding(
+      padding: EdgeInsets.symmetric(
+          horizontal: MediaQuery.sizeOf(context).width * 0.1,
+          vertical: MediaQuery.sizeOf(context).height * 0.15),
+      child: Container(
+        decoration: BoxDecoration(
+            border: Border.all(),
+            borderRadius: BorderRadius.circular(20),
+            color: AppColors.greyCACACA),
+        child: const ShoppingBasketOfferList(),
+      ),
+    );
   }
 }
