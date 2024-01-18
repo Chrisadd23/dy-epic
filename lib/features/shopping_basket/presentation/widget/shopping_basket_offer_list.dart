@@ -73,7 +73,10 @@ class _ShoppingBasketOffer extends StatelessWidget {
                         alignment: Alignment.centerRight,
                         child: const Padding(
                           padding: EdgeInsets.all(20.0),
-                          child: Icon(Icons.archive),
+                          child: Icon(
+                            Icons.archive,
+                            size: 40,
+                          ),
                         ),
                       ),
                     )
@@ -89,7 +92,10 @@ class _ShoppingBasketOffer extends StatelessWidget {
                         alignment: Alignment.centerLeft,
                         child: const Padding(
                           padding: EdgeInsets.all(20.0),
-                          child: Icon(Icons.delete),
+                          child: Icon(
+                            Icons.delete,
+                            size: 40,
+                          ),
                         ),
                       ),
                     );
@@ -109,9 +115,10 @@ class _ShoppingBasketOffer extends StatelessWidget {
             verticalPadding: 0,
             shadow: BoxShadow(
               color: Colors.black.withOpacity(0.35),
-              blurRadius: 0,
-              offset: Offset.zero,
+              blurRadius: 2,
+              offset: const Offset(2, 4),
             ),
+            swipeThreshold: 0.5,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
               child: Container(
