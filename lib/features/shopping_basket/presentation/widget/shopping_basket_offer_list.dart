@@ -22,10 +22,15 @@ class ShoppingBasketOfferList extends StatelessWidget {
               child: ListView.builder(
                 itemCount: state.listChosenProduct.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return _ShoppingBasketOffer(
-                      constraints: constraints,
-                      index: index,
-                      item: state.listChosenProduct[index]);
+                  return Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: constraints.maxWidth * 0.05,
+                        vertical: constraints.maxHeight * 0.02),
+                    child: _ShoppingBasketOffer(
+                        constraints: constraints,
+                        index: index,
+                        item: state.listChosenProduct[index]),
+                  );
                 },
               ));
         }),
@@ -49,10 +54,47 @@ class _ShoppingBasketOffer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Dismissible(
       key: Key(DateTime.now().toString()),
-      child: Padding(
-        padding: EdgeInsets.symmetric(
-            horizontal: constraints.maxWidth * 0.05,
-            vertical: constraints.maxHeight * 0.02),
+      onDismissed: (direction) {
+        if (direction == DismissDirection.startToEnd) {
+          context
+              .read<BlocShoppingBasket>()
+              .add(EventShoppingBasket.remove(position: index));
+        }
+      },
+      secondaryBackground: ClipRRect(
+        borderRadius: BorderRadius.circular(20),
+        child: Container(
+          height: constraints.maxHeight * 0.2,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(),
+            color: Colors.green,
+          ),
+          alignment: Alignment.centerRight,
+          child: const Padding(
+            padding: EdgeInsets.all(20.0),
+            child: Icon(Icons.archive),
+          ),
+        ),
+      ),
+      background: ClipRRect(
+        borderRadius: BorderRadius.circular(20),
+        child: Container(
+          height: constraints.maxHeight * 0.2,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(),
+            color: Colors.red,
+          ),
+          alignment: Alignment.centerLeft,
+          child: const Padding(
+            padding: EdgeInsets.all(20.0),
+            child: Icon(Icons.delete),
+          ),
+        ),
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(20),
         child: Container(
           height: constraints.maxHeight * 0.2,
           decoration: BoxDecoration(
@@ -63,11 +105,6 @@ class _ShoppingBasketOffer extends StatelessWidget {
           child: _Offer(item: item),
         ),
       ),
-      onDismissed: (item) {
-        context
-            .read<BlocShoppingBasket>()
-            .add(EventShoppingBasket.remove(position: index));
-      },
     );
   }
 
@@ -83,7 +120,6 @@ class _ShoppingBasketOffer extends StatelessWidget {
 
 class _Offer extends StatelessWidget {
   const _Offer({
-    super.key,
     required this.item,
   });
 
