@@ -19,6 +19,7 @@ mixin _$EventShoppingBasket {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ChosenProduct chosenProduct) add,
+    required TResult Function(int position) change,
     required TResult Function(int position) remove,
     required TResult Function(EnumShoppingBasketOrder orderList) orderList,
   }) =>
@@ -26,6 +27,7 @@ mixin _$EventShoppingBasket {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ChosenProduct chosenProduct)? add,
+    TResult? Function(int position)? change,
     TResult? Function(int position)? remove,
     TResult? Function(EnumShoppingBasketOrder orderList)? orderList,
   }) =>
@@ -33,6 +35,7 @@ mixin _$EventShoppingBasket {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ChosenProduct chosenProduct)? add,
+    TResult Function(int position)? change,
     TResult Function(int position)? remove,
     TResult Function(EnumShoppingBasketOrder orderList)? orderList,
     required TResult orElse(),
@@ -41,6 +44,7 @@ mixin _$EventShoppingBasket {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Add value) add,
+    required TResult Function(_Change value) change,
     required TResult Function(_Remove value) remove,
     required TResult Function(_OrderList value) orderList,
   }) =>
@@ -48,6 +52,7 @@ mixin _$EventShoppingBasket {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Add value)? add,
+    TResult? Function(_Change value)? change,
     TResult? Function(_Remove value)? remove,
     TResult? Function(_OrderList value)? orderList,
   }) =>
@@ -55,6 +60,7 @@ mixin _$EventShoppingBasket {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Add value)? add,
+    TResult Function(_Change value)? change,
     TResult Function(_Remove value)? remove,
     TResult Function(_OrderList value)? orderList,
     required TResult orElse(),
@@ -154,6 +160,7 @@ class _$AddImpl implements _Add {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ChosenProduct chosenProduct) add,
+    required TResult Function(int position) change,
     required TResult Function(int position) remove,
     required TResult Function(EnumShoppingBasketOrder orderList) orderList,
   }) {
@@ -164,6 +171,7 @@ class _$AddImpl implements _Add {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ChosenProduct chosenProduct)? add,
+    TResult? Function(int position)? change,
     TResult? Function(int position)? remove,
     TResult? Function(EnumShoppingBasketOrder orderList)? orderList,
   }) {
@@ -174,6 +182,7 @@ class _$AddImpl implements _Add {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ChosenProduct chosenProduct)? add,
+    TResult Function(int position)? change,
     TResult Function(int position)? remove,
     TResult Function(EnumShoppingBasketOrder orderList)? orderList,
     required TResult orElse(),
@@ -188,6 +197,7 @@ class _$AddImpl implements _Add {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Add value) add,
+    required TResult Function(_Change value) change,
     required TResult Function(_Remove value) remove,
     required TResult Function(_OrderList value) orderList,
   }) {
@@ -198,6 +208,7 @@ class _$AddImpl implements _Add {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Add value)? add,
+    TResult? Function(_Change value)? change,
     TResult? Function(_Remove value)? remove,
     TResult? Function(_OrderList value)? orderList,
   }) {
@@ -208,6 +219,7 @@ class _$AddImpl implements _Add {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Add value)? add,
+    TResult Function(_Change value)? change,
     TResult Function(_Remove value)? remove,
     TResult Function(_OrderList value)? orderList,
     required TResult orElse(),
@@ -225,6 +237,152 @@ abstract class _Add implements EventShoppingBasket {
   ChosenProduct get chosenProduct;
   @JsonKey(ignore: true)
   _$$AddImplCopyWith<_$AddImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChangeImplCopyWith<$Res> {
+  factory _$$ChangeImplCopyWith(
+          _$ChangeImpl value, $Res Function(_$ChangeImpl) then) =
+      __$$ChangeImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int position});
+}
+
+/// @nodoc
+class __$$ChangeImplCopyWithImpl<$Res>
+    extends _$EventShoppingBasketCopyWithImpl<$Res, _$ChangeImpl>
+    implements _$$ChangeImplCopyWith<$Res> {
+  __$$ChangeImplCopyWithImpl(
+      _$ChangeImpl _value, $Res Function(_$ChangeImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? position = null,
+  }) {
+    return _then(_$ChangeImpl(
+      position: null == position
+          ? _value.position
+          : position // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangeImpl implements _Change {
+  const _$ChangeImpl({required this.position});
+
+  @override
+  final int position;
+
+  @override
+  String toString() {
+    return 'EventShoppingBasket.change(position: $position)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChangeImpl &&
+            (identical(other.position, position) ||
+                other.position == position));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, position);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChangeImplCopyWith<_$ChangeImpl> get copyWith =>
+      __$$ChangeImplCopyWithImpl<_$ChangeImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ChosenProduct chosenProduct) add,
+    required TResult Function(int position) change,
+    required TResult Function(int position) remove,
+    required TResult Function(EnumShoppingBasketOrder orderList) orderList,
+  }) {
+    return change(position);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(ChosenProduct chosenProduct)? add,
+    TResult? Function(int position)? change,
+    TResult? Function(int position)? remove,
+    TResult? Function(EnumShoppingBasketOrder orderList)? orderList,
+  }) {
+    return change?.call(position);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ChosenProduct chosenProduct)? add,
+    TResult Function(int position)? change,
+    TResult Function(int position)? remove,
+    TResult Function(EnumShoppingBasketOrder orderList)? orderList,
+    required TResult orElse(),
+  }) {
+    if (change != null) {
+      return change(position);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Add value) add,
+    required TResult Function(_Change value) change,
+    required TResult Function(_Remove value) remove,
+    required TResult Function(_OrderList value) orderList,
+  }) {
+    return change(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Add value)? add,
+    TResult? Function(_Change value)? change,
+    TResult? Function(_Remove value)? remove,
+    TResult? Function(_OrderList value)? orderList,
+  }) {
+    return change?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Add value)? add,
+    TResult Function(_Change value)? change,
+    TResult Function(_Remove value)? remove,
+    TResult Function(_OrderList value)? orderList,
+    required TResult orElse(),
+  }) {
+    if (change != null) {
+      return change(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Change implements EventShoppingBasket {
+  const factory _Change({required final int position}) = _$ChangeImpl;
+
+  int get position;
+  @JsonKey(ignore: true)
+  _$$ChangeImplCopyWith<_$ChangeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -294,6 +452,7 @@ class _$RemoveImpl implements _Remove {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ChosenProduct chosenProduct) add,
+    required TResult Function(int position) change,
     required TResult Function(int position) remove,
     required TResult Function(EnumShoppingBasketOrder orderList) orderList,
   }) {
@@ -304,6 +463,7 @@ class _$RemoveImpl implements _Remove {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ChosenProduct chosenProduct)? add,
+    TResult? Function(int position)? change,
     TResult? Function(int position)? remove,
     TResult? Function(EnumShoppingBasketOrder orderList)? orderList,
   }) {
@@ -314,6 +474,7 @@ class _$RemoveImpl implements _Remove {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ChosenProduct chosenProduct)? add,
+    TResult Function(int position)? change,
     TResult Function(int position)? remove,
     TResult Function(EnumShoppingBasketOrder orderList)? orderList,
     required TResult orElse(),
@@ -328,6 +489,7 @@ class _$RemoveImpl implements _Remove {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Add value) add,
+    required TResult Function(_Change value) change,
     required TResult Function(_Remove value) remove,
     required TResult Function(_OrderList value) orderList,
   }) {
@@ -338,6 +500,7 @@ class _$RemoveImpl implements _Remove {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Add value)? add,
+    TResult? Function(_Change value)? change,
     TResult? Function(_Remove value)? remove,
     TResult? Function(_OrderList value)? orderList,
   }) {
@@ -348,6 +511,7 @@ class _$RemoveImpl implements _Remove {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Add value)? add,
+    TResult Function(_Change value)? change,
     TResult Function(_Remove value)? remove,
     TResult Function(_OrderList value)? orderList,
     required TResult orElse(),
@@ -434,6 +598,7 @@ class _$OrderListImpl implements _OrderList {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ChosenProduct chosenProduct) add,
+    required TResult Function(int position) change,
     required TResult Function(int position) remove,
     required TResult Function(EnumShoppingBasketOrder orderList) orderList,
   }) {
@@ -444,6 +609,7 @@ class _$OrderListImpl implements _OrderList {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ChosenProduct chosenProduct)? add,
+    TResult? Function(int position)? change,
     TResult? Function(int position)? remove,
     TResult? Function(EnumShoppingBasketOrder orderList)? orderList,
   }) {
@@ -454,6 +620,7 @@ class _$OrderListImpl implements _OrderList {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ChosenProduct chosenProduct)? add,
+    TResult Function(int position)? change,
     TResult Function(int position)? remove,
     TResult Function(EnumShoppingBasketOrder orderList)? orderList,
     required TResult orElse(),
@@ -468,6 +635,7 @@ class _$OrderListImpl implements _OrderList {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Add value) add,
+    required TResult Function(_Change value) change,
     required TResult Function(_Remove value) remove,
     required TResult Function(_OrderList value) orderList,
   }) {
@@ -478,6 +646,7 @@ class _$OrderListImpl implements _OrderList {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Add value)? add,
+    TResult? Function(_Change value)? change,
     TResult? Function(_Remove value)? remove,
     TResult? Function(_OrderList value)? orderList,
   }) {
@@ -488,6 +657,7 @@ class _$OrderListImpl implements _OrderList {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Add value)? add,
+    TResult Function(_Change value)? change,
     TResult Function(_Remove value)? remove,
     TResult Function(_OrderList value)? orderList,
     required TResult orElse(),

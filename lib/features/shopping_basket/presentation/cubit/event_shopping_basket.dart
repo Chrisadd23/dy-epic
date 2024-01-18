@@ -9,6 +9,8 @@ class EventShoppingBasket with _$EventShoppingBasket {
   const factory EventShoppingBasket.add(
       {required ChosenProduct chosenProduct}) = _Add;
 
+  const factory EventShoppingBasket.change({required int position}) = _Change;
+
   const factory EventShoppingBasket.remove({required int position}) = _Remove;
 
   const factory EventShoppingBasket.orderList(

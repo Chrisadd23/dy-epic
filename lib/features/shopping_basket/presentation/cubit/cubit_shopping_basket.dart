@@ -16,7 +16,8 @@ class BlocShoppingBasket
             final newState = state.copyWith(listChosenProduct: newList);
             emitState(newState);
           },
-          remove: (remove) {},
+          change: (index) {},
+          remove: (index) {},
           orderList: (enumOrder) {});
     });
   }
