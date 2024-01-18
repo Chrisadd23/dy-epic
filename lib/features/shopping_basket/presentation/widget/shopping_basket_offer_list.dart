@@ -16,7 +16,9 @@ class ShoppingBasketOfferList extends StatelessWidget {
             itemCount: state.listChosenProduct.length,
             itemBuilder: (BuildContext context, int index) {
               return _ShoppingBasketOffer(
-                  constraints: constraints, index: index);
+                  constraints: constraints,
+                  index: index,
+                  item: state.listChosenProduct[index]);
             },
           );
         }),
@@ -29,36 +31,34 @@ class _ShoppingBasketOffer extends StatelessWidget {
   const _ShoppingBasketOffer({
     required this.constraints,
     required this.index,
+    required this.item,
   });
 
   final int index;
   final BoxConstraints constraints;
+  final ChosenProduct item;
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<BlocShoppingBasket, StateShoppingBasket, ChosenProduct>(
-        selector: (state) => state.listChosenProduct[index],
-        builder: (context, chosenProduct) {
-          return Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: constraints.maxWidth * 0.05,
-                vertical: constraints.maxHeight * 0.02),
-            child: Container(
-              height: constraints.maxHeight * 0.15,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(),
-                color: Colors.white,
-              ),
-              child: Expanded(
-                  child: Center(
-                      child: Text(
-                'index: index, name: ${chosenProduct.name}',
-                style: const TextStyle(fontSize: 16),
-              ))),
-            ),
-          );
-        });
+    return Padding(
+      padding: EdgeInsets.symmetric(
+          horizontal: constraints.maxWidth * 0.05,
+          vertical: constraints.maxHeight * 0.02),
+      child: Container(
+        height: constraints.maxHeight * 0.15,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(),
+          color: Colors.white,
+        ),
+        child: FittedBox(
+            child: Center(
+                child: Text(
+          'index: $index, name: ${item.name}',
+          style: const TextStyle(fontSize: 16),
+        ))),
+      ),
+    );
   }
 
   @override

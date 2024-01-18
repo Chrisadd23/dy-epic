@@ -11,6 +11,7 @@ class BlocShoppingBasket
       debugPrint("event ==> $event");
       event.when(
           add: (product) {
+            debugPrint("product ==> ${product.toString()}");
             List<ChosenProduct> newList = List.from(state.listChosenProduct);
             newList.add(product);
             final newState = state.copyWith(listChosenProduct: newList);

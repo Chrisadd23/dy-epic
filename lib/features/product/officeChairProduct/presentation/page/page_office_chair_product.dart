@@ -76,7 +76,7 @@ class _OfficeChairBlocBuilder extends StatelessWidget {
           firstWidth: 110,
           secondWidth: 60,
         ),
-        success: (_) => SizedBox(
+        success: (product) => SizedBox(
           height: MediaQuery.of(context).size.height,
           width: double.infinity,
           child: const _ProductWidget(),
