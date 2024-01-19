@@ -1,4 +1,5 @@
 import 'package:app_flutter_produkt_bestellen/core/error/failures.dart';
+import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'state_product.freezed.dart';

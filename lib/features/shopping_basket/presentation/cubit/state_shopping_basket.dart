@@ -11,12 +11,13 @@ class StateShoppingBasket with _$StateShoppingBasket {
 
 @freezed
 class ChosenProduct with _$ChosenProduct {
-  const factory ChosenProduct(
-      {required String category,
-      required String name,
-      required double price,
-      required List<String> attributes,
-      required int count,
-      required String productNumber,
-      required EnumOrderType orderType}) = _ChosenProduct;
+  const factory ChosenProduct({
+    required String category,
+    required String name,
+    required double price,
+    required List<String> attributes,
+    required int count,
+    required String productNumber,
+    required EnumOrderType orderType,
+  }) = _ChosenProduct;
 }

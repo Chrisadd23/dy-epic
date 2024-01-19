@@ -15,7 +15,7 @@ enum EnumSelectOfficeChairCategory {
   hochlehner,
 }
 
-enum EnumOrderType { bestellen, anfragen }
+enum EnumOrderType { bestellung, anfrage }
 
 enum EnumShoppingBasketOrder {
   sortNormal,

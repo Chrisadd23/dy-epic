@@ -1,11 +1,15 @@
+import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
+import 'package:app_flutter_produkt_bestellen/core/global_cubits/cubit_pictures.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/cubit_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/event_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/state_shopping_basket.dart';
+import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
+import 'package:intl/intl.dart';
 import 'package:swipeable_tile/swipeable_tile.dart';
 
 class ShoppingBasketOfferList extends StatelessWidget {
@@ -21,19 +25,57 @@ class ShoppingBasketOfferList extends StatelessWidget {
               listener: (context, state) {
                 context.pop();
               },
-              child: ListView.builder(
-                itemCount: state.listChosenProduct.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: constraints.maxWidth * 0.05,
-                        vertical: constraints.maxHeight * 0.02),
-                    child: _ShoppingBasketOffer(
-                        constraints: constraints,
-                        index: index,
-                        item: state.listChosenProduct[index]),
-                  );
-                },
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: constraints.maxHeight * 0.85,
+                    child: ClipRRect(
+                      borderRadius: const BorderRadius.vertical(
+                          bottom: Radius.circular(30)),
+                      child: ListView.builder(
+                        itemCount: state.listChosenProduct.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: constraints.maxWidth * 0.05,
+                                vertical: constraints.maxHeight * 0.02),
+                            child: _ShoppingBasketOffer(
+                                constraints: constraints,
+                                index: index,
+                                item: state.listChosenProduct[index]),
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: constraints.maxWidth * 0.05,
+                          vertical: constraints.maxHeight * 0.02),
+                      child: GestureDetector(
+                        onTap: () => debugPrint("gesture Detector onTap"),
+                        child: Container(
+                          height: constraints.maxHeight * 0.15,
+                          width: constraints.maxWidth,
+                          decoration: BoxDecoration(
+                              color: AppColors.orangeF6A440,
+                              borderRadius: BorderRadius.circular(20),
+                              border: Border.all()),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: const Center(
+                                child: Text(
+                              'absenden',
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
+                            )),
+                          ),
+                        ),
+                      ),
+                    ),
+                  )
+                ],
               ));
         }),
       ),
@@ -78,7 +120,7 @@ class _ShoppingBasketOffer extends HookWidget {
                           child: const Padding(
                             padding: EdgeInsets.all(20.0),
                             child: Icon(
-                              Icons.archive,
+                              Icons.create,
                               size: 40,
                             ),
                           ),
@@ -138,9 +180,7 @@ class _ShoppingBasketOffer extends HookWidget {
                         child: _Offer(item: item, index: index),
                       ),
                       expand.value
-                          ? SizedBox(
-                              height: constraints.maxHeight * 0.2,
-                            )
+                          ? _OfferInfo(item: item, constraints: constraints)
                           : const SizedBox.shrink(),
                     ],
                   ),
@@ -161,6 +201,87 @@ class _ShoppingBasketOffer extends HookWidget {
   }
 }
 
+class _OfferInfo extends StatelessWidget {
+  const _OfferInfo({
+    required this.constraints,
+    required this.item,
+  });
+
+  final BoxConstraints constraints;
+  final ChosenProduct item;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          child: Divider(),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+          child: Row(
+            children: [
+              const Text(
+                'Anzahl: ',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(
+                width: 30,
+              ),
+              Text(
+                item.count.toString(),
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+          child: Row(
+            children: [
+              const Text(
+                'Preis: ',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(
+                width: 48,
+              ),
+              Text(
+                NumberFormat.currency(
+                        locale: 'de_DE', symbol: '€', decimalDigits: 2)
+                    .format(item.price),
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+          child: Text(
+            item.orderType.name.toUpperCase(),
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+        ),
+      ],
+    );
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+        .add(DiagnosticsProperty<BoxConstraints>('constraints', constraints));
+    properties.add(DiagnosticsProperty<ChosenProduct>('item', item));
+  }
+}
+
 class _Offer extends StatelessWidget {
   const _Offer({required this.item, required this.index});
 
@@ -170,16 +291,48 @@ class _Offer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
-      return Padding(
-        padding: EdgeInsets.symmetric(
-            vertical: constraints.maxHeight * 0.01,
-            horizontal: constraints.maxWidth * 0.05),
-        child: FittedBox(
-            child: Center(
-                child: Text(
-          'index: $index, name: ${item.name}',
-          style: const TextStyle(fontSize: 16),
-        ))),
+      return Row(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Image.memory(getIt<CubitPictures>()
+                .state
+                .entries
+                .where((element) => element.key.contains(item.productNumber))
+                .firstOrNull!
+                .value!),
+          ),
+          Expanded(
+            child: Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                      vertical: constraints.maxHeight * 0.12,
+                      horizontal: constraints.maxWidth * 0.02),
+                  child: Text(
+                    item.name,
+                    style: const TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        decoration: TextDecoration.underline),
+                    textAlign: TextAlign.center,
+                    maxLines: 2,
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    NumberFormat.currency(
+                            locale: 'de_DE', symbol: '€', decimalDigits: 2)
+                        .format(item.price * item.count),
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center,
+                  ),
+                )
+              ],
+            ),
+          ),
+        ],
       );
     });
   }

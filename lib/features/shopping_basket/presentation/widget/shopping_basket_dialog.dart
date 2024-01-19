@@ -101,7 +101,7 @@ class _ShoppingBasketWidget extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(
           horizontal: MediaQuery.sizeOf(context).width * 0.1,
-          vertical: MediaQuery.sizeOf(context).height * 0.15),
+          vertical: MediaQuery.sizeOf(context).height * 0.1),
       child: Container(
         decoration: BoxDecoration(
             border: Border.all(),

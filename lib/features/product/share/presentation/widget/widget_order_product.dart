@@ -76,8 +76,7 @@ class WidgetOrderProduct extends StatelessWidget {
                                   context.read<BlocShoppingBasket>().add(
                                         EventShoppingBasket.add(
                                             chosenProduct: ChosenProduct(
-                                                category:
-                                                    successState.product!.name,
+                                                category: successState.category,
                                                 name:
                                                     successState.product!.name,
                                                 price: successState.price,
@@ -88,7 +87,7 @@ class WidgetOrderProduct extends StatelessWidget {
                                                 productNumber: successState
                                                     .product!.productNumber,
                                                 orderType:
-                                                    EnumOrderType.bestellen)),
+                                                    EnumOrderType.bestellung)),
                                       );
                                 }
                                 context.read<CubitProduct>().reset();
@@ -150,7 +149,7 @@ class WidgetOrderProduct extends StatelessWidget {
                                                 productNumber:
                                                     successState.hashKey,
                                                 orderType:
-                                                    EnumOrderType.anfragen)),
+                                                    EnumOrderType.anfrage)),
                                       );
                                 }
                                 debugPrint("start reset");
