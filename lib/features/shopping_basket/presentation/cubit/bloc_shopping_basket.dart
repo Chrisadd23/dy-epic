@@ -1,7 +1,10 @@
+import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/cubit_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/event_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/state_shopping_basket.dart';
+import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class BlocShoppingBasket
     extends Bloc<EventShoppingBasket, StateShoppingBasket> {
@@ -17,7 +20,14 @@ class BlocShoppingBasket
             final newState = state.copyWith(listChosenProduct: newList);
             emitState(newState);
           },
-          change: (index) {},
+          change: (index) {
+            final order = state.listChosenProduct.elementAt(index);
+            debugPrint("change");
+            debugPrint(getIt<GoRouter>().location.split('/').last.toString());
+
+            debugPrint("continue Change");
+            getIt<CubitProduct>().changeProduct(order: order, index: index);
+          },
           remove: (index) {
             debugPrint("remove $index");
             List<ChosenProduct> newList = List.from(state.listChosenProduct);

@@ -67,10 +67,7 @@ class SizeProductWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-                  BlocSelector<
-                          CubitWorkingTableProduct,
-                          StateProduct<StateArbeitsTischeProduct>,
-                          BreiteXTiefe?>(
+                  BlocSelector<CubitProduct, StateProduct, BreiteXTiefe?>(
                       selector: (state) => state.maybeMap(
                             orElse: () => null,
                             success: (product) {
@@ -106,11 +103,11 @@ class SizeProductWidget extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            BlocSelector<CubitWorkingTableProduct,
-                StateProduct<StateArbeitsTischeProduct>, List<BreiteXTiefe>?>(
+            BlocSelector<CubitProduct, StateProduct, List<BreiteXTiefe>?>(
               selector: (state) => state.maybeMap(
                   orElse: () => null,
-                  success: (product) => product.product?.breiteXTiefe),
+                  success: (product) =>
+                      [const BreiteXTiefe(breite: '1.800', tiefe: '2.000')]),
               builder: (BuildContext context, List<BreiteXTiefe>? state) =>
                   state != null
                       ? Row(

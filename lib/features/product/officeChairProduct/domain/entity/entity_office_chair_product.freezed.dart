@@ -22,6 +22,7 @@ mixin _$EntityOfficeChairProduct {
   String get picturePath => throw _privateConstructorUsedError;
   String get productNumber => throw _privateConstructorUsedError;
   Uint8List? get pictureBytes => throw _privateConstructorUsedError;
+  EnumCategoryProduct get productCategory => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EntityOfficeChairProductCopyWith<EntityOfficeChairProduct> get copyWith =>
@@ -40,7 +41,8 @@ abstract class $EntityOfficeChairProductCopyWith<$Res> {
       List<String> attributes,
       String picturePath,
       String productNumber,
-      Uint8List? pictureBytes});
+      Uint8List? pictureBytes,
+      EnumCategoryProduct productCategory});
 }
 
 /// @nodoc
@@ -63,6 +65,7 @@ class _$EntityOfficeChairProductCopyWithImpl<$Res,
     Object? picturePath = null,
     Object? productNumber = null,
     Object? pictureBytes = freezed,
+    Object? productCategory = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -89,6 +92,10 @@ class _$EntityOfficeChairProductCopyWithImpl<$Res,
           ? _value.pictureBytes
           : pictureBytes // ignore: cast_nullable_to_non_nullable
               as Uint8List?,
+      productCategory: null == productCategory
+          ? _value.productCategory
+          : productCategory // ignore: cast_nullable_to_non_nullable
+              as EnumCategoryProduct,
     ) as $Val);
   }
 }
@@ -108,7 +115,8 @@ abstract class _$$EntityOfficeChairProductImplCopyWith<$Res>
       List<String> attributes,
       String picturePath,
       String productNumber,
-      Uint8List? pictureBytes});
+      Uint8List? pictureBytes,
+      EnumCategoryProduct productCategory});
 }
 
 /// @nodoc
@@ -130,6 +138,7 @@ class __$$EntityOfficeChairProductImplCopyWithImpl<$Res>
     Object? picturePath = null,
     Object? productNumber = null,
     Object? pictureBytes = freezed,
+    Object? productCategory = null,
   }) {
     return _then(_$EntityOfficeChairProductImpl(
       name: null == name
@@ -156,6 +165,10 @@ class __$$EntityOfficeChairProductImplCopyWithImpl<$Res>
           ? _value.pictureBytes
           : pictureBytes // ignore: cast_nullable_to_non_nullable
               as Uint8List?,
+      productCategory: null == productCategory
+          ? _value.productCategory
+          : productCategory // ignore: cast_nullable_to_non_nullable
+              as EnumCategoryProduct,
     ));
   }
 }
@@ -169,7 +182,8 @@ class _$EntityOfficeChairProductImpl implements _EntityOfficeChairProduct {
       required final List<String> attributes,
       required this.picturePath,
       required this.productNumber,
-      this.pictureBytes})
+      this.pictureBytes,
+      required this.productCategory})
       : _attributes = attributes;
 
   @override
@@ -190,10 +204,12 @@ class _$EntityOfficeChairProductImpl implements _EntityOfficeChairProduct {
   final String productNumber;
   @override
   final Uint8List? pictureBytes;
+  @override
+  final EnumCategoryProduct productCategory;
 
   @override
   String toString() {
-    return 'EntityOfficeChairProduct(name: $name, price: $price, attributes: $attributes, picturePath: $picturePath, productNumber: $productNumber, pictureBytes: $pictureBytes)';
+    return 'EntityOfficeChairProduct(name: $name, price: $price, attributes: $attributes, picturePath: $picturePath, productNumber: $productNumber, pictureBytes: $pictureBytes, productCategory: $productCategory)';
   }
 
   @override
@@ -210,7 +226,9 @@ class _$EntityOfficeChairProductImpl implements _EntityOfficeChairProduct {
             (identical(other.productNumber, productNumber) ||
                 other.productNumber == productNumber) &&
             const DeepCollectionEquality()
-                .equals(other.pictureBytes, pictureBytes));
+                .equals(other.pictureBytes, pictureBytes) &&
+            (identical(other.productCategory, productCategory) ||
+                other.productCategory == productCategory));
   }
 
   @override
@@ -221,7 +239,8 @@ class _$EntityOfficeChairProductImpl implements _EntityOfficeChairProduct {
       const DeepCollectionEquality().hash(_attributes),
       picturePath,
       productNumber,
-      const DeepCollectionEquality().hash(pictureBytes));
+      const DeepCollectionEquality().hash(pictureBytes),
+      productCategory);
 
   @JsonKey(ignore: true)
   @override
@@ -233,12 +252,14 @@ class _$EntityOfficeChairProductImpl implements _EntityOfficeChairProduct {
 
 abstract class _EntityOfficeChairProduct implements EntityOfficeChairProduct {
   const factory _EntityOfficeChairProduct(
-      {required final String name,
-      required final double price,
-      required final List<String> attributes,
-      required final String picturePath,
-      required final String productNumber,
-      final Uint8List? pictureBytes}) = _$EntityOfficeChairProductImpl;
+          {required final String name,
+          required final double price,
+          required final List<String> attributes,
+          required final String picturePath,
+          required final String productNumber,
+          final Uint8List? pictureBytes,
+          required final EnumCategoryProduct productCategory}) =
+      _$EntityOfficeChairProductImpl;
 
   @override
   String get name;
@@ -252,6 +273,8 @@ abstract class _EntityOfficeChairProduct implements EntityOfficeChairProduct {
   String get productNumber;
   @override
   Uint8List? get pictureBytes;
+  @override
+  EnumCategoryProduct get productCategory;
   @override
   @JsonKey(ignore: true)
   _$$EntityOfficeChairProductImplCopyWith<_$EntityOfficeChairProductImpl>

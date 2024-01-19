@@ -1,5 +1,6 @@
 import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
 import 'package:app_flutter_produkt_bestellen/core/error/failures.dart';
+import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/buerostuehle/presentation/cubit/cubit_choose_office_chair.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/officeChairProduct/domain/entity/entity_office_chair_product.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
@@ -37,6 +38,9 @@ class DataSourceOfficeChairProductImplementation
         debugPrint("data ===> ${data.toString()}");
         if (data != null && data['price'] != null) {
           return EntityOfficeChairProduct(
+              productCategory: category == 'normal'
+                  ? EnumCategoryProduct.officeChairNormal
+                  : EnumCategoryProduct.officeChairHochlehner,
               name: data['productTitle'].toString(),
               price: double.parse(data['price'].toString()),
               picturePath: data['productNumber'] ?? '',

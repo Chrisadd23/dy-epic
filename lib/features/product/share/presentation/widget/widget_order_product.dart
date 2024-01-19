@@ -2,7 +2,7 @@ import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/cubit_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/state_product.dart';
-import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/cubit_shopping_basket.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/bloc_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/event_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/state_shopping_basket.dart';
 import 'package:flutter/material.dart';
@@ -76,18 +76,16 @@ class WidgetOrderProduct extends StatelessWidget {
                                   context.read<BlocShoppingBasket>().add(
                                         EventShoppingBasket.add(
                                             chosenProduct: ChosenProduct(
-                                                category: successState.category,
                                                 name:
                                                     successState.product!.name,
-                                                price: successState.price,
-                                                attributes: successState
-                                                    .product!.attributes,
                                                 count: successState
                                                     .productOrderCount,
                                                 productNumber: successState
                                                     .product!.productNumber,
                                                 orderType:
-                                                    EnumOrderType.bestellung)),
+                                                    EnumOrderType.bestellung,
+                                                entityProduct:
+                                                    successState.product!)),
                                       );
                                 }
                                 context.read<CubitProduct>().reset();
@@ -137,19 +135,16 @@ class WidgetOrderProduct extends StatelessWidget {
                                   context.read<BlocShoppingBasket>().add(
                                         EventShoppingBasket.add(
                                             chosenProduct: ChosenProduct(
-                                                category:
-                                                    successState.product!.name,
                                                 name:
                                                     successState.product!.name,
-                                                price: successState.price,
-                                                attributes: successState
-                                                    .product!.attributes,
                                                 count: successState
                                                     .productOrderCount,
                                                 productNumber:
                                                     successState.hashKey,
                                                 orderType:
-                                                    EnumOrderType.anfrage)),
+                                                    EnumOrderType.anfrage,
+                                                entityProduct:
+                                                    successState.product!)),
                                       );
                                 }
                                 debugPrint("start reset");

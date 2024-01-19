@@ -24,7 +24,7 @@ mixin _$StateProduct<T> {
             String category,
             int productOrderCount,
             double price,
-            T? product,
+            EntityProduct? product,
             Map<Enum, dynamic> selectedCharacteristics)
         success,
     required TResult Function(Failure failure) failure,
@@ -38,7 +38,7 @@ mixin _$StateProduct<T> {
             String category,
             int productOrderCount,
             double price,
-            T? product,
+            EntityProduct? product,
             Map<Enum, dynamic> selectedCharacteristics)?
         success,
     TResult? Function(Failure failure)? failure,
@@ -52,7 +52,7 @@ mixin _$StateProduct<T> {
             String category,
             int productOrderCount,
             double price,
-            T? product,
+            EntityProduct? product,
             Map<Enum, dynamic> selectedCharacteristics)?
         success,
     TResult Function(Failure failure)? failure,
@@ -145,7 +145,7 @@ class _$LoadingImpl<T> implements _Loading<T> {
             String category,
             int productOrderCount,
             double price,
-            T? product,
+            EntityProduct? product,
             Map<Enum, dynamic> selectedCharacteristics)
         success,
     required TResult Function(Failure failure) failure,
@@ -162,7 +162,7 @@ class _$LoadingImpl<T> implements _Loading<T> {
             String category,
             int productOrderCount,
             double price,
-            T? product,
+            EntityProduct? product,
             Map<Enum, dynamic> selectedCharacteristics)?
         success,
     TResult? Function(Failure failure)? failure,
@@ -179,7 +179,7 @@ class _$LoadingImpl<T> implements _Loading<T> {
             String category,
             int productOrderCount,
             double price,
-            T? product,
+            EntityProduct? product,
             Map<Enum, dynamic> selectedCharacteristics)?
         success,
     TResult Function(Failure failure)? failure,
@@ -241,8 +241,10 @@ abstract class _$$SuccessImplCopyWith<T, $Res> {
       String category,
       int productOrderCount,
       double price,
-      T? product,
+      EntityProduct? product,
       Map<Enum, dynamic> selectedCharacteristics});
+
+  $EntityProductCopyWith<$Res>? get product;
 }
 
 /// @nodoc
@@ -283,12 +285,24 @@ class __$$SuccessImplCopyWithImpl<T, $Res>
       product: freezed == product
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
-              as T?,
+              as EntityProduct?,
       selectedCharacteristics: null == selectedCharacteristics
           ? _value._selectedCharacteristics
           : selectedCharacteristics // ignore: cast_nullable_to_non_nullable
               as Map<Enum, dynamic>,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $EntityProductCopyWith<$Res>? get product {
+    if (_value.product == null) {
+      return null;
+    }
+
+    return $EntityProductCopyWith<$Res>(_value.product!, (value) {
+      return _then(_value.copyWith(product: value));
+    });
   }
 }
 
@@ -317,7 +331,7 @@ class _$SuccessImpl<T> implements _Success<T> {
   @JsonKey()
   final double price;
   @override
-  final T? product;
+  final EntityProduct? product;
   final Map<Enum, dynamic> _selectedCharacteristics;
   @override
   @JsonKey()
@@ -344,7 +358,7 @@ class _$SuccessImpl<T> implements _Success<T> {
             (identical(other.productOrderCount, productOrderCount) ||
                 other.productOrderCount == productOrderCount) &&
             (identical(other.price, price) || other.price == price) &&
-            const DeepCollectionEquality().equals(other.product, product) &&
+            (identical(other.product, product) || other.product == product) &&
             const DeepCollectionEquality().equals(
                 other._selectedCharacteristics, _selectedCharacteristics));
   }
@@ -356,7 +370,7 @@ class _$SuccessImpl<T> implements _Success<T> {
       category,
       productOrderCount,
       price,
-      const DeepCollectionEquality().hash(product),
+      product,
       const DeepCollectionEquality().hash(_selectedCharacteristics));
 
   @JsonKey(ignore: true)
@@ -374,7 +388,7 @@ class _$SuccessImpl<T> implements _Success<T> {
             String category,
             int productOrderCount,
             double price,
-            T? product,
+            EntityProduct? product,
             Map<Enum, dynamic> selectedCharacteristics)
         success,
     required TResult Function(Failure failure) failure,
@@ -392,7 +406,7 @@ class _$SuccessImpl<T> implements _Success<T> {
             String category,
             int productOrderCount,
             double price,
-            T? product,
+            EntityProduct? product,
             Map<Enum, dynamic> selectedCharacteristics)?
         success,
     TResult? Function(Failure failure)? failure,
@@ -410,7 +424,7 @@ class _$SuccessImpl<T> implements _Success<T> {
             String category,
             int productOrderCount,
             double price,
-            T? product,
+            EntityProduct? product,
             Map<Enum, dynamic> selectedCharacteristics)?
         success,
     TResult Function(Failure failure)? failure,
@@ -464,14 +478,14 @@ abstract class _Success<T> implements StateProduct<T> {
       final String category,
       final int productOrderCount,
       final double price,
-      final T? product,
+      final EntityProduct? product,
       final Map<Enum, dynamic> selectedCharacteristics}) = _$SuccessImpl<T>;
 
   String get hashKey;
   String get category;
   int get productOrderCount;
   double get price;
-  T? get product;
+  EntityProduct? get product;
   Map<Enum, dynamic> get selectedCharacteristics;
   @JsonKey(ignore: true)
   _$$SuccessImplCopyWith<T, _$SuccessImpl<T>> get copyWith =>
@@ -548,7 +562,7 @@ class _$FailureImpl<T> implements _Failure<T> {
             String category,
             int productOrderCount,
             double price,
-            T? product,
+            EntityProduct? product,
             Map<Enum, dynamic> selectedCharacteristics)
         success,
     required TResult Function(Failure failure) failure,
@@ -565,7 +579,7 @@ class _$FailureImpl<T> implements _Failure<T> {
             String category,
             int productOrderCount,
             double price,
-            T? product,
+            EntityProduct? product,
             Map<Enum, dynamic> selectedCharacteristics)?
         success,
     TResult? Function(Failure failure)? failure,
@@ -582,7 +596,7 @@ class _$FailureImpl<T> implements _Failure<T> {
             String category,
             int productOrderCount,
             double price,
-            T? product,
+            EntityProduct? product,
             Map<Enum, dynamic> selectedCharacteristics)?
         success,
     TResult Function(Failure failure)? failure,

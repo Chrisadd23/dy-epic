@@ -1,14 +1,16 @@
+import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_cubits/cubit_pictures.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/conferenceChairProduct/domain/repository/repository_conference_chair_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/conferenceChairProduct/presentation/cubit/state_conference_chair_product.dart';
+import 'package:app_flutter_produkt_bestellen/features/product/share/domain/entity/entity_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/cubit_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/state_product.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:either_dart/either.dart';
 import 'package:flutter/material.dart';
 
-class CubitConferenceChairProduct extends CubitProduct<
-    CubitConferenceChairProduct, StateConferenceChairProduct> {
+class CubitConferenceChairProduct
+    extends CubitProduct<CubitConferenceChairProduct, EntityProduct> {
   CubitConferenceChairProduct({required this.repositoryConferenceChairProduct});
 
   final RepositoryConferenceChairProduct repositoryConferenceChairProduct;
@@ -25,12 +27,15 @@ class CubitConferenceChairProduct extends CubitProduct<
         EnumConferenceChairProduct.name: conferenceChaire.name,
         EnumConferenceChairProduct.picturePath: conferenceChaire.picturePath,
       };
-      var newState = StateProduct.success(
-          product: StateConferenceChairProduct(
-              productNumber: conferenceChaire.productNumber,
-              pictureBytes: conferenceChaire.pictureBytes,
-              name: conferenceChaire.name,
-              attributes: conferenceChaire.attributes),
+      var newState = StateProduct<EntityProduct>.success(
+          product: EntityProduct(
+            productNumber: conferenceChaire.productNumber,
+            pictureBytes: conferenceChaire.pictureBytes,
+            name: conferenceChaire.name,
+            attributes: conferenceChaire.attributes,
+            price: conferenceChaire.price,
+            productCategory: EnumCategoryProduct.conferenceChair,
+          ),
           selectedCharacteristics: characteristics,
           price: conferenceChaire.price);
 

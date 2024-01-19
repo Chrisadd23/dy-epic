@@ -147,13 +147,11 @@ abstract class _StateShoppingBasket implements StateShoppingBasket {
 
 /// @nodoc
 mixin _$ChosenProduct {
-  String get category => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  double get price => throw _privateConstructorUsedError;
-  List<String> get attributes => throw _privateConstructorUsedError;
   int get count => throw _privateConstructorUsedError;
   String get productNumber => throw _privateConstructorUsedError;
   EnumOrderType get orderType => throw _privateConstructorUsedError;
+  EntityProduct get entityProduct => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ChosenProductCopyWith<ChosenProduct> get copyWith =>
@@ -167,13 +165,13 @@ abstract class $ChosenProductCopyWith<$Res> {
       _$ChosenProductCopyWithImpl<$Res, ChosenProduct>;
   @useResult
   $Res call(
-      {String category,
-      String name,
-      double price,
-      List<String> attributes,
+      {String name,
       int count,
       String productNumber,
-      EnumOrderType orderType});
+      EnumOrderType orderType,
+      EntityProduct entityProduct});
+
+  $EntityProductCopyWith<$Res> get entityProduct;
 }
 
 /// @nodoc
@@ -189,31 +187,17 @@ class _$ChosenProductCopyWithImpl<$Res, $Val extends ChosenProduct>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? category = null,
     Object? name = null,
-    Object? price = null,
-    Object? attributes = null,
     Object? count = null,
     Object? productNumber = null,
     Object? orderType = null,
+    Object? entityProduct = null,
   }) {
     return _then(_value.copyWith(
-      category: null == category
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as double,
-      attributes: null == attributes
-          ? _value.attributes
-          : attributes // ignore: cast_nullable_to_non_nullable
-              as List<String>,
       count: null == count
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
@@ -226,7 +210,19 @@ class _$ChosenProductCopyWithImpl<$Res, $Val extends ChosenProduct>
           ? _value.orderType
           : orderType // ignore: cast_nullable_to_non_nullable
               as EnumOrderType,
+      entityProduct: null == entityProduct
+          ? _value.entityProduct
+          : entityProduct // ignore: cast_nullable_to_non_nullable
+              as EntityProduct,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $EntityProductCopyWith<$Res> get entityProduct {
+    return $EntityProductCopyWith<$Res>(_value.entityProduct, (value) {
+      return _then(_value.copyWith(entityProduct: value) as $Val);
+    });
   }
 }
 
@@ -239,13 +235,14 @@ abstract class _$$ChosenProductImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String category,
-      String name,
-      double price,
-      List<String> attributes,
+      {String name,
       int count,
       String productNumber,
-      EnumOrderType orderType});
+      EnumOrderType orderType,
+      EntityProduct entityProduct});
+
+  @override
+  $EntityProductCopyWith<$Res> get entityProduct;
 }
 
 /// @nodoc
@@ -259,31 +256,17 @@ class __$$ChosenProductImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? category = null,
     Object? name = null,
-    Object? price = null,
-    Object? attributes = null,
     Object? count = null,
     Object? productNumber = null,
     Object? orderType = null,
+    Object? entityProduct = null,
   }) {
     return _then(_$ChosenProductImpl(
-      category: null == category
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as double,
-      attributes: null == attributes
-          ? _value._attributes
-          : attributes // ignore: cast_nullable_to_non_nullable
-              as List<String>,
       count: null == count
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
@@ -296,6 +279,10 @@ class __$$ChosenProductImplCopyWithImpl<$Res>
           ? _value.orderType
           : orderType // ignore: cast_nullable_to_non_nullable
               as EnumOrderType,
+      entityProduct: null == entityProduct
+          ? _value.entityProduct
+          : entityProduct // ignore: cast_nullable_to_non_nullable
+              as EntityProduct,
     ));
   }
 }
@@ -304,39 +291,26 @@ class __$$ChosenProductImplCopyWithImpl<$Res>
 
 class _$ChosenProductImpl implements _ChosenProduct {
   const _$ChosenProductImpl(
-      {required this.category,
-      required this.name,
-      required this.price,
-      required final List<String> attributes,
+      {required this.name,
       required this.count,
       required this.productNumber,
-      required this.orderType})
-      : _attributes = attributes;
+      required this.orderType,
+      required this.entityProduct});
 
-  @override
-  final String category;
   @override
   final String name;
-  @override
-  final double price;
-  final List<String> _attributes;
-  @override
-  List<String> get attributes {
-    if (_attributes is EqualUnmodifiableListView) return _attributes;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_attributes);
-  }
-
   @override
   final int count;
   @override
   final String productNumber;
   @override
   final EnumOrderType orderType;
+  @override
+  final EntityProduct entityProduct;
 
   @override
   String toString() {
-    return 'ChosenProduct(category: $category, name: $name, price: $price, attributes: $attributes, count: $count, productNumber: $productNumber, orderType: $orderType)';
+    return 'ChosenProduct(name: $name, count: $count, productNumber: $productNumber, orderType: $orderType, entityProduct: $entityProduct)';
   }
 
   @override
@@ -344,29 +318,19 @@ class _$ChosenProductImpl implements _ChosenProduct {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ChosenProductImpl &&
-            (identical(other.category, category) ||
-                other.category == category) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.price, price) || other.price == price) &&
-            const DeepCollectionEquality()
-                .equals(other._attributes, _attributes) &&
             (identical(other.count, count) || other.count == count) &&
             (identical(other.productNumber, productNumber) ||
                 other.productNumber == productNumber) &&
             (identical(other.orderType, orderType) ||
-                other.orderType == orderType));
+                other.orderType == orderType) &&
+            (identical(other.entityProduct, entityProduct) ||
+                other.entityProduct == entityProduct));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      category,
-      name,
-      price,
-      const DeepCollectionEquality().hash(_attributes),
-      count,
-      productNumber,
-      orderType);
+      runtimeType, name, count, productNumber, orderType, entityProduct);
 
   @JsonKey(ignore: true)
   @override
@@ -377,28 +341,22 @@ class _$ChosenProductImpl implements _ChosenProduct {
 
 abstract class _ChosenProduct implements ChosenProduct {
   const factory _ChosenProduct(
-      {required final String category,
-      required final String name,
-      required final double price,
-      required final List<String> attributes,
+      {required final String name,
       required final int count,
       required final String productNumber,
-      required final EnumOrderType orderType}) = _$ChosenProductImpl;
+      required final EnumOrderType orderType,
+      required final EntityProduct entityProduct}) = _$ChosenProductImpl;
 
   @override
-  String get category;
-  @override
   String get name;
-  @override
-  double get price;
-  @override
-  List<String> get attributes;
   @override
   int get count;
   @override
   String get productNumber;
   @override
   EnumOrderType get orderType;
+  @override
+  EntityProduct get entityProduct;
   @override
   @JsonKey(ignore: true)
   _$$ChosenProductImplCopyWith<_$ChosenProductImpl> get copyWith =>

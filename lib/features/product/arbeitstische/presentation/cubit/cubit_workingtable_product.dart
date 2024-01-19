@@ -1,14 +1,15 @@
 import 'dart:async';
 
+import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/arbeitstische/domain/entity/entity_arbeitstische.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/domain/repository/repostiory_workingtable.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/presentation/cubit/state_workingtable.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/state_product.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 
-class CubitWorkingTableProduct
-    extends Cubit<StateProduct<StateArbeitsTischeProduct>> {
+class CubitWorkingTableProduct extends Cubit<StateProduct<EntityProduct>> {
   CubitWorkingTableProduct({required this.repositoryProductArbeitstische})
       : super(const StateProduct.loading());
 
@@ -71,8 +72,8 @@ class CubitWorkingTableProduct
             .toList(),
       );
 
-      emit(StateProduct.success(
-          product: product, selectedCharacteristics: mapCharacteristics));
+      emit(StateProduct<EntityProduct>.success(
+          selectedCharacteristics: mapCharacteristics));
     });
   }
 
@@ -118,13 +119,15 @@ class CubitWorkingTableProduct
           newSelectedCharacteristics[
               TableChangeableCharacteristics.frameColors] = color;
           newSelectedCharacteristics[
-                  TableChangeableCharacteristics.picturePath] =
-              state.maybeMap(
-                  orElse: () => null,
-                  success: (product) => product.product?.frameColors
+              TableChangeableCharacteristics
+                  .picturePath] = state.maybeMap(
+              orElse: () => null,
+              success: (product) => AppColors
+                  .black080808 /*product.product?.frameColors
                       ?.where((element) => element.color == color)
                       .firstOrNull
-                      ?.pictuePath);
+                      ?.pictuePath)*/
+              );
 
           return product.copyWith(
               selectedCharacteristics: newSelectedCharacteristics);

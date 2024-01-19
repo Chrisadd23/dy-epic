@@ -67,8 +67,7 @@ class ColorProductWidget extends HookWidget {
                       ),
                     ),
                   ),
-                  BlocSelector<CubitWorkingTableProduct,
-                          StateProduct<StateArbeitsTischeProduct>, Color?>(
+                  BlocSelector<CubitProduct, StateProduct, Color?>(
                       selector: (state) => state.maybeMap(
                             orElse: () => null,
                             success: (product) {
@@ -104,11 +103,16 @@ class ColorProductWidget extends HookWidget {
             const SizedBox(
               height: 10,
             ),
-            BlocSelector<CubitWorkingTableProduct,
-                StateProduct<StateArbeitsTischeProduct>, List<Gestell>?>(
+            BlocSelector<CubitProduct, StateProduct, List<Gestell>?>(
               selector: (state) => state.maybeMap(
                   orElse: () => null,
-                  success: (product) => product.product?.frameColors),
+                  success: (product) => [
+                        Gestell(
+                            color: AppColors.black080808,
+                            material: 'material',
+                            pictuePath:
+                                Assets.products.arbeitstische.ahornSchwarz.path)
+                      ]),
               builder: (BuildContext context, List<Gestell>? state) =>
                   state != null
                       ? Row(

@@ -10,6 +10,13 @@ enum EnumCategoryWorkingTable {
   final String type;
 }
 
+enum EnumCategoryProduct {
+  workingTable,
+  officeChairNormal,
+  officeChairHochlehner,
+  conferenceChair
+}
+
 enum EnumSelectOfficeChairCategory {
   normal,
   hochlehner,

@@ -1,10 +1,11 @@
 import 'dart:async';
 
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/state_product.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/state_shopping_basket.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-abstract class CubitProduct<T, S> extends Cubit<StateProduct<S>> {
+abstract class CubitProduct<T, E> extends Cubit<StateProduct<E>> {
   CubitProduct() : super(const StateProduct.loading());
 
   Future<void> load({required String product}) async {}
@@ -45,5 +46,20 @@ abstract class CubitProduct<T, S> extends Cubit<StateProduct<S>> {
   Future<void> close() {
     _timer?.cancel();
     return super.close();
+  }
+
+  Future<void> changeProduct(
+      {required ChosenProduct order, required int index}) async {
+    // TODO: implement changeProduct
+    state.mapOrNull(success: (successState) {
+      debugPrint("change Product successState");
+      final newState = successState.copyWith(
+        productOrderCount: order.count,
+        price: order.entityProduct.price,
+        product: order.entityProduct,
+      );
+
+      emit(newState);
+    });
   }
 }

@@ -9,7 +9,7 @@ import 'package:app_flutter_produkt_bestellen/features/login/presentation/page/l
 import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/presentation/page/workingtable_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/conferenceChairProduct/presentation/page/page_conference_chair_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/officeChairProduct/presentation/page/page_office_chair_product.dart';
-import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/cubit_shopping_basket.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/bloc_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

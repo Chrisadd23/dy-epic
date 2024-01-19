@@ -1,6 +1,6 @@
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_cubits/cubit_pictures.dart';
-import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/cubit_shopping_basket.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/bloc_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/event_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/state_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
@@ -149,7 +149,9 @@ class _ShoppingBasketOffer extends HookWidget {
               color: Colors.white,
               onSwiped: (direction) {
                 if (direction == SwipeDirection.endToStart) {
-                  context.pop();
+                  context
+                      .read<BlocShoppingBasket>()
+                      .add(EventShoppingBasket.change(position: index));
                 }
                 if (direction == SwipeDirection.startToEnd) {
                   context
@@ -254,7 +256,7 @@ class _OfferInfo extends StatelessWidget {
               Text(
                 NumberFormat.currency(
                         locale: 'de_DE', symbol: '€', decimalDigits: 2)
-                    .format(item.price),
+                    .format(item.entityProduct.price),
                 style:
                     const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
@@ -323,7 +325,7 @@ class _Offer extends StatelessWidget {
                   child: Text(
                     NumberFormat.currency(
                             locale: 'de_DE', symbol: '€', decimalDigits: 2)
-                        .format(item.price * item.count),
+                        .format(item.entityProduct.price * item.count),
                     style: const TextStyle(
                         fontSize: 20, fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center,

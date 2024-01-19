@@ -1,4 +1,5 @@
 import 'package:app_flutter_produkt_bestellen/core/error/failures.dart';
+import 'package:app_flutter_produkt_bestellen/features/product/share/domain/entity/entity_product.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'state_product.freezed.dart';
@@ -12,7 +13,7 @@ class StateProduct<T> with _$StateProduct<T> {
     @Default('') String category,
     @Default(0) int productOrderCount,
     @Default(0.00) double price,
-    T? product,
+    EntityProduct? product,
     @Default({}) Map<Enum, dynamic> selectedCharacteristics,
   }) = _Success;
 
