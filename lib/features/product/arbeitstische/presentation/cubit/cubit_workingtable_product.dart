@@ -55,7 +55,7 @@ class CubitWorkingTableProduct extends Cubit<StateProduct<EntityProduct>> {
       }
 
       debugPrint(mapCharacteristics.toString());
-      final product = StateArbeitsTischeProduct(
+      StateArbeitsTischeProduct(
         name: workingTable.name,
         breiteXTiefe: workingTable.breiteXTiefe
             ?.map(
