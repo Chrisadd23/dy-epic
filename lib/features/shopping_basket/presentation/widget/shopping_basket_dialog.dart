@@ -1,4 +1,5 @@
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
+import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/cubit_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/bloc_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/state_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/widget/shopping_basket_offer_list.dart';
@@ -27,9 +28,14 @@ class DialogShoppingBasket extends StatelessWidget {
                       return const _ShoppingBasketStack();
                     }),
                   ),
-                  onTap: () {
+                  onTap: () async {
                     debugPrint("onTap");
-                    _ShoppingBasketDialog.show(context: context);
+                    final result =
+                        await _ShoppingBasketDialog.show(context: context);
+                    if (context.mounted) {
+                      context.read<CubitProduct>().changeProduct(
+                          order: result.order, index: result.index);
+                    }
                   },
                 ),
               ),
@@ -86,7 +92,7 @@ class _ShoppingBasketDialog extends StatelessWidget {
       context: context, builder: (_) => const _ShoppingBasketDialog._());
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext previosContext) {
     return BlocProvider<BlocShoppingBasket>.value(
         value: getIt<BlocShoppingBasket>(),
         child: const _ShoppingBasketWidget());

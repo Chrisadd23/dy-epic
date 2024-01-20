@@ -1,4 +1,3 @@
-import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/cubit_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/event_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/state_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
@@ -25,8 +24,8 @@ class BlocShoppingBasket
             debugPrint("change");
             debugPrint(getIt<GoRouter>().location.split('/').last.toString());
 
+            getIt<GoRouter>().pop((order: order, index: index));
             debugPrint("continue Change");
-            getIt<CubitProduct>().changeProduct(order: order, index: index);
           },
           remove: (index) {
             debugPrint("remove $index");
