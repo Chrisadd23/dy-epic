@@ -16,70 +16,16 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$StateProduct<T> {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(
-            String hashKey,
-            String category,
-            int productOrderCount,
-            double price,
-            EntityProduct? product,
-            Map<Enum, dynamic> selectedCharacteristics)
-        success,
-    required TResult Function(Failure failure) failure,
-  }) =>
+  String get hashKey => throw _privateConstructorUsedError;
+  String get category => throw _privateConstructorUsedError;
+  int get productOrderCount => throw _privateConstructorUsedError;
+  double get price => throw _privateConstructorUsedError;
+  EntityProduct? get product => throw _privateConstructorUsedError;
+  Map<Enum, dynamic> get selectedCharacteristics =>
       throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(
-            String hashKey,
-            String category,
-            int productOrderCount,
-            double price,
-            EntityProduct? product,
-            Map<Enum, dynamic> selectedCharacteristics)?
-        success,
-    TResult? Function(Failure failure)? failure,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(
-            String hashKey,
-            String category,
-            int productOrderCount,
-            double price,
-            EntityProduct? product,
-            Map<Enum, dynamic> selectedCharacteristics)?
-        success,
-    TResult Function(Failure failure)? failure,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Loading<T> value) loading,
-    required TResult Function(_Success<T> value) success,
-    required TResult Function(_Failure<T> value) failure,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading<T> value)? loading,
-    TResult? Function(_Success<T> value)? success,
-    TResult? Function(_Failure<T> value)? failure,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loading<T> value)? loading,
-    TResult Function(_Success<T> value)? success,
-    TResult Function(_Failure<T> value)? failure,
-    required TResult orElse(),
-  }) =>
+
+  @JsonKey(ignore: true)
+  $StateProductCopyWith<T, StateProduct<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -88,153 +34,6 @@ abstract class $StateProductCopyWith<T, $Res> {
   factory $StateProductCopyWith(
           StateProduct<T> value, $Res Function(StateProduct<T>) then) =
       _$StateProductCopyWithImpl<T, $Res, StateProduct<T>>;
-}
-
-/// @nodoc
-class _$StateProductCopyWithImpl<T, $Res, $Val extends StateProduct<T>>
-    implements $StateProductCopyWith<T, $Res> {
-  _$StateProductCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$LoadingImplCopyWith<T, $Res> {
-  factory _$$LoadingImplCopyWith(
-          _$LoadingImpl<T> value, $Res Function(_$LoadingImpl<T>) then) =
-      __$$LoadingImplCopyWithImpl<T, $Res>;
-}
-
-/// @nodoc
-class __$$LoadingImplCopyWithImpl<T, $Res>
-    extends _$StateProductCopyWithImpl<T, $Res, _$LoadingImpl<T>>
-    implements _$$LoadingImplCopyWith<T, $Res> {
-  __$$LoadingImplCopyWithImpl(
-      _$LoadingImpl<T> _value, $Res Function(_$LoadingImpl<T>) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$LoadingImpl<T> implements _Loading<T> {
-  const _$LoadingImpl();
-
-  @override
-  String toString() {
-    return 'StateProduct<$T>.loading()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingImpl<T>);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(
-            String hashKey,
-            String category,
-            int productOrderCount,
-            double price,
-            EntityProduct? product,
-            Map<Enum, dynamic> selectedCharacteristics)
-        success,
-    required TResult Function(Failure failure) failure,
-  }) {
-    return loading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(
-            String hashKey,
-            String category,
-            int productOrderCount,
-            double price,
-            EntityProduct? product,
-            Map<Enum, dynamic> selectedCharacteristics)?
-        success,
-    TResult? Function(Failure failure)? failure,
-  }) {
-    return loading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(
-            String hashKey,
-            String category,
-            int productOrderCount,
-            double price,
-            EntityProduct? product,
-            Map<Enum, dynamic> selectedCharacteristics)?
-        success,
-    TResult Function(Failure failure)? failure,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Loading<T> value) loading,
-    required TResult Function(_Success<T> value) success,
-    required TResult Function(_Failure<T> value) failure,
-  }) {
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading<T> value)? loading,
-    TResult? Function(_Success<T> value)? success,
-    TResult? Function(_Failure<T> value)? failure,
-  }) {
-    return loading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loading<T> value)? loading,
-    TResult Function(_Success<T> value)? success,
-    TResult Function(_Failure<T> value)? failure,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Loading<T> implements StateProduct<T> {
-  const factory _Loading() = _$LoadingImpl<T>;
-}
-
-/// @nodoc
-abstract class _$$SuccessImplCopyWith<T, $Res> {
-  factory _$$SuccessImplCopyWith(
-          _$SuccessImpl<T> value, $Res Function(_$SuccessImpl<T>) then) =
-      __$$SuccessImplCopyWithImpl<T, $Res>;
   @useResult
   $Res call(
       {String hashKey,
@@ -248,11 +47,92 @@ abstract class _$$SuccessImplCopyWith<T, $Res> {
 }
 
 /// @nodoc
-class __$$SuccessImplCopyWithImpl<T, $Res>
-    extends _$StateProductCopyWithImpl<T, $Res, _$SuccessImpl<T>>
-    implements _$$SuccessImplCopyWith<T, $Res> {
-  __$$SuccessImplCopyWithImpl(
-      _$SuccessImpl<T> _value, $Res Function(_$SuccessImpl<T>) _then)
+class _$StateProductCopyWithImpl<T, $Res, $Val extends StateProduct<T>>
+    implements $StateProductCopyWith<T, $Res> {
+  _$StateProductCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? hashKey = null,
+    Object? category = null,
+    Object? productOrderCount = null,
+    Object? price = null,
+    Object? product = freezed,
+    Object? selectedCharacteristics = null,
+  }) {
+    return _then(_value.copyWith(
+      hashKey: null == hashKey
+          ? _value.hashKey
+          : hashKey // ignore: cast_nullable_to_non_nullable
+              as String,
+      category: null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as String,
+      productOrderCount: null == productOrderCount
+          ? _value.productOrderCount
+          : productOrderCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      price: null == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as double,
+      product: freezed == product
+          ? _value.product
+          : product // ignore: cast_nullable_to_non_nullable
+              as EntityProduct?,
+      selectedCharacteristics: null == selectedCharacteristics
+          ? _value.selectedCharacteristics
+          : selectedCharacteristics // ignore: cast_nullable_to_non_nullable
+              as Map<Enum, dynamic>,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $EntityProductCopyWith<$Res>? get product {
+    if (_value.product == null) {
+      return null;
+    }
+
+    return $EntityProductCopyWith<$Res>(_value.product!, (value) {
+      return _then(_value.copyWith(product: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$StateProductImplCopyWith<T, $Res>
+    implements $StateProductCopyWith<T, $Res> {
+  factory _$$StateProductImplCopyWith(_$StateProductImpl<T> value,
+          $Res Function(_$StateProductImpl<T>) then) =
+      __$$StateProductImplCopyWithImpl<T, $Res>;
+  @override
+  @useResult
+  $Res call(
+      {String hashKey,
+      String category,
+      int productOrderCount,
+      double price,
+      EntityProduct? product,
+      Map<Enum, dynamic> selectedCharacteristics});
+
+  @override
+  $EntityProductCopyWith<$Res>? get product;
+}
+
+/// @nodoc
+class __$$StateProductImplCopyWithImpl<T, $Res>
+    extends _$StateProductCopyWithImpl<T, $Res, _$StateProductImpl<T>>
+    implements _$$StateProductImplCopyWith<T, $Res> {
+  __$$StateProductImplCopyWithImpl(
+      _$StateProductImpl<T> _value, $Res Function(_$StateProductImpl<T>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -265,7 +145,7 @@ class __$$SuccessImplCopyWithImpl<T, $Res>
     Object? product = freezed,
     Object? selectedCharacteristics = null,
   }) {
-    return _then(_$SuccessImpl<T>(
+    return _then(_$StateProductImpl<T>(
       hashKey: null == hashKey
           ? _value.hashKey
           : hashKey // ignore: cast_nullable_to_non_nullable
@@ -292,24 +172,12 @@ class __$$SuccessImplCopyWithImpl<T, $Res>
               as Map<Enum, dynamic>,
     ));
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $EntityProductCopyWith<$Res>? get product {
-    if (_value.product == null) {
-      return null;
-    }
-
-    return $EntityProductCopyWith<$Res>(_value.product!, (value) {
-      return _then(_value.copyWith(product: value));
-    });
-  }
 }
 
 /// @nodoc
 
-class _$SuccessImpl<T> implements _Success<T> {
-  const _$SuccessImpl(
+class _$StateProductImpl<T> implements _StateProduct<T> {
+  const _$StateProductImpl(
       {this.hashKey = '',
       this.category = '',
       this.productOrderCount = 0,
@@ -344,14 +212,14 @@ class _$SuccessImpl<T> implements _Success<T> {
 
   @override
   String toString() {
-    return 'StateProduct<$T>.success(hashKey: $hashKey, category: $category, productOrderCount: $productOrderCount, price: $price, product: $product, selectedCharacteristics: $selectedCharacteristics)';
+    return 'StateProduct<$T>(hashKey: $hashKey, category: $category, productOrderCount: $productOrderCount, price: $price, product: $product, selectedCharacteristics: $selectedCharacteristics)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SuccessImpl<T> &&
+            other is _$StateProductImpl<T> &&
             (identical(other.hashKey, hashKey) || other.hashKey == hashKey) &&
             (identical(other.category, category) ||
                 other.category == category) &&
@@ -376,278 +244,35 @@ class _$SuccessImpl<T> implements _Success<T> {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SuccessImplCopyWith<T, _$SuccessImpl<T>> get copyWith =>
-      __$$SuccessImplCopyWithImpl<T, _$SuccessImpl<T>>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(
-            String hashKey,
-            String category,
-            int productOrderCount,
-            double price,
-            EntityProduct? product,
-            Map<Enum, dynamic> selectedCharacteristics)
-        success,
-    required TResult Function(Failure failure) failure,
-  }) {
-    return success(hashKey, category, productOrderCount, price, product,
-        selectedCharacteristics);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(
-            String hashKey,
-            String category,
-            int productOrderCount,
-            double price,
-            EntityProduct? product,
-            Map<Enum, dynamic> selectedCharacteristics)?
-        success,
-    TResult? Function(Failure failure)? failure,
-  }) {
-    return success?.call(hashKey, category, productOrderCount, price, product,
-        selectedCharacteristics);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(
-            String hashKey,
-            String category,
-            int productOrderCount,
-            double price,
-            EntityProduct? product,
-            Map<Enum, dynamic> selectedCharacteristics)?
-        success,
-    TResult Function(Failure failure)? failure,
-    required TResult orElse(),
-  }) {
-    if (success != null) {
-      return success(hashKey, category, productOrderCount, price, product,
-          selectedCharacteristics);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Loading<T> value) loading,
-    required TResult Function(_Success<T> value) success,
-    required TResult Function(_Failure<T> value) failure,
-  }) {
-    return success(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading<T> value)? loading,
-    TResult? Function(_Success<T> value)? success,
-    TResult? Function(_Failure<T> value)? failure,
-  }) {
-    return success?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loading<T> value)? loading,
-    TResult Function(_Success<T> value)? success,
-    TResult Function(_Failure<T> value)? failure,
-    required TResult orElse(),
-  }) {
-    if (success != null) {
-      return success(this);
-    }
-    return orElse();
-  }
+  _$$StateProductImplCopyWith<T, _$StateProductImpl<T>> get copyWith =>
+      __$$StateProductImplCopyWithImpl<T, _$StateProductImpl<T>>(
+          this, _$identity);
 }
 
-abstract class _Success<T> implements StateProduct<T> {
-  const factory _Success(
-      {final String hashKey,
-      final String category,
-      final int productOrderCount,
-      final double price,
-      final EntityProduct? product,
-      final Map<Enum, dynamic> selectedCharacteristics}) = _$SuccessImpl<T>;
+abstract class _StateProduct<T> implements StateProduct<T> {
+  const factory _StateProduct(
+          {final String hashKey,
+          final String category,
+          final int productOrderCount,
+          final double price,
+          final EntityProduct? product,
+          final Map<Enum, dynamic> selectedCharacteristics}) =
+      _$StateProductImpl<T>;
 
+  @override
   String get hashKey;
+  @override
   String get category;
+  @override
   int get productOrderCount;
+  @override
   double get price;
+  @override
   EntityProduct? get product;
+  @override
   Map<Enum, dynamic> get selectedCharacteristics;
+  @override
   @JsonKey(ignore: true)
-  _$$SuccessImplCopyWith<T, _$SuccessImpl<T>> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$FailureImplCopyWith<T, $Res> {
-  factory _$$FailureImplCopyWith(
-          _$FailureImpl<T> value, $Res Function(_$FailureImpl<T>) then) =
-      __$$FailureImplCopyWithImpl<T, $Res>;
-  @useResult
-  $Res call({Failure failure});
-}
-
-/// @nodoc
-class __$$FailureImplCopyWithImpl<T, $Res>
-    extends _$StateProductCopyWithImpl<T, $Res, _$FailureImpl<T>>
-    implements _$$FailureImplCopyWith<T, $Res> {
-  __$$FailureImplCopyWithImpl(
-      _$FailureImpl<T> _value, $Res Function(_$FailureImpl<T>) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? failure = null,
-  }) {
-    return _then(_$FailureImpl<T>(
-      failure: null == failure
-          ? _value.failure
-          : failure // ignore: cast_nullable_to_non_nullable
-              as Failure,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$FailureImpl<T> implements _Failure<T> {
-  const _$FailureImpl({required this.failure});
-
-  @override
-  final Failure failure;
-
-  @override
-  String toString() {
-    return 'StateProduct<$T>.failure(failure: $failure)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$FailureImpl<T> &&
-            (identical(other.failure, failure) || other.failure == failure));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, failure);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$FailureImplCopyWith<T, _$FailureImpl<T>> get copyWith =>
-      __$$FailureImplCopyWithImpl<T, _$FailureImpl<T>>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(
-            String hashKey,
-            String category,
-            int productOrderCount,
-            double price,
-            EntityProduct? product,
-            Map<Enum, dynamic> selectedCharacteristics)
-        success,
-    required TResult Function(Failure failure) failure,
-  }) {
-    return failure(this.failure);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(
-            String hashKey,
-            String category,
-            int productOrderCount,
-            double price,
-            EntityProduct? product,
-            Map<Enum, dynamic> selectedCharacteristics)?
-        success,
-    TResult? Function(Failure failure)? failure,
-  }) {
-    return failure?.call(this.failure);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(
-            String hashKey,
-            String category,
-            int productOrderCount,
-            double price,
-            EntityProduct? product,
-            Map<Enum, dynamic> selectedCharacteristics)?
-        success,
-    TResult Function(Failure failure)? failure,
-    required TResult orElse(),
-  }) {
-    if (failure != null) {
-      return failure(this.failure);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Loading<T> value) loading,
-    required TResult Function(_Success<T> value) success,
-    required TResult Function(_Failure<T> value) failure,
-  }) {
-    return failure(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading<T> value)? loading,
-    TResult? Function(_Success<T> value)? success,
-    TResult? Function(_Failure<T> value)? failure,
-  }) {
-    return failure?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loading<T> value)? loading,
-    TResult Function(_Success<T> value)? success,
-    TResult Function(_Failure<T> value)? failure,
-    required TResult orElse(),
-  }) {
-    if (failure != null) {
-      return failure(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Failure<T> implements StateProduct<T> {
-  const factory _Failure({required final Failure failure}) = _$FailureImpl<T>;
-
-  Failure get failure;
-  @JsonKey(ignore: true)
-  _$$FailureImplCopyWith<T, _$FailureImpl<T>> get copyWith =>
+  _$$StateProductImplCopyWith<T, _$StateProductImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }

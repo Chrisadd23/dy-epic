@@ -68,9 +68,7 @@ class CounterProductWidget extends HookWidget {
                 child: Center(
                     child: BlocSelector<CubitWorkingTableProduct, StateProduct,
                             int?>(
-                        selector: (state) => state.maybeMap(
-                            orElse: () => null,
-                            success: (product) => product.productOrderCount),
+                        selector: (state) => state.productOrderCount,
                         builder: (context, productCount) {
                           return productCount == null
                               ? const LoadingWidget()

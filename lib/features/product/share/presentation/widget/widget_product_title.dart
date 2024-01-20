@@ -23,9 +23,7 @@ class WidgetProductTitle extends StatelessWidget {
             borderRadius: BorderRadius.circular(40),
             color: AppColors.grey8D8D8E.withOpacity(0.4)),
         child: BlocSelector<CubitProduct, StateProduct, String?>(
-            selector: (state) => state.maybeMap(
-                orElse: () => null,
-                success: (product) => product.product?.name),
+            selector: (state) => state.product?.name,
             builder: (context, productName) {
               return Padding(
                 padding: const EdgeInsets.all(8.0),

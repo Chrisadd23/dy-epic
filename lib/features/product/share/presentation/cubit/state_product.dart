@@ -6,16 +6,12 @@ part 'state_product.freezed.dart';
 
 @freezed
 class StateProduct<T> with _$StateProduct<T> {
-  const factory StateProduct.loading() = _Loading;
-
-  const factory StateProduct.success({
+  const factory StateProduct({
     @Default('') String hashKey,
     @Default('') String category,
     @Default(0) int productOrderCount,
     @Default(0.00) double price,
     EntityProduct? product,
     @Default({}) Map<Enum, dynamic> selectedCharacteristics,
-  }) = _Success;
-
-  const factory StateProduct.failure({required Failure failure}) = _Failure;
+  }) = _StateProduct;
 }

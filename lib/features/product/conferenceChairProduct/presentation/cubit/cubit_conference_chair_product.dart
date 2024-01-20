@@ -21,13 +21,12 @@ class CubitConferenceChairProduct
         .getConferenceChairProduct(product: product)
         .fold((failure) {
       debugPrint("failure ===> ${failure.toString()}");
-      emit(StateProduct.failure(failure: failure));
     }, (conferenceChaire) {
       final characteristics = {
         EnumConferenceChairProduct.name: conferenceChaire.name,
         EnumConferenceChairProduct.picturePath: conferenceChaire.picturePath,
       };
-      var newState = StateProduct<EntityProduct>.success(
+      var newState = StateProduct<EntityProduct>(
           product: EntityProduct(
             productNumber: conferenceChaire.productNumber,
             pictureBytes: conferenceChaire.pictureBytes,
@@ -41,20 +40,19 @@ class CubitConferenceChairProduct
 
       debugPrint(
           "product parameter ===> $product, picturelocal keys =>${getIt<CubitPictures>().state.keys}");
-      newState.mapOrNull(success: (successState) {
-        final containsPictureLocal =
-            getIt<CubitPictures>().state.containsKey(product) &&
-                getIt<CubitPictures>().state[product] != null;
 
-        debugPrint("containsPictureLocal Product ==> $containsPictureLocal");
-        if (containsPictureLocal) {
-          successState = successState.copyWith(
-              product: successState.product?.copyWith(
-                  pictureBytes: getIt<CubitPictures>().state[product]));
-        }
-        emit(successState);
-      });
-      //if-abfrage getIt<CubitPictures>().state.containsKey(product)
+      final containsPictureLocal =
+          getIt<CubitPictures>().state.containsKey(product) &&
+              getIt<CubitPictures>().state[product] != null;
+
+      debugPrint("containsPictureLocal Product ==> $containsPictureLocal");
+      if (containsPictureLocal) {
+        newState = newState.copyWith(
+            product: newState.product?.copyWith(
+                pictureBytes: getIt<CubitPictures>().state[product]));
+      }
+      emit(newState);
     });
+    //if-abfrage getIt<CubitPictures>().state.containsKey(product)
   }
 }

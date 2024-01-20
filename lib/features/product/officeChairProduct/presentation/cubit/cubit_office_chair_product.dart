@@ -24,14 +24,13 @@ class CubitOfficeChairProduct
         .getOfficeChairProduct(productNumber: product)
         .fold((failure) {
       debugPrint("officeChairProductfailure ==> ${failure.toString()}");
-      emit(StateProduct.failure(failure: failure));
     }, (officeChair) {
       debugPrint('officeChair => $officeChair');
       final characteristics = {
         EnumOfficeChairProduct.name: officeChair.name,
         EnumOfficeChairProduct.picturePath: officeChair.picturePath,
       };
-      var newState = StateProduct<EntityProduct>.success(
+      var newState = StateProduct<EntityProduct>(
           product: EntityProduct(
               productNumber: officeChair.productNumber,
               pictureBytes: officeChair.pictureBytes,
@@ -44,20 +43,20 @@ class CubitOfficeChairProduct
       debugPrint("continue OfficeChairCubit");
       debugPrint(
           "product parameter ===> $product, picturelocal keys =>${getIt<CubitPictures>().state.keys}");
-      newState.mapOrNull(success: (successState) {
-        final containsPictureLocal =
-            getIt<CubitPictures>().state.containsKey(product) &&
-                getIt<CubitPictures>().state[product] != null;
 
-        debugPrint("containsPictureLocal Product ==> $containsPictureLocal");
-        if (containsPictureLocal) {
-          successState = successState.copyWith(
-              product: successState.product?.copyWith(
-                  pictureBytes: getIt<CubitPictures>().state[product]));
-        }
-        debugPrint("End officeChairCubit load method");
-        emit(successState);
-      });
+      final containsPictureLocal =
+          getIt<CubitPictures>().state.containsKey(product) &&
+              getIt<CubitPictures>().state[product] != null;
+
+      debugPrint("containsPictureLocal Product ==> $containsPictureLocal");
+      if (containsPictureLocal) {
+        newState = newState.copyWith(
+            product: newState.product?.copyWith(
+                pictureBytes: getIt<CubitPictures>().state[product]));
+      }
+      debugPrint("End officeChairCubit load method");
+      emit(newState);
+
       //if-abfrage getIt<CubitPictures>().state.containsKey(product)
     });
   }

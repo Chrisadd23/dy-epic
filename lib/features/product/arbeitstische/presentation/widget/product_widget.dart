@@ -87,12 +87,8 @@ class ProductPicture extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocSelector<CubitProduct, StateProduct, String?>(
-        selector: (state) => state.maybeMap(
-            orElse: () {
-              return;
-            },
-            success: (product) => product.selectedCharacteristics[
-                TableChangeableCharacteristics.picturePath]),
+        selector: (state) => state.selectedCharacteristics[
+            TableChangeableCharacteristics.picturePath],
         builder: (context, picturePath) {
           return _PictureWidget(picturePath: picturePath);
         });
@@ -152,9 +148,7 @@ class ProductTitle extends StatelessWidget {
             borderRadius: BorderRadius.circular(40),
             color: AppColors.grey8D8D8E.withOpacity(0.4)),
         child: BlocSelector<CubitProduct, StateProduct, String?>(
-            selector: (state) => state.maybeMap(
-                orElse: () => null,
-                success: (product) => product.product?.name),
+            selector: (state) => state.product?.name,
             builder: (context, productName) {
               return FittedBox(
                 fit: BoxFit.fitHeight,

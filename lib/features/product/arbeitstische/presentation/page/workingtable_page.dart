@@ -1,9 +1,7 @@
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
-import 'package:app_flutter_produkt_bestellen/core/fix_widgets/loading_widget.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_page_widget.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/presentation/cubit/cubit_workingtable_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/presentation/widget/product_widget.dart';
-import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/state_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/bloc_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/foundation.dart';
@@ -48,18 +46,10 @@ class _BlocProviderWorkingTable extends StatelessWidget {
       body: BlocProvider<CubitWorkingTableProduct>(
         create: (context) =>
             getIt<CubitWorkingTableProduct>()..load(product, color),
-        child: BlocBuilder<CubitWorkingTableProduct, StateProduct>(
-          builder: (context, state) => state.maybeMap(
-            orElse: () => const LoadingWidget(
-              firstWidth: 110,
-              secondWidth: 60,
-            ),
-            success: (_) => SizedBox(
-              height: MediaQuery.of(context).size.height,
-              width: double.infinity,
-              child: const ProductWidget(),
-            ),
-          ),
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height,
+          width: double.infinity,
+          child: const ProductWidget(),
         ),
       ),
     );

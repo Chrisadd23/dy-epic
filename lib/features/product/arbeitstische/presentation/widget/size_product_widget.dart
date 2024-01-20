@@ -68,15 +68,8 @@ class SizeProductWidget extends StatelessWidget {
                     ),
                   ),
                   BlocSelector<CubitProduct, StateProduct, BreiteXTiefe?>(
-                      selector: (state) => state.maybeMap(
-                            orElse: () => null,
-                            success: (product) {
-                              debugPrint(
-                                  '===> ${product.selectedCharacteristics[TableChangeableCharacteristics.breiteXTiefe]}');
-                              return product.selectedCharacteristics[
-                                  TableChangeableCharacteristics.breiteXTiefe];
-                            },
-                          ),
+                      selector: (state) => state.selectedCharacteristics[
+                          TableChangeableCharacteristics.breiteXTiefe],
                       builder: (context, breiteXtiefe) {
                         return Flexible(
                             child: Container(
@@ -104,10 +97,8 @@ class SizeProductWidget extends StatelessWidget {
               height: 10,
             ),
             BlocSelector<CubitProduct, StateProduct, List<BreiteXTiefe>?>(
-              selector: (state) => state.maybeMap(
-                  orElse: () => null,
-                  success: (product) =>
-                      [const BreiteXTiefe(breite: '1.800', tiefe: '2.000')]),
+              selector: (state) =>
+                  [const BreiteXTiefe(breite: '1.800', tiefe: '2.000')],
               builder: (BuildContext context, List<BreiteXTiefe>? state) =>
                   state != null
                       ? Row(

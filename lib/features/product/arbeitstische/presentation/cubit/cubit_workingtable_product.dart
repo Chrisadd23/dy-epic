@@ -11,14 +11,14 @@ import 'package:flutter/material.dart';
 
 class CubitWorkingTableProduct extends Cubit<StateProduct<EntityProduct>> {
   CubitWorkingTableProduct({required this.repositoryProductArbeitstische})
-      : super(const StateProduct.loading());
+      : super(const StateProduct<EntityProduct>());
 
   final RepositoryWorkingTable repositoryProductArbeitstische;
 
   Future<void> load(
       EnumCategoryWorkingTable? product, Map<String, String>? color) async {
-    if (state != const StateProduct.loading()) {
-      emit(const StateProduct.loading());
+    if (state != const StateProduct()) {
+      emit(const StateProduct<EntityProduct>());
     }
     final workingTables =
         await repositoryProductArbeitstische.getArbeitstischeProduct(product);
@@ -72,7 +72,7 @@ class CubitWorkingTableProduct extends Cubit<StateProduct<EntityProduct>> {
             .toList(),
       );
 
-      emit(StateProduct<EntityProduct>.success(
+      emit(StateProduct<EntityProduct>(
           selectedCharacteristics: mapCharacteristics));
     });
   }
@@ -81,21 +81,16 @@ class CubitWorkingTableProduct extends Cubit<StateProduct<EntityProduct>> {
 
   void increment() async {
     _timer = Timer.periodic(const Duration(milliseconds: 100), (timer) {
-      emit(state.maybeMap(
-          orElse: () => const StateProduct.loading(),
-          success: (productOrderCount) => productOrderCount.copyWith(
-              productOrderCount: productOrderCount.productOrderCount + 1)));
+      emit(state.copyWith(productOrderCount: state.productOrderCount + 1));
     });
   }
 
   void decrement() async {
     _timer = Timer.periodic(const Duration(milliseconds: 100), (timer) {
-      emit(state.maybeMap(
-          orElse: () => const StateProduct.loading(),
-          success: (productOrderCount) => productOrderCount.copyWith(
-              productOrderCount: productOrderCount.productOrderCount > 0
-                  ? productOrderCount.productOrderCount - 1
-                  : productOrderCount.productOrderCount)));
+      emit(state.copyWith(
+          productOrderCount: state.productOrderCount > 0
+              ? state.productOrderCount - 1
+              : state.productOrderCount));
     });
   }
 
@@ -109,45 +104,29 @@ class CubitWorkingTableProduct extends Cubit<StateProduct<EntityProduct>> {
 
   void changeColor(Color color) async {
     debugPrint('change Color --< $color');
+    final newSelectedCharacteristics =
+        Map<Enum, dynamic>.from(state.selectedCharacteristics);
 
-    emit(state.maybeMap(
-        orElse: () => const StateProduct.loading(),
-        success: (product) {
-          final newSelectedCharacteristics =
-              Map<Enum, dynamic>.from(product.selectedCharacteristics);
-
-          newSelectedCharacteristics[
-              TableChangeableCharacteristics.frameColors] = color;
-          newSelectedCharacteristics[
-              TableChangeableCharacteristics
-                  .picturePath] = state.maybeMap(
-              orElse: () => null,
-              success: (product) => AppColors
-                  .black080808 /*product.product?.frameColors
+    newSelectedCharacteristics[TableChangeableCharacteristics.frameColors] =
+        color;
+    newSelectedCharacteristics[
+            TableChangeableCharacteristics
+                .picturePath] = AppColors
+            .black080808 /*product.product?.frameColors
                       ?.where((element) => element.color == color)
                       .firstOrNull
                       ?.pictuePath)*/
-              );
-
-          return product.copyWith(
-              selectedCharacteristics: newSelectedCharacteristics);
-        }));
+        ;
+    emit(state.copyWith(selectedCharacteristics: newSelectedCharacteristics));
   }
 
   void changeBreiteXTiefe(BreiteXTiefe choosenBreiteXTiefe) {
     debugPrint('change Color --< $choosenBreiteXTiefe');
+    final newSelectedCharacteristics =
+        Map<Enum, dynamic>.from(state.selectedCharacteristics);
 
-    emit(state.maybeMap(
-        orElse: () => const StateProduct.loading(),
-        success: (product) {
-          final newSelectedCharacteristics =
-              Map<Enum, dynamic>.from(product.selectedCharacteristics);
-
-          newSelectedCharacteristics[TableChangeableCharacteristics
-              .breiteXTiefe] = choosenBreiteXTiefe;
-
-          return product.copyWith(
-              selectedCharacteristics: newSelectedCharacteristics);
-        }));
+    newSelectedCharacteristics[TableChangeableCharacteristics.breiteXTiefe] =
+        choosenBreiteXTiefe;
+    emit(state.copyWith(selectedCharacteristics: newSelectedCharacteristics));
   }
 }

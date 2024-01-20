@@ -68,15 +68,8 @@ class ColorProductWidget extends HookWidget {
                     ),
                   ),
                   BlocSelector<CubitProduct, StateProduct, Color?>(
-                      selector: (state) => state.maybeMap(
-                            orElse: () => null,
-                            success: (product) {
-                              debugPrint(
-                                  '===> ${product.selectedCharacteristics[TableChangeableCharacteristics.frameColors]}');
-                              return product.selectedCharacteristics[
-                                  TableChangeableCharacteristics.frameColors];
-                            },
-                          ),
+                      selector: (state) => state.selectedCharacteristics[
+                          TableChangeableCharacteristics.frameColors],
                       builder: (context, color) {
                         return Flexible(
                             child: Container(
@@ -104,15 +97,12 @@ class ColorProductWidget extends HookWidget {
               height: 10,
             ),
             BlocSelector<CubitProduct, StateProduct, List<Gestell>?>(
-              selector: (state) => state.maybeMap(
-                  orElse: () => null,
-                  success: (product) => [
-                        Gestell(
-                            color: AppColors.black080808,
-                            material: 'material',
-                            pictuePath:
-                                Assets.products.arbeitstische.ahornSchwarz.path)
-                      ]),
+              selector: (state) => [
+                Gestell(
+                    color: AppColors.black080808,
+                    material: 'material',
+                    pictuePath: Assets.products.arbeitstische.ahornSchwarz.path)
+              ],
               builder: (BuildContext context, List<Gestell>? state) =>
                   state != null
                       ? Row(

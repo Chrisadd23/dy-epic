@@ -1,6 +1,5 @@
 library office_chair_product;
 
-import 'package:app_flutter_produkt_bestellen/core/fix_widgets/loading_widget.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_page_widget.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/officeChairProduct/presentation/cubit/cubit_office_chair_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/cubit_product.dart';
@@ -70,18 +69,10 @@ class _OfficeChairBlocBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CubitProduct, StateProduct>(
-      builder: (context, state) => state.maybeMap(
-        orElse: () => const LoadingWidget(
-          firstWidth: 110,
-          secondWidth: 60,
-        ),
-        success: (product) => SizedBox(
-          height: MediaQuery.of(context).size.height,
-          width: double.infinity,
-          child: const _ProductWidget(),
-        ),
-      ),
+    return SizedBox(
+      height: MediaQuery.of(context).size.height,
+      width: double.infinity,
+      child: const _ProductWidget(),
     );
   }
 }
@@ -105,9 +96,7 @@ class _ProductWidget extends StatelessWidget {
                   const _ProductPicture(),
                   const WidgetProductCounter(),
                   BlocSelector<CubitProduct, StateProduct, List<String>?>(
-                      selector: (state) => state.mapOrNull(
-                          success: (successState) =>
-                              successState.product?.attributes),
+                      selector: (state) => state.product?.attributes,
                       builder: (context, productAttributes) {
                         debugPrint("productAttributes => $productAttributes");
                         return WidgetProductInfo(
@@ -135,11 +124,7 @@ class _ProductPicture extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocSelector<CubitProduct, StateProduct, Uint8List?>(
-        selector: (state) => state.maybeMap(
-            orElse: () {
-              return;
-            },
-            success: (product) => product.product?.pictureBytes),
+        selector: (state) => state.product?.pictureBytes,
         builder: (context, pictureBytes) {
           return WidgetPictureArea(pictureBytes: pictureBytes);
         });

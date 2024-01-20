@@ -2,42 +2,35 @@ import 'dart:async';
 
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/state_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/state_shopping_basket.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 abstract class CubitProduct<T, E> extends Cubit<StateProduct<E>> {
-  CubitProduct() : super(const StateProduct.loading());
+  CubitProduct() : super(StateProduct<E>());
 
   Future<void> load({required String product}) async {}
 
   Timer? _timer;
 
+  StateProduct<E>? dataStateEntity;
+
   void increment() async {
     _timer = Timer.periodic(const Duration(milliseconds: 100), (timer) {
-      emit(state.maybeMap(
-          orElse: () => const StateProduct.loading(),
-          success: (productOrderCount) => productOrderCount.copyWith(
-              productOrderCount: productOrderCount.productOrderCount + 1)));
+      emit(state.copyWith(productOrderCount: state.productOrderCount + 1));
     });
   }
 
   void decrement() async {
     _timer = Timer.periodic(const Duration(milliseconds: 100), (timer) {
-      emit(state.maybeMap(
-          orElse: () => const StateProduct.loading(),
-          success: (productOrderCount) => productOrderCount.copyWith(
-              productOrderCount: productOrderCount.productOrderCount > 0
-                  ? productOrderCount.productOrderCount - 1
-                  : productOrderCount.productOrderCount)));
+      emit(state.copyWith(
+          productOrderCount: state.productOrderCount > 0
+              ? state.productOrderCount - 1
+              : state.productOrderCount));
     });
   }
 
   Future<void> reset() async {
-    state.mapOrNull(success: (successState) {
-      debugPrint("successState ===> $successState");
-      final newState = successState.copyWith(productOrderCount: 0);
-      emit(newState);
-    });
+    final newState = state.copyWith(productOrderCount: 0);
+    emit(newState);
   }
 
   void stopCounting() => _timer?.cancel();
@@ -51,15 +44,12 @@ abstract class CubitProduct<T, E> extends Cubit<StateProduct<E>> {
   Future<void> changeProduct(
       {required ChosenProduct order, required int index}) async {
     // TODO: implement changeProduct
-    state.mapOrNull(success: (successState) {
-      debugPrint("change Product successState");
-      final newState = successState.copyWith(
-        productOrderCount: order.count,
-        price: order.entityProduct.price,
-        product: order.entityProduct,
-      );
+    final newState = state.copyWith(
+      productOrderCount: order.count,
+      price: order.entityProduct.price,
+      product: order.entityProduct,
+    );
 
-      emit(newState);
-    });
+    emit(newState);
   }
 }

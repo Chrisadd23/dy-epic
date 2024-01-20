@@ -89,9 +89,7 @@ class WidgetProductCounter extends HookWidget {
                           child: Center(
                               child: BlocSelector<CubitProduct, StateProduct,
                                       int?>(
-                                  selector: (state) => state.mapOrNull(
-                                      success: (product) =>
-                                          product.productOrderCount),
+                                  selector: (state) => state.productOrderCount,
                                   builder: (context, productCount) {
                                     debugPrint(
                                         "productCount ===>  $productCount");
@@ -107,11 +105,8 @@ class WidgetProductCounter extends HookWidget {
                       ])),
               BlocSelector<CubitProduct, StateProduct,
                   ({int count, double price})?>(
-                selector: (state) => state.mapOrNull(
-                    success: (successState) => (
-                          count: successState.productOrderCount,
-                          price: successState.price
-                        )),
+                selector: (state) =>
+                    (count: state.productOrderCount, price: state.price),
                 builder: (context, state) =>
                     state?.count == null || state!.count == 0
                         ? const SizedBox.shrink()
