@@ -32,7 +32,7 @@ class DialogShoppingBasket extends StatelessWidget {
                     debugPrint("onTap");
                     final result =
                         await _ShoppingBasketDialog.show(context: context);
-                    if (context.mounted) {
+                    if (context.mounted && result != null) {
                       context.read<CubitProduct>().changeProduct(
                           order: result.order, index: result.index);
                     }

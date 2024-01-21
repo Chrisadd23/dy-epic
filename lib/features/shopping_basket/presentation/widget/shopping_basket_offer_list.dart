@@ -23,7 +23,7 @@ class ShoppingBasketOfferList extends StatelessWidget {
           return BlocListener<BlocShoppingBasket, StateShoppingBasket>(
               listenWhen: (_, cState) => cState.listChosenProduct.isEmpty,
               listener: (context, state) {
-                context.pop();
+                context.pop(null);
               },
               child: Column(
                 children: [
