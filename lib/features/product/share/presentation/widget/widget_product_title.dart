@@ -28,7 +28,7 @@ class WidgetProductTitle extends StatelessWidget {
               return Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: FittedBox(
-                  fit: BoxFit.fill,
+                  fit: productName == null ? BoxFit.fitHeight : BoxFit.fill,
                   child: productName == null
                       ? const LoadingWidget()
                       : Text(

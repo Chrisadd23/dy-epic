@@ -10,6 +10,7 @@ import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/pre
 import 'package:app_flutter_produkt_bestellen/features/product/conferenceChairProduct/presentation/page/page_conference_chair_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/officeChairProduct/presentation/page/page_office_chair_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/bloc_shopping_basket.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/state_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -103,9 +104,18 @@ enum AppGoRouter {
                         path: product.title,
                         name: '${buerostuehle.name}/${product.name}',
                         builder: (context, state) {
-                          final product = state.extra as String;
-
-                          return PageOfficeChairProduct(product: product);
+                          final product =
+                              state.queryParameters['productNumber'];
+                          debugPrint("check goRouter recor ${state.extra as ({
+                            ChosenProduct chosenProduct,
+                            int index
+                          })?}");
+                          final recordOrder = state.extra as ({
+                            ChosenProduct chosenProduct,
+                            int index
+                          })?;
+                          return PageOfficeChairProduct(
+                              product: product, recordOrder: recordOrder);
                         },
                       )
                     ],
@@ -120,9 +130,19 @@ enum AppGoRouter {
                         path: product.title,
                         name: '${konferenzstuehle.name}/${product.name}',
                         builder: (context, state) {
-                          final product = state.extra as String;
+                          debugPrint("check goRouter recor ${state.extra as ({
+                            ChosenProduct chosenProduct,
+                            int index
+                          })?}");
+                          final product =
+                              state.queryParameters['productNumber'];
+                          final recordOrder = state.extra as ({
+                            ChosenProduct chosenProduct,
+                            int index
+                          })?;
                           return PageConferenceChairProduct(
                             product: product,
+                            recordOrder: recordOrder,
                           );
                         },
                       )

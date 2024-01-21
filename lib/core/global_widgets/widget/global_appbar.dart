@@ -29,27 +29,31 @@ class GlobalAppBar extends AppBar {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  height: 67,
-                  width: MediaQuery.of(context).size.width * 0.7,
-                  decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                        bottomRight: Radius.circular(20),
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.black,
-                            blurStyle: BlurStyle.outer,
-                            offset: Offset(0, 2)),
-                      ]),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 5, right: 5),
-                    child: FittedBox(
-                      fit: BoxFit.fitWidth,
-                      child: Image.asset(
-                        Assets.company.appBarLogo.path,
+                InkWell(
+                  onTap: () =>
+                      getIt<GoRouter>().goNamed(AppGoRouter.homePage.name),
+                  child: Container(
+                    height: 67,
+                    width: MediaQuery.of(context).size.width * 0.7,
+                    decoration: const BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                          bottomRight: Radius.circular(20),
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.black,
+                              blurStyle: BlurStyle.outer,
+                              offset: Offset(0, 2)),
+                        ]),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 5, right: 5),
+                      child: FittedBox(
                         fit: BoxFit.fitWidth,
+                        child: Image.asset(
+                          Assets.company.appBarLogo.path,
+                          fit: BoxFit.fitWidth,
+                        ),
                       ),
                     ),
                   ),

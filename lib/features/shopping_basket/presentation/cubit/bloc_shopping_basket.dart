@@ -1,3 +1,5 @@
+import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
+import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/event_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/state_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
@@ -15,7 +17,7 @@ class BlocShoppingBasket
           add: (product, position) {
             debugPrint("product ==> ${product.toString()}");
             List<ChosenProduct> newList = List.from(state.listChosenProduct);
-            if (position != null) {
+            if (position != null && newList.elementAtOrNull(position) != null) {
               newList[position] = product;
             } else {
               newList.add(product);
@@ -25,11 +27,36 @@ class BlocShoppingBasket
           },
           change: (index) {
             final order = state.listChosenProduct.elementAt(index);
-            debugPrint("change");
-            debugPrint(getIt<GoRouter>().location.split('/').last.toString());
+            final ({ChosenProduct chosenProduct, int index}) record =
+                (chosenProduct: order, index: index);
 
-            getIt<GoRouter>().pop((order: order, index: index));
-            debugPrint("continue Change");
+            if (!getIt<GoRouter>().location.contains('produkt')) {
+              getIt<GoRouter>().pop(null);
+              if (order.entityProduct.productCategory ==
+                  EnumCategoryProduct.workingTable) {
+                getIt<GoRouter>().goNamed(
+                    '${AppGoRouter.arbeitstische.name}/${AppGoRouter.product.name}',
+                    extra: record);
+              } else if (order.entityProduct.productCategory ==
+                      EnumCategoryProduct.officeChairNormal ||
+                  order.entityProduct.productCategory ==
+                      EnumCategoryProduct.officeChairHochlehner) {
+                getIt<GoRouter>().goNamed(
+                    '${AppGoRouter.buerostuehle.name}/${AppGoRouter.product.name}',
+                    extra: record);
+              } else if (order.entityProduct.productCategory ==
+                  EnumCategoryProduct.conferenceChair) {
+                getIt<GoRouter>().goNamed(
+                    '${AppGoRouter.konferenzstuehle.name}/${AppGoRouter.product.name}',
+                    extra: record);
+              }
+            } else {
+              debugPrint("change");
+              debugPrint(getIt<GoRouter>().location.split('/').last.toString());
+
+              getIt<GoRouter>().pop(record);
+              debugPrint("continue Change");
+            }
           },
           remove: (index) {
             debugPrint("remove $index");

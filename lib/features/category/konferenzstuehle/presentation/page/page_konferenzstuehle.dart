@@ -329,7 +329,9 @@ class _ProductPicture extends StatelessWidget {
                         onTap: () {
                           context.goNamed(
                               '${AppGoRouter.konferenzstuehle.name}/${AppGoRouter.product.name}',
-                              extra: widget.picturePath);
+                              queryParameters: <String, String>{
+                                'productNumber': widget.picturePath
+                              });
                         },
                       ),
                     ),

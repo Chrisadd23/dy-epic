@@ -18,30 +18,38 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PageOfficeChairProduct extends StatelessWidget {
-  const PageOfficeChairProduct({super.key, required this.product});
+  const PageOfficeChairProduct(
+      {super.key, required this.product, this.recordOrder});
 
-  final String product;
+  final String? product;
+  final ({ChosenProduct chosenProduct, int index})? recordOrder;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider<BlocShoppingBasket>.value(
         value: getIt<BlocShoppingBasket>(),
-        child: _BlocProviderOfficeChairProduct(product: product));
+        child: _BlocProviderOfficeChairProduct(
+            product: product, recordOrder: recordOrder));
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties.add(StringProperty('product', product));
+    properties.add(
+        DiagnosticsProperty<({ChosenProduct chosenProduct, int index})?>(
+            'recordOrder', recordOrder));
   }
 }
 
 class _BlocProviderOfficeChairProduct extends StatelessWidget {
   const _BlocProviderOfficeChairProduct({
-    required this.product,
+    this.product,
+    this.recordOrder,
   });
 
-  final String product;
+  final String? product;
+  final ({ChosenProduct chosenProduct, int index})? recordOrder;
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +58,8 @@ class _BlocProviderOfficeChairProduct extends StatelessWidget {
       body: MultiBlocProvider(
         providers: [
           BlocProvider<CubitProduct>.value(
-              value: getIt<CubitOfficeChairProduct>()..load(product: product)),
+              value: getIt<CubitOfficeChairProduct>()
+                ..load(product: product, recordOrder: recordOrder)),
         ],
         child: const _OfficeChairBlocBuilder(),
       ),

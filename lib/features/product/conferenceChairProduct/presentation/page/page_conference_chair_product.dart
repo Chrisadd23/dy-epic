@@ -16,30 +16,36 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PageConferenceChairProduct extends StatelessWidget {
-  const PageConferenceChairProduct({super.key, required this.product});
+  const PageConferenceChairProduct({super.key, this.product, this.recordOrder});
 
-  final String product;
+  final String? product;
+  final ({ChosenProduct chosenProduct, int index})? recordOrder;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider<BlocShoppingBasket>.value(
         value: getIt<BlocShoppingBasket>(),
-        child: _BlocProviderConferenceChair(product: product));
+        child: _BlocProviderConferenceChair(
+          product: product,
+          recordOrder: recordOrder,
+        ));
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties.add(StringProperty('product', product));
+    properties.add(
+        DiagnosticsProperty<({ChosenProduct chosenProduct, int index})?>(
+            'recordOrder', recordOrder));
   }
 }
 
 class _BlocProviderConferenceChair extends StatelessWidget {
-  const _BlocProviderConferenceChair({
-    required this.product,
-  });
+  const _BlocProviderConferenceChair({this.product, this.recordOrder});
 
-  final String product;
+  final String? product;
+  final ({ChosenProduct chosenProduct, int index})? recordOrder;
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +53,8 @@ class _BlocProviderConferenceChair extends StatelessWidget {
       appBarContext: context,
       body: MultiBlocProvider(providers: [
         BlocProvider<CubitProduct>.value(
-          value: getIt<CubitConferenceChairProduct>()..load(product: product),
+          value: getIt<CubitConferenceChairProduct>()
+            ..load(product: product, recordOrder: recordOrder),
         ),
       ], child: const _ConferenceChairBlocBuilder()),
     );
@@ -57,6 +64,9 @@ class _BlocProviderConferenceChair extends StatelessWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties.add(StringProperty('product', product));
+    properties.add(
+        DiagnosticsProperty<({ChosenProduct chosenProduct, int index})?>(
+            'recordOrder', recordOrder));
   }
 }
 
