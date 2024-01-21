@@ -75,13 +75,13 @@ android {
     productFlavors {
         development {
             dimension "default"
-            resValue "string", "app_name", "dev Oberheizinger"
+            resValue "string", "app_name", "dev Oberhaizinger"
             applicationIdSuffix ""
         }
 
         production {
             dimension "default"
-            resValue "string", "app_name", "Oberheizinger"
+            resValue "string", "app_name", "Oberhaizinger"
             applicationIdSuffix ""
         }
     }
