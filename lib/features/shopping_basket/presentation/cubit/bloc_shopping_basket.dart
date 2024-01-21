@@ -12,10 +12,14 @@ class BlocShoppingBasket
     on<EventShoppingBasket>((event, emitState) {
       debugPrint("event ==> $event");
       event.when(
-          add: (product) {
+          add: (product, position) {
             debugPrint("product ==> ${product.toString()}");
             List<ChosenProduct> newList = List.from(state.listChosenProduct);
-            newList.add(product);
+            if (position != null) {
+              newList[position] = product;
+            } else {
+              newList.add(product);
+            }
             final newState = state.copyWith(listChosenProduct: newList);
             emitState(newState);
           },

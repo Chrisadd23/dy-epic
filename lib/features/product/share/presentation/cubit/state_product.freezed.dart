@@ -21,6 +21,7 @@ mixin _$StateProduct<T> {
   int get productOrderCount => throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
   EntityProduct? get product => throw _privateConstructorUsedError;
+  int? get position => throw _privateConstructorUsedError;
   Map<Enum, dynamic> get selectedCharacteristics =>
       throw _privateConstructorUsedError;
 
@@ -41,6 +42,7 @@ abstract class $StateProductCopyWith<T, $Res> {
       int productOrderCount,
       double price,
       EntityProduct? product,
+      int? position,
       Map<Enum, dynamic> selectedCharacteristics});
 
   $EntityProductCopyWith<$Res>? get product;
@@ -64,6 +66,7 @@ class _$StateProductCopyWithImpl<T, $Res, $Val extends StateProduct<T>>
     Object? productOrderCount = null,
     Object? price = null,
     Object? product = freezed,
+    Object? position = freezed,
     Object? selectedCharacteristics = null,
   }) {
     return _then(_value.copyWith(
@@ -87,6 +90,10 @@ class _$StateProductCopyWithImpl<T, $Res, $Val extends StateProduct<T>>
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
               as EntityProduct?,
+      position: freezed == position
+          ? _value.position
+          : position // ignore: cast_nullable_to_non_nullable
+              as int?,
       selectedCharacteristics: null == selectedCharacteristics
           ? _value.selectedCharacteristics
           : selectedCharacteristics // ignore: cast_nullable_to_non_nullable
@@ -121,6 +128,7 @@ abstract class _$$StateProductImplCopyWith<T, $Res>
       int productOrderCount,
       double price,
       EntityProduct? product,
+      int? position,
       Map<Enum, dynamic> selectedCharacteristics});
 
   @override
@@ -143,6 +151,7 @@ class __$$StateProductImplCopyWithImpl<T, $Res>
     Object? productOrderCount = null,
     Object? price = null,
     Object? product = freezed,
+    Object? position = freezed,
     Object? selectedCharacteristics = null,
   }) {
     return _then(_$StateProductImpl<T>(
@@ -166,6 +175,10 @@ class __$$StateProductImplCopyWithImpl<T, $Res>
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
               as EntityProduct?,
+      position: freezed == position
+          ? _value.position
+          : position // ignore: cast_nullable_to_non_nullable
+              as int?,
       selectedCharacteristics: null == selectedCharacteristics
           ? _value._selectedCharacteristics
           : selectedCharacteristics // ignore: cast_nullable_to_non_nullable
@@ -183,6 +196,7 @@ class _$StateProductImpl<T> implements _StateProduct<T> {
       this.productOrderCount = 0,
       this.price = 0.00,
       this.product,
+      this.position,
       final Map<Enum, dynamic> selectedCharacteristics = const {}})
       : _selectedCharacteristics = selectedCharacteristics;
 
@@ -200,6 +214,8 @@ class _$StateProductImpl<T> implements _StateProduct<T> {
   final double price;
   @override
   final EntityProduct? product;
+  @override
+  final int? position;
   final Map<Enum, dynamic> _selectedCharacteristics;
   @override
   @JsonKey()
@@ -212,7 +228,7 @@ class _$StateProductImpl<T> implements _StateProduct<T> {
 
   @override
   String toString() {
-    return 'StateProduct<$T>(hashKey: $hashKey, category: $category, productOrderCount: $productOrderCount, price: $price, product: $product, selectedCharacteristics: $selectedCharacteristics)';
+    return 'StateProduct<$T>(hashKey: $hashKey, category: $category, productOrderCount: $productOrderCount, price: $price, product: $product, position: $position, selectedCharacteristics: $selectedCharacteristics)';
   }
 
   @override
@@ -227,6 +243,8 @@ class _$StateProductImpl<T> implements _StateProduct<T> {
                 other.productOrderCount == productOrderCount) &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.product, product) || other.product == product) &&
+            (identical(other.position, position) ||
+                other.position == position) &&
             const DeepCollectionEquality().equals(
                 other._selectedCharacteristics, _selectedCharacteristics));
   }
@@ -239,6 +257,7 @@ class _$StateProductImpl<T> implements _StateProduct<T> {
       productOrderCount,
       price,
       product,
+      position,
       const DeepCollectionEquality().hash(_selectedCharacteristics));
 
   @JsonKey(ignore: true)
@@ -256,6 +275,7 @@ abstract class _StateProduct<T> implements StateProduct<T> {
           final int productOrderCount,
           final double price,
           final EntityProduct? product,
+          final int? position,
           final Map<Enum, dynamic> selectedCharacteristics}) =
       _$StateProductImpl<T>;
 
@@ -269,6 +289,8 @@ abstract class _StateProduct<T> implements StateProduct<T> {
   double get price;
   @override
   EntityProduct? get product;
+  @override
+  int? get position;
   @override
   Map<Enum, dynamic> get selectedCharacteristics;
   @override

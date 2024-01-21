@@ -7,7 +7,7 @@ part 'event_shopping_basket.freezed.dart';
 @freezed
 class EventShoppingBasket with _$EventShoppingBasket {
   const factory EventShoppingBasket.add(
-      {required ChosenProduct chosenProduct}) = _Add;
+      {required ChosenProduct chosenProduct, int? index}) = _Add;
 
   const factory EventShoppingBasket.change({required int position}) = _Change;
 

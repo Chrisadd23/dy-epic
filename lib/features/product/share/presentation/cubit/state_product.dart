@@ -11,6 +11,7 @@ class StateProduct<T> with _$StateProduct<T> {
     @Default(0) int productOrderCount,
     @Default(0.00) double price,
     EntityProduct? product,
+    int? position,
     @Default({}) Map<Enum, dynamic> selectedCharacteristics,
   }) = _StateProduct;
 }

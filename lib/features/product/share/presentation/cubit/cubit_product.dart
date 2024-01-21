@@ -30,7 +30,7 @@ abstract class CubitProduct<T, E> extends Cubit<StateProduct<E>> {
   }
 
   Future<void> reset() async {
-    final newState = state.copyWith(productOrderCount: 0);
+    final newState = state.copyWith(productOrderCount: 0, position: null);
     emit(newState);
   }
 
@@ -47,10 +47,10 @@ abstract class CubitProduct<T, E> extends Cubit<StateProduct<E>> {
     debugPrint("order : => ${order.toString()} , index : $index");
     // TODO: implement changeProduct
     final newState = state.copyWith(
-      productOrderCount: order.count,
-      price: order.entityProduct.price,
-      product: order.entityProduct,
-    );
+        productOrderCount: order.count,
+        price: order.entityProduct.price,
+        product: order.entityProduct,
+        position: index);
 
     emit(newState);
   }

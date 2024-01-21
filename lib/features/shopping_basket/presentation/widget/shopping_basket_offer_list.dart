@@ -106,7 +106,7 @@ class _ShoppingBasketOffer extends HookWidget {
               key: Key(DateTime.now().toString()),
               direction: SwipeDirection.horizontal,
               backgroundBuilder: (context, direction, progress) {
-                return direction == SwipeDirection.endToStart
+                return direction == SwipeDirection.startToEnd
                     ? ClipRRect(
                         borderRadius: BorderRadius.circular(20),
                         child: Container(
@@ -116,7 +116,7 @@ class _ShoppingBasketOffer extends HookWidget {
                             border: Border.all(),
                             color: Colors.green,
                           ),
-                          alignment: Alignment.centerRight,
+                          alignment: Alignment.centerLeft,
                           child: const Padding(
                             padding: EdgeInsets.all(20.0),
                             child: Icon(
@@ -135,7 +135,7 @@ class _ShoppingBasketOffer extends HookWidget {
                             border: Border.all(),
                             color: Colors.red,
                           ),
-                          alignment: Alignment.centerLeft,
+                          alignment: Alignment.centerRight,
                           child: const Padding(
                             padding: EdgeInsets.all(20.0),
                             child: Icon(
@@ -148,12 +148,12 @@ class _ShoppingBasketOffer extends HookWidget {
               },
               color: Colors.white,
               onSwiped: (direction) {
-                if (direction == SwipeDirection.endToStart) {
+                if (direction == SwipeDirection.startToEnd) {
                   context
                       .read<BlocShoppingBasket>()
                       .add(EventShoppingBasket.change(position: index));
                 }
-                if (direction == SwipeDirection.startToEnd) {
+                if (direction == SwipeDirection.endToStart) {
                   context
                       .read<BlocShoppingBasket>()
                       .add(EventShoppingBasket.remove(position: index));

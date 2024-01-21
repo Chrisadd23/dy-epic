@@ -80,7 +80,8 @@ class WidgetOrderProduct extends StatelessWidget {
                                       productNumber:
                                           state.product!.productNumber,
                                       orderType: EnumOrderType.bestellung,
-                                      entityProduct: state.product!)),
+                                      entityProduct: state.product!),
+                                  index: state.position),
                             );
                       }
                       context.read<CubitProduct>().reset();
@@ -134,7 +135,8 @@ class WidgetOrderProduct extends StatelessWidget {
                                       count: state.productOrderCount,
                                       productNumber: state.hashKey,
                                       orderType: EnumOrderType.anfrage,
-                                      entityProduct: state.product!)),
+                                      entityProduct: state.product!),
+                                  index: state.position),
                             );
                       }
                       debugPrint("start reset");

@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$EventShoppingBasket {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ChosenProduct chosenProduct) add,
+    required TResult Function(ChosenProduct chosenProduct, int? index) add,
     required TResult Function(int position) change,
     required TResult Function(int position) remove,
     required TResult Function(EnumShoppingBasketOrder orderList) orderList,
@@ -26,7 +26,7 @@ mixin _$EventShoppingBasket {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ChosenProduct chosenProduct)? add,
+    TResult? Function(ChosenProduct chosenProduct, int? index)? add,
     TResult? Function(int position)? change,
     TResult? Function(int position)? remove,
     TResult? Function(EnumShoppingBasketOrder orderList)? orderList,
@@ -34,7 +34,7 @@ mixin _$EventShoppingBasket {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ChosenProduct chosenProduct)? add,
+    TResult Function(ChosenProduct chosenProduct, int? index)? add,
     TResult Function(int position)? change,
     TResult Function(int position)? remove,
     TResult Function(EnumShoppingBasketOrder orderList)? orderList,
@@ -91,7 +91,7 @@ abstract class _$$AddImplCopyWith<$Res> {
   factory _$$AddImplCopyWith(_$AddImpl value, $Res Function(_$AddImpl) then) =
       __$$AddImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({ChosenProduct chosenProduct});
+  $Res call({ChosenProduct chosenProduct, int? index});
 
   $ChosenProductCopyWith<$Res> get chosenProduct;
 }
@@ -107,12 +107,17 @@ class __$$AddImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? chosenProduct = null,
+    Object? index = freezed,
   }) {
     return _then(_$AddImpl(
       chosenProduct: null == chosenProduct
           ? _value.chosenProduct
           : chosenProduct // ignore: cast_nullable_to_non_nullable
               as ChosenProduct,
+      index: freezed == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 
@@ -128,14 +133,16 @@ class __$$AddImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AddImpl implements _Add {
-  const _$AddImpl({required this.chosenProduct});
+  const _$AddImpl({required this.chosenProduct, this.index});
 
   @override
   final ChosenProduct chosenProduct;
+  @override
+  final int? index;
 
   @override
   String toString() {
-    return 'EventShoppingBasket.add(chosenProduct: $chosenProduct)';
+    return 'EventShoppingBasket.add(chosenProduct: $chosenProduct, index: $index)';
   }
 
   @override
@@ -144,11 +151,12 @@ class _$AddImpl implements _Add {
         (other.runtimeType == runtimeType &&
             other is _$AddImpl &&
             (identical(other.chosenProduct, chosenProduct) ||
-                other.chosenProduct == chosenProduct));
+                other.chosenProduct == chosenProduct) &&
+            (identical(other.index, index) || other.index == index));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, chosenProduct);
+  int get hashCode => Object.hash(runtimeType, chosenProduct, index);
 
   @JsonKey(ignore: true)
   @override
@@ -159,36 +167,36 @@ class _$AddImpl implements _Add {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ChosenProduct chosenProduct) add,
+    required TResult Function(ChosenProduct chosenProduct, int? index) add,
     required TResult Function(int position) change,
     required TResult Function(int position) remove,
     required TResult Function(EnumShoppingBasketOrder orderList) orderList,
   }) {
-    return add(chosenProduct);
+    return add(chosenProduct, index);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ChosenProduct chosenProduct)? add,
+    TResult? Function(ChosenProduct chosenProduct, int? index)? add,
     TResult? Function(int position)? change,
     TResult? Function(int position)? remove,
     TResult? Function(EnumShoppingBasketOrder orderList)? orderList,
   }) {
-    return add?.call(chosenProduct);
+    return add?.call(chosenProduct, index);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ChosenProduct chosenProduct)? add,
+    TResult Function(ChosenProduct chosenProduct, int? index)? add,
     TResult Function(int position)? change,
     TResult Function(int position)? remove,
     TResult Function(EnumShoppingBasketOrder orderList)? orderList,
     required TResult orElse(),
   }) {
     if (add != null) {
-      return add(chosenProduct);
+      return add(chosenProduct, index);
     }
     return orElse();
   }
@@ -232,9 +240,12 @@ class _$AddImpl implements _Add {
 }
 
 abstract class _Add implements EventShoppingBasket {
-  const factory _Add({required final ChosenProduct chosenProduct}) = _$AddImpl;
+  const factory _Add(
+      {required final ChosenProduct chosenProduct,
+      final int? index}) = _$AddImpl;
 
   ChosenProduct get chosenProduct;
+  int? get index;
   @JsonKey(ignore: true)
   _$$AddImplCopyWith<_$AddImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -305,7 +316,7 @@ class _$ChangeImpl implements _Change {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ChosenProduct chosenProduct) add,
+    required TResult Function(ChosenProduct chosenProduct, int? index) add,
     required TResult Function(int position) change,
     required TResult Function(int position) remove,
     required TResult Function(EnumShoppingBasketOrder orderList) orderList,
@@ -316,7 +327,7 @@ class _$ChangeImpl implements _Change {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ChosenProduct chosenProduct)? add,
+    TResult? Function(ChosenProduct chosenProduct, int? index)? add,
     TResult? Function(int position)? change,
     TResult? Function(int position)? remove,
     TResult? Function(EnumShoppingBasketOrder orderList)? orderList,
@@ -327,7 +338,7 @@ class _$ChangeImpl implements _Change {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ChosenProduct chosenProduct)? add,
+    TResult Function(ChosenProduct chosenProduct, int? index)? add,
     TResult Function(int position)? change,
     TResult Function(int position)? remove,
     TResult Function(EnumShoppingBasketOrder orderList)? orderList,
@@ -451,7 +462,7 @@ class _$RemoveImpl implements _Remove {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ChosenProduct chosenProduct) add,
+    required TResult Function(ChosenProduct chosenProduct, int? index) add,
     required TResult Function(int position) change,
     required TResult Function(int position) remove,
     required TResult Function(EnumShoppingBasketOrder orderList) orderList,
@@ -462,7 +473,7 @@ class _$RemoveImpl implements _Remove {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ChosenProduct chosenProduct)? add,
+    TResult? Function(ChosenProduct chosenProduct, int? index)? add,
     TResult? Function(int position)? change,
     TResult? Function(int position)? remove,
     TResult? Function(EnumShoppingBasketOrder orderList)? orderList,
@@ -473,7 +484,7 @@ class _$RemoveImpl implements _Remove {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ChosenProduct chosenProduct)? add,
+    TResult Function(ChosenProduct chosenProduct, int? index)? add,
     TResult Function(int position)? change,
     TResult Function(int position)? remove,
     TResult Function(EnumShoppingBasketOrder orderList)? orderList,
@@ -597,7 +608,7 @@ class _$OrderListImpl implements _OrderList {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ChosenProduct chosenProduct) add,
+    required TResult Function(ChosenProduct chosenProduct, int? index) add,
     required TResult Function(int position) change,
     required TResult Function(int position) remove,
     required TResult Function(EnumShoppingBasketOrder orderList) orderList,
@@ -608,7 +619,7 @@ class _$OrderListImpl implements _OrderList {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ChosenProduct chosenProduct)? add,
+    TResult? Function(ChosenProduct chosenProduct, int? index)? add,
     TResult? Function(int position)? change,
     TResult? Function(int position)? remove,
     TResult? Function(EnumShoppingBasketOrder orderList)? orderList,
@@ -619,7 +630,7 @@ class _$OrderListImpl implements _OrderList {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ChosenProduct chosenProduct)? add,
+    TResult Function(ChosenProduct chosenProduct, int? index)? add,
     TResult Function(int position)? change,
     TResult Function(int position)? remove,
     TResult Function(EnumShoppingBasketOrder orderList)? orderList,
