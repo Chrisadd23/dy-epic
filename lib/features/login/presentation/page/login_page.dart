@@ -56,29 +56,12 @@ class LoginPage extends StatelessWidget {
                               border: Border.all(),
                               borderRadius: BorderRadius.circular(20),
                               color: Colors.white),
-                          child: const TextField(
+                          child: TextField(
                             decoration: InputDecoration(
-                                border: OutlineInputBorder(
+                                border: const OutlineInputBorder(
                                     borderSide: BorderSide.none),
                                 labelText: 'Kundennummer',
-                                labelStyle: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 20,
-                                  shadows: [
-                                    BoxShadow(
-                                        offset: Offset(0, 1),
-                                        color: Colors.white),
-                                    BoxShadow(
-                                        offset: Offset(0, -1),
-                                        color: Colors.white),
-                                    BoxShadow(
-                                        offset: Offset(1, 0),
-                                        color: Colors.white),
-                                    BoxShadow(
-                                        offset: Offset(-1, 0),
-                                        color: Colors.white),
-                                  ],
-                                ),
+                                labelStyle: _textStyle,
                                 floatingLabelBehavior:
                                     FloatingLabelBehavior.always),
                           )),
@@ -92,28 +75,12 @@ class LoginPage extends StatelessWidget {
                               border: Border.all(),
                               borderRadius: BorderRadius.circular(20),
                               color: Colors.white),
-                          child: const TextField(
+                          child: TextField(
                             decoration: InputDecoration(
-                                border: OutlineInputBorder(
+                                border: const OutlineInputBorder(
                                     borderSide: BorderSide.none),
                                 labelText: 'Passwort',
-                                labelStyle: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 20,
-                                    shadows: [
-                                      BoxShadow(
-                                          offset: Offset(0, 1),
-                                          color: Colors.white),
-                                      BoxShadow(
-                                          offset: Offset(0, -1),
-                                          color: Colors.white),
-                                      BoxShadow(
-                                          offset: Offset(1, 0),
-                                          color: Colors.white),
-                                      BoxShadow(
-                                          offset: Offset(-1, 0),
-                                          color: Colors.white),
-                                    ]),
+                                labelStyle: _textStyle,
                                 floatingLabelBehavior:
                                     FloatingLabelBehavior.always),
                           )),
@@ -134,7 +101,11 @@ class LoginPage extends StatelessWidget {
                                     Radius.circular(20))),
                             height: 70,
                             width: 200,
-                            child: const Center(child: Text('Kategorien')),
+                            child: Center(
+                                child: Text(
+                              'Login',
+                              style: _textStyle,
+                            )),
                           ),
                         ),
                       ),
@@ -148,4 +119,12 @@ class LoginPage extends StatelessWidget {
       ),
     );
   }
+
+  TextStyle get _textStyle =>
+      const TextStyle(color: Colors.black, fontSize: 20, shadows: [
+        BoxShadow(offset: Offset(0, 1), color: Colors.white),
+        BoxShadow(offset: Offset(0, -1), color: Colors.white),
+        BoxShadow(offset: Offset(1, 0), color: Colors.white),
+        BoxShadow(offset: Offset(-1, 0), color: Colors.white),
+      ]);
 }
