@@ -77,33 +77,12 @@ class $AssetsAppComponentsJpgGen {
 class $AssetsAppComponentsPngGen {
   const $AssetsAppComponentsPngGen();
 
-  /// File path: assets/appComponents/png/icon_menu.png
-  AssetGenImage get iconMenu =>
-      const AssetGenImage('assets/appComponents/png/icon_menu.png');
-
-  /// File path: assets/appComponents/png/minus_.png
-  AssetGenImage get minus =>
-      const AssetGenImage('assets/appComponents/png/minus_.png');
-
-  /// File path: assets/appComponents/png/plus_.png
-  AssetGenImage get plus =>
-      const AssetGenImage('assets/appComponents/png/plus_.png');
-
-  /// File path: assets/appComponents/png/return_icon.png
-  AssetGenImage get returnIcon =>
-      const AssetGenImage('assets/appComponents/png/return_icon.png');
-
-  /// File path: assets/appComponents/png/vectorMinus.png
-  AssetGenImage get vectorMinus =>
-      const AssetGenImage('assets/appComponents/png/vectorMinus.png');
-
-  /// File path: assets/appComponents/png/vectorPlus.png
-  AssetGenImage get vectorPlus =>
-      const AssetGenImage('assets/appComponents/png/vectorPlus.png');
+  /// File path: assets/appComponents/png/oberhaizinger_start_bild.png
+  AssetGenImage get oberhaizingerStartBild => const AssetGenImage(
+      'assets/appComponents/png/oberhaizinger_start_bild.png');
 
   /// List of all assets
-  List<AssetGenImage> get values =>
-      [iconMenu, minus, plus, returnIcon, vectorMinus, vectorPlus];
+  List<AssetGenImage> get values => [oberhaizingerStartBild];
 }
 
 class $AssetsAppComponentsSvgGen {

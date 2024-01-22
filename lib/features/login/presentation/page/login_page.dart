@@ -32,22 +32,116 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
             ),
-            InkWell(
-              onTap: () {
-                context.goNamed(AppGoRouter.homePage.name);
-              },
-              child: Center(
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.grey[200],
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(20))),
-                  height: 70,
-                  width: 200,
-                  child: const Center(child: Text('Kategorien')),
+            Expanded(
+              child: Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    opacity: 0.5,
+                    fit: BoxFit.fill,
+                    image: AssetImage(
+                      Assets.appComponents.png.oberhaizingerStartBild.path,
+                    ),
+                  ),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: MediaQuery.sizeOf(context).width * 0.1),
+                      child: Container(
+                          decoration: BoxDecoration(
+                              border: Border.all(),
+                              borderRadius: BorderRadius.circular(20),
+                              color: Colors.white),
+                          child: const TextField(
+                            decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                    borderSide: BorderSide.none),
+                                labelText: 'Kundennummer',
+                                labelStyle: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                  shadows: [
+                                    BoxShadow(
+                                        offset: Offset(0, 1),
+                                        color: Colors.white),
+                                    BoxShadow(
+                                        offset: Offset(0, -1),
+                                        color: Colors.white),
+                                    BoxShadow(
+                                        offset: Offset(1, 0),
+                                        color: Colors.white),
+                                    BoxShadow(
+                                        offset: Offset(-1, 0),
+                                        color: Colors.white),
+                                  ],
+                                ),
+                                floatingLabelBehavior:
+                                    FloatingLabelBehavior.always),
+                          )),
+                    ),
+                    const SizedBox(height: 30),
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: MediaQuery.sizeOf(context).width * 0.1),
+                      child: Container(
+                          decoration: BoxDecoration(
+                              border: Border.all(),
+                              borderRadius: BorderRadius.circular(20),
+                              color: Colors.white),
+                          child: const TextField(
+                            decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                    borderSide: BorderSide.none),
+                                labelText: 'Passwort',
+                                labelStyle: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 20,
+                                    shadows: [
+                                      BoxShadow(
+                                          offset: Offset(0, 1),
+                                          color: Colors.white),
+                                      BoxShadow(
+                                          offset: Offset(0, -1),
+                                          color: Colors.white),
+                                      BoxShadow(
+                                          offset: Offset(1, 0),
+                                          color: Colors.white),
+                                      BoxShadow(
+                                          offset: Offset(-1, 0),
+                                          color: Colors.white),
+                                    ]),
+                                floatingLabelBehavior:
+                                    FloatingLabelBehavior.always),
+                          )),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                          vertical: MediaQuery.sizeOf(context).height * 0.07),
+                      child: InkWell(
+                        onTap: () {
+                          context.goNamed(AppGoRouter.homePage.name);
+                        },
+                        child: Center(
+                          child: Container(
+                            decoration: BoxDecoration(
+                                color: Colors.grey[200],
+                                borderRadius: const BorderRadius.all(
+                                    Radius.circular(20))),
+                            height: 70,
+                            width: 200,
+                            child: const Center(child: Text('Kategorien')),
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
