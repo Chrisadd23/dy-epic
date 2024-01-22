@@ -9,8 +9,6 @@ class LoginCubit extends Cubit<LoginState> {
       emit(const LoginState.loading());
     }
 
-    const Duration(seconds: 1);
-
     emit(const LoginState.loggedIn());
   }
 }
