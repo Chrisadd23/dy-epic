@@ -4,6 +4,7 @@ import 'package:app_flutter_produkt_bestellen/features/category/dependencies.dar
     as category_dependencies;
 import 'package:app_flutter_produkt_bestellen/features/home/dependencies.dart'
     as home_dependencies;
+import 'package:app_flutter_produkt_bestellen/features/login/dependencies.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/dependencies.dart'
     as product_dependencies;
 import 'package:get_it/get_it.dart';
@@ -15,6 +16,7 @@ void setUpMainDependencies() {
   home_dependencies.setUp();
   category_dependencies.setUp();
   product_dependencies.setUp();
+  LoginDependencies.setUp();
 
   //core
   core_dependencies.setUp();

@@ -19,7 +19,7 @@ mixin _$LoginState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loggedOut,
-    required TResult Function() loggedIn,
+    required TResult Function(EntityLoginCustomer entityLoginCustomer) loggedIn,
     required TResult Function() loading,
     required TResult Function(Failure failure) failure,
   }) =>
@@ -27,7 +27,7 @@ mixin _$LoginState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loggedOut,
-    TResult? Function()? loggedIn,
+    TResult? Function(EntityLoginCustomer entityLoginCustomer)? loggedIn,
     TResult? Function()? loading,
     TResult? Function(Failure failure)? failure,
   }) =>
@@ -35,7 +35,7 @@ mixin _$LoginState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loggedOut,
-    TResult Function()? loggedIn,
+    TResult Function(EntityLoginCustomer entityLoginCustomer)? loggedIn,
     TResult Function()? loading,
     TResult Function(Failure failure)? failure,
     required TResult orElse(),
@@ -125,7 +125,7 @@ class _$LoggedOutImpl implements _LoggedOut {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loggedOut,
-    required TResult Function() loggedIn,
+    required TResult Function(EntityLoginCustomer entityLoginCustomer) loggedIn,
     required TResult Function() loading,
     required TResult Function(Failure failure) failure,
   }) {
@@ -136,7 +136,7 @@ class _$LoggedOutImpl implements _LoggedOut {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loggedOut,
-    TResult? Function()? loggedIn,
+    TResult? Function(EntityLoginCustomer entityLoginCustomer)? loggedIn,
     TResult? Function()? loading,
     TResult? Function(Failure failure)? failure,
   }) {
@@ -147,7 +147,7 @@ class _$LoggedOutImpl implements _LoggedOut {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loggedOut,
-    TResult Function()? loggedIn,
+    TResult Function(EntityLoginCustomer entityLoginCustomer)? loggedIn,
     TResult Function()? loading,
     TResult Function(Failure failure)? failure,
     required TResult orElse(),
@@ -205,6 +205,10 @@ abstract class _$$LoggedInImplCopyWith<$Res> {
   factory _$$LoggedInImplCopyWith(
           _$LoggedInImpl value, $Res Function(_$LoggedInImpl) then) =
       __$$LoggedInImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({EntityLoginCustomer entityLoginCustomer});
+
+  $EntityLoginCustomerCopyWith<$Res> get entityLoginCustomer;
 }
 
 /// @nodoc
@@ -214,60 +218,94 @@ class __$$LoggedInImplCopyWithImpl<$Res>
   __$$LoggedInImplCopyWithImpl(
       _$LoggedInImpl _value, $Res Function(_$LoggedInImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? entityLoginCustomer = null,
+  }) {
+    return _then(_$LoggedInImpl(
+      entityLoginCustomer: null == entityLoginCustomer
+          ? _value.entityLoginCustomer
+          : entityLoginCustomer // ignore: cast_nullable_to_non_nullable
+              as EntityLoginCustomer,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $EntityLoginCustomerCopyWith<$Res> get entityLoginCustomer {
+    return $EntityLoginCustomerCopyWith<$Res>(_value.entityLoginCustomer,
+        (value) {
+      return _then(_value.copyWith(entityLoginCustomer: value));
+    });
+  }
 }
 
 /// @nodoc
 
 class _$LoggedInImpl implements _LoggedIn {
-  const _$LoggedInImpl();
+  const _$LoggedInImpl({required this.entityLoginCustomer});
+
+  @override
+  final EntityLoginCustomer entityLoginCustomer;
 
   @override
   String toString() {
-    return 'LoginState.loggedIn()';
+    return 'LoginState.loggedIn(entityLoginCustomer: $entityLoginCustomer)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoggedInImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$LoggedInImpl &&
+            (identical(other.entityLoginCustomer, entityLoginCustomer) ||
+                other.entityLoginCustomer == entityLoginCustomer));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, entityLoginCustomer);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoggedInImplCopyWith<_$LoggedInImpl> get copyWith =>
+      __$$LoggedInImplCopyWithImpl<_$LoggedInImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loggedOut,
-    required TResult Function() loggedIn,
+    required TResult Function(EntityLoginCustomer entityLoginCustomer) loggedIn,
     required TResult Function() loading,
     required TResult Function(Failure failure) failure,
   }) {
-    return loggedIn();
+    return loggedIn(entityLoginCustomer);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loggedOut,
-    TResult? Function()? loggedIn,
+    TResult? Function(EntityLoginCustomer entityLoginCustomer)? loggedIn,
     TResult? Function()? loading,
     TResult? Function(Failure failure)? failure,
   }) {
-    return loggedIn?.call();
+    return loggedIn?.call(entityLoginCustomer);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loggedOut,
-    TResult Function()? loggedIn,
+    TResult Function(EntityLoginCustomer entityLoginCustomer)? loggedIn,
     TResult Function()? loading,
     TResult Function(Failure failure)? failure,
     required TResult orElse(),
   }) {
     if (loggedIn != null) {
-      return loggedIn();
+      return loggedIn(entityLoginCustomer);
     }
     return orElse();
   }
@@ -311,7 +349,14 @@ class _$LoggedInImpl implements _LoggedIn {
 }
 
 abstract class _LoggedIn implements LoginState {
-  const factory _LoggedIn() = _$LoggedInImpl;
+  const factory _LoggedIn(
+          {required final EntityLoginCustomer entityLoginCustomer}) =
+      _$LoggedInImpl;
+
+  EntityLoginCustomer get entityLoginCustomer;
+  @JsonKey(ignore: true)
+  _$$LoggedInImplCopyWith<_$LoggedInImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -353,7 +398,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loggedOut,
-    required TResult Function() loggedIn,
+    required TResult Function(EntityLoginCustomer entityLoginCustomer) loggedIn,
     required TResult Function() loading,
     required TResult Function(Failure failure) failure,
   }) {
@@ -364,7 +409,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loggedOut,
-    TResult? Function()? loggedIn,
+    TResult? Function(EntityLoginCustomer entityLoginCustomer)? loggedIn,
     TResult? Function()? loading,
     TResult? Function(Failure failure)? failure,
   }) {
@@ -375,7 +420,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loggedOut,
-    TResult Function()? loggedIn,
+    TResult Function(EntityLoginCustomer entityLoginCustomer)? loggedIn,
     TResult Function()? loading,
     TResult Function(Failure failure)? failure,
     required TResult orElse(),
@@ -493,7 +538,7 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loggedOut,
-    required TResult Function() loggedIn,
+    required TResult Function(EntityLoginCustomer entityLoginCustomer) loggedIn,
     required TResult Function() loading,
     required TResult Function(Failure failure) failure,
   }) {
@@ -504,7 +549,7 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loggedOut,
-    TResult? Function()? loggedIn,
+    TResult? Function(EntityLoginCustomer entityLoginCustomer)? loggedIn,
     TResult? Function()? loading,
     TResult? Function(Failure failure)? failure,
   }) {
@@ -515,7 +560,7 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loggedOut,
-    TResult Function()? loggedIn,
+    TResult Function(EntityLoginCustomer entityLoginCustomer)? loggedIn,
     TResult Function()? loading,
     TResult Function(Failure failure)? failure,
     required TResult orElse(),

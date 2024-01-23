@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'state_text_editing.freezed.dart';
+part 'text_editing_state.freezed.dart';
 
 @freezed
-class StateTextEditing with _$StateTextEditing {
-  const factory StateTextEditing({
+class TextEditingState with _$TextEditingState {
+  const factory TextEditingState({
     required TextEditingController customerNumber,
     required TextEditingController customerPassword,
-  }) = _StateTextEditing;
+  }) = _TextEditingState;
 }
