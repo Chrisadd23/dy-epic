@@ -51,5 +51,6 @@ class FixDrawerButton extends StatelessWidget {
     super.debugFillProperties(properties);
     properties.add(StringProperty('title', title));
     properties.add(DoubleProperty('height', height));
+    properties.add(ObjectFlagProperty<VoidCallback>.has('function', function));
   }
 }
