@@ -214,7 +214,7 @@ class ShowFailureDialog extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               const Icon(
@@ -222,7 +222,7 @@ class ShowFailureDialog extends StatelessWidget {
                 size: 60,
                 color: Colors.red,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
               Text(
