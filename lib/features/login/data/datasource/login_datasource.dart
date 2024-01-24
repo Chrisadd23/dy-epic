@@ -3,7 +3,6 @@ import 'package:app_flutter_produkt_bestellen/features/login/domain/entity/entit
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:either_dart/either.dart';
 import 'package:flutter/foundation.dart';
-import 'package:path/path.dart';
 
 abstract class LoginDatasource {
   Future<Either<Failure, EntityLoginCustomer>> login(
@@ -36,18 +35,15 @@ class LoginDatasourceImplementation extends LoginDatasource {
               customerNumber: user['customerNumber'].toString());
         }
       }, onError: (error) => debugPrint(error.toString()));
+      debugPrint("entityLoginCustomer ==> ${entityLoginCustomer.toString()}");
       if (entityLoginCustomer != null) {
         return Right(entityLoginCustomer);
       } else {
-        const Left(Failure.databaseError(
-            'Der Benutzer wurder noch nicht registriert'));
+        return const Left(
+            Failure.databaseError('Der Benutzer wurde noch nicht registriert'));
       }
     } catch (e) {
       return Left(Failure.databaseError(e.toString()));
     }
-    debugPrint("datasource --- hashkey ==> ${hash('password')}");
-    return const Left(Failure.databaseError("DummyFailure"));
   }
 }
-// 1027989622
-// 764050101
