@@ -48,4 +48,8 @@ class LoginCubit extends Cubit<LoginState> {
       return true;
     }
   }
+
+  Future<void> logOut() async {
+    emit(const LoginState.loggedOut());
+  }
 }

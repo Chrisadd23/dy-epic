@@ -1,10 +1,27 @@
 import 'package:app_flutter_produkt_bestellen/core/fix_widgets/drawer_button.dart';
 import 'package:app_flutter_produkt_bestellen/core/list_values/list_values.dart';
+import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_cubit.dart';
+import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_state.dart';
 import 'package:app_flutter_produkt_bestellen/gen/assets.gen.dart';
+import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class GlobalDrawer extends StatelessWidget {
   const GlobalDrawer({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider<LoginCubit>.value(
+      value: getIt<LoginCubit>(),
+      child: const _DrawerWidget(),
+    );
+  }
+}
+
+class _DrawerWidget extends StatelessWidget {
+  const _DrawerWidget();
 
   @override
   Widget build(BuildContext context) {
@@ -140,14 +157,25 @@ class GlobalDrawer extends StatelessWidget {
                       ...ListValues.drawerList
                           .map((e) => FixDrawerButton(
                                 title: e,
+                                function: () {
+                                  context.go('/$e');
+                                },
                               ))
                           .toList()
                     ]),
                     const SizedBox(height: 50),
-                    const FixDrawerButton(
-                      title: 'Logout',
-                      height: 40,
-                    ),
+                    BlocBuilder<LoginCubit, LoginState>(
+                        builder: (context, state) {
+                      return FixDrawerButton(
+                          title: 'Logout',
+                          height: 40,
+                          function: () async {
+                            await context.read<LoginCubit>().logOut();
+                            if (context.mounted) {
+                              context.go('/');
+                            }
+                          });
+                    }),
                   ],
                 ),
               ),

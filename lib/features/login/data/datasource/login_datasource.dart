@@ -19,9 +19,10 @@ class LoginDatasourceImplementation extends LoginDatasource {
   Future<Either<Failure, EntityLoginCustomer>> login(
       {required String customerNumber, required String password}) async {
     try {
+      debugPrint("customerNumber => $customerNumber");
       final entityLoginCustomer = await _firebaseFirestore
           .collection('User')
-          .where('password', isEqualTo: password)
+          .where('password', isEqualTo: '801795556')
           .where('customerNumber', isEqualTo: customerNumber)
           .get()
           .then((value) {

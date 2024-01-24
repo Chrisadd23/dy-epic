@@ -17,14 +17,17 @@ class Login extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(providers: [
-      BlocProvider<TextEditingCubit>(create: (context) => TextEditingCubit()),
-      BlocProvider<LoginCubit>(
-        create: (context) => LoginCubit(
-          loginRepository: getIt(),
-        ),
-      )
-    ], child: const LoginPage());
+    return Scaffold(
+      body: SafeArea(
+        child: MultiBlocProvider(providers: [
+          BlocProvider<TextEditingCubit>.value(
+              value: getIt<TextEditingCubit>()),
+          BlocProvider<LoginCubit>.value(
+            value: getIt<LoginCubit>(),
+          )
+        ], child: const LoginPage()),
+      ),
+    );
   }
 }
 
@@ -33,9 +36,7 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: SafeArea(child: _BlocBuilderLoginPage()),
-    );
+    return const _BlocBuilderLoginPage();
   }
 }
 

@@ -17,8 +17,7 @@ abstract class LoginDependencies {
         () => LoginRepositoryImplementation(loginDataSource: getIt()));
 
     //cubit
-    getIt.registerLazySingleton<LoginCubit>(
-        () => LoginCubit(loginRepository: getIt()));
+    getIt.registerSingleton<LoginCubit>(LoginCubit(loginRepository: getIt()));
 
     getIt.registerFactory<TextEditingCubit>(() => TextEditingCubit());
   }
