@@ -1,5 +1,4 @@
 import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
-import 'package:app_flutter_produkt_bestellen/core/error/failures.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/konferenzstuehle/domain/entity/entity_konferenzstuehle.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/domain/entity/entity_category.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -46,7 +45,7 @@ class DataSourceConferenceChairImplementation
         }).toList();
       }, onError: (error) {
         debugPrint('dataSource error ===> ${error.toString()}');
-        failure = FailureState.databaseError(error.toString());
+        failure = Failure.databaseError(error.toString());
         return failure;
       });
 
@@ -60,7 +59,7 @@ class DataSourceConferenceChairImplementation
       }
     } catch (e) {
       return const Left(
-          FailureState.message('Sortiment konnte nicht geladen werden'));
+          Failure.message('Sortiment konnte nicht geladen werden'));
     }
   }
 }

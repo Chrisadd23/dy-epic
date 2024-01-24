@@ -1,7 +1,6 @@
 import 'dart:typed_data';
 
 import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
-import 'package:app_flutter_produkt_bestellen/core/error/failures.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/buerostuehle/domain/entity/entity_buerodrehstuehle.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/domain/entity/entity_category.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -58,7 +57,7 @@ class DataSourceBuerostuehleImplementation extends DataSourceBuerostuehle {
         }).toList();
       }, onError: (error) {
         debugPrint('dataSource error ===> ${error.toString()}');
-        failure = FailureState.databaseError(error.toString());
+        failure = Failure.databaseError(error.toString());
         return failure;
       });
 
@@ -72,7 +71,7 @@ class DataSourceBuerostuehleImplementation extends DataSourceBuerostuehle {
       }
     } catch (e) {
       return const Left(
-          FailureState.message('Sortiment konnte nicht geladen werden'));
+          Failure.message('Sortiment konnte nicht geladen werden'));
     }
   }
 
@@ -93,7 +92,7 @@ class DataSourceBuerostuehleImplementation extends DataSourceBuerostuehle {
       //debugPrint("lig = ${list.toString()}");
       return const Right(null);
     } catch (e) {
-      return Left(FailureState.databaseError(e.toString()));
+      return Left(Failure.databaseError(e.toString()));
     }
   }
 }

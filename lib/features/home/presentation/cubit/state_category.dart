@@ -1,4 +1,4 @@
-import 'package:app_flutter_produkt_bestellen/core/error/failures.dart';
+import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
 import 'package:app_flutter_produkt_bestellen/features/home/presentation/widget/category_widget.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 

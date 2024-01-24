@@ -1,5 +1,4 @@
 import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
-import 'package:app_flutter_produkt_bestellen/core/error/failures.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/conferenceChairProduct/domain/entity/entity_conference_chair_product.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:either_dart/either.dart';
@@ -47,10 +46,10 @@ class DataSourceConferenceChairProductImplementation
         debugPrint("dataProduct success ===> ${product.toString()}");
         return Right(product);
       } else {
-        return const Left(FailureState.databaseError());
+        return const Left(Failure.databaseError());
       }
     } catch (e) {
-      return Left(FailureState.databaseError(e.toString()));
+      return Left(Failure.databaseError(e.toString()));
     }
   }
 }

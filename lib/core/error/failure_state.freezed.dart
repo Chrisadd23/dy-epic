@@ -15,99 +15,76 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$FailureState {
-  String? get message => throw _privateConstructorUsedError;
+mixin _$Failure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? message) message,
-    required TResult Function(String? message) databaseError,
+    required TResult Function(String? databaseMessage) databaseError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? message)? message,
-    TResult? Function(String? message)? databaseError,
+    TResult? Function(String? databaseMessage)? databaseError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? message)? message,
-    TResult Function(String? message)? databaseError,
+    TResult Function(String? databaseMessage)? databaseError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(FailureMessage value) message,
-    required TResult Function(DatabaseError value) databaseError,
+    required TResult Function(_FailureMessage value) message,
+    required TResult Function(_DatabaseError value) databaseError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(FailureMessage value)? message,
-    TResult? Function(DatabaseError value)? databaseError,
+    TResult? Function(_FailureMessage value)? message,
+    TResult? Function(_DatabaseError value)? databaseError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(FailureMessage value)? message,
-    TResult Function(DatabaseError value)? databaseError,
+    TResult Function(_FailureMessage value)? message,
+    TResult Function(_DatabaseError value)? databaseError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $FailureStateCopyWith<FailureState> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $FailureStateCopyWith<$Res> {
-  factory $FailureStateCopyWith(
-          FailureState value, $Res Function(FailureState) then) =
-      _$FailureStateCopyWithImpl<$Res, FailureState>;
-  @useResult
-  $Res call({String? message});
+abstract class $FailureCopyWith<$Res> {
+  factory $FailureCopyWith(Failure value, $Res Function(Failure) then) =
+      _$FailureCopyWithImpl<$Res, Failure>;
 }
 
 /// @nodoc
-class _$FailureStateCopyWithImpl<$Res, $Val extends FailureState>
-    implements $FailureStateCopyWith<$Res> {
-  _$FailureStateCopyWithImpl(this._value, this._then);
+class _$FailureCopyWithImpl<$Res, $Val extends Failure>
+    implements $FailureCopyWith<$Res> {
+  _$FailureCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? message = freezed,
-  }) {
-    return _then(_value.copyWith(
-      message: freezed == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$FailureMessageImplCopyWith<$Res>
-    implements $FailureStateCopyWith<$Res> {
+abstract class _$$FailureMessageImplCopyWith<$Res> {
   factory _$$FailureMessageImplCopyWith(_$FailureMessageImpl value,
           $Res Function(_$FailureMessageImpl) then) =
       __$$FailureMessageImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({String? message});
 }
 
 /// @nodoc
 class __$$FailureMessageImplCopyWithImpl<$Res>
-    extends _$FailureStateCopyWithImpl<$Res, _$FailureMessageImpl>
+    extends _$FailureCopyWithImpl<$Res, _$FailureMessageImpl>
     implements _$$FailureMessageImplCopyWith<$Res> {
   __$$FailureMessageImplCopyWithImpl(
       _$FailureMessageImpl _value, $Res Function(_$FailureMessageImpl) _then)
@@ -129,11 +106,27 @@ class __$$FailureMessageImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$FailureMessageImpl extends FailureMessage {
-  const _$FailureMessageImpl([this.message]) : super._();
+class _$FailureMessageImpl implements _FailureMessage {
+  const _$FailureMessageImpl([this.message]);
 
   @override
   final String? message;
+
+  @override
+  String toString() {
+    return 'Failure.message(message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FailureMessageImpl &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
 
   @JsonKey(ignore: true)
   @override
@@ -146,7 +139,7 @@ class _$FailureMessageImpl extends FailureMessage {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? message) message,
-    required TResult Function(String? message) databaseError,
+    required TResult Function(String? databaseMessage) databaseError,
   }) {
     return message(this.message);
   }
@@ -155,7 +148,7 @@ class _$FailureMessageImpl extends FailureMessage {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? message)? message,
-    TResult? Function(String? message)? databaseError,
+    TResult? Function(String? databaseMessage)? databaseError,
   }) {
     return message?.call(this.message);
   }
@@ -164,7 +157,7 @@ class _$FailureMessageImpl extends FailureMessage {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? message)? message,
-    TResult Function(String? message)? databaseError,
+    TResult Function(String? databaseMessage)? databaseError,
     required TResult orElse(),
   }) {
     if (message != null) {
@@ -176,8 +169,8 @@ class _$FailureMessageImpl extends FailureMessage {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(FailureMessage value) message,
-    required TResult Function(DatabaseError value) databaseError,
+    required TResult Function(_FailureMessage value) message,
+    required TResult Function(_DatabaseError value) databaseError,
   }) {
     return message(this);
   }
@@ -185,8 +178,8 @@ class _$FailureMessageImpl extends FailureMessage {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(FailureMessage value)? message,
-    TResult? Function(DatabaseError value)? databaseError,
+    TResult? Function(_FailureMessage value)? message,
+    TResult? Function(_DatabaseError value)? databaseError,
   }) {
     return message?.call(this);
   }
@@ -194,8 +187,8 @@ class _$FailureMessageImpl extends FailureMessage {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(FailureMessage value)? message,
-    TResult Function(DatabaseError value)? databaseError,
+    TResult Function(_FailureMessage value)? message,
+    TResult Function(_DatabaseError value)? databaseError,
     required TResult orElse(),
   }) {
     if (message != null) {
@@ -205,32 +198,27 @@ class _$FailureMessageImpl extends FailureMessage {
   }
 }
 
-abstract class FailureMessage extends FailureState {
-  const factory FailureMessage([final String? message]) = _$FailureMessageImpl;
-  const FailureMessage._() : super._();
+abstract class _FailureMessage implements Failure {
+  const factory _FailureMessage([final String? message]) = _$FailureMessageImpl;
 
-  @override
   String? get message;
-  @override
   @JsonKey(ignore: true)
   _$$FailureMessageImplCopyWith<_$FailureMessageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$DatabaseErrorImplCopyWith<$Res>
-    implements $FailureStateCopyWith<$Res> {
+abstract class _$$DatabaseErrorImplCopyWith<$Res> {
   factory _$$DatabaseErrorImplCopyWith(
           _$DatabaseErrorImpl value, $Res Function(_$DatabaseErrorImpl) then) =
       __$$DatabaseErrorImplCopyWithImpl<$Res>;
-  @override
   @useResult
-  $Res call({String? message});
+  $Res call({String? databaseMessage});
 }
 
 /// @nodoc
 class __$$DatabaseErrorImplCopyWithImpl<$Res>
-    extends _$FailureStateCopyWithImpl<$Res, _$DatabaseErrorImpl>
+    extends _$FailureCopyWithImpl<$Res, _$DatabaseErrorImpl>
     implements _$$DatabaseErrorImplCopyWith<$Res> {
   __$$DatabaseErrorImplCopyWithImpl(
       _$DatabaseErrorImpl _value, $Res Function(_$DatabaseErrorImpl) _then)
@@ -239,12 +227,12 @@ class __$$DatabaseErrorImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? message = freezed,
+    Object? databaseMessage = freezed,
   }) {
     return _then(_$DatabaseErrorImpl(
-      freezed == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
+      freezed == databaseMessage
+          ? _value.databaseMessage
+          : databaseMessage // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -252,11 +240,28 @@ class __$$DatabaseErrorImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$DatabaseErrorImpl extends DatabaseError {
-  const _$DatabaseErrorImpl([this.message]) : super._();
+class _$DatabaseErrorImpl implements _DatabaseError {
+  const _$DatabaseErrorImpl([this.databaseMessage]);
 
   @override
-  final String? message;
+  final String? databaseMessage;
+
+  @override
+  String toString() {
+    return 'Failure.databaseError(databaseMessage: $databaseMessage)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DatabaseErrorImpl &&
+            (identical(other.databaseMessage, databaseMessage) ||
+                other.databaseMessage == databaseMessage));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, databaseMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -268,29 +273,29 @@ class _$DatabaseErrorImpl extends DatabaseError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? message) message,
-    required TResult Function(String? message) databaseError,
+    required TResult Function(String? databaseMessage) databaseError,
   }) {
-    return databaseError(this.message);
+    return databaseError(databaseMessage);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? message)? message,
-    TResult? Function(String? message)? databaseError,
+    TResult? Function(String? databaseMessage)? databaseError,
   }) {
-    return databaseError?.call(this.message);
+    return databaseError?.call(databaseMessage);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? message)? message,
-    TResult Function(String? message)? databaseError,
+    TResult Function(String? databaseMessage)? databaseError,
     required TResult orElse(),
   }) {
     if (databaseError != null) {
-      return databaseError(this.message);
+      return databaseError(databaseMessage);
     }
     return orElse();
   }
@@ -298,8 +303,8 @@ class _$DatabaseErrorImpl extends DatabaseError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(FailureMessage value) message,
-    required TResult Function(DatabaseError value) databaseError,
+    required TResult Function(_FailureMessage value) message,
+    required TResult Function(_DatabaseError value) databaseError,
   }) {
     return databaseError(this);
   }
@@ -307,8 +312,8 @@ class _$DatabaseErrorImpl extends DatabaseError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(FailureMessage value)? message,
-    TResult? Function(DatabaseError value)? databaseError,
+    TResult? Function(_FailureMessage value)? message,
+    TResult? Function(_DatabaseError value)? databaseError,
   }) {
     return databaseError?.call(this);
   }
@@ -316,8 +321,8 @@ class _$DatabaseErrorImpl extends DatabaseError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(FailureMessage value)? message,
-    TResult Function(DatabaseError value)? databaseError,
+    TResult Function(_FailureMessage value)? message,
+    TResult Function(_DatabaseError value)? databaseError,
     required TResult orElse(),
   }) {
     if (databaseError != null) {
@@ -327,13 +332,11 @@ class _$DatabaseErrorImpl extends DatabaseError {
   }
 }
 
-abstract class DatabaseError extends FailureState {
-  const factory DatabaseError([final String? message]) = _$DatabaseErrorImpl;
-  const DatabaseError._() : super._();
+abstract class _DatabaseError implements Failure {
+  const factory _DatabaseError([final String? databaseMessage]) =
+      _$DatabaseErrorImpl;
 
-  @override
-  String? get message;
-  @override
+  String? get databaseMessage;
   @JsonKey(ignore: true)
   _$$DatabaseErrorImplCopyWith<_$DatabaseErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;

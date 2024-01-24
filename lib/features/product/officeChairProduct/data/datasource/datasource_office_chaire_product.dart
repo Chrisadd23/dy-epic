@@ -1,5 +1,4 @@
 import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
-import 'package:app_flutter_produkt_bestellen/core/error/failures.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/buerostuehle/presentation/cubit/cubit_choose_office_chair.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/officeChairProduct/domain/entity/entity_office_chair_product.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
@@ -50,10 +49,10 @@ class DataSourceOfficeChairProductImplementation
         debugPrint("dataProduct success ===> ${product.toString()}");
         return Right(product);
       } else {
-        return const Left(FailureState.databaseError());
+        return const Left(Failure.databaseError());
       }
     } catch (e) {
-      return Left(FailureState.databaseError(e.toString()));
+      return Left(Failure.databaseError(e.toString()));
     }
   }
 }

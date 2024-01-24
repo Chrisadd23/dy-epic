@@ -485,6 +485,8 @@ abstract class _$$FailureImplCopyWith<T, $Res> {
       __$$FailureImplCopyWithImpl<T, $Res>;
   @useResult
   $Res call({Failure failure});
+
+  $FailureCopyWith<$Res> get failure;
 }
 
 /// @nodoc
@@ -506,6 +508,14 @@ class __$$FailureImplCopyWithImpl<T, $Res>
           : failure // ignore: cast_nullable_to_non_nullable
               as Failure,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $FailureCopyWith<$Res> get failure {
+    return $FailureCopyWith<$Res>(_value.failure, (value) {
+      return _then(_value.copyWith(failure: value));
+    });
   }
 }
 
