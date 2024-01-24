@@ -6,9 +6,9 @@ import 'package:app_flutter_produkt_bestellen/core/global_cubits/cubit_pictures.
 import 'package:app_flutter_produkt_bestellen/features/category/buerostuehle/domain/repository/repository_buerostuehle.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/cubit/state_category_generic.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
-import 'package:bloc/bloc.dart';
 import 'package:either_dart/either.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CubitOfficeChair extends Cubit<StateCategory> {
   CubitOfficeChair({required this.repositoryOfficeChair})

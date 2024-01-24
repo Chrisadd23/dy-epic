@@ -26,13 +26,6 @@ class LoginCubit extends Cubit<LoginState> {
         emit(LoginState.loggedIn(entityLoginCustomer: entityLoginCustomer));
         return null;
       });
-    } else {
-      /*emit(
-        const LoginState.failure(
-          FailureState.message(
-              'Bitte geben Sie ihre Kundennummer und Ihr Passwort ein'),
-        ),
-      );*/
     }
   }
 

@@ -1,3 +1,5 @@
+import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
+import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text_style.dart';
 import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_state.dart';
@@ -38,7 +40,7 @@ class LoginPage extends StatelessWidget {
 }
 
 class _BlocBuilderLoginPage extends StatelessWidget {
-  const _BlocBuilderLoginPage({super.key});
+  const _BlocBuilderLoginPage();
 
   @override
   Widget build(BuildContext context) {
@@ -107,7 +109,8 @@ class _BlocBuilderLoginPage extends StatelessWidget {
                                 border: const OutlineInputBorder(
                                     borderSide: BorderSide.none),
                                 labelText: 'Kundennummer',
-                                labelStyle: _textStyle,
+                                labelStyle:
+                                    AppTextStyle.colorBlackSize20ShadowWhite,
                                 floatingLabelBehavior:
                                     FloatingLabelBehavior.always,
                               ),
@@ -134,7 +137,8 @@ class _BlocBuilderLoginPage extends StatelessWidget {
                                 border: const OutlineInputBorder(
                                     borderSide: BorderSide.none),
                                 labelText: 'Passwort',
-                                labelStyle: _textStyle,
+                                labelStyle:
+                                    AppTextStyle.colorBlackSize20ShadowWhite,
                                 floatingLabelBehavior:
                                     FloatingLabelBehavior.always),
                             obscureText: true,
@@ -164,7 +168,7 @@ class _BlocBuilderLoginPage extends StatelessWidget {
                             child: Center(
                                 child: Text(
                               'Login',
-                              style: _textStyle,
+                              style: AppTextStyle.colorBlackSize20ShadowWhite,
                             )),
                           ),
                         ),
@@ -179,14 +183,6 @@ class _BlocBuilderLoginPage extends StatelessWidget {
       ),
     );
   }
-
-  TextStyle get _textStyle =>
-      const TextStyle(color: Colors.black, fontSize: 20, shadows: [
-        BoxShadow(offset: Offset(0, 1), color: Colors.white),
-        BoxShadow(offset: Offset(0, -1), color: Colors.white),
-        BoxShadow(offset: Offset(1, 0), color: Colors.white),
-        BoxShadow(offset: Offset(-1, 0), color: Colors.white),
-      ]);
 }
 
 class ShowFailureDialog extends StatelessWidget {
@@ -208,10 +204,36 @@ class ShowFailureDialog extends StatelessWidget {
           horizontal: MediaQuery.sizeOf(context).width * 0.1,
           vertical: MediaQuery.sizeOf(context).height * 0.2),
       child: Container(
-        width: double.infinity,
-        height: 400,
-        color: Colors.white,
-        child: Text(failure),
+        decoration: BoxDecoration(
+          color: AppColors.greyCACACA,
+          border: Border.all(color: Colors.black),
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(
+                height: 20,
+              ),
+              const Icon(
+                Icons.error_outline_rounded,
+                size: 60,
+                color: Colors.red,
+              ),
+              SizedBox(
+                height: 50,
+              ),
+              Text(
+                failure,
+                textAlign: TextAlign.center,
+                style: AppTextStyle.colorWhiteSize20ShadowBlack
+                    .copyWith(fontSize: 25),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
