@@ -7,6 +7,7 @@ class EntityLoginCustomer with _$EntityLoginCustomer {
   const factory EntityLoginCustomer({
     required CustomerAddress address,
     required String customerNumber,
+    String? email,
     String? companyName,
     String? customerName,
     String? customerSurname,

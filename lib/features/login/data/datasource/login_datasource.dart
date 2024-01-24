@@ -29,10 +29,20 @@ class LoginDatasourceImplementation extends LoginDatasource {
         debugPrint("not crashed yet");
         if (user != null) {
           debugPrint("User exist");
+
           return EntityLoginCustomer(
-              address: const CustomerAddress(
-                  street: 'street', city: 'city', zipCode: 'zipCode'),
-              customerNumber: user['customerNumber'].toString());
+            address: CustomerAddress(
+                street: user['address']['street'].toString(),
+                city: user['address']['city'],
+                zipCode: user['address']['zipCode']),
+            customerNumber: user['customerNumber'].toString(),
+            companyName: user['companyName'],
+            email: user['email'],
+            customerName: user['firstname'],
+            customerSurname: user['lastname'],
+            registrationDate: _convertTimestamptoDrawDate(
+                user['registrationdate'] as Timestamp),
+          );
         }
       }, onError: (error) => debugPrint(error.toString()));
       debugPrint("entityLoginCustomer ==> ${entityLoginCustomer.toString()}");
@@ -45,5 +55,9 @@ class LoginDatasourceImplementation extends LoginDatasource {
     } catch (e) {
       return Left(Failure.databaseError(e.toString()));
     }
+  }
+
+  DateTime? _convertTimestamptoDrawDate(Timestamp timestamp) {
+    return timestamp.toDate();
   }
 }
