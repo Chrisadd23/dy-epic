@@ -21,7 +21,7 @@ class LoginDatasourceImplementation extends LoginDatasource {
       debugPrint("customerNumber => $customerNumber");
       final entityLoginCustomer = await _firebaseFirestore
           .collection('User')
-          .where('password', isEqualTo: '801795556')
+          .where('password', isEqualTo: password)
           .where('customerNumber', isEqualTo: customerNumber)
           .get()
           .then((value) {
@@ -40,7 +40,7 @@ class LoginDatasourceImplementation extends LoginDatasource {
         return Right(entityLoginCustomer);
       } else {
         return const Left(
-            Failure.databaseError('Der Benutzer wurde noch nicht registriert'));
+            Failure.databaseError('Der Benutzer wurde nicht gefunden'));
       }
     } catch (e) {
       return Left(Failure.databaseError(e.toString()));
