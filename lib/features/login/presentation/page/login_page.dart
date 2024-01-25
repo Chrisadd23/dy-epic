@@ -63,120 +63,154 @@ class _BlocBuilderLoginPage extends StatelessWidget {
       },
       child: Column(
         children: <Widget>[
-          SizedBox(
-            width: double.infinity,
-            height: 150,
-            child: FittedBox(
-              fit: BoxFit.fitWidth,
-              child: Image.asset(
-                Assets.company.appBarLogo.path,
-                fit: BoxFit.fitWidth,
+          ShaderMask(
+            blendMode: BlendMode.dstOut,
+            shaderCallback: (Rect rect) {
+              return const LinearGradient(
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.topCenter,
+                      colors: [Colors.white, Colors.transparent])
+                  .createShader(Rect.fromLTWH(
+                rect.left,
+                rect.top + 60,
+                rect.width,
+                rect.height,
+              ));
+            },
+            child: SizedBox(
+              width: double.infinity,
+              height: 110,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: FittedBox(
+                  fit: BoxFit.fitWidth,
+                  child: Image.asset(
+                    Assets.company.appBarLogo.path,
+                    fit: BoxFit.fitWidth,
+                  ),
+                ),
               ),
             ),
           ),
           Expanded(
-            child: Container(
-              width: double.infinity,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  opacity: 0.5,
-                  fit: BoxFit.fill,
-                  image: AssetImage(
-                    Assets.appComponents.png.oberhaizingerStartBild.path,
+            child: ShaderMask(
+              blendMode: BlendMode.dstATop,
+              shaderCallback: (Rect rect) {
+                return const LinearGradient(colors: [
+                  AppColors.whiteD6D6D7,
+                  AppColors.orangeF6A440,
+                  Colors.white
+                ], begin: Alignment.topCenter, end: Alignment.bottomCenter)
+                    .createShader(Rect.fromLTWH(
+                  rect.left,
+                  rect.top,
+                  rect.width,
+                  rect.height,
+                ));
+              },
+              child: Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    opacity: 0.5,
+                    fit: BoxFit.fill,
+                    image: AssetImage(
+                      Assets.appComponents.png.oberhaizingerStartBild.path,
+                    ),
                   ),
                 ),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: MediaQuery.sizeOf(context).width * 0.1),
-                    child: Container(
-                        decoration: BoxDecoration(
-                            border: Border.all(),
-                            borderRadius: BorderRadius.circular(20),
-                            color: Colors.white),
-                        child: BlocSelector<TextEditingCubit, TextEditingState,
-                            TextEditingController>(
-                          selector: (TextEditingState state) =>
-                              state.customerNumber,
-                          builder: (context, controller) {
-                            return TextField(
-                              controller: controller,
-                              keyboardType: TextInputType.number,
-                              decoration: InputDecoration(
-                                border: const OutlineInputBorder(
-                                    borderSide: BorderSide.none),
-                                labelText: 'Kundennummer',
-                                labelStyle:
-                                    AppTextStyle.colorBlackSize20ShadowWhite,
-                                floatingLabelBehavior:
-                                    FloatingLabelBehavior.always,
-                              ),
-                            );
-                          },
-                        )),
-                  ),
-                  const SizedBox(height: 30),
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: MediaQuery.sizeOf(context).width * 0.1),
-                    child: Container(
-                        decoration: BoxDecoration(
-                            border: Border.all(),
-                            borderRadius: BorderRadius.circular(20),
-                            color: Colors.white),
-                        child: BlocSelector<TextEditingCubit, TextEditingState,
-                            TextEditingController>(
-                          selector: (state) => state.customerPassword,
-                          builder: (context, controller) => TextField(
-                            controller: controller,
-                            keyboardType: TextInputType.none,
-                            decoration: InputDecoration(
-                                border: const OutlineInputBorder(
-                                    borderSide: BorderSide.none),
-                                labelText: 'Passwort',
-                                labelStyle:
-                                    AppTextStyle.colorBlackSize20ShadowWhite,
-                                floatingLabelBehavior:
-                                    FloatingLabelBehavior.always),
-                            obscureText: true,
-                          ),
-                        )),
-                  ),
-                  BlocBuilder<TextEditingCubit, TextEditingState>(
-                      builder: (context, state) {
-                    return Padding(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Padding(
                       padding: EdgeInsets.symmetric(
-                          vertical: MediaQuery.sizeOf(context).height * 0.07),
-                      child: InkWell(
-                        onTap: () {
-                          context.read<LoginCubit>().login(
-                              customerNumber: state.customerNumber.text,
-                              password: state.customerPassword.text);
-                        },
-                        child: Center(
-                          child: Container(
-                            decoration: BoxDecoration(
-                                color: Colors.grey[200],
-                                border: Border.all(),
-                                borderRadius: const BorderRadius.all(
-                                    Radius.circular(20))),
-                            height: 70,
-                            width: 200,
-                            child: Center(
-                                child: Text(
-                              'Login',
-                              style: AppTextStyle.colorBlackSize20ShadowWhite,
-                            )),
+                          horizontal: MediaQuery.sizeOf(context).width * 0.1),
+                      child: Container(
+                          decoration: BoxDecoration(
+                              border: Border.all(),
+                              borderRadius: BorderRadius.circular(20),
+                              color: Colors.white),
+                          child: BlocSelector<TextEditingCubit,
+                              TextEditingState, TextEditingController>(
+                            selector: (TextEditingState state) =>
+                                state.customerNumber,
+                            builder: (context, controller) {
+                              return TextField(
+                                controller: controller,
+                                keyboardType: TextInputType.number,
+                                decoration: InputDecoration(
+                                  border: const OutlineInputBorder(
+                                      borderSide: BorderSide.none),
+                                  labelText: 'Kundennummer',
+                                  labelStyle:
+                                      AppTextStyle.colorBlackSize20ShadowWhite,
+                                  floatingLabelBehavior:
+                                      FloatingLabelBehavior.always,
+                                ),
+                              );
+                            },
+                          )),
+                    ),
+                    const SizedBox(height: 30),
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: MediaQuery.sizeOf(context).width * 0.1),
+                      child: Container(
+                          decoration: BoxDecoration(
+                              border: Border.all(),
+                              borderRadius: BorderRadius.circular(20),
+                              color: Colors.white),
+                          child: BlocSelector<TextEditingCubit,
+                              TextEditingState, TextEditingController>(
+                            selector: (state) => state.customerPassword,
+                            builder: (context, controller) => TextField(
+                              controller: controller,
+                              keyboardType: TextInputType.none,
+                              decoration: InputDecoration(
+                                  border: const OutlineInputBorder(
+                                      borderSide: BorderSide.none),
+                                  labelText: 'Passwort',
+                                  labelStyle:
+                                      AppTextStyle.colorBlackSize20ShadowWhite,
+                                  floatingLabelBehavior:
+                                      FloatingLabelBehavior.always),
+                              obscureText: true,
+                            ),
+                          )),
+                    ),
+                    BlocBuilder<TextEditingCubit, TextEditingState>(
+                        builder: (context, state) {
+                      return Padding(
+                        padding: EdgeInsets.symmetric(
+                            vertical: MediaQuery.sizeOf(context).height * 0.07),
+                        child: InkWell(
+                          onTap: () {
+                            context.read<LoginCubit>().login(
+                                customerNumber: state.customerNumber.text,
+                                password: state.customerPassword.text);
+                          },
+                          child: Center(
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.grey[200],
+                                  border: Border.all(),
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(20))),
+                              height: 70,
+                              width: 200,
+                              child: Center(
+                                  child: Text(
+                                'Login',
+                                style: AppTextStyle.colorBlackSize20ShadowWhite,
+                              )),
+                            ),
                           ),
                         ),
-                      ),
-                    );
-                  }),
-                ],
+                      );
+                    }),
+                  ],
+                ),
               ),
             ),
           ),
@@ -203,7 +237,7 @@ class ShowFailureDialog extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(
           horizontal: MediaQuery.sizeOf(context).width * 0.1,
-          vertical: MediaQuery.sizeOf(context).height * 0.2),
+          vertical: MediaQuery.sizeOf(context).height * 0.25),
       child: Container(
         decoration: BoxDecoration(
           color: AppColors.greyCACACA,
@@ -226,11 +260,13 @@ class ShowFailureDialog extends StatelessWidget {
               const SizedBox(
                 height: 50,
               ),
-              Text(
-                failure,
-                textAlign: TextAlign.center,
-                style: AppTextStyle.colorWhiteSize20ShadowBlack
-                    .copyWith(fontSize: 25),
+              Expanded(
+                child: Text(
+                  failure,
+                  textAlign: TextAlign.center,
+                  style: AppTextStyle.colorWhiteSize20ShadowBlack
+                      .copyWith(fontSize: 25),
+                ),
               ),
             ],
           ),

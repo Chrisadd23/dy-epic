@@ -40,7 +40,7 @@ class LoginDatasourceImplementation extends LoginDatasource {
             email: user['email'],
             customerName: user['firstname'],
             customerSurname: user['lastname'],
-            registrationDate: _convertTimestamptoDrawDate(
+            registrationDate: _convertTimestampToDrawDate(
                 user['registrationdate'] as Timestamp),
           );
         }
@@ -57,7 +57,7 @@ class LoginDatasourceImplementation extends LoginDatasource {
     }
   }
 
-  DateTime? _convertTimestamptoDrawDate(Timestamp timestamp) {
+  DateTime? _convertTimestampToDrawDate(Timestamp timestamp) {
     return timestamp.toDate();
   }
 }
