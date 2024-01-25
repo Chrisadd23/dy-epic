@@ -18,19 +18,22 @@ class LoginDatasourceImplementation extends LoginDatasource {
   Future<Either<Failure, EntityLoginCustomer>> login(
       {required String customerNumber, required String password}) async {
     try {
-      debugPrint("customerNumber => $customerNumber");
-      final entityLoginCustomer = await _firebaseFirestore
-          .collection('User')
-          .where('password', isEqualTo: password)
-          .where('customerNumber', isEqualTo: customerNumber)
-          .get()
-          .then((value) {
+      final Either<Failure, EntityLoginCustomer> entityLoginCustomer =
+          await _firebaseFirestore
+              .collection('User')
+              .where('customerNumber', isEqualTo: customerNumber)
+              .get()
+              .then((value) {
         final Map<String, dynamic>? user = value.docs.firstOrNull?.data();
         debugPrint("not crashed yet");
         if (user != null) {
           debugPrint("User exist");
+          if (user['password'] != password) {
+            return const Left(
+                Failure.databaseError('Überprüfen Sie ihr Passwort'));
+          }
 
-          return EntityLoginCustomer(
+          return Right(EntityLoginCustomer(
             address: CustomerAddress(
                 street: user['address']['street'].toString(),
                 city: user['address']['city'],
@@ -42,16 +45,15 @@ class LoginDatasourceImplementation extends LoginDatasource {
             customerSurname: user['lastname'],
             registrationDate: _convertTimestampToDrawDate(
                 user['registrationdate'] as Timestamp),
-          );
+          ));
+        } else {
+          return const Left(
+              Failure.databaseError('Der Benutzer wurde nicht gefunden'));
         }
       }, onError: (error) => debugPrint(error.toString()));
       debugPrint("entityLoginCustomer ==> ${entityLoginCustomer.toString()}");
-      if (entityLoginCustomer != null) {
-        return Right(entityLoginCustomer);
-      } else {
-        return const Left(
-            Failure.databaseError('Der Benutzer wurde nicht gefunden'));
-      }
+
+      return entityLoginCustomer;
     } catch (e) {
       return Left(Failure.databaseError(e.toString()));
     }
