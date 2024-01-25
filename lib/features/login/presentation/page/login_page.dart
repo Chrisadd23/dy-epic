@@ -10,6 +10,7 @@ import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 
 class Login extends StatelessWidget {
@@ -20,8 +21,8 @@ class Login extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: MultiBlocProvider(providers: [
-          BlocProvider<TextEditingCubit>.value(
-              value: getIt<TextEditingCubit>()),
+          BlocProvider<TextEditingCubit>(
+              create: (context) => getIt<TextEditingCubit>()),
           BlocProvider<LoginCubit>.value(
             value: getIt<LoginCubit>(),
           )
@@ -48,18 +49,18 @@ class _BlocBuilderLoginPage extends StatelessWidget {
     return BlocListener<LoginCubit, LoginState>(
       listener: (context, state) {
         debugPrint("listener active ");
-        state.mapOrNull(
-            loggedIn: (loggedIn) =>
-                getIt<GoRouter>().goNamed(AppGoRouter.homePage.name),
-            failure: (failure) {
-              debugPrint(
-                  "showFailure ${failure.failure.when(message: (message) => message, databaseError: (databaseError) => databaseError)}");
-              return ShowFailureDialog.present(
-                  context: context,
-                  failure: failure.failure.when(
-                      message: (message) => message ?? '',
-                      databaseError: (databaseError) => databaseError ?? ''));
-            });
+        state.mapOrNull(loggedIn: (loggedIn) async {
+          await context.read<TextEditingCubit>().clearController();
+          getIt<GoRouter>().goNamed(AppGoRouter.homePage.name);
+        }, failure: (failure) {
+          debugPrint(
+              "showFailure ${failure.failure.when(message: (message) => message, databaseError: (databaseError) => databaseError)}");
+          return ShowFailureDialog.present(
+              context: context,
+              failure: failure.failure.when(
+                  message: (message) => message ?? '',
+                  databaseError: (databaseError) => databaseError ?? ''));
+        });
       },
       child: Column(
         children: <Widget>[
@@ -153,32 +154,7 @@ class _BlocBuilderLoginPage extends StatelessWidget {
                           )),
                     ),
                     const SizedBox(height: 30),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: MediaQuery.sizeOf(context).width * 0.1),
-                      child: Container(
-                          decoration: BoxDecoration(
-                              border: Border.all(),
-                              borderRadius: BorderRadius.circular(20),
-                              color: Colors.white),
-                          child: BlocSelector<TextEditingCubit,
-                              TextEditingState, TextEditingController>(
-                            selector: (state) => state.customerPassword,
-                            builder: (context, controller) => TextField(
-                              controller: controller,
-                              keyboardType: TextInputType.none,
-                              decoration: InputDecoration(
-                                  border: const OutlineInputBorder(
-                                      borderSide: BorderSide.none),
-                                  labelText: 'Passwort',
-                                  labelStyle:
-                                      AppTextStyle.colorBlackSize20ShadowWhite,
-                                  floatingLabelBehavior:
-                                      FloatingLabelBehavior.always),
-                              obscureText: true,
-                            ),
-                          )),
-                    ),
+                    const _PasswordTextWidget(),
                     BlocBuilder<TextEditingCubit, TextEditingState>(
                         builder: (context, state) {
                       return Padding(
@@ -216,6 +192,41 @@ class _BlocBuilderLoginPage extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class _PasswordTextWidget extends HookWidget {
+  const _PasswordTextWidget();
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(
+          horizontal: MediaQuery.sizeOf(context).width * 0.1),
+      child: Container(
+          decoration: BoxDecoration(
+              border: Border.all(),
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.white),
+          child: BlocBuilder<TextEditingCubit, TextEditingState>(
+            builder: (context, state) => TextField(
+              controller: state.customerPassword,
+              keyboardType: TextInputType.none,
+              decoration: InputDecoration(
+                  suffixIcon: InkWell(
+                      onTap: () =>
+                          context.read<TextEditingCubit>().changeVisibility(),
+                      child: state.hidePassword
+                          ? const Icon(Icons.visibility_off_outlined)
+                          : const Icon(Icons.visibility_outlined)),
+                  border: const OutlineInputBorder(borderSide: BorderSide.none),
+                  labelText: 'Passwort',
+                  labelStyle: AppTextStyle.colorBlackSize20ShadowWhite,
+                  floatingLabelBehavior: FloatingLabelBehavior.always),
+              obscureText: state.hidePassword,
+            ),
+          )),
     );
   }
 }

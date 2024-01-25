@@ -6,10 +6,25 @@ class TextEditingCubit extends Cubit<TextEditingState> {
   TextEditingCubit()
       : super(
           TextEditingState(
-            customerNumber: TextEditingController(),
-            customerPassword: TextEditingController(),
-          ),
+              customerNumber: TextEditingController(),
+              customerPassword: TextEditingController(),
+              hidePassword: true),
         );
+
+  Future<void> clearController() async {
+    state.customerPassword.clear();
+    state.customerNumber.clear();
+    final newState = state.copyWith(hidePassword: true);
+    debugPrint("clear --");
+    emit(newState);
+  }
+
+  Future<void> changeVisibility() async {
+    debugPrint("change Password");
+    final newState = state.copyWith(hidePassword: !state.hidePassword);
+    debugPrint("hidPassword => ${newState.hidePassword}");
+    emit(newState);
+  }
 
   @override
   Future<void> close() {

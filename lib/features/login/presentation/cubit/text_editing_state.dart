@@ -8,5 +8,6 @@ class TextEditingState with _$TextEditingState {
   const factory TextEditingState({
     required TextEditingController customerNumber,
     required TextEditingController customerPassword,
+    required bool hidePassword,
   }) = _TextEditingState;
 }

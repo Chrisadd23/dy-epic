@@ -20,6 +20,7 @@ mixin _$TextEditingState {
       throw _privateConstructorUsedError;
   TextEditingController get customerPassword =>
       throw _privateConstructorUsedError;
+  bool get hidePassword => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TextEditingStateCopyWith<TextEditingState> get copyWith =>
@@ -34,7 +35,8 @@ abstract class $TextEditingStateCopyWith<$Res> {
   @useResult
   $Res call(
       {TextEditingController customerNumber,
-      TextEditingController customerPassword});
+      TextEditingController customerPassword,
+      bool hidePassword});
 }
 
 /// @nodoc
@@ -52,6 +54,7 @@ class _$TextEditingStateCopyWithImpl<$Res, $Val extends TextEditingState>
   $Res call({
     Object? customerNumber = null,
     Object? customerPassword = null,
+    Object? hidePassword = null,
   }) {
     return _then(_value.copyWith(
       customerNumber: null == customerNumber
@@ -62,6 +65,10 @@ class _$TextEditingStateCopyWithImpl<$Res, $Val extends TextEditingState>
           ? _value.customerPassword
           : customerPassword // ignore: cast_nullable_to_non_nullable
               as TextEditingController,
+      hidePassword: null == hidePassword
+          ? _value.hidePassword
+          : hidePassword // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -76,7 +83,8 @@ abstract class _$$TextEditingStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {TextEditingController customerNumber,
-      TextEditingController customerPassword});
+      TextEditingController customerPassword,
+      bool hidePassword});
 }
 
 /// @nodoc
@@ -92,6 +100,7 @@ class __$$TextEditingStateImplCopyWithImpl<$Res>
   $Res call({
     Object? customerNumber = null,
     Object? customerPassword = null,
+    Object? hidePassword = null,
   }) {
     return _then(_$TextEditingStateImpl(
       customerNumber: null == customerNumber
@@ -102,6 +111,10 @@ class __$$TextEditingStateImplCopyWithImpl<$Res>
           ? _value.customerPassword
           : customerPassword // ignore: cast_nullable_to_non_nullable
               as TextEditingController,
+      hidePassword: null == hidePassword
+          ? _value.hidePassword
+          : hidePassword // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -110,16 +123,20 @@ class __$$TextEditingStateImplCopyWithImpl<$Res>
 
 class _$TextEditingStateImpl implements _TextEditingState {
   const _$TextEditingStateImpl(
-      {required this.customerNumber, required this.customerPassword});
+      {required this.customerNumber,
+      required this.customerPassword,
+      required this.hidePassword});
 
   @override
   final TextEditingController customerNumber;
   @override
   final TextEditingController customerPassword;
+  @override
+  final bool hidePassword;
 
   @override
   String toString() {
-    return 'TextEditingState(customerNumber: $customerNumber, customerPassword: $customerPassword)';
+    return 'TextEditingState(customerNumber: $customerNumber, customerPassword: $customerPassword, hidePassword: $hidePassword)';
   }
 
   @override
@@ -130,12 +147,14 @@ class _$TextEditingStateImpl implements _TextEditingState {
             (identical(other.customerNumber, customerNumber) ||
                 other.customerNumber == customerNumber) &&
             (identical(other.customerPassword, customerPassword) ||
-                other.customerPassword == customerPassword));
+                other.customerPassword == customerPassword) &&
+            (identical(other.hidePassword, hidePassword) ||
+                other.hidePassword == hidePassword));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, customerNumber, customerPassword);
+      Object.hash(runtimeType, customerNumber, customerPassword, hidePassword);
 
   @JsonKey(ignore: true)
   @override
@@ -147,14 +166,16 @@ class _$TextEditingStateImpl implements _TextEditingState {
 
 abstract class _TextEditingState implements TextEditingState {
   const factory _TextEditingState(
-          {required final TextEditingController customerNumber,
-          required final TextEditingController customerPassword}) =
-      _$TextEditingStateImpl;
+      {required final TextEditingController customerNumber,
+      required final TextEditingController customerPassword,
+      required final bool hidePassword}) = _$TextEditingStateImpl;
 
   @override
   TextEditingController get customerNumber;
   @override
   TextEditingController get customerPassword;
+  @override
+  bool get hidePassword;
   @override
   @JsonKey(ignore: true)
   _$$TextEditingStateImplCopyWith<_$TextEditingStateImpl> get copyWith =>
