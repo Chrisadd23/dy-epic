@@ -1,19 +1,21 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class FixDrawerButton extends StatelessWidget {
-  const FixDrawerButton({super.key, required this.title, this.height = 50});
+  const FixDrawerButton(
+      {super.key,
+      required this.title,
+      this.height = 50,
+      required this.function});
 
   final String title;
   final double height;
+  final VoidCallback function;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        context.go('/$title');
-      },
+      onTap: function,
       child: Container(
         margin: const EdgeInsets.only(bottom: 10),
         height: height,
@@ -49,5 +51,6 @@ class FixDrawerButton extends StatelessWidget {
     super.debugFillProperties(properties);
     properties.add(StringProperty('title', title));
     properties.add(DoubleProperty('height', height));
+    properties.add(ObjectFlagProperty<VoidCallback>.has('function', function));
   }
 }

@@ -5,6 +5,8 @@ import 'package:app_flutter_produkt_bestellen/features/product/dependencies.dart
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/dependencies.dart';
 import 'package:get_it/get_it.dart';
 
+import 'features/login/dependencies.dart';
+
 final getIt = GetIt.instance;
 
 void setUpMainDependencies() {
@@ -13,6 +15,7 @@ void setUpMainDependencies() {
   CategoryDependencies.setUp();
   ProductDependencies.setUp();
   ShoppingBasketDependencies.setUp();
+  LoginDependencies.setUp();
 
   //core
   CoreDependencies.setUp();

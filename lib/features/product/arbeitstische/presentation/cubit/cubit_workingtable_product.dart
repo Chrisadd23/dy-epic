@@ -6,8 +6,8 @@ import 'package:app_flutter_produkt_bestellen/features/category/arbeitstische/do
 import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/domain/repository/repostiory_workingtable.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/presentation/cubit/state_workingtable.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/state_product.dart';
-import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CubitWorkingTableProduct extends Cubit<StateProduct<EntityProduct>> {
   CubitWorkingTableProduct({required this.repositoryProductArbeitstische})

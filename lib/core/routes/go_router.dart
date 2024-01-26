@@ -155,10 +155,6 @@ enum AppGoRouter {
                   )
                 ],
               ),
-              GoRoute(
-                path: 'Logout',
-                builder: (context, state) => const LoginPage(),
-              )
             ]),
       ],
       errorBuilder: (context, state) => PageNotFound(state.error),

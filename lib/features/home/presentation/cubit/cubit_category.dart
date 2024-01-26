@@ -1,7 +1,7 @@
-import 'package:app_flutter_produkt_bestellen/core/error/failures.dart';
+import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
 import 'package:app_flutter_produkt_bestellen/features/home/domain/usecase_category/usecase_get_category.dart';
 import 'package:app_flutter_produkt_bestellen/features/home/presentation/cubit/state_category.dart';
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomePageCubit extends Cubit<StateCategory> {
   HomePageCubit(this._useCaseGetCategory)
@@ -19,6 +19,6 @@ class HomePageCubit extends Cubit<StateCategory> {
 
     category.isNotEmpty
         ? emit(StateCategory.success(category))
-        : emit(StateCategory.failure('Failure' as Failure));
+        : emit(const StateCategory.failure(Failure.message()));
   }
 }

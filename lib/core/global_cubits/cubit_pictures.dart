@@ -1,5 +1,5 @@
-import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CubitPictures extends Cubit<Map<String, Uint8List?>> {
   CubitPictures() : super(<String, Uint8List?>{});

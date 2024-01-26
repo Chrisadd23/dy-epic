@@ -23,11 +23,8 @@ class CounterProductWidget extends HookWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     color: AppColors.greyA7A7A7,
-                    image: DecorationImage(
-                      image:
-                          AssetImage(Assets.appComponents.png.vectorMinus.path),
-                    ),
                   ),
+                  child: SvgPicture.asset(Assets.appComponents.svg.iconMinus),
                 ),
                 onTapDown: (details) {
                   context.read<CubitWorkingTableProduct>().decrement();
@@ -44,11 +41,8 @@ class CounterProductWidget extends HookWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     color: const Color.fromRGBO(87, 87, 87, 0.4),
-                    image: DecorationImage(
-                      image:
-                          AssetImage(Assets.appComponents.png.vectorPlus.path),
-                    ),
                   ),
+                  child: SvgPicture.asset(Assets.appComponents.svg.iconPlus),
                 ),
                 onTapDown: (details) {
                   context.read<CubitWorkingTableProduct>().increment();
