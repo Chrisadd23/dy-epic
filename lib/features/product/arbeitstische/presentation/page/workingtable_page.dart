@@ -37,11 +37,10 @@ class PageWorkingTableProduct extends HookWidget {
 }
 
 class _BlocProviderWorkingTable extends StatelessWidget {
-  //ignore: avoid_unused_constructor_parameters
   const _BlocProviderWorkingTable({
     this.product,
     this.color,
-    this.recordOrder,
+    this.recordOrder, //ignore: avoid_unused_constructor_parameters
   });
 
   final String? product;
