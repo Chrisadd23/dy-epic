@@ -37,7 +37,7 @@ class PageWorkingTableProduct extends HookWidget {
 }
 
 class _BlocProviderWorkingTable extends StatelessWidget {
-  //ignore: unused_element
+  //ignore: avoid_unused_constructor_parameters
   const _BlocProviderWorkingTable({
     this.product,
     this.color,
