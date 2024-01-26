@@ -37,7 +37,7 @@ class LoginCubit extends Cubit<LoginState> {
         password.isEmpty) {
       emit(const LoginState.failure(
         Failure.message(
-            'Bitte geben Sie ihre Kundennummer und Ihr Passwort ein'),
+            'Bitte geben Sie Ihre Kundennummer und Ihr Passwort ein'),
       ));
 
       return false;

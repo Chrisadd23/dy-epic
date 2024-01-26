@@ -17,7 +17,6 @@ class LoginDatasourceImplementation extends LoginDatasource {
   @override
   Future<Either<Failure, EntityLoginCustomer>> login(
       {required String customerNumber, required String password}) async {
-    debugPrint("passwort = $password");
     try {
       final Either<Failure, EntityLoginCustomer> entityLoginCustomer =
           await _firebaseFirestore
@@ -31,7 +30,7 @@ class LoginDatasourceImplementation extends LoginDatasource {
           debugPrint("User exist");
           if (user['password'] != password) {
             return const Left(
-                Failure.databaseError('Überprüfen Sie ihr Passwort'));
+                Failure.databaseError('Überprüfen Sie Ihr Passwort'));
           }
 
           return Right(EntityLoginCustomer(

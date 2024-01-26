@@ -120,71 +120,14 @@ class _BlocBuilderLoginPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                child: Column(
+                child: const Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: MediaQuery.sizeOf(context).width * 0.1),
-                      child: Container(
-                          decoration: BoxDecoration(
-                              border: Border.all(),
-                              borderRadius: BorderRadius.circular(20),
-                              color: Colors.white),
-                          child: BlocSelector<TextEditingCubit,
-                              TextEditingState, TextEditingController>(
-                            selector: (TextEditingState state) =>
-                                state.customerNumber,
-                            builder: (context, controller) {
-                              return TextField(
-                                controller: controller,
-                                keyboardType: TextInputType.number,
-                                decoration: InputDecoration(
-                                  border: const OutlineInputBorder(
-                                      borderSide: BorderSide.none),
-                                  labelText: 'Kundennummer',
-                                  labelStyle:
-                                      AppTextStyle.colorBlackSize20ShadowWhite,
-                                  floatingLabelBehavior:
-                                      FloatingLabelBehavior.always,
-                                ),
-                              );
-                            },
-                          )),
-                    ),
-                    const SizedBox(height: 30),
-                    const _PasswordTextWidget(),
-                    BlocBuilder<TextEditingCubit, TextEditingState>(
-                        builder: (context, state) {
-                      return Padding(
-                        padding: EdgeInsets.symmetric(
-                            vertical: MediaQuery.sizeOf(context).height * 0.07),
-                        child: InkWell(
-                          onTap: () {
-                            context.read<LoginCubit>().login(
-                                customerNumber: state.customerNumber.text,
-                                password: state.customerPassword.text);
-                          },
-                          child: Center(
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.grey[200],
-                                  border: Border.all(),
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(20))),
-                              height: 70,
-                              width: 200,
-                              child: Center(
-                                  child: Text(
-                                'Login',
-                                style: AppTextStyle.colorBlackSize20ShadowWhite,
-                              )),
-                            ),
-                          ),
-                        ),
-                      );
-                    }),
+                    _CustomerNumberTextWidget(),
+                    SizedBox(height: 30),
+                    _PasswordTextWidget(),
+                    _LoginButton(),
                   ],
                 ),
               ),
@@ -192,6 +135,76 @@ class _BlocBuilderLoginPage extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class _LoginButton extends StatelessWidget {
+  const _LoginButton();
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<TextEditingCubit, TextEditingState>(
+        builder: (context, state) {
+      return Padding(
+        padding: EdgeInsets.symmetric(
+            vertical: MediaQuery.sizeOf(context).height * 0.07),
+        child: InkWell(
+          onTap: () {
+            context.read<LoginCubit>().login(
+                customerNumber: state.customerNumber.text,
+                password: state.customerPassword.text);
+          },
+          child: Center(
+            child: Container(
+              decoration: BoxDecoration(
+                  color: Colors.grey[200],
+                  border: Border.all(),
+                  borderRadius: const BorderRadius.all(Radius.circular(20))),
+              height: 70,
+              width: 200,
+              child: Center(
+                  child: Text(
+                'Login',
+                style: AppTextStyle.colorBlackSize20ShadowWhite,
+              )),
+            ),
+          ),
+        ),
+      );
+    });
+  }
+}
+
+class _CustomerNumberTextWidget extends StatelessWidget {
+  const _CustomerNumberTextWidget();
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(
+          horizontal: MediaQuery.sizeOf(context).width * 0.1),
+      child: Container(
+          decoration: BoxDecoration(
+              border: Border.all(),
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.white),
+          child: BlocSelector<TextEditingCubit, TextEditingState,
+              TextEditingController>(
+            selector: (TextEditingState state) => state.customerNumber,
+            builder: (context, controller) {
+              return TextField(
+                controller: controller,
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                  border: const OutlineInputBorder(borderSide: BorderSide.none),
+                  labelText: 'Kundennummer',
+                  labelStyle: AppTextStyle.colorBlackSize20ShadowWhite,
+                  floatingLabelBehavior: FloatingLabelBehavior.always,
+                ),
+              );
+            },
+          )),
     );
   }
 }
