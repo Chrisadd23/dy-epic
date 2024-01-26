@@ -1,5 +1,4 @@
 import 'package:app_flutter_produkt_bestellen/features/product/share/domain/entity/entity_product.dart';
-import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'state_product.freezed.dart';
