@@ -70,6 +70,9 @@ class _BlocProviderOfficeChairProduct extends StatelessWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties.add(StringProperty('product', product));
+    properties.add(
+        DiagnosticsProperty<({ChosenProduct chosenProduct, int index})?>(
+            'recordOrder', recordOrder));
   }
 }
 
