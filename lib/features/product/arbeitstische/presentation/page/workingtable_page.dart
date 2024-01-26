@@ -30,12 +30,14 @@ class PageWorkingTableProduct extends HookWidget {
     super.debugFillProperties(properties);
     properties.add(StringProperty('product', product));
     properties.add(StringProperty('color', color));
-    properties.add(DiagnosticsProperty<({ChosenProduct chosenProduct, int index})?>('recordOrder', recordOrder));
+    properties.add(
+        DiagnosticsProperty<({ChosenProduct chosenProduct, int index})?>(
+            'recordOrder', recordOrder));
   }
 }
 
 class _BlocProviderWorkingTable extends StatelessWidget {
-  const _BlocProviderWorkingTable({this.product, this.color});
+  const _BlocProviderWorkingTable({this.product, this.color, this.recordOrder});
 
   final String? product;
   final String? color;
