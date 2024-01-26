@@ -20,7 +20,7 @@ mixin _$StateProduct<T> {
   String get category => throw _privateConstructorUsedError;
   int get productOrderCount => throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
-  EntityProduct? get product => throw _privateConstructorUsedError;
+  T? get product => throw _privateConstructorUsedError;
   int? get position => throw _privateConstructorUsedError;
   Map<Enum, dynamic> get selectedCharacteristics =>
       throw _privateConstructorUsedError;
@@ -41,11 +41,9 @@ abstract class $StateProductCopyWith<T, $Res> {
       String category,
       int productOrderCount,
       double price,
-      EntityProduct? product,
+      T? product,
       int? position,
       Map<Enum, dynamic> selectedCharacteristics});
-
-  $EntityProductCopyWith<$Res>? get product;
 }
 
 /// @nodoc
@@ -89,7 +87,7 @@ class _$StateProductCopyWithImpl<T, $Res, $Val extends StateProduct<T>>
       product: freezed == product
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
-              as EntityProduct?,
+              as T?,
       position: freezed == position
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
@@ -99,18 +97,6 @@ class _$StateProductCopyWithImpl<T, $Res, $Val extends StateProduct<T>>
           : selectedCharacteristics // ignore: cast_nullable_to_non_nullable
               as Map<Enum, dynamic>,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $EntityProductCopyWith<$Res>? get product {
-    if (_value.product == null) {
-      return null;
-    }
-
-    return $EntityProductCopyWith<$Res>(_value.product!, (value) {
-      return _then(_value.copyWith(product: value) as $Val);
-    });
   }
 }
 
@@ -127,12 +113,9 @@ abstract class _$$StateProductImplCopyWith<T, $Res>
       String category,
       int productOrderCount,
       double price,
-      EntityProduct? product,
+      T? product,
       int? position,
       Map<Enum, dynamic> selectedCharacteristics});
-
-  @override
-  $EntityProductCopyWith<$Res>? get product;
 }
 
 /// @nodoc
@@ -174,7 +157,7 @@ class __$$StateProductImplCopyWithImpl<T, $Res>
       product: freezed == product
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
-              as EntityProduct?,
+              as T?,
       position: freezed == position
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
@@ -213,7 +196,7 @@ class _$StateProductImpl<T> implements _StateProduct<T> {
   @JsonKey()
   final double price;
   @override
-  final EntityProduct? product;
+  final T? product;
   @override
   final int? position;
   final Map<Enum, dynamic> _selectedCharacteristics;
@@ -242,7 +225,7 @@ class _$StateProductImpl<T> implements _StateProduct<T> {
             (identical(other.productOrderCount, productOrderCount) ||
                 other.productOrderCount == productOrderCount) &&
             (identical(other.price, price) || other.price == price) &&
-            (identical(other.product, product) || other.product == product) &&
+            const DeepCollectionEquality().equals(other.product, product) &&
             (identical(other.position, position) ||
                 other.position == position) &&
             const DeepCollectionEquality().equals(
@@ -256,7 +239,7 @@ class _$StateProductImpl<T> implements _StateProduct<T> {
       category,
       productOrderCount,
       price,
-      product,
+      const DeepCollectionEquality().hash(product),
       position,
       const DeepCollectionEquality().hash(_selectedCharacteristics));
 
@@ -274,7 +257,7 @@ abstract class _StateProduct<T> implements StateProduct<T> {
           final String category,
           final int productOrderCount,
           final double price,
-          final EntityProduct? product,
+          final T? product,
           final int? position,
           final Map<Enum, dynamic> selectedCharacteristics}) =
       _$StateProductImpl<T>;
@@ -288,7 +271,7 @@ abstract class _StateProduct<T> implements StateProduct<T> {
   @override
   double get price;
   @override
-  EntityProduct? get product;
+  T? get product;
   @override
   int? get position;
   @override

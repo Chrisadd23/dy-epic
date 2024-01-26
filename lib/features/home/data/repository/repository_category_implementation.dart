@@ -19,14 +19,11 @@ class RepositoryCategoryImplementation implements RepositoryCategory {
   }
 
   List<ModelCategory> chooseCategory = [
-    /*
     ModelCategory(
         title: 'Arbeitstische',
         imgPath: Assets.appComponents.jpg.arbeitstisch.path,
         navigation: AppGoRouter.arbeitstische.name,
         indexPositon: 0),
-     */
-
     ModelCategory(
         title: 'Bürodrehstühle',
         imgPath: Assets.appComponents.jpg.buerodrehstuehle.path,

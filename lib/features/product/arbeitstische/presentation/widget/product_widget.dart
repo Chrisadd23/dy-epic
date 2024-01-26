@@ -7,6 +7,10 @@ import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/pre
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/cubit_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/state_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/widget/widget_order_product.dart';
+import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/widget/widget_picture_area.dart';
+import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/widget/widget_product_counter.dart';
+import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/widget/widget_product_title.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/state_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/gen/assets.gen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -18,10 +22,13 @@ part 'color_product_widget.dart';
 part 'counter_product_widget.dart';
 part 'size_product_widget.dart';
 
-class ProductWidget extends HookWidget {
-  const ProductWidget({super.key, this.product});
+class WorkingTableProductComponents extends HookWidget {
+  const WorkingTableProductComponents(
+      {super.key, this.product, this.color, this.recordOrder});
 
   final String? product;
+  final String? color;
+  final ({ChosenProduct chosenProduct, int index})? recordOrder;
 
   @override
   Widget build(BuildContext context) {
@@ -41,15 +48,15 @@ class ProductWidget extends HookWidget {
                   width: double.infinity,
                   child: Column(
                     children: <Widget>[
-                      const ProductTitle(),
+                      const WidgetProductTitle(),
                       const SizedBox(
                         height: 10,
                       ),
-                      const ProductPicture(),
+                      const _ProductPicture(),
                       const SizedBox(
                         height: 15,
                       ),
-                      const CounterProductWidget(),
+                      const WidgetProductCounter(),
                       const SizedBox(
                         height: 15,
                       ),
@@ -80,56 +87,16 @@ class ProductWidget extends HookWidget {
   }
 }
 
-class ProductPicture extends StatelessWidget {
-  const ProductPicture({
-    super.key,
-  });
+class _ProductPicture extends StatelessWidget {
+  const _ProductPicture();
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<CubitProduct, StateProduct, String?>(
-        selector: (state) => state.selectedCharacteristics[
-            TableChangeableCharacteristics.picturePath],
-        builder: (context, picturePath) {
-          return _PictureWidget(picturePath: picturePath);
+    return BlocSelector<CubitProduct, StateProduct, Uint8List?>(
+        selector: (state) => state.product?.pictureBytes,
+        builder: (context, pictureBytes) {
+          return WidgetPictureArea(pictureBytes: pictureBytes);
         });
-  }
-}
-
-class _PictureWidget extends StatelessWidget {
-  const _PictureWidget({
-    required this.picturePath,
-  });
-
-  final String? picturePath;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.sizeOf(context).width * 0.9,
-      height: MediaQuery.sizeOf(context).height * 0.25,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Colors.black),
-        color: Colors.white,
-      ),
-      child: picturePath == null
-          ? LoadingWidget(
-              firstWidth: MediaQuery.of(context).size.width * 0.5,
-              secondWidth: MediaQuery.of(context).size.width * 0.3,
-            )
-          : Image.asset(
-              picturePath!,
-              fit: BoxFit.fitHeight,
-            ),
-    );
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-
-    properties.add(StringProperty('picturePath', picturePath));
   }
 }
 

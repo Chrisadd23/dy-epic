@@ -291,7 +291,9 @@ class _ProductPicture extends StatelessWidget {
                   hoverColor: Colors.red,
                   onTap: () => context.goNamed(
                       '${AppGoRouter.arbeitstische.name}/${AppGoRouter.product.name}',
-                      extra: widget.productType),
+                      queryParameters: <String, String>{
+                        'productNumber': widget.productType.toString()
+                      }),
                 ),
               ),
             );
