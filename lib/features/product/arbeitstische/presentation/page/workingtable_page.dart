@@ -28,11 +28,14 @@ class PageWorkingTableProduct extends HookWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
+    properties.add(StringProperty('product', product));
+    properties.add(StringProperty('color', color));
+    properties.add(DiagnosticsProperty<({ChosenProduct chosenProduct, int index})?>('recordOrder', recordOrder));
   }
 }
 
 class _BlocProviderWorkingTable extends StatelessWidget {
-  const _BlocProviderWorkingTable({this.product, this.color, this.recordOrder});
+  const _BlocProviderWorkingTable({this.product, this.color});
 
   final String? product;
   final String? color;
@@ -61,5 +64,10 @@ class _BlocProviderWorkingTable extends StatelessWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
+    properties.add(StringProperty('product', product));
+    properties.add(
+        DiagnosticsProperty<({ChosenProduct chosenProduct, int index})?>(
+            'recordOrder', recordOrder));
+    properties.add(StringProperty('color', color));
   }
 }
