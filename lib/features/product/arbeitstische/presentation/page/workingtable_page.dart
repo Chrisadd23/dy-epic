@@ -37,7 +37,12 @@ class PageWorkingTableProduct extends HookWidget {
 }
 
 class _BlocProviderWorkingTable extends StatelessWidget {
-  const _BlocProviderWorkingTable({this.product, this.color, this.recordOrder});
+  //ignore: unused_element
+  const _BlocProviderWorkingTable({
+    this.product,
+    this.color,
+    this.recordOrder,
+  });
 
   final String? product;
   final String? color;
