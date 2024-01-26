@@ -67,7 +67,11 @@ class BlocShoppingBasket
             debugPrint("newState ==> ${newState.toString()}");
             emitState(newState);
           },
-          orderList: (enumOrder) {});
+          orderList: (enumOrder) {},
+          clear: () {
+            final newState = state.copyWith(listChosenProduct: []);
+            emitState(newState);
+          });
     });
   }
 
