@@ -1,5 +1,6 @@
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket/domain/repository/shopping_basket_ropository.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/event_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/state_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
@@ -9,70 +10,90 @@ import 'package:go_router/go_router.dart';
 
 class BlocShoppingBasket
     extends Bloc<EventShoppingBasket, StateShoppingBasket> {
-  BlocShoppingBasket()
+  final ShoppingBasketRepository shoppingBasketRepository;
+
+  BlocShoppingBasket({required this.shoppingBasketRepository})
       : super(const StateShoppingBasket(listChosenProduct: [])) {
     on<EventShoppingBasket>((event, emitState) {
       debugPrint("event ==> $event");
       event.when(
-          add: (product, position) {
-            debugPrint("product ==> ${product.toString()}");
-            List<ChosenProduct> newList = List.from(state.listChosenProduct);
-            if (position != null && newList.elementAtOrNull(position) != null) {
-              newList[position] = product;
-            } else {
-              newList.add(product);
+        add: (product, position) {
+          debugPrint("product ==> ${product.toString()}");
+          List<ChosenProduct> newList = List.from(state.listChosenProduct);
+          if (position != null && newList.elementAtOrNull(position) != null) {
+            newList[position] = product;
+          } else {
+            newList.add(product);
+          }
+          final newState = state.copyWith(listChosenProduct: newList);
+          emitState(newState);
+        },
+        change: (index) {
+          final order = state.listChosenProduct.elementAt(index);
+          final ({ChosenProduct chosenProduct, int index}) record =
+              (chosenProduct: order, index: index);
+
+          if (!getIt<GoRouter>().location.contains('produkt')) {
+            getIt<GoRouter>().pop(null);
+            if (order.entityProduct.productCategory ==
+                EnumCategoryProduct.workingTable) {
+              getIt<GoRouter>().goNamed(
+                  '${AppGoRouter.arbeitstische.name}/${AppGoRouter.product.name}',
+                  extra: record);
+            } else if (order.entityProduct.productCategory ==
+                    EnumCategoryProduct.officeChairNormal ||
+                order.entityProduct.productCategory ==
+                    EnumCategoryProduct.officeChairHochlehner) {
+              getIt<GoRouter>().goNamed(
+                  '${AppGoRouter.buerostuehle.name}/${AppGoRouter.product.name}',
+                  extra: record);
+            } else if (order.entityProduct.productCategory ==
+                EnumCategoryProduct.conferenceChair) {
+              getIt<GoRouter>().goNamed(
+                  '${AppGoRouter.konferenzstuehle.name}/${AppGoRouter.product.name}',
+                  extra: record);
             }
-            final newState = state.copyWith(listChosenProduct: newList);
-            emitState(newState);
-          },
-          change: (index) {
-            final order = state.listChosenProduct.elementAt(index);
-            final ({ChosenProduct chosenProduct, int index}) record =
-                (chosenProduct: order, index: index);
+          } else {
+            debugPrint("change");
+            debugPrint(getIt<GoRouter>().location.split('/').last.toString());
 
-            if (!getIt<GoRouter>().location.contains('produkt')) {
-              getIt<GoRouter>().pop(null);
-              if (order.entityProduct.productCategory ==
-                  EnumCategoryProduct.workingTable) {
-                getIt<GoRouter>().goNamed(
-                    '${AppGoRouter.arbeitstische.name}/${AppGoRouter.product.name}',
-                    extra: record);
-              } else if (order.entityProduct.productCategory ==
-                      EnumCategoryProduct.officeChairNormal ||
-                  order.entityProduct.productCategory ==
-                      EnumCategoryProduct.officeChairHochlehner) {
-                getIt<GoRouter>().goNamed(
-                    '${AppGoRouter.buerostuehle.name}/${AppGoRouter.product.name}',
-                    extra: record);
-              } else if (order.entityProduct.productCategory ==
-                  EnumCategoryProduct.conferenceChair) {
-                getIt<GoRouter>().goNamed(
-                    '${AppGoRouter.konferenzstuehle.name}/${AppGoRouter.product.name}',
-                    extra: record);
-              }
-            } else {
-              debugPrint("change");
-              debugPrint(getIt<GoRouter>().location.split('/').last.toString());
+            getIt<GoRouter>().pop(record);
+            debugPrint("continue Change");
+          }
+        },
+        remove: (index) {
+          debugPrint("remove $index");
+          List<ChosenProduct> newList = List.from(state.listChosenProduct);
+          newList.removeAt(index);
 
-              getIt<GoRouter>().pop(record);
-              debugPrint("continue Change");
-            }
-          },
-          remove: (index) {
-            debugPrint("remove $index");
-            List<ChosenProduct> newList = List.from(state.listChosenProduct);
-            newList.removeAt(index);
-
-            final newState = state.copyWith(listChosenProduct: newList);
-            debugPrint("newState ==> ${newState.toString()}");
-            emitState(newState);
-          },
-          orderList: (enumOrder) {},
-          clear: () {
-            final newState = state.copyWith(listChosenProduct: []);
-            emitState(newState);
-          });
+          final newState = state.copyWith(listChosenProduct: newList);
+          debugPrint("newState ==> ${newState.toString()}");
+          emitState(newState);
+        },
+        orderList: (enumOrder) {},
+        clear: () {
+          final newState = state.copyWith(listChosenProduct: []);
+          emitState(newState);
+        },
+        send: () async {
+          await shoppingBasketRepository.sendOrder(
+              chosenProductList: state.listChosenProduct,
+              dateTime: DateTime.now(),
+              amount:
+                  _completAmount(listChosenProduct: state.listChosenProduct));
+        },
+      );
     });
+  }
+
+  double _completAmount({required List<ChosenProduct> listChosenProduct}) {
+    double amount = 0;
+
+    listChosenProduct.map((order) {
+      amount += order.count * order.entityProduct.price;
+    }).toList();
+
+    return amount;
   }
 
 /*

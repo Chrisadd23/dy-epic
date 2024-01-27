@@ -54,7 +54,9 @@ class ShoppingBasketOfferList extends StatelessWidget {
                           horizontal: constraints.maxWidth * 0.05,
                           vertical: constraints.maxHeight * 0.02),
                       child: GestureDetector(
-                        onTap: () => debugPrint("gesture Detector onTap"),
+                        onTap: () => context
+                            .read<BlocShoppingBasket>()
+                            .add(const EventShoppingBasket.send()),
                         child: Container(
                           height: constraints.maxHeight * 0.15,
                           width: constraints.maxWidth,

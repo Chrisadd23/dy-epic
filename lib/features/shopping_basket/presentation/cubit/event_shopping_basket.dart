@@ -16,5 +16,7 @@ class EventShoppingBasket with _$EventShoppingBasket {
   const factory EventShoppingBasket.orderList(
       {required EnumShoppingBasketOrder orderList}) = _OrderList;
 
+  const factory EventShoppingBasket.send() = _Send;
+
   const factory EventShoppingBasket.clear() = _Clear;
 }

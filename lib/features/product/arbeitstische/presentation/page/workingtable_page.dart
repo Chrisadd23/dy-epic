@@ -22,7 +22,11 @@ class PageWorkingTableProduct extends HookWidget {
   Widget build(BuildContext context) {
     return BlocProvider<BlocShoppingBasket>.value(
         value: getIt<BlocShoppingBasket>(),
-        child: _BlocProviderWorkingTable(product: product, color: color));
+        child: _BlocProviderWorkingTable(
+          product: product,
+          color: color,
+          recordOrder: null,
+        ));
   }
 
   @override
@@ -40,7 +44,7 @@ class _BlocProviderWorkingTable extends StatelessWidget {
   const _BlocProviderWorkingTable({
     this.product,
     this.color,
-    this.recordOrder, //ignore: avoid_unused_constructor_parameters
+    this.recordOrder,
   });
 
   final String? product;
