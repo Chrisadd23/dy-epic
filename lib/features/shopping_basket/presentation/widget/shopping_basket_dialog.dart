@@ -97,7 +97,7 @@ class _ShoppingBasketDialog extends StatelessWidget {
           child: const _ShoppingBasketDialog._()));
 
   @override
-  Widget build(BuildContext previosContext) {
+  Widget build(BuildContext previousContext) {
     return BlocProvider<BlocShoppingBasket>.value(
         value: getIt<BlocShoppingBasket>(),
         child: const _ShoppingBasketWidget());
