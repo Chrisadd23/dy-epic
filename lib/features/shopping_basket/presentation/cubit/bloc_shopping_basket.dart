@@ -1,3 +1,4 @@
+import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_cubit.dart';
@@ -17,7 +18,6 @@ class BlocShoppingBasket
   BlocShoppingBasket({required this.shoppingBasketRepository})
       : super(const StateShoppingBasket(listChosenProduct: [])) {
     on<EventShoppingBasket>((event, emitState) async {
-      debugPrint("event ==> $event");
       await event.when(
         add: (product, position) {
           debugPrint("product ==> ${product.toString()}");
@@ -56,20 +56,17 @@ class BlocShoppingBasket
                   extra: record);
             }
           } else {
-            debugPrint("change");
             debugPrint(getIt<GoRouter>().location.split('/').last.toString());
 
             getIt<GoRouter>().pop(record);
-            debugPrint("continue Change");
           }
         },
         remove: (index) {
-          debugPrint("remove $index");
           List<ChosenProduct> newList = List.from(state.listChosenProduct);
           newList.removeAt(index);
 
           final newState = state.copyWith(listChosenProduct: newList);
-          debugPrint("newState ==> ${newState.toString()}");
+
           emitState(newState);
         },
         orderList: (enumOrder) {},
@@ -97,7 +94,13 @@ class BlocShoppingBasket
               ),
             );
           } catch (e) {
-            debugPrint("error ==> ${e.toString()}");
+            emitState(
+              state.copyWith(
+                failure: Failure.message(
+                  e.toString(),
+                ),
+              ),
+            );
           }
         },
         deleteFailureMessage: () {
@@ -125,7 +128,6 @@ class BlocShoppingBasket
         loggedIn: (stateLoggedIn) =>
             stateLoggedIn.entityLoginCustomer.customerNumber);
 
-    //debugPrint("customerNumber ==> $customerNumber");
     final querySnapshot = await FirebaseFirestore.instance
         .collection("Order")
         .where("customerNumber", isEqualTo: customerNumber)
