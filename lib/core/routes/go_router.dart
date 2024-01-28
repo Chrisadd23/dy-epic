@@ -83,7 +83,7 @@ enum AppGoRouter {
                       GoRoute(
                         path: product.title,
                         name: '${arbeitstische.name}/${product.name}',
-                        builder: (context, state) {
+                        pageBuilder: (context, state) {
                           final product =
                               state.queryParameters['productNumber'];
                           debugPrint("check goRouter record ${state.extra as ({
@@ -96,10 +96,12 @@ enum AppGoRouter {
                           })?;
 
                           final selectedColor = state.queryParameters['color'];
-                          return PageWorkingTableProduct(
-                              product: product,
-                              color: selectedColor,
-                              recordOrder: recordOrder);
+                          return _getCustomerTransition(
+                              PageWorkingTableProduct(
+                                  product: product,
+                                  color: selectedColor,
+                                  recordOrder: recordOrder),
+                              state);
                         },
                       )
                     ],
@@ -113,7 +115,7 @@ enum AppGoRouter {
                       GoRoute(
                         path: product.title,
                         name: '${buerostuehle.name}/${product.name}',
-                        builder: (context, state) {
+                        pageBuilder: (context, state) {
                           final product =
                               state.queryParameters['productNumber'];
                           debugPrint("check goRouter recor ${state.extra as ({
@@ -124,8 +126,10 @@ enum AppGoRouter {
                             ChosenProduct chosenProduct,
                             int index
                           })?;
-                          return PageOfficeChairProduct(
-                              product: product, recordOrder: recordOrder);
+                          return _getCustomerTransition(
+                              PageOfficeChairProduct(
+                                  product: product, recordOrder: recordOrder),
+                              state);
                         },
                       )
                     ],
@@ -139,7 +143,7 @@ enum AppGoRouter {
                       GoRoute(
                         path: product.title,
                         name: '${konferenzstuehle.name}/${product.name}',
-                        builder: (context, state) {
+                        pageBuilder: (context, state) {
                           debugPrint("check goRouter recor ${state.extra as ({
                             ChosenProduct chosenProduct,
                             int index
@@ -150,10 +154,12 @@ enum AppGoRouter {
                             ChosenProduct chosenProduct,
                             int index
                           })?;
-                          return PageConferenceChairProduct(
-                            product: product,
-                            recordOrder: recordOrder,
-                          );
+                          return _getCustomerTransition(
+                              PageConferenceChairProduct(
+                                product: product,
+                                recordOrder: recordOrder,
+                              ),
+                              state);
                         },
                       )
                     ],
