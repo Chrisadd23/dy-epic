@@ -70,7 +70,7 @@ class ShoppingBasketOfferList extends StatelessWidget {
                       padding: EdgeInsets.symmetric(
                           horizontal: constraints.maxWidth * 0.05,
                           vertical: constraints.maxHeight * 0.02),
-                      child: GestureDetector(
+                      child: InkWell(
                         onTap: () async {
                           context
                               .read<BlocShoppingBasket>()
@@ -120,7 +120,7 @@ class _ShoppingBasketOffer extends HookWidget {
     final expand = useState<bool>(false);
     return Stack(
       children: [
-        GestureDetector(
+        InkWell(
           onTap: () => expand.value = !expand.value,
           child: SwipeableTile.swipeToTriggerCard(
               borderRadius: 20,

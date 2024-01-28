@@ -89,7 +89,12 @@ class _ShoppingBasketDialog extends StatelessWidget {
   const _ShoppingBasketDialog._();
 
   static show({required BuildContext context}) => showDialog(
-      context: context, builder: (_) => const _ShoppingBasketDialog._());
+      context: context,
+      builder: (_) => Dialog(
+          insetPadding: EdgeInsets.symmetric(
+              vertical: MediaQuery.sizeOf(context).height * 0.1,
+              horizontal: MediaQuery.sizeOf(context).width * 0.1),
+          child: const _ShoppingBasketDialog._()));
 
   @override
   Widget build(BuildContext previosContext) {
@@ -104,17 +109,12 @@ class _ShoppingBasketWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(
-          horizontal: MediaQuery.sizeOf(context).width * 0.1,
-          vertical: MediaQuery.sizeOf(context).height * 0.1),
-      child: Container(
-        decoration: BoxDecoration(
-            border: Border.all(),
-            borderRadius: BorderRadius.circular(20),
-            color: AppColors.greyCACACA),
-        child: const ShoppingBasketOfferList(),
-      ),
+    return Container(
+      decoration: BoxDecoration(
+          border: Border.all(),
+          borderRadius: BorderRadius.circular(20),
+          color: AppColors.greyCACACA),
+      child: const ShoppingBasketOfferList(),
     );
   }
 }
