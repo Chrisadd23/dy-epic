@@ -80,7 +80,7 @@ class BlocShoppingBasket
         send: () async {
           try {
             final amount =
-                _completAmount(listChosenProduct: state.listChosenProduct);
+                _completeAmount(listChosenProduct: state.listChosenProduct);
             final json = await _generateJson(
               chosenProductList: state.listChosenProduct,
               dateTime: DateTime.now(),
@@ -107,7 +107,7 @@ class BlocShoppingBasket
     });
   }
 
-  double _completAmount({required List<ChosenProduct> listChosenProduct}) {
+  double _completeAmount({required List<ChosenProduct> listChosenProduct}) {
     double amount = 0;
 
     listChosenProduct.map((order) {

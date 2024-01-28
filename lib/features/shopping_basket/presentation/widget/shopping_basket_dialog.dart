@@ -92,22 +92,14 @@ class _ShoppingBasketDialog extends StatelessWidget {
   @override
   Widget build(BuildContext previousContext) {
     return BlocProvider<BlocShoppingBasket>.value(
-        value: getIt<BlocShoppingBasket>(),
-        child: const _ShoppingBasketWidget());
-  }
-}
-
-class _ShoppingBasketWidget extends StatelessWidget {
-  const _ShoppingBasketWidget();
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          border: Border.all(),
-          borderRadius: BorderRadius.circular(20),
-          color: AppColors.greyCACACA),
-      child: const ShoppingBasketOfferList(),
+      value: getIt<BlocShoppingBasket>(),
+      child: Container(
+        decoration: BoxDecoration(
+            border: Border.all(),
+            borderRadius: BorderRadius.circular(20),
+            color: AppColors.greyCACACA),
+        child: const ShoppingBasketOfferList(),
+      ),
     );
   }
 }
