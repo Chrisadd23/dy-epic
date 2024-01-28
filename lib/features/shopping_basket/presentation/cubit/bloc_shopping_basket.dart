@@ -90,8 +90,6 @@ class BlocShoppingBasket
             await shoppingBasketRepository.sendOrder(order: json);
 
             emitState(state.copyWith(listChosenProduct: []));
-
-            //emitState(newState);
           } catch (e) {
             debugPrint("error ==> ${e.toString()}");
           }
@@ -135,7 +133,6 @@ class BlocShoppingBasket
             })
         .toList();
 
-    //debugPrint("orderList ==> $orderList}");
     final orderID = '${customerNumber}_$docId';
     final date = Timestamp.fromDate(dateTime);
 
@@ -153,17 +150,4 @@ class BlocShoppingBasket
 
     return json;
   }
-
-/*
-  Future<void> loadBasket() async {}
-
-  Future<void> addProduct(String queryAttributes) async {}
-
-  void deleteOrderProduct(int index) {}
-
-  void changeOrderProduct(int index) {}
-
-  void sortOrder(EnumShoppingBasketOrder shoppingBasketOrder) {}
-
-  */
 }
