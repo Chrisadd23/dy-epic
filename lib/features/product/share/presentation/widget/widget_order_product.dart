@@ -133,7 +133,8 @@ class WidgetOrderProduct extends StatelessWidget {
                                   chosenProduct: ChosenProduct(
                                       name: state.product!.name,
                                       count: state.productOrderCount,
-                                      productNumber: state.hashKey,
+                                      productNumber:
+                                          state.product!.productNumber,
                                       orderType: EnumOrderType.anfrage,
                                       entityProduct: state.product!),
                                   index: state.position),

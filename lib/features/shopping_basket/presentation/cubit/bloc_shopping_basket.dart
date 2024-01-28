@@ -81,6 +81,8 @@ class BlocShoppingBasket
               dateTime: DateTime.now(),
               amount:
                   _completAmount(listChosenProduct: state.listChosenProduct));
+          final newState = state.copyWith(listChosenProduct: []);
+          emitState(newState);
         },
       );
     });

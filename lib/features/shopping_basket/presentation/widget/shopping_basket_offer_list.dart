@@ -231,14 +231,13 @@ class _OfferInfo extends StatelessWidget {
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(
-                width: 30,
-              ),
-              Text(
-                item.count.toString(),
-                style:
-                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.center,
+              Expanded(
+                child: Text(
+                  item.count.toString(),
+                  style: const TextStyle(
+                      fontSize: 20, fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.right,
+                ),
               ),
             ],
           ),
@@ -252,16 +251,35 @@ class _OfferInfo extends StatelessWidget {
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(
-                width: 48,
+              Expanded(
+                child: Text(
+                  NumberFormat.currency(
+                          locale: 'de_DE', symbol: '€', decimalDigits: 2)
+                      .format(item.entityProduct.price),
+                  style: const TextStyle(
+                      fontSize: 20, fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.right,
+                ),
               ),
-              Text(
-                NumberFormat.currency(
-                        locale: 'de_DE', symbol: '€', decimalDigits: 2)
-                    .format(item.entityProduct.price),
-                style:
-                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+          child: Row(
+            children: [
+              const Text(
+                'Produktnr: ',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
+              ),
+              Expanded(
+                child: Text(
+                  item.productNumber,
+                  style: const TextStyle(
+                      fontSize: 20, fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.right,
+                ),
               ),
             ],
           ),
