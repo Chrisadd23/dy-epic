@@ -1,4 +1,5 @@
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
+import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text_style.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/cubit_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/bloc_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/state_shopping_basket.dart';
@@ -66,16 +67,8 @@ class _ShoppingBasketStack extends StatelessWidget {
                   builder: (context, state) {
                 return Text(
                   state.listChosenProduct.length.toString(),
-                  style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      shadows: [
-                        BoxShadow(offset: Offset(0, 1)),
-                        BoxShadow(offset: Offset(0, -1)),
-                        BoxShadow(offset: Offset(1, 0)),
-                        BoxShadow(offset: Offset(-1, 0)),
-                      ],
-                      color: Colors.white),
+                  style: AppTextStyle.colorWhiteSize20ShadowBlack
+                      .copyWith(fontWeight: FontWeight.bold),
                 );
               }),
             ))
