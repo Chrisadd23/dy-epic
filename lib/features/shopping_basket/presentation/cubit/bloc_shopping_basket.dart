@@ -1,11 +1,13 @@
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
+import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/domain/repository/shopping_basket_ropository.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/event_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/state_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
-import 'package:bloc/bloc.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class BlocShoppingBasket
@@ -14,9 +16,9 @@ class BlocShoppingBasket
 
   BlocShoppingBasket({required this.shoppingBasketRepository})
       : super(const StateShoppingBasket(listChosenProduct: [])) {
-    on<EventShoppingBasket>((event, emitState) {
+    on<EventShoppingBasket>((event, emitState) async {
       debugPrint("event ==> $event");
-      event.when(
+      await event.when(
         add: (product, position) {
           debugPrint("product ==> ${product.toString()}");
           List<ChosenProduct> newList = List.from(state.listChosenProduct);
@@ -76,13 +78,23 @@ class BlocShoppingBasket
           emitState(newState);
         },
         send: () async {
-          await shoppingBasketRepository.sendOrder(
+          try {
+            final amount =
+                _completAmount(listChosenProduct: state.listChosenProduct);
+            final json = await _generateJson(
               chosenProductList: state.listChosenProduct,
               dateTime: DateTime.now(),
-              amount:
-                  _completAmount(listChosenProduct: state.listChosenProduct));
-          final newState = state.copyWith(listChosenProduct: []);
-          emitState(newState);
+              amount: amount,
+            );
+
+            await shoppingBasketRepository.sendOrder(order: json);
+
+            emitState(state.copyWith(listChosenProduct: []));
+
+            //emitState(newState);
+          } catch (e) {
+            debugPrint("error ==> ${e.toString()}");
+          }
         },
       );
     });
@@ -96,6 +108,50 @@ class BlocShoppingBasket
     }).toList();
 
     return amount;
+  }
+
+  Future<Map<String, dynamic>> _generateJson(
+      {required List<ChosenProduct> chosenProductList,
+      required DateTime dateTime,
+      required double amount}) async {
+    final customerNumber = getIt<LoginCubit>().state.mapOrNull(
+        loggedIn: (stateLoggedIn) =>
+            stateLoggedIn.entityLoginCustomer.customerNumber);
+
+    //debugPrint("customerNumber ==> $customerNumber");
+    final querySnapshot = await FirebaseFirestore.instance
+        .collection("Order")
+        .where("customerNumber", isEqualTo: customerNumber)
+        .get();
+
+    final docId = querySnapshot.docs.length + 1;
+
+    final orderList = chosenProductList
+        .map((e) => {
+              "count": e.count,
+              "price": e.entityProduct.price,
+              "productNumber": e.productNumber,
+              "request": e.orderType == EnumOrderType.anfrage
+            })
+        .toList();
+
+    //debugPrint("orderList ==> $orderList}");
+    final orderID = '${customerNumber}_$docId';
+    final date = Timestamp.fromDate(dateTime);
+
+    final json = {
+      "order_id": orderID,
+      "customerNumber": customerNumber,
+      "amount": amount,
+      "canceledByAdmin": false,
+      "canceledByCustomer": false,
+      "date": date,
+      "finished": false,
+      "inWork": true,
+      "orderList": orderList
+    };
+
+    return json;
   }
 
 /*
