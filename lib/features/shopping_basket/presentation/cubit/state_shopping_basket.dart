@@ -1,3 +1,4 @@
+import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/domain/entity/entity_product.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -7,7 +8,8 @@ part 'state_shopping_basket.freezed.dart';
 @freezed
 class StateShoppingBasket with _$StateShoppingBasket {
   const factory StateShoppingBasket(
-      {required List<ChosenProduct> listChosenProduct}) = _StateShoppingBasket;
+      {required List<ChosenProduct> listChosenProduct,
+      Failure? failure}) = _StateShoppingBasket;
 }
 
 @freezed

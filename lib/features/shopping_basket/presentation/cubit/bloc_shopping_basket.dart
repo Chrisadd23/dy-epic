@@ -87,12 +87,21 @@ class BlocShoppingBasket
               amount: amount,
             );
 
-            await shoppingBasketRepository.sendOrder(order: json);
+            final result =
+                await shoppingBasketRepository.sendOrder(order: json);
 
-            emitState(state.copyWith(listChosenProduct: []));
+            result.fold(
+              (failure) => emitState(state.copyWith(failure: failure)),
+              (right) => emitState(
+                state.copyWith(listChosenProduct: []),
+              ),
+            );
           } catch (e) {
             debugPrint("error ==> ${e.toString()}");
           }
+        },
+        deleteFailureMessage: () {
+          emitState(state.copyWith(failure: null));
         },
       );
     });

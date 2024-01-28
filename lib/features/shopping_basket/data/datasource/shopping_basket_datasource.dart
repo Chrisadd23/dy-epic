@@ -1,8 +1,10 @@
+import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:either_dart/either.dart';
 import 'package:flutter/material.dart';
 
 abstract class ShoppingBasketDataSource {
-  Future<void> sendOrder({
+  Future<Either<Failure, bool>> sendOrder({
     required Map<String, dynamic> order,
   });
 }
@@ -13,19 +15,31 @@ class ShoppingBasketDataSourceImplementation extends ShoppingBasketDataSource {
   final FirebaseFirestore _firebaseFirestore;
 
   @override
-  Future<void> sendOrder({required Map<String, dynamic> order}) async {
+  Future<Either<Failure, bool>> sendOrder(
+      {required Map<String, dynamic> order}) async {
     debugPrint("json ==> $order");
+
+    Failure? failure;
 
     try {
       final collection = _firebaseFirestore.collection("Order");
-      await collection.add(order).then(
-        (value) {
-          debugPrint("Bestellung wurde erfolgreich hinzugefügt");
-        },
-        onError: (error) => debugPrint("error ==> ${error.toString()}"),
-      );
+      final result = await collection.add(order).then(
+            (value) => true,
+            onError: (error) =>
+                failure = Failure.databaseError(error.toString()),
+          );
+      if (failure == null && result) {
+        return const Right(true);
+      } else {
+        return Left(Failure.databaseError(failure.toString()));
+      }
     } catch (e) {
       debugPrint("error ==> ${e.toString()}");
+      return Left(
+        Failure.databaseError(
+          e.toString(),
+        ),
+      );
     }
   }
 }

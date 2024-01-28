@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$StateShoppingBasket {
   List<ChosenProduct> get listChosenProduct =>
       throw _privateConstructorUsedError;
+  Failure? get failure => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $StateShoppingBasketCopyWith<StateShoppingBasket> get copyWith =>
@@ -30,7 +31,9 @@ abstract class $StateShoppingBasketCopyWith<$Res> {
           StateShoppingBasket value, $Res Function(StateShoppingBasket) then) =
       _$StateShoppingBasketCopyWithImpl<$Res, StateShoppingBasket>;
   @useResult
-  $Res call({List<ChosenProduct> listChosenProduct});
+  $Res call({List<ChosenProduct> listChosenProduct, Failure? failure});
+
+  $FailureCopyWith<$Res>? get failure;
 }
 
 /// @nodoc
@@ -47,13 +50,30 @@ class _$StateShoppingBasketCopyWithImpl<$Res, $Val extends StateShoppingBasket>
   @override
   $Res call({
     Object? listChosenProduct = null,
+    Object? failure = freezed,
   }) {
     return _then(_value.copyWith(
       listChosenProduct: null == listChosenProduct
           ? _value.listChosenProduct
           : listChosenProduct // ignore: cast_nullable_to_non_nullable
               as List<ChosenProduct>,
+      failure: freezed == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as Failure?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $FailureCopyWith<$Res>? get failure {
+    if (_value.failure == null) {
+      return null;
+    }
+
+    return $FailureCopyWith<$Res>(_value.failure!, (value) {
+      return _then(_value.copyWith(failure: value) as $Val);
+    });
   }
 }
 
@@ -65,7 +85,10 @@ abstract class _$$StateShoppingBasketImplCopyWith<$Res>
       __$$StateShoppingBasketImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<ChosenProduct> listChosenProduct});
+  $Res call({List<ChosenProduct> listChosenProduct, Failure? failure});
+
+  @override
+  $FailureCopyWith<$Res>? get failure;
 }
 
 /// @nodoc
@@ -80,12 +103,17 @@ class __$$StateShoppingBasketImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? listChosenProduct = null,
+    Object? failure = freezed,
   }) {
     return _then(_$StateShoppingBasketImpl(
       listChosenProduct: null == listChosenProduct
           ? _value._listChosenProduct
           : listChosenProduct // ignore: cast_nullable_to_non_nullable
               as List<ChosenProduct>,
+      failure: freezed == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as Failure?,
     ));
   }
 }
@@ -94,7 +122,7 @@ class __$$StateShoppingBasketImplCopyWithImpl<$Res>
 
 class _$StateShoppingBasketImpl implements _StateShoppingBasket {
   const _$StateShoppingBasketImpl(
-      {required final List<ChosenProduct> listChosenProduct})
+      {required final List<ChosenProduct> listChosenProduct, this.failure})
       : _listChosenProduct = listChosenProduct;
 
   final List<ChosenProduct> _listChosenProduct;
@@ -107,8 +135,11 @@ class _$StateShoppingBasketImpl implements _StateShoppingBasket {
   }
 
   @override
+  final Failure? failure;
+
+  @override
   String toString() {
-    return 'StateShoppingBasket(listChosenProduct: $listChosenProduct)';
+    return 'StateShoppingBasket(listChosenProduct: $listChosenProduct, failure: $failure)';
   }
 
   @override
@@ -117,12 +148,13 @@ class _$StateShoppingBasketImpl implements _StateShoppingBasket {
         (other.runtimeType == runtimeType &&
             other is _$StateShoppingBasketImpl &&
             const DeepCollectionEquality()
-                .equals(other._listChosenProduct, _listChosenProduct));
+                .equals(other._listChosenProduct, _listChosenProduct) &&
+            (identical(other.failure, failure) || other.failure == failure));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_listChosenProduct));
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_listChosenProduct), failure);
 
   @JsonKey(ignore: true)
   @override
@@ -134,11 +166,13 @@ class _$StateShoppingBasketImpl implements _StateShoppingBasket {
 
 abstract class _StateShoppingBasket implements StateShoppingBasket {
   const factory _StateShoppingBasket(
-          {required final List<ChosenProduct> listChosenProduct}) =
-      _$StateShoppingBasketImpl;
+      {required final List<ChosenProduct> listChosenProduct,
+      final Failure? failure}) = _$StateShoppingBasketImpl;
 
   @override
   List<ChosenProduct> get listChosenProduct;
+  @override
+  Failure? get failure;
   @override
   @JsonKey(ignore: true)
   _$$StateShoppingBasketImplCopyWith<_$StateShoppingBasketImpl> get copyWith =>

@@ -19,4 +19,7 @@ class EventShoppingBasket with _$EventShoppingBasket {
   const factory EventShoppingBasket.send() = _Send;
 
   const factory EventShoppingBasket.clear() = _Clear;
+
+  const factory EventShoppingBasket.deleteFailureMessage() =
+      _DeleteFailureMessage;
 }

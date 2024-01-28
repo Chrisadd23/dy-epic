@@ -1,5 +1,6 @@
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_cubits/cubit_pictures.dart';
+import 'package:app_flutter_produkt_bestellen/features/login/presentation/page/login_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/bloc_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/event_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/state_shopping_basket.dart';
@@ -21,9 +22,25 @@ class ShoppingBasketOfferList extends StatelessWidget {
       builder: (context, state) => LayoutBuilder(
         builder: (context, constraints) => Builder(builder: (context) {
           return BlocListener<BlocShoppingBasket, StateShoppingBasket>(
-              listenWhen: (_, cState) => cState.listChosenProduct.isEmpty,
+              listenWhen: (_, cState) =>
+                  cState.listChosenProduct.isEmpty || cState.failure != null,
               listener: (context, state) {
-                context.pop(null);
+                if (state.failure != null) {
+                  ShowFailureDialog.present(
+                      context: context,
+                      failure: state.failure?.when(
+                              message: (message) => message ?? '',
+                              databaseError: (databaseError) =>
+                                  databaseError ?? '') ??
+                          '');
+                  if (context.mounted) {
+                    context
+                        .read<BlocShoppingBasket>()
+                        .add(const EventShoppingBasket.deleteFailureMessage());
+                  }
+                } else {
+                  context.pop(null);
+                }
               },
               child: Column(
                 children: [
