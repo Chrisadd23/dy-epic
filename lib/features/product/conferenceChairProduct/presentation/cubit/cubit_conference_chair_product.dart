@@ -45,15 +45,19 @@ class CubitConferenceChairProduct
         debugPrint(
             "product parameter ===> $product, picturelocal keys =>${getIt<CubitPictures>().state.keys}");
 
-        final containsPictureLocal =
-            getIt<CubitPictures>().state.containsKey(product) &&
-                getIt<CubitPictures>().state[product] != null;
+        try {
+          final containsPictureLocal =
+              getIt<CubitPictures>().state.containsKey(product) &&
+                  getIt<CubitPictures>().state[product] != null;
 
-        debugPrint("containsPictureLocal Product ==> $containsPictureLocal");
-        if (containsPictureLocal) {
-          newState = newState.copyWith(
-              product: newState.product?.copyWith(
-                  pictureBytes: getIt<CubitPictures>().state[product]));
+          debugPrint("containsPictureLocal Product ==> $containsPictureLocal");
+          if (containsPictureLocal) {
+            newState = newState.copyWith(
+                product: newState.product?.copyWith(
+                    pictureBytes: getIt<CubitPictures>().state[product]));
+          }
+        } catch (e) {
+          debugPrint(e.toString());
         }
         emit(newState);
       });

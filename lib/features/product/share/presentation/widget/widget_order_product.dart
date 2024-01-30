@@ -71,7 +71,8 @@ class WidgetOrderProduct extends StatelessWidget {
                       ),
                     ),
                     onTap: () {
-                      if (state.productOrderCount > 0) {
+                      if (state.productOrderCount > 0 &&
+                          state.product != null) {
                         context.read<BlocShoppingBasket>().add(
                               EventShoppingBasket.add(
                                   chosenProduct: ChosenProduct(
@@ -127,7 +128,8 @@ class WidgetOrderProduct extends StatelessWidget {
                     ),
                     onTap: () {
                       debugPrint("start adding");
-                      if (state.productOrderCount > 0) {
+                      if (state.productOrderCount > 0 &&
+                          state.product != null) {
                         context.read<BlocShoppingBasket>().add(
                               EventShoppingBasket.add(
                                   chosenProduct: ChosenProduct(

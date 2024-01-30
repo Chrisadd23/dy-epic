@@ -21,6 +21,7 @@ class CubitConferenceChair extends Cubit<StateCategory> {
     }
     debugPrint('instanceName ==> $conferenceChairCategory');
     var newState = state;
+    List<Map<String, Uint8List?>> st = [];
     await repositoryConferenceChair
         .getConferencChaire(conferenceChairCategory: conferenceChairCategory)
         .fold((failure) => emit(StateCategory.failure(failure: failure)),
@@ -45,22 +46,28 @@ class CubitConferenceChair extends Cubit<StateCategory> {
               .map((e) => e.picturePath)
               .toList() ??
           [];
-      final st = await Future.wait<Map<String, Uint8List?>>(
-          listProduct.map((filename) async {
-        final containsPictureLocal =
-            getIt<CubitPictures>().state.containsKey(filename) &&
-                getIt<CubitPictures>().state[filename] != null;
-        debugPrint("containsPictureLocal ==> $containsPictureLocal");
-        if (containsPictureLocal) {
-          return {filename: getIt<CubitPictures>().state[filename]};
-        } else {
-          final imageBytes =
-              await FirebaseConfiguration.getImageBytes(filename);
-          getIt<CubitPictures>().addPicture(
-              key: imageBytes.keys.first, value: imageBytes.values.first);
-          return imageBytes;
-        }
-      }));
+      try {
+        st = await Future.wait<Map<String, Uint8List?>>(
+            listProduct.map((filename) async {
+          final containsPictureLocal =
+              getIt<CubitPictures>().state.containsKey(filename) &&
+                  getIt<CubitPictures>().state[filename] != null;
+          debugPrint("containsPictureLocal ==> $containsPictureLocal");
+          if (containsPictureLocal) {
+            return {filename: getIt<CubitPictures>().state[filename]};
+          } else {
+            final imageBytes =
+                await FirebaseConfiguration.getImageBytes(filename)
+                    .timeout(const Duration(seconds: 5));
+            getIt<CubitPictures>().addPicture(
+                key: imageBytes.keys.first,
+                value: imageBytes.values.firstOrNull);
+            return imageBytes;
+          }
+        }));
+      } catch (e) {
+        debugPrint("catch ==> ${e.toString()}");
+      }
 
       successState = successState.copyWith(
           productCategory: successState.productCategory?.copyWith(
@@ -69,11 +76,12 @@ class CubitConferenceChair extends Cubit<StateCategory> {
                       pictureByte: st
                           .where((positionMap) =>
                               positionMap.keys.first == product.picturePath)
-                          .first
-                          .values
+                          .firstOrNull
+                          ?.values
                           .firstOrNull))
                   .toList()));
 
+      debugPrint("successState ==> ${successState.toString()}");
       emit(successState);
 
       return;

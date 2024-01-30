@@ -47,7 +47,7 @@ class DataSourceConferenceChairImplementation
         debugPrint('dataSource error ===> ${error.toString()}');
         failure = Failure.databaseError(error.toString());
         return failure;
-      });
+      }).timeout(const Duration(seconds: 10));
 
       if (failure != null) {
         return Left(failure!);
@@ -58,8 +58,8 @@ class DataSourceConferenceChairImplementation
             categoryName: 'Bürodrehstühle', listProduct: officeChairs));
       }
     } catch (e) {
-      return const Left(
-          Failure.message('Sortiment konnte nicht geladen werden'));
+      return Left(Failure.message(
+          'Sortiment konnte nicht geladen werden failure ==> ${e.toString()}'));
     }
   }
 }

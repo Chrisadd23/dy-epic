@@ -62,8 +62,10 @@ class _BlocBuilderConferenceChair extends StatelessWidget {
                 firstWidth: 110,
                 secondWidth: 60,
               ),
-              failure: (failure) =>
-                  FailureWidget(failure: failure.failure.toString()),
+              failure: (failure) => FailureWidget(
+                  failure: failure.failure.when(
+                      message: (message) => message ?? '',
+                      databaseError: (databaseError) => databaseError ?? '')),
               success: (successState) {
                 final listProducts =
                     successState.productCategory?.listProduct.map((product) {

@@ -258,41 +258,43 @@ class ShowFailureDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(
-          horizontal: MediaQuery.sizeOf(context).width * 0.1,
-          vertical: MediaQuery.sizeOf(context).height * 0.25),
-      child: Container(
-        decoration: BoxDecoration(
-          color: AppColors.greyCACACA,
-          border: Border.all(color: Colors.black),
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const SizedBox(
-                height: 20,
-              ),
-              const Icon(
-                Icons.error_outline_rounded,
-                size: 60,
-                color: Colors.red,
-              ),
-              const SizedBox(
-                height: 50,
-              ),
-              Expanded(
-                child: Text(
-                  failure,
-                  textAlign: TextAlign.center,
-                  style: AppTextStyle.colorWhiteSize20ShadowBlack
-                      .copyWith(fontSize: 25),
+    return SingleChildScrollView(
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+            horizontal: MediaQuery.sizeOf(context).width * 0.1,
+            vertical: MediaQuery.sizeOf(context).height * 0.25),
+        child: Container(
+          decoration: BoxDecoration(
+            color: AppColors.greyCACACA,
+            border: Border.all(color: Colors.black),
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const SizedBox(
+                  height: 20,
                 ),
-              ),
-            ],
+                const Icon(
+                  Icons.error_outline_rounded,
+                  size: 60,
+                  color: Colors.red,
+                ),
+                const SizedBox(
+                  height: 50,
+                ),
+                Expanded(
+                  child: Text(
+                    failure,
+                    textAlign: TextAlign.center,
+                    style: AppTextStyle.colorWhiteSize20ShadowBlack
+                        .copyWith(fontSize: 25),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
