@@ -29,8 +29,8 @@ class OrderPageShellNavigation extends StatelessWidget {
         items: [
           SvgPicture.asset(
             Assets.appComponents.svg.orderBasket,
-            width: 45,
-            height: 45,
+            width: 50,
+            height: 50,
           ),
           SvgPicture.asset(
             Assets.appComponents.svg.orderRequest,
