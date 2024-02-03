@@ -73,9 +73,11 @@ enum AppGoRouter {
                 value: getIt<BlocShoppingBasket>(), child: const Login()),
             routes: [
               StatefulShellRoute.indexedStack(
-                  builder: (context, state, navigationShell) =>
-                      OrderPageShellNavigation(
-                          navigationShell: navigationShell),
+                  pageBuilder: (context, state, navigationShell) =>
+                      _getCustomerTransition(
+                          OrderPageShellNavigation(
+                              navigationShell: navigationShell),
+                          state),
                   branches: <StatefulShellBranch>[
                     StatefulShellBranch(routes: [
                       GoRoute(

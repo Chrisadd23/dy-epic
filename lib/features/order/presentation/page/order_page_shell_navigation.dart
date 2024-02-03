@@ -1,4 +1,6 @@
+import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_page_widget.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -12,30 +14,24 @@ class OrderPageShellNavigation extends StatelessWidget {
     return GlobalScaffold(
       appBarContext: context,
       body: navigationShell,
-      bottomNavigationBar: BottomNavigationBar(
+      bottomNavigationBar: CurvedNavigationBar(
+        buttonBackgroundColor: AppColors.orangeF6A440,
+        animationDuration: const Duration(milliseconds: 300),
+        index: navigationShell.currentIndex,
+        backgroundColor: AppColors.greyCACACA,
         items: const [
-          BottomNavigationBarItem(
-              icon: Icon(
-                Icons.shopping_basket_outlined,
-                color: Colors.black,
-              ),
-              label: 'Bestellungen'),
-          BottomNavigationBarItem(
-              icon: Icon(
-                Icons.question_answer_outlined,
-                color: Colors.black,
-              ),
-              label: 'Anfragen'),
+          Icon(
+            Icons.shopping_basket_outlined,
+            color: Colors.black,
+          ),
+          Icon(
+            Icons.question_answer_outlined,
+            color: Colors.black,
+          ),
         ],
-        currentIndex: navigationShell.currentIndex,
-        onTap: (index) => _onTap(context, index),
+        onTap: (index) => navigationShell.goBranch(index),
       ),
       showMenuBar: true,
     );
-  }
-
-  _onTap(BuildContext context, int index) {
-    debugPrint("index ==> $index");
-    navigationShell.goBranch(index);
   }
 }

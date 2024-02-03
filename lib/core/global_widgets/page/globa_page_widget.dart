@@ -1,6 +1,7 @@
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/global_appbar.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/global_drawer.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
 class GlobalScaffold extends Scaffold {
@@ -9,7 +10,7 @@ class GlobalScaffold extends Scaffold {
     required BuildContext appBarContext,
     required Widget body,
     bool? showMenuBar = false,
-    BottomNavigationBar? bottomNavigationBar,
+    CurvedNavigationBar? bottomNavigationBar,
   }) : super(
             key: key,
             appBar: PreferredSize(
