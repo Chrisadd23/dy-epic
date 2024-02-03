@@ -11,6 +11,8 @@ import 'package:app_flutter_produkt_bestellen/features/category/buerostuehle/dom
 import 'package:app_flutter_produkt_bestellen/features/category/buerostuehle/presentation/cubit/cubit_buerostuehle.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/buerostuehle/presentation/cubit/cubit_choose_office_chair.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/cubit/state_category_generic.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/widget/category_product_name.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/widget/category_product_picture.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/bloc_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/widget/shopping_basket_dialog.dart';
 import 'package:app_flutter_produkt_bestellen/gen/assets.gen.dart';
@@ -338,7 +340,7 @@ class _ProductState extends State<Product> {
       child: Stack(
         children: [
           _ProductPicture(widget: widget),
-          _ProductName(widget: widget),
+          CategoryProductName(name: widget.name),
           Align(
             alignment: Alignment.center,
             child: LayoutBuilder(
@@ -376,38 +378,6 @@ class _ProductState extends State<Product> {
   }
 }
 
-class _ProductName extends StatelessWidget {
-  const _ProductName({
-    required this.widget,
-  });
-
-  final Product widget;
-
-  @override
-  Widget build(BuildContext context) {
-    return Align(
-        alignment: Alignment.center,
-        child: LayoutBuilder(builder: (context, constraints) {
-          return Padding(
-            padding: EdgeInsets.only(
-                top: constraints.maxHeight * 0.15,
-                left: constraints.maxWidth * 0.05,
-                right: constraints.maxWidth * 0.05),
-            child: FittedBox(
-              fit: BoxFit.fill,
-              child: Text(
-                widget.productType.name,
-                style: const TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          );
-        }));
-  }
-}
-
 class _ProductPicture extends StatelessWidget {
   const _ProductPicture({
     required this.widget,
@@ -424,76 +394,15 @@ class _ProductPicture extends StatelessWidget {
                 .first
                 .pictureByte),
         builder: (context, state) {
-          return Stack(
-            children: <Widget>[
-              Align(
-                alignment: Alignment.center,
-                child: Padding(
-                  padding: EdgeInsets.only(
-                      bottom: MediaQuery.of(context).size.height * 0.2),
-                  child: LayoutBuilder(
-                    builder: (context, constraints) =>
-                        // navigation Test
-                        Container(
-                      height: constraints.maxHeight * 0.9,
-                      width: constraints.maxWidth * 0.9,
-                      margin:
-                          EdgeInsets.only(bottom: constraints.maxHeight * 0.2),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        shape: BoxShape.circle,
-                        boxShadow: const [
-                          BoxShadow(
-                              color: Colors.grey,
-                              offset: Offset(2, 3),
-                              blurStyle: BlurStyle.outer),
-                          BoxShadow(
-                              color: Colors.grey,
-                              offset: Offset(2, -3),
-                              blurStyle: BlurStyle.outer)
-                        ],
-                        border: Border.all(
-                            color: Colors.black45,
-                            strokeAlign: BorderSide.strokeAlignInside),
-                        image: state != null
-                            ? DecorationImage(
-                                fit: BoxFit.contain,
-                                image: MemoryImage(state),
-                                onError: (object, stackTrace) =>
-                                    const LoadingWidget())
-                            : null,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              Align(
-                alignment: Alignment.center,
-                child: LayoutBuilder(
-                  builder: (context, constraints) {
-                    return Padding(
-                      padding:
-                          EdgeInsets.only(bottom: constraints.maxHeight * 0.43),
-                      child: CircleAvatar(
-                        backgroundColor: Colors.transparent,
-                        radius: constraints.maxHeight * 0.23,
-                        foregroundColor: Colors.transparent,
-                        child: InkWell(
-                          hoverColor: Colors.red,
-                          onTap: () {
-                            context.goNamed(
-                                '${AppGoRouter.buerostuehle.name}/${AppGoRouter.product.name}',
-                                queryParameters: <String, String>{
-                                  'productNumber': widget.picturePath
-                                });
-                          },
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              )
-            ],
+          return CategoryProductPicture(
+            uint8list: state,
+            function: () {
+              context.goNamed(
+                  '${AppGoRouter.buerostuehle.name}/${AppGoRouter.product.name}',
+                  queryParameters: <String, String>{
+                    'productNumber': widget.picturePath
+                  });
+            },
           );
         });
   }
