@@ -19,7 +19,7 @@ class DataSourceConferenceChairImplementation
     try {
       Failure? failure;
       List<EntityProduct> officeChairs = [];
-      // TODO: implement getConferenceChair
+
       await FirebaseFirestore.instance
           .collection('Product')
           .doc('kbLDlq3ItPF7onHoQnYL')
@@ -59,7 +59,8 @@ class DataSourceConferenceChairImplementation
             categoryName: 'Bürodrehstühle', listProduct: officeChairs));
       }
     } catch (e) {
-      return Left(Failure.message('Sortiment konnte nicht geladen werden'));
+      return const Left(
+          Failure.message('Sortiment konnte nicht geladen werden'));
     }
   }
 }
