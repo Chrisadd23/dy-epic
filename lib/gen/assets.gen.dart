@@ -112,11 +112,11 @@ class $AssetsAppComponentsSvgGen {
   /// File path: assets/appComponents/svg/icon_menu.svg
   String get iconMenu => 'assets/appComponents/svg/icon_menu.svg';
 
-  /// File path: assets/appComponents/svg/order_Icon.svg
-  String get orderIcon => 'assets/appComponents/svg/order_Icon.svg';
+  /// File path: assets/appComponents/svg/order_basket.svg
+  String get orderBasket => 'assets/appComponents/svg/order_basket.svg';
 
-  /// File path: assets/appComponents/svg/request_Icon.svg
-  String get requestIcon => 'assets/appComponents/svg/request_Icon.svg';
+  /// File path: assets/appComponents/svg/order_request.svg
+  String get orderRequest => 'assets/appComponents/svg/order_request.svg';
 
   /// File path: assets/appComponents/svg/return_icon.svg
   String get returnIcon => 'assets/appComponents/svg/return_icon.svg';
@@ -134,8 +134,8 @@ class $AssetsAppComponentsSvgGen {
         iconMinus,
         iconPlus,
         iconMenu,
-        orderIcon,
-        requestIcon,
+        orderBasket,
+        orderRequest,
         returnIcon,
         shoppingBasket
       ];

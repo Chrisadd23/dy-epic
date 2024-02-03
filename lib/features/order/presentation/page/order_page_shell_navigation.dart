@@ -1,10 +1,12 @@
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_page_widget.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/bloc_shopping_basket.dart';
+import 'package:app_flutter_produkt_bestellen/gen/assets.gen.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 class OrderPageShellNavigation extends StatelessWidget {
@@ -24,14 +26,16 @@ class OrderPageShellNavigation extends StatelessWidget {
         animationDuration: const Duration(milliseconds: 300),
         index: navigationShell.currentIndex,
         backgroundColor: AppColors.greyCACACA,
-        items: const [
-          Icon(
-            Icons.shopping_basket_outlined,
-            color: Colors.black,
+        items: [
+          SvgPicture.asset(
+            Assets.appComponents.svg.orderBasket,
+            width: 45,
+            height: 45,
           ),
-          Icon(
-            Icons.question_answer_outlined,
-            color: Colors.black,
+          SvgPicture.asset(
+            Assets.appComponents.svg.orderRequest,
+            width: 45,
+            height: 45,
           ),
         ],
         onTap: (index) => navigationShell.goBranch(index),
