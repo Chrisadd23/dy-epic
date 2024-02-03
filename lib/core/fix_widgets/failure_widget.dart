@@ -9,31 +9,33 @@ class FailureWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const SizedBox(
-              height: 20,
-            ),
-            const Icon(
-              Icons.error_outline_rounded,
-              size: 60,
-              color: Colors.red,
-            ),
-            const SizedBox(
-              height: 50,
-            ),
-            Text(
-              failure,
-              textAlign: TextAlign.center,
-              style: AppTextStyle.colorWhiteSize20ShadowBlack
-                  .copyWith(fontSize: 25),
-            ),
-          ],
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(20),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const SizedBox(
+                height: 20,
+              ),
+              const Icon(
+                Icons.error_outline_rounded,
+                size: 60,
+                color: Colors.red,
+              ),
+              const SizedBox(
+                height: 50,
+              ),
+              Text(
+                failure,
+                textAlign: TextAlign.center,
+                style: AppTextStyle.colorWhiteSize20ShadowBlack
+                    .copyWith(fontSize: 25),
+              ),
+            ],
+          ),
         ),
       ),
     );

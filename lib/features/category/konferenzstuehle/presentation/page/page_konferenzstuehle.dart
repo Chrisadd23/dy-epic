@@ -9,7 +9,6 @@ import 'package:app_flutter_produkt_bestellen/features/category/konferenzstuehle
 import 'package:app_flutter_produkt_bestellen/features/category/konferenzstuehle/presentation/cubit/cubit_conference_chair.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/cubit/state_category_generic.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/bloc_shopping_basket.dart';
-import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/state_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/widget/shopping_basket_dialog.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/foundation.dart';
@@ -38,13 +37,10 @@ class _BlocProviderConferenceChair extends StatelessWidget {
       create: (BuildContext context) => getIt<CubitConferenceChair>()..load(),
       child: GlobalScaffold(
           appBarContext: context,
-          body: Stack(
+          body: const Stack(
             children: [
-              const _BlocBuilderConferenceChair(),
-              BlocBuilder<BlocShoppingBasket, StateShoppingBasket>(
-                  builder: (context, state) {
-                return const DialogShoppingBasket();
-              }),
+              _BlocBuilderConferenceChair(),
+              DialogShoppingBasket(),
             ],
           )),
     );

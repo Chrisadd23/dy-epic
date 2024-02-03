@@ -22,36 +22,32 @@ class WidgetProductTitle extends StatelessWidget {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(40),
             color: AppColors.grey8D8D8E.withOpacity(0.4)),
-        child: BlocSelector<CubitProduct, StateProduct, String?>(
-            selector: (state) => state.product?.name,
-            builder: (context, productName) {
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: FittedBox(
-                  fit: productName == null ? BoxFit.fitHeight : BoxFit.fill,
-                  child: productName == null
-                      ? const LoadingWidget()
-                      : Text(
-                          productName,
-                          style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 35,
-                              fontWeight: FontWeight.bold,
-                              shadows: [
-                                Shadow(
-                                    color: Colors.black, offset: Offset(1, 1)),
-                                Shadow(
-                                    color: Colors.black, offset: Offset(-1, 1)),
-                                Shadow(
-                                    color: Colors.black,
-                                    offset: Offset(-1, -1)),
-                                Shadow(
-                                    color: Colors.black, offset: Offset(1, -1)),
-                              ]),
-                        ),
-                ),
-              );
-            }),
+        child:
+            BlocBuilder<CubitProduct, StateProduct>(builder: (context, state) {
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: FittedBox(
+              fit: state.product?.name == null ? BoxFit.fitHeight : BoxFit.fill,
+              child: state.product?.name == null
+                  ? const LoadingWidget(
+                      firstWidth: 0,
+                    )
+                  : Text(
+                      state.product!.name,
+                      style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 35,
+                          fontWeight: FontWeight.bold,
+                          shadows: [
+                            Shadow(color: Colors.black, offset: Offset(1, 1)),
+                            Shadow(color: Colors.black, offset: Offset(-1, 1)),
+                            Shadow(color: Colors.black, offset: Offset(-1, -1)),
+                            Shadow(color: Colors.black, offset: Offset(1, -1)),
+                          ]),
+                    ),
+            ),
+          );
+        }),
       ),
     );
   }

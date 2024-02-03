@@ -258,12 +258,11 @@ class ShowFailureDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: EdgeInsets.symmetric(
-            horizontal: MediaQuery.sizeOf(context).width * 0.1,
-            vertical: MediaQuery.sizeOf(context).height * 0.25),
+    return Center(
+      child: SingleChildScrollView(
         child: Container(
+          height: MediaQuery.sizeOf(context).height * 0.4,
+          width: MediaQuery.sizeOf(context).width * 0.7,
           decoration: BoxDecoration(
             color: AppColors.greyCACACA,
             border: Border.all(color: Colors.black),

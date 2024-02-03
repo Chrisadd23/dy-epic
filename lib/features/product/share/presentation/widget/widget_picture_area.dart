@@ -23,8 +23,8 @@ class WidgetPictureArea extends StatelessWidget {
       ),
       child: pictureBytes == null
           ? LoadingWidget(
-              firstWidth: MediaQuery.of(context).size.width * 0.5,
-              secondWidth: MediaQuery.of(context).size.width * 0.3,
+              firstWidth: MediaQuery.of(context).size.width * 0.3,
+              secondWidth: 0,
             )
           : Image(
               fit: BoxFit.fitHeight,

@@ -101,24 +101,20 @@ class _ProductWidget extends StatelessWidget {
                   const WidgetProductTitle(),
                   const _ProductPicture(),
                   const WidgetProductCounter(),
-                  BlocSelector<CubitProduct, StateProduct, List<String>?>(
-                      selector: (state) => state.product?.attributes,
-                      builder: (context, productAttributes) {
-                        debugPrint("productAttributes => $productAttributes");
-                        return WidgetProductInfo(
-                          productInfo: productAttributes,
-                        );
-                      }),
+                  BlocBuilder<CubitProduct, StateProduct>(
+                      builder: (context, state) {
+                    debugPrint("productAttributes => $state");
+                    return WidgetProductInfo(
+                      productInfo: state.product?.attributes,
+                    );
+                  }),
                 ],
               ),
             ),
           ),
         ),
         const WidgetOrderProduct(),
-        BlocBuilder<BlocShoppingBasket, StateShoppingBasket>(
-            builder: (context, state) {
-          return const DialogShoppingBasket();
-        }),
+        const DialogShoppingBasket(),
       ],
     );
   }
@@ -129,10 +125,8 @@ class _ProductPicture extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<CubitProduct, StateProduct, Uint8List?>(
-        selector: (state) => state.product?.pictureBytes,
-        builder: (context, pictureBytes) {
-          return WidgetPictureArea(pictureBytes: pictureBytes);
-        });
+    return BlocBuilder<CubitProduct, StateProduct>(builder: (context, state) {
+      return WidgetPictureArea(pictureBytes: state.product?.pictureBytes);
+    });
   }
 }

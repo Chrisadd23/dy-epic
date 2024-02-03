@@ -25,6 +25,7 @@ class DataSourceConferenceChairImplementation
           .doc('kbLDlq3ItPF7onHoQnYL')
           .collection('conferenceChair')
           .get()
+          .timeout(const Duration(seconds: 10))
           .then((QuerySnapshot querySnapshot) {
         querySnapshot.docs.map((document) async {
           final Map<String, dynamic> data =
@@ -58,8 +59,7 @@ class DataSourceConferenceChairImplementation
             categoryName: 'Bürodrehstühle', listProduct: officeChairs));
       }
     } catch (e) {
-      return Left(Failure.message(
-          'Sortiment konnte nicht geladen werden failure ==> ${e.toString()}'));
+      return Left(Failure.message('Sortiment konnte nicht geladen werden'));
     }
   }
 }

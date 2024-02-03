@@ -37,6 +37,7 @@ class DataSourceBuerostuehleImplementation extends DataSourceBuerostuehle {
           .doc('lkO66P0vFh9C2kEaS2dR')
           .collection(officeChairCategory!)
           .get()
+          .timeout(const Duration(seconds: 10))
           .then((QuerySnapshot querySnapshot) {
         querySnapshot.docs.map((document) async {
           final Map<String, dynamic> data =
@@ -62,6 +63,7 @@ class DataSourceBuerostuehleImplementation extends DataSourceBuerostuehle {
       });
 
       if (failure != null) {
+        debugPrint("database failure");
         return Left(failure!);
       } else {
         debugPrint("return list officeChairs ${officeChairs.toString()}");
