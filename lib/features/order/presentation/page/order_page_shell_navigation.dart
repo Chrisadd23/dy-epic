@@ -18,9 +18,8 @@ class OrderPageShellNavigation extends StatelessWidget {
   Widget build(BuildContext context) {
     return GlobalScaffold(
       appBarContext: context,
-      body: BlocProvider<BlocShoppingBasket>(
-          create: (context) => getIt<BlocShoppingBasket>(),
-          child: navigationShell),
+      body: BlocProvider<BlocShoppingBasket>.value(
+          value: getIt<BlocShoppingBasket>(), child: navigationShell),
       bottomNavigationBar: CurvedNavigationBar(
         buttonBackgroundColor: AppColors.orangeF6A440,
         animationDuration: const Duration(milliseconds: 300),
