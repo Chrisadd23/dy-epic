@@ -6,6 +6,8 @@ import 'package:app_flutter_produkt_bestellen/features/category/konferenztische/
 import 'package:app_flutter_produkt_bestellen/features/home/presentation/page/home_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/page/login_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/page/order_page.dart';
+import 'package:app_flutter_produkt_bestellen/features/order/presentation/page/order_page_shell_navigation.dart';
+import 'package:app_flutter_produkt_bestellen/features/order/presentation/page/request_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/presentation/page/workingtable_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/conferenceChairProduct/presentation/page/page_conference_chair_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/officeChairProduct/presentation/page/page_office_chair_product.dart';
@@ -24,7 +26,8 @@ enum AppGoRouter {
   konferenzstuehle('konferenzstuehle'),
   konferenztische('konferenztische'),
   product('produkt'),
-  order('bestellungen');
+  order('bestellungen'),
+  request('anfragen');
 
   const AppGoRouter(this.title);
 
@@ -43,8 +46,6 @@ enum AppGoRouter {
       ''
     ]
   };
-
-  static List<String> shouldntPop = ['/home', '/bestellungen'];
 
   static CustomTransitionPage<void> _getCustomerTransition(
           Widget page, GoRouterState state) =>
@@ -70,13 +71,27 @@ enum AppGoRouter {
             path: root.title,
             builder: (context, state) => BlocProvider<BlocShoppingBasket>.value(
                 value: getIt<BlocShoppingBasket>(), child: const Login()),
-            routes: <GoRoute>[
-              GoRoute(
-                path: order.title,
-                name: order.name,
-                pageBuilder: (context, state) =>
-                    _getCustomerTransition(const OderPage(), state),
-              ),
+            routes: [
+              StatefulShellRoute.indexedStack(
+                  builder: (context, state, navigationShell) =>
+                      OrderPageShellNavigation(
+                          navigationShell: navigationShell),
+                  branches: <StatefulShellBranch>[
+                    StatefulShellBranch(routes: [
+                      GoRoute(
+                        path: AppGoRouter.order.title,
+                        name: AppGoRouter.order.name,
+                        builder: (context, state) => const OrderPage(),
+                      ),
+                    ]),
+                    StatefulShellBranch(routes: [
+                      GoRoute(
+                        path: AppGoRouter.request.title,
+                        name: AppGoRouter.request.name,
+                        builder: (context, state) => const RequestPage(),
+                      ),
+                    ])
+                  ]),
               //---------------------------------------------------
 
               GoRoute(

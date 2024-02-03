@@ -10,6 +10,7 @@ class GlobalAppBar extends AppBar {
   GlobalAppBar({
     Key? key,
     required BuildContext context,
+    required bool showMenuBar,
   }) : super(
           key: key,
           leadingWidth: 0,
@@ -67,7 +68,7 @@ class GlobalAppBar extends AppBar {
                     padding: const EdgeInsets.only(
                       top: 10,
                     ),
-                    child: const AppBarMenuButton(),
+                    child: AppBarMenuButton(showMenuBar: showMenuBar),
                   ),
                 ),
               ],
@@ -79,43 +80,34 @@ class GlobalAppBar extends AppBar {
         );
 }
 
-class AppBarMenuButton extends StatefulWidget {
+class AppBarMenuButton extends StatelessWidget {
   const AppBarMenuButton({
     super.key,
+    required this.showMenuBar,
   });
 
-  String get imagePath => getIt<GoRouter>().location.contains('?')
-      ? AppGoRouter.shouldntPop.contains(RegExp(r'^(.*?)\?')
-              .firstMatch(getIt<GoRouter>().location)
-              ?.group(1))
-          ? Assets.appComponents.svg.iconMenu
-          : Assets.appComponents.svg.returnIcon
-      : AppGoRouter.shouldntPop.contains(getIt<GoRouter>().location)
-          ? Assets.appComponents.svg.iconMenu
-          : Assets.appComponents.svg.returnIcon;
+  final bool showMenuBar;
 
-  @override
-  State<AppBarMenuButton> createState() => _AppBarMenuButtonState();
+  String get imagePath => showMenuBar
+      ? Assets.appComponents.svg.iconMenu
+      : Assets.appComponents.svg.returnIcon;
 
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(StringProperty('imagePath', imagePath));
-  }
-}
-
-class _AppBarMenuButtonState extends State<AppBarMenuButton> {
   @override
   Widget build(BuildContext context) {
     return IconButton(
       onPressed: () {
-        widget.imagePath == Assets.appComponents.svg.iconMenu
-            ? Scaffold.of(context).openDrawer()
-            : context.pop();
+        showMenuBar ? Scaffold.of(context).openDrawer() : context.pop();
       },
       icon: SvgPicture.asset(
-        widget.imagePath,
+        imagePath,
       ),
     );
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty<bool>('showMenuBar', showMenuBar));
+    properties.add(StringProperty('imagePath', imagePath));
   }
 }

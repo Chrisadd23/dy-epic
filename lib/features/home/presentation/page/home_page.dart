@@ -18,7 +18,10 @@ class HomePage extends StatelessWidget {
     return GlobalScaffold(
       appBarContext: context,
       body: BlocProvider<BlocShoppingBasket>.value(
-          value: getIt<BlocShoppingBasket>(), child: const CategoryPage()),
+        value: getIt<BlocShoppingBasket>(),
+        child: const CategoryPage(),
+      ),
+      showMenuBar: true,
     );
   }
 }
