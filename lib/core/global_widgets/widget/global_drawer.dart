@@ -177,11 +177,11 @@ class _DrawerWidget extends StatelessWidget {
                     ),
                     const SizedBox(height: 70),
                     Column(children: [
-                      ...ListValues.drawerList
-                          .map((e) => FixDrawerButton(
-                                title: e,
+                      ...ListValues.drawerList.keys
+                          .map((key) => FixDrawerButton(
+                                title: key,
                                 function: () {
-                                  context.go('/$e');
+                                  context.go('/${ListValues.drawerList[key]}');
                                 },
                               ))
                           .toList()

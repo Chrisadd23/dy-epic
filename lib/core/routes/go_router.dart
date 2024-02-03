@@ -5,6 +5,7 @@ import 'package:app_flutter_produkt_bestellen/features/category/konferenzstuehle
 import 'package:app_flutter_produkt_bestellen/features/category/konferenztische/presentation/page/page_konferenztische.dart';
 import 'package:app_flutter_produkt_bestellen/features/home/presentation/page/home_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/page/login_page.dart';
+import 'package:app_flutter_produkt_bestellen/features/order/presentation/page/order_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/presentation/page/workingtable_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/conferenceChairProduct/presentation/page/page_conference_chair_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/officeChairProduct/presentation/page/page_office_chair_product.dart';
@@ -22,7 +23,8 @@ enum AppGoRouter {
   buerostuehle('buerostuehle'),
   konferenzstuehle('konferenzstuehle'),
   konferenztische('konferenztische'),
-  product('produkt');
+  product('produkt'),
+  order('bestellungen');
 
   const AppGoRouter(this.title);
 
@@ -31,6 +33,7 @@ enum AppGoRouter {
   static Map<String, List<String>> routeMap = {
     'root': [AppGoRouter.root.title],
     'home': ['/${AppGoRouter.homePage.title}'],
+    'bestellungen': ['/${AppGoRouter.order.title}'],
     'arbeitstische': [
       '/${AppGoRouter.homePage.title}/${AppGoRouter.arbeitstische.title}'
     ],
@@ -41,7 +44,7 @@ enum AppGoRouter {
     ]
   };
 
-  static List<String> shouldntPop = ['/home'];
+  static List<String> shouldntPop = ['/home', '/bestellungen'];
 
   static CustomTransitionPage<void> _getCustomerTransition(
           Widget page, GoRouterState state) =>
@@ -68,6 +71,14 @@ enum AppGoRouter {
             builder: (context, state) => BlocProvider<BlocShoppingBasket>.value(
                 value: getIt<BlocShoppingBasket>(), child: const Login()),
             routes: <GoRoute>[
+              GoRoute(
+                path: order.title,
+                name: order.name,
+                pageBuilder: (context, state) =>
+                    _getCustomerTransition(const OderPage(), state),
+              ),
+              //---------------------------------------------------
+
               GoRoute(
                 path: homePage.title,
                 name: homePage.name,
@@ -171,6 +182,7 @@ enum AppGoRouter {
                   )
                 ],
               ),
+              //----------------------------------------------------------------
             ]),
       ],
       errorBuilder: (context, state) => PageNotFound(state.error),

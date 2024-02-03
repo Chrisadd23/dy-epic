@@ -3,13 +3,12 @@ import 'package:app_flutter_produkt_bestellen/features/home/data/model/model_cat
 import 'package:app_flutter_produkt_bestellen/gen/assets.gen.dart';
 
 class ListValues {
-  static final drawerList = [
-    'Produkte',
-    'Bestellungen',
-    'Anfragen',
-    'Einstellungen',
-    'Rechtliches'
-  ];
+  static final drawerList = {
+    'Produkte': 'home',
+    'Bestellungen': 'bestellungen',
+    'Einstellungen': 'einstellung',
+    'Rechtliches': 'rechtliches'
+  };
 }
 
 class ProductPictures {
