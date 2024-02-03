@@ -1,6 +1,5 @@
-import 'dart:typed_data';
-
 import 'package:app_flutter_produkt_bestellen/core/fix_widgets/loading_widget.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class CategoryProductPicture extends StatelessWidget {
@@ -73,6 +72,13 @@ class CategoryProductPicture extends StatelessWidget {
         )
       ],
     );
-    ;
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+
+    properties.add(ObjectFlagProperty<VoidCallback>.has('function', function));
+    properties.add(ObjectFlagProperty<Uint8List?>.has('uint8list', uint8list));
   }
 }
