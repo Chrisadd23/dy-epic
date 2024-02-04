@@ -170,5 +170,6 @@ class _OrderInfoWidget extends StatelessWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties.add(DiagnosticsProperty<DateTime>('dateTime', dateTime));
+    properties.add(IntProperty('index', index));
   }
 }
