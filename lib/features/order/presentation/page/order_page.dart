@@ -26,7 +26,7 @@ class OrderPage extends StatelessWidget {
                       color: AppColors.orangeF6A440),
                   child: FittedBox(
                     child: Text(
-                      "Bestellungen",
+                      'Bestellungen',
                       style: AppTextStyle.colorWhiteSize20ShadowBlack,
                     ),
                   ),
@@ -100,7 +100,8 @@ class OrderPage extends StatelessWidget {
                               )),
                             ],
                           ),
-                          Padding(padding: EdgeInsets.symmetric(vertical: 20))
+                          const Padding(
+                              padding: EdgeInsets.symmetric(vertical: 20))
                         ],
                       ),
                     )
