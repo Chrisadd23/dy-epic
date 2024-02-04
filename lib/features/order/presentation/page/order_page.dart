@@ -51,8 +51,11 @@ class OrderPage extends StatelessWidget {
                                 bottom: Radius.circular(30)),
                             child: ListView.builder(
                                 itemCount: state,
-                                itemBuilder: (context, state) =>
-                                    _OrderInfoWidget(dateTime: dateTime)),
+                                itemBuilder: (context, index) =>
+                                    _OrderInfoWidget(
+                                      dateTime: dateTime,
+                                      index: index,
+                                    )),
                           ),
                         ),
                       );
@@ -69,90 +72,98 @@ class OrderPage extends StatelessWidget {
 
 class _OrderInfoWidget extends StatelessWidget {
   const _OrderInfoWidget({
+    required this.index,
     required this.dateTime,
   });
 
+  final int index;
   final DateTime dateTime;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 20.0),
-      child: Container(
-        decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(20),
-            border: Border.all()),
-        child: Column(
-          children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 8.0),
-              child: FittedBox(
-                child: Text(
-                  "Bestellnummer",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-              ),
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    height: 50,
-                    decoration: BoxDecoration(
-                      border:
-                          const Border(bottom: BorderSide(), top: BorderSide()),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Center(
+    return BlocSelector<OrderCubit, OrderCustomerState, Order>(
+        selector: (state) => state.orderList[index],
+        builder: (context, state) {
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 20.0),
+            child: Container(
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all()),
+              child: Column(
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 8.0),
+                    child: FittedBox(
                       child: Text(
-                        dateTime.onlyDateInString,
-                        textAlign: TextAlign.center,
+                        "Bestellnummer",
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ),
                   ),
-                ),
-                Expanded(
-                  child: ShaderMask(
-                    shaderCallback: (rect) {
-                      return const LinearGradient(
-                              colors: [Colors.black, Colors.grey],
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter)
-                          .createShader(Rect.fromLTRB(
-                              rect.left, rect.top, rect.right, rect.bottom));
-                    },
-                    child: Container(
-                      height: 50,
-                      decoration: BoxDecoration(
-                        border: const Border(
-                            bottom: BorderSide(), top: BorderSide()),
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: const Center(
-                        child: Text(
-                          'Gesamtpreis',
-                          textAlign: TextAlign.center,
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Container(
+                          height: 50,
+                          decoration: BoxDecoration(
+                            border: const Border(
+                                bottom: BorderSide(), top: BorderSide()),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Center(
+                            child: Text(
+                              dateTime.onlyDateInString,
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
                         ),
                       ),
+                      Expanded(
+                        child: ShaderMask(
+                          shaderCallback: (rect) {
+                            return const LinearGradient(
+                                    colors: [Colors.black, Colors.grey],
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter)
+                                .createShader(Rect.fromLTRB(rect.left, rect.top,
+                                    rect.right, rect.bottom));
+                          },
+                          child: Container(
+                            height: 50,
+                            decoration: BoxDecoration(
+                              border: const Border(
+                                  bottom: BorderSide(), top: BorderSide()),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: const Center(
+                              child: Text(
+                                'Gesamtpreis',
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 8.0),
+                    child: FittedBox(
+                      child: Text(
+                        "Bestellung wird bearbeitet",
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 8.0),
-              child: FittedBox(
-                child: Text(
-                  "Bestellung wird bearbeitet",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
+                ],
               ),
             ),
-          ],
-        ),
-      ),
-    );
+          );
+        });
   }
 
   @override
