@@ -12,21 +12,30 @@ class RequestPage extends StatelessWidget {
       children: [
         Align(
           alignment: Alignment.topCenter,
-          child: Padding(
-            padding: const EdgeInsets.only(top: 20.0),
-            child: Container(
-              height: MediaQuery.sizeOf(context).height * 0.04,
-              width: MediaQuery.sizeOf(context).width * 0.5,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: AppColors.orangeF6A440),
-              child: FittedBox(
-                child: Text(
-                  "Anfragen",
-                  style: AppTextStyle.colorWhiteSize20ShadowBlack,
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 20.0),
+                child: Container(
+                  height: MediaQuery.sizeOf(context).height * 0.04,
+                  width: MediaQuery.sizeOf(context).width * 0.5,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: AppColors.orangeF6A440),
+                  child: FittedBox(
+                    child: Text(
+                      "Anfragen",
+                      style: AppTextStyle.colorWhiteSize20ShadowBlack,
+                    ),
+                  ),
                 ),
               ),
-            ),
+              const SingleChildScrollView(
+                child: Column(
+                  children: [Text("test")],
+                ),
+              )
+            ],
           ),
         ),
         const DialogShoppingBasket()
