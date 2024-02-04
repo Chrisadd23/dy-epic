@@ -2,6 +2,7 @@ import 'package:app_flutter_produkt_bestellen/core/extension/date_time_extension
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text_style.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/cubit/order_cubit.dart';
+import 'package:app_flutter_produkt_bestellen/features/order/presentation/cubit/order_state.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/widget/shopping_basket_dialog.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/foundation.dart';
@@ -38,13 +39,24 @@ class OrderPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      _OrderInfoWidget(dateTime: dateTime),
-                    ],
-                  ),
-                )
+                BlocSelector<OrderCubit, OrderCustomerState, int>(
+                    selector: (state) => state.orderList.length,
+                    builder: (context, state) {
+                      return Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              left: 30.0, right: 30, bottom: 40),
+                          child: ClipRRect(
+                            borderRadius: const BorderRadius.vertical(
+                                bottom: Radius.circular(30)),
+                            child: ListView.builder(
+                                itemCount: state,
+                                itemBuilder: (context, state) =>
+                                    _OrderInfoWidget(dateTime: dateTime)),
+                          ),
+                        ),
+                      );
+                    })
               ],
             ),
           ),
@@ -64,81 +76,81 @@ class _OrderInfoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.sizeOf(context).width * 0.8,
-      decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all()),
-      child: Column(
-        children: [
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 8.0),
-            child: FittedBox(
-              child: Text(
-                "Bestellnummer",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-            ),
-          ),
-          Row(
-            children: [
-              Expanded(
-                child: Container(
-                  height: 50,
-                  decoration: BoxDecoration(
-                    border: const Border(
-                      right: BorderSide(),
-                      bottom: BorderSide(),
-                    ),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Center(
-                    child: Text(
-                      dateTime.onlyDateInString,
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 20.0),
+      child: Container(
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all()),
+        child: Column(
+          children: [
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 8.0),
+              child: FittedBox(
+                child: Text(
+                  "Bestellnummer",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
               ),
-              Expanded(
-                child: ShaderMask(
-                  shaderCallback: (rect) {
-                    return const LinearGradient(
-                            colors: [Colors.black, Colors.grey],
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter)
-                        .createShader(Rect.fromLTRB(
-                            rect.left, rect.top, rect.right, rect.bottom));
-                  },
+            ),
+            Row(
+              children: [
+                Expanded(
                   child: Container(
                     height: 50,
                     decoration: BoxDecoration(
-                      border: const Border(
-                          left: BorderSide(), bottom: BorderSide()),
+                      border:
+                          const Border(bottom: BorderSide(), top: BorderSide()),
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    child: const Center(
+                    child: Center(
                       child: Text(
-                        'Gesamtpreis',
+                        dateTime.onlyDateInString,
                         textAlign: TextAlign.center,
                       ),
                     ),
                   ),
                 ),
-              ),
-            ],
-          ),
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 8.0),
-            child: FittedBox(
-              child: Text(
-                "Bestellung wird bearbeitet",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                Expanded(
+                  child: ShaderMask(
+                    shaderCallback: (rect) {
+                      return const LinearGradient(
+                              colors: [Colors.black, Colors.grey],
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter)
+                          .createShader(Rect.fromLTRB(
+                              rect.left, rect.top, rect.right, rect.bottom));
+                    },
+                    child: Container(
+                      height: 50,
+                      decoration: BoxDecoration(
+                        border: const Border(
+                            bottom: BorderSide(), top: BorderSide()),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: const Center(
+                        child: Text(
+                          'Gesamtpreis',
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 8.0),
+              child: FittedBox(
+                child: Text(
+                  "Bestellung wird bearbeitet",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
