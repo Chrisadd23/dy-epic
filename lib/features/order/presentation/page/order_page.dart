@@ -57,7 +57,6 @@ class OrderPage extends StatelessWidget {
 
 class _OrderInfoWidget extends StatelessWidget {
   const _OrderInfoWidget({
-    super.key,
     required this.dateTime,
   });
 
