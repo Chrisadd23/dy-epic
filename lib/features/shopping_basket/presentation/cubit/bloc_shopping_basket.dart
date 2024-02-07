@@ -133,8 +133,6 @@ class BlocShoppingBasket
         .where("customerNumber", isEqualTo: customerNumber)
         .get();
 
-    final docId = querySnapshot.docs.length + 1;
-
     final orderList = chosenProductList
         .map((e) => {
               "count": e.count,
