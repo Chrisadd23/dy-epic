@@ -140,7 +140,8 @@ class BlocShoppingBasket
               "count": e.count,
               "price": e.entityProduct.price,
               "productNumber": e.productNumber,
-              "request": e.orderType == EnumOrderType.anfrage
+              "request": e.orderType == EnumOrderType.anfrage,
+              "productName": e.name,
             })
         .toList();
 

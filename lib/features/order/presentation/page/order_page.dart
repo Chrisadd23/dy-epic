@@ -1,6 +1,8 @@
 import 'package:app_flutter_produkt_bestellen/core/extension/date_time_extension.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text_style.dart';
+import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_cubit.dart';
+import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_state.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/cubit/order_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/cubit/order_state.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/widget/shopping_basket_dialog.dart';
@@ -15,8 +17,33 @@ class OrderPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dateTime = DateTime.now();
+    return BlocProvider<LoginCubit>.value(
+        value: getIt<LoginCubit>(),
+        child: BlocBuilder<LoginCubit, LoginState>(builder: (context, state) {
+          return _OrderBlocProvider(
+              dateTime: dateTime,
+              customerNumber: state.mapOrNull(
+                  loggedIn: (loggedIn) =>
+                      loggedIn.entityLoginCustomer.customerNumber));
+        }));
+  }
+}
+
+class _OrderBlocProvider extends StatelessWidget {
+  const _OrderBlocProvider({
+    super.key,
+    required this.dateTime,
+    this.customerNumber,
+  });
+
+  final DateTime dateTime;
+  final String? customerNumber;
+
+  @override
+  Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<OrderCubit>(),
+      create: (context) =>
+          getIt<OrderCubit>()..load(customerNumber: customerNumber),
       child: Stack(
         children: [
           Align(
@@ -39,8 +66,10 @@ class OrderPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                BlocSelector<OrderCubit, OrderCustomerState, int>(
-                    selector: (state) => state.orderList.length,
+                BlocSelector<OrderCubit, OrderCustomerState, int?>(
+                    selector: (state) => state.mapOrNull(
+                        success: (successState) =>
+                            successState.orderList.length),
                     builder: (context, state) {
                       return Expanded(
                         child: Padding(
@@ -50,7 +79,7 @@ class OrderPage extends StatelessWidget {
                             borderRadius: const BorderRadius.vertical(
                                 bottom: Radius.circular(30)),
                             child: ListView.builder(
-                                itemCount: state,
+                                itemCount: state ?? 0,
                                 itemBuilder: (context, index) =>
                                     _OrderInfoWidget(
                                       dateTime: dateTime,
@@ -81,9 +110,10 @@ class _OrderInfoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<OrderCubit, OrderCustomerState, Order>(
-        selector: (state) => state.orderList[index],
-        builder: (context, state) {
+    return BlocSelector<OrderCubit, OrderCustomerState, ProductOrder?>(
+        selector: (state) => state.mapOrNull(
+            success: (successState) => successState.orderList[index]),
+        builder: (context, order) {
           return Padding(
             padding: const EdgeInsets.only(bottom: 20.0),
             child: Container(

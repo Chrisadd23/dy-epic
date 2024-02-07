@@ -1,17 +1,23 @@
+import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'order_state.freezed.dart';
 
 @freezed
 class OrderCustomerState with _$OrderCustomerState {
-  const factory OrderCustomerState({
-    required List<Order> orderList,
-  }) = _OrderCustomerState;
+  const factory OrderCustomerState.loading() = _Loading;
+
+  const factory OrderCustomerState.success({
+    required List<ProductOrder> orderList,
+  }) = _Success;
+
+  const factory OrderCustomerState.failure({required Failure failure}) =
+      _Failure;
 }
 
 @freezed
-class Order with _$Order {
-  const factory Order({
+class ProductOrder with _$ProductOrder {
+  const factory ProductOrder({
     required String orderNumber,
     required double amount,
     required bool inWork,
@@ -19,7 +25,7 @@ class Order with _$Order {
     required bool canceledByAdmin,
     required bool canceledByCustomer,
     required List<ProductInformation> productInformationList,
-  }) = _Order;
+  }) = _ProductOrder;
 }
 
 @freezed

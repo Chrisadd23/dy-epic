@@ -16,10 +16,49 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$OrderCustomerState {
-  List<Order> get orderList => throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $OrderCustomerStateCopyWith<OrderCustomerState> get copyWith =>
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<ProductOrder> orderList) success,
+    required TResult Function(Failure failure) failure,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(List<ProductOrder> orderList)? success,
+    TResult? Function(Failure failure)? failure,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<ProductOrder> orderList)? success,
+    TResult Function(Failure failure)? failure,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Failure value) failure,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Failure value)? failure,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Failure value)? failure,
+    required TResult orElse(),
+  }) =>
       throw _privateConstructorUsedError;
 }
 
@@ -28,8 +67,6 @@ abstract class $OrderCustomerStateCopyWith<$Res> {
   factory $OrderCustomerStateCopyWith(
           OrderCustomerState value, $Res Function(OrderCustomerState) then) =
       _$OrderCustomerStateCopyWithImpl<$Res, OrderCustomerState>;
-  @useResult
-  $Res call({List<Order> orderList});
 }
 
 /// @nodoc
@@ -41,38 +78,131 @@ class _$OrderCustomerStateCopyWithImpl<$Res, $Val extends OrderCustomerState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+}
 
-  @pragma('vm:prefer-inline')
+/// @nodoc
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$OrderCustomerStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LoadingImpl implements _Loading {
+  const _$LoadingImpl();
+
   @override
-  $Res call({
-    Object? orderList = null,
+  String toString() {
+    return 'OrderCustomerState.loading()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<ProductOrder> orderList) success,
+    required TResult Function(Failure failure) failure,
   }) {
-    return _then(_value.copyWith(
-      orderList: null == orderList
-          ? _value.orderList
-          : orderList // ignore: cast_nullable_to_non_nullable
-              as List<Order>,
-    ) as $Val);
+    return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(List<ProductOrder> orderList)? success,
+    TResult? Function(Failure failure)? failure,
+  }) {
+    return loading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<ProductOrder> orderList)? success,
+    TResult Function(Failure failure)? failure,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Failure value) failure,
+  }) {
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Failure value)? failure,
+  }) {
+    return loading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Failure value)? failure,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
   }
 }
 
-/// @nodoc
-abstract class _$$OrderCustomerStateImplCopyWith<$Res>
-    implements $OrderCustomerStateCopyWith<$Res> {
-  factory _$$OrderCustomerStateImplCopyWith(_$OrderCustomerStateImpl value,
-          $Res Function(_$OrderCustomerStateImpl) then) =
-      __$$OrderCustomerStateImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({List<Order> orderList});
+abstract class _Loading implements OrderCustomerState {
+  const factory _Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
-class __$$OrderCustomerStateImplCopyWithImpl<$Res>
-    extends _$OrderCustomerStateCopyWithImpl<$Res, _$OrderCustomerStateImpl>
-    implements _$$OrderCustomerStateImplCopyWith<$Res> {
-  __$$OrderCustomerStateImplCopyWithImpl(_$OrderCustomerStateImpl _value,
-      $Res Function(_$OrderCustomerStateImpl) _then)
+abstract class _$$SuccessImplCopyWith<$Res> {
+  factory _$$SuccessImplCopyWith(
+          _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
+      __$$SuccessImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<ProductOrder> orderList});
+}
+
+/// @nodoc
+class __$$SuccessImplCopyWithImpl<$Res>
+    extends _$OrderCustomerStateCopyWithImpl<$Res, _$SuccessImpl>
+    implements _$$SuccessImplCopyWith<$Res> {
+  __$$SuccessImplCopyWithImpl(
+      _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -80,24 +210,24 @@ class __$$OrderCustomerStateImplCopyWithImpl<$Res>
   $Res call({
     Object? orderList = null,
   }) {
-    return _then(_$OrderCustomerStateImpl(
+    return _then(_$SuccessImpl(
       orderList: null == orderList
           ? _value._orderList
           : orderList // ignore: cast_nullable_to_non_nullable
-              as List<Order>,
+              as List<ProductOrder>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$OrderCustomerStateImpl implements _OrderCustomerState {
-  const _$OrderCustomerStateImpl({required final List<Order> orderList})
+class _$SuccessImpl implements _Success {
+  const _$SuccessImpl({required final List<ProductOrder> orderList})
       : _orderList = orderList;
 
-  final List<Order> _orderList;
+  final List<ProductOrder> _orderList;
   @override
-  List<Order> get orderList {
+  List<ProductOrder> get orderList {
     if (_orderList is EqualUnmodifiableListView) return _orderList;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_orderList);
@@ -105,14 +235,14 @@ class _$OrderCustomerStateImpl implements _OrderCustomerState {
 
   @override
   String toString() {
-    return 'OrderCustomerState(orderList: $orderList)';
+    return 'OrderCustomerState.success(orderList: $orderList)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$OrderCustomerStateImpl &&
+            other is _$SuccessImpl &&
             const DeepCollectionEquality()
                 .equals(other._orderList, _orderList));
   }
@@ -124,25 +254,239 @@ class _$OrderCustomerStateImpl implements _OrderCustomerState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$OrderCustomerStateImplCopyWith<_$OrderCustomerStateImpl> get copyWith =>
-      __$$OrderCustomerStateImplCopyWithImpl<_$OrderCustomerStateImpl>(
-          this, _$identity);
+  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
+      __$$SuccessImplCopyWithImpl<_$SuccessImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<ProductOrder> orderList) success,
+    required TResult Function(Failure failure) failure,
+  }) {
+    return success(orderList);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(List<ProductOrder> orderList)? success,
+    TResult? Function(Failure failure)? failure,
+  }) {
+    return success?.call(orderList);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<ProductOrder> orderList)? success,
+    TResult Function(Failure failure)? failure,
+    required TResult orElse(),
+  }) {
+    if (success != null) {
+      return success(orderList);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Failure value) failure,
+  }) {
+    return success(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Failure value)? failure,
+  }) {
+    return success?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Failure value)? failure,
+    required TResult orElse(),
+  }) {
+    if (success != null) {
+      return success(this);
+    }
+    return orElse();
+  }
 }
 
-abstract class _OrderCustomerState implements OrderCustomerState {
-  const factory _OrderCustomerState({required final List<Order> orderList}) =
-      _$OrderCustomerStateImpl;
+abstract class _Success implements OrderCustomerState {
+  const factory _Success({required final List<ProductOrder> orderList}) =
+      _$SuccessImpl;
 
-  @override
-  List<Order> get orderList;
-  @override
+  List<ProductOrder> get orderList;
   @JsonKey(ignore: true)
-  _$$OrderCustomerStateImplCopyWith<_$OrderCustomerStateImpl> get copyWith =>
+  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$Order {
+abstract class _$$FailureImplCopyWith<$Res> {
+  factory _$$FailureImplCopyWith(
+          _$FailureImpl value, $Res Function(_$FailureImpl) then) =
+      __$$FailureImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Failure failure});
+
+  $FailureCopyWith<$Res> get failure;
+}
+
+/// @nodoc
+class __$$FailureImplCopyWithImpl<$Res>
+    extends _$OrderCustomerStateCopyWithImpl<$Res, _$FailureImpl>
+    implements _$$FailureImplCopyWith<$Res> {
+  __$$FailureImplCopyWithImpl(
+      _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? failure = null,
+  }) {
+    return _then(_$FailureImpl(
+      failure: null == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as Failure,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $FailureCopyWith<$Res> get failure {
+    return $FailureCopyWith<$Res>(_value.failure, (value) {
+      return _then(_value.copyWith(failure: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$FailureImpl implements _Failure {
+  const _$FailureImpl({required this.failure});
+
+  @override
+  final Failure failure;
+
+  @override
+  String toString() {
+    return 'OrderCustomerState.failure(failure: $failure)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FailureImpl &&
+            (identical(other.failure, failure) || other.failure == failure));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, failure);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
+      __$$FailureImplCopyWithImpl<_$FailureImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<ProductOrder> orderList) success,
+    required TResult Function(Failure failure) failure,
+  }) {
+    return failure(this.failure);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(List<ProductOrder> orderList)? success,
+    TResult? Function(Failure failure)? failure,
+  }) {
+    return failure?.call(this.failure);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<ProductOrder> orderList)? success,
+    TResult Function(Failure failure)? failure,
+    required TResult orElse(),
+  }) {
+    if (failure != null) {
+      return failure(this.failure);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Failure value) failure,
+  }) {
+    return failure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Failure value)? failure,
+  }) {
+    return failure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Failure value)? failure,
+    required TResult orElse(),
+  }) {
+    if (failure != null) {
+      return failure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Failure implements OrderCustomerState {
+  const factory _Failure({required final Failure failure}) = _$FailureImpl;
+
+  Failure get failure;
+  @JsonKey(ignore: true)
+  _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$ProductOrder {
   String get orderNumber => throw _privateConstructorUsedError;
   double get amount => throw _privateConstructorUsedError;
   bool get inWork => throw _privateConstructorUsedError;
@@ -153,13 +497,15 @@ mixin _$Order {
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $OrderCopyWith<Order> get copyWith => throw _privateConstructorUsedError;
+  $ProductOrderCopyWith<ProductOrder> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $OrderCopyWith<$Res> {
-  factory $OrderCopyWith(Order value, $Res Function(Order) then) =
-      _$OrderCopyWithImpl<$Res, Order>;
+abstract class $ProductOrderCopyWith<$Res> {
+  factory $ProductOrderCopyWith(
+          ProductOrder value, $Res Function(ProductOrder) then) =
+      _$ProductOrderCopyWithImpl<$Res, ProductOrder>;
   @useResult
   $Res call(
       {String orderNumber,
@@ -172,9 +518,9 @@ abstract class $OrderCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$OrderCopyWithImpl<$Res, $Val extends Order>
-    implements $OrderCopyWith<$Res> {
-  _$OrderCopyWithImpl(this._value, this._then);
+class _$ProductOrderCopyWithImpl<$Res, $Val extends ProductOrder>
+    implements $ProductOrderCopyWith<$Res> {
+  _$ProductOrderCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -226,10 +572,11 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
 }
 
 /// @nodoc
-abstract class _$$OrderImplCopyWith<$Res> implements $OrderCopyWith<$Res> {
-  factory _$$OrderImplCopyWith(
-          _$OrderImpl value, $Res Function(_$OrderImpl) then) =
-      __$$OrderImplCopyWithImpl<$Res>;
+abstract class _$$ProductOrderImplCopyWith<$Res>
+    implements $ProductOrderCopyWith<$Res> {
+  factory _$$ProductOrderImplCopyWith(
+          _$ProductOrderImpl value, $Res Function(_$ProductOrderImpl) then) =
+      __$$ProductOrderImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -243,11 +590,11 @@ abstract class _$$OrderImplCopyWith<$Res> implements $OrderCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$OrderImplCopyWithImpl<$Res>
-    extends _$OrderCopyWithImpl<$Res, _$OrderImpl>
-    implements _$$OrderImplCopyWith<$Res> {
-  __$$OrderImplCopyWithImpl(
-      _$OrderImpl _value, $Res Function(_$OrderImpl) _then)
+class __$$ProductOrderImplCopyWithImpl<$Res>
+    extends _$ProductOrderCopyWithImpl<$Res, _$ProductOrderImpl>
+    implements _$$ProductOrderImplCopyWith<$Res> {
+  __$$ProductOrderImplCopyWithImpl(
+      _$ProductOrderImpl _value, $Res Function(_$ProductOrderImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -261,7 +608,7 @@ class __$$OrderImplCopyWithImpl<$Res>
     Object? canceledByCustomer = null,
     Object? productInformationList = null,
   }) {
-    return _then(_$OrderImpl(
+    return _then(_$ProductOrderImpl(
       orderNumber: null == orderNumber
           ? _value.orderNumber
           : orderNumber // ignore: cast_nullable_to_non_nullable
@@ -296,8 +643,8 @@ class __$$OrderImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$OrderImpl implements _Order {
-  const _$OrderImpl(
+class _$ProductOrderImpl implements _ProductOrder {
+  const _$ProductOrderImpl(
       {required this.orderNumber,
       required this.amount,
       required this.inWork,
@@ -330,14 +677,14 @@ class _$OrderImpl implements _Order {
 
   @override
   String toString() {
-    return 'Order(orderNumber: $orderNumber, amount: $amount, inWork: $inWork, finished: $finished, canceledByAdmin: $canceledByAdmin, canceledByCustomer: $canceledByCustomer, productInformationList: $productInformationList)';
+    return 'ProductOrder(orderNumber: $orderNumber, amount: $amount, inWork: $inWork, finished: $finished, canceledByAdmin: $canceledByAdmin, canceledByCustomer: $canceledByCustomer, productInformationList: $productInformationList)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$OrderImpl &&
+            other is _$ProductOrderImpl &&
             (identical(other.orderNumber, orderNumber) ||
                 other.orderNumber == orderNumber) &&
             (identical(other.amount, amount) || other.amount == amount) &&
@@ -366,12 +713,12 @@ class _$OrderImpl implements _Order {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$OrderImplCopyWith<_$OrderImpl> get copyWith =>
-      __$$OrderImplCopyWithImpl<_$OrderImpl>(this, _$identity);
+  _$$ProductOrderImplCopyWith<_$ProductOrderImpl> get copyWith =>
+      __$$ProductOrderImplCopyWithImpl<_$ProductOrderImpl>(this, _$identity);
 }
 
-abstract class _Order implements Order {
-  const factory _Order(
+abstract class _ProductOrder implements ProductOrder {
+  const factory _ProductOrder(
           {required final String orderNumber,
           required final double amount,
           required final bool inWork,
@@ -379,7 +726,7 @@ abstract class _Order implements Order {
           required final bool canceledByAdmin,
           required final bool canceledByCustomer,
           required final List<ProductInformation> productInformationList}) =
-      _$OrderImpl;
+      _$ProductOrderImpl;
 
   @override
   String get orderNumber;
@@ -397,7 +744,7 @@ abstract class _Order implements Order {
   List<ProductInformation> get productInformationList;
   @override
   @JsonKey(ignore: true)
-  _$$OrderImplCopyWith<_$OrderImpl> get copyWith =>
+  _$$ProductOrderImplCopyWith<_$ProductOrderImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
