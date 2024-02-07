@@ -31,7 +31,6 @@ class OrderPage extends StatelessWidget {
 
 class _OrderBlocProvider extends StatelessWidget {
   const _OrderBlocProvider({
-    super.key,
     required this.dateTime,
     this.customerNumber,
   });
@@ -96,6 +95,31 @@ class _OrderBlocProvider extends StatelessWidget {
         ],
       ),
     );
+  }
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty<DateTime>('dateTime', dateTime));
+  }
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(StringProperty('customerNumber', customerNumber));
+  }
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(StringProperty('customerNumber', customerNumber));
+  }
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(StringProperty('customerNumber', customerNumber));
+  }
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(StringProperty('customerNumber', customerNumber));
   }
 }
 
