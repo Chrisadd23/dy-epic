@@ -128,11 +128,6 @@ class BlocShoppingBasket
         loggedIn: (stateLoggedIn) =>
             stateLoggedIn.entityLoginCustomer.customerNumber);
 
-    final querySnapshot = await FirebaseFirestore.instance
-        .collection("Order")
-        .where("customerNumber", isEqualTo: customerNumber)
-        .get();
-
     final orderList = chosenProductList
         .map((e) => {
               "count": e.count,
