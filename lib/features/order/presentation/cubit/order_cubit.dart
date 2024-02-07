@@ -28,10 +28,10 @@ class OrderCubit extends Cubit<OrderCustomerState> {
 
     if (customerNumber != null) {
       final collectionStream = FirebaseFirestore.instance.collection('Order');
-      final query =
-          collectionStream.where('customerNumber', isEqualTo: customerNumber);
+      final query = collectionStream
+          .where('customerNumber', isEqualTo: customerNumber)
+          .where('inWork', isEqualTo: true);
       query.snapshots().listen((docSnapshot) {
-        debugPrint("docSnapshot ==> 500");
         final orderList = docSnapshot.docs.map((e) {
           final orderMap = e.data();
           return ProductOrder(
@@ -52,7 +52,6 @@ class OrderCubit extends Cubit<OrderCustomerState> {
   }
 
   List<ProductInformation> _getListProductInformation(orderMap) {
-    debugPrint("orderMap ==> $orderMap");
     final List<ProductInformation> orderList =
         orderMap.map<ProductInformation>((order) {
       debugPrint("order ==> $order");
