@@ -24,6 +24,7 @@ class ProductOrder with _$ProductOrder {
     required bool finished,
     required bool canceledByAdmin,
     required bool canceledByCustomer,
+    required DateTime date,
     required List<ProductInformation> productInformationList,
   }) = _ProductOrder;
 }

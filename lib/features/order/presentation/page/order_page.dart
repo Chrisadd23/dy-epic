@@ -1,6 +1,7 @@
 import 'package:app_flutter_produkt_bestellen/core/extension/date_time_extension.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text_style.dart';
+import 'package:app_flutter_produkt_bestellen/core/fix_widgets/loading_widget.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_state.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/cubit/order_cubit.dart';
@@ -10,18 +11,17 @@ import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 
 class OrderPage extends StatelessWidget {
   const OrderPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final dateTime = DateTime.now();
     return BlocProvider<LoginCubit>.value(
         value: getIt<LoginCubit>(),
         child: BlocBuilder<LoginCubit, LoginState>(builder: (context, state) {
           return _OrderBlocProvider(
-              dateTime: dateTime,
               customerNumber: state.mapOrNull(
                   loggedIn: (loggedIn) =>
                       loggedIn.entityLoginCustomer.customerNumber));
@@ -31,11 +31,9 @@ class OrderPage extends StatelessWidget {
 
 class _OrderBlocProvider extends StatelessWidget {
   const _OrderBlocProvider({
-    required this.dateTime,
     this.customerNumber,
   });
 
-  final DateTime dateTime;
   final String? customerNumber;
 
   @override
@@ -65,10 +63,10 @@ class _OrderBlocProvider extends StatelessWidget {
                     ),
                   ),
                 ),
-                BlocSelector<OrderCubit, OrderCustomerState, int?>(
+                BlocSelector<OrderCubit, OrderCustomerState,
+                        List<ProductOrder>?>(
                     selector: (state) => state.mapOrNull(
-                        success: (successState) =>
-                            successState.orderList.length),
+                        success: (successState) => successState.orderList),
                     builder: (context, state) {
                       return Expanded(
                         child: Padding(
@@ -77,13 +75,15 @@ class _OrderBlocProvider extends StatelessWidget {
                           child: ClipRRect(
                             borderRadius: const BorderRadius.vertical(
                                 bottom: Radius.circular(30)),
-                            child: ListView.builder(
-                                itemCount: state ?? 0,
-                                itemBuilder: (context, index) =>
-                                    _OrderInfoWidget(
-                                      dateTime: dateTime,
-                                      index: index,
-                                    )),
+                            child: state == null
+                                ? const LoadingWidget()
+                                : ListView.builder(
+                                    itemCount: state.length,
+                                    itemBuilder: (context, index) =>
+                                        _OrderInfoWidget(
+                                          dateTime: state[index].date,
+                                          index: index,
+                                        )),
                           ),
                         ),
                       );
@@ -96,26 +96,7 @@ class _OrderBlocProvider extends StatelessWidget {
       ),
     );
   }
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<DateTime>('dateTime', dateTime));
-  }
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(StringProperty('customerNumber', customerNumber));
-  }
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(StringProperty('customerNumber', customerNumber));
-  }
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(StringProperty('customerNumber', customerNumber));
-  }
+
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
@@ -147,12 +128,12 @@ class _OrderInfoWidget extends StatelessWidget {
                   border: Border.all()),
               child: Column(
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 8.0),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
                     child: FittedBox(
                       child: Text(
-                        "Bestellnummer",
-                        style: TextStyle(
+                        order!.orderNumber,
+                        style: const TextStyle(
                             fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -192,9 +173,13 @@ class _OrderInfoWidget extends StatelessWidget {
                                   bottom: BorderSide(), top: BorderSide()),
                               borderRadius: BorderRadius.circular(20),
                             ),
-                            child: const Center(
+                            child: Center(
                               child: Text(
-                                'Gesamtpreis',
+                                NumberFormat.currency(
+                                        locale: 'de_DE',
+                                        symbol: '€',
+                                        decimalDigits: 2)
+                                    .format(order.amount),
                                 textAlign: TextAlign.center,
                               ),
                             ),

@@ -145,7 +145,9 @@ class BlocShoppingBasket
             })
         .toList();
 
-    final orderID = '${customerNumber}_$docId';
+    var timestamp = DateTime.now().millisecondsSinceEpoch;
+
+    final orderID = "$timestamp-$customerNumber";
     final date = Timestamp.fromDate(dateTime);
 
     final json = {

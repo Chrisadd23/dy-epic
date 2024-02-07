@@ -493,6 +493,7 @@ mixin _$ProductOrder {
   bool get finished => throw _privateConstructorUsedError;
   bool get canceledByAdmin => throw _privateConstructorUsedError;
   bool get canceledByCustomer => throw _privateConstructorUsedError;
+  DateTime get date => throw _privateConstructorUsedError;
   List<ProductInformation> get productInformationList =>
       throw _privateConstructorUsedError;
 
@@ -514,6 +515,7 @@ abstract class $ProductOrderCopyWith<$Res> {
       bool finished,
       bool canceledByAdmin,
       bool canceledByCustomer,
+      DateTime date,
       List<ProductInformation> productInformationList});
 }
 
@@ -536,6 +538,7 @@ class _$ProductOrderCopyWithImpl<$Res, $Val extends ProductOrder>
     Object? finished = null,
     Object? canceledByAdmin = null,
     Object? canceledByCustomer = null,
+    Object? date = null,
     Object? productInformationList = null,
   }) {
     return _then(_value.copyWith(
@@ -563,6 +566,10 @@ class _$ProductOrderCopyWithImpl<$Res, $Val extends ProductOrder>
           ? _value.canceledByCustomer
           : canceledByCustomer // ignore: cast_nullable_to_non_nullable
               as bool,
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       productInformationList: null == productInformationList
           ? _value.productInformationList
           : productInformationList // ignore: cast_nullable_to_non_nullable
@@ -586,6 +593,7 @@ abstract class _$$ProductOrderImplCopyWith<$Res>
       bool finished,
       bool canceledByAdmin,
       bool canceledByCustomer,
+      DateTime date,
       List<ProductInformation> productInformationList});
 }
 
@@ -606,6 +614,7 @@ class __$$ProductOrderImplCopyWithImpl<$Res>
     Object? finished = null,
     Object? canceledByAdmin = null,
     Object? canceledByCustomer = null,
+    Object? date = null,
     Object? productInformationList = null,
   }) {
     return _then(_$ProductOrderImpl(
@@ -633,6 +642,10 @@ class __$$ProductOrderImplCopyWithImpl<$Res>
           ? _value.canceledByCustomer
           : canceledByCustomer // ignore: cast_nullable_to_non_nullable
               as bool,
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       productInformationList: null == productInformationList
           ? _value._productInformationList
           : productInformationList // ignore: cast_nullable_to_non_nullable
@@ -651,6 +664,7 @@ class _$ProductOrderImpl implements _ProductOrder {
       required this.finished,
       required this.canceledByAdmin,
       required this.canceledByCustomer,
+      required this.date,
       required final List<ProductInformation> productInformationList})
       : _productInformationList = productInformationList;
 
@@ -666,6 +680,8 @@ class _$ProductOrderImpl implements _ProductOrder {
   final bool canceledByAdmin;
   @override
   final bool canceledByCustomer;
+  @override
+  final DateTime date;
   final List<ProductInformation> _productInformationList;
   @override
   List<ProductInformation> get productInformationList {
@@ -677,7 +693,7 @@ class _$ProductOrderImpl implements _ProductOrder {
 
   @override
   String toString() {
-    return 'ProductOrder(orderNumber: $orderNumber, amount: $amount, inWork: $inWork, finished: $finished, canceledByAdmin: $canceledByAdmin, canceledByCustomer: $canceledByCustomer, productInformationList: $productInformationList)';
+    return 'ProductOrder(orderNumber: $orderNumber, amount: $amount, inWork: $inWork, finished: $finished, canceledByAdmin: $canceledByAdmin, canceledByCustomer: $canceledByCustomer, date: $date, productInformationList: $productInformationList)';
   }
 
   @override
@@ -695,6 +711,7 @@ class _$ProductOrderImpl implements _ProductOrder {
                 other.canceledByAdmin == canceledByAdmin) &&
             (identical(other.canceledByCustomer, canceledByCustomer) ||
                 other.canceledByCustomer == canceledByCustomer) &&
+            (identical(other.date, date) || other.date == date) &&
             const DeepCollectionEquality().equals(
                 other._productInformationList, _productInformationList));
   }
@@ -708,6 +725,7 @@ class _$ProductOrderImpl implements _ProductOrder {
       finished,
       canceledByAdmin,
       canceledByCustomer,
+      date,
       const DeepCollectionEquality().hash(_productInformationList));
 
   @JsonKey(ignore: true)
@@ -725,6 +743,7 @@ abstract class _ProductOrder implements ProductOrder {
           required final bool finished,
           required final bool canceledByAdmin,
           required final bool canceledByCustomer,
+          required final DateTime date,
           required final List<ProductInformation> productInformationList}) =
       _$ProductOrderImpl;
 
@@ -740,6 +759,8 @@ abstract class _ProductOrder implements ProductOrder {
   bool get canceledByAdmin;
   @override
   bool get canceledByCustomer;
+  @override
+  DateTime get date;
   @override
   List<ProductInformation> get productInformationList;
   @override

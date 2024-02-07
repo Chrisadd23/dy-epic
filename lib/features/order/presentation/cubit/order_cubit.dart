@@ -43,6 +43,7 @@ class OrderCubit extends Cubit<OrderCustomerState> {
             canceledByCustomer: orderMap['canceledByCustomer'],
             productInformationList:
                 _getListProductInformation(orderMap['orderList']),
+            date: (orderMap['date'] as Timestamp).toDate(),
           );
         }).toList();
         emit(OrderCustomerState.success(orderList: orderList));
