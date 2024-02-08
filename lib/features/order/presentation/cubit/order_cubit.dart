@@ -1,3 +1,4 @@
+import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/cubit/order_state.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
@@ -27,27 +28,32 @@ class OrderCubit extends Cubit<OrderCustomerState> {
     }
 
     if (customerNumber != null) {
-      final collectionStream = FirebaseFirestore.instance.collection('Order');
-      final query = collectionStream
-          .where('customerNumber', isEqualTo: customerNumber)
-          .where('inWork', isEqualTo: true);
-      query.snapshots().listen((docSnapshot) {
-        final orderList = docSnapshot.docs.map((e) {
-          final orderMap = e.data();
-          return ProductOrder(
-            orderNumber: orderMap['order_id'],
-            amount: double.parse(orderMap['amount'].toString()),
-            inWork: orderMap['inWork'],
-            finished: orderMap['finished'],
-            canceledByAdmin: orderMap['canceledByAdmin'],
-            canceledByCustomer: orderMap['canceledByCustomer'],
-            productInformationList:
-                _getListProductInformation(orderMap['orderList']),
-            date: (orderMap['date'] as Timestamp).toDate(),
-          );
-        }).toList();
-        emit(OrderCustomerState.success(orderList: orderList));
-      });
+      try {
+        final collectionStream = FirebaseFirestore.instance.collection('Order');
+        final query = collectionStream
+            .where('customerNumber', isEqualTo: customerNumber)
+            .where('inWork', isEqualTo: true);
+        query.snapshots().listen((docSnapshot) {
+          final orderList = docSnapshot.docs.map((e) {
+            final orderMap = e.data();
+            return ProductOrder(
+              orderNumber: orderMap['order_id'],
+              amount: double.parse(orderMap['amount'].toString()),
+              inWork: orderMap['inWork'],
+              finished: orderMap['finished'],
+              canceledByAdmin: orderMap['canceledByAdmin'],
+              canceledByCustomer: orderMap['canceledByCustomer'],
+              productInformationList:
+                  _getListProductInformation(orderMap['orderList']),
+              date: (orderMap['date'] as Timestamp).toDate(),
+            );
+          }).toList();
+          emit(OrderCustomerState.success(orderList: orderList));
+        });
+      } catch (error) {
+        emit(OrderCustomerState.failure(
+            failure: Failure.databaseError(error.toString())));
+      }
     }
   }
 

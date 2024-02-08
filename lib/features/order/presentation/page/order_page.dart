@@ -1,6 +1,7 @@
 import 'package:app_flutter_produkt_bestellen/core/extension/date_time_extension.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text_style.dart';
+import 'package:app_flutter_produkt_bestellen/core/fix_widgets/failure_widget.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_widgets/loading_widget.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_state.dart';
@@ -63,31 +64,33 @@ class _OrderBlocProvider extends StatelessWidget {
                     ),
                   ),
                 ),
-                BlocSelector<OrderCubit, OrderCustomerState,
-                        List<ProductOrder>?>(
-                    selector: (state) => state.mapOrNull(
-                        success: (successState) => successState.orderList),
-                    builder: (context, state) {
-                      return Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              left: 30.0, right: 30, bottom: 40),
-                          child: ClipRRect(
-                            borderRadius: const BorderRadius.vertical(
-                                bottom: Radius.circular(30)),
-                            child: state == null
-                                ? const LoadingWidget()
-                                : ListView.builder(
-                                    itemCount: state.length,
+                BlocBuilder<OrderCubit, OrderCustomerState>(
+                  builder: (context, state) => state.map(
+                      failure: (failureState) => FailureWidget(
+                          failure: failureState.failure.when(
+                              message: (message) => message ?? '',
+                              databaseError: (databaseError) =>
+                                  databaseError ?? '')),
+                      loading: (loadingState) => const LoadingWidget(),
+                      success: (successState) => Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 30.0, right: 30, bottom: 40),
+                              child: ClipRRect(
+                                borderRadius: const BorderRadius.vertical(
+                                    bottom: Radius.circular(30)),
+                                child: ListView.builder(
+                                    itemCount: successState.orderList.length,
                                     itemBuilder: (context, index) =>
                                         _OrderInfoWidget(
                                           index: index,
-                                          productOrder: state[index],
+                                          productOrder:
+                                              successState.orderList[index],
                                         )),
-                          ),
-                        ),
-                      );
-                    })
+                              ),
+                            ),
+                          )),
+                )
               ],
             ),
           ),
