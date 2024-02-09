@@ -28,7 +28,7 @@ class ShoppingBasketDataSourceImplementation extends ShoppingBasketDataSource {
       if (orderList.isNotEmpty) {
         final collection = _firebaseFirestore
             .collection("OrderList")
-            .doc()
+            .doc('8ZwDCBhDGrOMF8w7wS7Y')
             .collection('order');
         await collection.add(order['order']).then(
               (value) => true,
@@ -42,7 +42,7 @@ class ShoppingBasketDataSourceImplementation extends ShoppingBasketDataSource {
       if (requestList.isNotEmpty) {
         final collection = _firebaseFirestore
             .collection("OrderList")
-            .doc()
+            .doc('4uKusyoOb8xNXsSwn6KX')
             .collection('request');
         await collection.add(order['request']).then(
               (value) => true,
