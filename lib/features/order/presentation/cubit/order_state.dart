@@ -8,7 +8,7 @@ class OrderCustomerState with _$OrderCustomerState {
   const factory OrderCustomerState.loading() = _Loading;
 
   const factory OrderCustomerState.success({
-    required List<ProductOrder> orderList,
+    required List<ProductOrder>? orderList,
   }) = _Success;
 
   const factory OrderCustomerState.failure({required Failure failure}) =
@@ -32,7 +32,6 @@ class ProductOrder with _$ProductOrder {
 @freezed
 class ProductInformation with _$ProductInformation {
   const factory ProductInformation({
-    required bool request,
     required int count,
     required double price,
     required String productNumber,

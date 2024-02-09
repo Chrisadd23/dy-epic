@@ -129,11 +129,23 @@ class BlocShoppingBasket
             stateLoggedIn.entityLoginCustomer.customerNumber);
 
     final orderList = chosenProductList
+        .where((element) => element.orderType == EnumOrderType.bestellung)
+        .toList()
         .map((e) => {
               "count": e.count,
               "price": e.entityProduct.price,
               "productNumber": e.productNumber,
-              "request": e.orderType == EnumOrderType.anfrage,
+              "productName": e.name,
+            })
+        .toList();
+
+    final requestList = chosenProductList
+        .where((element) => element.orderType == EnumOrderType.anfrage)
+        .toList()
+        .map((e) => {
+              "count": e.count,
+              "price": e.entityProduct.price,
+              "productNumber": e.productNumber,
               "productName": e.name,
             })
         .toList();
@@ -141,18 +153,33 @@ class BlocShoppingBasket
     var timestamp = DateTime.now().millisecondsSinceEpoch;
 
     final orderID = "$timestamp-$customerNumber";
+    final requestID =
+        "${timestamp.toString().split('').reversed.join('')}-$customerNumber";
     final date = Timestamp.fromDate(dateTime);
 
     final json = {
-      "order_id": orderID,
-      "customerNumber": customerNumber,
-      "amount": amount,
-      "canceledByAdmin": false,
-      "canceledByCustomer": false,
-      "date": date,
-      "finished": false,
-      "inWork": true,
-      "orderList": orderList
+      "order": {
+        "order_id": orderID,
+        "customerNumber": customerNumber,
+        "amount": amount,
+        "canceledByAdmin": false,
+        "canceledByCustomer": false,
+        "date": date,
+        "finished": false,
+        "inWork": true,
+        "orderList": orderList
+      },
+      "request": {
+        "request_id": requestID,
+        "customerNumber": customerNumber,
+        "amount": amount,
+        "canceledByAdmin": false,
+        "canceledByCustomer": false,
+        "date": date,
+        "finished": false,
+        "inWork": true,
+        "requestList": requestList
+      },
     };
 
     return json;

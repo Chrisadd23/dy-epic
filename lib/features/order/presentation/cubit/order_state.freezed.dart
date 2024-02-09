@@ -19,21 +19,21 @@ mixin _$OrderCustomerState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<ProductOrder> orderList) success,
+    required TResult Function(List<ProductOrder>? orderList) success,
     required TResult Function(Failure failure) failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<ProductOrder> orderList)? success,
+    TResult? Function(List<ProductOrder>? orderList)? success,
     TResult? Function(Failure failure)? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<ProductOrder> orderList)? success,
+    TResult Function(List<ProductOrder>? orderList)? success,
     TResult Function(Failure failure)? failure,
     required TResult orElse(),
   }) =>
@@ -119,7 +119,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<ProductOrder> orderList) success,
+    required TResult Function(List<ProductOrder>? orderList) success,
     required TResult Function(Failure failure) failure,
   }) {
     return loading();
@@ -129,7 +129,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<ProductOrder> orderList)? success,
+    TResult? Function(List<ProductOrder>? orderList)? success,
     TResult? Function(Failure failure)? failure,
   }) {
     return loading?.call();
@@ -139,7 +139,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<ProductOrder> orderList)? success,
+    TResult Function(List<ProductOrder>? orderList)? success,
     TResult Function(Failure failure)? failure,
     required TResult orElse(),
   }) {
@@ -194,7 +194,7 @@ abstract class _$$SuccessImplCopyWith<$Res> {
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<ProductOrder> orderList});
+  $Res call({List<ProductOrder>? orderList});
 }
 
 /// @nodoc
@@ -208,13 +208,13 @@ class __$$SuccessImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? orderList = null,
+    Object? orderList = freezed,
   }) {
     return _then(_$SuccessImpl(
-      orderList: null == orderList
+      orderList: freezed == orderList
           ? _value._orderList
           : orderList // ignore: cast_nullable_to_non_nullable
-              as List<ProductOrder>,
+              as List<ProductOrder>?,
     ));
   }
 }
@@ -222,15 +222,17 @@ class __$$SuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SuccessImpl implements _Success {
-  const _$SuccessImpl({required final List<ProductOrder> orderList})
+  const _$SuccessImpl({required final List<ProductOrder>? orderList})
       : _orderList = orderList;
 
-  final List<ProductOrder> _orderList;
+  final List<ProductOrder>? _orderList;
   @override
-  List<ProductOrder> get orderList {
+  List<ProductOrder>? get orderList {
+    final value = _orderList;
+    if (value == null) return null;
     if (_orderList is EqualUnmodifiableListView) return _orderList;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_orderList);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
@@ -261,7 +263,7 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<ProductOrder> orderList) success,
+    required TResult Function(List<ProductOrder>? orderList) success,
     required TResult Function(Failure failure) failure,
   }) {
     return success(orderList);
@@ -271,7 +273,7 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<ProductOrder> orderList)? success,
+    TResult? Function(List<ProductOrder>? orderList)? success,
     TResult? Function(Failure failure)? failure,
   }) {
     return success?.call(orderList);
@@ -281,7 +283,7 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<ProductOrder> orderList)? success,
+    TResult Function(List<ProductOrder>? orderList)? success,
     TResult Function(Failure failure)? failure,
     required TResult orElse(),
   }) {
@@ -327,10 +329,10 @@ class _$SuccessImpl implements _Success {
 }
 
 abstract class _Success implements OrderCustomerState {
-  const factory _Success({required final List<ProductOrder> orderList}) =
+  const factory _Success({required final List<ProductOrder>? orderList}) =
       _$SuccessImpl;
 
-  List<ProductOrder> get orderList;
+  List<ProductOrder>? get orderList;
   @JsonKey(ignore: true)
   _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -411,7 +413,7 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<ProductOrder> orderList) success,
+    required TResult Function(List<ProductOrder>? orderList) success,
     required TResult Function(Failure failure) failure,
   }) {
     return failure(this.failure);
@@ -421,7 +423,7 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<ProductOrder> orderList)? success,
+    TResult? Function(List<ProductOrder>? orderList)? success,
     TResult? Function(Failure failure)? failure,
   }) {
     return failure?.call(this.failure);
@@ -431,7 +433,7 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<ProductOrder> orderList)? success,
+    TResult Function(List<ProductOrder>? orderList)? success,
     TResult Function(Failure failure)? failure,
     required TResult orElse(),
   }) {
@@ -771,7 +773,6 @@ abstract class _ProductOrder implements ProductOrder {
 
 /// @nodoc
 mixin _$ProductInformation {
-  bool get request => throw _privateConstructorUsedError;
   int get count => throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
   String get productNumber => throw _privateConstructorUsedError;
@@ -789,11 +790,7 @@ abstract class $ProductInformationCopyWith<$Res> {
       _$ProductInformationCopyWithImpl<$Res, ProductInformation>;
   @useResult
   $Res call(
-      {bool request,
-      int count,
-      double price,
-      String productNumber,
-      String productTitle});
+      {int count, double price, String productNumber, String productTitle});
 }
 
 /// @nodoc
@@ -809,17 +806,12 @@ class _$ProductInformationCopyWithImpl<$Res, $Val extends ProductInformation>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? request = null,
     Object? count = null,
     Object? price = null,
     Object? productNumber = null,
     Object? productTitle = null,
   }) {
     return _then(_value.copyWith(
-      request: null == request
-          ? _value.request
-          : request // ignore: cast_nullable_to_non_nullable
-              as bool,
       count: null == count
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
@@ -849,11 +841,7 @@ abstract class _$$ProductInformationImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {bool request,
-      int count,
-      double price,
-      String productNumber,
-      String productTitle});
+      {int count, double price, String productNumber, String productTitle});
 }
 
 /// @nodoc
@@ -867,17 +855,12 @@ class __$$ProductInformationImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? request = null,
     Object? count = null,
     Object? price = null,
     Object? productNumber = null,
     Object? productTitle = null,
   }) {
     return _then(_$ProductInformationImpl(
-      request: null == request
-          ? _value.request
-          : request // ignore: cast_nullable_to_non_nullable
-              as bool,
       count: null == count
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
@@ -902,14 +885,11 @@ class __$$ProductInformationImplCopyWithImpl<$Res>
 
 class _$ProductInformationImpl implements _ProductInformation {
   const _$ProductInformationImpl(
-      {required this.request,
-      required this.count,
+      {required this.count,
       required this.price,
       required this.productNumber,
       required this.productTitle});
 
-  @override
-  final bool request;
   @override
   final int count;
   @override
@@ -921,7 +901,7 @@ class _$ProductInformationImpl implements _ProductInformation {
 
   @override
   String toString() {
-    return 'ProductInformation(request: $request, count: $count, price: $price, productNumber: $productNumber, productTitle: $productTitle)';
+    return 'ProductInformation(count: $count, price: $price, productNumber: $productNumber, productTitle: $productTitle)';
   }
 
   @override
@@ -929,7 +909,6 @@ class _$ProductInformationImpl implements _ProductInformation {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProductInformationImpl &&
-            (identical(other.request, request) || other.request == request) &&
             (identical(other.count, count) || other.count == count) &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.productNumber, productNumber) ||
@@ -939,8 +918,8 @@ class _$ProductInformationImpl implements _ProductInformation {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, request, count, price, productNumber, productTitle);
+  int get hashCode =>
+      Object.hash(runtimeType, count, price, productNumber, productTitle);
 
   @JsonKey(ignore: true)
   @override
@@ -952,14 +931,11 @@ class _$ProductInformationImpl implements _ProductInformation {
 
 abstract class _ProductInformation implements ProductInformation {
   const factory _ProductInformation(
-      {required final bool request,
-      required final int count,
+      {required final int count,
       required final double price,
       required final String productNumber,
       required final String productTitle}) = _$ProductInformationImpl;
 
-  @override
-  bool get request;
   @override
   int get count;
   @override

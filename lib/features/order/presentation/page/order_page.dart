@@ -80,13 +80,16 @@ class _OrderBlocProvider extends StatelessWidget {
                                 borderRadius: const BorderRadius.vertical(
                                     bottom: Radius.circular(30)),
                                 child: ListView.builder(
-                                    itemCount: successState.orderList.length,
+                                    itemCount:
+                                        successState.orderList?.length ?? 0,
                                     itemBuilder: (context, index) =>
-                                        _OrderInfoWidget(
-                                          index: index,
-                                          productOrder:
-                                              successState.orderList[index],
-                                        )),
+                                        successState.orderList == null
+                                            ? const SizedBox.shrink()
+                                            : _OrderInfoWidget(
+                                                index: index,
+                                                productOrder: successState
+                                                    .orderList![index],
+                                              )),
                               ),
                             ),
                           )),

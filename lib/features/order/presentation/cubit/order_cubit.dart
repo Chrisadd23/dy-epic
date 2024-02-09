@@ -23,13 +23,18 @@ class OrderCubit extends Cubit<OrderCustomerState> {
   OrderCubit() : super(const OrderCustomerState.loading());
 
   Future<void> load({String? customerNumber}) async {
+    debugPrint("start test test");
     if (state != const OrderCustomerState.loading()) {
       emit(const OrderCustomerState.loading());
     }
 
+    debugPrint('customerNumber ==> $customerNumber');
     if (customerNumber != null) {
       try {
-        final collectionStream = FirebaseFirestore.instance.collection('Order');
+        final collectionStream = FirebaseFirestore.instance
+            .collection('OrderList')
+            .doc('8ZwDCBhDGrOMF8w7wS7Y')
+            .collection('order');
         final query = collectionStream
             .where('customerNumber', isEqualTo: customerNumber)
             .where('inWork', isEqualTo: true);
@@ -48,9 +53,13 @@ class OrderCubit extends Cubit<OrderCustomerState> {
               date: (orderMap['date'] as Timestamp).toDate(),
             );
           }).toList();
+
+          debugPrint('orderList ==> $orderList');
+
           emit(OrderCustomerState.success(orderList: orderList));
         });
       } catch (error) {
+        debugPrint("error ==>$error");
         emit(OrderCustomerState.failure(
             failure: Failure.databaseError(error.toString())));
       }
@@ -62,12 +71,17 @@ class OrderCubit extends Cubit<OrderCustomerState> {
         orderMap.map<ProductInformation>((order) {
       debugPrint("order ==> $order");
       return ProductInformation(
-          request: order['request'],
           count: int.parse(order['count'].toString()),
           price: double.parse(order['price'].toString()),
           productNumber: order['productNumber'],
           productTitle: order['productName']);
     }).toList();
     return orderList;
+  }
+
+  @override
+  Future<void> close() {
+    FirebaseFirestore.instance.terminate();
+    return super.close();
   }
 }

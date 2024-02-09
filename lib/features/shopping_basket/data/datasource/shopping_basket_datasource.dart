@@ -20,19 +20,40 @@ class ShoppingBasketDataSourceImplementation extends ShoppingBasketDataSource {
     debugPrint("json ==> $order");
 
     Failure? failure;
+    final List<Map<String, dynamic>> orderList = order['order']['orderList'];
+    final List<Map<String, dynamic>> requestList =
+        order['request']['requestList'];
 
     try {
-      final collection = _firebaseFirestore.collection("Order");
-      final result = await collection.add(order).then(
-            (value) => true,
-            onError: (error) =>
-                failure = Failure.databaseError(error.toString()),
-          );
-      if (failure == null && result) {
-        return const Right(true);
-      } else {
-        return Left(Failure.databaseError(failure.toString()));
+      if (orderList.isNotEmpty) {
+        final collection = _firebaseFirestore
+            .collection("OrderList")
+            .doc()
+            .collection('order');
+        await collection.add(order['order']).then(
+              (value) => true,
+              onError: (error) =>
+                  failure = Failure.databaseError(error.toString()),
+            );
+        if (failure != null) {
+          return Left(failure!);
+        }
       }
+      if (requestList.isNotEmpty) {
+        final collection = _firebaseFirestore
+            .collection("OrderList")
+            .doc()
+            .collection('request');
+        await collection.add(order['request']).then(
+              (value) => true,
+              onError: (error) =>
+                  failure = Failure.databaseError(error.toString()),
+            );
+        if (failure != null) {
+          return Left(failure!);
+        }
+      }
+      return const Right(true);
     } catch (e) {
       debugPrint("error ==> ${e.toString()}");
       return Left(
