@@ -35,9 +35,8 @@ class OrderCubit extends Cubit<OrderCustomerState> {
             .collection('OrderList')
             .doc('8ZwDCBhDGrOMF8w7wS7Y')
             .collection('order');
-        final query = collectionStream
-            .where('customerNumber', isEqualTo: customerNumber)
-            .where('inWork', isEqualTo: true);
+        final query =
+            collectionStream.where('customerNumber', isEqualTo: customerNumber);
         query.snapshots().listen((docSnapshot) {
           final orderList = docSnapshot.docs.map((e) {
             final orderMap = e.data();
