@@ -1,5 +1,6 @@
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text_style.dart';
+import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/cubit_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/bloc_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/state_shopping_basket.dart';
@@ -91,8 +92,15 @@ class _ShoppingBasketDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext previousContext) {
-    return BlocProvider<BlocShoppingBasket>.value(
-      value: getIt<BlocShoppingBasket>(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<BlocShoppingBasket>.value(
+          value: getIt<BlocShoppingBasket>(),
+        ),
+        BlocProvider<LoginCubit>.value(
+          value: getIt<LoginCubit>(),
+        ),
+      ],
       child: Container(
         decoration: BoxDecoration(
             border: Border.all(),

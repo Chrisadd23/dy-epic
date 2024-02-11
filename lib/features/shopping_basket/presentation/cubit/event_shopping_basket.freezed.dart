@@ -22,7 +22,7 @@ mixin _$EventShoppingBasket {
     required TResult Function(int position) change,
     required TResult Function(int position) remove,
     required TResult Function(EnumShoppingBasketOrder orderList) orderList,
-    required TResult Function() send,
+    required TResult Function(String customerNumber) send,
     required TResult Function() clear,
     required TResult Function() deleteFailureMessage,
   }) =>
@@ -33,7 +33,7 @@ mixin _$EventShoppingBasket {
     TResult? Function(int position)? change,
     TResult? Function(int position)? remove,
     TResult? Function(EnumShoppingBasketOrder orderList)? orderList,
-    TResult? Function()? send,
+    TResult? Function(String customerNumber)? send,
     TResult? Function()? clear,
     TResult? Function()? deleteFailureMessage,
   }) =>
@@ -44,7 +44,7 @@ mixin _$EventShoppingBasket {
     TResult Function(int position)? change,
     TResult Function(int position)? remove,
     TResult Function(EnumShoppingBasketOrder orderList)? orderList,
-    TResult Function()? send,
+    TResult Function(String customerNumber)? send,
     TResult Function()? clear,
     TResult Function()? deleteFailureMessage,
     required TResult orElse(),
@@ -189,7 +189,7 @@ class _$AddImpl implements _Add {
     required TResult Function(int position) change,
     required TResult Function(int position) remove,
     required TResult Function(EnumShoppingBasketOrder orderList) orderList,
-    required TResult Function() send,
+    required TResult Function(String customerNumber) send,
     required TResult Function() clear,
     required TResult Function() deleteFailureMessage,
   }) {
@@ -203,7 +203,7 @@ class _$AddImpl implements _Add {
     TResult? Function(int position)? change,
     TResult? Function(int position)? remove,
     TResult? Function(EnumShoppingBasketOrder orderList)? orderList,
-    TResult? Function()? send,
+    TResult? Function(String customerNumber)? send,
     TResult? Function()? clear,
     TResult? Function()? deleteFailureMessage,
   }) {
@@ -217,7 +217,7 @@ class _$AddImpl implements _Add {
     TResult Function(int position)? change,
     TResult Function(int position)? remove,
     TResult Function(EnumShoppingBasketOrder orderList)? orderList,
-    TResult Function()? send,
+    TResult Function(String customerNumber)? send,
     TResult Function()? clear,
     TResult Function()? deleteFailureMessage,
     required TResult orElse(),
@@ -356,7 +356,7 @@ class _$ChangeImpl implements _Change {
     required TResult Function(int position) change,
     required TResult Function(int position) remove,
     required TResult Function(EnumShoppingBasketOrder orderList) orderList,
-    required TResult Function() send,
+    required TResult Function(String customerNumber) send,
     required TResult Function() clear,
     required TResult Function() deleteFailureMessage,
   }) {
@@ -370,7 +370,7 @@ class _$ChangeImpl implements _Change {
     TResult? Function(int position)? change,
     TResult? Function(int position)? remove,
     TResult? Function(EnumShoppingBasketOrder orderList)? orderList,
-    TResult? Function()? send,
+    TResult? Function(String customerNumber)? send,
     TResult? Function()? clear,
     TResult? Function()? deleteFailureMessage,
   }) {
@@ -384,7 +384,7 @@ class _$ChangeImpl implements _Change {
     TResult Function(int position)? change,
     TResult Function(int position)? remove,
     TResult Function(EnumShoppingBasketOrder orderList)? orderList,
-    TResult Function()? send,
+    TResult Function(String customerNumber)? send,
     TResult Function()? clear,
     TResult Function()? deleteFailureMessage,
     required TResult orElse(),
@@ -520,7 +520,7 @@ class _$RemoveImpl implements _Remove {
     required TResult Function(int position) change,
     required TResult Function(int position) remove,
     required TResult Function(EnumShoppingBasketOrder orderList) orderList,
-    required TResult Function() send,
+    required TResult Function(String customerNumber) send,
     required TResult Function() clear,
     required TResult Function() deleteFailureMessage,
   }) {
@@ -534,7 +534,7 @@ class _$RemoveImpl implements _Remove {
     TResult? Function(int position)? change,
     TResult? Function(int position)? remove,
     TResult? Function(EnumShoppingBasketOrder orderList)? orderList,
-    TResult? Function()? send,
+    TResult? Function(String customerNumber)? send,
     TResult? Function()? clear,
     TResult? Function()? deleteFailureMessage,
   }) {
@@ -548,7 +548,7 @@ class _$RemoveImpl implements _Remove {
     TResult Function(int position)? change,
     TResult Function(int position)? remove,
     TResult Function(EnumShoppingBasketOrder orderList)? orderList,
-    TResult Function()? send,
+    TResult Function(String customerNumber)? send,
     TResult Function()? clear,
     TResult Function()? deleteFailureMessage,
     required TResult orElse(),
@@ -684,7 +684,7 @@ class _$OrderListImpl implements _OrderList {
     required TResult Function(int position) change,
     required TResult Function(int position) remove,
     required TResult Function(EnumShoppingBasketOrder orderList) orderList,
-    required TResult Function() send,
+    required TResult Function(String customerNumber) send,
     required TResult Function() clear,
     required TResult Function() deleteFailureMessage,
   }) {
@@ -698,7 +698,7 @@ class _$OrderListImpl implements _OrderList {
     TResult? Function(int position)? change,
     TResult? Function(int position)? remove,
     TResult? Function(EnumShoppingBasketOrder orderList)? orderList,
-    TResult? Function()? send,
+    TResult? Function(String customerNumber)? send,
     TResult? Function()? clear,
     TResult? Function()? deleteFailureMessage,
   }) {
@@ -712,7 +712,7 @@ class _$OrderListImpl implements _OrderList {
     TResult Function(int position)? change,
     TResult Function(int position)? remove,
     TResult Function(EnumShoppingBasketOrder orderList)? orderList,
-    TResult Function()? send,
+    TResult Function(String customerNumber)? send,
     TResult Function()? clear,
     TResult Function()? deleteFailureMessage,
     required TResult orElse(),
@@ -785,6 +785,8 @@ abstract class _$$SendImplCopyWith<$Res> {
   factory _$$SendImplCopyWith(
           _$SendImpl value, $Res Function(_$SendImpl) then) =
       __$$SendImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String customerNumber});
 }
 
 /// @nodoc
@@ -793,26 +795,51 @@ class __$$SendImplCopyWithImpl<$Res>
     implements _$$SendImplCopyWith<$Res> {
   __$$SendImplCopyWithImpl(_$SendImpl _value, $Res Function(_$SendImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? customerNumber = null,
+  }) {
+    return _then(_$SendImpl(
+      customerNumber: null == customerNumber
+          ? _value.customerNumber
+          : customerNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$SendImpl implements _Send {
-  const _$SendImpl();
+  const _$SendImpl({required this.customerNumber});
+
+  @override
+  final String customerNumber;
 
   @override
   String toString() {
-    return 'EventShoppingBasket.send()';
+    return 'EventShoppingBasket.send(customerNumber: $customerNumber)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SendImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$SendImpl &&
+            (identical(other.customerNumber, customerNumber) ||
+                other.customerNumber == customerNumber));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, customerNumber);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SendImplCopyWith<_$SendImpl> get copyWith =>
+      __$$SendImplCopyWithImpl<_$SendImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -821,11 +848,11 @@ class _$SendImpl implements _Send {
     required TResult Function(int position) change,
     required TResult Function(int position) remove,
     required TResult Function(EnumShoppingBasketOrder orderList) orderList,
-    required TResult Function() send,
+    required TResult Function(String customerNumber) send,
     required TResult Function() clear,
     required TResult Function() deleteFailureMessage,
   }) {
-    return send();
+    return send(customerNumber);
   }
 
   @override
@@ -835,11 +862,11 @@ class _$SendImpl implements _Send {
     TResult? Function(int position)? change,
     TResult? Function(int position)? remove,
     TResult? Function(EnumShoppingBasketOrder orderList)? orderList,
-    TResult? Function()? send,
+    TResult? Function(String customerNumber)? send,
     TResult? Function()? clear,
     TResult? Function()? deleteFailureMessage,
   }) {
-    return send?.call();
+    return send?.call(customerNumber);
   }
 
   @override
@@ -849,13 +876,13 @@ class _$SendImpl implements _Send {
     TResult Function(int position)? change,
     TResult Function(int position)? remove,
     TResult Function(EnumShoppingBasketOrder orderList)? orderList,
-    TResult Function()? send,
+    TResult Function(String customerNumber)? send,
     TResult Function()? clear,
     TResult Function()? deleteFailureMessage,
     required TResult orElse(),
   }) {
     if (send != null) {
-      return send();
+      return send(customerNumber);
     }
     return orElse();
   }
@@ -908,7 +935,12 @@ class _$SendImpl implements _Send {
 }
 
 abstract class _Send implements EventShoppingBasket {
-  const factory _Send() = _$SendImpl;
+  const factory _Send({required final String customerNumber}) = _$SendImpl;
+
+  String get customerNumber;
+  @JsonKey(ignore: true)
+  _$$SendImplCopyWith<_$SendImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -953,7 +985,7 @@ class _$ClearImpl implements _Clear {
     required TResult Function(int position) change,
     required TResult Function(int position) remove,
     required TResult Function(EnumShoppingBasketOrder orderList) orderList,
-    required TResult Function() send,
+    required TResult Function(String customerNumber) send,
     required TResult Function() clear,
     required TResult Function() deleteFailureMessage,
   }) {
@@ -967,7 +999,7 @@ class _$ClearImpl implements _Clear {
     TResult? Function(int position)? change,
     TResult? Function(int position)? remove,
     TResult? Function(EnumShoppingBasketOrder orderList)? orderList,
-    TResult? Function()? send,
+    TResult? Function(String customerNumber)? send,
     TResult? Function()? clear,
     TResult? Function()? deleteFailureMessage,
   }) {
@@ -981,7 +1013,7 @@ class _$ClearImpl implements _Clear {
     TResult Function(int position)? change,
     TResult Function(int position)? remove,
     TResult Function(EnumShoppingBasketOrder orderList)? orderList,
-    TResult Function()? send,
+    TResult Function(String customerNumber)? send,
     TResult Function()? clear,
     TResult Function()? deleteFailureMessage,
     required TResult orElse(),
@@ -1086,7 +1118,7 @@ class _$DeleteFailureMessageImpl implements _DeleteFailureMessage {
     required TResult Function(int position) change,
     required TResult Function(int position) remove,
     required TResult Function(EnumShoppingBasketOrder orderList) orderList,
-    required TResult Function() send,
+    required TResult Function(String customerNumber) send,
     required TResult Function() clear,
     required TResult Function() deleteFailureMessage,
   }) {
@@ -1100,7 +1132,7 @@ class _$DeleteFailureMessageImpl implements _DeleteFailureMessage {
     TResult? Function(int position)? change,
     TResult? Function(int position)? remove,
     TResult? Function(EnumShoppingBasketOrder orderList)? orderList,
-    TResult? Function()? send,
+    TResult? Function(String customerNumber)? send,
     TResult? Function()? clear,
     TResult? Function()? deleteFailureMessage,
   }) {
@@ -1114,7 +1146,7 @@ class _$DeleteFailureMessageImpl implements _DeleteFailureMessage {
     TResult Function(int position)? change,
     TResult Function(int position)? remove,
     TResult Function(EnumShoppingBasketOrder orderList)? orderList,
-    TResult Function()? send,
+    TResult Function(String customerNumber)? send,
     TResult Function()? clear,
     TResult Function()? deleteFailureMessage,
     required TResult orElse(),

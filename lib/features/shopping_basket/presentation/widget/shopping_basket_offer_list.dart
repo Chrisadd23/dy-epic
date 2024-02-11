@@ -1,5 +1,7 @@
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_cubits/cubit_pictures.dart';
+import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_cubit.dart';
+import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_state.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/page/login_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/bloc_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/event_shopping_basket.dart';
@@ -65,42 +67,71 @@ class ShoppingBasketOfferList extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Expanded(
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: constraints.maxWidth * 0.05,
-                          vertical: constraints.maxHeight * 0.02),
-                      child: InkWell(
-                        onTap: () async {
-                          context
-                              .read<BlocShoppingBasket>()
-                              .add(const EventShoppingBasket.send());
-                        },
-                        child: Container(
-                          height: constraints.maxHeight * 0.15,
-                          width: constraints.maxWidth,
-                          decoration: BoxDecoration(
-                              color: AppColors.orangeF6A440,
-                              borderRadius: BorderRadius.circular(20),
-                              border: Border.all()),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(20),
-                            child: const Center(
-                                child: Text(
-                              'absenden',
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
-                            )),
-                          ),
-                        ),
-                      ),
-                    ),
-                  )
+                  SendOrderButton(constraints: constraints)
                 ],
               ));
         }),
       ),
     );
+  }
+}
+
+class SendOrderButton extends StatelessWidget {
+  const SendOrderButton({
+    super.key,
+    required this.constraints,
+  });
+
+  final BoxConstraints constraints;
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<LoginCubit, LoginState>(
+      builder: (context, state) => state.maybeMap(
+        orElse: () => const SizedBox.shrink(),
+        loggedIn: (loggedInState) {
+          return Expanded(
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                  horizontal: constraints.maxWidth * 0.05,
+                  vertical: constraints.maxHeight * 0.02),
+              child: InkWell(
+                onTap: () async {
+                  context.read<BlocShoppingBasket>().add(
+                      EventShoppingBasket.send(
+                          customerNumber: loggedInState
+                              .entityLoginCustomer.customerNumber));
+                },
+                child: Container(
+                  height: constraints.maxHeight * 0.15,
+                  width: constraints.maxWidth,
+                  decoration: BoxDecoration(
+                      color: AppColors.orangeF6A440,
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all()),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: const Center(
+                        child: Text(
+                      'absenden',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    )),
+                  ),
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+        .add(DiagnosticsProperty<BoxConstraints>('constraints', constraints));
   }
 }
 

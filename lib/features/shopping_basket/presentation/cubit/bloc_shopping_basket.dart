@@ -1,7 +1,6 @@
 import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
-import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/domain/repository/shopping_basket_ropository.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/event_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/state_shopping_basket.dart';
@@ -74,14 +73,11 @@ class BlocShoppingBasket
           final newState = state.copyWith(listChosenProduct: []);
           emitState(newState);
         },
-        send: () async {
+        send: (customerNumber) async {
           try {
-            final amount =
-                _completeAmount(listChosenProduct: state.listChosenProduct);
             final json = await _generateJson(
               chosenProductList: state.listChosenProduct,
-              dateTime: DateTime.now(),
-              amount: amount,
+              customerNumber: customerNumber,
             );
 
             final result =
@@ -110,24 +106,51 @@ class BlocShoppingBasket
     });
   }
 
-  double _completeAmount({required List<ChosenProduct> listChosenProduct}) {
+  double _completeAmount({required List<Map<String, dynamic>> orderList}) {
     double amount = 0;
 
-    listChosenProduct.map((order) {
-      amount += order.count * order.entityProduct.price;
-    }).toList();
+    orderList
+        .map((product) => amount += product['price'] * product['count'])
+        .toList();
 
     return amount;
   }
 
   Future<Map<String, dynamic>> _generateJson(
       {required List<ChosenProduct> chosenProductList,
-      required DateTime dateTime,
-      required double amount}) async {
-    final customerNumber = getIt<LoginCubit>().state.mapOrNull(
-        loggedIn: (stateLoggedIn) =>
-            stateLoggedIn.entityLoginCustomer.customerNumber);
+      required String customerNumber}) async {
+    final timestamp = DateTime.now().millisecondsSinceEpoch;
 
+    final date = Timestamp.fromDate(
+      DateTime.now(),
+    );
+
+    final orderJson = _generateOrderJson(
+        chosenProductList: chosenProductList,
+        customerNumber: customerNumber,
+        timestamp: timestamp,
+        date: date);
+
+    final requestJson = _generateRequestJson(
+        chosenProductList: chosenProductList,
+        customerNumber: customerNumber,
+        timestamp: timestamp,
+        date: date);
+
+    final json = {
+      "order": orderJson,
+      "request": requestJson,
+    };
+
+    return json;
+  }
+
+  Map<String, dynamic> _generateOrderJson(
+      {required chosenProductList,
+      required String customerNumber,
+      required Timestamp date,
+      required int timestamp}) {
+    final orderID = "$timestamp-$customerNumber";
     final orderList = chosenProductList
         .where((element) => element.orderType == EnumOrderType.bestellung)
         .toList()
@@ -139,6 +162,26 @@ class BlocShoppingBasket
             })
         .toList();
 
+    final orderAmount = _completeAmount(orderList: orderList);
+
+    return {
+      "order_id": orderID,
+      "customerNumber": customerNumber,
+      "amount": orderAmount,
+      "canceledByAdmin": false,
+      "canceledByCustomer": false,
+      "date": date,
+      "finished": false,
+      "inWork": true,
+      "orderList": orderList
+    };
+  }
+
+  Map<String, dynamic> _generateRequestJson(
+      {required List<ChosenProduct> chosenProductList,
+      String? customerNumber,
+      required int timestamp,
+      required Timestamp date}) {
     final requestList = chosenProductList
         .where((element) => element.orderType == EnumOrderType.anfrage)
         .toList()
@@ -150,38 +193,21 @@ class BlocShoppingBasket
             })
         .toList();
 
-    var timestamp = DateTime.now().millisecondsSinceEpoch;
+    final requestAmount = _completeAmount(orderList: requestList);
 
-    final orderID = "$timestamp-$customerNumber";
     final requestID =
         "${timestamp.toString().split('').reversed.join('')}-$customerNumber";
-    final date = Timestamp.fromDate(dateTime);
 
-    final json = {
-      "order": {
-        "order_id": orderID,
-        "customerNumber": customerNumber,
-        "amount": amount,
-        "canceledByAdmin": false,
-        "canceledByCustomer": false,
-        "date": date,
-        "finished": false,
-        "inWork": true,
-        "orderList": orderList
-      },
-      "request": {
-        "request_id": requestID,
-        "customerNumber": customerNumber,
-        "amount": amount,
-        "canceledByAdmin": false,
-        "canceledByCustomer": false,
-        "date": date,
-        "finished": false,
-        "inWork": true,
-        "requestList": requestList
-      },
+    return {
+      "request_id": requestID,
+      "customerNumber": customerNumber,
+      "amount": requestAmount,
+      "canceledByAdmin": false,
+      "canceledByCustomer": false,
+      "date": date,
+      "finished": false,
+      "inWork": true,
+      "requestList": requestList
     };
-
-    return json;
   }
 }
