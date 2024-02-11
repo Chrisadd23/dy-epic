@@ -5,7 +5,7 @@ class FixDrawerButton extends StatelessWidget {
   const FixDrawerButton(
       {super.key,
       required this.title,
-      this.height = 50,
+      this.height = 70,
       required this.function});
 
   final String title;
