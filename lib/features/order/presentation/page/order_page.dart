@@ -20,93 +20,95 @@ class OrderPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<LoginCubit>.value(
-        value: getIt<LoginCubit>(),
-        child: BlocBuilder<LoginCubit, LoginState>(builder: (context, state) {
-          return _OrderBlocProvider(
-              customerNumber: state.mapOrNull(
-                  loggedIn: (loggedIn) =>
-                      loggedIn.entityLoginCustomer.customerNumber));
-        }));
+        value: getIt<LoginCubit>(), child: const _OrderBlocProvider());
   }
 }
 
 class _OrderBlocProvider extends StatelessWidget {
-  const _OrderBlocProvider({
-    this.customerNumber,
-  });
-
-  final String? customerNumber;
+  const _OrderBlocProvider();
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) =>
-          getIt<OrderCubit>()..load(customerNumber: customerNumber),
-      child: Stack(
-        children: [
-          Align(
-            alignment: Alignment.topCenter,
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 20.0),
-                  child: Container(
-                    height: MediaQuery.sizeOf(context).height * 0.04,
-                    width: MediaQuery.sizeOf(context).width * 0.5,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: AppColors.orangeF6A440),
-                    child: FittedBox(
-                      child: Text(
-                        'Bestellungen',
-                        style: AppTextStyle.colorWhiteSize20ShadowBlack,
-                      ),
-                    ),
-                  ),
-                ),
-                BlocBuilder<OrderCubit, OrderCustomerState>(
-                  builder: (context, state) => state.map(
-                      failure: (failureState) => FailureWidget(
-                          failure: failureState.failure.when(
-                              message: (message) => message ?? '',
-                              databaseError: (databaseError) =>
-                                  databaseError ?? '')),
-                      loading: (loadingState) => const LoadingWidget(),
-                      success: (successState) => Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 30.0, right: 30, bottom: 40),
-                              child: ClipRRect(
-                                borderRadius: const BorderRadius.vertical(
-                                    bottom: Radius.circular(30)),
-                                child: ListView.builder(
-                                    itemCount:
-                                        successState.orderList?.length ?? 0,
-                                    itemBuilder: (context, index) =>
-                                        successState.orderList == null
-                                            ? const SizedBox.shrink()
-                                            : _OrderInfoWidget(
-                                                index: index,
-                                                productOrder: successState
-                                                    .orderList![index],
-                                              )),
+    return BlocBuilder<LoginCubit, LoginState>(
+        builder: (context, state) => state.maybeMap(
+            orElse: () => const LoadingWidget(),
+            loggedIn: (loggedInState) => BlocProvider(
+                  create: (context) => getIt<OrderCubit>()
+                    ..load(
+                        customerNumber:
+                            loggedInState.entityLoginCustomer.customerNumber),
+                  child: Stack(
+                    children: [
+                      Align(
+                        alignment: Alignment.topCenter,
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 20.0),
+                              child: Container(
+                                height:
+                                    MediaQuery.sizeOf(context).height * 0.04,
+                                width: MediaQuery.sizeOf(context).width * 0.5,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: AppColors.orangeF6A440),
+                                child: FittedBox(
+                                  child: Text(
+                                    'Bestellungen',
+                                    style: AppTextStyle
+                                        .colorWhiteSize20ShadowBlack,
+                                  ),
+                                ),
                               ),
                             ),
-                          )),
-                )
-              ],
-            ),
-          ),
-          const DialogShoppingBasket()
-        ],
-      ),
-    );
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(StringProperty('customerNumber', customerNumber));
+                            BlocBuilder<OrderCubit, OrderCustomerState>(
+                              builder: (context, state) => state.map(
+                                  failure: (failureState) => FailureWidget(
+                                      failure: failureState.failure.when(
+                                          message: (message) => message ?? '',
+                                          databaseError: (databaseError) =>
+                                              databaseError ?? '')),
+                                  loading: (loadingState) =>
+                                      const LoadingWidget(),
+                                  success: (successState) => Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 30.0,
+                                              right: 30,
+                                              bottom: 40),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                const BorderRadius.vertical(
+                                                    bottom:
+                                                        Radius.circular(30)),
+                                            child: ListView.builder(
+                                                itemCount: successState
+                                                        .orderList?.length ??
+                                                    0,
+                                                itemBuilder: (context, index) =>
+                                                    successState.orderList ==
+                                                            null
+                                                        ? const SizedBox
+                                                            .shrink()
+                                                        : _OrderInfoWidget(
+                                                            index: index,
+                                                            productOrder:
+                                                                successState
+                                                                        .orderList![
+                                                                    index],
+                                                          )),
+                                          ),
+                                        ),
+                                      )),
+                            )
+                          ],
+                        ),
+                      ),
+                      const DialogShoppingBasket()
+                    ],
+                  ),
+                )));
   }
 }
 
