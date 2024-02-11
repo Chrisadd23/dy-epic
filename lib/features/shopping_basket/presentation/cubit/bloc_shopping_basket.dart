@@ -146,7 +146,7 @@ class BlocShoppingBasket
   }
 
   Map<String, dynamic> _generateOrderJson(
-      {required chosenProductList,
+      {required List<ChosenProduct> chosenProductList,
       required String customerNumber,
       required Timestamp date,
       required int timestamp}) {
