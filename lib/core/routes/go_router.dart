@@ -4,6 +4,7 @@ import 'package:app_flutter_produkt_bestellen/features/category/buerostuehle/pre
 import 'package:app_flutter_produkt_bestellen/features/category/konferenzstuehle/presentation/page/page_konferenzstuehle.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/konferenztische/presentation/page/page_konferenztische.dart';
 import 'package:app_flutter_produkt_bestellen/features/home/presentation/page/home_page.dart';
+import 'package:app_flutter_produkt_bestellen/features/legalities/presentation/page/legalities_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/page/login_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/page/order_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/page/order_page_shell_navigation.dart';
@@ -11,6 +12,7 @@ import 'package:app_flutter_produkt_bestellen/features/order/presentation/page/r
 import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/presentation/page/workingtable_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/conferenceChairProduct/presentation/page/page_conference_chair_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/officeChairProduct/presentation/page/page_office_chair_product.dart';
+import 'package:app_flutter_produkt_bestellen/features/settings/presentation/page/settings_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/bloc_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/state_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
@@ -27,7 +29,9 @@ enum AppGoRouter {
   konferenztische('konferenztische'),
   product('produkt'),
   order('bestellungen'),
-  request('anfragen');
+  request('anfragen'),
+  settings('einstellung'),
+  legalities('rechtliches');
 
   const AppGoRouter(this.title);
 
@@ -199,6 +203,21 @@ enum AppGoRouter {
                   )
                 ],
               ),
+
+              // -------------settings
+              GoRoute(
+                path: settings.title,
+                name: settings.name,
+                pageBuilder: (context, state) =>
+                    _getCustomerTransition(const SettingsPage(), state),
+              ),
+              //--------------legalities
+              GoRoute(
+                path: legalities.title,
+                name: legalities.name,
+                pageBuilder: (context, state) =>
+                    _getCustomerTransition(const LegalitiesPage(), state),
+              )
               //----------------------------------------------------------------
             ]),
       ],

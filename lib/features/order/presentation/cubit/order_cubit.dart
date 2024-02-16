@@ -6,21 +6,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class OrderCubit extends Cubit<OrderCustomerState> {
-  /*Order(
-  orderNumber: "1234_9",
-  amount: 629.00,
-  inWork: true,
-  finished: false,
-  canceledByAdmin: false,
-  canceledByCustomer: false,
-  productInformationList: [
-  const ProductInformation(
-  request: false,
-  count: 1,
-  price: 629,
-  productNumber: "och88be13",
-  productTitle: 'CAMIRO Hochlehner Bürodrehstuhl')
-  ]),*/
   OrderCubit() : super(const OrderCustomerState.loading());
 
   Future<void> load({String? customerNumber}) async {
