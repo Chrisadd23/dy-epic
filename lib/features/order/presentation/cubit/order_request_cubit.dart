@@ -1,4 +1,5 @@
 import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
+import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/cubit/order_state.dart';
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -59,4 +60,6 @@ class OrderRequestCubit extends Cubit<OrderCustomerState> {
     }).toList();
     return orderList;
   }
+
+  void sortOrder({EnumSortProductOrder? sortType}) {}
 }

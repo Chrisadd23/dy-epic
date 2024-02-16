@@ -24,13 +24,13 @@ enum EnumSelectOfficeChairCategory {
 
 enum EnumOrderType { bestellung, anfrage }
 
-enum EnumShoppingBasketOrder {
-  sortNormal,
-  sortDateDesc,
-  sortDateAsc,
-  sortPriceDesc,
-  sortPriceAsc,
-  sortBestellen,
-  sortAnfragen,
-  sortCategory
+enum EnumSortProductOrder {
+  sortNormal(type: 'Normal'),
+  sortDate(type: 'Datum'),
+  sortPrice(type: 'Preis'),
+  sortConditions(type: 'Zustand');
+
+  const EnumSortProductOrder({required this.type});
+
+  final String type;
 }

@@ -1,4 +1,5 @@
 import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
+import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/cubit/order_state.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
@@ -83,4 +84,6 @@ class OrderCubit extends Cubit<OrderCustomerState> {
     FirebaseFirestore.instance.terminate();
     return super.close();
   }
+
+  void sortOrder({EnumSortProductOrder? sortType}) {}
 }

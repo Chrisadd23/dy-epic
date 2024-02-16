@@ -14,7 +14,7 @@ class EventShoppingBasket with _$EventShoppingBasket {
   const factory EventShoppingBasket.remove({required int position}) = _Remove;
 
   const factory EventShoppingBasket.orderList(
-      {required EnumShoppingBasketOrder orderList}) = _OrderList;
+      {required EnumSortProductOrder orderList}) = _OrderList;
 
   const factory EventShoppingBasket.send({required String customerNumber}) =
       _Send;

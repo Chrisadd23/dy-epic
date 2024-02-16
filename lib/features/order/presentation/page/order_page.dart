@@ -1,6 +1,7 @@
 import 'package:app_flutter_produkt_bestellen/core/extension/date_time_extension.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text_style.dart';
+import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_widgets/failure_widget.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_widgets/loading_widget.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_cubit.dart';
@@ -9,6 +10,7 @@ import 'package:app_flutter_produkt_bestellen/features/order/presentation/cubit/
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/cubit/order_state.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/widget/shopping_basket_dialog.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -46,18 +48,68 @@ class _OrderBlocProvider extends StatelessWidget {
                             Padding(
                               padding:
                                   const EdgeInsets.symmetric(vertical: 20.0),
-                              child: Container(
-                                height:
-                                    MediaQuery.sizeOf(context).height * 0.04,
-                                width: MediaQuery.sizeOf(context).width * 0.5,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                    color: AppColors.orangeF6A440),
-                                child: FittedBox(
-                                  child: Text(
-                                    'Bestellungen',
-                                    style: AppTextStyle
-                                        .colorWhiteSize20ShadowBlack,
+                              child: DropdownButton2(
+                                items: [
+                                  ...EnumSortProductOrder.values.map(
+                                    (sortOrder) => DropdownMenuItem(
+                                      value: sortOrder,
+                                      child: Container(
+                                        decoration: EnumSortProductOrder
+                                                    .values.last !=
+                                                sortOrder
+                                            ? const BoxDecoration(
+                                                border: Border(
+                                                    bottom:
+                                                        BorderSide(width: 2)),
+                                              )
+                                            : null,
+                                        child: Center(
+                                          child: Text(sortOrder.type),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                                dropdownStyleData: DropdownStyleData(
+                                  width: 160,
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 6),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(4),
+                                  ),
+                                  offset: Offset(
+                                      MediaQuery.sizeOf(context).width * 0.05,
+                                      -4),
+                                ),
+                                onChanged: (sortType) {
+                                  context
+                                      .read<OrderCubit>()
+                                      .sortOrder(sortType: sortType);
+                                },
+                                customButton: Container(
+                                  height:
+                                      MediaQuery.sizeOf(context).height * 0.04,
+                                  width: MediaQuery.sizeOf(context).width * 0.5,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                      color: AppColors.orangeF6A440),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 10.0),
+                                        child: FittedBox(
+                                          child: Text(
+                                            'Bestellungen',
+                                            style: AppTextStyle
+                                                .colorWhiteSize20ShadowBlack,
+                                          ),
+                                        ),
+                                      ),
+                                      const Icon(Icons.arrow_drop_down_sharp)
+                                    ],
                                   ),
                                 ),
                               ),

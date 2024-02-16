@@ -21,7 +21,7 @@ mixin _$EventShoppingBasket {
     required TResult Function(ChosenProduct chosenProduct, int? index) add,
     required TResult Function(int position) change,
     required TResult Function(int position) remove,
-    required TResult Function(EnumShoppingBasketOrder orderList) orderList,
+    required TResult Function(EnumSortProductOrder orderList) orderList,
     required TResult Function(String customerNumber) send,
     required TResult Function() clear,
     required TResult Function() deleteFailureMessage,
@@ -32,7 +32,7 @@ mixin _$EventShoppingBasket {
     TResult? Function(ChosenProduct chosenProduct, int? index)? add,
     TResult? Function(int position)? change,
     TResult? Function(int position)? remove,
-    TResult? Function(EnumShoppingBasketOrder orderList)? orderList,
+    TResult? Function(EnumSortProductOrder orderList)? orderList,
     TResult? Function(String customerNumber)? send,
     TResult? Function()? clear,
     TResult? Function()? deleteFailureMessage,
@@ -43,7 +43,7 @@ mixin _$EventShoppingBasket {
     TResult Function(ChosenProduct chosenProduct, int? index)? add,
     TResult Function(int position)? change,
     TResult Function(int position)? remove,
-    TResult Function(EnumShoppingBasketOrder orderList)? orderList,
+    TResult Function(EnumSortProductOrder orderList)? orderList,
     TResult Function(String customerNumber)? send,
     TResult Function()? clear,
     TResult Function()? deleteFailureMessage,
@@ -188,7 +188,7 @@ class _$AddImpl implements _Add {
     required TResult Function(ChosenProduct chosenProduct, int? index) add,
     required TResult Function(int position) change,
     required TResult Function(int position) remove,
-    required TResult Function(EnumShoppingBasketOrder orderList) orderList,
+    required TResult Function(EnumSortProductOrder orderList) orderList,
     required TResult Function(String customerNumber) send,
     required TResult Function() clear,
     required TResult Function() deleteFailureMessage,
@@ -202,7 +202,7 @@ class _$AddImpl implements _Add {
     TResult? Function(ChosenProduct chosenProduct, int? index)? add,
     TResult? Function(int position)? change,
     TResult? Function(int position)? remove,
-    TResult? Function(EnumShoppingBasketOrder orderList)? orderList,
+    TResult? Function(EnumSortProductOrder orderList)? orderList,
     TResult? Function(String customerNumber)? send,
     TResult? Function()? clear,
     TResult? Function()? deleteFailureMessage,
@@ -216,7 +216,7 @@ class _$AddImpl implements _Add {
     TResult Function(ChosenProduct chosenProduct, int? index)? add,
     TResult Function(int position)? change,
     TResult Function(int position)? remove,
-    TResult Function(EnumShoppingBasketOrder orderList)? orderList,
+    TResult Function(EnumSortProductOrder orderList)? orderList,
     TResult Function(String customerNumber)? send,
     TResult Function()? clear,
     TResult Function()? deleteFailureMessage,
@@ -355,7 +355,7 @@ class _$ChangeImpl implements _Change {
     required TResult Function(ChosenProduct chosenProduct, int? index) add,
     required TResult Function(int position) change,
     required TResult Function(int position) remove,
-    required TResult Function(EnumShoppingBasketOrder orderList) orderList,
+    required TResult Function(EnumSortProductOrder orderList) orderList,
     required TResult Function(String customerNumber) send,
     required TResult Function() clear,
     required TResult Function() deleteFailureMessage,
@@ -369,7 +369,7 @@ class _$ChangeImpl implements _Change {
     TResult? Function(ChosenProduct chosenProduct, int? index)? add,
     TResult? Function(int position)? change,
     TResult? Function(int position)? remove,
-    TResult? Function(EnumShoppingBasketOrder orderList)? orderList,
+    TResult? Function(EnumSortProductOrder orderList)? orderList,
     TResult? Function(String customerNumber)? send,
     TResult? Function()? clear,
     TResult? Function()? deleteFailureMessage,
@@ -383,7 +383,7 @@ class _$ChangeImpl implements _Change {
     TResult Function(ChosenProduct chosenProduct, int? index)? add,
     TResult Function(int position)? change,
     TResult Function(int position)? remove,
-    TResult Function(EnumShoppingBasketOrder orderList)? orderList,
+    TResult Function(EnumSortProductOrder orderList)? orderList,
     TResult Function(String customerNumber)? send,
     TResult Function()? clear,
     TResult Function()? deleteFailureMessage,
@@ -519,7 +519,7 @@ class _$RemoveImpl implements _Remove {
     required TResult Function(ChosenProduct chosenProduct, int? index) add,
     required TResult Function(int position) change,
     required TResult Function(int position) remove,
-    required TResult Function(EnumShoppingBasketOrder orderList) orderList,
+    required TResult Function(EnumSortProductOrder orderList) orderList,
     required TResult Function(String customerNumber) send,
     required TResult Function() clear,
     required TResult Function() deleteFailureMessage,
@@ -533,7 +533,7 @@ class _$RemoveImpl implements _Remove {
     TResult? Function(ChosenProduct chosenProduct, int? index)? add,
     TResult? Function(int position)? change,
     TResult? Function(int position)? remove,
-    TResult? Function(EnumShoppingBasketOrder orderList)? orderList,
+    TResult? Function(EnumSortProductOrder orderList)? orderList,
     TResult? Function(String customerNumber)? send,
     TResult? Function()? clear,
     TResult? Function()? deleteFailureMessage,
@@ -547,7 +547,7 @@ class _$RemoveImpl implements _Remove {
     TResult Function(ChosenProduct chosenProduct, int? index)? add,
     TResult Function(int position)? change,
     TResult Function(int position)? remove,
-    TResult Function(EnumShoppingBasketOrder orderList)? orderList,
+    TResult Function(EnumSortProductOrder orderList)? orderList,
     TResult Function(String customerNumber)? send,
     TResult Function()? clear,
     TResult Function()? deleteFailureMessage,
@@ -621,7 +621,7 @@ abstract class _$$OrderListImplCopyWith<$Res> {
           _$OrderListImpl value, $Res Function(_$OrderListImpl) then) =
       __$$OrderListImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({EnumShoppingBasketOrder orderList});
+  $Res call({EnumSortProductOrder orderList});
 }
 
 /// @nodoc
@@ -641,7 +641,7 @@ class __$$OrderListImplCopyWithImpl<$Res>
       orderList: null == orderList
           ? _value.orderList
           : orderList // ignore: cast_nullable_to_non_nullable
-              as EnumShoppingBasketOrder,
+              as EnumSortProductOrder,
     ));
   }
 }
@@ -652,7 +652,7 @@ class _$OrderListImpl implements _OrderList {
   const _$OrderListImpl({required this.orderList});
 
   @override
-  final EnumShoppingBasketOrder orderList;
+  final EnumSortProductOrder orderList;
 
   @override
   String toString() {
@@ -683,7 +683,7 @@ class _$OrderListImpl implements _OrderList {
     required TResult Function(ChosenProduct chosenProduct, int? index) add,
     required TResult Function(int position) change,
     required TResult Function(int position) remove,
-    required TResult Function(EnumShoppingBasketOrder orderList) orderList,
+    required TResult Function(EnumSortProductOrder orderList) orderList,
     required TResult Function(String customerNumber) send,
     required TResult Function() clear,
     required TResult Function() deleteFailureMessage,
@@ -697,7 +697,7 @@ class _$OrderListImpl implements _OrderList {
     TResult? Function(ChosenProduct chosenProduct, int? index)? add,
     TResult? Function(int position)? change,
     TResult? Function(int position)? remove,
-    TResult? Function(EnumShoppingBasketOrder orderList)? orderList,
+    TResult? Function(EnumSortProductOrder orderList)? orderList,
     TResult? Function(String customerNumber)? send,
     TResult? Function()? clear,
     TResult? Function()? deleteFailureMessage,
@@ -711,7 +711,7 @@ class _$OrderListImpl implements _OrderList {
     TResult Function(ChosenProduct chosenProduct, int? index)? add,
     TResult Function(int position)? change,
     TResult Function(int position)? remove,
-    TResult Function(EnumShoppingBasketOrder orderList)? orderList,
+    TResult Function(EnumSortProductOrder orderList)? orderList,
     TResult Function(String customerNumber)? send,
     TResult Function()? clear,
     TResult Function()? deleteFailureMessage,
@@ -771,10 +771,10 @@ class _$OrderListImpl implements _OrderList {
 }
 
 abstract class _OrderList implements EventShoppingBasket {
-  const factory _OrderList({required final EnumShoppingBasketOrder orderList}) =
+  const factory _OrderList({required final EnumSortProductOrder orderList}) =
       _$OrderListImpl;
 
-  EnumShoppingBasketOrder get orderList;
+  EnumSortProductOrder get orderList;
   @JsonKey(ignore: true)
   _$$OrderListImplCopyWith<_$OrderListImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -847,7 +847,7 @@ class _$SendImpl implements _Send {
     required TResult Function(ChosenProduct chosenProduct, int? index) add,
     required TResult Function(int position) change,
     required TResult Function(int position) remove,
-    required TResult Function(EnumShoppingBasketOrder orderList) orderList,
+    required TResult Function(EnumSortProductOrder orderList) orderList,
     required TResult Function(String customerNumber) send,
     required TResult Function() clear,
     required TResult Function() deleteFailureMessage,
@@ -861,7 +861,7 @@ class _$SendImpl implements _Send {
     TResult? Function(ChosenProduct chosenProduct, int? index)? add,
     TResult? Function(int position)? change,
     TResult? Function(int position)? remove,
-    TResult? Function(EnumShoppingBasketOrder orderList)? orderList,
+    TResult? Function(EnumSortProductOrder orderList)? orderList,
     TResult? Function(String customerNumber)? send,
     TResult? Function()? clear,
     TResult? Function()? deleteFailureMessage,
@@ -875,7 +875,7 @@ class _$SendImpl implements _Send {
     TResult Function(ChosenProduct chosenProduct, int? index)? add,
     TResult Function(int position)? change,
     TResult Function(int position)? remove,
-    TResult Function(EnumShoppingBasketOrder orderList)? orderList,
+    TResult Function(EnumSortProductOrder orderList)? orderList,
     TResult Function(String customerNumber)? send,
     TResult Function()? clear,
     TResult Function()? deleteFailureMessage,
@@ -984,7 +984,7 @@ class _$ClearImpl implements _Clear {
     required TResult Function(ChosenProduct chosenProduct, int? index) add,
     required TResult Function(int position) change,
     required TResult Function(int position) remove,
-    required TResult Function(EnumShoppingBasketOrder orderList) orderList,
+    required TResult Function(EnumSortProductOrder orderList) orderList,
     required TResult Function(String customerNumber) send,
     required TResult Function() clear,
     required TResult Function() deleteFailureMessage,
@@ -998,7 +998,7 @@ class _$ClearImpl implements _Clear {
     TResult? Function(ChosenProduct chosenProduct, int? index)? add,
     TResult? Function(int position)? change,
     TResult? Function(int position)? remove,
-    TResult? Function(EnumShoppingBasketOrder orderList)? orderList,
+    TResult? Function(EnumSortProductOrder orderList)? orderList,
     TResult? Function(String customerNumber)? send,
     TResult? Function()? clear,
     TResult? Function()? deleteFailureMessage,
@@ -1012,7 +1012,7 @@ class _$ClearImpl implements _Clear {
     TResult Function(ChosenProduct chosenProduct, int? index)? add,
     TResult Function(int position)? change,
     TResult Function(int position)? remove,
-    TResult Function(EnumShoppingBasketOrder orderList)? orderList,
+    TResult Function(EnumSortProductOrder orderList)? orderList,
     TResult Function(String customerNumber)? send,
     TResult Function()? clear,
     TResult Function()? deleteFailureMessage,
@@ -1117,7 +1117,7 @@ class _$DeleteFailureMessageImpl implements _DeleteFailureMessage {
     required TResult Function(ChosenProduct chosenProduct, int? index) add,
     required TResult Function(int position) change,
     required TResult Function(int position) remove,
-    required TResult Function(EnumShoppingBasketOrder orderList) orderList,
+    required TResult Function(EnumSortProductOrder orderList) orderList,
     required TResult Function(String customerNumber) send,
     required TResult Function() clear,
     required TResult Function() deleteFailureMessage,
@@ -1131,7 +1131,7 @@ class _$DeleteFailureMessageImpl implements _DeleteFailureMessage {
     TResult? Function(ChosenProduct chosenProduct, int? index)? add,
     TResult? Function(int position)? change,
     TResult? Function(int position)? remove,
-    TResult? Function(EnumShoppingBasketOrder orderList)? orderList,
+    TResult? Function(EnumSortProductOrder orderList)? orderList,
     TResult? Function(String customerNumber)? send,
     TResult? Function()? clear,
     TResult? Function()? deleteFailureMessage,
@@ -1145,7 +1145,7 @@ class _$DeleteFailureMessageImpl implements _DeleteFailureMessage {
     TResult Function(ChosenProduct chosenProduct, int? index)? add,
     TResult Function(int position)? change,
     TResult Function(int position)? remove,
-    TResult Function(EnumShoppingBasketOrder orderList)? orderList,
+    TResult Function(EnumSortProductOrder orderList)? orderList,
     TResult Function(String customerNumber)? send,
     TResult Function()? clear,
     TResult Function()? deleteFailureMessage,
