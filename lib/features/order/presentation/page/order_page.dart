@@ -241,12 +241,13 @@ class _OrderInfoWidget extends StatelessWidget {
                 ),
               ],
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 8.0),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: FittedBox(
                 child: Text(
-                  "Bestellung wird bearbeitet",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  'Bestellung ${productOrder.enumOrderProcess.information}',
+                  style: const TextStyle(
+                      fontSize: 20, fontWeight: FontWeight.bold),
                 ),
               ),
             ),

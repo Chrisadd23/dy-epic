@@ -41,13 +41,11 @@ class OrderCubit extends Cubit<OrderCustomerState> {
         query.snapshots().listen((docSnapshot) {
           final orderList = docSnapshot.docs.map((e) {
             final orderMap = e.data();
+            final enumOrderProcess = _getEnumOrderProcess(data: orderMap);
             return ProductOrder(
               orderNumber: orderMap['order_id'],
               amount: double.parse(orderMap['amount'].toString()),
-              inWork: orderMap['inWork'],
-              finished: orderMap['finished'],
-              canceledByAdmin: orderMap['canceledByAdmin'],
-              canceledByCustomer: orderMap['canceledByCustomer'],
+              enumOrderProcess: enumOrderProcess,
               productInformationList:
                   _getListProductInformation(orderMap['orderList']),
               date: (orderMap['date'] as Timestamp).toDate(),
@@ -97,11 +95,28 @@ class OrderCubit extends Cubit<OrderCustomerState> {
           newList.sort((a, b) => b.amount.compareTo(a.amount));
           break;
         case EnumSortProductOrder.sortConditions:
-          newList.sort((a, b) => a.finished ? 1 : -1);
+          newList.sort((a, b) =>
+              b.enumOrderProcess.sortIndex <= a.enumOrderProcess.sortIndex
+                  ? 1
+                  : -1);
           break;
       }
       debugPrint("sort ==>");
       emit(successState.copyWith(orderList: newList));
     });
+  }
+
+  EnumOrderProcess _getEnumOrderProcess({required Map<String, dynamic> data}) {
+    if (data['inWork']) {
+      return EnumOrderProcess.inWork;
+    }
+    if (data['finished']) {
+      return EnumOrderProcess.finished;
+    }
+    if (data['canceledByAdmin']) {
+      return EnumOrderProcess.canceledByAdmin;
+    } else {
+      return EnumOrderProcess.canceledByCustomer;
+    }
   }
 }

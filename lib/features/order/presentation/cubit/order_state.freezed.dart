@@ -491,10 +491,7 @@ abstract class _Failure implements OrderCustomerState {
 mixin _$ProductOrder {
   String get orderNumber => throw _privateConstructorUsedError;
   double get amount => throw _privateConstructorUsedError;
-  bool get inWork => throw _privateConstructorUsedError;
-  bool get finished => throw _privateConstructorUsedError;
-  bool get canceledByAdmin => throw _privateConstructorUsedError;
-  bool get canceledByCustomer => throw _privateConstructorUsedError;
+  EnumOrderProcess get enumOrderProcess => throw _privateConstructorUsedError;
   DateTime get date => throw _privateConstructorUsedError;
   List<ProductInformation> get productInformationList =>
       throw _privateConstructorUsedError;
@@ -513,10 +510,7 @@ abstract class $ProductOrderCopyWith<$Res> {
   $Res call(
       {String orderNumber,
       double amount,
-      bool inWork,
-      bool finished,
-      bool canceledByAdmin,
-      bool canceledByCustomer,
+      EnumOrderProcess enumOrderProcess,
       DateTime date,
       List<ProductInformation> productInformationList});
 }
@@ -536,10 +530,7 @@ class _$ProductOrderCopyWithImpl<$Res, $Val extends ProductOrder>
   $Res call({
     Object? orderNumber = null,
     Object? amount = null,
-    Object? inWork = null,
-    Object? finished = null,
-    Object? canceledByAdmin = null,
-    Object? canceledByCustomer = null,
+    Object? enumOrderProcess = null,
     Object? date = null,
     Object? productInformationList = null,
   }) {
@@ -552,22 +543,10 @@ class _$ProductOrderCopyWithImpl<$Res, $Val extends ProductOrder>
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
               as double,
-      inWork: null == inWork
-          ? _value.inWork
-          : inWork // ignore: cast_nullable_to_non_nullable
-              as bool,
-      finished: null == finished
-          ? _value.finished
-          : finished // ignore: cast_nullable_to_non_nullable
-              as bool,
-      canceledByAdmin: null == canceledByAdmin
-          ? _value.canceledByAdmin
-          : canceledByAdmin // ignore: cast_nullable_to_non_nullable
-              as bool,
-      canceledByCustomer: null == canceledByCustomer
-          ? _value.canceledByCustomer
-          : canceledByCustomer // ignore: cast_nullable_to_non_nullable
-              as bool,
+      enumOrderProcess: null == enumOrderProcess
+          ? _value.enumOrderProcess
+          : enumOrderProcess // ignore: cast_nullable_to_non_nullable
+              as EnumOrderProcess,
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
@@ -591,10 +570,7 @@ abstract class _$$ProductOrderImplCopyWith<$Res>
   $Res call(
       {String orderNumber,
       double amount,
-      bool inWork,
-      bool finished,
-      bool canceledByAdmin,
-      bool canceledByCustomer,
+      EnumOrderProcess enumOrderProcess,
       DateTime date,
       List<ProductInformation> productInformationList});
 }
@@ -612,10 +588,7 @@ class __$$ProductOrderImplCopyWithImpl<$Res>
   $Res call({
     Object? orderNumber = null,
     Object? amount = null,
-    Object? inWork = null,
-    Object? finished = null,
-    Object? canceledByAdmin = null,
-    Object? canceledByCustomer = null,
+    Object? enumOrderProcess = null,
     Object? date = null,
     Object? productInformationList = null,
   }) {
@@ -628,22 +601,10 @@ class __$$ProductOrderImplCopyWithImpl<$Res>
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
               as double,
-      inWork: null == inWork
-          ? _value.inWork
-          : inWork // ignore: cast_nullable_to_non_nullable
-              as bool,
-      finished: null == finished
-          ? _value.finished
-          : finished // ignore: cast_nullable_to_non_nullable
-              as bool,
-      canceledByAdmin: null == canceledByAdmin
-          ? _value.canceledByAdmin
-          : canceledByAdmin // ignore: cast_nullable_to_non_nullable
-              as bool,
-      canceledByCustomer: null == canceledByCustomer
-          ? _value.canceledByCustomer
-          : canceledByCustomer // ignore: cast_nullable_to_non_nullable
-              as bool,
+      enumOrderProcess: null == enumOrderProcess
+          ? _value.enumOrderProcess
+          : enumOrderProcess // ignore: cast_nullable_to_non_nullable
+              as EnumOrderProcess,
       date: null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
@@ -662,10 +623,7 @@ class _$ProductOrderImpl implements _ProductOrder {
   const _$ProductOrderImpl(
       {required this.orderNumber,
       required this.amount,
-      required this.inWork,
-      required this.finished,
-      required this.canceledByAdmin,
-      required this.canceledByCustomer,
+      required this.enumOrderProcess,
       required this.date,
       required final List<ProductInformation> productInformationList})
       : _productInformationList = productInformationList;
@@ -675,13 +633,7 @@ class _$ProductOrderImpl implements _ProductOrder {
   @override
   final double amount;
   @override
-  final bool inWork;
-  @override
-  final bool finished;
-  @override
-  final bool canceledByAdmin;
-  @override
-  final bool canceledByCustomer;
+  final EnumOrderProcess enumOrderProcess;
   @override
   final DateTime date;
   final List<ProductInformation> _productInformationList;
@@ -695,7 +647,7 @@ class _$ProductOrderImpl implements _ProductOrder {
 
   @override
   String toString() {
-    return 'ProductOrder(orderNumber: $orderNumber, amount: $amount, inWork: $inWork, finished: $finished, canceledByAdmin: $canceledByAdmin, canceledByCustomer: $canceledByCustomer, date: $date, productInformationList: $productInformationList)';
+    return 'ProductOrder(orderNumber: $orderNumber, amount: $amount, enumOrderProcess: $enumOrderProcess, date: $date, productInformationList: $productInformationList)';
   }
 
   @override
@@ -706,13 +658,8 @@ class _$ProductOrderImpl implements _ProductOrder {
             (identical(other.orderNumber, orderNumber) ||
                 other.orderNumber == orderNumber) &&
             (identical(other.amount, amount) || other.amount == amount) &&
-            (identical(other.inWork, inWork) || other.inWork == inWork) &&
-            (identical(other.finished, finished) ||
-                other.finished == finished) &&
-            (identical(other.canceledByAdmin, canceledByAdmin) ||
-                other.canceledByAdmin == canceledByAdmin) &&
-            (identical(other.canceledByCustomer, canceledByCustomer) ||
-                other.canceledByCustomer == canceledByCustomer) &&
+            (identical(other.enumOrderProcess, enumOrderProcess) ||
+                other.enumOrderProcess == enumOrderProcess) &&
             (identical(other.date, date) || other.date == date) &&
             const DeepCollectionEquality().equals(
                 other._productInformationList, _productInformationList));
@@ -723,10 +670,7 @@ class _$ProductOrderImpl implements _ProductOrder {
       runtimeType,
       orderNumber,
       amount,
-      inWork,
-      finished,
-      canceledByAdmin,
-      canceledByCustomer,
+      enumOrderProcess,
       date,
       const DeepCollectionEquality().hash(_productInformationList));
 
@@ -741,10 +685,7 @@ abstract class _ProductOrder implements ProductOrder {
   const factory _ProductOrder(
           {required final String orderNumber,
           required final double amount,
-          required final bool inWork,
-          required final bool finished,
-          required final bool canceledByAdmin,
-          required final bool canceledByCustomer,
+          required final EnumOrderProcess enumOrderProcess,
           required final DateTime date,
           required final List<ProductInformation> productInformationList}) =
       _$ProductOrderImpl;
@@ -754,13 +695,7 @@ abstract class _ProductOrder implements ProductOrder {
   @override
   double get amount;
   @override
-  bool get inWork;
-  @override
-  bool get finished;
-  @override
-  bool get canceledByAdmin;
-  @override
-  bool get canceledByCustomer;
+  EnumOrderProcess get enumOrderProcess;
   @override
   DateTime get date;
   @override

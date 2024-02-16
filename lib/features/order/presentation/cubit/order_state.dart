@@ -1,4 +1,5 @@
 import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
+import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'order_state.freezed.dart';
@@ -20,10 +21,7 @@ class ProductOrder with _$ProductOrder {
   const factory ProductOrder({
     required String orderNumber,
     required double amount,
-    required bool inWork,
-    required bool finished,
-    required bool canceledByAdmin,
-    required bool canceledByCustomer,
+    required EnumOrderProcess enumOrderProcess,
     required DateTime date,
     required List<ProductInformation> productInformationList,
   }) = _ProductOrder;
