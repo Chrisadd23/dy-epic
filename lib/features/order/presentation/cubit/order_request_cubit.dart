@@ -68,7 +68,11 @@ class OrderRequestCubit extends Cubit<OrderCustomerState> {
           newList.sort((a, b) => b.date.compareTo(a.date));
           break;
         case EnumSortProductOrder.sortPrice:
-          newList.sort((a, b) => b.amount.compareTo(a.amount));
+          newList.sort((a, b) =>
+              b.enumOrderProcess.sortIndex <= a.enumOrderProcess.sortIndex &&
+                      b.amount <= a.amount
+                  ? 1
+                  : -1);
           break;
         case EnumSortProductOrder.sortConditions:
           newList.sort((a, b) =>

@@ -85,14 +85,24 @@ class OrderCubit extends Cubit<OrderCustomerState> {
 
   void sortOrder({EnumSortProductOrder? sortType}) {
     state.mapOrNull(success: (successState) {
-      final newList = List<ProductOrder>.from(successState.orderList ?? []);
+      final List<ProductOrder> newList = List.from(successState.orderList!);
       switch (sortType) {
         case null:
         case EnumSortProductOrder.sortDate:
           newList.sort((a, b) => b.date.compareTo(a.date));
           break;
         case EnumSortProductOrder.sortPrice:
-          newList.sort((a, b) => b.amount.compareTo(a.amount));
+          newList.sort((a, b) {
+            int compare = a.enumOrderProcess.sortIndex
+                .compareTo(b.enumOrderProcess.index);
+            if (compare != 0) {
+              return compare;
+            }
+            return a.amount.compareTo(b.amount);
+          });
+
+          emit(successState.copyWith(orderList: newList));
+
           break;
         case EnumSortProductOrder.sortConditions:
           newList.sort((a, b) =>
