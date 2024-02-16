@@ -25,7 +25,6 @@ enum EnumSelectOfficeChairCategory {
 enum EnumOrderType { bestellung, anfrage }
 
 enum EnumSortProductOrder {
-  sortNormal(type: 'Normal'),
   sortDate(type: 'Datum'),
   sortPrice(type: 'Preis'),
   sortConditions(type: 'Zustand');

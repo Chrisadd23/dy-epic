@@ -61,5 +61,22 @@ class OrderRequestCubit extends Cubit<OrderCustomerState> {
     return orderList;
   }
 
-  void sortOrder({EnumSortProductOrder? sortType}) {}
+  void sortOrder({EnumSortProductOrder? sortType}) {
+    state.mapOrNull(success: (successState) {
+      final newList = List<ProductOrder>.from(successState.orderList ?? []);
+      switch (sortType) {
+        case null:
+        case EnumSortProductOrder.sortDate:
+          newList.sort((a, b) => a.date.compareTo(b.date));
+          break;
+        case EnumSortProductOrder.sortPrice:
+          newList.sort((a, b) => a.amount.compareTo(b.amount));
+          break;
+        case EnumSortProductOrder.sortConditions:
+          newList.sort((a, b) => b.finished ? 1 : -1);
+          break;
+      }
+      emit(successState.copyWith(orderList: newList));
+    });
+  }
 }
