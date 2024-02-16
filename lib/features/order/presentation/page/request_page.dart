@@ -86,7 +86,9 @@ class _RequestBlocProvider extends StatelessWidget {
                           Offset(MediaQuery.sizeOf(context).width * 0.05, -4),
                     ),
                     onChanged: (sortType) {
-                      context.read<OrderRequestCubit>().sortOrder(sortType:sortType)
+                      context
+                          .read<OrderRequestCubit>()
+                          .sortOrder(sortType: sortType);
                     },
                     customButton: Container(
                       height: MediaQuery.sizeOf(context).height * 0.04,
