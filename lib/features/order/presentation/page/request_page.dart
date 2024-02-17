@@ -111,9 +111,7 @@ class _RequestBlocProvider extends StatelessWidget {
 }
 
 class _DropdownButton2 extends StatelessWidget {
-  const _DropdownButton2({
-    super.key,
-  });
+  const _DropdownButton2();
 
   @override
   Widget build(BuildContext context) {
