@@ -30,7 +30,7 @@ class OrderInformationDialog extends StatelessWidget {
                   .map(
                     (productInformation) => Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 20.0, vertical: 20),
+                          vertical: 10, horizontal: 20),
                       child: Container(
                         decoration: BoxDecoration(
                             border: Border.all(),
