@@ -26,10 +26,11 @@ class RequestPage extends StatelessWidget {
       value: getIt<LoginCubit>(),
       child: BlocBuilder<LoginCubit, LoginState>(
         builder: (context, state) {
-          return _RequestBlocProvider(
-              customerNumber: state.mapOrNull(
-                  loggedIn: (loggedIn) =>
-                      loggedIn.entityLoginCustomer.customerNumber));
+          return state.mapOrNull(
+                  loggedIn: (loggedIn) => _RequestBlocProvider(
+                      customerNumber:
+                          loggedIn.entityLoginCustomer.customerNumber)) ??
+              const SizedBox.shrink();
         },
       ),
     );
@@ -38,10 +39,10 @@ class RequestPage extends StatelessWidget {
 
 class _RequestBlocProvider extends StatelessWidget {
   const _RequestBlocProvider({
-    this.customerNumber,
+    required this.customerNumber,
   });
 
-  final String? customerNumber;
+  final String customerNumber;
 
   @override
   Widget build(BuildContext context) {
@@ -55,65 +56,9 @@ class _RequestBlocProvider extends StatelessWidget {
             alignment: Alignment.topCenter,
             child: Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 20.0),
-                  child: DropdownButton2(
-                    items: [
-                      ...EnumSortProductOrder.values.map(
-                        (sortOrder) => DropdownMenuItem(
-                          value: sortOrder,
-                          child: Container(
-                            decoration: EnumSortProductOrder.values.last !=
-                                    sortOrder
-                                ? const BoxDecoration(
-                                    border:
-                                        Border(bottom: BorderSide(width: 2)),
-                                  )
-                                : null,
-                            child: Center(
-                              child: Text(sortOrder.type),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                    dropdownStyleData: DropdownStyleData(
-                      width: 160,
-                      padding: const EdgeInsets.symmetric(vertical: 6),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(4),
-                      ),
-                      offset:
-                          Offset(MediaQuery.sizeOf(context).width * 0.05, -4),
-                    ),
-                    onChanged: (sortType) {
-                      context
-                          .read<OrderRequestCubit>()
-                          .sortOrder(sortType: sortType);
-                    },
-                    customButton: Container(
-                      height: MediaQuery.sizeOf(context).height * 0.04,
-                      width: MediaQuery.sizeOf(context).width * 0.5,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: AppColors.orangeF6A440),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 45.0),
-                            child: FittedBox(
-                              child: Text(
-                                'Anfragen',
-                                style: AppTextStyle.colorWhiteSize20ShadowBlack,
-                              ),
-                            ),
-                          ),
-                          const Icon(Icons.arrow_drop_down_sharp)
-                        ],
-                      ),
-                    ),
-                  ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 20.0),
+                  child: _DropdownButton2(),
                 ),
                 BlocBuilder<OrderRequestCubit, OrderCustomerState>(
                   builder: (context, state) => state.map(
@@ -134,7 +79,11 @@ class _RequestBlocProvider extends StatelessWidget {
                                     itemCount:
                                         successState.orderList?.length ?? 0,
                                     itemBuilder: (context, index) =>
-                                        successState.orderList == null
+                                        successState.orderList == null ||
+                                                successState
+                                                    .orderList!.isEmpty ||
+                                                successState
+                                                    .orderList![index].hide!
                                             ? const SizedBox.shrink()
                                             : _OrderInfoWidget(
                                                 index: index,
@@ -158,6 +107,68 @@ class _RequestBlocProvider extends StatelessWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties.add(StringProperty('customerNumber', customerNumber));
+  }
+}
+
+class _DropdownButton2 extends StatelessWidget {
+  const _DropdownButton2({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return DropdownButton2(
+      items: [
+        ...EnumSortProductOrder.values.map(
+          (sortOrder) => DropdownMenuItem(
+            value: sortOrder,
+            child: Container(
+              decoration: EnumSortProductOrder.values.last != sortOrder
+                  ? const BoxDecoration(
+                      border: Border(bottom: BorderSide(width: 2)),
+                    )
+                  : null,
+              child: Center(
+                child: Text(sortOrder.type),
+              ),
+            ),
+          ),
+        ),
+      ],
+      dropdownStyleData: DropdownStyleData(
+        width: 160,
+        padding: const EdgeInsets.symmetric(vertical: 6),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(4),
+        ),
+        offset: Offset(MediaQuery.sizeOf(context).width * 0.05, -4),
+      ),
+      onChanged: (sortType) {
+        context.read<OrderRequestCubit>().sortOrder(sortType: sortType);
+      },
+      customButton: Container(
+        height: MediaQuery.sizeOf(context).height * 0.04,
+        width: MediaQuery.sizeOf(context).width * 0.5,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            color: AppColors.orangeF6A440),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 45.0),
+              child: FittedBox(
+                child: Text(
+                  'Anfragen',
+                  style: AppTextStyle.colorWhiteSize20ShadowBlack,
+                ),
+              ),
+            ),
+            const Icon(Icons.arrow_drop_down_sharp)
+          ],
+        ),
+      ),
+    );
   }
 }
 

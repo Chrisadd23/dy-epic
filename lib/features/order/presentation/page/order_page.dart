@@ -74,18 +74,26 @@ class _OrderBlocProvider extends StatelessWidget {
                                                 itemCount: successState
                                                         .orderList?.length ??
                                                     0,
-                                                itemBuilder: (context, index) =>
-                                                    successState.orderList ==
-                                                            null
-                                                        ? const SizedBox
-                                                            .shrink()
-                                                        : _OrderInfoWidget(
-                                                            index: index,
-                                                            productOrder:
-                                                                successState
-                                                                        .orderList![
-                                                                    index],
-                                                          )),
+                                                itemBuilder: (context, index) {
+                                                  debugPrint("build Widget");
+                                                  return successState
+                                                                  .orderList ==
+                                                              null ||
+                                                          successState
+                                                              .orderList!
+                                                              .isEmpty ||
+                                                          successState
+                                                              .orderList![index]
+                                                              .hide!
+                                                      ? const SizedBox.shrink()
+                                                      : _OrderInfoWidget(
+                                                          index: index,
+                                                          productOrder:
+                                                              successState
+                                                                      .orderList![
+                                                                  index],
+                                                        );
+                                                }),
                                           ),
                                         ),
                                       )),

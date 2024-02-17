@@ -1,3 +1,4 @@
+import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/cubit/order_state.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,7 @@ class OrderInformationDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      surfaceTintColor: Colors.white,
+      surfaceTintColor: AppColors.greyCACACA,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
         child: ConstrainedBox(

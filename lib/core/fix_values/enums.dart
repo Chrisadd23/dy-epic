@@ -39,7 +39,9 @@ enum EnumOrderType { bestellung, anfrage }
 enum EnumSortProductOrder {
   sortDate(type: 'Datum'),
   sortPrice(type: 'Preis'),
-  sortConditions(type: 'Zustand');
+  sortInWork(type: 'In Arbeit'),
+  sortFinished(type: 'Abgeschlossen'),
+  sortCanceled(type: 'Stoniert');
 
   const EnumSortProductOrder({required this.type});
 

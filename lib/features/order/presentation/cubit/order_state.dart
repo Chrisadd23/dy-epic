@@ -24,6 +24,7 @@ class ProductOrder with _$ProductOrder {
     required EnumOrderProcess enumOrderProcess,
     required DateTime date,
     required List<ProductInformation> productInformationList,
+    @Default(false) bool? hide,
   }) = _ProductOrder;
 }
 

@@ -495,6 +495,7 @@ mixin _$ProductOrder {
   DateTime get date => throw _privateConstructorUsedError;
   List<ProductInformation> get productInformationList =>
       throw _privateConstructorUsedError;
+  bool? get hide => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProductOrderCopyWith<ProductOrder> get copyWith =>
@@ -512,7 +513,8 @@ abstract class $ProductOrderCopyWith<$Res> {
       double amount,
       EnumOrderProcess enumOrderProcess,
       DateTime date,
-      List<ProductInformation> productInformationList});
+      List<ProductInformation> productInformationList,
+      bool? hide});
 }
 
 /// @nodoc
@@ -533,6 +535,7 @@ class _$ProductOrderCopyWithImpl<$Res, $Val extends ProductOrder>
     Object? enumOrderProcess = null,
     Object? date = null,
     Object? productInformationList = null,
+    Object? hide = freezed,
   }) {
     return _then(_value.copyWith(
       orderNumber: null == orderNumber
@@ -555,6 +558,10 @@ class _$ProductOrderCopyWithImpl<$Res, $Val extends ProductOrder>
           ? _value.productInformationList
           : productInformationList // ignore: cast_nullable_to_non_nullable
               as List<ProductInformation>,
+      hide: freezed == hide
+          ? _value.hide
+          : hide // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -572,7 +579,8 @@ abstract class _$$ProductOrderImplCopyWith<$Res>
       double amount,
       EnumOrderProcess enumOrderProcess,
       DateTime date,
-      List<ProductInformation> productInformationList});
+      List<ProductInformation> productInformationList,
+      bool? hide});
 }
 
 /// @nodoc
@@ -591,6 +599,7 @@ class __$$ProductOrderImplCopyWithImpl<$Res>
     Object? enumOrderProcess = null,
     Object? date = null,
     Object? productInformationList = null,
+    Object? hide = freezed,
   }) {
     return _then(_$ProductOrderImpl(
       orderNumber: null == orderNumber
@@ -613,6 +622,10 @@ class __$$ProductOrderImplCopyWithImpl<$Res>
           ? _value._productInformationList
           : productInformationList // ignore: cast_nullable_to_non_nullable
               as List<ProductInformation>,
+      hide: freezed == hide
+          ? _value.hide
+          : hide // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -625,7 +638,8 @@ class _$ProductOrderImpl implements _ProductOrder {
       required this.amount,
       required this.enumOrderProcess,
       required this.date,
-      required final List<ProductInformation> productInformationList})
+      required final List<ProductInformation> productInformationList,
+      this.hide = false})
       : _productInformationList = productInformationList;
 
   @override
@@ -646,8 +660,12 @@ class _$ProductOrderImpl implements _ProductOrder {
   }
 
   @override
+  @JsonKey()
+  final bool? hide;
+
+  @override
   String toString() {
-    return 'ProductOrder(orderNumber: $orderNumber, amount: $amount, enumOrderProcess: $enumOrderProcess, date: $date, productInformationList: $productInformationList)';
+    return 'ProductOrder(orderNumber: $orderNumber, amount: $amount, enumOrderProcess: $enumOrderProcess, date: $date, productInformationList: $productInformationList, hide: $hide)';
   }
 
   @override
@@ -662,7 +680,8 @@ class _$ProductOrderImpl implements _ProductOrder {
                 other.enumOrderProcess == enumOrderProcess) &&
             (identical(other.date, date) || other.date == date) &&
             const DeepCollectionEquality().equals(
-                other._productInformationList, _productInformationList));
+                other._productInformationList, _productInformationList) &&
+            (identical(other.hide, hide) || other.hide == hide));
   }
 
   @override
@@ -672,7 +691,8 @@ class _$ProductOrderImpl implements _ProductOrder {
       amount,
       enumOrderProcess,
       date,
-      const DeepCollectionEquality().hash(_productInformationList));
+      const DeepCollectionEquality().hash(_productInformationList),
+      hide);
 
   @JsonKey(ignore: true)
   @override
@@ -683,12 +703,12 @@ class _$ProductOrderImpl implements _ProductOrder {
 
 abstract class _ProductOrder implements ProductOrder {
   const factory _ProductOrder(
-          {required final String orderNumber,
-          required final double amount,
-          required final EnumOrderProcess enumOrderProcess,
-          required final DateTime date,
-          required final List<ProductInformation> productInformationList}) =
-      _$ProductOrderImpl;
+      {required final String orderNumber,
+      required final double amount,
+      required final EnumOrderProcess enumOrderProcess,
+      required final DateTime date,
+      required final List<ProductInformation> productInformationList,
+      final bool? hide}) = _$ProductOrderImpl;
 
   @override
   String get orderNumber;
@@ -700,6 +720,8 @@ abstract class _ProductOrder implements ProductOrder {
   DateTime get date;
   @override
   List<ProductInformation> get productInformationList;
+  @override
+  bool? get hide;
   @override
   @JsonKey(ignore: true)
   _$$ProductOrderImplCopyWith<_$ProductOrderImpl> get copyWith =>
