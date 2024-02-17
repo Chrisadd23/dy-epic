@@ -8,6 +8,7 @@ import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_state.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/cubit/order_request_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/cubit/order_state.dart';
+import 'package:app_flutter_produkt_bestellen/features/order/presentation/widget/order_information_dialog.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/widget/shopping_basket_dialog.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
@@ -171,53 +172,32 @@ class _OrderInfoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 20.0),
-      child: Container(
-        decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(20),
-            border: Border.all()),
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: FittedBox(
-                child: Text(
-                  productOrder.orderNumber,
-                  style: const TextStyle(
-                      fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-              ),
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    height: 50,
-                    decoration: BoxDecoration(
-                      border:
-                          const Border(bottom: BorderSide(), top: BorderSide()),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Center(
-                      child: Text(
-                        productOrder.date.onlyDateInString,
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
+    return InkWell(
+      onTap: () => OrderInformationDialog.showOrderInformationDialog(
+          context: context,
+          productInformationList: productOrder.productInformationList),
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 20.0),
+        child: Container(
+          decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all()),
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: FittedBox(
+                  child: Text(
+                    productOrder.orderNumber,
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                 ),
-                Expanded(
-                  child: ShaderMask(
-                    shaderCallback: (rect) {
-                      return const LinearGradient(
-                              colors: [Colors.black, Colors.grey],
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter)
-                          .createShader(Rect.fromLTRB(
-                              rect.left, rect.top, rect.right, rect.bottom));
-                    },
+              ),
+              Row(
+                children: [
+                  Expanded(
                     child: Container(
                       height: 50,
                       decoration: BoxDecoration(
@@ -227,30 +207,56 @@ class _OrderInfoWidget extends StatelessWidget {
                       ),
                       child: Center(
                         child: Text(
-                          NumberFormat.currency(
-                                  locale: 'de_DE',
-                                  symbol: '€',
-                                  decimalDigits: 2)
-                              .format(productOrder.amount),
+                          productOrder.date.onlyDateInString,
                           textAlign: TextAlign.center,
                         ),
                       ),
                     ),
                   ),
-                ),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: FittedBox(
-                child: Text(
-                  'Anfrage ${productOrder.enumOrderProcess.information}',
-                  style: const TextStyle(
-                      fontSize: 20, fontWeight: FontWeight.bold),
+                  Expanded(
+                    child: ShaderMask(
+                      shaderCallback: (rect) {
+                        return const LinearGradient(
+                                colors: [Colors.black, Colors.grey],
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter)
+                            .createShader(Rect.fromLTRB(
+                                rect.left, rect.top, rect.right, rect.bottom));
+                      },
+                      child: Container(
+                        height: 50,
+                        decoration: BoxDecoration(
+                          border: const Border(
+                              bottom: BorderSide(), top: BorderSide()),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Center(
+                          child: Text(
+                            NumberFormat.currency(
+                                    locale: 'de_DE',
+                                    symbol: '€',
+                                    decimalDigits: 2)
+                                .format(productOrder.amount),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: FittedBox(
+                  child: Text(
+                    'Anfrage ${productOrder.enumOrderProcess.information}',
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
