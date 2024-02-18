@@ -46,10 +46,10 @@ class OrderInformationDialog extends StatelessWidget {
                               textAlign: TextAlign.center,
                             ),
                           ),
-                          Padding(
+                          const Padding(
                             padding:
-                                const EdgeInsets.symmetric(horizontal: 20.0),
-                            child: const Divider(),
+                                EdgeInsets.symmetric(horizontal: 20.0),
+                            child: Divider(),
                           ),
                           const Text(
                             'Sobald Ihre Bestellung bearbeitet wurde, werden Ihnen die Produktinformationen innerhalb der PDF Datei bereitgestellt.',
