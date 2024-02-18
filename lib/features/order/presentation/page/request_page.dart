@@ -115,9 +115,12 @@ class _DropdownButton2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dropDownComponents = EnumSortProductOrder.values.toList();
+    dropDownComponents.remove(EnumSortProductOrder.sortFinished);
+
     return DropdownButton2(
       items: [
-        ...EnumSortProductOrder.values.map(
+        ...dropDownComponents.map(
           (sortOrder) => DropdownMenuItem(
             value: sortOrder,
             child: Container(
