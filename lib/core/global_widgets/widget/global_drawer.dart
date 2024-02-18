@@ -1,5 +1,6 @@
 import 'package:app_flutter_produkt_bestellen/core/fix_widgets/drawer_button.dart';
 import 'package:app_flutter_produkt_bestellen/core/list_values/list_values.dart';
+import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_state.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/bloc_shopping_basket.dart';
@@ -57,25 +58,30 @@ class _DrawerWidget extends StatelessWidget {
                           ]),
                       child: Column(
                         children: [
-                          Container(
-                            height: 68,
-                            width: double.infinity,
-                            decoration: const BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.only(
-                                  bottomRight: Radius.circular(20),
+                          InkWell(
+                            onTap: () =>
+                                context.goNamed(AppGoRouter.homePage.name),
+                            child: Container(
+                              height: 68,
+                              width: double.infinity,
+                              decoration: const BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.only(
+                                    bottomRight: Radius.circular(20),
+                                  ),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        color: Colors.black,
+                                        blurStyle: BlurStyle.inner,
+                                        offset: Offset(0, 2)),
+                                  ]),
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.only(left: 5, right: 5),
+                                child: Image.asset(
+                                  Assets.company.appBarLogo.path,
+                                  fit: BoxFit.fitWidth,
                                 ),
-                                boxShadow: [
-                                  BoxShadow(
-                                      color: Colors.black,
-                                      blurStyle: BlurStyle.inner,
-                                      offset: Offset(0, 2)),
-                                ]),
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 5, right: 5),
-                              child: Image.asset(
-                                Assets.company.appBarLogo.path,
-                                fit: BoxFit.fitWidth,
                               ),
                             ),
                           ),
