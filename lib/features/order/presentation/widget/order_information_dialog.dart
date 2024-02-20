@@ -24,8 +24,7 @@ class OrderInformationDialog extends StatelessWidget {
       title: const _TitleAlertDialogRow(),
       backgroundColor: AppColors.greyCACACA,
       content: ConstrainedBox(
-        constraints:
-            const BoxConstraints(maxHeight: 500, minHeight: 0, minWidth: 300),
+        constraints: const BoxConstraints.tightFor(width: double.maxFinite),
         child: SingleChildScrollView(
           child: Column(
             children: productInformationList
