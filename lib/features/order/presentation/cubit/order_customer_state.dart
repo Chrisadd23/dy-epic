@@ -2,7 +2,7 @@ import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'order_state.freezed.dart';
+part 'order_customer_state.freezed.dart';
 
 @freezed
 class OrderCustomerState with _$OrderCustomerState {

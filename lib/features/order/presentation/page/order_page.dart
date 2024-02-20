@@ -7,7 +7,7 @@ import 'package:app_flutter_produkt_bestellen/core/fix_widgets/loading_widget.da
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_state.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/cubit/order_cubit.dart';
-import 'package:app_flutter_produkt_bestellen/features/order/presentation/cubit/order_state.dart';
+import 'package:app_flutter_produkt_bestellen/features/order/presentation/cubit/order_customer_state.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/widget/order_information_dialog.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/widget/shopping_basket_dialog.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
