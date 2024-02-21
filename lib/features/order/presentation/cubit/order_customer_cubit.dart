@@ -89,7 +89,10 @@ abstract class OrderCustomerCubit extends Cubit<OrderCustomerState> {
           });
           newList = newList
               .map((e) => e.copyWith(
-                  hide: e.enumOrderProcess != EnumOrderProcess.canceledByAdmin))
+                  hide: !(e.enumOrderProcess ==
+                          EnumOrderProcess.canceledByAdmin ||
+                      e.enumOrderProcess ==
+                          EnumOrderProcess.canceledByCustomer)))
               .toList();
           break;
       }
