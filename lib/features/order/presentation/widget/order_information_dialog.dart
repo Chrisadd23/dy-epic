@@ -148,9 +148,15 @@ class _TitleAlertDialogRow extends StatelessWidget {
                       ],
                     ),
                   ))),
-          child: const Icon(
+          child: Icon(
             Icons.info_outline,
-            color: Colors.red,
+            color: Colors.red[900],
+            shadows: const [
+              Shadow(offset: Offset(1, 0), color: Colors.white),
+              Shadow(offset: Offset(-1, 0), color: Colors.white),
+              Shadow(offset: Offset(0, 1), color: Colors.white),
+              Shadow(offset: Offset(0, -1), color: Colors.white),
+            ],
           ),
         )
       ],
