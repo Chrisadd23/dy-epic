@@ -3,8 +3,8 @@ import 'package:app_flutter_produkt_bestellen/features/order/presentation/cubit/
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class OrderStateInformation extends StatelessWidget {
-  const OrderStateInformation(
+class OrderProcessStateInformation extends StatelessWidget {
+  const OrderProcessStateInformation(
       {super.key, required this.productOrder, required this.category});
 
   final ProductOrder productOrder;

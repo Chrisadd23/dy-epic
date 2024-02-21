@@ -1,4 +1,3 @@
-import 'package:app_flutter_produkt_bestellen/core/extension/date_time_extension.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text_style.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
@@ -8,7 +7,7 @@ import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_state.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/cubit/order_customer_state.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/cubit/request_cubit.dart';
-import 'package:app_flutter_produkt_bestellen/features/order/presentation/widget/order_enum_icon.dart';
+import 'package:app_flutter_produkt_bestellen/features/order/presentation/widget/order_information.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/widget/order_information_dialog.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/widget/shopping_basket_dialog.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
@@ -16,7 +15,6 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
 
 class RequestPage extends StatelessWidget {
   const RequestPage({super.key});
@@ -51,54 +49,21 @@ class _RequestBlocProvider extends StatelessWidget {
     return BlocProvider<OrderRequestCubit>(
       create: (context) =>
           getIt<OrderRequestCubit>()..load(customerNumber: customerNumber),
-      child: Stack(
+      child: const Stack(
         children: [
           Align(
             alignment: Alignment.topCenter,
             child: Column(
               children: [
-                const Padding(
+                Padding(
                   padding: EdgeInsets.symmetric(vertical: 20.0),
                   child: _DropdownButton2(),
                 ),
-                BlocBuilder<OrderRequestCubit, OrderCustomerState>(
-                  builder: (context, state) => state.map(
-                      failure: (failureState) => FailureWidget(
-                          failure: failureState.failure.when(
-                              message: (message) => message ?? '',
-                              databaseError: (databaseError) =>
-                                  databaseError ?? '')),
-                      loading: (loadingState) => const LoadingWidget(),
-                      success: (successState) => Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 30.0, right: 30, bottom: 40),
-                              child: ClipRRect(
-                                borderRadius: const BorderRadius.vertical(
-                                    bottom: Radius.circular(30)),
-                                child: ListView.builder(
-                                    itemCount:
-                                        successState.orderList?.length ?? 0,
-                                    itemBuilder: (context, index) =>
-                                        successState.orderList == null ||
-                                                successState
-                                                    .orderList!.isEmpty ||
-                                                successState
-                                                    .orderList![index].hide!
-                                            ? const SizedBox.shrink()
-                                            : _OrderInfoWidget(
-                                                index: index,
-                                                productOrder: successState
-                                                    .orderList![index],
-                                              )),
-                              ),
-                            ),
-                          )),
-                )
+                _OrderInfoWidget(),
               ],
             ),
           ),
-          const DialogShoppingBasket()
+          DialogShoppingBasket(),
         ],
       ),
     );
@@ -175,103 +140,46 @@ class _DropdownButton2 extends StatelessWidget {
 }
 
 class _OrderInfoWidget extends StatelessWidget {
-  const _OrderInfoWidget({
-    required this.index,
-    required this.productOrder,
-  });
-
-  final int index;
-  final ProductOrder productOrder;
+  const _OrderInfoWidget();
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () => OrderInformationDialog.showOrderInformationDialog(
-          context: context,
-          productInformationList: productOrder.productInformationList),
-      child: Padding(
-        padding: const EdgeInsets.only(bottom: 20.0),
-        child: Container(
-          decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(20),
-              border: Border.all()),
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: FittedBox(
-                  child: Text(
-                    productOrder.orderNumber,
-                    style: const TextStyle(
-                        fontSize: 20, fontWeight: FontWeight.bold),
+    return BlocBuilder<OrderRequestCubit, OrderCustomerState>(
+      builder: (context, state) => state.map(
+          failure: (failureState) => FailureWidget(
+              failure: failureState.failure.when(
+                  message: (message) => message ?? '',
+                  databaseError: (databaseError) => databaseError ?? '')),
+          loading: (loadingState) => const LoadingWidget(),
+          success: (successState) => Expanded(
+                child: Padding(
+                  padding:
+                      const EdgeInsets.only(left: 30.0, right: 30, bottom: 40),
+                  child: ClipRRect(
+                    borderRadius: const BorderRadius.vertical(
+                        bottom: Radius.circular(30)),
+                    child: ListView.builder(
+                        itemCount: successState.orderList?.length ?? 0,
+                        itemBuilder: (context, index) =>
+                            successState.orderList == null ||
+                                    successState.orderList!.isEmpty ||
+                                    successState.orderList![index].hide!
+                                ? const SizedBox.shrink()
+                                : InkWell(
+                                    onTap: () => OrderInformationDialog
+                                        .showOrderInformationDialog(
+                                            context: context,
+                                            productInformationList: successState
+                                                .orderList![index]
+                                                .productInformationList),
+                                    child: OrderInformation(
+                                        productOrder:
+                                            successState.orderList![index],
+                                        category: 'Anfrage'),
+                                  )),
                   ),
                 ),
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    child: Container(
-                      height: 50,
-                      decoration: BoxDecoration(
-                        border: const Border(
-                            bottom: BorderSide(), top: BorderSide()),
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Center(
-                        child: Text(
-                          productOrder.date.onlyDateInString,
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: ShaderMask(
-                      shaderCallback: (rect) {
-                        return const LinearGradient(
-                                colors: [Colors.black, Colors.grey],
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter)
-                            .createShader(Rect.fromLTRB(
-                                rect.left, rect.top, rect.right, rect.bottom));
-                      },
-                      child: Container(
-                        height: 50,
-                        decoration: BoxDecoration(
-                          border: const Border(
-                              bottom: BorderSide(), top: BorderSide()),
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Center(
-                          child: Text(
-                            NumberFormat.currency(
-                                    locale: 'de_DE',
-                                    symbol: '€',
-                                    decimalDigits: 2)
-                                .format(productOrder.amount),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              OrderStateInformation(
-                  productOrder: productOrder, category: 'Anfrage')
-            ],
-          ),
-        ),
-      ),
+              )),
     );
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(IntProperty('index', index));
-    properties
-        .add(DiagnosticsProperty<ProductOrder>('productOrder', productOrder));
   }
 }
