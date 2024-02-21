@@ -8,6 +8,7 @@ import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_state.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/cubit/order_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/cubit/order_customer_state.dart';
+import 'package:app_flutter_produkt_bestellen/features/order/presentation/widget/order_enum_icon.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/widget/order_information_dialog.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/widget/shopping_basket_dialog.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
@@ -252,15 +253,9 @@ class _OrderInfoWidget extends StatelessWidget {
                   ),
                 ],
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: FittedBox(
-                  child: Text(
-                    'Bestellung ${productOrder.enumOrderProcess.information}',
-                    style: const TextStyle(
-                        fontSize: 20, fontWeight: FontWeight.bold),
-                  ),
-                ),
+              OrderStateInformation(
+                productOrder: productOrder,
+                category: 'Bestellung',
               ),
             ],
           ),
