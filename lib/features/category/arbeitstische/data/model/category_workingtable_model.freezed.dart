@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'model_arbeitstische.dart';
+part of 'category_workingtable_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,28 +15,32 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$ModelArbeitstische {
+mixin _$CategoryWorkingtableModel {
   String get categoryName => throw _privateConstructorUsedError;
-  List<ModelProduct> get listProduct => throw _privateConstructorUsedError;
+  List<CategoryWorkingtableProductModel> get listProduct =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ModelArbeitstischeCopyWith<ModelArbeitstische> get copyWith =>
+  $CategoryWorkingtableModelCopyWith<CategoryWorkingtableModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ModelArbeitstischeCopyWith<$Res> {
-  factory $ModelArbeitstischeCopyWith(
-          ModelArbeitstische value, $Res Function(ModelArbeitstische) then) =
-      _$ModelArbeitstischeCopyWithImpl<$Res, ModelArbeitstische>;
+abstract class $CategoryWorkingtableModelCopyWith<$Res> {
+  factory $CategoryWorkingtableModelCopyWith(CategoryWorkingtableModel value,
+          $Res Function(CategoryWorkingtableModel) then) =
+      _$CategoryWorkingtableModelCopyWithImpl<$Res, CategoryWorkingtableModel>;
   @useResult
-  $Res call({String categoryName, List<ModelProduct> listProduct});
+  $Res call(
+      {String categoryName,
+      List<CategoryWorkingtableProductModel> listProduct});
 }
 
 /// @nodoc
-class _$ModelArbeitstischeCopyWithImpl<$Res, $Val extends ModelArbeitstische>
-    implements $ModelArbeitstischeCopyWith<$Res> {
-  _$ModelArbeitstischeCopyWithImpl(this._value, this._then);
+class _$CategoryWorkingtableModelCopyWithImpl<$Res,
+        $Val extends CategoryWorkingtableModel>
+    implements $CategoryWorkingtableModelCopyWith<$Res> {
+  _$CategoryWorkingtableModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -57,28 +61,33 @@ class _$ModelArbeitstischeCopyWithImpl<$Res, $Val extends ModelArbeitstische>
       listProduct: null == listProduct
           ? _value.listProduct
           : listProduct // ignore: cast_nullable_to_non_nullable
-              as List<ModelProduct>,
+              as List<CategoryWorkingtableProductModel>,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$ModelArbeitstischeImplCopyWith<$Res>
-    implements $ModelArbeitstischeCopyWith<$Res> {
-  factory _$$ModelArbeitstischeImplCopyWith(_$ModelArbeitstischeImpl value,
-          $Res Function(_$ModelArbeitstischeImpl) then) =
-      __$$ModelArbeitstischeImplCopyWithImpl<$Res>;
+abstract class _$$CategoryWorkingtableModelImplCopyWith<$Res>
+    implements $CategoryWorkingtableModelCopyWith<$Res> {
+  factory _$$CategoryWorkingtableModelImplCopyWith(
+          _$CategoryWorkingtableModelImpl value,
+          $Res Function(_$CategoryWorkingtableModelImpl) then) =
+      __$$CategoryWorkingtableModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String categoryName, List<ModelProduct> listProduct});
+  $Res call(
+      {String categoryName,
+      List<CategoryWorkingtableProductModel> listProduct});
 }
 
 /// @nodoc
-class __$$ModelArbeitstischeImplCopyWithImpl<$Res>
-    extends _$ModelArbeitstischeCopyWithImpl<$Res, _$ModelArbeitstischeImpl>
-    implements _$$ModelArbeitstischeImplCopyWith<$Res> {
-  __$$ModelArbeitstischeImplCopyWithImpl(_$ModelArbeitstischeImpl _value,
-      $Res Function(_$ModelArbeitstischeImpl) _then)
+class __$$CategoryWorkingtableModelImplCopyWithImpl<$Res>
+    extends _$CategoryWorkingtableModelCopyWithImpl<$Res,
+        _$CategoryWorkingtableModelImpl>
+    implements _$$CategoryWorkingtableModelImplCopyWith<$Res> {
+  __$$CategoryWorkingtableModelImplCopyWithImpl(
+      _$CategoryWorkingtableModelImpl _value,
+      $Res Function(_$CategoryWorkingtableModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +96,7 @@ class __$$ModelArbeitstischeImplCopyWithImpl<$Res>
     Object? categoryName = null,
     Object? listProduct = null,
   }) {
-    return _then(_$ModelArbeitstischeImpl(
+    return _then(_$CategoryWorkingtableModelImpl(
       categoryName: null == categoryName
           ? _value.categoryName
           : categoryName // ignore: cast_nullable_to_non_nullable
@@ -95,25 +104,25 @@ class __$$ModelArbeitstischeImplCopyWithImpl<$Res>
       listProduct: null == listProduct
           ? _value._listProduct
           : listProduct // ignore: cast_nullable_to_non_nullable
-              as List<ModelProduct>,
+              as List<CategoryWorkingtableProductModel>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$ModelArbeitstischeImpl extends _ModelArbeitstische {
-  const _$ModelArbeitstischeImpl(
+class _$CategoryWorkingtableModelImpl extends _CategoryWorkingtableModel {
+  const _$CategoryWorkingtableModelImpl(
       {required this.categoryName,
-      required final List<ModelProduct> listProduct})
+      required final List<CategoryWorkingtableProductModel> listProduct})
       : _listProduct = listProduct,
         super._();
 
   @override
   final String categoryName;
-  final List<ModelProduct> _listProduct;
+  final List<CategoryWorkingtableProductModel> _listProduct;
   @override
-  List<ModelProduct> get listProduct {
+  List<CategoryWorkingtableProductModel> get listProduct {
     if (_listProduct is EqualUnmodifiableListView) return _listProduct;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_listProduct);
@@ -121,14 +130,14 @@ class _$ModelArbeitstischeImpl extends _ModelArbeitstische {
 
   @override
   String toString() {
-    return 'ModelArbeitstische(categoryName: $categoryName, listProduct: $listProduct)';
+    return 'CategoryWorkingtableModel(categoryName: $categoryName, listProduct: $listProduct)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ModelArbeitstischeImpl &&
+            other is _$CategoryWorkingtableModelImpl &&
             (identical(other.categoryName, categoryName) ||
                 other.categoryName == categoryName) &&
             const DeepCollectionEquality()
@@ -142,30 +151,30 @@ class _$ModelArbeitstischeImpl extends _ModelArbeitstische {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ModelArbeitstischeImplCopyWith<_$ModelArbeitstischeImpl> get copyWith =>
-      __$$ModelArbeitstischeImplCopyWithImpl<_$ModelArbeitstischeImpl>(
-          this, _$identity);
+  _$$CategoryWorkingtableModelImplCopyWith<_$CategoryWorkingtableModelImpl>
+      get copyWith => __$$CategoryWorkingtableModelImplCopyWithImpl<
+          _$CategoryWorkingtableModelImpl>(this, _$identity);
 }
 
-abstract class _ModelArbeitstische extends ModelArbeitstische {
-  const factory _ModelArbeitstische(
+abstract class _CategoryWorkingtableModel extends CategoryWorkingtableModel {
+  const factory _CategoryWorkingtableModel(
           {required final String categoryName,
-          required final List<ModelProduct> listProduct}) =
-      _$ModelArbeitstischeImpl;
-  const _ModelArbeitstische._() : super._();
+          required final List<CategoryWorkingtableProductModel> listProduct}) =
+      _$CategoryWorkingtableModelImpl;
+  const _CategoryWorkingtableModel._() : super._();
 
   @override
   String get categoryName;
   @override
-  List<ModelProduct> get listProduct;
+  List<CategoryWorkingtableProductModel> get listProduct;
   @override
   @JsonKey(ignore: true)
-  _$$ModelArbeitstischeImplCopyWith<_$ModelArbeitstischeImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$CategoryWorkingtableModelImplCopyWith<_$CategoryWorkingtableModelImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$ModelProduct {
+mixin _$CategoryWorkingtableProductModel {
   String get productName => throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
   int get indexNumber => throw _privateConstructorUsedError;
@@ -173,15 +182,17 @@ mixin _$ModelProduct {
   int? get productCount => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ModelProductCopyWith<ModelProduct> get copyWith =>
-      throw _privateConstructorUsedError;
+  $CategoryWorkingtableProductModelCopyWith<CategoryWorkingtableProductModel>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ModelProductCopyWith<$Res> {
-  factory $ModelProductCopyWith(
-          ModelProduct value, $Res Function(ModelProduct) then) =
-      _$ModelProductCopyWithImpl<$Res, ModelProduct>;
+abstract class $CategoryWorkingtableProductModelCopyWith<$Res> {
+  factory $CategoryWorkingtableProductModelCopyWith(
+          CategoryWorkingtableProductModel value,
+          $Res Function(CategoryWorkingtableProductModel) then) =
+      _$CategoryWorkingtableProductModelCopyWithImpl<$Res,
+          CategoryWorkingtableProductModel>;
   @useResult
   $Res call(
       {String productName,
@@ -192,9 +203,10 @@ abstract class $ModelProductCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ModelProductCopyWithImpl<$Res, $Val extends ModelProduct>
-    implements $ModelProductCopyWith<$Res> {
-  _$ModelProductCopyWithImpl(this._value, this._then);
+class _$CategoryWorkingtableProductModelCopyWithImpl<$Res,
+        $Val extends CategoryWorkingtableProductModel>
+    implements $CategoryWorkingtableProductModelCopyWith<$Res> {
+  _$CategoryWorkingtableProductModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -236,11 +248,12 @@ class _$ModelProductCopyWithImpl<$Res, $Val extends ModelProduct>
 }
 
 /// @nodoc
-abstract class _$$ModelProductImplCopyWith<$Res>
-    implements $ModelProductCopyWith<$Res> {
-  factory _$$ModelProductImplCopyWith(
-          _$ModelProductImpl value, $Res Function(_$ModelProductImpl) then) =
-      __$$ModelProductImplCopyWithImpl<$Res>;
+abstract class _$$CategoryWorkingtableProductModelImplCopyWith<$Res>
+    implements $CategoryWorkingtableProductModelCopyWith<$Res> {
+  factory _$$CategoryWorkingtableProductModelImplCopyWith(
+          _$CategoryWorkingtableProductModelImpl value,
+          $Res Function(_$CategoryWorkingtableProductModelImpl) then) =
+      __$$CategoryWorkingtableProductModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -252,11 +265,13 @@ abstract class _$$ModelProductImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$ModelProductImplCopyWithImpl<$Res>
-    extends _$ModelProductCopyWithImpl<$Res, _$ModelProductImpl>
-    implements _$$ModelProductImplCopyWith<$Res> {
-  __$$ModelProductImplCopyWithImpl(
-      _$ModelProductImpl _value, $Res Function(_$ModelProductImpl) _then)
+class __$$CategoryWorkingtableProductModelImplCopyWithImpl<$Res>
+    extends _$CategoryWorkingtableProductModelCopyWithImpl<$Res,
+        _$CategoryWorkingtableProductModelImpl>
+    implements _$$CategoryWorkingtableProductModelImplCopyWith<$Res> {
+  __$$CategoryWorkingtableProductModelImplCopyWithImpl(
+      _$CategoryWorkingtableProductModelImpl _value,
+      $Res Function(_$CategoryWorkingtableProductModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -268,7 +283,7 @@ class __$$ModelProductImplCopyWithImpl<$Res>
     Object? offerInPercent = freezed,
     Object? productCount = freezed,
   }) {
-    return _then(_$ModelProductImpl(
+    return _then(_$CategoryWorkingtableProductModelImpl(
       productName: null == productName
           ? _value.productName
           : productName // ignore: cast_nullable_to_non_nullable
@@ -295,8 +310,9 @@ class __$$ModelProductImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ModelProductImpl extends _ModelProduct {
-  const _$ModelProductImpl(
+class _$CategoryWorkingtableProductModelImpl
+    extends _CategoryWorkingtableProductModel {
+  const _$CategoryWorkingtableProductModelImpl(
       {required this.productName,
       required this.price,
       required this.indexNumber,
@@ -317,14 +333,14 @@ class _$ModelProductImpl extends _ModelProduct {
 
   @override
   String toString() {
-    return 'ModelProduct(productName: $productName, price: $price, indexNumber: $indexNumber, offerInPercent: $offerInPercent, productCount: $productCount)';
+    return 'CategoryWorkingtableProductModel(productName: $productName, price: $price, indexNumber: $indexNumber, offerInPercent: $offerInPercent, productCount: $productCount)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ModelProductImpl &&
+            other is _$CategoryWorkingtableProductModelImpl &&
             (identical(other.productName, productName) ||
                 other.productName == productName) &&
             (identical(other.price, price) || other.price == price) &&
@@ -343,18 +359,21 @@ class _$ModelProductImpl extends _ModelProduct {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ModelProductImplCopyWith<_$ModelProductImpl> get copyWith =>
-      __$$ModelProductImplCopyWithImpl<_$ModelProductImpl>(this, _$identity);
+  _$$CategoryWorkingtableProductModelImplCopyWith<
+          _$CategoryWorkingtableProductModelImpl>
+      get copyWith => __$$CategoryWorkingtableProductModelImplCopyWithImpl<
+          _$CategoryWorkingtableProductModelImpl>(this, _$identity);
 }
 
-abstract class _ModelProduct extends ModelProduct {
-  const factory _ModelProduct(
+abstract class _CategoryWorkingtableProductModel
+    extends CategoryWorkingtableProductModel {
+  const factory _CategoryWorkingtableProductModel(
       {required final String productName,
       required final double price,
       required final int indexNumber,
       final int? offerInPercent,
-      final int? productCount}) = _$ModelProductImpl;
-  const _ModelProduct._() : super._();
+      final int? productCount}) = _$CategoryWorkingtableProductModelImpl;
+  const _CategoryWorkingtableProductModel._() : super._();
 
   @override
   String get productName;
@@ -368,6 +387,7 @@ abstract class _ModelProduct extends ModelProduct {
   int? get productCount;
   @override
   @JsonKey(ignore: true)
-  _$$ModelProductImplCopyWith<_$ModelProductImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$CategoryWorkingtableProductModelImplCopyWith<
+          _$CategoryWorkingtableProductModelImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

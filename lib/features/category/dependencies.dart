@@ -1,8 +1,8 @@
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
-import 'package:app_flutter_produkt_bestellen/features/category/arbeitstische/data/datasource/datasource_arbeitstische.dart';
-import 'package:app_flutter_produkt_bestellen/features/category/arbeitstische/data/repository/repository_arbeitstische_implementation.dart';
-import 'package:app_flutter_produkt_bestellen/features/category/arbeitstische/domain/repository/repository_arbeitstische.dart';
-import 'package:app_flutter_produkt_bestellen/features/category/arbeitstische/presentation/cubit/cubit_arbeitstische.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/arbeitstische/data/datasource/category_workingtable_datasource.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/arbeitstische/data/repository/category_workingtable_repository_implementation.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/arbeitstische/domain/repository/category_workingtable_repository.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/arbeitstische/presentation/cubit/category_workingtable_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/buerostuehle/data/datasource/datasource_buerostuehle.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/buerostuehle/data/repository/repository_buerodrehstuehle_implementation.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/buerostuehle/domain/repository/repository_buerostuehle.dart';
@@ -24,14 +24,15 @@ abstract class CategoryDependencies {
 }
 
 void setUpArbeitstische() {
-  getIt.registerLazySingleton<DataSourceArbeitstische>(
+  getIt.registerLazySingleton<CategoryWorkingtableDatasource>(
       () => DataSourceArbeitstischeImplementation());
 
-  getIt.registerLazySingleton<RepositoryArbeitstische>(() =>
-      RepositoryArbeitstischeImplementation(dataSourceArbeitstische: getIt()));
+  getIt.registerLazySingleton<CategoryWorkingtableRepository>(() =>
+      CategoryWorkingtableRepositoryImplementation(
+          dataSourceArbeitstische: getIt()));
 
-  getIt.registerFactory<CubitWorkTables>(
-      () => CubitWorkTables(repositoryArbeitstische: getIt()));
+  getIt.registerFactory<CategoryWorkingtableCubit>(
+      () => CategoryWorkingtableCubit(repositoryArbeitstische: getIt()));
 }
 
 void setUpOfficeChair() {

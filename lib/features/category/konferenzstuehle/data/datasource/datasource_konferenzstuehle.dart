@@ -1,6 +1,6 @@
 import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/konferenzstuehle/domain/entity/entity_konferenzstuehle.dart';
-import 'package:app_flutter_produkt_bestellen/features/category/share/domain/entity/entity_category.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/share/domain/entity/category_product_entity.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:either_dart/either.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +18,7 @@ class DataSourceConferenceChairImplementation
     debugPrint('start datasource request');
     try {
       Failure? failure;
-      List<EntityProduct> officeChairs = [];
+      List<CategoryProductEntity> officeChairs = [];
 
       await FirebaseFirestore.instance
           .collection('Product')
@@ -31,7 +31,7 @@ class DataSourceConferenceChairImplementation
           final Map<String, dynamic> data =
               document.data() as Map<String, dynamic>;
           debugPrint("index =>  document ==> $data");
-          officeChairs.add(EntityProduct(
+          officeChairs.add(CategoryProductEntity(
               productNumber: data['productNumber'] ?? '',
               name: data['productTitle'] ?? '',
               productType: EnumCategoryConferenceChair.values

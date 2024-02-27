@@ -1,4 +1,4 @@
-import 'package:app_flutter_produkt_bestellen/features/category/share/domain/entity/entity_category.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/share/domain/entity/category_product_entity.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'entity_konferenzstuehle.freezed.dart';
@@ -10,6 +10,7 @@ class EntityConferenceChair with _$EntityConferenceChair {
   const EntityConferenceChair._();
 
   const factory EntityConferenceChair(
-      {required String categoryName,
-      required List<EntityProduct> listProduct}) = _EntityConferenceChair;
+          {required String categoryName,
+          required List<CategoryProductEntity> listProduct}) =
+      _EntityConferenceChair;
 }

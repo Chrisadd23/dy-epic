@@ -17,7 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$EntityBuerodrehstuehle {
   String get categoryName => throw _privateConstructorUsedError;
-  List<EntityProduct> get listProduct => throw _privateConstructorUsedError;
+  List<CategoryProductEntity> get listProduct =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EntityBuerodrehstuehleCopyWith<EntityBuerodrehstuehle> get copyWith =>
@@ -30,7 +31,7 @@ abstract class $EntityBuerodrehstuehleCopyWith<$Res> {
           $Res Function(EntityBuerodrehstuehle) then) =
       _$EntityBuerodrehstuehleCopyWithImpl<$Res, EntityBuerodrehstuehle>;
   @useResult
-  $Res call({String categoryName, List<EntityProduct> listProduct});
+  $Res call({String categoryName, List<CategoryProductEntity> listProduct});
 }
 
 /// @nodoc
@@ -58,7 +59,7 @@ class _$EntityBuerodrehstuehleCopyWithImpl<$Res,
       listProduct: null == listProduct
           ? _value.listProduct
           : listProduct // ignore: cast_nullable_to_non_nullable
-              as List<EntityProduct>,
+              as List<CategoryProductEntity>,
     ) as $Val);
   }
 }
@@ -72,7 +73,7 @@ abstract class _$$EntityBuerodrehstuehleImplCopyWith<$Res>
       __$$EntityBuerodrehstuehleImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String categoryName, List<EntityProduct> listProduct});
+  $Res call({String categoryName, List<CategoryProductEntity> listProduct});
 }
 
 /// @nodoc
@@ -99,7 +100,7 @@ class __$$EntityBuerodrehstuehleImplCopyWithImpl<$Res>
       listProduct: null == listProduct
           ? _value._listProduct
           : listProduct // ignore: cast_nullable_to_non_nullable
-              as List<EntityProduct>,
+              as List<CategoryProductEntity>,
     ));
   }
 }
@@ -109,15 +110,15 @@ class __$$EntityBuerodrehstuehleImplCopyWithImpl<$Res>
 class _$EntityBuerodrehstuehleImpl extends _EntityBuerodrehstuehle {
   const _$EntityBuerodrehstuehleImpl(
       {required this.categoryName,
-      required final List<EntityProduct> listProduct})
+      required final List<CategoryProductEntity> listProduct})
       : _listProduct = listProduct,
         super._();
 
   @override
   final String categoryName;
-  final List<EntityProduct> _listProduct;
+  final List<CategoryProductEntity> _listProduct;
   @override
-  List<EntityProduct> get listProduct {
+  List<CategoryProductEntity> get listProduct {
     if (_listProduct is EqualUnmodifiableListView) return _listProduct;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_listProduct);
@@ -154,14 +155,14 @@ class _$EntityBuerodrehstuehleImpl extends _EntityBuerodrehstuehle {
 abstract class _EntityBuerodrehstuehle extends EntityBuerodrehstuehle {
   const factory _EntityBuerodrehstuehle(
           {required final String categoryName,
-          required final List<EntityProduct> listProduct}) =
+          required final List<CategoryProductEntity> listProduct}) =
       _$EntityBuerodrehstuehleImpl;
   const _EntityBuerodrehstuehle._() : super._();
 
   @override
   String get categoryName;
   @override
-  List<EntityProduct> get listProduct;
+  List<CategoryProductEntity> get listProduct;
   @override
   @JsonKey(ignore: true)
   _$$EntityBuerodrehstuehleImplCopyWith<_$EntityBuerodrehstuehleImpl>

@@ -1,5 +1,5 @@
 import 'package:app_flutter_produkt_bestellen/core/error/page_not_found.dart';
-import 'package:app_flutter_produkt_bestellen/features/category/arbeitstische/presentation/page/page_arbeitstische.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/arbeitstische/presentation/page/category_workingtable_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/buerostuehle/presentation/page/page_buerostuehle.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/konferenzstuehle/presentation/page/page_konferenzstuehle.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/konferenztische/presentation/page/page_konferenztische.dart';
@@ -109,8 +109,8 @@ enum AppGoRouter {
                   GoRoute(
                     path: arbeitstische.title,
                     name: arbeitstische.name,
-                    pageBuilder: (context, state) =>
-                        _getCustomerTransition(const PageWorkTables(), state),
+                    pageBuilder: (context, state) => _getCustomerTransition(
+                        const CategoryWorkingtablePage(), state),
                     routes: [
                       GoRoute(
                         path: product.title,

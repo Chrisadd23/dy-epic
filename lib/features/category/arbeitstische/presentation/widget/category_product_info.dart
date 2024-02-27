@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class ProductInfo extends StatelessWidget {
-  const ProductInfo({super.key, required this.picturePath});
+class CategoryProductInfo extends StatelessWidget {
+  const CategoryProductInfo({super.key, required this.picturePath});
 
   final String picturePath;
 

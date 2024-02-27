@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'entity_konferenzstuehle.dart';
+part of 'category_workingtable_entity.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,30 +15,31 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$EntityConferenceChair {
+mixin _$CategoryWorkingtableEntity {
   String get categoryName => throw _privateConstructorUsedError;
   List<CategoryProductEntity> get listProduct =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $EntityConferenceChairCopyWith<EntityConferenceChair> get copyWith =>
-      throw _privateConstructorUsedError;
+  $CategoryWorkingtableEntityCopyWith<CategoryWorkingtableEntity>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $EntityConferenceChairCopyWith<$Res> {
-  factory $EntityConferenceChairCopyWith(EntityConferenceChair value,
-          $Res Function(EntityConferenceChair) then) =
-      _$EntityConferenceChairCopyWithImpl<$Res, EntityConferenceChair>;
+abstract class $CategoryWorkingtableEntityCopyWith<$Res> {
+  factory $CategoryWorkingtableEntityCopyWith(CategoryWorkingtableEntity value,
+          $Res Function(CategoryWorkingtableEntity) then) =
+      _$CategoryWorkingtableEntityCopyWithImpl<$Res,
+          CategoryWorkingtableEntity>;
   @useResult
   $Res call({String categoryName, List<CategoryProductEntity> listProduct});
 }
 
 /// @nodoc
-class _$EntityConferenceChairCopyWithImpl<$Res,
-        $Val extends EntityConferenceChair>
-    implements $EntityConferenceChairCopyWith<$Res> {
-  _$EntityConferenceChairCopyWithImpl(this._value, this._then);
+class _$CategoryWorkingtableEntityCopyWithImpl<$Res,
+        $Val extends CategoryWorkingtableEntity>
+    implements $CategoryWorkingtableEntityCopyWith<$Res> {
+  _$CategoryWorkingtableEntityCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -65,24 +66,25 @@ class _$EntityConferenceChairCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$EntityConferenceChairImplCopyWith<$Res>
-    implements $EntityConferenceChairCopyWith<$Res> {
-  factory _$$EntityConferenceChairImplCopyWith(
-          _$EntityConferenceChairImpl value,
-          $Res Function(_$EntityConferenceChairImpl) then) =
-      __$$EntityConferenceChairImplCopyWithImpl<$Res>;
+abstract class _$$CategoryWorkingtableEntityImplCopyWith<$Res>
+    implements $CategoryWorkingtableEntityCopyWith<$Res> {
+  factory _$$CategoryWorkingtableEntityImplCopyWith(
+          _$CategoryWorkingtableEntityImpl value,
+          $Res Function(_$CategoryWorkingtableEntityImpl) then) =
+      __$$CategoryWorkingtableEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String categoryName, List<CategoryProductEntity> listProduct});
 }
 
 /// @nodoc
-class __$$EntityConferenceChairImplCopyWithImpl<$Res>
-    extends _$EntityConferenceChairCopyWithImpl<$Res,
-        _$EntityConferenceChairImpl>
-    implements _$$EntityConferenceChairImplCopyWith<$Res> {
-  __$$EntityConferenceChairImplCopyWithImpl(_$EntityConferenceChairImpl _value,
-      $Res Function(_$EntityConferenceChairImpl) _then)
+class __$$CategoryWorkingtableEntityImplCopyWithImpl<$Res>
+    extends _$CategoryWorkingtableEntityCopyWithImpl<$Res,
+        _$CategoryWorkingtableEntityImpl>
+    implements _$$CategoryWorkingtableEntityImplCopyWith<$Res> {
+  __$$CategoryWorkingtableEntityImplCopyWithImpl(
+      _$CategoryWorkingtableEntityImpl _value,
+      $Res Function(_$CategoryWorkingtableEntityImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -91,7 +93,7 @@ class __$$EntityConferenceChairImplCopyWithImpl<$Res>
     Object? categoryName = null,
     Object? listProduct = null,
   }) {
-    return _then(_$EntityConferenceChairImpl(
+    return _then(_$CategoryWorkingtableEntityImpl(
       categoryName: null == categoryName
           ? _value.categoryName
           : categoryName // ignore: cast_nullable_to_non_nullable
@@ -106,8 +108,8 @@ class __$$EntityConferenceChairImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EntityConferenceChairImpl extends _EntityConferenceChair {
-  const _$EntityConferenceChairImpl(
+class _$CategoryWorkingtableEntityImpl extends _CategoryWorkingtableEntity {
+  const _$CategoryWorkingtableEntityImpl(
       {required this.categoryName,
       required final List<CategoryProductEntity> listProduct})
       : _listProduct = listProduct,
@@ -125,14 +127,14 @@ class _$EntityConferenceChairImpl extends _EntityConferenceChair {
 
   @override
   String toString() {
-    return 'EntityConferenceChair(categoryName: $categoryName, listProduct: $listProduct)';
+    return 'CategoryWorkingtableEntity(categoryName: $categoryName, listProduct: $listProduct)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EntityConferenceChairImpl &&
+            other is _$CategoryWorkingtableEntityImpl &&
             (identical(other.categoryName, categoryName) ||
                 other.categoryName == categoryName) &&
             const DeepCollectionEquality()
@@ -146,17 +148,17 @@ class _$EntityConferenceChairImpl extends _EntityConferenceChair {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EntityConferenceChairImplCopyWith<_$EntityConferenceChairImpl>
-      get copyWith => __$$EntityConferenceChairImplCopyWithImpl<
-          _$EntityConferenceChairImpl>(this, _$identity);
+  _$$CategoryWorkingtableEntityImplCopyWith<_$CategoryWorkingtableEntityImpl>
+      get copyWith => __$$CategoryWorkingtableEntityImplCopyWithImpl<
+          _$CategoryWorkingtableEntityImpl>(this, _$identity);
 }
 
-abstract class _EntityConferenceChair extends EntityConferenceChair {
-  const factory _EntityConferenceChair(
+abstract class _CategoryWorkingtableEntity extends CategoryWorkingtableEntity {
+  const factory _CategoryWorkingtableEntity(
           {required final String categoryName,
           required final List<CategoryProductEntity> listProduct}) =
-      _$EntityConferenceChairImpl;
-  const _EntityConferenceChair._() : super._();
+      _$CategoryWorkingtableEntityImpl;
+  const _CategoryWorkingtableEntity._() : super._();
 
   @override
   String get categoryName;
@@ -164,6 +166,6 @@ abstract class _EntityConferenceChair extends EntityConferenceChair {
   List<CategoryProductEntity> get listProduct;
   @override
   @JsonKey(ignore: true)
-  _$$EntityConferenceChairImplCopyWith<_$EntityConferenceChairImpl>
+  _$$CategoryWorkingtableEntityImplCopyWith<_$CategoryWorkingtableEntityImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

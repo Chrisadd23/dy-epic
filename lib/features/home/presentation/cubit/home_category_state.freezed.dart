@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'state_category.dart';
+part of 'home_category_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,25 +15,25 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$StateCategory {
+mixin _$HomeCategoryState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<CategoryWidget> listCategory) success,
+    required TResult Function(List<HomeCategoryModel> homeCategoryList) success,
     required TResult Function(Failure failure) failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<CategoryWidget> listCategory)? success,
+    TResult? Function(List<HomeCategoryModel> homeCategoryList)? success,
     TResult? Function(Failure failure)? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<CategoryWidget> listCategory)? success,
+    TResult Function(List<HomeCategoryModel> homeCategoryList)? success,
     TResult Function(Failure failure)? failure,
     required TResult orElse(),
   }) =>
@@ -63,16 +63,16 @@ mixin _$StateCategory {
 }
 
 /// @nodoc
-abstract class $StateCategoryCopyWith<$Res> {
-  factory $StateCategoryCopyWith(
-          StateCategory value, $Res Function(StateCategory) then) =
-      _$StateCategoryCopyWithImpl<$Res, StateCategory>;
+abstract class $HomeCategoryStateCopyWith<$Res> {
+  factory $HomeCategoryStateCopyWith(
+          HomeCategoryState value, $Res Function(HomeCategoryState) then) =
+      _$HomeCategoryStateCopyWithImpl<$Res, HomeCategoryState>;
 }
 
 /// @nodoc
-class _$StateCategoryCopyWithImpl<$Res, $Val extends StateCategory>
-    implements $StateCategoryCopyWith<$Res> {
-  _$StateCategoryCopyWithImpl(this._value, this._then);
+class _$HomeCategoryStateCopyWithImpl<$Res, $Val extends HomeCategoryState>
+    implements $HomeCategoryStateCopyWith<$Res> {
+  _$HomeCategoryStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -89,7 +89,7 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$StateCategoryCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$HomeCategoryStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
@@ -103,7 +103,7 @@ class _$LoadingImpl extends _Loading {
 
   @override
   String toString() {
-    return 'StateCategory.loading()';
+    return 'HomeCategoryState.loading()';
   }
 
   @override
@@ -119,7 +119,7 @@ class _$LoadingImpl extends _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<CategoryWidget> listCategory) success,
+    required TResult Function(List<HomeCategoryModel> homeCategoryList) success,
     required TResult Function(Failure failure) failure,
   }) {
     return loading();
@@ -129,7 +129,7 @@ class _$LoadingImpl extends _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<CategoryWidget> listCategory)? success,
+    TResult? Function(List<HomeCategoryModel> homeCategoryList)? success,
     TResult? Function(Failure failure)? failure,
   }) {
     return loading?.call();
@@ -139,7 +139,7 @@ class _$LoadingImpl extends _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<CategoryWidget> listCategory)? success,
+    TResult Function(List<HomeCategoryModel> homeCategoryList)? success,
     TResult Function(Failure failure)? failure,
     required TResult orElse(),
   }) {
@@ -184,7 +184,7 @@ class _$LoadingImpl extends _Loading {
   }
 }
 
-abstract class _Loading extends StateCategory {
+abstract class _Loading extends HomeCategoryState {
   const factory _Loading() = _$LoadingImpl;
   const _Loading._() : super._();
 }
@@ -195,12 +195,12 @@ abstract class _$$SuccessImplCopyWith<$Res> {
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<CategoryWidget> listCategory});
+  $Res call({List<HomeCategoryModel> homeCategoryList});
 }
 
 /// @nodoc
 class __$$SuccessImplCopyWithImpl<$Res>
-    extends _$StateCategoryCopyWithImpl<$Res, _$SuccessImpl>
+    extends _$HomeCategoryStateCopyWithImpl<$Res, _$SuccessImpl>
     implements _$$SuccessImplCopyWith<$Res> {
   __$$SuccessImplCopyWithImpl(
       _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
@@ -209,13 +209,13 @@ class __$$SuccessImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? listCategory = null,
+    Object? homeCategoryList = null,
   }) {
     return _then(_$SuccessImpl(
-      null == listCategory
-          ? _value._listCategory
-          : listCategory // ignore: cast_nullable_to_non_nullable
-              as List<CategoryWidget>,
+      homeCategoryList: null == homeCategoryList
+          ? _value._homeCategoryList
+          : homeCategoryList // ignore: cast_nullable_to_non_nullable
+              as List<HomeCategoryModel>,
     ));
   }
 }
@@ -223,21 +223,22 @@ class __$$SuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SuccessImpl extends _Success {
-  const _$SuccessImpl(final List<CategoryWidget> listCategory)
-      : _listCategory = listCategory,
+  const _$SuccessImpl({required final List<HomeCategoryModel> homeCategoryList})
+      : _homeCategoryList = homeCategoryList,
         super._();
 
-  final List<CategoryWidget> _listCategory;
+  final List<HomeCategoryModel> _homeCategoryList;
   @override
-  List<CategoryWidget> get listCategory {
-    if (_listCategory is EqualUnmodifiableListView) return _listCategory;
+  List<HomeCategoryModel> get homeCategoryList {
+    if (_homeCategoryList is EqualUnmodifiableListView)
+      return _homeCategoryList;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_listCategory);
+    return EqualUnmodifiableListView(_homeCategoryList);
   }
 
   @override
   String toString() {
-    return 'StateCategory.success(listCategory: $listCategory)';
+    return 'HomeCategoryState.success(homeCategoryList: $homeCategoryList)';
   }
 
   @override
@@ -246,12 +247,12 @@ class _$SuccessImpl extends _Success {
         (other.runtimeType == runtimeType &&
             other is _$SuccessImpl &&
             const DeepCollectionEquality()
-                .equals(other._listCategory, _listCategory));
+                .equals(other._homeCategoryList, _homeCategoryList));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_listCategory));
+      runtimeType, const DeepCollectionEquality().hash(_homeCategoryList));
 
   @JsonKey(ignore: true)
   @override
@@ -263,32 +264,32 @@ class _$SuccessImpl extends _Success {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<CategoryWidget> listCategory) success,
+    required TResult Function(List<HomeCategoryModel> homeCategoryList) success,
     required TResult Function(Failure failure) failure,
   }) {
-    return success(listCategory);
+    return success(homeCategoryList);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<CategoryWidget> listCategory)? success,
+    TResult? Function(List<HomeCategoryModel> homeCategoryList)? success,
     TResult? Function(Failure failure)? failure,
   }) {
-    return success?.call(listCategory);
+    return success?.call(homeCategoryList);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<CategoryWidget> listCategory)? success,
+    TResult Function(List<HomeCategoryModel> homeCategoryList)? success,
     TResult Function(Failure failure)? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(listCategory);
+      return success(homeCategoryList);
     }
     return orElse();
   }
@@ -328,12 +329,13 @@ class _$SuccessImpl extends _Success {
   }
 }
 
-abstract class _Success extends StateCategory {
-  const factory _Success(final List<CategoryWidget> listCategory) =
+abstract class _Success extends HomeCategoryState {
+  const factory _Success(
+          {required final List<HomeCategoryModel> homeCategoryList}) =
       _$SuccessImpl;
   const _Success._() : super._();
 
-  List<CategoryWidget> get listCategory;
+  List<HomeCategoryModel> get homeCategoryList;
   @JsonKey(ignore: true)
   _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -352,7 +354,7 @@ abstract class _$$FailureImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$FailureImplCopyWithImpl<$Res>
-    extends _$StateCategoryCopyWithImpl<$Res, _$FailureImpl>
+    extends _$HomeCategoryStateCopyWithImpl<$Res, _$FailureImpl>
     implements _$$FailureImplCopyWith<$Res> {
   __$$FailureImplCopyWithImpl(
       _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
@@ -390,7 +392,7 @@ class _$FailureImpl extends _Failure {
 
   @override
   String toString() {
-    return 'StateCategory.failure(failure: $failure)';
+    return 'HomeCategoryState.failure(failure: $failure)';
   }
 
   @override
@@ -414,7 +416,7 @@ class _$FailureImpl extends _Failure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<CategoryWidget> listCategory) success,
+    required TResult Function(List<HomeCategoryModel> homeCategoryList) success,
     required TResult Function(Failure failure) failure,
   }) {
     return failure(this.failure);
@@ -424,7 +426,7 @@ class _$FailureImpl extends _Failure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<CategoryWidget> listCategory)? success,
+    TResult? Function(List<HomeCategoryModel> homeCategoryList)? success,
     TResult? Function(Failure failure)? failure,
   }) {
     return failure?.call(this.failure);
@@ -434,7 +436,7 @@ class _$FailureImpl extends _Failure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<CategoryWidget> listCategory)? success,
+    TResult Function(List<HomeCategoryModel> homeCategoryList)? success,
     TResult Function(Failure failure)? failure,
     required TResult orElse(),
   }) {
@@ -479,7 +481,7 @@ class _$FailureImpl extends _Failure {
   }
 }
 
-abstract class _Failure extends StateCategory {
+abstract class _Failure extends HomeCategoryState {
   const factory _Failure(final Failure failure) = _$FailureImpl;
   const _Failure._() : super._();
 

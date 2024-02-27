@@ -2,7 +2,7 @@ import 'dart:typed_data';
 
 import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/buerostuehle/domain/entity/entity_buerodrehstuehle.dart';
-import 'package:app_flutter_produkt_bestellen/features/category/share/domain/entity/entity_category.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/share/domain/entity/category_product_entity.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:either_dart/either.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +28,7 @@ class DataSourceBuerostuehleImplementation extends DataSourceBuerostuehle {
     debugPrint('start datasource request');
     try {
       Failure? failure;
-      List<EntityProduct> officeChairs = [];
+      List<CategoryProductEntity> officeChairs = [];
 
       await _firebaseFirestore
           .collection('Product')
@@ -43,7 +43,7 @@ class DataSourceBuerostuehleImplementation extends DataSourceBuerostuehle {
           final Map<String, dynamic> data =
               document.data() as Map<String, dynamic>;
           debugPrint("index =>  document ==> $data");
-          officeChairs.add(EntityProduct(
+          officeChairs.add(CategoryProductEntity(
               productNumber: data['productNumber'] ?? '',
               name: data['productTitle'] ?? '',
               productType: EnumCategoryOfficeChair.values

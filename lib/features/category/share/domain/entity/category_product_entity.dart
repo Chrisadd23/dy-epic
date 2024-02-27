@@ -1,16 +1,12 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'entity_category.freezed.dart';
-
-class EntityCategory {
-  const EntityCategory();
-}
+part 'category_product_entity.freezed.dart';
 
 @freezed
-class EntityProduct with _$EntityProduct {
-  const EntityProduct._();
+class CategoryProductEntity with _$CategoryProductEntity {
+  const CategoryProductEntity._();
 
-  const factory EntityProduct({
+  const factory CategoryProductEntity({
     required String productNumber,
     required String name,
     required Enum productType,
@@ -19,5 +15,5 @@ class EntityProduct with _$EntityProduct {
     required String picturePath,
     int? offerInPercent,
     int? productCount,
-  }) = _EntityProduct;
+  }) = _CategoryProductEntity;
 }

@@ -7,7 +7,7 @@ import 'package:app_flutter_produkt_bestellen/core/fix_widgets/loading_widget.da
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_page_widget.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/list_wheel_scroll_view_x.dart';
 import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
-import 'package:app_flutter_produkt_bestellen/features/category/arbeitstische/presentation/cubit/cubit_arbeitstische.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/arbeitstische/presentation/cubit/category_workingtable_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/cubit/state_category_generic.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/bloc_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
@@ -16,8 +16,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-class PageWorkTables extends StatelessWidget {
-  const PageWorkTables({super.key});
+class CategoryWorkingtablePage extends StatelessWidget {
+  const CategoryWorkingtablePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +32,8 @@ class _BlocProviderWorkTables extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<CubitWorkTables>(
-        create: (context) => getIt<CubitWorkTables>()..load(),
+    return BlocProvider<CategoryWorkingtableCubit>(
+        create: (context) => getIt<CategoryWorkingtableCubit>()..load(),
         child:
             GlobalScaffold(appBarContext: context, body: const _WorkTables()));
   }
@@ -44,7 +44,7 @@ class _WorkTables extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CubitWorkTables, StateCategory>(
+    return BlocBuilder<CategoryWorkingtableCubit, StateCategory>(
         builder: (context, state) => state.map(
             loading: (_) => const LoadingWidget(
                   firstWidth: 110,
