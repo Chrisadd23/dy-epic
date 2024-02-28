@@ -1,4 +1,4 @@
-import 'package:app_flutter_produkt_bestellen/features/category/arbeitstische/domain/repository/category_workingtable_repository.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/category_workingtable/domain/repository/category_workingtable_repository.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/cubit/state_category_generic.dart';
 import 'package:either_dart/either.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

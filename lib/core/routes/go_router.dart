@@ -1,6 +1,6 @@
 import 'package:app_flutter_produkt_bestellen/core/error/page_not_found.dart';
-import 'package:app_flutter_produkt_bestellen/features/category/arbeitstische/presentation/page/category_workingtable_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/buerostuehle/presentation/page/page_buerostuehle.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/category_workingtable/presentation/page/category_workingtable_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/konferenzstuehle/presentation/page/page_konferenzstuehle.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/konferenztische/presentation/page/page_konferenztische.dart';
 import 'package:app_flutter_produkt_bestellen/features/home/presentation/page/home_page.dart';
