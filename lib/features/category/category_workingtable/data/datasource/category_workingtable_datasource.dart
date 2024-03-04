@@ -48,11 +48,18 @@ class DataSourceWorkingTableImplementation
                 "categoryWorkingTableProductEntity ==> $categoryWorkingTableProductEntity");
           }
         }).toList();
+      }, onError: (error) {
+        failure = Failure.databaseError(error.toString());
       });
-      return Right(CategoryWorkingTableEntity(
-          categoryName: 'E-Smart', listProduct: workingTableList));
+      if (failure != null) {
+        return Left(failure!);
+      } else {
+        return Right(CategoryWorkingTableEntity(
+            categoryName: 'E-Smart', listProduct: workingTableList));
+      }
     } catch (e) {
-      return Left('Sortiment konnte nicht geladen werden' as Failure);
+      return const Left(
+          Failure.databaseError('Sortiment konnte nicht geladen werden'));
     }
   }
 

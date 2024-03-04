@@ -4,6 +4,7 @@ import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_widgets/failure_widget.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_widgets/loading_widget.dart';
+import 'package:app_flutter_produkt_bestellen/core/global_cubits/cubit_pictures.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_page_widget.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/list_wheel_scroll_view_x.dart';
 import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
@@ -23,9 +24,14 @@ class CategoryWorkingTablePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<BlocShoppingBasket>.value(
+    return MultiBlocProvider(providers: [
+      BlocProvider<BlocShoppingBasket>.value(
         value: getIt<BlocShoppingBasket>(),
-        child: const _BlocProviderWorkTables());
+      ),
+      BlocProvider<CubitPictures>.value(
+        value: getIt<CubitPictures>(),
+      )
+    ], child: const _BlocProviderWorkTables());
   }
 }
 
@@ -263,7 +269,7 @@ class _ProductPicture extends StatelessWidget {
     return BlocSelector<CategoryWorkingTableCubit, StateCategory, Uint8List?>(
         selector: (state) => state.mapOrNull(
             success: (stateSuccess) => stateSuccess.productCategory?.listProduct
-                .where((element) => element.name == widget)
+                .where((element) => element.name == widget.name)
                 .first
                 .pictureByte),
         builder: (context, state) {
