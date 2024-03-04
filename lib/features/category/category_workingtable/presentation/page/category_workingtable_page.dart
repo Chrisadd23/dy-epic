@@ -143,6 +143,7 @@ class _ProductListWheelState extends State<ProductListWheel> {
 
 class CategoryProduct extends StatefulWidget {
   const CategoryProduct({
+    super.key,
     required this.picturePath,
     required this.productType,
     required this.price,
@@ -239,17 +240,25 @@ class _ProductName extends StatelessWidget {
         child: LayoutBuilder(builder: (context, constraints) {
           return Padding(
             padding: EdgeInsets.only(
-                top: constraints.maxHeight * 0.15,
+                top: constraints.maxHeight * 0.2,
                 left: constraints.maxWidth * 0.05,
                 right: constraints.maxWidth * 0.05),
             child: FittedBox(
               fit: BoxFit.fill,
-              child: Text(
-                'Dekor ${widget.productType.type}',
-                style: const TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold,
+              child: Text.rich(
+                TextSpan(
+                  text: '${widget.name}\n',
+                  style: const TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  children: [
+                    TextSpan(
+                      text: widget.productType.type,
+                    ),
+                  ],
                 ),
+                textAlign: TextAlign.center,
               ),
             ),
           );
