@@ -10,6 +10,7 @@ import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/category_workingtable/presentation/cubit/category_workingtable_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/cubit/state_category_generic.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/bloc_shopping_basket.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/widget/shopping_basket_dialog.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -32,10 +33,16 @@ class _BlocProviderWorkTables extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<CategoryWorkingtableCubit>(
-        create: (context) => getIt<CategoryWorkingtableCubit>()..load(),
-        child:
-            GlobalScaffold(appBarContext: context, body: const _WorkTables()));
+    return BlocProvider<CategoryWorkingTableCubit>(
+        create: (context) => getIt<CategoryWorkingTableCubit>()..load(),
+        child: GlobalScaffold(
+            appBarContext: context,
+            body: const Stack(
+              children: [
+                _WorkTables(),
+                DialogShoppingBasket(),
+              ],
+            )));
   }
 }
 
@@ -44,14 +51,14 @@ class _WorkTables extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CategoryWorkingtableCubit, StateCategory>(
+    return BlocBuilder<CategoryWorkingTableCubit, StateCategory>(
         builder: (context, state) => state.map(
             loading: (_) => const LoadingWidget(
                   firstWidth: 110,
                   secondWidth: 60,
                 ),
             failure: (failure) =>
-                FailureWidget(failure: failure.failure.toString()),
+                FailureWidget(failure: failure.failure.getFailureMessage),
             success: (successState) {
               final listProducts =
                   successState.productCategory?.listProduct.map((product) {
@@ -60,7 +67,10 @@ class _WorkTables extends StatelessWidget {
                   productType: product.productType as EnumCategoryWorkingTable,
                 );
               }).toList();
-              return ProductListWheel(listProducts: listProducts);
+
+              return listProducts != null
+                  ? ProductListWheel(listProducts: listProducts)
+                  : const SizedBox.shrink();
             }));
   }
 }
@@ -71,7 +81,7 @@ class ProductListWheel extends StatefulWidget {
     required this.listProducts,
   });
 
-  final List<Product>? listProducts;
+  final List<Product> listProducts;
 
   @override
   State<ProductListWheel> createState() => _ProductListWheelState();
@@ -99,7 +109,8 @@ class _ProductListWheelState extends State<ProductListWheel> {
       scrollDirection: Axis.horizontal,
       itemExtent: MediaQuery.sizeOf(context).width * 0.75,
       childDelegate: ListWheelChildLoopingListDelegate(
-          children: [...widget.listProducts ?? const Iterable.empty()]),
+        children: widget.listProducts.toList(),
+      ),
     );
   }
 

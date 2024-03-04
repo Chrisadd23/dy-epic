@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/category_workingtable/data/datasource/category_workingtable_datasource.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/category_workingtable/domain/entity/category_workingtable_entity.dart';
@@ -13,7 +14,7 @@ class CategoryWorkingtableRepositoryImplementation
   final CategoryWorkingtableDatasource dataSourceArbeitstische;
 
   @override
-  Future<Either<Failure, CategoryWorkingtableEntity>> getArbeitstische() async {
+  Future<Either<Failure, CategoryWorkingTableEntity>> getArbeitstische() async {
     // TODO: implement getArbeitstische
     return dataSourceArbeitstische.getArbeitstischeData();
   }

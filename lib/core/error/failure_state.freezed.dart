@@ -106,8 +106,8 @@ class __$$FailureMessageImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$FailureMessageImpl implements _FailureMessage {
-  const _$FailureMessageImpl([this.message]);
+class _$FailureMessageImpl extends _FailureMessage {
+  const _$FailureMessageImpl([this.message]) : super._();
 
   @override
   final String? message;
@@ -198,8 +198,9 @@ class _$FailureMessageImpl implements _FailureMessage {
   }
 }
 
-abstract class _FailureMessage implements Failure {
+abstract class _FailureMessage extends Failure {
   const factory _FailureMessage([final String? message]) = _$FailureMessageImpl;
+  const _FailureMessage._() : super._();
 
   String? get message;
   @JsonKey(ignore: true)
@@ -240,8 +241,8 @@ class __$$DatabaseErrorImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$DatabaseErrorImpl implements _DatabaseError {
-  const _$DatabaseErrorImpl([this.databaseMessage]);
+class _$DatabaseErrorImpl extends _DatabaseError {
+  const _$DatabaseErrorImpl([this.databaseMessage]) : super._();
 
   @override
   final String? databaseMessage;
@@ -332,9 +333,10 @@ class _$DatabaseErrorImpl implements _DatabaseError {
   }
 }
 
-abstract class _DatabaseError implements Failure {
+abstract class _DatabaseError extends Failure {
   const factory _DatabaseError([final String? databaseMessage]) =
       _$DatabaseErrorImpl;
+  const _DatabaseError._() : super._();
 
   String? get databaseMessage;
   @JsonKey(ignore: true)

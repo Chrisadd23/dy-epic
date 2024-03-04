@@ -8,6 +8,6 @@ class CategoryWorkingTableUseCase {
 
   final CategoryWorkingtableRepository repositoryArbeitstische;
 
-  Future<Either<Failure, CategoryWorkingtableEntity>> call() =>
+  Future<Either<Failure, CategoryWorkingTableEntity>> call() =>
       repositoryArbeitstische.getArbeitstische();
 }

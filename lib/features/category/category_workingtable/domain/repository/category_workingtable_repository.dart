@@ -3,5 +3,5 @@ import 'package:app_flutter_produkt_bestellen/features/category/category_working
 import 'package:either_dart/either.dart';
 
 abstract class CategoryWorkingtableRepository {
-  Future<Either<Failure, CategoryWorkingtableEntity>> getArbeitstische();
+  Future<Either<Failure, CategoryWorkingTableEntity>> getArbeitstische();
 }

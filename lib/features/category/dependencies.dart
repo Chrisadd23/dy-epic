@@ -31,8 +31,8 @@ void setUpArbeitstische() {
       CategoryWorkingtableRepositoryImplementation(
           dataSourceArbeitstische: getIt()));
 
-  getIt.registerFactory<CategoryWorkingtableCubit>(
-      () => CategoryWorkingtableCubit(repositoryArbeitstische: getIt()));
+  getIt.registerFactory<CategoryWorkingTableCubit>(
+      () => CategoryWorkingTableCubit(repositoryWorkingTable: getIt()));
 }
 
 void setUpOfficeChair() {

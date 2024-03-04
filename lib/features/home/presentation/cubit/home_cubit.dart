@@ -19,13 +19,11 @@ class HomeCubit extends Cubit<HomeCategoryState> {
 }
 
 List<HomeCategoryModel> homeCategoryList = [
-  /*
-    ModelCategory(
-        title: 'Arbeitstische',
-        imgPath: Assets.appComponents.jpg.arbeitstisch.path,
-        navigation: AppGoRouter.arbeitstische.name,
-        indexPositon: 0),
-     */
+  HomeCategoryModel(
+      title: 'Arbeitstische',
+      imgPath: Assets.appComponents.jpg.arbeitstisch.path,
+      navigation: AppGoRouter.arbeitstische.name,
+      indexPositon: 0),
   HomeCategoryModel(
       title: 'Bürodrehstühle',
       imgPath: Assets.appComponents.jpg.buerodrehstuehle.path,

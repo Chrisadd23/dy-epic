@@ -3,13 +3,13 @@ import 'package:app_flutter_produkt_bestellen/features/category/category_working
 import 'package:either_dart/either.dart';
 
 abstract class CategoryWorkingtableDatasource {
-  Future<Either<Failure, CategoryWorkingtableEntity>> getArbeitstischeData();
+  Future<Either<Failure, CategoryWorkingTableEntity>> getArbeitstischeData();
 }
 
 class DataSourceArbeitstischeImplementation
     extends CategoryWorkingtableDatasource {
   @override
-  Future<Either<Failure, CategoryWorkingtableEntity>>
+  Future<Either<Failure, CategoryWorkingTableEntity>>
       getArbeitstischeData() async {
     // TODO: implement getArbeitstischeData
     try {
@@ -21,4 +21,4 @@ class DataSourceArbeitstischeImplementation
 }
 
 const _listProductSortiment =
-    CategoryWorkingtableEntity(categoryName: 'E-Smart', listProduct: []);
+    CategoryWorkingTableEntity(categoryName: 'E-Smart', listProduct: []);

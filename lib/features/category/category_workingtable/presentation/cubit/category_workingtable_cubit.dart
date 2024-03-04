@@ -3,26 +3,28 @@ import 'package:app_flutter_produkt_bestellen/features/category/share/presentati
 import 'package:either_dart/either.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CategoryWorkingtableCubit extends Cubit<StateCategory> {
-  CategoryWorkingtableCubit({required this.repositoryArbeitstische})
+class CategoryWorkingTableCubit extends Cubit<StateCategory> {
+  CategoryWorkingTableCubit({required this.repositoryWorkingTable})
       : super(const StateCategory.loading());
 
-  final CategoryWorkingtableRepository repositoryArbeitstische;
+  final CategoryWorkingtableRepository repositoryWorkingTable;
 
   Future<void> load() async {
     if (state != const StateCategory.loading()) {
       emit(const StateCategory.loading());
     }
-    await repositoryArbeitstische.getArbeitstische().fold((failure) {},
-        (listArbeitsTische) {
+    await repositoryWorkingTable
+        .getArbeitstische()
+        .fold((failure) => emit(StateCategory.failure(failure: failure)),
+            (workingTableList) {
       final productCategory = ProductCategory(
-          categoryName: listArbeitsTische.categoryName,
-          listProduct: listArbeitsTische.listProduct
-              .map((arbeitstisch) => Product(
-                  productType: arbeitstisch.productType,
-                  price: arbeitstisch.price,
-                  picturePath: arbeitstisch.picturePath,
-                  name: arbeitstisch.name))
+          categoryName: workingTableList.categoryName,
+          listProduct: workingTableList.listProduct
+              .map((workingTable) => Product(
+                  productType: workingTable.categoryProductEntity.productType,
+                  price: workingTable.categoryProductEntity.price,
+                  picturePath: workingTable.categoryProductEntity.picturePath,
+                  name: workingTable.categoryProductEntity.name))
               .toList());
 
       emit(StateCategory.success(productCategory: productCategory));

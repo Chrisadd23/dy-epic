@@ -50,7 +50,6 @@ class CategoryPage extends StatelessWidget {
                     failure: failure.toString(),
                   ),
                   success: (listCategory) => ListView.builder(
-                    physics: const ClampingScrollPhysics(),
                     padding: EdgeInsets.only(
                       left: MediaQuery.sizeOf(context).width * 0.1,
                       right: MediaQuery.sizeOf(context).width * 0.1,
