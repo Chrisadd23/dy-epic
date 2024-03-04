@@ -21,6 +21,9 @@ class CategoryWidget extends StatelessWidget {
       height: MediaQuery.of(context).size.height * 0.25,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
+        boxShadow: const [
+          BoxShadow(color: Colors.grey, blurRadius: 4, offset: Offset(6, 3))
+        ],
         image: DecorationImage(
           image: AssetImage(
             img,

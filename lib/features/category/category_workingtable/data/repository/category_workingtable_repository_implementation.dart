@@ -7,15 +7,15 @@ import 'package:app_flutter_produkt_bestellen/features/category/category_working
 import 'package:either_dart/either.dart';
 
 class CategoryWorkingtableRepositoryImplementation
-    extends CategoryWorkingtableRepository {
+    extends CategoryWorkingTableRepository {
   CategoryWorkingtableRepositoryImplementation(
-      {required this.dataSourceArbeitstische});
+      {required this.dataSourceWorkingTable});
 
-  final CategoryWorkingTableDatasource dataSourceArbeitstische;
+  final CategoryWorkingTableDatasource dataSourceWorkingTable;
 
   @override
-  Future<Either<Failure, CategoryWorkingTableEntity>> getArbeitstische() async {
+  Future<Either<Failure, CategoryWorkingTableEntity>> getWorkingTable() async {
     // TODO: implement getArbeitstische
-    return dataSourceArbeitstische.getWorkingTableData();
+    return dataSourceWorkingTable.getWorkingTableData();
   }
 }

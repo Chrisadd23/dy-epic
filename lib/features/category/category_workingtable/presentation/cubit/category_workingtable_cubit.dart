@@ -7,14 +7,14 @@ class CategoryWorkingTableCubit extends Cubit<StateCategory> {
   CategoryWorkingTableCubit({required this.repositoryWorkingTable})
       : super(const StateCategory.loading());
 
-  final CategoryWorkingtableRepository repositoryWorkingTable;
+  final CategoryWorkingTableRepository repositoryWorkingTable;
 
   Future<void> load() async {
     if (state != const StateCategory.loading()) {
       emit(const StateCategory.loading());
     }
     await repositoryWorkingTable
-        .getArbeitstische()
+        .getWorkingTable()
         .fold((failure) => emit(StateCategory.failure(failure: failure)),
             (workingTableList) {
       final productCategory = ProductCategory(

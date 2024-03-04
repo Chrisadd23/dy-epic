@@ -27,9 +27,9 @@ void setUpArbeitstische() {
   getIt.registerLazySingleton<CategoryWorkingTableDatasource>(
       () => DataSourceWorkingTableImplementation());
 
-  getIt.registerLazySingleton<CategoryWorkingtableRepository>(() =>
+  getIt.registerLazySingleton<CategoryWorkingTableRepository>(() =>
       CategoryWorkingtableRepositoryImplementation(
-          dataSourceArbeitstische: getIt()));
+          dataSourceWorkingTable: getIt()));
 
   getIt.registerFactory<CategoryWorkingTableCubit>(
       () => CategoryWorkingTableCubit(repositoryWorkingTable: getIt()));

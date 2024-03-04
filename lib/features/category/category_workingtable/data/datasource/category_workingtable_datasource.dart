@@ -19,31 +19,36 @@ class DataSourceWorkingTableImplementation
     try {
       Failure? failure;
       List<CategoryWorkingTableProductEntity> workingTableList = [];
-      debugPrint("categoryWorkingTableProductEntity ==> start");
+
       await FirebaseFirestore.instance
           .collection('Product')
-          .doc()
+          .doc('kbLDlq3ItPF7onHoQnYL')
           .collection('workingTable')
           .get()
-          .then((querySnapshot) {
+          .timeout(const Duration(seconds: 10))
+          .then((QuerySnapshot querySnapshot) {
         querySnapshot.docs.map((document) async {
-          debugPrint("categoryWorkingTableProductEntity ==> start");
-          final Map<String, dynamic> data = document.data();
-          final categoryProductEntity = _getCategoryProductEntity(data: data);
-          final workingTableFrameColors =
-              _getWorkingTableFrameColors(data: data['frameColors']);
-          final pricePerSize = _getPricePerSize(data: data['pricePerSize']);
-          final categoryWorkingTableProductEntity =
-              CategoryWorkingTableProductEntity(
-                  categoryProductEntity: categoryProductEntity,
-                  workingTableFrameColors: workingTableFrameColors,
-                  pricePerSize: pricePerSize);
-          workingTableList.add(categoryWorkingTableProductEntity);
-
+          final Map<String, dynamic> data =
+              document.data() as Map<String, dynamic>;
           debugPrint(
-              "categoryWorkingTableProductEntity ==> $categoryWorkingTableProductEntity");
-        });
-      }).timeout(const Duration(seconds: 10));
+              "categoryWorkingTableProductEntity ==> ${data['frameColors']}");
+
+          if (document.id != 'additionalAttributes') {
+            final categoryProductEntity = _getCategoryProductEntity(data: data);
+            final workingTableFrameColors =
+                _getWorkingTableFrameColors(data: data['frameColors']);
+            final pricePerSize = _getPricePerSize(data: data['pricePerSize']);
+            final categoryWorkingTableProductEntity =
+                CategoryWorkingTableProductEntity(
+                    categoryProductEntity: categoryProductEntity,
+                    workingTableFrameColors: workingTableFrameColors,
+                    pricePerSize: pricePerSize);
+            workingTableList.add(categoryWorkingTableProductEntity);
+            debugPrint(
+                "categoryWorkingTableProductEntity ==> $categoryWorkingTableProductEntity");
+          }
+        }).toList();
+      });
       return Right(CategoryWorkingTableEntity(
           categoryName: 'E-Smart', listProduct: workingTableList));
     } catch (e) {
@@ -56,8 +61,8 @@ class DataSourceWorkingTableImplementation
     return CategoryProductEntity(
         productNumber: data['productNumber'] ?? '',
         name: data['productTitle'] ?? '',
-        productType: _getProductType(productType: data['type']),
-        price: double.parse(data['price'].toString()),
+        productType: _getProductType(productType: data['type'] ?? ''),
+        price: 0,
         indexNumber: 0,
         picturePath: 'product_${data['productNumber']}.png');
   }
@@ -77,15 +82,16 @@ class DataSourceWorkingTableImplementation
             pricePerSizeEnum: CategoryWorkingTablePricePerSizeEnum.values
                 .where((element) => element.name == key)
                 .first,
-            width: data[key]['width'],
-            height: data[key]['height'],
-            price: data[key]['price']))
+            width: int.parse(data[key]['width'].toString()),
+            height: int.parse(data[key]['height'].toString()),
+            price: double.parse(data[key]['price'].toString())))
         .toList();
   }
 
   EnumCategoryWorkingTable _getProductType({required String productType}) {
     return EnumCategoryWorkingTable.values
-        .where((workingTable) => workingTable.type == productType)
-        .first;
+            .where((workingTable) => workingTable.type == productType)
+            .firstOrNull ??
+        EnumCategoryWorkingTable.ahorn;
   }
 }

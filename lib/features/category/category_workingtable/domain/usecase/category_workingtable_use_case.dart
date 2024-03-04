@@ -6,8 +6,8 @@ import 'package:either_dart/either.dart';
 class CategoryWorkingTableUseCase {
   CategoryWorkingTableUseCase(this.repositoryArbeitstische);
 
-  final CategoryWorkingtableRepository repositoryArbeitstische;
+  final CategoryWorkingTableRepository repositoryArbeitstische;
 
   Future<Either<Failure, CategoryWorkingTableEntity>> call() =>
-      repositoryArbeitstische.getArbeitstische();
+      repositoryArbeitstische.getWorkingTable();
 }

@@ -28,9 +28,10 @@ class DataSourceConferenceChairImplementation
           .timeout(const Duration(seconds: 10))
           .then((QuerySnapshot querySnapshot) {
         querySnapshot.docs.map((document) async {
+          debugPrint("index =>  document ==> $document");
           final Map<String, dynamic> data =
               document.data() as Map<String, dynamic>;
-          debugPrint("index =>  document ==> $data");
+
           officeChairs.add(CategoryProductEntity(
               productNumber: data['productNumber'] ?? '',
               name: data['productTitle'] ?? '',
