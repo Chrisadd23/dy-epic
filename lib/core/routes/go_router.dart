@@ -110,7 +110,7 @@ enum AppGoRouter {
                     path: arbeitstische.title,
                     name: arbeitstische.name,
                     pageBuilder: (context, state) => _getCustomerTransition(
-                        const CategoryWorkingtablePage(), state),
+                        const CategoryWorkingTablePage(), state),
                     routes: [
                       GoRoute(
                         path: product.title,

@@ -24,8 +24,8 @@ abstract class CategoryDependencies {
 }
 
 void setUpArbeitstische() {
-  getIt.registerLazySingleton<CategoryWorkingtableDatasource>(
-      () => DataSourceArbeitstischeImplementation());
+  getIt.registerLazySingleton<CategoryWorkingTableDatasource>(
+      () => DataSourceWorkingTableImplementation());
 
   getIt.registerLazySingleton<CategoryWorkingtableRepository>(() =>
       CategoryWorkingtableRepositoryImplementation(

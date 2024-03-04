@@ -9,6 +9,7 @@ import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/list_wh
 import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/category_workingtable/presentation/cubit/category_workingtable_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/cubit/state_category_generic.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/widget/category_product_picture.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/bloc_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/widget/shopping_basket_dialog.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
@@ -17,8 +18,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-class CategoryWorkingtablePage extends StatelessWidget {
-  const CategoryWorkingtablePage({super.key});
+class CategoryWorkingTablePage extends StatelessWidget {
+  const CategoryWorkingTablePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -60,11 +61,14 @@ class _WorkTables extends StatelessWidget {
             failure: (failure) =>
                 FailureWidget(failure: failure.failure.getFailureMessage),
             success: (successState) {
+              debugPrint("successState ==> $successState");
               final listProducts =
                   successState.productCategory?.listProduct.map((product) {
-                return Product(
+                return CategoryProduct(
                   picturePath: product.picturePath,
                   productType: product.productType as EnumCategoryWorkingTable,
+                  price: product.price,
+                  name: product.name,
                 );
               }).toList();
 
@@ -81,7 +85,7 @@ class ProductListWheel extends StatefulWidget {
     required this.listProducts,
   });
 
-  final List<Product> listProducts;
+  final List<CategoryProduct> listProducts;
 
   @override
   State<ProductListWheel> createState() => _ProductListWheelState();
@@ -131,18 +135,21 @@ class _ProductListWheelState extends State<ProductListWheel> {
   }
 }
 
-class Product extends StatefulWidget {
-  const Product({
-    super.key,
+class CategoryProduct extends StatefulWidget {
+  const CategoryProduct({
     required this.picturePath,
     required this.productType,
+    required this.price,
+    required this.name,
   });
 
   final String picturePath;
   final EnumCategoryWorkingTable productType;
+  final double price;
+  final String name;
 
   @override
-  State<Product> createState() => _ProductState();
+  State<CategoryProduct> createState() => CategoryProductState();
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
@@ -150,10 +157,12 @@ class Product extends StatefulWidget {
     properties.add(StringProperty('picturePath', picturePath));
     properties.add(
         EnumProperty<EnumCategoryWorkingTable>('productType', productType));
+    properties.add(DoubleProperty('price', price));
+    properties.add(StringProperty('name', name));
   }
 }
 
-class _ProductState extends State<Product> {
+class CategoryProductState extends State<CategoryProduct> {
   @override
   void didChangeDependencies() {
     // TODO: implement didChangeDependencies
@@ -215,7 +224,7 @@ class _ProductName extends StatelessWidget {
     required this.widget,
   });
 
-  final Product widget;
+  final CategoryProduct widget;
 
   @override
   Widget build(BuildContext context) {
@@ -247,78 +256,34 @@ class _ProductPicture extends StatelessWidget {
     required this.widget,
   });
 
-  final Product widget;
+  final CategoryProduct widget;
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        Align(
-          alignment: Alignment.center,
-          child: Padding(
-            padding: EdgeInsets.only(
-                bottom: MediaQuery.of(context).size.height * 0.2),
-            child: LayoutBuilder(
-              builder: (context, constraints) =>
-                  // navigation Test
-                  Container(
-                height: constraints.maxHeight * 0.9,
-                width: constraints.maxWidth * 0.9,
-                margin: EdgeInsets.only(bottom: constraints.maxHeight * 0.2),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  shape: BoxShape.circle,
-                  boxShadow: const [
-                    BoxShadow(
-                        color: Colors.grey,
-                        offset: Offset(2, 3),
-                        blurStyle: BlurStyle.outer),
-                    BoxShadow(
-                        color: Colors.grey,
-                        offset: Offset(2, -3),
-                        blurStyle: BlurStyle.outer)
-                  ],
-                  border: Border.all(
-                      color: Colors.black45,
-                      strokeAlign: BorderSide.strokeAlignInside),
-                  image: DecorationImage(
-                    image: AssetImage(widget.picturePath),
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ),
-        Align(
-          alignment: Alignment.center,
-          child: LayoutBuilder(builder: (context, constraints) {
-            return Padding(
-              padding: EdgeInsets.only(bottom: constraints.maxHeight * 0.43),
-              child: CircleAvatar(
-                backgroundColor: Colors.transparent,
-                radius: constraints.maxHeight * 0.23,
-                foregroundColor: Colors.transparent,
-                child: InkWell(
-                  hoverColor: Colors.red,
-                  onTap: () => context.goNamed(
-                      '${AppGoRouter.arbeitstische.name}/${AppGoRouter.product.name}',
-                      queryParameters: <String, String>{
-                        'productNumber': widget.productType.toString()
-                      }),
-                ),
-              ),
-            );
-          }),
-        )
-      ],
-    );
+    return BlocSelector<CategoryWorkingTableCubit, StateCategory, Uint8List?>(
+        selector: (state) => state.mapOrNull(
+            success: (stateSuccess) => stateSuccess.productCategory?.listProduct
+                .where((element) => element.name == widget)
+                .first
+                .pictureByte),
+        builder: (context, state) {
+          return CategoryProductPicture(
+              uint8list: state,
+              function: () {
+                context.goNamed(
+                    '${AppGoRouter.konferenzstuehle.name}/${AppGoRouter.product.name}',
+                    queryParameters: <String, String>{
+                      'productNumber': widget.picturePath
+                    });
+              });
+        });
   }
 }
 
 class _ProductColors extends StatelessWidget {
   const _ProductColors({required this.product});
 
-  final Product product;
+  final CategoryProduct product;
 
   @override
   Widget build(BuildContext context) {

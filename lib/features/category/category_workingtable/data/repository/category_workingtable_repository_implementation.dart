@@ -11,11 +11,11 @@ class CategoryWorkingtableRepositoryImplementation
   CategoryWorkingtableRepositoryImplementation(
       {required this.dataSourceArbeitstische});
 
-  final CategoryWorkingtableDatasource dataSourceArbeitstische;
+  final CategoryWorkingTableDatasource dataSourceArbeitstische;
 
   @override
   Future<Either<Failure, CategoryWorkingTableEntity>> getArbeitstische() async {
     // TODO: implement getArbeitstische
-    return dataSourceArbeitstische.getArbeitstischeData();
+    return dataSourceArbeitstische.getWorkingTableData();
   }
 }
