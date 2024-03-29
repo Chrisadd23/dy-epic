@@ -2,12 +2,51 @@ import 'package:app_flutter_produkt_bestellen/core/fix_widgets/loading_widget.da
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class CategoryProductPicture extends StatelessWidget {
+class CategoryProductPicture extends StatefulWidget {
   const CategoryProductPicture(
       {super.key, this.uint8list, required this.function});
 
   final Uint8List? uint8list;
   final VoidCallback function;
+
+  @override
+  State<CategoryProductPicture> createState() => _CategoryProductPictureState();
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(IterableProperty<>('uint8list', uint8list));
+  }
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(ObjectFlagProperty<VoidCallback>.has('function', function));
+  }
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(ObjectFlagProperty<VoidCallback>.has('function', function));
+  }
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(ObjectFlagProperty<VoidCallback>.has('function', function));
+  }
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(ObjectFlagProperty<VoidCallback>.has('function', function));
+  }
+}
+
+class _CategoryProductPictureState extends State<CategoryProductPicture> {
+  @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    if (widget.uint8list != null) {
+      precacheImage(MemoryImage(widget.uint8list!), context);
+    }
+    super.didChangeDependencies();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,9 +80,9 @@ class CategoryProductPicture extends StatelessWidget {
                   border: Border.all(
                       color: Colors.black45,
                       strokeAlign: BorderSide.strokeAlignInside),
-                  image: uint8list != null
+                  image: widget.uint8list != null
                       ? DecorationImage(
-                          image: MemoryImage(uint8list!),
+                          image: MemoryImage(widget.uint8list!),
                           onError: (object, stackTrace) =>
                               const LoadingWidget(),
                         )
@@ -64,7 +103,7 @@ class CategoryProductPicture extends StatelessWidget {
                 foregroundColor: Colors.transparent,
                 child: InkWell(
                   hoverColor: Colors.red,
-                  onTap: function,
+                  onTap: widget.function,
                 ),
               ),
             );
@@ -78,7 +117,9 @@ class CategoryProductPicture extends StatelessWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
 
-    properties.add(ObjectFlagProperty<VoidCallback>.has('function', function));
-    properties.add(ObjectFlagProperty<Uint8List?>.has('uint8list', uint8list));
+    properties
+        .add(ObjectFlagProperty<VoidCallback>.has('function', widget.function));
+    properties
+        .add(ObjectFlagProperty<Uint8List?>.has('uint8list', widget.uint8list));
   }
 }

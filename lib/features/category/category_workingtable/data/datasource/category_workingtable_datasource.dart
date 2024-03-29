@@ -34,9 +34,13 @@ class DataSourceWorkingTableImplementation
               "categoryWorkingTableProductEntity ==> ${data['frameColors']}");
 
           if (document.id != 'additionalAttributes') {
-            final categoryProductEntity = _getCategoryProductEntity(data: data);
             final workingTableFrameColors =
                 _getWorkingTableFrameColors(data: data['frameColors']);
+            final categoryProductEntity = _getCategoryProductEntity(
+                data: data,
+                workingTableFrameColor:
+                    workingTableFrameColors.firstOrNull?.colorName);
+
             final pricePerSize = _getPricePerSize(data: data['pricePerSize']);
             final categoryWorkingTableProductEntity =
                 CategoryWorkingTableProductEntity(
@@ -64,14 +68,15 @@ class DataSourceWorkingTableImplementation
   }
 
   CategoryProductEntity _getCategoryProductEntity(
-      {required Map<String, dynamic> data}) {
+      {required Map<String, dynamic> data, String? workingTableFrameColor}) {
     return CategoryProductEntity(
         productNumber: data['productNumber'] ?? '',
         name: data['productTitle'] ?? '',
         productType: _getProductType(productType: data['type'] ?? ''),
         price: 0,
         indexNumber: 0,
-        picturePath: 'product_${data['productNumber']}.png');
+        picturePath:
+            'product_${data['productNumber']}_$workingTableFrameColor.png');
   }
 
   List<CategoryWorkingTableFrameColor> _getWorkingTableFrameColors(
