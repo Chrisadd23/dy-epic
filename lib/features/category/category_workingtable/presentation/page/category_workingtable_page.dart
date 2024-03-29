@@ -308,11 +308,13 @@ class _ProductColors extends StatelessWidget {
                     style: AppTextStyle.bold16,
                     textAlign: TextAlign.center,
                   ),
-                  if (product.price > 0)
+                  if (product.price > 0) ...[
+                    const Text('|'),
                     Text(
                       'Preis: ${product.price.getCurrency()}',
                       style: AppTextStyle.bold16,
                     )
+                  ]
                 ],
               ),
               const SizedBox(
