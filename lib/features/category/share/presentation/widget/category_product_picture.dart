@@ -11,29 +11,11 @@ class CategoryProductPicture extends StatefulWidget {
 
   @override
   State<CategoryProductPicture> createState() => _CategoryProductPictureState();
+
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(IterableProperty<>('uint8list', uint8list));
-  }
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(ObjectFlagProperty<VoidCallback>.has('function', function));
-  }
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(ObjectFlagProperty<VoidCallback>.has('function', function));
-  }
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(ObjectFlagProperty<VoidCallback>.has('function', function));
-  }
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
+    properties.add(ObjectFlagProperty<Uint8List>('uint8list', uint8list));
     properties.add(ObjectFlagProperty<VoidCallback>.has('function', function));
   }
 }
