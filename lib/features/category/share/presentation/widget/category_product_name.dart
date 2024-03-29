@@ -14,18 +14,15 @@ class CategoryProductName extends StatelessWidget {
         builder: (context, constraints) {
           return Padding(
             padding: EdgeInsets.only(
-                top: constraints.maxHeight * 0.15,
-                left: constraints.maxWidth * 0.05,
-                right: constraints.maxWidth * 0.05),
-            child: FittedBox(
-              fit: BoxFit.fill,
-              child: Text(
-                name,
-                style: const TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold,
-                ),
+              top: constraints.maxHeight * 0.25,
+            ),
+            child: Text(
+              name,
+              style: const TextStyle(
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
               ),
+              textAlign: TextAlign.center,
             ),
           );
         },

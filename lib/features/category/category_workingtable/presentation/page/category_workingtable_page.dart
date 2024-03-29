@@ -1,6 +1,8 @@
 import 'dart:developer';
 
+import 'package:app_flutter_produkt_bestellen/core/extension/double.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
+import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text_style.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_widgets/failure_widget.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_widgets/loading_widget.dart';
@@ -186,30 +188,19 @@ class CategoryProductState extends State<CategoryProduct> {
             boxShadow: const [
               BoxShadow(offset: Offset(5, 5), color: Colors.grey)
             ]),
-        child: Stack(
-          children: [
-            _ProductPicture(widget: widget),
-            _ProductColors(product: widget),
-            _ProductName(widget: widget),
-            Align(
-                alignment: Alignment.center,
-                child: LayoutBuilder(builder: (context, constraints) {
-                  return Padding(
-                    padding: EdgeInsets.only(
-                      top: constraints.maxHeight * 0.43,
-                    ),
-                    child: const FittedBox(
-                      fit: BoxFit.fill,
-                      child: Text(
-                        'Gestellfarben',
-                        style: TextStyle(
-                            fontSize: 25, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  );
-                })),
-          ],
-        ));
+        child: LayoutBuilder(builder: (context, constraints) {
+          return Padding(
+            padding:
+                EdgeInsets.symmetric(horizontal: constraints.maxWidth * 0.05),
+            child: Stack(
+              children: [
+                _ProductPicture(widget: widget),
+                _ProductColors(product: widget),
+                _ProductName(widget: widget),
+              ],
+            ),
+          );
+        }));
   }
 
   @override
@@ -239,9 +230,8 @@ class _ProductName extends StatelessWidget {
         child: LayoutBuilder(builder: (context, constraints) {
           return Padding(
             padding: EdgeInsets.only(
-                top: constraints.maxHeight * 0.2,
-                left: constraints.maxWidth * 0.05,
-                right: constraints.maxWidth * 0.05),
+              top: constraints.maxHeight * 0.25,
+            ),
             child: FittedBox(
               fit: BoxFit.fill,
               child: Text.rich(
@@ -282,7 +272,7 @@ class _ProductPicture extends StatelessWidget {
                 .first
                 .pictureByte),
         builder: (context, state) {
-          return CategoryProductPicture(
+          return CategoryProductPictureMemoryImage(
               uint8list: state,
               function: () {
                 context.goNamed(
@@ -306,74 +296,91 @@ class _ProductColors extends StatelessWidget {
       alignment: Alignment.bottomCenter,
       child: LayoutBuilder(builder: (context, constraints) {
         return Padding(
-          padding: EdgeInsets.only(bottom: constraints.maxHeight * 0.1),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          padding: EdgeInsets.only(bottom: constraints.maxHeight * 0.09),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
-              SizedBox(
-                width: constraints.maxWidth * 0.05,
-              ),
-              Expanded(
-                  child: InkWell(
-                onTap: () => context.goNamed(
-                    '${AppGoRouter.arbeitstische.name}/${AppGoRouter.product.name}',
-                    extra: product.productType,
-                    queryParameters: {
-                      'color': AppColors.whiteD6D6D7.toString()
-                    }),
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: AppColors.whiteD6D6D7,
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(color: Colors.black, width: 2)),
-                  child: SizedBox(
-                    height: constraints.maxHeight * 0.1,
-                    width: constraints.maxWidth * 0.1,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Gestellfarben',
+                    style: AppTextStyle.bold16,
+                    textAlign: TextAlign.center,
                   ),
-                ),
-              )),
+                  if (product.price > 0)
+                    Text(
+                      'Preis: ${product.price.getCurrency()}',
+                      style: AppTextStyle.bold16,
+                    )
+                ],
+              ),
               const SizedBox(
-                width: 10,
+                height: 10,
               ),
-              Expanded(
-                  child: InkWell(
-                onTap: () => context.goNamed(
-                    '${AppGoRouter.arbeitstische.name}/${AppGoRouter.product.name}',
-                    extra: product.productType,
-                    queryParameters: {'color': '${AppColors.grey8D8D8E}'}),
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: AppColors.grey8D8D8E,
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(color: Colors.black, width: 2)),
-                  child: SizedBox(
-                    height: constraints.maxHeight * 0.1,
-                    width: constraints.maxWidth * 0.1,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                      child: InkWell(
+                    onTap: () => context.goNamed(
+                        '${AppGoRouter.arbeitstische.name}/${AppGoRouter.product.name}',
+                        extra: product.productType,
+                        queryParameters: {
+                          'color': AppColors.whiteD6D6D7.toString()
+                        }),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: AppColors.whiteD6D6D7,
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(color: Colors.black, width: 2)),
+                      child: SizedBox(
+                        height: constraints.maxHeight * 0.1,
+                        width: constraints.maxWidth * 0.1,
+                      ),
+                    ),
+                  )),
+                  const SizedBox(
+                    width: 10,
                   ),
-                ),
-              )),
-              const SizedBox(
-                width: 10,
-              ),
-              Expanded(
-                  child: InkWell(
-                onTap: () => context.goNamed(
-                    '${AppGoRouter.arbeitstische.name}/${AppGoRouter.product.name}',
-                    extra: product.productType,
-                    queryParameters: {'color': '${AppColors.black080808}'}),
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: AppColors.black080808,
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(color: Colors.grey, width: 2)),
-                  child: SizedBox(
-                    height: constraints.maxHeight * 0.1,
-                    width: constraints.maxWidth * 0.1,
+                  Expanded(
+                      child: InkWell(
+                    onTap: () => context.goNamed(
+                        '${AppGoRouter.arbeitstische.name}/${AppGoRouter.product.name}',
+                        extra: product.productType,
+                        queryParameters: {'color': '${AppColors.grey8D8D8E}'}),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: AppColors.grey8D8D8E,
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(color: Colors.black, width: 2)),
+                      child: SizedBox(
+                        height: constraints.maxHeight * 0.1,
+                        width: constraints.maxWidth * 0.1,
+                      ),
+                    ),
+                  )),
+                  const SizedBox(
+                    width: 10,
                   ),
-                ),
-              )),
-              SizedBox(
-                width: constraints.maxWidth * 0.05,
+                  Expanded(
+                      child: InkWell(
+                    onTap: () => context.goNamed(
+                        '${AppGoRouter.arbeitstische.name}/${AppGoRouter.product.name}',
+                        extra: product.productType,
+                        queryParameters: {'color': '${AppColors.black080808}'}),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: AppColors.black080808,
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(color: Colors.grey, width: 2)),
+                      child: SizedBox(
+                        height: constraints.maxHeight * 0.1,
+                        width: constraints.maxWidth * 0.1,
+                      ),
+                    ),
+                  )),
+                ],
               ),
             ],
           ),

@@ -1,5 +1,7 @@
 import 'dart:developer';
 
+import 'package:app_flutter_produkt_bestellen/core/extension/double.dart';
+import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text_style.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_widgets/failure_widget.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_widgets/loading_widget.dart';
@@ -23,7 +25,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:intl/intl.dart';
 
 class PageBuerostuehle extends HookWidget {
   const PageBuerostuehle({super.key, this.enumSelectOfficeChairCategory});
@@ -337,37 +338,42 @@ class _ProductState extends State<Product> {
           boxShadow: const [
             BoxShadow(offset: Offset(5, 5), color: Colors.grey)
           ]),
-      child: Stack(
-        children: [
-          _ProductPicture(widget: widget),
-          CategoryProductName(name: widget.name),
-          Align(
-            alignment: Alignment.center,
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                return Padding(
-                  padding: EdgeInsets.only(
-                    top: constraints.maxHeight * 0.43,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      FittedBox(
-                        fit: BoxFit.fill,
-                        child: Text(
-                          'Preis:  ${NumberFormat.currency(locale: 'de_DE', symbol: '€', decimalDigits: 2).format(widget.price)}',
-                          style: const TextStyle(
-                              fontSize: 25, fontWeight: FontWeight.bold),
-                        ),
+      child: LayoutBuilder(builder: (context, constraints) {
+        return Padding(
+          padding:
+              EdgeInsets.symmetric(horizontal: constraints.maxWidth * 0.05),
+          child: Stack(
+            children: [
+              _ProductPicture(widget: widget),
+              CategoryProductName(name: widget.name),
+              Align(
+                alignment: Alignment.center,
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    return Padding(
+                      padding: EdgeInsets.only(
+                        top: constraints.maxHeight * 0.5,
                       ),
-                    ],
-                  ),
-                );
-              },
-            ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          FittedBox(
+                            fit: BoxFit.fill,
+                            child: Text(
+                              'Preis:  ${widget.price.getCurrency()}',
+                              style: AppTextStyle.bold16,
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
+        );
+      }),
     );
   }
 
@@ -395,7 +401,7 @@ class _ProductPicture extends StatelessWidget {
                 .first
                 .pictureByte),
         builder: (context, state) {
-          return CategoryProductPicture(
+          return CategoryProductPictureMemoryImage(
             uint8list: state,
             function: () {
               context.goNamed(

@@ -73,7 +73,7 @@ class DataSourceWorkingTableImplementation
         productNumber: data['productNumber'] ?? '',
         name: data['productTitle'] ?? '',
         productType: _getProductType(productType: data['type'] ?? ''),
-        price: 0,
+        price: double.parse(data['pricePerSize']['large']['price'] ?? '0.0'),
         indexNumber: 0,
         picturePath:
             'product_${data['productNumber']}_$workingTableFrameColor.png');

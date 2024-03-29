@@ -1,15 +1,16 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class CategoryProductPicture extends StatefulWidget {
-  const CategoryProductPicture(
+class CategoryProductPictureMemoryImage extends StatefulWidget {
+  const CategoryProductPictureMemoryImage(
       {super.key, this.uint8list, required this.function});
 
   final Uint8List? uint8list;
   final VoidCallback function;
 
   @override
-  State<CategoryProductPicture> createState() => _CategoryProductPictureState();
+  State<CategoryProductPictureMemoryImage> createState() =>
+      _CategoryProductPictureMemoryImageState();
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
@@ -19,7 +20,8 @@ class CategoryProductPicture extends StatefulWidget {
   }
 }
 
-class _CategoryProductPictureState extends State<CategoryProductPicture> {
+class _CategoryProductPictureMemoryImageState
+    extends State<CategoryProductPictureMemoryImage> {
   @override
   void didChangeDependencies() {
     // TODO: implement didChangeDependencies
@@ -34,17 +36,15 @@ class _CategoryProductPictureState extends State<CategoryProductPicture> {
     return Stack(
       children: <Widget>[
         Align(
-          alignment: Alignment.center,
+          alignment: Alignment.topCenter,
           child: Padding(
-            padding: EdgeInsets.only(
-                bottom: MediaQuery.of(context).size.height * 0.2),
+            padding: const EdgeInsets.only(top: 10),
             child: LayoutBuilder(
               builder: (context, constraints) =>
                   // navigation Test
                   Container(
-                height: constraints.maxWidth * 0.9,
-                width: constraints.maxWidth * 0.9,
-                margin: EdgeInsets.only(bottom: constraints.maxHeight * 0.2),
+                height: constraints.maxWidth,
+                width: constraints.maxWidth,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   shape: BoxShape.circle,
