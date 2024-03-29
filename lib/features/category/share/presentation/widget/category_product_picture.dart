@@ -1,4 +1,3 @@
-import 'package:app_flutter_produkt_bestellen/core/fix_widgets/loading_widget.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -43,7 +42,7 @@ class _CategoryProductPictureState extends State<CategoryProductPicture> {
               builder: (context, constraints) =>
                   // navigation Test
                   Container(
-                height: constraints.maxHeight * 0.9,
+                height: constraints.maxWidth * 0.9,
                 width: constraints.maxWidth * 0.9,
                 margin: EdgeInsets.only(bottom: constraints.maxHeight * 0.2),
                 decoration: BoxDecoration(
@@ -62,35 +61,20 @@ class _CategoryProductPictureState extends State<CategoryProductPicture> {
                   border: Border.all(
                       color: Colors.black45,
                       strokeAlign: BorderSide.strokeAlignInside),
-                  image: widget.uint8list != null
-                      ? DecorationImage(
-                          image: MemoryImage(widget.uint8list!),
-                          onError: (object, stackTrace) =>
-                              const LoadingWidget(),
-                        )
-                      : null,
+                ),
+                child: ClipOval(
+                  child: InkWell(
+                    onTap: widget.function,
+                    child: Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Image.memory(widget.uint8list!),
+                    ),
+                  ),
                 ),
               ),
             ),
           ),
         ),
-        Align(
-          alignment: Alignment.center,
-          child: LayoutBuilder(builder: (context, constraints) {
-            return Padding(
-              padding: EdgeInsets.only(bottom: constraints.maxHeight * 0.43),
-              child: CircleAvatar(
-                backgroundColor: Colors.transparent,
-                radius: constraints.maxHeight * 0.23,
-                foregroundColor: Colors.transparent,
-                child: InkWell(
-                  hoverColor: Colors.red,
-                  onTap: widget.function,
-                ),
-              ),
-            );
-          }),
-        )
       ],
     );
   }
