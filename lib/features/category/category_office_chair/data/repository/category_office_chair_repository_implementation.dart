@@ -1,10 +1,11 @@
 import 'dart:typed_data';
 
 import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
-import 'package:app_flutter_produkt_bestellen/features/category/buerostuehle/data/datasource/datasource_buerostuehle.dart';
-import 'package:app_flutter_produkt_bestellen/features/category/buerostuehle/domain/entity/entity_buerodrehstuehle.dart';
-import 'package:app_flutter_produkt_bestellen/features/category/buerostuehle/domain/repository/repository_buerostuehle.dart';
 import 'package:either_dart/either.dart';
+
+import 'package:app_flutter_produkt_bestellen/features/category/category_office_chair/domain/entity/entity_buerodrehstuehle.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/category_office_chair/domain/repository/category_office_chair_repository.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/category_office_chair/data/datasource/category_office_chair_datasource.dart';
 
 class RepositoryBuerodrehstuehleImplementation
     extends RepositoryBuerodrehstuehle {

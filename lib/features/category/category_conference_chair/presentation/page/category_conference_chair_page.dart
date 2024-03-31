@@ -7,8 +7,8 @@ import 'package:app_flutter_produkt_bestellen/core/fix_widgets/loading_widget.da
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_page_widget.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/list_wheel_scroll_view_x.dart';
 import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
-import 'package:app_flutter_produkt_bestellen/features/category/konferenzstuehle/domain/entity/entity_konferenzstuehle.dart';
-import 'package:app_flutter_produkt_bestellen/features/category/konferenzstuehle/presentation/cubit/cubit_conference_chair.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/category_conference_chair/domain/entity/entity_konferenzstuehle.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/category_conference_chair/presentation/cubit/category_conference_chair_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/cubit/state_category_generic.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/widget/category_product_name.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/widget/category_product_picture.dart';
@@ -239,7 +239,7 @@ class _ProductPicture extends StatelessWidget {
     return BlocSelector<CubitConferenceChair, StateCategory, Uint8List?>(
         selector: (state) => state.mapOrNull(
             success: (stateSuccess) => stateSuccess.productCategory?.listProduct
-                .where((element) => element.name == widget.name)
+                .where((element) => element.picturePath == widget.picturePath)
                 .first
                 .pictureByte),
         builder: (context, state) {

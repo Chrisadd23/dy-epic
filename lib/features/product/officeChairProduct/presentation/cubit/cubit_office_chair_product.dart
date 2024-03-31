@@ -1,5 +1,4 @@
 import 'package:app_flutter_produkt_bestellen/core/global_cubits/cubit_pictures.dart';
-import 'package:app_flutter_produkt_bestellen/features/category/buerostuehle/presentation/cubit/cubit_choose_office_chair.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/officeChairProduct/domain/repository/repository_office_chair_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/officeChairProduct/presentation/cubit/state_office_chair_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/domain/entity/entity_product.dart';
@@ -21,8 +20,7 @@ class CubitOfficeChairProduct
       {String? product,
       ({ChosenProduct chosenProduct, int index})? recordOrder}) async {
     debugPrint("start with OfficeChairCubit");
-    debugPrint(
-        "officeChairType state ${getIt<CubitChooseOfficeChair>().state.name}");
+
     if (product != null) {
       await repositoryOfficeChairProduct
           .getOfficeChairProduct(productNumber: product)

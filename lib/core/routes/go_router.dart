@@ -1,7 +1,6 @@
 import 'package:app_flutter_produkt_bestellen/core/error/page_not_found.dart';
-import 'package:app_flutter_produkt_bestellen/features/category/buerostuehle/presentation/page/page_buerostuehle.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/category_office_chair/presentation/page/category_office_chair_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/category_workingtable/presentation/page/category_workingtable_page.dart';
-import 'package:app_flutter_produkt_bestellen/features/category/konferenzstuehle/presentation/page/page_konferenzstuehle.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/konferenztische/presentation/page/page_konferenztische.dart';
 import 'package:app_flutter_produkt_bestellen/features/home/presentation/page/home_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/legalities/presentation/page/legalities_page.dart';
@@ -19,6 +18,8 @@ import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+
+import 'package:app_flutter_produkt_bestellen/features/category/category_conference_chair/presentation/page/category_conference_chair_page.dart';
 
 enum AppGoRouter {
   root('/'),

@@ -268,7 +268,7 @@ class _ProductPicture extends StatelessWidget {
     return BlocSelector<CategoryWorkingTableCubit, StateCategory, Uint8List?>(
         selector: (state) => state.mapOrNull(
             success: (stateSuccess) => stateSuccess.productCategory?.listProduct
-                .where((element) => element.name == widget.name)
+                .where((element) => element.picturePath == widget.picturePath)
                 .first
                 .pictureByte),
         builder: (context, state) {
@@ -278,7 +278,7 @@ class _ProductPicture extends StatelessWidget {
                 context.goNamed(
                     '${AppGoRouter.konferenzstuehle.name}/${AppGoRouter.product.name}',
                     queryParameters: <String, String>{
-                      'productNumber': widget.picturePath
+                      'productNumber': widget.name
                     });
               });
         });

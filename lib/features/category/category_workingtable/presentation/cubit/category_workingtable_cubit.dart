@@ -37,51 +37,40 @@ class CategoryWorkingTableCubit extends Cubit<StateCategory> {
 
     newState.mapOrNull(success: (successState) async {
       debugPrint("loadPicturePath ==== continue");
+      final cubitPictures = getIt<CubitPictures>();
 
-      final listProduct = successState.productCategory?.listProduct
+      final listPicturePath = successState.productCategory?.listProduct
               .map((e) => e.picturePath)
               .toList() ??
           [];
+
       try {
-        await listProduct
-            .map((filename) async {
-              final containsPictureLocal =
-                  getIt<CubitPictures>().state.containsKey(filename) &&
-                      getIt<CubitPictures>().state[filename] != null;
-              debugPrint("containsPictureLocal ==> $containsPictureLocal");
-              if (containsPictureLocal) {
-                return {filename: getIt<CubitPictures>().state[filename]};
-              } else {
-                final imageBytes =
-                    await FirebaseConfiguration.getImageBytes(filename);
-                getIt<CubitPictures>().addPicture(
-                    key: imageBytes.keys.first, value: imageBytes.values.first);
-                debugPrint("Image Bytes ==> $imageBytes");
-                return imageBytes;
-              }
-            })
-            .wait
-            .then((pictures) {
-              successState = successState.copyWith(
-                  productCategory: successState.productCategory?.copyWith(
-                      listProduct: successState.productCategory!.listProduct
-                          .map((product) => product.copyWith(
-                              pictureByte: pictures
-                                  .where((positionMap) =>
-                                      positionMap.keys.first ==
-                                      product.picturePath)
-                                  .first
-                                  .values
-                                  .firstOrNull))
-                          .toList()));
-            });
+        if (listPicturePath.isNotEmpty) {
+          await listPicturePath.map((picturePath) async {
+            debugPrint("picturePath ==> $picturePath");
+            if (!(cubitPictures.state.containsKey(picturePath) &&
+                cubitPictures.state[picturePath] != null)) {
+              final imageBytes =
+                  await FirebaseConfiguration.getImageBytes(picturePath);
+              cubitPictures.addPicture(
+                  key: imageBytes.keys.first, value: imageBytes.values.first);
+            }
+          }).wait;
+        }
+
+        successState = successState.copyWith(
+          productCategory: successState.productCategory?.copyWith(
+            listProduct: successState.productCategory!.listProduct
+                .map((product) => product.copyWith(
+                    pictureByte: cubitPictures.state[product.picturePath]))
+                .toList(),
+          ),
+        );
       } catch (error) {
         debugPrint(error.toString());
       }
 
       emit(successState);
-
-      return;
     });
   }
 }
