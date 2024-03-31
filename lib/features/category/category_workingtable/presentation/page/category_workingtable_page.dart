@@ -77,6 +77,7 @@ class _WorkTables extends StatelessWidget {
                   productType: product.productType as EnumCategoryWorkingTable,
                   price: product.price,
                   name: product.name,
+                  productNumber: product.productNumber,
                 );
               }).toList();
 
@@ -146,6 +147,7 @@ class _ProductListWheelState extends State<ProductListWheel> {
 class CategoryProduct extends StatefulWidget {
   const CategoryProduct({
     super.key,
+    required this.productNumber,
     required this.picturePath,
     required this.productType,
     required this.price,
@@ -156,6 +158,7 @@ class CategoryProduct extends StatefulWidget {
   final EnumCategoryWorkingTable productType;
   final double price;
   final String name;
+  final String productNumber;
 
   @override
   State<CategoryProduct> createState() => CategoryProductState();
@@ -268,17 +271,20 @@ class _ProductPicture extends StatelessWidget {
     return BlocSelector<CategoryWorkingTableCubit, StateCategory, Uint8List?>(
         selector: (state) => state.mapOrNull(
             success: (stateSuccess) => stateSuccess.productCategory?.listProduct
-                .where((element) => element.picturePath == widget.picturePath)
+                .where((element) {
+                  return element.picturePath == widget.picturePath;
+                })
                 .first
                 .pictureByte),
         builder: (context, state) {
+          debugPrint("product name ==>${widget.picturePath}");
           return CategoryProductPictureMemoryImage(
               uint8list: state,
               function: () {
                 context.goNamed(
                     '${AppGoRouter.arbeitstische.name}/${AppGoRouter.product.name}',
                     queryParameters: <String, String>{
-                      'productNumber': widget.name
+                      'productNumber': widget.productNumber
                     });
               });
         });

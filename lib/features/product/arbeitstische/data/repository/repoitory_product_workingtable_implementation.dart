@@ -12,7 +12,7 @@ class RepositoryProductWorkingtableImplementation
   final DataSourceProductWorkingTable dataSourceArbeitstische;
 
   @override
-  Future<Either<Failure, EntityWorkingTableProduct>> getArbeitstischeProduct(
+  Future<Either<Failure, EntityWorkingTableProduct>> getWorkingTableProduct(
       String? product) {
     // TODO: implement getArbeitstischeProduct
     final data = dataSourceArbeitstische.loadData(product);

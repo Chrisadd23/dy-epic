@@ -17,13 +17,13 @@ class CubitOfficeChairProduct
 
   @override
   Future<void> load(
-      {String? product,
+      {String? productNumber,
       ({ChosenProduct chosenProduct, int index})? recordOrder}) async {
     debugPrint("start with OfficeChairCubit");
 
-    if (product != null) {
+    if (productNumber != null) {
       await repositoryOfficeChairProduct
-          .getOfficeChairProduct(productNumber: product)
+          .getOfficeChairProduct(productNumber: productNumber)
           .fold((failure) {
         debugPrint("officeChairProductfailure ==> ${failure.toString()}");
       }, (officeChair) {
@@ -44,17 +44,17 @@ class CubitOfficeChairProduct
             price: officeChair.price);
         debugPrint("continue OfficeChairCubit");
         debugPrint(
-            "product parameter ===> $product, picturelocal keys =>${getIt<CubitPictures>().state.keys}");
+            "product parameter ===> $productNumber, picturelocal keys =>${getIt<CubitPictures>().state.keys}");
 
         final containsPictureLocal =
-            getIt<CubitPictures>().state.containsKey(product) &&
-                getIt<CubitPictures>().state[product] != null;
+            getIt<CubitPictures>().state.containsKey(productNumber) &&
+                getIt<CubitPictures>().state[productNumber] != null;
 
         debugPrint("containsPictureLocal Product ==> $containsPictureLocal");
         if (containsPictureLocal) {
           newState = newState.copyWith(
               product: newState.product?.copyWith(
-                  pictureBytes: getIt<CubitPictures>().state[product]));
+                  pictureBytes: getIt<CubitPictures>().state[productNumber]));
         }
         debugPrint("End officeChairCubit load method");
         emit(newState);

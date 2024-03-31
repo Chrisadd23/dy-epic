@@ -30,7 +30,9 @@ class CategoryWorkingTableCubit extends Cubit<StateCategory> {
                   productType: workingTable.categoryProductEntity.productType,
                   price: workingTable.categoryProductEntity.price,
                   picturePath: workingTable.categoryProductEntity.picturePath,
-                  name: workingTable.categoryProductEntity.name))
+                  name: workingTable.categoryProductEntity.name,
+                  productNumber:
+                      workingTable.categoryProductEntity.productNumber))
               .toList());
 
       newState = StateCategory.success(productCategory: productCategory);

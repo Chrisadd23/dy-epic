@@ -1,4 +1,5 @@
 import 'package:app_flutter_produkt_bestellen/core/error/page_not_found.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/category_conference_chair/presentation/page/category_conference_chair_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/category_office_chair/presentation/page/category_office_chair_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/category_workingtable/presentation/page/category_workingtable_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/konferenztische/presentation/page/page_konferenztische.dart';
@@ -18,8 +19,6 @@ import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-
-import 'package:app_flutter_produkt_bestellen/features/category/category_conference_chair/presentation/page/category_conference_chair_page.dart';
 
 enum AppGoRouter {
   root('/'),
@@ -131,7 +130,7 @@ enum AppGoRouter {
                           final selectedColor = state.queryParameters['color'];
                           return _getCustomerTransition(
                               PageWorkingTableProduct(
-                                  product: product,
+                                  productName: product,
                                   color: selectedColor,
                                   recordOrder: recordOrder),
                               state);

@@ -33,7 +33,8 @@ class CubitOfficeChair extends Cubit<StateCategory> {
                   productType: chair.productType,
                   price: chair.price,
                   picturePath: chair.picturePath,
-                  name: chair.name))
+                  name: chair.name,
+                  productNumber: chair.productNumber))
               .toList());
 
       newState = StateCategory.success(productCategory: productCategory);

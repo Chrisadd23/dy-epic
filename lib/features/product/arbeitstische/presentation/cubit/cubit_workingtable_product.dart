@@ -17,12 +17,14 @@ class CubitWorkingTableProduct
 
   @override
   Future<void> load(
-      {String? product,
+      {String? productNumber,
       ({ChosenProduct chosenProduct, int index})? recordOrder,
       String? color}) async {
     // TODO: implement load
-    if (state != const StateProduct<EntityWorkingTableProduct>()) {
-      repositoryProductArbeitstische.getArbeitstischeProduct(product);
+    debugPrint("load product ==> $productNumber");
+    if (recordOrder == null) {
+      final product =
+          repositoryProductArbeitstische.getWorkingTableProduct(productNumber);
       emit(const StateProduct<EntityWorkingTableProduct>());
     }
   }

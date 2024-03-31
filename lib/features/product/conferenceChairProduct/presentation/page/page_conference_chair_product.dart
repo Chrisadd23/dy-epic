@@ -54,7 +54,7 @@ class _BlocProviderConferenceChair extends StatelessWidget {
       body: MultiBlocProvider(providers: [
         BlocProvider<CubitProduct>.value(
           value: getIt<CubitConferenceChairProduct>()
-            ..load(product: product, recordOrder: recordOrder),
+            ..load(productNumber: product, recordOrder: recordOrder),
         ),
       ], child: const _ConferenceChairBlocBuilder()),
     );

@@ -9,8 +9,6 @@ part 'entity_product_workingtable.freezed.dart';
 class EntityWorkingTableProduct with _$EntityWorkingTableProduct {
   const factory EntityWorkingTableProduct(
       {required String name,
-      required double price,
-      required String picturePath,
       required String productNumber,
       required List<String> attributes,
       List<EntityBreiteUndTiefe>? breiteXTiefe,
@@ -23,6 +21,7 @@ class EntityBreiteUndTiefe with _$EntityBreiteUndTiefe {
   const factory EntityBreiteUndTiefe({
     required String breite,
     required String tiefe,
+    required String price,
   }) = _EntityBreiteUndTiefe;
 }
 
@@ -31,7 +30,7 @@ class EntityGestell with _$EntityGestell {
   const factory EntityGestell({
     required Color color,
     required String material,
-    required String picturePath,
+    required Uint8List picture,
     String? name,
   }) = _EntityGestell;
 }

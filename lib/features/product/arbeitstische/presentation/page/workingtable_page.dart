@@ -12,9 +12,9 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 
 class PageWorkingTableProduct extends HookWidget {
   const PageWorkingTableProduct(
-      {super.key, this.product, this.color, this.recordOrder});
+      {super.key, this.productName, this.color, this.recordOrder});
 
-  final String? product;
+  final String? productName;
   final String? color;
   final ({ChosenProduct chosenProduct, int index})? recordOrder;
 
@@ -23,7 +23,7 @@ class PageWorkingTableProduct extends HookWidget {
     return BlocProvider<BlocShoppingBasket>.value(
         value: getIt<BlocShoppingBasket>(),
         child: _BlocProviderWorkingTable(
-          product: product,
+          product: productName,
           color: color,
           recordOrder: null,
         ));
@@ -32,7 +32,7 @@ class PageWorkingTableProduct extends HookWidget {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(StringProperty('product', product));
+    properties.add(StringProperty('product', productName));
     properties.add(StringProperty('color', color));
     properties.add(
         DiagnosticsProperty<({ChosenProduct chosenProduct, int index})?>(
@@ -57,7 +57,8 @@ class _BlocProviderWorkingTable extends StatelessWidget {
       appBarContext: context,
       body: BlocProvider<CubitProduct>.value(
         value: getIt<CubitWorkingTableProduct>()
-          ..load(product: product, color: color, recordOrder: recordOrder),
+          ..load(
+              productNumber: product, color: color, recordOrder: recordOrder),
         child: SizedBox(
           height: MediaQuery.of(context).size.height,
           width: double.infinity,
