@@ -276,7 +276,7 @@ class _ProductPicture extends StatelessWidget {
               uint8list: state,
               function: () {
                 context.goNamed(
-                    '${AppGoRouter.konferenzstuehle.name}/${AppGoRouter.product.name}',
+                    '${AppGoRouter.arbeitstische.name}/${AppGoRouter.product.name}',
                     queryParameters: <String, String>{
                       'productNumber': widget.name
                     });

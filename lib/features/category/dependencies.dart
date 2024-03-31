@@ -17,13 +17,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 abstract class CategoryDependencies {
   static setUp() {
-    setUpArbeitstische();
+    setUpCategoryWorkingTable();
     setUpOfficeChair();
     setUpConferenceChair();
   }
 }
 
-void setUpArbeitstische() {
+void setUpCategoryWorkingTable() {
   getIt.registerLazySingleton<CategoryWorkingTableDatasource>(
       () => DataSourceWorkingTableImplementation());
 
@@ -31,8 +31,8 @@ void setUpArbeitstische() {
       CategoryWorkingtableRepositoryImplementation(
           dataSourceWorkingTable: getIt()));
 
-  getIt.registerFactory<CategoryWorkingTableCubit>(
-      () => CategoryWorkingTableCubit(repositoryWorkingTable: getIt()));
+  getIt.registerFactory<CategoryWorkingTableCubit>(() =>
+      CategoryWorkingTableCubit(getIt(), repositoryWorkingTable: getIt()));
 }
 
 void setUpOfficeChair() {
@@ -47,12 +47,14 @@ void setUpOfficeChair() {
 
   getIt.registerFactory<CubitOfficeChair>(
       () => CubitOfficeChair(
+            getIt(),
             repositoryOfficeChair: getIt(),
           ),
       instanceName: EnumSelectOfficeChairCategory.normal.name);
 
   getIt.registerFactory<CubitOfficeChair>(
       () => CubitOfficeChair(
+            getIt(),
             repositoryOfficeChair: getIt(),
           ),
       instanceName: EnumSelectOfficeChairCategory.hochlehner.name);
@@ -71,6 +73,7 @@ void setUpConferenceChair() {
 
   getIt.registerFactory<CubitConferenceChair>(
     () => CubitConferenceChair(
+      getIt(),
       repositoryConferenceChair: getIt(),
     ),
   );

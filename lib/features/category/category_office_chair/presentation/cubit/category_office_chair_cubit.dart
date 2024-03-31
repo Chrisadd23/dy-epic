@@ -1,21 +1,19 @@
 import 'dart:async';
-import 'dart:typed_data';
 
 import 'package:app_flutter_produkt_bestellen/core/firebase/firebase_configuration.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_cubits/cubit_pictures.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/category_office_chair/domain/repository/category_office_chair_repository.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/cubit/state_category_generic.dart';
-import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:either_dart/either.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:app_flutter_produkt_bestellen/features/category/category_office_chair/domain/repository/category_office_chair_repository.dart';
-
 class CubitOfficeChair extends Cubit<StateCategory> {
-  CubitOfficeChair({required this.repositoryOfficeChair})
+  CubitOfficeChair(this._cubitPictures, {required this.repositoryOfficeChair})
       : super(const StateCategory.loading());
 
   final RepositoryBuerodrehstuehle repositoryOfficeChair;
+  final CubitPictures _cubitPictures;
 
   Future<void> load(String instanceName) async {
     if (state != const StateCategory.loading()) {
@@ -44,38 +42,31 @@ class CubitOfficeChair extends Cubit<StateCategory> {
     newState.mapOrNull(success: (successState) async {
       debugPrint("loadPicturePath ==== continue");
 
-      final listProduct = successState.productCategory?.listProduct
+      final listPicturePath = successState.productCategory?.listProduct
               .map((e) => e.picturePath)
               .toList() ??
           [];
-      final st = await Future.wait<Map<String, Uint8List?>>(
-          listProduct.map((filename) async {
-        final containsPictureLocal =
-            getIt<CubitPictures>().state.containsKey(filename) &&
-                getIt<CubitPictures>().state[filename] != null;
-        debugPrint("containsPictureLocal ==> $containsPictureLocal");
-        if (containsPictureLocal) {
-          return {filename: getIt<CubitPictures>().state[filename]};
-        } else {
-          final imageBytes =
-              await FirebaseConfiguration.getImageBytes(filename);
-          getIt<CubitPictures>().addPicture(
-              key: imageBytes.keys.first, value: imageBytes.values.first);
-          return imageBytes;
-        }
-      }));
+      if (listPicturePath.isNotEmpty) {
+        await listPicturePath.map((picturePath) async {
+          debugPrint("picturePath ==> $picturePath");
+          if (!(_cubitPictures.state.containsKey(picturePath) &&
+              _cubitPictures.state[picturePath] != null)) {
+            final imageBytes =
+                await FirebaseConfiguration.getImageBytes(picturePath);
+            _cubitPictures.addPicture(
+                key: imageBytes.keys.first, value: imageBytes.values.first);
+          }
+        }).wait;
+      }
 
       successState = successState.copyWith(
-          productCategory: successState.productCategory?.copyWith(
-              listProduct: successState.productCategory!.listProduct
-                  .map((product) => product.copyWith(
-                      pictureByte: st
-                          .where((positionMap) =>
-                              positionMap.keys.first == product.picturePath)
-                          .first
-                          .values
-                          .firstOrNull))
-                  .toList()));
+        productCategory: successState.productCategory?.copyWith(
+          listProduct: successState.productCategory!.listProduct
+              .map((product) => product.copyWith(
+                  pictureByte: _cubitPictures.state[product.picturePath]))
+              .toList(),
+        ),
+      );
 
       emit(successState);
 

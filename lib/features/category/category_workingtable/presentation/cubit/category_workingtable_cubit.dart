@@ -2,16 +2,17 @@ import 'package:app_flutter_produkt_bestellen/core/firebase/firebase_configurati
 import 'package:app_flutter_produkt_bestellen/core/global_cubits/cubit_pictures.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/category_workingtable/domain/repository/category_workingtable_repository.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/cubit/state_category_generic.dart';
-import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:either_dart/either.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CategoryWorkingTableCubit extends Cubit<StateCategory> {
-  CategoryWorkingTableCubit({required this.repositoryWorkingTable})
+  CategoryWorkingTableCubit(this._cubitPictures,
+      {required this.repositoryWorkingTable})
       : super(const StateCategory.loading());
 
   final CategoryWorkingTableRepository repositoryWorkingTable;
+  final CubitPictures _cubitPictures;
 
   Future<void> load() async {
     if (state != const StateCategory.loading()) {
@@ -37,7 +38,6 @@ class CategoryWorkingTableCubit extends Cubit<StateCategory> {
 
     newState.mapOrNull(success: (successState) async {
       debugPrint("loadPicturePath ==== continue");
-      final cubitPictures = getIt<CubitPictures>();
 
       final listPicturePath = successState.productCategory?.listProduct
               .map((e) => e.picturePath)
@@ -48,27 +48,27 @@ class CategoryWorkingTableCubit extends Cubit<StateCategory> {
         if (listPicturePath.isNotEmpty) {
           await listPicturePath.map((picturePath) async {
             debugPrint("picturePath ==> $picturePath");
-            if (!(cubitPictures.state.containsKey(picturePath) &&
-                cubitPictures.state[picturePath] != null)) {
+            if (!(_cubitPictures.state.containsKey(picturePath) &&
+                _cubitPictures.state[picturePath] != null)) {
               final imageBytes =
                   await FirebaseConfiguration.getImageBytes(picturePath);
-              cubitPictures.addPicture(
+              _cubitPictures.addPicture(
                   key: imageBytes.keys.first, value: imageBytes.values.first);
             }
           }).wait;
         }
-
-        successState = successState.copyWith(
-          productCategory: successState.productCategory?.copyWith(
-            listProduct: successState.productCategory!.listProduct
-                .map((product) => product.copyWith(
-                    pictureByte: cubitPictures.state[product.picturePath]))
-                .toList(),
-          ),
-        );
       } catch (error) {
         debugPrint(error.toString());
       }
+
+      successState = successState.copyWith(
+        productCategory: successState.productCategory?.copyWith(
+          listProduct: successState.productCategory!.listProduct
+              .map((product) => product.copyWith(
+                  pictureByte: _cubitPictures.state[product.picturePath]))
+              .toList(),
+        ),
+      );
 
       emit(successState);
     });
