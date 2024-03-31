@@ -1,5 +1,3 @@
-import 'dart:typed_data';
-
 import 'package:app_flutter_produkt_bestellen/core/firebase/firebase_configuration.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_cubits/cubit_pictures.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/category_conference_chair/domain/repository/category_conference_chair_repository.dart';
@@ -22,7 +20,6 @@ class CubitConferenceChair extends Cubit<StateCategory> {
     }
     debugPrint('instanceName ==> $conferenceChairCategory');
     var newState = state;
-    List<Map<String, Uint8List?>> st = [];
     await repositoryConferenceChair
         .getConferencChaire(conferenceChairCategory: conferenceChairCategory)
         .fold((failure) => emit(StateCategory.failure(failure: failure)),
