@@ -72,16 +72,16 @@ class WidgetOrderProduct extends StatelessWidget {
                     ),
                     onTap: () {
                       if (state.productOrderCount > 0 &&
-                          state.product != null) {
+                          state.productEntity != null) {
                         context.read<BlocShoppingBasket>().add(
                               EventShoppingBasket.add(
                                   chosenProduct: ChosenProduct(
-                                      name: state.product!.name,
+                                      name: state.productEntity!.name,
                                       count: state.productOrderCount,
                                       productNumber:
-                                          state.product!.productNumber,
+                                          state.productEntity!.productNumber,
                                       orderType: EnumOrderType.bestellung,
-                                      entityProduct: state.product!),
+                                      entityProduct: state.productEntity!),
                                   index: state.position),
                             );
                       }
@@ -129,16 +129,16 @@ class WidgetOrderProduct extends StatelessWidget {
                     onTap: () {
                       debugPrint("start adding");
                       if (state.productOrderCount > 0 &&
-                          state.product != null) {
+                          state.productEntity != null) {
                         context.read<BlocShoppingBasket>().add(
                               EventShoppingBasket.add(
                                   chosenProduct: ChosenProduct(
-                                      name: state.product!.name,
+                                      name: state.productEntity!.name,
                                       count: state.productOrderCount,
                                       productNumber:
-                                          state.product!.productNumber,
+                                          state.productEntity!.productNumber,
                                       orderType: EnumOrderType.anfrage,
-                                      entityProduct: state.product!),
+                                      entityProduct: state.productEntity!),
                                   index: state.position),
                             );
                       }

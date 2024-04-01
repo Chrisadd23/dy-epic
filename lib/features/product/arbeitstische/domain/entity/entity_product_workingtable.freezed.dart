@@ -21,8 +21,11 @@ mixin _$EntityWorkingTableProduct {
   List<String> get attributes => throw _privateConstructorUsedError;
   List<EntityBreiteUndTiefe>? get breiteXTiefe =>
       throw _privateConstructorUsedError;
+  EntityBreiteUndTiefe? get selectedWidthAndHeight =>
+      throw _privateConstructorUsedError;
   List<EntityGestell>? get frameColors => throw _privateConstructorUsedError;
-  Uint8List? get pictureBytes => throw _privateConstructorUsedError;
+  EntityGestell? get selectedEntityGestell =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EntityWorkingTableProductCopyWith<EntityWorkingTableProduct> get copyWith =>
@@ -40,8 +43,12 @@ abstract class $EntityWorkingTableProductCopyWith<$Res> {
       String productNumber,
       List<String> attributes,
       List<EntityBreiteUndTiefe>? breiteXTiefe,
+      EntityBreiteUndTiefe? selectedWidthAndHeight,
       List<EntityGestell>? frameColors,
-      Uint8List? pictureBytes});
+      EntityGestell? selectedEntityGestell});
+
+  $EntityBreiteUndTiefeCopyWith<$Res>? get selectedWidthAndHeight;
+  $EntityGestellCopyWith<$Res>? get selectedEntityGestell;
 }
 
 /// @nodoc
@@ -62,8 +69,9 @@ class _$EntityWorkingTableProductCopyWithImpl<$Res,
     Object? productNumber = null,
     Object? attributes = null,
     Object? breiteXTiefe = freezed,
+    Object? selectedWidthAndHeight = freezed,
     Object? frameColors = freezed,
-    Object? pictureBytes = freezed,
+    Object? selectedEntityGestell = freezed,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -82,15 +90,44 @@ class _$EntityWorkingTableProductCopyWithImpl<$Res,
           ? _value.breiteXTiefe
           : breiteXTiefe // ignore: cast_nullable_to_non_nullable
               as List<EntityBreiteUndTiefe>?,
+      selectedWidthAndHeight: freezed == selectedWidthAndHeight
+          ? _value.selectedWidthAndHeight
+          : selectedWidthAndHeight // ignore: cast_nullable_to_non_nullable
+              as EntityBreiteUndTiefe?,
       frameColors: freezed == frameColors
           ? _value.frameColors
           : frameColors // ignore: cast_nullable_to_non_nullable
               as List<EntityGestell>?,
-      pictureBytes: freezed == pictureBytes
-          ? _value.pictureBytes
-          : pictureBytes // ignore: cast_nullable_to_non_nullable
-              as Uint8List?,
+      selectedEntityGestell: freezed == selectedEntityGestell
+          ? _value.selectedEntityGestell
+          : selectedEntityGestell // ignore: cast_nullable_to_non_nullable
+              as EntityGestell?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $EntityBreiteUndTiefeCopyWith<$Res>? get selectedWidthAndHeight {
+    if (_value.selectedWidthAndHeight == null) {
+      return null;
+    }
+
+    return $EntityBreiteUndTiefeCopyWith<$Res>(_value.selectedWidthAndHeight!,
+        (value) {
+      return _then(_value.copyWith(selectedWidthAndHeight: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $EntityGestellCopyWith<$Res>? get selectedEntityGestell {
+    if (_value.selectedEntityGestell == null) {
+      return null;
+    }
+
+    return $EntityGestellCopyWith<$Res>(_value.selectedEntityGestell!, (value) {
+      return _then(_value.copyWith(selectedEntityGestell: value) as $Val);
+    });
   }
 }
 
@@ -108,8 +145,14 @@ abstract class _$$EntityWorkingTableProductImplCopyWith<$Res>
       String productNumber,
       List<String> attributes,
       List<EntityBreiteUndTiefe>? breiteXTiefe,
+      EntityBreiteUndTiefe? selectedWidthAndHeight,
       List<EntityGestell>? frameColors,
-      Uint8List? pictureBytes});
+      EntityGestell? selectedEntityGestell});
+
+  @override
+  $EntityBreiteUndTiefeCopyWith<$Res>? get selectedWidthAndHeight;
+  @override
+  $EntityGestellCopyWith<$Res>? get selectedEntityGestell;
 }
 
 /// @nodoc
@@ -129,8 +172,9 @@ class __$$EntityWorkingTableProductImplCopyWithImpl<$Res>
     Object? productNumber = null,
     Object? attributes = null,
     Object? breiteXTiefe = freezed,
+    Object? selectedWidthAndHeight = freezed,
     Object? frameColors = freezed,
-    Object? pictureBytes = freezed,
+    Object? selectedEntityGestell = freezed,
   }) {
     return _then(_$EntityWorkingTableProductImpl(
       name: null == name
@@ -149,14 +193,18 @@ class __$$EntityWorkingTableProductImplCopyWithImpl<$Res>
           ? _value._breiteXTiefe
           : breiteXTiefe // ignore: cast_nullable_to_non_nullable
               as List<EntityBreiteUndTiefe>?,
+      selectedWidthAndHeight: freezed == selectedWidthAndHeight
+          ? _value.selectedWidthAndHeight
+          : selectedWidthAndHeight // ignore: cast_nullable_to_non_nullable
+              as EntityBreiteUndTiefe?,
       frameColors: freezed == frameColors
           ? _value._frameColors
           : frameColors // ignore: cast_nullable_to_non_nullable
               as List<EntityGestell>?,
-      pictureBytes: freezed == pictureBytes
-          ? _value.pictureBytes
-          : pictureBytes // ignore: cast_nullable_to_non_nullable
-              as Uint8List?,
+      selectedEntityGestell: freezed == selectedEntityGestell
+          ? _value.selectedEntityGestell
+          : selectedEntityGestell // ignore: cast_nullable_to_non_nullable
+              as EntityGestell?,
     ));
   }
 }
@@ -169,8 +217,9 @@ class _$EntityWorkingTableProductImpl implements _EntityWorkingTableProduct {
       required this.productNumber,
       required final List<String> attributes,
       final List<EntityBreiteUndTiefe>? breiteXTiefe,
+      this.selectedWidthAndHeight,
       final List<EntityGestell>? frameColors,
-      this.pictureBytes})
+      this.selectedEntityGestell})
       : _attributes = attributes,
         _breiteXTiefe = breiteXTiefe,
         _frameColors = frameColors;
@@ -197,6 +246,8 @@ class _$EntityWorkingTableProductImpl implements _EntityWorkingTableProduct {
     return EqualUnmodifiableListView(value);
   }
 
+  @override
+  final EntityBreiteUndTiefe? selectedWidthAndHeight;
   final List<EntityGestell>? _frameColors;
   @override
   List<EntityGestell>? get frameColors {
@@ -208,11 +259,11 @@ class _$EntityWorkingTableProductImpl implements _EntityWorkingTableProduct {
   }
 
   @override
-  final Uint8List? pictureBytes;
+  final EntityGestell? selectedEntityGestell;
 
   @override
   String toString() {
-    return 'EntityWorkingTableProduct(name: $name, productNumber: $productNumber, attributes: $attributes, breiteXTiefe: $breiteXTiefe, frameColors: $frameColors, pictureBytes: $pictureBytes)';
+    return 'EntityWorkingTableProduct(name: $name, productNumber: $productNumber, attributes: $attributes, breiteXTiefe: $breiteXTiefe, selectedWidthAndHeight: $selectedWidthAndHeight, frameColors: $frameColors, selectedEntityGestell: $selectedEntityGestell)';
   }
 
   @override
@@ -227,10 +278,12 @@ class _$EntityWorkingTableProductImpl implements _EntityWorkingTableProduct {
                 .equals(other._attributes, _attributes) &&
             const DeepCollectionEquality()
                 .equals(other._breiteXTiefe, _breiteXTiefe) &&
+            (identical(other.selectedWidthAndHeight, selectedWidthAndHeight) ||
+                other.selectedWidthAndHeight == selectedWidthAndHeight) &&
             const DeepCollectionEquality()
                 .equals(other._frameColors, _frameColors) &&
-            const DeepCollectionEquality()
-                .equals(other.pictureBytes, pictureBytes));
+            (identical(other.selectedEntityGestell, selectedEntityGestell) ||
+                other.selectedEntityGestell == selectedEntityGestell));
   }
 
   @override
@@ -240,8 +293,9 @@ class _$EntityWorkingTableProductImpl implements _EntityWorkingTableProduct {
       productNumber,
       const DeepCollectionEquality().hash(_attributes),
       const DeepCollectionEquality().hash(_breiteXTiefe),
+      selectedWidthAndHeight,
       const DeepCollectionEquality().hash(_frameColors),
-      const DeepCollectionEquality().hash(pictureBytes));
+      selectedEntityGestell);
 
   @JsonKey(ignore: true)
   @override
@@ -253,12 +307,14 @@ class _$EntityWorkingTableProductImpl implements _EntityWorkingTableProduct {
 
 abstract class _EntityWorkingTableProduct implements EntityWorkingTableProduct {
   const factory _EntityWorkingTableProduct(
-      {required final String name,
-      required final String productNumber,
-      required final List<String> attributes,
-      final List<EntityBreiteUndTiefe>? breiteXTiefe,
-      final List<EntityGestell>? frameColors,
-      final Uint8List? pictureBytes}) = _$EntityWorkingTableProductImpl;
+          {required final String name,
+          required final String productNumber,
+          required final List<String> attributes,
+          final List<EntityBreiteUndTiefe>? breiteXTiefe,
+          final EntityBreiteUndTiefe? selectedWidthAndHeight,
+          final List<EntityGestell>? frameColors,
+          final EntityGestell? selectedEntityGestell}) =
+      _$EntityWorkingTableProductImpl;
 
   @override
   String get name;
@@ -269,9 +325,11 @@ abstract class _EntityWorkingTableProduct implements EntityWorkingTableProduct {
   @override
   List<EntityBreiteUndTiefe>? get breiteXTiefe;
   @override
+  EntityBreiteUndTiefe? get selectedWidthAndHeight;
+  @override
   List<EntityGestell>? get frameColors;
   @override
-  Uint8List? get pictureBytes;
+  EntityGestell? get selectedEntityGestell;
   @override
   @JsonKey(ignore: true)
   _$$EntityWorkingTableProductImplCopyWith<_$EntityWorkingTableProductImpl>
@@ -438,7 +496,7 @@ abstract class _EntityBreiteUndTiefe implements EntityBreiteUndTiefe {
 mixin _$EntityGestell {
   Color get color => throw _privateConstructorUsedError;
   String get material => throw _privateConstructorUsedError;
-  Uint8List get picture => throw _privateConstructorUsedError;
+  Uint8List? get pictureBytes => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -452,7 +510,8 @@ abstract class $EntityGestellCopyWith<$Res> {
           EntityGestell value, $Res Function(EntityGestell) then) =
       _$EntityGestellCopyWithImpl<$Res, EntityGestell>;
   @useResult
-  $Res call({Color color, String material, Uint8List picture, String? name});
+  $Res call(
+      {Color color, String material, Uint8List? pictureBytes, String? name});
 }
 
 /// @nodoc
@@ -470,7 +529,7 @@ class _$EntityGestellCopyWithImpl<$Res, $Val extends EntityGestell>
   $Res call({
     Object? color = null,
     Object? material = null,
-    Object? picture = null,
+    Object? pictureBytes = freezed,
     Object? name = freezed,
   }) {
     return _then(_value.copyWith(
@@ -482,10 +541,10 @@ class _$EntityGestellCopyWithImpl<$Res, $Val extends EntityGestell>
           ? _value.material
           : material // ignore: cast_nullable_to_non_nullable
               as String,
-      picture: null == picture
-          ? _value.picture
-          : picture // ignore: cast_nullable_to_non_nullable
-              as Uint8List,
+      pictureBytes: freezed == pictureBytes
+          ? _value.pictureBytes
+          : pictureBytes // ignore: cast_nullable_to_non_nullable
+              as Uint8List?,
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -502,7 +561,8 @@ abstract class _$$EntityGestellImplCopyWith<$Res>
       __$$EntityGestellImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Color color, String material, Uint8List picture, String? name});
+  $Res call(
+      {Color color, String material, Uint8List? pictureBytes, String? name});
 }
 
 /// @nodoc
@@ -518,7 +578,7 @@ class __$$EntityGestellImplCopyWithImpl<$Res>
   $Res call({
     Object? color = null,
     Object? material = null,
-    Object? picture = null,
+    Object? pictureBytes = freezed,
     Object? name = freezed,
   }) {
     return _then(_$EntityGestellImpl(
@@ -530,10 +590,10 @@ class __$$EntityGestellImplCopyWithImpl<$Res>
           ? _value.material
           : material // ignore: cast_nullable_to_non_nullable
               as String,
-      picture: null == picture
-          ? _value.picture
-          : picture // ignore: cast_nullable_to_non_nullable
-              as Uint8List,
+      pictureBytes: freezed == pictureBytes
+          ? _value.pictureBytes
+          : pictureBytes // ignore: cast_nullable_to_non_nullable
+              as Uint8List?,
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -548,7 +608,7 @@ class _$EntityGestellImpl implements _EntityGestell {
   const _$EntityGestellImpl(
       {required this.color,
       required this.material,
-      required this.picture,
+      this.pictureBytes,
       this.name});
 
   @override
@@ -556,13 +616,13 @@ class _$EntityGestellImpl implements _EntityGestell {
   @override
   final String material;
   @override
-  final Uint8List picture;
+  final Uint8List? pictureBytes;
   @override
   final String? name;
 
   @override
   String toString() {
-    return 'EntityGestell(color: $color, material: $material, picture: $picture, name: $name)';
+    return 'EntityGestell(color: $color, material: $material, pictureBytes: $pictureBytes, name: $name)';
   }
 
   @override
@@ -573,13 +633,14 @@ class _$EntityGestellImpl implements _EntityGestell {
             (identical(other.color, color) || other.color == color) &&
             (identical(other.material, material) ||
                 other.material == material) &&
-            const DeepCollectionEquality().equals(other.picture, picture) &&
+            const DeepCollectionEquality()
+                .equals(other.pictureBytes, pictureBytes) &&
             (identical(other.name, name) || other.name == name));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, color, material,
-      const DeepCollectionEquality().hash(picture), name);
+      const DeepCollectionEquality().hash(pictureBytes), name);
 
   @JsonKey(ignore: true)
   @override
@@ -592,7 +653,7 @@ abstract class _EntityGestell implements EntityGestell {
   const factory _EntityGestell(
       {required final Color color,
       required final String material,
-      required final Uint8List picture,
+      final Uint8List? pictureBytes,
       final String? name}) = _$EntityGestellImpl;
 
   @override
@@ -600,7 +661,7 @@ abstract class _EntityGestell implements EntityGestell {
   @override
   String get material;
   @override
-  Uint8List get picture;
+  Uint8List? get pictureBytes;
   @override
   String? get name;
   @override

@@ -105,7 +105,7 @@ class _ProductWidget extends StatelessWidget {
                       builder: (context, state) {
                     debugPrint("productAttributes => $state");
                     return WidgetProductInfo(
-                      productInfo: state.product?.attributes,
+                      productInfo: state.productEntity?.attributes,
                     );
                   }),
                 ],
@@ -126,7 +126,7 @@ class _ProductPicture extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CubitProduct, StateProduct>(builder: (context, state) {
-      return WidgetPictureArea(pictureBytes: state.product?.pictureBytes);
+      return WidgetPictureArea(pictureBytes: state.productEntity?.pictureBytes);
     });
   }
 }

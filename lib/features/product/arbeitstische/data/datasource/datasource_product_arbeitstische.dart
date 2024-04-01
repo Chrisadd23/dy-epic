@@ -2,6 +2,7 @@ import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/domain/entity/entity_product_workingtable.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:either_dart/either.dart';
+import 'package:flutter/material.dart';
 
 abstract class DataSourceProductWorkingTable {
   Future<Either<Failure, EntityWorkingTableProduct>> loadData(
@@ -16,6 +17,7 @@ class DataSourceProductWorkingtableImplementation
   Future<Either<Failure, EntityWorkingTableProduct>> loadData(
       String? productNumber) async {
     try {
+      debugPrint("productNumber datasource ==> $productNumber");
       if (productNumber != null) {
         final entityWorkingTableProduct = await FirebaseFirestore.instance
             .collection('Product')
@@ -26,14 +28,17 @@ class DataSourceProductWorkingtableImplementation
             .timeout(const Duration(seconds: 10))
             .then((querySnapshot) {
           final selectedWorkingTable = querySnapshot.docs.firstOrNull?.data();
+          debugPrint("found data ==> $selectedWorkingTable");
           if (selectedWorkingTable != null) {
             return EntityWorkingTableProduct(
-              name: selectedWorkingTable['productTitle'],
+              name: selectedWorkingTable['productTitle'].toString(),
               productNumber: productNumber,
-              attributes: selectedWorkingTable['attributes'],
+              attributes:
+                  _getListAttributes(selectedWorkingTable['attributes']),
               breiteXTiefe: _getWidthAndHeight(
                 selectedWorkingTable['pricePerSize'],
               ),
+              frameColors: _getFrameColor(selectedWorkingTable['frameColors']),
             );
           }
           return null;
@@ -52,14 +57,33 @@ class DataSourceProductWorkingtableImplementation
 
   List<EntityBreiteUndTiefe>? _getWidthAndHeight(
       Map<String, dynamic> selectedWorkingTable) {
+    debugPrint("pricePerSize ==> $selectedWorkingTable");
     return selectedWorkingTable.values
         .map(
           (pricePerSize) => EntityBreiteUndTiefe(
-            breite: selectedWorkingTable['width'],
-            tiefe: selectedWorkingTable['height'],
-            price: selectedWorkingTable['price'].toString(),
+            breite: pricePerSize['width'].toString(),
+            tiefe: pricePerSize['height'].toString(),
+            price: pricePerSize['price'].toString(),
           ),
         )
+        .toList();
+  }
+
+  List<String> _getListAttributes(List<dynamic> selectedWorkingTable) {
+    debugPrint("selectedWorkingtable attributes => $selectedWorkingTable");
+    return selectedWorkingTable
+        .map((attribute) => attribute.toString())
+        .toList();
+  }
+
+  List<EntityGestell>? _getFrameColor(
+      Map<String, dynamic> selectedWorkingTable) {
+    return selectedWorkingTable.keys
+        .map((key) => EntityGestell(
+              color: Color(int.parse(selectedWorkingTable[key])),
+              material: key,
+              name: key,
+            ))
         .toList();
   }
 }

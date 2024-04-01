@@ -67,25 +67,30 @@ class ColorProductWidget extends HookWidget {
                       ),
                     ),
                   ),
-                  BlocSelector<CubitProduct, StateProduct, Color?>(
-                      selector: (state) => state.selectedCharacteristics[
-                          TableChangeableCharacteristics.frameColors],
-                      builder: (context, color) {
+                  BlocSelector<
+                          CubitWorkingTableProduct,
+                          StateProduct<EntityWorkingTableProduct>,
+                          EntityGestell?>(
+                      selector: (state) =>
+                          state.productEntity?.selectedEntityGestell,
+                      builder: (context, state) {
                         return Flexible(
                             child: Container(
                                 height: currentConstraints.maxHeight * 0.9,
                                 width: currentConstraints.maxWidth * 0.3,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(20),
-                                  border: color == null
+                                  border: state == null
                                       ? Border.all(
                                           color: Colors.black, width: 2)
                                       : null,
                                 ),
-                                child: color == null
-                                    ? const LoadingWidget()
+                                child: state == null
+                                    ? const LoadingWidget(
+                                        secondWidth: 0,
+                                      )
                                     : ColorWidget(
-                                        color: color,
+                                        color: state.color,
                                       )));
                       })
                 ],
@@ -96,40 +101,32 @@ class ColorProductWidget extends HookWidget {
             const SizedBox(
               height: 10,
             ),
-            BlocSelector<CubitProduct, StateProduct, List<Gestell>?>(
-              selector: (state) => [
-                Gestell(
-                    color: AppColors.black080808,
-                    material: 'material',
-                    pictuePath: Assets.products.arbeitstische.ahornSchwarz.path)
-              ],
-              builder: (BuildContext context, List<Gestell>? state) =>
-                  state != null
-                      ? Row(
-                          children: List.generate(
-                            state.length,
-                            (index) => Flexible(
-                              child: Padding(
-                                padding: index < state.length
-                                    ? const EdgeInsets.only(left: 4.0)
-                                    : EdgeInsets.zero,
-                                child: ColorWidget(
-                                  color: state[index].color,
-                                  onTap: () {
-                                    context
-                                        .read<CubitWorkingTableProduct>()
-                                        .changeColor(state[index].color);
-                                    expandMenu.value = (
-                                      color: false,
-                                      txb: expandMenu.value.txb
-                                    );
-                                  },
-                                ),
-                              ),
-                            ),
-                          ),
-                        )
-                      : const SizedBox.shrink(),
+            BlocSelector<CubitWorkingTableProduct,
+                StateProduct<EntityWorkingTableProduct>, List<EntityGestell>?>(
+              selector: (state) => state.productEntity?.frameColors,
+              builder: (BuildContext context, state) {
+                debugPrint("frameColors State ==> $state");
+                return LayoutBuilder(builder: (context, constraints) {
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: List.generate(
+                      state?.length ?? 0,
+                      (index) => ColorWidget(
+                        color: state?[index].color,
+                        onTap: () {
+                          if (state?[index] != null) {
+                            context
+                                .read<CubitWorkingTableProduct>()
+                                .changeColor(state![index]);
+                          }
+                          expandMenu.value =
+                              (color: false, txb: expandMenu.value.txb);
+                        },
+                      ),
+                    ),
+                  );
+                });
+              },
             ),
             const SizedBox(
               height: 5,

@@ -1,7 +1,6 @@
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_cubits/cubit_pictures.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/conferenceChairProduct/domain/repository/repository_conference_chair_product.dart';
-import 'package:app_flutter_produkt_bestellen/features/product/conferenceChairProduct/presentation/cubit/state_conference_chair_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/domain/entity/entity_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/cubit_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/state_product.dart';
@@ -26,12 +25,8 @@ class CubitConferenceChairProduct
           .fold((failure) {
         debugPrint("failure ===> ${failure.toString()}");
       }, (conferenceChaire) {
-        final characteristics = {
-          EnumConferenceChairProduct.name: conferenceChaire.name,
-          EnumConferenceChairProduct.picturePath: conferenceChaire.picturePath,
-        };
         var newState = StateProduct<EntityProduct>(
-            product: EntityProduct(
+            productEntity: EntityProduct(
               productNumber: conferenceChaire.productNumber,
               pictureBytes: conferenceChaire.pictureBytes,
               name: conferenceChaire.name,
@@ -39,7 +34,6 @@ class CubitConferenceChairProduct
               price: conferenceChaire.price,
               productCategory: EnumCategoryProduct.conferenceChair,
             ),
-            selectedCharacteristics: characteristics,
             price: conferenceChaire.price);
 
         debugPrint(
@@ -53,7 +47,7 @@ class CubitConferenceChairProduct
           debugPrint("containsPictureLocal Product ==> $containsPictureLocal");
           if (containsPictureLocal) {
             newState = newState.copyWith(
-                product: newState.product?.copyWith(
+                productEntity: newState.productEntity?.copyWith(
                     pictureBytes: getIt<CubitPictures>().state[productNumber]));
           }
         } catch (e) {

@@ -27,13 +27,15 @@ class WidgetProductTitle extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: FittedBox(
-              fit: state.product?.name == null ? BoxFit.fitHeight : BoxFit.fill,
-              child: state.product?.name == null
+              fit: state.productEntity?.name == null
+                  ? BoxFit.fitHeight
+                  : BoxFit.fill,
+              child: state.productEntity?.name == null
                   ? const LoadingWidget(
                       firstWidth: 0,
                     )
                   : Text(
-                      state.product!.name,
+                      state.productEntity!.name,
                       style: const TextStyle(
                           color: Colors.white,
                           fontSize: 35,

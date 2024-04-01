@@ -20,10 +20,8 @@ mixin _$StateProduct<T> {
   String get category => throw _privateConstructorUsedError;
   int get productOrderCount => throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
-  T? get product => throw _privateConstructorUsedError;
+  T? get productEntity => throw _privateConstructorUsedError;
   int? get position => throw _privateConstructorUsedError;
-  Map<Enum, dynamic> get selectedCharacteristics =>
-      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $StateProductCopyWith<T, StateProduct<T>> get copyWith =>
@@ -41,9 +39,8 @@ abstract class $StateProductCopyWith<T, $Res> {
       String category,
       int productOrderCount,
       double price,
-      T? product,
-      int? position,
-      Map<Enum, dynamic> selectedCharacteristics});
+      T? productEntity,
+      int? position});
 }
 
 /// @nodoc
@@ -63,9 +60,8 @@ class _$StateProductCopyWithImpl<T, $Res, $Val extends StateProduct<T>>
     Object? category = null,
     Object? productOrderCount = null,
     Object? price = null,
-    Object? product = freezed,
+    Object? productEntity = freezed,
     Object? position = freezed,
-    Object? selectedCharacteristics = null,
   }) {
     return _then(_value.copyWith(
       hashKey: null == hashKey
@@ -84,18 +80,14 @@ class _$StateProductCopyWithImpl<T, $Res, $Val extends StateProduct<T>>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double,
-      product: freezed == product
-          ? _value.product
-          : product // ignore: cast_nullable_to_non_nullable
+      productEntity: freezed == productEntity
+          ? _value.productEntity
+          : productEntity // ignore: cast_nullable_to_non_nullable
               as T?,
       position: freezed == position
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
               as int?,
-      selectedCharacteristics: null == selectedCharacteristics
-          ? _value.selectedCharacteristics
-          : selectedCharacteristics // ignore: cast_nullable_to_non_nullable
-              as Map<Enum, dynamic>,
     ) as $Val);
   }
 }
@@ -113,9 +105,8 @@ abstract class _$$StateProductImplCopyWith<T, $Res>
       String category,
       int productOrderCount,
       double price,
-      T? product,
-      int? position,
-      Map<Enum, dynamic> selectedCharacteristics});
+      T? productEntity,
+      int? position});
 }
 
 /// @nodoc
@@ -133,9 +124,8 @@ class __$$StateProductImplCopyWithImpl<T, $Res>
     Object? category = null,
     Object? productOrderCount = null,
     Object? price = null,
-    Object? product = freezed,
+    Object? productEntity = freezed,
     Object? position = freezed,
-    Object? selectedCharacteristics = null,
   }) {
     return _then(_$StateProductImpl<T>(
       hashKey: null == hashKey
@@ -154,18 +144,14 @@ class __$$StateProductImplCopyWithImpl<T, $Res>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double,
-      product: freezed == product
-          ? _value.product
-          : product // ignore: cast_nullable_to_non_nullable
+      productEntity: freezed == productEntity
+          ? _value.productEntity
+          : productEntity // ignore: cast_nullable_to_non_nullable
               as T?,
       position: freezed == position
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
               as int?,
-      selectedCharacteristics: null == selectedCharacteristics
-          ? _value._selectedCharacteristics
-          : selectedCharacteristics // ignore: cast_nullable_to_non_nullable
-              as Map<Enum, dynamic>,
     ));
   }
 }
@@ -178,10 +164,8 @@ class _$StateProductImpl<T> implements _StateProduct<T> {
       this.category = '',
       this.productOrderCount = 0,
       this.price = 0.00,
-      this.product,
-      this.position,
-      final Map<Enum, dynamic> selectedCharacteristics = const {}})
-      : _selectedCharacteristics = selectedCharacteristics;
+      this.productEntity,
+      this.position});
 
   @override
   @JsonKey()
@@ -196,22 +180,13 @@ class _$StateProductImpl<T> implements _StateProduct<T> {
   @JsonKey()
   final double price;
   @override
-  final T? product;
+  final T? productEntity;
   @override
   final int? position;
-  final Map<Enum, dynamic> _selectedCharacteristics;
-  @override
-  @JsonKey()
-  Map<Enum, dynamic> get selectedCharacteristics {
-    if (_selectedCharacteristics is EqualUnmodifiableMapView)
-      return _selectedCharacteristics;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_selectedCharacteristics);
-  }
 
   @override
   String toString() {
-    return 'StateProduct<$T>(hashKey: $hashKey, category: $category, productOrderCount: $productOrderCount, price: $price, product: $product, position: $position, selectedCharacteristics: $selectedCharacteristics)';
+    return 'StateProduct<$T>(hashKey: $hashKey, category: $category, productOrderCount: $productOrderCount, price: $price, productEntity: $productEntity, position: $position)';
   }
 
   @override
@@ -225,11 +200,10 @@ class _$StateProductImpl<T> implements _StateProduct<T> {
             (identical(other.productOrderCount, productOrderCount) ||
                 other.productOrderCount == productOrderCount) &&
             (identical(other.price, price) || other.price == price) &&
-            const DeepCollectionEquality().equals(other.product, product) &&
+            const DeepCollectionEquality()
+                .equals(other.productEntity, productEntity) &&
             (identical(other.position, position) ||
-                other.position == position) &&
-            const DeepCollectionEquality().equals(
-                other._selectedCharacteristics, _selectedCharacteristics));
+                other.position == position));
   }
 
   @override
@@ -239,9 +213,8 @@ class _$StateProductImpl<T> implements _StateProduct<T> {
       category,
       productOrderCount,
       price,
-      const DeepCollectionEquality().hash(product),
-      position,
-      const DeepCollectionEquality().hash(_selectedCharacteristics));
+      const DeepCollectionEquality().hash(productEntity),
+      position);
 
   @JsonKey(ignore: true)
   @override
@@ -253,14 +226,12 @@ class _$StateProductImpl<T> implements _StateProduct<T> {
 
 abstract class _StateProduct<T> implements StateProduct<T> {
   const factory _StateProduct(
-          {final String hashKey,
-          final String category,
-          final int productOrderCount,
-          final double price,
-          final T? product,
-          final int? position,
-          final Map<Enum, dynamic> selectedCharacteristics}) =
-      _$StateProductImpl<T>;
+      {final String hashKey,
+      final String category,
+      final int productOrderCount,
+      final double price,
+      final T? productEntity,
+      final int? position}) = _$StateProductImpl<T>;
 
   @override
   String get hashKey;
@@ -271,11 +242,9 @@ abstract class _StateProduct<T> implements StateProduct<T> {
   @override
   double get price;
   @override
-  T? get product;
+  T? get productEntity;
   @override
   int? get position;
-  @override
-  Map<Enum, dynamic> get selectedCharacteristics;
   @override
   @JsonKey(ignore: true)
   _$$StateProductImplCopyWith<T, _$StateProductImpl<T>> get copyWith =>

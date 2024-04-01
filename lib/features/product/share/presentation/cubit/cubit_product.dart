@@ -50,7 +50,7 @@ abstract class CubitProduct<T, E> extends Cubit<StateProduct<E>> {
     final newState = state.copyWith(
         productOrderCount: order.count,
         price: order.entityProduct.price,
-        product: reworkProductTypeInChangeProduct(order.entityProduct),
+        productEntity: reworkProductTypeInChangeProduct(order.entityProduct),
         position: index);
 
     emit(newState);

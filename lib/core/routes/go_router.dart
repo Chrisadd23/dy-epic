@@ -116,12 +116,15 @@ enum AppGoRouter {
                         path: product.title,
                         name: '${arbeitstische.name}/${product.name}',
                         pageBuilder: (context, state) {
-                          final product =
+                          final productNumber =
                               state.queryParameters['productNumber'];
+
                           debugPrint("check goRouter record ${state.extra as ({
                             ChosenProduct chosenProduct,
                             int index
                           })?}");
+                          debugPrint(
+                              "check queryParameters - ${productNumber.toString()}");
                           final recordOrder = state.extra as ({
                             ChosenProduct chosenProduct,
                             int index
@@ -130,7 +133,7 @@ enum AppGoRouter {
                           final selectedColor = state.queryParameters['color'];
                           return _getCustomerTransition(
                               PageWorkingTableProduct(
-                                  productName: product,
+                                  productNumber: productNumber,
                                   color: selectedColor,
                                   recordOrder: recordOrder),
                               state);

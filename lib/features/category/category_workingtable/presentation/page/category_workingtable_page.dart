@@ -267,7 +267,7 @@ class _ProductPicture extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint('asset ==> ${widget.picturePath}');
+    debugPrint('productNumber ==> ${widget.productNumber}');
     return BlocSelector<CategoryWorkingTableCubit, StateCategory, Uint8List?>(
         selector: (state) => state.mapOrNull(
             success: (stateSuccess) => stateSuccess.productCategory?.listProduct
