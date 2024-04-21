@@ -333,7 +333,7 @@ class _ProductState extends State<Product> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.sizeOf(context).height * 0.6,
+      height: MediaQuery.sizeOf(context).height * 0.5,
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(20),
@@ -347,9 +347,12 @@ class _ProductState extends State<Product> {
           child: Column(
             children: [
               _ProductPicture(widget: widget),
-              CategoryProductName(
-                name: widget.name,
-                constraints: constraints,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: CategoryProductName(
+                  name: widget.name,
+                  constraints: constraints,
+                ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,

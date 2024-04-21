@@ -16,6 +16,7 @@ class CategoryProductName extends StatelessWidget {
       ),
       child: Text(
         name,
+        maxLines: 2,
         style: const TextStyle(
           fontSize: 25,
           fontWeight: FontWeight.bold,

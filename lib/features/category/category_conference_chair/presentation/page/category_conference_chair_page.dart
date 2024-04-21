@@ -171,7 +171,7 @@ class _ProductState extends State<Product> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: MediaQuery.sizeOf(context).height * 0.6,
+        height: MediaQuery.sizeOf(context).height * 0.5,
         decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(20),
