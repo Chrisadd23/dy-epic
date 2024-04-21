@@ -18,7 +18,8 @@ void main() {
       'Get Product Data conference chaire',
       () async {
         when(() => mockDataSourceProductWorkingTable.loadData(any()))
-            .thenAnswer((_) async => Right(mockEntityWorkingTableProduct));
+            .thenAnswer(
+                (_) async => const Right(mockEntityWorkingTableProduct));
 
         final dummyData =
             await mockDataSourceProductWorkingTable.loadData('productNumber');
