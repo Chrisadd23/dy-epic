@@ -160,6 +160,7 @@ class BreiteXTiefeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint("BreiteXTiefe Widget");
     return Material(
       type: MaterialType.transparency,
       child: InkWell(

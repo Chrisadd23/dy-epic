@@ -91,11 +91,14 @@ class CubitWorkingTableProduct
             ?.copyWith(selectedEntityGestell: entityGestell)));
   }
 
-  void changeBreiteXTiefe(EntityBreiteUndTiefe choosenBreiteXTiefe) {
-    debugPrint('change choosenBreiteXTiefe --< $choosenBreiteXTiefe');
+  void changeBreiteXTiefe(EntityBreiteUndTiefe chosenBreiteXTiefe) {
+    debugPrint('change chosenBreiteXTiefe --< $chosenBreiteXTiefe');
 
-    emit(state.copyWith(
+    emit(
+      state.copyWith(
         productEntity: state.productEntity
-            ?.copyWith(selectedWidthAndHeight: choosenBreiteXTiefe)));
+            ?.copyWith(selectedWidthAndHeight: chosenBreiteXTiefe),
+      ),
+    );
   }
 }

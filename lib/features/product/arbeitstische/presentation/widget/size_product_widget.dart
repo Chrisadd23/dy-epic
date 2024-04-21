@@ -74,6 +74,8 @@ class SizeProductWidget extends StatelessWidget {
                       selector: (state) =>
                           state.productEntity?.selectedWidthAndHeight,
                       builder: (context, breiteXtiefe) {
+                        debugPrint(
+                            "==> selected breite x tiefe => $breiteXtiefe");
                         return Flexible(
                             child: Container(
                                 height: currentConstraints.maxHeight * 0.9,
@@ -114,11 +116,13 @@ class SizeProductWidget extends StatelessWidget {
                     child: BreiteXTiefeWidget(
                       breiteXTiefe: state?[index],
                       onTap: () {
-                        if (state?[index] == null) {
+                        debugPrint("ont Tap breiteXTiefe ");
+                        if (state?[index] != null) {
                           context
                               .read<CubitWorkingTableProduct>()
                               .changeBreiteXTiefe(state![index]);
                         }
+
                         expandMenu.value =
                             (color: expandMenu.value.color, txb: false);
                       },
