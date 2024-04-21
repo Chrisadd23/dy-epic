@@ -9,6 +9,9 @@ import 'package:app_flutter_produkt_bestellen/core/global_cubits/cubit_pictures.
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_page_widget.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/list_wheel_scroll_view_x.dart';
 import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/category_office_chair/domain/entity/entity_buerodrehstuehle.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/category_office_chair/presentation/cubit/category_office_chair_cubit.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/category_office_chair/presentation/cubit/choose_office_chair_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/cubit/state_category_generic.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/widget/category_product_name.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/widget/category_product_picture.dart';
@@ -22,10 +25,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-
-import 'package:app_flutter_produkt_bestellen/features/category/category_office_chair/domain/entity/entity_buerodrehstuehle.dart';
-import 'package:app_flutter_produkt_bestellen/features/category/category_office_chair/presentation/cubit/category_office_chair_cubit.dart';
-import 'package:app_flutter_produkt_bestellen/features/category/category_office_chair/presentation/cubit/choose_office_chair_cubit.dart';
 
 class PageBuerostuehle extends HookWidget {
   const PageBuerostuehle({super.key, this.enumSelectOfficeChairCategory});
@@ -73,15 +72,15 @@ class _BlocBuilderChooseOfficeChair extends StatelessWidget {
         builder: (context, state) {
       return state == EnumSelectOfficeChairCategory.normal
           ? _BlocPrividerCubitChairNormal(selectedCategory: state)
-          : _BlocPrividerCubitChairHochlehner(
+          : _BlocProviderCubitChairHochlehner(
               selectedCategory: state,
             );
     });
   }
 }
 
-class _BlocPrividerCubitChairHochlehner extends StatelessWidget {
-  const _BlocPrividerCubitChairHochlehner({
+class _BlocProviderCubitChairHochlehner extends StatelessWidget {
+  const _BlocProviderCubitChairHochlehner({
     required this.selectedCategory,
   });
 
@@ -159,8 +158,10 @@ class _BlocBuilderBuerostuehle extends StatelessWidget {
                       .toList();
                   debugPrint("Products ===> $listProducts");
                   return Stack(children: [
-                    ProductListWheel(listProducts: listProducts),
-                    const _ChooseOfficeChaireCategory(),
+                    Align(child: ProductListWheel(listProducts: listProducts)),
+                    const Align(
+                        alignment: Alignment.center,
+                        child: _ChooseOfficeChaireCategory()),
                   ]);
                 })),
         const DialogShoppingBasket(),
@@ -343,33 +344,24 @@ class _ProductState extends State<Product> {
         return Padding(
           padding:
               EdgeInsets.symmetric(horizontal: constraints.maxWidth * 0.05),
-          child: Stack(
+          child: Column(
             children: [
               _ProductPicture(widget: widget),
-              CategoryProductName(name: widget.name),
-              Align(
-                alignment: Alignment.center,
-                child: LayoutBuilder(
-                  builder: (context, constraints) {
-                    return Padding(
-                      padding: EdgeInsets.only(
-                        top: constraints.maxHeight * 0.5,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          FittedBox(
-                            fit: BoxFit.fill,
-                            child: Text(
-                              'Preis:  ${widget.price.getCurrency()}',
-                              style: AppTextStyle.bold16,
-                            ),
-                          ),
-                        ],
-                      ),
-                    );
-                  },
-                ),
+              CategoryProductName(
+                name: widget.name,
+                constraints: constraints,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  FittedBox(
+                    fit: BoxFit.fill,
+                    child: Text(
+                      'Preis:  ${widget.price.getCurrency()}',
+                      style: AppTextStyle.bold16,
+                    ),
+                  ),
+                ],
               ),
             ],
           ),

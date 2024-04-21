@@ -182,31 +182,22 @@ class _ProductState extends State<Product> {
           return Padding(
             padding:
                 EdgeInsets.symmetric(horizontal: constraints.maxWidth * 0.05),
-            child: Stack(
+            child: Column(
               children: [
                 _ProductPicture(widget: widget),
-                CategoryProductName(name: widget.name),
-                Align(
-                  alignment: Alignment.center,
-                  child: LayoutBuilder(
-                    builder: (context, constraints) {
-                      return Padding(
-                        padding: EdgeInsets.only(
-                          top: constraints.maxHeight * 0.5,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            FittedBox(
-                                child: Text(
-                              'Preis:  ${widget.price.getCurrency()}',
-                              style: AppTextStyle.bold18,
-                            )),
-                          ],
-                        ),
-                      );
-                    },
-                  ),
+                CategoryProductName(
+                  name: widget.name,
+                  constraints: constraints,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    FittedBox(
+                        child: Text(
+                      'Preis:  ${widget.price.getCurrency()}',
+                      style: AppTextStyle.bold18,
+                    )),
+                  ],
                 ),
               ],
             ),

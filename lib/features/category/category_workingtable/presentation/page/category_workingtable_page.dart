@@ -195,11 +195,18 @@ class CategoryProductState extends State<CategoryProduct> {
           return Padding(
             padding:
                 EdgeInsets.symmetric(horizontal: constraints.maxWidth * 0.05),
-            child: Stack(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 _ProductPicture(widget: widget),
-                _ProductColors(product: widget),
-                _ProductName(widget: widget),
+                _ProductName(
+                  widget: widget,
+                  constraints: constraints,
+                ),
+                _ProductColors(
+                  product: widget,
+                  constraints: constraints,
+                ),
               ],
             ),
           );
@@ -222,39 +229,32 @@ class CategoryProductState extends State<CategoryProduct> {
 class _ProductName extends StatelessWidget {
   const _ProductName({
     required this.widget,
+    required this.constraints,
   });
 
   final CategoryProduct widget;
+  final BoxConstraints constraints;
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-        alignment: Alignment.center,
-        child: LayoutBuilder(builder: (context, constraints) {
-          return Padding(
-            padding: EdgeInsets.only(
-              top: constraints.maxHeight * 0.25,
+    return FittedBox(
+      fit: BoxFit.fill,
+      child: Text.rich(
+        TextSpan(
+          text: '${widget.name}\n',
+          style: const TextStyle(
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+          ),
+          children: [
+            TextSpan(
+              text: widget.productType.type,
             ),
-            child: FittedBox(
-              fit: BoxFit.fill,
-              child: Text.rich(
-                TextSpan(
-                  text: '${widget.name}\n',
-                  style: const TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  children: [
-                    TextSpan(
-                      text: widget.productType.type,
-                    ),
-                  ],
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-          );
-        }));
+          ],
+        ),
+        textAlign: TextAlign.center,
+      ),
+    );
   }
 }
 
@@ -292,108 +292,108 @@ class _ProductPicture extends StatelessWidget {
 }
 
 class _ProductColors extends StatelessWidget {
-  const _ProductColors({required this.product});
+  const _ProductColors({required this.product, required this.constraints});
 
   final CategoryProduct product;
+  final BoxConstraints constraints;
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.bottomCenter,
-      child: LayoutBuilder(builder: (context, constraints) {
-        return Padding(
-          padding: EdgeInsets.only(bottom: constraints.maxHeight * 0.09),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
+    return Padding(
+      padding: EdgeInsets.only(bottom: constraints.maxHeight * 0.09),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Gestellfarben',
-                    style: AppTextStyle.bold16,
-                    textAlign: TextAlign.center,
-                  ),
-                  if (product.price > 0) ...[
-                    const Text('|'),
-                    Text(
-                      'Preis: ${product.price.getCurrency()}',
-                      style: AppTextStyle.bold16,
-                    )
-                  ]
-                ],
+              Text(
+                'Gestellfarben',
+                style: AppTextStyle.bold16,
+                textAlign: TextAlign.center,
               ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                      child: InkWell(
-                    onTap: () => context.goNamed(
-                        '${AppGoRouter.arbeitstische.name}/${AppGoRouter.product.name}',
-                        extra: product.productType,
-                        queryParameters: {
-                          'color': AppColors.whiteD6D6D7.toString()
-                        }),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: AppColors.whiteD6D6D7,
-                          borderRadius: BorderRadius.circular(20),
-                          border: Border.all(color: Colors.black, width: 2)),
-                      child: SizedBox(
-                        height: constraints.maxHeight * 0.1,
-                        width: constraints.maxWidth * 0.1,
-                      ),
-                    ),
-                  )),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Expanded(
-                      child: InkWell(
-                    onTap: () => context.goNamed(
-                        '${AppGoRouter.arbeitstische.name}/${AppGoRouter.product.name}',
-                        extra: product.productType,
-                        queryParameters: {'color': '${AppColors.grey8D8D8E}'}),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: AppColors.grey8D8D8E,
-                          borderRadius: BorderRadius.circular(20),
-                          border: Border.all(color: Colors.black, width: 2)),
-                      child: SizedBox(
-                        height: constraints.maxHeight * 0.1,
-                        width: constraints.maxWidth * 0.1,
-                      ),
-                    ),
-                  )),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Expanded(
-                      child: InkWell(
-                    onTap: () => context.goNamed(
-                        '${AppGoRouter.arbeitstische.name}/${AppGoRouter.product.name}',
-                        extra: product.productType,
-                        queryParameters: {'color': '${AppColors.black080808}'}),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: AppColors.black080808,
-                          borderRadius: BorderRadius.circular(20),
-                          border: Border.all(color: Colors.grey, width: 2)),
-                      child: SizedBox(
-                        height: constraints.maxHeight * 0.1,
-                        width: constraints.maxWidth * 0.1,
-                      ),
-                    ),
-                  )),
-                ],
-              ),
+              if (product.price > 0) ...[
+                const Text('|'),
+                Text(
+                  'Preis: ${product.price.getCurrency()}',
+                  style: AppTextStyle.bold16,
+                )
+              ]
             ],
           ),
-        );
-      }),
+          const SizedBox(
+            height: 10,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                  child: InkWell(
+                onTap: () => context.goNamed(
+                    '${AppGoRouter.arbeitstische.name}/${AppGoRouter.product.name}',
+                    queryParameters: {
+                      'color': AppColors.whiteD6D6D7.toString(),
+                      'productNumber': product.productNumber
+                    }),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: AppColors.whiteD6D6D7,
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(color: Colors.black, width: 2)),
+                  child: SizedBox(
+                    height: constraints.maxHeight * 0.1,
+                    width: constraints.maxWidth * 0.1,
+                  ),
+                ),
+              )),
+              const SizedBox(
+                width: 10,
+              ),
+              Expanded(
+                  child: InkWell(
+                onTap: () => context.goNamed(
+                    '${AppGoRouter.arbeitstische.name}/${AppGoRouter.product.name}',
+                    queryParameters: {
+                      'color': '${AppColors.grey8D8D8E}',
+                      'productNumber': product.productNumber
+                    }),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: AppColors.grey8D8D8E,
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(color: Colors.black, width: 2)),
+                  child: SizedBox(
+                    height: constraints.maxHeight * 0.1,
+                    width: constraints.maxWidth * 0.1,
+                  ),
+                ),
+              )),
+              const SizedBox(
+                width: 10,
+              ),
+              Expanded(
+                  child: InkWell(
+                onTap: () => context.goNamed(
+                    '${AppGoRouter.arbeitstische.name}/${AppGoRouter.product.name}',
+                    queryParameters: {
+                      'color': '${AppColors.black080808}',
+                      'productNumber': product.productNumber
+                    }),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: AppColors.black080808,
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(color: Colors.grey, width: 2)),
+                  child: SizedBox(
+                    height: constraints.maxHeight * 0.1,
+                    width: constraints.maxWidth * 0.1,
+                  ),
+                ),
+              )),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

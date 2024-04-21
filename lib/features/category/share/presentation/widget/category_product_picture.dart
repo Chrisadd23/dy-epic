@@ -33,49 +33,42 @@ class _CategoryProductPictureMemoryImageState
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        Align(
-          alignment: Alignment.topCenter,
-          child: Padding(
-            padding: const EdgeInsets.only(top: 10),
-            child: LayoutBuilder(
-              builder: (context, constraints) =>
-                  // navigation Test
-                  Container(
-                height: constraints.maxWidth,
-                width: constraints.maxWidth,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  shape: BoxShape.circle,
-                  boxShadow: const [
-                    BoxShadow(
-                        color: Colors.grey,
-                        offset: Offset(2, 3),
-                        blurStyle: BlurStyle.outer),
-                    BoxShadow(
-                        color: Colors.grey,
-                        offset: Offset(2, -3),
-                        blurStyle: BlurStyle.outer)
-                  ],
-                  border: Border.all(
-                      color: Colors.black45,
-                      strokeAlign: BorderSide.strokeAlignInside),
-                ),
-                child: ClipOval(
-                  child: InkWell(
-                    onTap: widget.function,
-                    child: Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Image.memory(widget.uint8list!),
-                    ),
-                  ),
-                ),
+    return Padding(
+      padding: const EdgeInsets.only(top: 10),
+      child: LayoutBuilder(
+        builder: (context, constraints) =>
+            // navigation Test
+            Container(
+          height: constraints.maxWidth,
+          width: constraints.maxWidth,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            shape: BoxShape.circle,
+            boxShadow: const [
+              BoxShadow(
+                  color: Colors.grey,
+                  offset: Offset(2, 3),
+                  blurStyle: BlurStyle.outer),
+              BoxShadow(
+                  color: Colors.grey,
+                  offset: Offset(2, -3),
+                  blurStyle: BlurStyle.outer)
+            ],
+            border: Border.all(
+                color: Colors.black45,
+                strokeAlign: BorderSide.strokeAlignInside),
+          ),
+          child: ClipOval(
+            child: InkWell(
+              onTap: widget.function,
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Image.memory(widget.uint8list!),
               ),
             ),
           ),
         ),
-      ],
+      ),
     );
   }
 
