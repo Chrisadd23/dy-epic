@@ -92,15 +92,12 @@ class _ProductPicture extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<CubitProduct, StateProduct, Uint8List?>(
-        selector: (state) => state
-            .productEntity
-            ?.workingTableAdditionalAttributes
-            ?.selectedEntityGestell
-            ?.pictureBytes,
-        builder: (context, pictureBytes) {
-          debugPrint("pictureByte Widget ===> $pictureBytes");
-          return WidgetPictureArea(pictureBytes: pictureBytes);
+    return BlocSelector<CubitProduct, StateProduct, EntityGestell?>(
+        selector: (state) => state.productEntity
+            ?.workingTableAdditionalAttributes?.selectedEntityGestell,
+        builder: (context, state) {
+          debugPrint("pictureByte Widget ===> $state}");
+          return WidgetPictureArea(pictureBytes: state?.pictureBytes);
         });
   }
 }

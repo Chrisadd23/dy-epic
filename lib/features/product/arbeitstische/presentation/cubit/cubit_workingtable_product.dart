@@ -31,7 +31,8 @@ class CubitWorkingTableProduct extends CubitProduct<CubitWorkingTableProduct> {
         debugPrint("Failure ==> $failure");
         emit(const StateProduct());
       }, (product) async {
-        debugPrint("product ==> ${product.breiteXTiefe?.firstOrNull?.price}");
+        final workingTableAdditionalAttributes =
+            await _getWorkingTableAdditionAttributes(product: product);
         emit(StateProduct(
             productEntity: EntityProduct(
           productCategory: EnumCategoryProduct.workingTable,
@@ -39,48 +40,54 @@ class CubitWorkingTableProduct extends CubitProduct<CubitWorkingTableProduct> {
           name: product.name,
           productNumber: product.productNumber,
           attributes: product.attributes,
-          workingTableAdditionalAttributes:
-              _getWorkingTableAdditionAttributes(product: product),
+          workingTableAdditionalAttributes: workingTableAdditionalAttributes,
         )));
       });
     }
   }
 
-  WorkingTableAdditionalAttributes? _getWorkingTableAdditionAttributes(
-      {required EntityWorkingTableProduct product}) {
+  Future<WorkingTableAdditionalAttributes?> _getWorkingTableAdditionAttributes(
+      {required EntityWorkingTableProduct product}) async {
     final listPicturePath = product.frameColors
             ?.map((e) => 'product_${product.productNumber}_${e.name}.png')
             .toList() ??
         [];
 
-    debugPrint('listPicture Path => $listPicturePath');
-
     try {
       if (listPicturePath.isNotEmpty) {
-        listPicturePath.map((picture) async {
-          if (!(_cubitPictures.state.containsKey(picture) &&
-              _cubitPictures.state[picture] != null)) {
-            final imageBytes =
-                await FirebaseConfiguration.getImageBytes(picture);
-            debugPrint("imageBytes ==> $imageBytes");
-            _cubitPictures.addPicture(
-                key: imageBytes.keys.first, value: imageBytes.values.first);
-          }
-        }).toList();
+        await listPicturePath
+            .map((picture) async {
+              if (!(_cubitPictures.state.containsKey(picture) &&
+                  _cubitPictures.state[picture] != null)) {
+                final imageBytes =
+                    await FirebaseConfiguration.getImageBytes(picture);
+                _cubitPictures.addPicture(key: picture, value: imageBytes);
+              }
+            })
+            .toList()
+            .wait;
 
-        debugPrint('PictureCubit State ==> ${_cubitPictures.state.keys}');
+        final frameColors = product.frameColors
+            ?.map((frameColor) => frameColor.copyWith(
+                pictureBytes: _cubitPictures.state[
+                    'product_${product.productNumber}_${frameColor.name}.png']))
+            .toList();
+
+        debugPrint("frameColors last ===> ${frameColors?.last.pictureBytes}");
       }
     } catch (error) {
       debugPrint(error.toString());
     }
+
     final frameColors = product.frameColors
         ?.map((frameColor) => frameColor.copyWith(
             pictureBytes: _cubitPictures.state[
                 'product_${product.productNumber}_${frameColor.name}.png']))
         .toList();
+
     return WorkingTableAdditionalAttributes(
         listEntityGestell: frameColors ?? [],
-        selectedEntityGestell: product.frameColors?.firstOrNull,
+        selectedEntityGestell: frameColors?.firstOrNull,
         listBreisteUndTiefe: product.breiteXTiefe ?? [],
         selectedBreiteUndTiefe: product.breiteXTiefe?.firstOrNull);
   }

@@ -49,13 +49,11 @@ class CategoryWorkingTableCubit extends Cubit<StateCategory> {
       try {
         if (listPicturePath.isNotEmpty) {
           await listPicturePath.map((picturePath) async {
-            debugPrint("picturePath ==> $picturePath");
             if (!(_cubitPictures.state.containsKey(picturePath) &&
                 _cubitPictures.state[picturePath] != null)) {
               final imageBytes =
                   await FirebaseConfiguration.getImageBytes(picturePath);
-              _cubitPictures.addPicture(
-                  key: imageBytes.keys.first, value: imageBytes.values.first);
+              _cubitPictures.addPicture(key: picturePath, value: imageBytes);
             }
           }).wait;
         }
