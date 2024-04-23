@@ -23,7 +23,7 @@ class EntityBreiteUndTiefe with _$EntityBreiteUndTiefe {
   const factory EntityBreiteUndTiefe({
     required String breite,
     required String tiefe,
-    required String price,
+    required double price,
   }) = _EntityBreiteUndTiefe;
 }
 

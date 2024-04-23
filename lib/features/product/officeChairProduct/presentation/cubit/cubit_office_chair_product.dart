@@ -8,8 +8,7 @@ import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:either_dart/either.dart';
 import 'package:flutter/cupertino.dart';
 
-class CubitOfficeChairProduct
-    extends CubitProduct<CubitOfficeChairProduct, EntityProduct> {
+class CubitOfficeChairProduct extends CubitProduct<CubitOfficeChairProduct> {
   CubitOfficeChairProduct({required this.repositoryOfficeChairProduct});
 
   final RepositoryOfficeChairProduct repositoryOfficeChairProduct;
@@ -28,15 +27,15 @@ class CubitOfficeChairProduct
       }, (officeChair) {
         debugPrint('officeChair => $officeChair');
 
-        var newState = StateProduct<EntityProduct>(
-            productEntity: EntityProduct(
-                productNumber: officeChair.productNumber,
-                pictureBytes: officeChair.pictureBytes,
-                name: officeChair.name,
-                attributes: officeChair.attributes,
-                productCategory: officeChair.productCategory,
-                price: officeChair.price),
-            price: officeChair.price);
+        var newState = StateProduct(
+          productEntity: EntityProduct(
+              productNumber: officeChair.productNumber,
+              pictureBytes: officeChair.pictureBytes,
+              name: officeChair.name,
+              attributes: officeChair.attributes,
+              productCategory: officeChair.productCategory,
+              price: officeChair.price),
+        );
         debugPrint("continue OfficeChairCubit");
         debugPrint(
             "product parameter ===> $productNumber, picturelocal keys =>${getIt<CubitPictures>().state.keys}");

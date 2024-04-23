@@ -67,12 +67,11 @@ class ColorProductWidget extends HookWidget {
                       ),
                     ),
                   ),
-                  BlocSelector<
-                          CubitWorkingTableProduct,
-                          StateProduct<EntityWorkingTableProduct>,
-                          EntityGestell?>(
-                      selector: (state) =>
-                          state.productEntity?.selectedEntityGestell,
+                  BlocSelector<CubitProduct, StateProduct, EntityGestell?>(
+                      selector: (state) => state
+                          .productEntity
+                          ?.workingTableAdditionalAttributes
+                          ?.selectedEntityGestell,
                       builder: (context, state) {
                         return Flexible(
                             child: Container(
@@ -101,9 +100,9 @@ class ColorProductWidget extends HookWidget {
             const SizedBox(
               height: 10,
             ),
-            BlocSelector<CubitWorkingTableProduct,
-                StateProduct<EntityWorkingTableProduct>, List<EntityGestell>?>(
-              selector: (state) => state.productEntity?.frameColors,
+            BlocSelector<CubitProduct, StateProduct, List<EntityGestell>?>(
+              selector: (state) => state.productEntity
+                  ?.workingTableAdditionalAttributes?.listEntityGestell,
               builder: (BuildContext context, state) {
                 debugPrint("frameColors State ==> $state");
                 return LayoutBuilder(builder: (context, constraints) {
@@ -115,9 +114,8 @@ class ColorProductWidget extends HookWidget {
                         color: state?[index].color,
                         onTap: () {
                           if (state?[index] != null) {
-                            context
-                                .read<CubitWorkingTableProduct>()
-                                .changeColor(state![index]);
+                            context.read<CubitProduct>().changeColorAttribute(
+                                entityGestell: state![index]);
                           }
                           expandMenu.value =
                               (color: false, txb: expandMenu.value.txb);

@@ -340,7 +340,7 @@ abstract class _EntityWorkingTableProduct implements EntityWorkingTableProduct {
 mixin _$EntityBreiteUndTiefe {
   String get breite => throw _privateConstructorUsedError;
   String get tiefe => throw _privateConstructorUsedError;
-  String get price => throw _privateConstructorUsedError;
+  double get price => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EntityBreiteUndTiefeCopyWith<EntityBreiteUndTiefe> get copyWith =>
@@ -353,7 +353,7 @@ abstract class $EntityBreiteUndTiefeCopyWith<$Res> {
           $Res Function(EntityBreiteUndTiefe) then) =
       _$EntityBreiteUndTiefeCopyWithImpl<$Res, EntityBreiteUndTiefe>;
   @useResult
-  $Res call({String breite, String tiefe, String price});
+  $Res call({String breite, String tiefe, double price});
 }
 
 /// @nodoc
@@ -386,7 +386,7 @@ class _$EntityBreiteUndTiefeCopyWithImpl<$Res,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as String,
+              as double,
     ) as $Val);
   }
 }
@@ -399,7 +399,7 @@ abstract class _$$EntityBreiteUndTiefeImplCopyWith<$Res>
       __$$EntityBreiteUndTiefeImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String breite, String tiefe, String price});
+  $Res call({String breite, String tiefe, double price});
 }
 
 /// @nodoc
@@ -429,7 +429,7 @@ class __$$EntityBreiteUndTiefeImplCopyWithImpl<$Res>
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as String,
+              as double,
     ));
   }
 }
@@ -445,7 +445,7 @@ class _$EntityBreiteUndTiefeImpl implements _EntityBreiteUndTiefe {
   @override
   final String tiefe;
   @override
-  final String price;
+  final double price;
 
   @override
   String toString() {
@@ -478,14 +478,14 @@ abstract class _EntityBreiteUndTiefe implements EntityBreiteUndTiefe {
   const factory _EntityBreiteUndTiefe(
       {required final String breite,
       required final String tiefe,
-      required final String price}) = _$EntityBreiteUndTiefeImpl;
+      required final double price}) = _$EntityBreiteUndTiefeImpl;
 
   @override
   String get breite;
   @override
   String get tiefe;
   @override
-  String get price;
+  double get price;
   @override
   @JsonKey(ignore: true)
   _$$EntityBreiteUndTiefeImplCopyWith<_$EntityBreiteUndTiefeImpl>

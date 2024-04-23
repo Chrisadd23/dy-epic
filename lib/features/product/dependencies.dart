@@ -33,7 +33,7 @@ _setUpWorkingTable() {
   //Cubit
   getIt.registerFactory<CubitWorkingTableProduct>(() =>
       CubitWorkingTableProduct(getIt(),
-          repositoryProductArbeitstische: getIt()));
+          repositoryProductWorkingTable: getIt()));
 }
 
 _setUpConferenceChair() {

@@ -63,7 +63,7 @@ class DataSourceProductWorkingtableImplementation
           (pricePerSize) => EntityBreiteUndTiefe(
             breite: pricePerSize['width'].toString(),
             tiefe: pricePerSize['height'].toString(),
-            price: pricePerSize['price'].toString(),
+            price: double.parse(pricePerSize['price'].toString()),
           ),
         )
         .toList();

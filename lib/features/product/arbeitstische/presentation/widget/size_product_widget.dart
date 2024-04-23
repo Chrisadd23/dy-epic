@@ -67,12 +67,12 @@ class SizeProductWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-                  BlocSelector<
-                          CubitWorkingTableProduct,
-                          StateProduct<EntityWorkingTableProduct>,
+                  BlocSelector<CubitProduct, StateProduct,
                           EntityBreiteUndTiefe?>(
-                      selector: (state) =>
-                          state.productEntity?.selectedWidthAndHeight,
+                      selector: (state) => state
+                          .productEntity
+                          ?.workingTableAdditionalAttributes
+                          ?.selectedBreiteUndTiefe,
                       builder: (context, breiteXtiefe) {
                         debugPrint(
                             "==> selected breite x tiefe => $breiteXtiefe");
@@ -103,11 +103,10 @@ class SizeProductWidget extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            BlocSelector<
-                CubitWorkingTableProduct,
-                StateProduct<EntityWorkingTableProduct>,
+            BlocSelector<CubitProduct, StateProduct,
                 List<EntityBreiteUndTiefe>?>(
-              selector: (state) => state.productEntity?.breiteXTiefe,
+              selector: (state) => state.productEntity
+                  ?.workingTableAdditionalAttributes?.listBreisteUndTiefe,
               builder: (BuildContext context, state) => Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: List.generate(
@@ -120,9 +119,9 @@ class SizeProductWidget extends StatelessWidget {
                         if (state?[index] != null) {
                           context
                               .read<CubitWorkingTableProduct>()
-                              .changeBreiteXTiefe(state![index]);
+                              .changeBreiteUndTiefeAttribute(
+                                  entityBreiteUndTiefe: state![index]);
                         }
-
                         expandMenu.value =
                             (color: expandMenu.value.color, txb: false);
                       },

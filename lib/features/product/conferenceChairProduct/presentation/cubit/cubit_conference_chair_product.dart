@@ -10,7 +10,7 @@ import 'package:either_dart/either.dart';
 import 'package:flutter/material.dart';
 
 class CubitConferenceChairProduct
-    extends CubitProduct<CubitConferenceChairProduct, EntityProduct> {
+    extends CubitProduct<CubitConferenceChairProduct> {
   CubitConferenceChairProduct({required this.repositoryConferenceChairProduct});
 
   final RepositoryConferenceChairProduct repositoryConferenceChairProduct;
@@ -24,17 +24,17 @@ class CubitConferenceChairProduct
           .getConferenceChairProduct(product: productNumber)
           .fold((failure) {
         debugPrint("failure ===> ${failure.toString()}");
-      }, (conferenceChaire) {
-        var newState = StateProduct<EntityProduct>(
-            productEntity: EntityProduct(
-              productNumber: conferenceChaire.productNumber,
-              pictureBytes: conferenceChaire.pictureBytes,
-              name: conferenceChaire.name,
-              attributes: conferenceChaire.attributes,
-              price: conferenceChaire.price,
-              productCategory: EnumCategoryProduct.conferenceChair,
-            ),
-            price: conferenceChaire.price);
+      }, (conferenceChair) {
+        var newState = StateProduct(
+          productEntity: EntityProduct(
+            productNumber: conferenceChair.productNumber,
+            pictureBytes: conferenceChair.pictureBytes,
+            name: conferenceChair.name,
+            attributes: conferenceChair.attributes,
+            price: conferenceChair.price,
+            productCategory: EnumCategoryProduct.conferenceChair,
+          ),
+        );
 
         debugPrint(
             "product parameter ===> $productNumber, picturelocal keys =>${getIt<CubitPictures>().state.keys}");

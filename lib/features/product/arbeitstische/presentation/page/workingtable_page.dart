@@ -1,6 +1,6 @@
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_page_widget.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/presentation/cubit/cubit_workingtable_product.dart';
-import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/presentation/widget/product_widget.dart';
+import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/presentation/widget/working_table_product_components.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/cubit_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/bloc_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/state_shopping_basket.dart';
@@ -59,9 +59,7 @@ class _BlocProviderWorkingTable extends StatelessWidget {
       body: MultiBlocProvider(
         providers: [
           BlocProvider<CubitProduct>(
-              create: (context) => getIt<CubitWorkingTableProduct>()),
-          BlocProvider<CubitWorkingTableProduct>.value(
-              value: getIt<CubitWorkingTableProduct>()
+              create: (context) => getIt<CubitWorkingTableProduct>()
                 ..load(
                     productNumber: product,
                     color: color,
