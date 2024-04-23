@@ -118,7 +118,7 @@ class SizeProductWidget extends StatelessWidget {
                         debugPrint("ont Tap breiteXTiefe ");
                         if (state?[index] != null) {
                           context
-                              .read<CubitWorkingTableProduct>()
+                              .read<CubitProduct>()
                               .changeBreiteUndTiefeAttribute(
                                   entityBreiteUndTiefe: state![index]);
                         }
