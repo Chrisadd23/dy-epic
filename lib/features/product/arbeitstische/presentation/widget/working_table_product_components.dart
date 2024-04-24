@@ -8,6 +8,7 @@ import 'package:app_flutter_produkt_bestellen/features/product/share/presentatio
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/widget/widget_order_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/widget/widget_picture_area.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/widget/widget_product_counter.dart';
+import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/widget/widget_product_info.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/widget/widget_product_title.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/state_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/widget/shopping_basket_dialog.dart';
@@ -61,9 +62,12 @@ class WorkingTableProductComponents extends HookWidget {
                         height: 15,
                       ),
                       SizeProductWidget(expandMenu: expandMenu),
-                      const SizedBox(
-                        height: 40,
-                      ),
+                      BlocSelector<CubitProduct, StateProduct, List<String>>(
+                          selector: (state) =>
+                              state.productEntity?.attributes ?? [],
+                          builder: (context, productInfo) {
+                            return WidgetProductInfo(productInfo: productInfo);
+                          })
                     ],
                   ),
                 ),
