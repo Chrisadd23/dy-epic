@@ -13,29 +13,27 @@ class ColorProductWidget extends HookWidget {
           color: AppColors.greyC1C1C1, borderRadius: BorderRadius.circular(20)),
       child: Column(
         children: [
-          Container(
-            height: MediaQuery.of(context).size.height * 0.1,
-            decoration: BoxDecoration(
-                border: Border.all(color: Colors.black),
-                color: AppColors.greyC1C1C1,
-                borderRadius: BorderRadius.circular(20)),
-            child: LayoutBuilder(builder: (context, currentConstraints) {
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Flexible(
-                    child: Container(
-                      height: currentConstraints.maxHeight * 0.6,
-                      width: currentConstraints.maxWidth * 0.4,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(width: 2),
-                          color: AppColors.greyA7A7A7),
-                      child: InkWell(
-                        onTap: () => expandMenu.value = (
-                          color: !expandMenu.value.color,
-                          txb: expandMenu.value.txb
-                        ),
+          InkWell(
+            onTap: () => expandMenu.value =
+                (color: !expandMenu.value.color, txb: expandMenu.value.txb),
+            child: Container(
+              height: MediaQuery.of(context).size.height * 0.1,
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black),
+                  color: AppColors.greyC1C1C1,
+                  borderRadius: BorderRadius.circular(20)),
+              child: LayoutBuilder(builder: (context, currentConstraints) {
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Flexible(
+                      child: Container(
+                        height: currentConstraints.maxHeight * 0.6,
+                        width: currentConstraints.maxWidth * 0.4,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(width: 2),
+                            color: AppColors.greyA7A7A7),
                         child: const Center(
                             child: Padding(
                           padding: EdgeInsets.all(5.0),
@@ -66,35 +64,35 @@ class ColorProductWidget extends HookWidget {
                         )),
                       ),
                     ),
-                  ),
-                  BlocSelector<CubitProduct, StateProduct, EntityGestell?>(
-                      selector: (state) => state
-                          .productEntity
-                          ?.workingTableAdditionalAttributes
-                          ?.selectedEntityGestell,
-                      builder: (context, state) {
-                        return Flexible(
-                            child: Container(
-                                height: currentConstraints.maxHeight * 0.9,
-                                width: currentConstraints.maxWidth * 0.3,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  border: state == null
-                                      ? Border.all(
-                                          color: Colors.black, width: 2)
-                                      : null,
-                                ),
-                                child: state == null
-                                    ? const LoadingWidget(
-                                        secondWidth: 0,
-                                      )
-                                    : ColorWidget(
-                                        color: state.color,
-                                      )));
-                      })
-                ],
-              );
-            }),
+                    BlocSelector<CubitProduct, StateProduct, EntityGestell?>(
+                        selector: (state) => state
+                            .productEntity
+                            ?.workingTableAdditionalAttributes
+                            ?.selectedEntityGestell,
+                        builder: (context, state) {
+                          return Flexible(
+                              child: Container(
+                                  height: currentConstraints.maxHeight * 0.9,
+                                  width: currentConstraints.maxWidth * 0.3,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    border: state == null
+                                        ? Border.all(
+                                            color: Colors.black, width: 2)
+                                        : null,
+                                  ),
+                                  child: state == null
+                                      ? const LoadingWidget(
+                                          secondWidth: 0,
+                                        )
+                                      : ColorWidget(
+                                          color: state.color,
+                                        )));
+                        })
+                  ],
+                );
+              }),
+            ),
           ),
           if (expandMenu.value.color) ...[
             const SizedBox(

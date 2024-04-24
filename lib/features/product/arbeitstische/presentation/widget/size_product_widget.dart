@@ -13,29 +13,27 @@ class SizeProductWidget extends StatelessWidget {
           color: AppColors.greyC1C1C1, borderRadius: BorderRadius.circular(20)),
       child: Column(
         children: [
-          Container(
-            height: MediaQuery.of(context).size.height * 0.1,
-            decoration: BoxDecoration(
-                border: Border.all(color: Colors.black),
-                color: AppColors.greyC1C1C1,
-                borderRadius: BorderRadius.circular(20)),
-            child: LayoutBuilder(builder: (context, currentConstraints) {
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Flexible(
-                    child: Container(
-                      height: currentConstraints.maxHeight * 0.6,
-                      width: currentConstraints.maxWidth * 0.4,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(width: 2),
-                          color: AppColors.greyA7A7A7),
-                      child: InkWell(
-                        onTap: () => expandMenu.value = (
-                          color: expandMenu.value.color,
-                          txb: !expandMenu.value.txb
-                        ),
+          InkWell(
+            onTap: () => expandMenu.value =
+                (color: expandMenu.value.color, txb: !expandMenu.value.txb),
+            child: Container(
+              height: MediaQuery.of(context).size.height * 0.1,
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black),
+                  color: AppColors.greyC1C1C1,
+                  borderRadius: BorderRadius.circular(20)),
+              child: LayoutBuilder(builder: (context, currentConstraints) {
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Flexible(
+                      child: Container(
+                        height: currentConstraints.maxHeight * 0.6,
+                        width: currentConstraints.maxWidth * 0.4,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(width: 2),
+                            color: AppColors.greyA7A7A7),
                         child: const Padding(
                           padding: EdgeInsets.all(5),
                           child: FittedBox(
@@ -66,38 +64,38 @@ class SizeProductWidget extends StatelessWidget {
                         ),
                       ),
                     ),
-                  ),
-                  BlocSelector<CubitProduct, StateProduct,
-                          EntityBreiteUndTiefe?>(
-                      selector: (state) => state
-                          .productEntity
-                          ?.workingTableAdditionalAttributes
-                          ?.selectedBreiteUndTiefe,
-                      builder: (context, breiteXtiefe) {
-                        debugPrint(
-                            "==> selected breite x tiefe => $breiteXtiefe");
-                        return Flexible(
-                            child: Container(
-                                height: currentConstraints.maxHeight * 0.9,
-                                width: currentConstraints.maxWidth * 0.3,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  border: breiteXtiefe == null
-                                      ? Border.all(
-                                          color: Colors.black, width: 2)
-                                      : null,
-                                ),
-                                child: breiteXtiefe == null
-                                    ? const LoadingWidget(
-                                        secondWidth: 0,
-                                      )
-                                    : BreiteXTiefeWidget(
-                                        breiteXTiefe: breiteXtiefe,
-                                      )));
-                      })
-                ],
-              );
-            }),
+                    BlocSelector<CubitProduct, StateProduct,
+                            EntityBreiteUndTiefe?>(
+                        selector: (state) => state
+                            .productEntity
+                            ?.workingTableAdditionalAttributes
+                            ?.selectedBreiteUndTiefe,
+                        builder: (context, breiteXtiefe) {
+                          debugPrint(
+                              "==> selected breite x tiefe => $breiteXtiefe");
+                          return Flexible(
+                              child: Container(
+                                  height: currentConstraints.maxHeight * 0.9,
+                                  width: currentConstraints.maxWidth * 0.3,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    border: breiteXtiefe == null
+                                        ? Border.all(
+                                            color: Colors.black, width: 2)
+                                        : null,
+                                  ),
+                                  child: breiteXtiefe == null
+                                      ? const LoadingWidget(
+                                          secondWidth: 0,
+                                        )
+                                      : BreiteXTiefeWidget(
+                                          breiteXTiefe: breiteXtiefe,
+                                        )));
+                        })
+                  ],
+                );
+              }),
+            ),
           ),
           if (expandMenu.value.txb) ...[
             const SizedBox(
