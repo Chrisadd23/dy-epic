@@ -854,6 +854,7 @@ abstract class _ProductCategory extends ProductCategory {
 
 /// @nodoc
 mixin _$Product {
+  String get productNumber => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   Enum get productType => throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
@@ -872,7 +873,8 @@ abstract class $ProductCopyWith<$Res> {
       _$ProductCopyWithImpl<$Res, Product>;
   @useResult
   $Res call(
-      {String name,
+      {String productNumber,
+      String name,
       Enum productType,
       double price,
       String picturePath,
@@ -894,6 +896,7 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? productNumber = null,
     Object? name = null,
     Object? productType = null,
     Object? price = null,
@@ -903,6 +906,10 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
     Object? productCount = freezed,
   }) {
     return _then(_value.copyWith(
+      productNumber: null == productNumber
+          ? _value.productNumber
+          : productNumber // ignore: cast_nullable_to_non_nullable
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -943,7 +950,8 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String name,
+      {String productNumber,
+      String name,
       Enum productType,
       double price,
       String picturePath,
@@ -963,6 +971,7 @@ class __$$ProductImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? productNumber = null,
     Object? name = null,
     Object? productType = null,
     Object? price = null,
@@ -972,6 +981,10 @@ class __$$ProductImplCopyWithImpl<$Res>
     Object? productCount = freezed,
   }) {
     return _then(_$ProductImpl(
+      productNumber: null == productNumber
+          ? _value.productNumber
+          : productNumber // ignore: cast_nullable_to_non_nullable
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -1008,7 +1021,8 @@ class __$$ProductImplCopyWithImpl<$Res>
 
 class _$ProductImpl extends _Product {
   const _$ProductImpl(
-      {required this.name,
+      {required this.productNumber,
+      required this.name,
       required this.productType,
       required this.price,
       required this.picturePath,
@@ -1017,6 +1031,8 @@ class _$ProductImpl extends _Product {
       this.productCount})
       : super._();
 
+  @override
+  final String productNumber;
   @override
   final String name;
   @override
@@ -1034,7 +1050,7 @@ class _$ProductImpl extends _Product {
 
   @override
   String toString() {
-    return 'Product(name: $name, productType: $productType, price: $price, picturePath: $picturePath, pictureByte: $pictureByte, offerInPercent: $offerInPercent, productCount: $productCount)';
+    return 'Product(productNumber: $productNumber, name: $name, productType: $productType, price: $price, picturePath: $picturePath, pictureByte: $pictureByte, offerInPercent: $offerInPercent, productCount: $productCount)';
   }
 
   @override
@@ -1042,6 +1058,8 @@ class _$ProductImpl extends _Product {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProductImpl &&
+            (identical(other.productNumber, productNumber) ||
+                other.productNumber == productNumber) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.productType, productType) ||
                 other.productType == productType) &&
@@ -1059,6 +1077,7 @@ class _$ProductImpl extends _Product {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      productNumber,
       name,
       productType,
       price,
@@ -1076,7 +1095,8 @@ class _$ProductImpl extends _Product {
 
 abstract class _Product extends Product {
   const factory _Product(
-      {required final String name,
+      {required final String productNumber,
+      required final String name,
       required final Enum productType,
       required final double price,
       required final String picturePath,
@@ -1085,6 +1105,8 @@ abstract class _Product extends Product {
       final int? productCount}) = _$ProductImpl;
   const _Product._() : super._();
 
+  @override
+  String get productNumber;
   @override
   String get name;
   @override

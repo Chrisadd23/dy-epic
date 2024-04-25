@@ -1,7 +1,5 @@
 import 'package:app_flutter_produkt_bestellen/core/global_cubits/cubit_pictures.dart';
-import 'package:app_flutter_produkt_bestellen/features/category/buerostuehle/presentation/cubit/cubit_choose_office_chair.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/officeChairProduct/domain/repository/repository_office_chair_product.dart';
-import 'package:app_flutter_produkt_bestellen/features/product/officeChairProduct/presentation/cubit/state_office_chair_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/domain/entity/entity_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/cubit_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/state_product.dart';
@@ -18,45 +16,40 @@ class CubitOfficeChairProduct
 
   @override
   Future<void> load(
-      {String? product,
+      {String? productNumber,
       ({ChosenProduct chosenProduct, int index})? recordOrder}) async {
     debugPrint("start with OfficeChairCubit");
-    debugPrint(
-        "officeChairType state ${getIt<CubitChooseOfficeChair>().state.name}");
-    if (product != null) {
+
+    if (productNumber != null) {
       await repositoryOfficeChairProduct
-          .getOfficeChairProduct(productNumber: product)
+          .getOfficeChairProduct(productNumber: productNumber)
           .fold((failure) {
         debugPrint("officeChairProductfailure ==> ${failure.toString()}");
       }, (officeChair) {
         debugPrint('officeChair => $officeChair');
-        final characteristics = {
-          EnumOfficeChairProduct.name: officeChair.name,
-          EnumOfficeChairProduct.picturePath: officeChair.picturePath,
-        };
+
         var newState = StateProduct<EntityProduct>(
-            product: EntityProduct(
+            productEntity: EntityProduct(
                 productNumber: officeChair.productNumber,
                 pictureBytes: officeChair.pictureBytes,
                 name: officeChair.name,
                 attributes: officeChair.attributes,
                 productCategory: officeChair.productCategory,
                 price: officeChair.price),
-            selectedCharacteristics: characteristics,
             price: officeChair.price);
         debugPrint("continue OfficeChairCubit");
         debugPrint(
-            "product parameter ===> $product, picturelocal keys =>${getIt<CubitPictures>().state.keys}");
+            "product parameter ===> $productNumber, picturelocal keys =>${getIt<CubitPictures>().state.keys}");
 
         final containsPictureLocal =
-            getIt<CubitPictures>().state.containsKey(product) &&
-                getIt<CubitPictures>().state[product] != null;
+            getIt<CubitPictures>().state.containsKey(productNumber) &&
+                getIt<CubitPictures>().state[productNumber] != null;
 
         debugPrint("containsPictureLocal Product ==> $containsPictureLocal");
         if (containsPictureLocal) {
           newState = newState.copyWith(
-              product: newState.product?.copyWith(
-                  pictureBytes: getIt<CubitPictures>().state[product]));
+              productEntity: newState.productEntity?.copyWith(
+                  pictureBytes: getIt<CubitPictures>().state[productNumber]));
         }
         debugPrint("End officeChairCubit load method");
         emit(newState);

@@ -207,8 +207,8 @@ class _CustomerNumberTextWidget extends StatelessWidget {
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                   border: const OutlineInputBorder(borderSide: BorderSide.none),
-                  labelText: 'Kundennummer',
-                  labelStyle: AppTextStyle.colorBlackSize20ShadowWhite,
+                  hintText: 'Kundennummer',
+                  hintStyle: AppTextStyle.bold16,
                   floatingLabelBehavior: FloatingLabelBehavior.always,
                 ),
               );
@@ -243,8 +243,8 @@ class _PasswordTextWidget extends HookWidget {
                           ? const Icon(Icons.visibility_off_outlined)
                           : const Icon(Icons.visibility_outlined)),
                   border: const OutlineInputBorder(borderSide: BorderSide.none),
-                  labelText: 'Passwort',
-                  labelStyle: AppTextStyle.colorBlackSize20ShadowWhite,
+                  hintText: 'Passwort',
+                  hintStyle: AppTextStyle.bold16,
                   floatingLabelBehavior: FloatingLabelBehavior.always),
               obscureText: state.hidePassword,
             ),

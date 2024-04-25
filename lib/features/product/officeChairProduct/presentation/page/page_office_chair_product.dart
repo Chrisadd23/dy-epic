@@ -59,7 +59,7 @@ class _BlocProviderOfficeChairProduct extends StatelessWidget {
         providers: [
           BlocProvider<CubitProduct>.value(
               value: getIt<CubitOfficeChairProduct>()
-                ..load(product: product, recordOrder: recordOrder)),
+                ..load(productNumber: product, recordOrder: recordOrder)),
         ],
         child: const _OfficeChairBlocBuilder(),
       ),
@@ -111,7 +111,7 @@ class _ProductWidget extends StatelessWidget {
                       builder: (context, state) {
                     debugPrint("productAttributes => $state");
                     return WidgetProductInfo(
-                      productInfo: state.product?.attributes,
+                      productInfo: state.productEntity?.attributes,
                     );
                   }),
                 ],
@@ -132,7 +132,7 @@ class _ProductPicture extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocSelector<CubitProduct, StateProduct, Uint8List?>(
-        selector: (state) => state.product?.pictureBytes,
+        selector: (state) => state.productEntity?.pictureBytes,
         builder: (context, pictureBytes) {
           return WidgetPictureArea(pictureBytes: pictureBytes);
         });

@@ -67,9 +67,12 @@ class SizeProductWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-                  BlocSelector<CubitProduct, StateProduct, BreiteXTiefe?>(
-                      selector: (state) => state.selectedCharacteristics[
-                          TableChangeableCharacteristics.breiteXTiefe],
+                  BlocSelector<
+                          CubitWorkingTableProduct,
+                          StateProduct<EntityWorkingTableProduct>,
+                          EntityBreiteUndTiefe?>(
+                      selector: (state) =>
+                          state.productEntity?.selectedWidthAndHeight,
                       builder: (context, breiteXtiefe) {
                         return Flexible(
                             child: Container(
@@ -83,7 +86,9 @@ class SizeProductWidget extends StatelessWidget {
                                       : null,
                                 ),
                                 child: breiteXtiefe == null
-                                    ? const LoadingWidget()
+                                    ? const LoadingWidget(
+                                        secondWidth: 0,
+                                      )
                                     : BreiteXTiefeWidget(
                                         breiteXTiefe: breiteXtiefe,
                                       )));
@@ -96,36 +101,31 @@ class SizeProductWidget extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            BlocSelector<CubitProduct, StateProduct, List<BreiteXTiefe>?>(
-              selector: (state) =>
-                  [const BreiteXTiefe(breite: '1.800', tiefe: '2.000')],
-              builder: (BuildContext context, List<BreiteXTiefe>? state) =>
-                  state != null
-                      ? Row(
-                          children: List.generate(
-                            state.length,
-                            (index) => Flexible(
-                              child: Padding(
-                                padding: index < state.length
-                                    ? const EdgeInsets.only(left: 4.0)
-                                    : EdgeInsets.zero,
-                                child: BreiteXTiefeWidget(
-                                  breiteXTiefe: state[index],
-                                  onTap: () {
-                                    context
-                                        .read<CubitWorkingTableProduct>()
-                                        .changeBreiteXTiefe(state[index]);
-                                    expandMenu.value = (
-                                      color: expandMenu.value.color,
-                                      txb: false
-                                    );
-                                  },
-                                ),
-                              ),
-                            ),
-                          ),
-                        )
-                      : const SizedBox.shrink(),
+            BlocSelector<
+                CubitWorkingTableProduct,
+                StateProduct<EntityWorkingTableProduct>,
+                List<EntityBreiteUndTiefe>?>(
+              selector: (state) => state.productEntity?.breiteXTiefe,
+              builder: (BuildContext context, state) => Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: List.generate(
+                  state?.length ?? 0,
+                  (index) => Flexible(
+                    child: BreiteXTiefeWidget(
+                      breiteXTiefe: state?[index],
+                      onTap: () {
+                        if (state?[index] == null) {
+                          context
+                              .read<CubitWorkingTableProduct>()
+                              .changeBreiteXTiefe(state![index]);
+                        }
+                        expandMenu.value =
+                            (color: expandMenu.value.color, txb: false);
+                      },
+                    ),
+                  ),
+                ),
+              ),
             ),
             const SizedBox(
               height: 5,

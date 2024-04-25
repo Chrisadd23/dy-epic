@@ -1,9 +1,9 @@
+import 'package:app_flutter_produkt_bestellen/core/extension/double.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text_style.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/cubit/order_customer_state.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class OrderInformationDialog extends StatelessWidget {
   const OrderInformationDialog._({required this.productInformationList});
@@ -84,7 +84,7 @@ class _ProductInformationContainer extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                      'Einzelpreis: ${NumberFormat.currency(locale: 'de_DE', symbol: '€', decimalDigits: 2).format(productInformation.price)}'),
+                      'Einzelpreis: ${productInformation.price.getCurrency()}'),
                   Text('Anzahl: ${productInformation.count}')
                 ],
               ),

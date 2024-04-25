@@ -9,7 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 abstract class CubitProduct<T, E> extends Cubit<StateProduct<E>> {
   CubitProduct() : super(StateProduct<E>());
 
-  Future<void> load({required String product}) async {}
+  Future<void> load({required String productNumber}) async {}
 
   Timer? _timer;
 
@@ -50,7 +50,7 @@ abstract class CubitProduct<T, E> extends Cubit<StateProduct<E>> {
     final newState = state.copyWith(
         productOrderCount: order.count,
         price: order.entityProduct.price,
-        product: reworkProductTypeInChangeProduct(order.entityProduct),
+        productEntity: reworkProductTypeInChangeProduct(order.entityProduct),
         position: index);
 
     emit(newState);

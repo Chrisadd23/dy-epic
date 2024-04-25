@@ -16,4 +16,10 @@ abstract class AppTextStyle {
         BoxShadow(offset: Offset(1, 0), color: Colors.black),
         BoxShadow(offset: Offset(-1, 0), color: Colors.black),
       ]);
+
+  static TextStyle get bold18 =>
+      const TextStyle(fontSize: 18, fontWeight: FontWeight.bold);
+
+  static TextStyle get bold16 =>
+      const TextStyle(fontSize: 16, fontWeight: FontWeight.bold);
 }

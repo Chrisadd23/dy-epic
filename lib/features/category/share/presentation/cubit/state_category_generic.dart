@@ -42,6 +42,7 @@ class Product with _$Product {
   const Product._();
 
   const factory Product({
+    required String productNumber,
     required String name,
     required Enum productType,
     required double price,

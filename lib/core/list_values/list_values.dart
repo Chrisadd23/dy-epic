@@ -1,5 +1,5 @@
 import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
-import 'package:app_flutter_produkt_bestellen/features/home/data/model/model_category.dart';
+import 'package:app_flutter_produkt_bestellen/features/home/data/model/home_category_model.dart';
 import 'package:app_flutter_produkt_bestellen/gen/assets.gen.dart';
 
 class ListValues {
@@ -19,23 +19,23 @@ class ProductPictures {
   };
 }
 
-List<ModelCategory> chooseCategory = [
-  ModelCategory(
+List<HomeCategoryModel> chooseCategory = [
+  HomeCategoryModel(
       title: 'Arbeitstische',
       imgPath: Assets.appComponents.jpg.arbeitstisch.path,
       navigation: AppGoRouter.arbeitstische.name,
       indexPositon: 0),
-  ModelCategory(
+  HomeCategoryModel(
       title: 'Bürostühle',
       navigation: AppGoRouter.buerostuehle.name,
       imgPath: Assets.appComponents.jpg.buerodrehstuehle.path,
       indexPositon: 1),
-  ModelCategory(
+  HomeCategoryModel(
       title: 'Konferenzstühle',
       imgPath: Assets.appComponents.jpg.konferenzstuehle.path,
       navigation: 'konferenzstuehle',
       indexPositon: 2),
-  ModelCategory(
+  HomeCategoryModel(
       title: 'Konferenztische',
       imgPath: Assets.appComponents.jpg.konferenztische.path,
       navigation: 'konferenztische',

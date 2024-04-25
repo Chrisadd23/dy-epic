@@ -2,8 +2,8 @@ library my_product_widget;
 
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_widgets/loading_widget.dart';
+import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/domain/entity/entity_product_workingtable.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/presentation/cubit/cubit_workingtable_product.dart';
-import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/presentation/cubit/state_workingtable.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/cubit_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/state_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/widget/widget_order_product.dart';
@@ -85,7 +85,9 @@ class WorkingTableProductComponents extends HookWidget {
     super.debugFillProperties(properties);
     properties.add(StringProperty('product', product));
     properties.add(StringProperty('color', color));
-    properties.add(DiagnosticsProperty<({ChosenProduct chosenProduct, int index})?>('recordOrder', recordOrder));
+    properties.add(
+        DiagnosticsProperty<({ChosenProduct chosenProduct, int index})?>(
+            'recordOrder', recordOrder));
   }
 }
 
@@ -94,10 +96,12 @@ class _ProductPicture extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<CubitProduct, StateProduct, Uint8List?>(
-        selector: (state) => state.product?.pictureBytes,
-        builder: (context, pictureBytes) {
-          return WidgetPictureArea(pictureBytes: pictureBytes);
+    return BlocSelector<CubitWorkingTableProduct,
+            StateProduct<EntityWorkingTableProduct>, EntityGestell?>(
+        selector: (state) => state.productEntity?.selectedEntityGestell,
+        builder: (context, state) {
+          debugPrint("pictureByte Widget ===> $state");
+          return WidgetPictureArea(pictureBytes: state?.pictureBytes);
         });
   }
 }
@@ -118,7 +122,7 @@ class ProductTitle extends StatelessWidget {
             borderRadius: BorderRadius.circular(40),
             color: AppColors.grey8D8D8E.withOpacity(0.4)),
         child: BlocSelector<CubitProduct, StateProduct, String?>(
-            selector: (state) => state.product?.name,
+            selector: (state) => state.productEntity?.name,
             builder: (context, productName) {
               return FittedBox(
                 fit: BoxFit.fitHeight,
@@ -151,7 +155,7 @@ class ProductTitle extends StatelessWidget {
 class BreiteXTiefeWidget extends StatelessWidget {
   const BreiteXTiefeWidget({super.key, required this.breiteXTiefe, this.onTap});
 
-  final BreiteXTiefe? breiteXTiefe;
+  final EntityBreiteUndTiefe? breiteXTiefe;
   final VoidCallback? onTap;
 
   @override
@@ -210,19 +214,15 @@ class BreiteXTiefeWidget extends StatelessWidget {
       ),
     );
   }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-        .add(DiagnosticsProperty<BreiteXTiefe>('breiteXTiefe', breiteXTiefe));
-    properties.add(ObjectFlagProperty<VoidCallback>.has('onTap', onTap));
-  }
 }
 
 // ===========> change Color from Dialog
 class ColorWidget extends StatelessWidget {
-  const ColorWidget({super.key, required this.color, this.onTap});
+  const ColorWidget({
+    super.key,
+    required this.color,
+    this.onTap,
+  });
 
   final Color? color;
   final VoidCallback? onTap;
@@ -230,25 +230,22 @@ class ColorWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     debugPrint('ColorWidget');
-    return Material(
-      type: MaterialType.transparency,
-      child: InkWell(
-        highlightColor: Colors.transparent,
-        splashColor: Colors.transparent,
-        onTap: onTap,
-        child: Container(
-            height: MediaQuery.of(context).size.height * 0.1,
-            width: MediaQuery.of(context).size.width * 0.25,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              border: Border.all(
-                  color: color == AppColors.black080808
-                      ? Colors.white
-                      : Colors.black,
-                  width: 2),
-              color: color,
-            )),
-      ),
+    return InkWell(
+      highlightColor: Colors.transparent,
+      splashColor: Colors.transparent,
+      onTap: onTap,
+      child: Container(
+          height: MediaQuery.of(context).size.height * 0.1,
+          width: MediaQuery.of(context).size.width * 0.25,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(
+                color: color == AppColors.black080808
+                    ? Colors.white
+                    : Colors.black,
+                width: 2),
+            color: color,
+          )),
     );
   }
 
