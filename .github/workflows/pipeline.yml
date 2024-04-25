@@ -35,6 +35,8 @@ jobs:
       - run: rm -f pubspec.lock
       - run: flutter clean
       - run: flutter pub get
+      - run: dart format --output=none --set-exit-if-changed
+      - run: flutter analyze --fatal-warnings
       - run: flutter test
       - run: flutter build apk --release --split-per-abi
       - name: Push to Releases
