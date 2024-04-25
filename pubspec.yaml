@@ -62,7 +62,9 @@ dependencies:
   swipeable_tile: ^2.0.0+3
   curved_navigation_bar: ^1.0.3
   dropdown_button2: ^2.3.9
- 
+  bloc_test: ^9.1.7
+  mocktail: ^1.0.3
+
 
 
 
