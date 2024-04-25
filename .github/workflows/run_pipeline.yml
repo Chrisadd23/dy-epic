@@ -1,35 +1,36 @@
+name: "build release"
+
 on:
   pull_request:
     branches:
       - main
       - master
-
   push:
     branches:
+      - main
+      - master
 
-name: "Build & Release"
 jobs:
   build:
     name: Build & Release
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-java@v1
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
         with:
-          java-version: '17.x'
-      - uses: subosito/flutter-action@v1
+          distribution: 'temurin'  # Empfohlene Distribution für Java
+          java-version: '17'
+      - uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.16.9'
       - run: rm -f pubspec.lock
       - run: flutter clean
-      - run: flutter pub cache repair
       - run: flutter pub get
       - run: flutter test
-      - run: flutter build apk --release --split-per-abi
+      - run: flutter build apk --release --verbose
       - name: Push to Releases
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "build/app/outputs/apk/version/*"
+          artifacts: "build/app/outputs/apk/release/*"
           tag: v1.0.${{ github.run_number }}
           token: ${{ secrets.TOKEN }}
-
