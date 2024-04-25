@@ -160,7 +160,7 @@ class _BlocBuilderBuerostuehle extends StatelessWidget {
                   return Stack(children: [
                     Align(child: ProductListWheel(listProducts: listProducts)),
                     const Align(
-                        alignment: Alignment.center,
+                        alignment: Alignment.topCenter,
                         child: _ChooseOfficeChaireCategory()),
                   ]);
                 })),
@@ -175,8 +175,8 @@ class _ChooseOfficeChaireCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.topCenter,
+    return Padding(
+      padding: const EdgeInsets.only(top: 20.0),
       child: SizedBox(
         height: MediaQuery.sizeOf(context).height * 0.12,
         child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
