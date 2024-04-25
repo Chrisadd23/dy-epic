@@ -1,7 +1,6 @@
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_cubits/cubit_pictures.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/conferenceChairProduct/domain/repository/repository_conference_chair_product.dart';
-import 'package:app_flutter_produkt_bestellen/features/product/conferenceChairProduct/presentation/cubit/state_conference_chair_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/domain/entity/entity_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/cubit_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/state_product.dart';
@@ -18,20 +17,16 @@ class CubitConferenceChairProduct
 
   @override
   Future<void> load(
-      {String? product,
+      {String? productNumber,
       ({ChosenProduct chosenProduct, int index})? recordOrder}) async {
-    if (product != null) {
+    if (productNumber != null) {
       await repositoryConferenceChairProduct
-          .getConferenceChairProduct(product: product)
+          .getConferenceChairProduct(product: productNumber)
           .fold((failure) {
         debugPrint("failure ===> ${failure.toString()}");
       }, (conferenceChaire) {
-        final characteristics = {
-          EnumConferenceChairProduct.name: conferenceChaire.name,
-          EnumConferenceChairProduct.picturePath: conferenceChaire.picturePath,
-        };
         var newState = StateProduct<EntityProduct>(
-            product: EntityProduct(
+            productEntity: EntityProduct(
               productNumber: conferenceChaire.productNumber,
               pictureBytes: conferenceChaire.pictureBytes,
               name: conferenceChaire.name,
@@ -39,22 +34,21 @@ class CubitConferenceChairProduct
               price: conferenceChaire.price,
               productCategory: EnumCategoryProduct.conferenceChair,
             ),
-            selectedCharacteristics: characteristics,
             price: conferenceChaire.price);
 
         debugPrint(
-            "product parameter ===> $product, picturelocal keys =>${getIt<CubitPictures>().state.keys}");
+            "product parameter ===> $productNumber, picturelocal keys =>${getIt<CubitPictures>().state.keys}");
 
         try {
           final containsPictureLocal =
-              getIt<CubitPictures>().state.containsKey(product) &&
-                  getIt<CubitPictures>().state[product] != null;
+              getIt<CubitPictures>().state.containsKey(productNumber) &&
+                  getIt<CubitPictures>().state[productNumber] != null;
 
           debugPrint("containsPictureLocal Product ==> $containsPictureLocal");
           if (containsPictureLocal) {
             newState = newState.copyWith(
-                product: newState.product?.copyWith(
-                    pictureBytes: getIt<CubitPictures>().state[product]));
+                productEntity: newState.productEntity?.copyWith(
+                    pictureBytes: getIt<CubitPictures>().state[productNumber]));
           }
         } catch (e) {
           debugPrint(e.toString());

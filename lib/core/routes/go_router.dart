@@ -1,7 +1,7 @@
 import 'package:app_flutter_produkt_bestellen/core/error/page_not_found.dart';
-import 'package:app_flutter_produkt_bestellen/features/category/arbeitstische/presentation/page/page_arbeitstische.dart';
-import 'package:app_flutter_produkt_bestellen/features/category/buerostuehle/presentation/page/page_buerostuehle.dart';
-import 'package:app_flutter_produkt_bestellen/features/category/konferenzstuehle/presentation/page/page_konferenzstuehle.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/category_conference_chair/presentation/page/category_conference_chair_page.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/category_office_chair/presentation/page/category_office_chair_page.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/category_workingtable/presentation/page/category_workingtable_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/konferenztische/presentation/page/page_konferenztische.dart';
 import 'package:app_flutter_produkt_bestellen/features/home/presentation/page/home_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/legalities/presentation/page/legalities_page.dart';
@@ -109,28 +109,31 @@ enum AppGoRouter {
                   GoRoute(
                     path: arbeitstische.title,
                     name: arbeitstische.name,
-                    pageBuilder: (context, state) =>
-                        _getCustomerTransition(const PageWorkTables(), state),
+                    pageBuilder: (context, state) => _getCustomerTransition(
+                        const CategoryWorkingTablePage(), state),
                     routes: [
                       GoRoute(
                         path: product.title,
                         name: '${arbeitstische.name}/${product.name}',
                         pageBuilder: (context, state) {
-                          final product =
-                              state.queryParameters['productNumber'];
                           debugPrint("check goRouter record ${state.extra as ({
                             ChosenProduct chosenProduct,
                             int index
                           })?}");
+
                           final recordOrder = state.extra as ({
                             ChosenProduct chosenProduct,
                             int index
                           })?;
 
+                          final productNumber =
+                              state.queryParameters['productNumber'];
+                          debugPrint(
+                              "check queryParameters - ${productNumber.toString()}");
                           final selectedColor = state.queryParameters['color'];
                           return _getCustomerTransition(
                               PageWorkingTableProduct(
-                                  product: product,
+                                  productNumber: productNumber,
                                   color: selectedColor,
                                   recordOrder: recordOrder),
                               state);

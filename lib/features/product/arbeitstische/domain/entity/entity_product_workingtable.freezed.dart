@@ -17,14 +17,15 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$EntityWorkingTableProduct {
   String get name => throw _privateConstructorUsedError;
-  double get price => throw _privateConstructorUsedError;
-  String get picturePath => throw _privateConstructorUsedError;
   String get productNumber => throw _privateConstructorUsedError;
   List<String> get attributes => throw _privateConstructorUsedError;
   List<EntityBreiteUndTiefe>? get breiteXTiefe =>
       throw _privateConstructorUsedError;
+  EntityBreiteUndTiefe? get selectedWidthAndHeight =>
+      throw _privateConstructorUsedError;
   List<EntityGestell>? get frameColors => throw _privateConstructorUsedError;
-  Uint8List? get pictureBytes => throw _privateConstructorUsedError;
+  EntityGestell? get selectedEntityGestell =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EntityWorkingTableProductCopyWith<EntityWorkingTableProduct> get copyWith =>
@@ -39,13 +40,15 @@ abstract class $EntityWorkingTableProductCopyWith<$Res> {
   @useResult
   $Res call(
       {String name,
-      double price,
-      String picturePath,
       String productNumber,
       List<String> attributes,
       List<EntityBreiteUndTiefe>? breiteXTiefe,
+      EntityBreiteUndTiefe? selectedWidthAndHeight,
       List<EntityGestell>? frameColors,
-      Uint8List? pictureBytes});
+      EntityGestell? selectedEntityGestell});
+
+  $EntityBreiteUndTiefeCopyWith<$Res>? get selectedWidthAndHeight;
+  $EntityGestellCopyWith<$Res>? get selectedEntityGestell;
 }
 
 /// @nodoc
@@ -63,26 +66,17 @@ class _$EntityWorkingTableProductCopyWithImpl<$Res,
   @override
   $Res call({
     Object? name = null,
-    Object? price = null,
-    Object? picturePath = null,
     Object? productNumber = null,
     Object? attributes = null,
     Object? breiteXTiefe = freezed,
+    Object? selectedWidthAndHeight = freezed,
     Object? frameColors = freezed,
-    Object? pictureBytes = freezed,
+    Object? selectedEntityGestell = freezed,
   }) {
     return _then(_value.copyWith(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as double,
-      picturePath: null == picturePath
-          ? _value.picturePath
-          : picturePath // ignore: cast_nullable_to_non_nullable
               as String,
       productNumber: null == productNumber
           ? _value.productNumber
@@ -96,15 +90,44 @@ class _$EntityWorkingTableProductCopyWithImpl<$Res,
           ? _value.breiteXTiefe
           : breiteXTiefe // ignore: cast_nullable_to_non_nullable
               as List<EntityBreiteUndTiefe>?,
+      selectedWidthAndHeight: freezed == selectedWidthAndHeight
+          ? _value.selectedWidthAndHeight
+          : selectedWidthAndHeight // ignore: cast_nullable_to_non_nullable
+              as EntityBreiteUndTiefe?,
       frameColors: freezed == frameColors
           ? _value.frameColors
           : frameColors // ignore: cast_nullable_to_non_nullable
               as List<EntityGestell>?,
-      pictureBytes: freezed == pictureBytes
-          ? _value.pictureBytes
-          : pictureBytes // ignore: cast_nullable_to_non_nullable
-              as Uint8List?,
+      selectedEntityGestell: freezed == selectedEntityGestell
+          ? _value.selectedEntityGestell
+          : selectedEntityGestell // ignore: cast_nullable_to_non_nullable
+              as EntityGestell?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $EntityBreiteUndTiefeCopyWith<$Res>? get selectedWidthAndHeight {
+    if (_value.selectedWidthAndHeight == null) {
+      return null;
+    }
+
+    return $EntityBreiteUndTiefeCopyWith<$Res>(_value.selectedWidthAndHeight!,
+        (value) {
+      return _then(_value.copyWith(selectedWidthAndHeight: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $EntityGestellCopyWith<$Res>? get selectedEntityGestell {
+    if (_value.selectedEntityGestell == null) {
+      return null;
+    }
+
+    return $EntityGestellCopyWith<$Res>(_value.selectedEntityGestell!, (value) {
+      return _then(_value.copyWith(selectedEntityGestell: value) as $Val);
+    });
   }
 }
 
@@ -119,13 +142,17 @@ abstract class _$$EntityWorkingTableProductImplCopyWith<$Res>
   @useResult
   $Res call(
       {String name,
-      double price,
-      String picturePath,
       String productNumber,
       List<String> attributes,
       List<EntityBreiteUndTiefe>? breiteXTiefe,
+      EntityBreiteUndTiefe? selectedWidthAndHeight,
       List<EntityGestell>? frameColors,
-      Uint8List? pictureBytes});
+      EntityGestell? selectedEntityGestell});
+
+  @override
+  $EntityBreiteUndTiefeCopyWith<$Res>? get selectedWidthAndHeight;
+  @override
+  $EntityGestellCopyWith<$Res>? get selectedEntityGestell;
 }
 
 /// @nodoc
@@ -142,26 +169,17 @@ class __$$EntityWorkingTableProductImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = null,
-    Object? price = null,
-    Object? picturePath = null,
     Object? productNumber = null,
     Object? attributes = null,
     Object? breiteXTiefe = freezed,
+    Object? selectedWidthAndHeight = freezed,
     Object? frameColors = freezed,
-    Object? pictureBytes = freezed,
+    Object? selectedEntityGestell = freezed,
   }) {
     return _then(_$EntityWorkingTableProductImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as double,
-      picturePath: null == picturePath
-          ? _value.picturePath
-          : picturePath // ignore: cast_nullable_to_non_nullable
               as String,
       productNumber: null == productNumber
           ? _value.productNumber
@@ -175,14 +193,18 @@ class __$$EntityWorkingTableProductImplCopyWithImpl<$Res>
           ? _value._breiteXTiefe
           : breiteXTiefe // ignore: cast_nullable_to_non_nullable
               as List<EntityBreiteUndTiefe>?,
+      selectedWidthAndHeight: freezed == selectedWidthAndHeight
+          ? _value.selectedWidthAndHeight
+          : selectedWidthAndHeight // ignore: cast_nullable_to_non_nullable
+              as EntityBreiteUndTiefe?,
       frameColors: freezed == frameColors
           ? _value._frameColors
           : frameColors // ignore: cast_nullable_to_non_nullable
               as List<EntityGestell>?,
-      pictureBytes: freezed == pictureBytes
-          ? _value.pictureBytes
-          : pictureBytes // ignore: cast_nullable_to_non_nullable
-              as Uint8List?,
+      selectedEntityGestell: freezed == selectedEntityGestell
+          ? _value.selectedEntityGestell
+          : selectedEntityGestell // ignore: cast_nullable_to_non_nullable
+              as EntityGestell?,
     ));
   }
 }
@@ -192,23 +214,18 @@ class __$$EntityWorkingTableProductImplCopyWithImpl<$Res>
 class _$EntityWorkingTableProductImpl implements _EntityWorkingTableProduct {
   const _$EntityWorkingTableProductImpl(
       {required this.name,
-      required this.price,
-      required this.picturePath,
       required this.productNumber,
       required final List<String> attributes,
       final List<EntityBreiteUndTiefe>? breiteXTiefe,
+      this.selectedWidthAndHeight,
       final List<EntityGestell>? frameColors,
-      this.pictureBytes})
+      this.selectedEntityGestell})
       : _attributes = attributes,
         _breiteXTiefe = breiteXTiefe,
         _frameColors = frameColors;
 
   @override
   final String name;
-  @override
-  final double price;
-  @override
-  final String picturePath;
   @override
   final String productNumber;
   final List<String> _attributes;
@@ -229,6 +246,8 @@ class _$EntityWorkingTableProductImpl implements _EntityWorkingTableProduct {
     return EqualUnmodifiableListView(value);
   }
 
+  @override
+  final EntityBreiteUndTiefe? selectedWidthAndHeight;
   final List<EntityGestell>? _frameColors;
   @override
   List<EntityGestell>? get frameColors {
@@ -240,11 +259,11 @@ class _$EntityWorkingTableProductImpl implements _EntityWorkingTableProduct {
   }
 
   @override
-  final Uint8List? pictureBytes;
+  final EntityGestell? selectedEntityGestell;
 
   @override
   String toString() {
-    return 'EntityWorkingTableProduct(name: $name, price: $price, picturePath: $picturePath, productNumber: $productNumber, attributes: $attributes, breiteXTiefe: $breiteXTiefe, frameColors: $frameColors, pictureBytes: $pictureBytes)';
+    return 'EntityWorkingTableProduct(name: $name, productNumber: $productNumber, attributes: $attributes, breiteXTiefe: $breiteXTiefe, selectedWidthAndHeight: $selectedWidthAndHeight, frameColors: $frameColors, selectedEntityGestell: $selectedEntityGestell)';
   }
 
   @override
@@ -253,32 +272,30 @@ class _$EntityWorkingTableProductImpl implements _EntityWorkingTableProduct {
         (other.runtimeType == runtimeType &&
             other is _$EntityWorkingTableProductImpl &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.price, price) || other.price == price) &&
-            (identical(other.picturePath, picturePath) ||
-                other.picturePath == picturePath) &&
             (identical(other.productNumber, productNumber) ||
                 other.productNumber == productNumber) &&
             const DeepCollectionEquality()
                 .equals(other._attributes, _attributes) &&
             const DeepCollectionEquality()
                 .equals(other._breiteXTiefe, _breiteXTiefe) &&
+            (identical(other.selectedWidthAndHeight, selectedWidthAndHeight) ||
+                other.selectedWidthAndHeight == selectedWidthAndHeight) &&
             const DeepCollectionEquality()
                 .equals(other._frameColors, _frameColors) &&
-            const DeepCollectionEquality()
-                .equals(other.pictureBytes, pictureBytes));
+            (identical(other.selectedEntityGestell, selectedEntityGestell) ||
+                other.selectedEntityGestell == selectedEntityGestell));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       name,
-      price,
-      picturePath,
       productNumber,
       const DeepCollectionEquality().hash(_attributes),
       const DeepCollectionEquality().hash(_breiteXTiefe),
+      selectedWidthAndHeight,
       const DeepCollectionEquality().hash(_frameColors),
-      const DeepCollectionEquality().hash(pictureBytes));
+      selectedEntityGestell);
 
   @JsonKey(ignore: true)
   @override
@@ -290,21 +307,17 @@ class _$EntityWorkingTableProductImpl implements _EntityWorkingTableProduct {
 
 abstract class _EntityWorkingTableProduct implements EntityWorkingTableProduct {
   const factory _EntityWorkingTableProduct(
-      {required final String name,
-      required final double price,
-      required final String picturePath,
-      required final String productNumber,
-      required final List<String> attributes,
-      final List<EntityBreiteUndTiefe>? breiteXTiefe,
-      final List<EntityGestell>? frameColors,
-      final Uint8List? pictureBytes}) = _$EntityWorkingTableProductImpl;
+          {required final String name,
+          required final String productNumber,
+          required final List<String> attributes,
+          final List<EntityBreiteUndTiefe>? breiteXTiefe,
+          final EntityBreiteUndTiefe? selectedWidthAndHeight,
+          final List<EntityGestell>? frameColors,
+          final EntityGestell? selectedEntityGestell}) =
+      _$EntityWorkingTableProductImpl;
 
   @override
   String get name;
-  @override
-  double get price;
-  @override
-  String get picturePath;
   @override
   String get productNumber;
   @override
@@ -312,9 +325,11 @@ abstract class _EntityWorkingTableProduct implements EntityWorkingTableProduct {
   @override
   List<EntityBreiteUndTiefe>? get breiteXTiefe;
   @override
+  EntityBreiteUndTiefe? get selectedWidthAndHeight;
+  @override
   List<EntityGestell>? get frameColors;
   @override
-  Uint8List? get pictureBytes;
+  EntityGestell? get selectedEntityGestell;
   @override
   @JsonKey(ignore: true)
   _$$EntityWorkingTableProductImplCopyWith<_$EntityWorkingTableProductImpl>
@@ -325,6 +340,7 @@ abstract class _EntityWorkingTableProduct implements EntityWorkingTableProduct {
 mixin _$EntityBreiteUndTiefe {
   String get breite => throw _privateConstructorUsedError;
   String get tiefe => throw _privateConstructorUsedError;
+  String get price => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EntityBreiteUndTiefeCopyWith<EntityBreiteUndTiefe> get copyWith =>
@@ -337,7 +353,7 @@ abstract class $EntityBreiteUndTiefeCopyWith<$Res> {
           $Res Function(EntityBreiteUndTiefe) then) =
       _$EntityBreiteUndTiefeCopyWithImpl<$Res, EntityBreiteUndTiefe>;
   @useResult
-  $Res call({String breite, String tiefe});
+  $Res call({String breite, String tiefe, String price});
 }
 
 /// @nodoc
@@ -356,6 +372,7 @@ class _$EntityBreiteUndTiefeCopyWithImpl<$Res,
   $Res call({
     Object? breite = null,
     Object? tiefe = null,
+    Object? price = null,
   }) {
     return _then(_value.copyWith(
       breite: null == breite
@@ -365,6 +382,10 @@ class _$EntityBreiteUndTiefeCopyWithImpl<$Res,
       tiefe: null == tiefe
           ? _value.tiefe
           : tiefe // ignore: cast_nullable_to_non_nullable
+              as String,
+      price: null == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -378,7 +399,7 @@ abstract class _$$EntityBreiteUndTiefeImplCopyWith<$Res>
       __$$EntityBreiteUndTiefeImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String breite, String tiefe});
+  $Res call({String breite, String tiefe, String price});
 }
 
 /// @nodoc
@@ -394,6 +415,7 @@ class __$$EntityBreiteUndTiefeImplCopyWithImpl<$Res>
   $Res call({
     Object? breite = null,
     Object? tiefe = null,
+    Object? price = null,
   }) {
     return _then(_$EntityBreiteUndTiefeImpl(
       breite: null == breite
@@ -404,6 +426,10 @@ class __$$EntityBreiteUndTiefeImplCopyWithImpl<$Res>
           ? _value.tiefe
           : tiefe // ignore: cast_nullable_to_non_nullable
               as String,
+      price: null == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -411,16 +437,19 @@ class __$$EntityBreiteUndTiefeImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EntityBreiteUndTiefeImpl implements _EntityBreiteUndTiefe {
-  const _$EntityBreiteUndTiefeImpl({required this.breite, required this.tiefe});
+  const _$EntityBreiteUndTiefeImpl(
+      {required this.breite, required this.tiefe, required this.price});
 
   @override
   final String breite;
   @override
   final String tiefe;
+  @override
+  final String price;
 
   @override
   String toString() {
-    return 'EntityBreiteUndTiefe(breite: $breite, tiefe: $tiefe)';
+    return 'EntityBreiteUndTiefe(breite: $breite, tiefe: $tiefe, price: $price)';
   }
 
   @override
@@ -429,11 +458,12 @@ class _$EntityBreiteUndTiefeImpl implements _EntityBreiteUndTiefe {
         (other.runtimeType == runtimeType &&
             other is _$EntityBreiteUndTiefeImpl &&
             (identical(other.breite, breite) || other.breite == breite) &&
-            (identical(other.tiefe, tiefe) || other.tiefe == tiefe));
+            (identical(other.tiefe, tiefe) || other.tiefe == tiefe) &&
+            (identical(other.price, price) || other.price == price));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, breite, tiefe);
+  int get hashCode => Object.hash(runtimeType, breite, tiefe, price);
 
   @JsonKey(ignore: true)
   @override
@@ -447,12 +477,15 @@ class _$EntityBreiteUndTiefeImpl implements _EntityBreiteUndTiefe {
 abstract class _EntityBreiteUndTiefe implements EntityBreiteUndTiefe {
   const factory _EntityBreiteUndTiefe(
       {required final String breite,
-      required final String tiefe}) = _$EntityBreiteUndTiefeImpl;
+      required final String tiefe,
+      required final String price}) = _$EntityBreiteUndTiefeImpl;
 
   @override
   String get breite;
   @override
   String get tiefe;
+  @override
+  String get price;
   @override
   @JsonKey(ignore: true)
   _$$EntityBreiteUndTiefeImplCopyWith<_$EntityBreiteUndTiefeImpl>
@@ -463,7 +496,7 @@ abstract class _EntityBreiteUndTiefe implements EntityBreiteUndTiefe {
 mixin _$EntityGestell {
   Color get color => throw _privateConstructorUsedError;
   String get material => throw _privateConstructorUsedError;
-  String get picturePath => throw _privateConstructorUsedError;
+  Uint8List? get pictureBytes => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -477,7 +510,8 @@ abstract class $EntityGestellCopyWith<$Res> {
           EntityGestell value, $Res Function(EntityGestell) then) =
       _$EntityGestellCopyWithImpl<$Res, EntityGestell>;
   @useResult
-  $Res call({Color color, String material, String picturePath, String? name});
+  $Res call(
+      {Color color, String material, Uint8List? pictureBytes, String? name});
 }
 
 /// @nodoc
@@ -495,7 +529,7 @@ class _$EntityGestellCopyWithImpl<$Res, $Val extends EntityGestell>
   $Res call({
     Object? color = null,
     Object? material = null,
-    Object? picturePath = null,
+    Object? pictureBytes = freezed,
     Object? name = freezed,
   }) {
     return _then(_value.copyWith(
@@ -507,10 +541,10 @@ class _$EntityGestellCopyWithImpl<$Res, $Val extends EntityGestell>
           ? _value.material
           : material // ignore: cast_nullable_to_non_nullable
               as String,
-      picturePath: null == picturePath
-          ? _value.picturePath
-          : picturePath // ignore: cast_nullable_to_non_nullable
-              as String,
+      pictureBytes: freezed == pictureBytes
+          ? _value.pictureBytes
+          : pictureBytes // ignore: cast_nullable_to_non_nullable
+              as Uint8List?,
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -527,7 +561,8 @@ abstract class _$$EntityGestellImplCopyWith<$Res>
       __$$EntityGestellImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Color color, String material, String picturePath, String? name});
+  $Res call(
+      {Color color, String material, Uint8List? pictureBytes, String? name});
 }
 
 /// @nodoc
@@ -543,7 +578,7 @@ class __$$EntityGestellImplCopyWithImpl<$Res>
   $Res call({
     Object? color = null,
     Object? material = null,
-    Object? picturePath = null,
+    Object? pictureBytes = freezed,
     Object? name = freezed,
   }) {
     return _then(_$EntityGestellImpl(
@@ -555,10 +590,10 @@ class __$$EntityGestellImplCopyWithImpl<$Res>
           ? _value.material
           : material // ignore: cast_nullable_to_non_nullable
               as String,
-      picturePath: null == picturePath
-          ? _value.picturePath
-          : picturePath // ignore: cast_nullable_to_non_nullable
-              as String,
+      pictureBytes: freezed == pictureBytes
+          ? _value.pictureBytes
+          : pictureBytes // ignore: cast_nullable_to_non_nullable
+              as Uint8List?,
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -573,7 +608,7 @@ class _$EntityGestellImpl implements _EntityGestell {
   const _$EntityGestellImpl(
       {required this.color,
       required this.material,
-      required this.picturePath,
+      this.pictureBytes,
       this.name});
 
   @override
@@ -581,13 +616,13 @@ class _$EntityGestellImpl implements _EntityGestell {
   @override
   final String material;
   @override
-  final String picturePath;
+  final Uint8List? pictureBytes;
   @override
   final String? name;
 
   @override
   String toString() {
-    return 'EntityGestell(color: $color, material: $material, picturePath: $picturePath, name: $name)';
+    return 'EntityGestell(color: $color, material: $material, pictureBytes: $pictureBytes, name: $name)';
   }
 
   @override
@@ -598,14 +633,14 @@ class _$EntityGestellImpl implements _EntityGestell {
             (identical(other.color, color) || other.color == color) &&
             (identical(other.material, material) ||
                 other.material == material) &&
-            (identical(other.picturePath, picturePath) ||
-                other.picturePath == picturePath) &&
+            const DeepCollectionEquality()
+                .equals(other.pictureBytes, pictureBytes) &&
             (identical(other.name, name) || other.name == name));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, color, material, picturePath, name);
+  int get hashCode => Object.hash(runtimeType, color, material,
+      const DeepCollectionEquality().hash(pictureBytes), name);
 
   @JsonKey(ignore: true)
   @override
@@ -618,7 +653,7 @@ abstract class _EntityGestell implements EntityGestell {
   const factory _EntityGestell(
       {required final Color color,
       required final String material,
-      required final String picturePath,
+      final Uint8List? pictureBytes,
       final String? name}) = _$EntityGestellImpl;
 
   @override
@@ -626,7 +661,7 @@ abstract class _EntityGestell implements EntityGestell {
   @override
   String get material;
   @override
-  String get picturePath;
+  Uint8List? get pictureBytes;
   @override
   String? get name;
   @override

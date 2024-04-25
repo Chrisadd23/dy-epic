@@ -3,6 +3,6 @@ import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/dom
 import 'package:either_dart/either.dart';
 
 abstract class RepositoryWorkingTable {
-  Future<Either<Failure, EntityWorkingTableProduct>> getArbeitstischeProduct(
-      String? product);
+  Future<Either<Failure, EntityWorkingTableProduct>> getWorkingTableProduct(
+      String? productNumber);
 }

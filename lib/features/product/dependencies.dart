@@ -31,8 +31,9 @@ _setUpWorkingTable() {
           dataSourceArbeitstische: getIt()));
 
   //Cubit
-  getIt.registerFactory<CubitWorkingTableProduct>(
-      () => CubitWorkingTableProduct(repositoryProductArbeitstische: getIt()));
+  getIt.registerFactory<CubitWorkingTableProduct>(() =>
+      CubitWorkingTableProduct(getIt(),
+          repositoryProductArbeitstische: getIt()));
 }
 
 _setUpConferenceChair() {

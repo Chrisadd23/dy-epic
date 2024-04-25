@@ -45,7 +45,6 @@ linter:
     - annotate_overrides
     - avoid_relative_lib_imports
     - avoid_types_as_parameter_names
-    - diagnostic_describe_all_properties
     - avoid_print
     - depend_on_referenced_packages
 
