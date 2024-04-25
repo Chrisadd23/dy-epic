@@ -20,6 +20,9 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           flutter-version: '3.16.9'
+      - run: delete pubspeck.lock
+      - run: flutter clean
+      - run: flutter pub cache repair
       - run: flutter pub get
       - run: flutter test
       - run: flutter build apk --release --split-per-abi
