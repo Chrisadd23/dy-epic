@@ -16,11 +16,11 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-java@v3
         with:
-          java-version: "17.x"
-          distribution: 'temurin'
+          distribution: 'temurin'  # Empfohlene Distribution für Java
+          java-version: '17'
       - uses: subosito/flutter-action@v2
         with:
-          channel: "13.6.9"
+          flutter-version: '3.16.9'
       - name: Import Keystore
         env:
           KEYSTORE: ${{ secrets.KEYSTORE }}
@@ -47,11 +47,11 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-java@v3
         with:
-          java-version: "17.x"
-          distribution: 'temurin'
+          distribution: 'temurin'  # Empfohlene Distribution für Java
+          java-version: '17'
       - uses: subosito/flutter-action@v2
         with:
-          channel: "13.6.9"
+          flutter-version: '3.16.9'
       - run: flutter pub get
       - run: flutter clean
       - run: flutter build ios --release --no-codesign
@@ -64,11 +64,11 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-java@v3
         with:
-          java-version: "17.x"
-          distribution: 'temurin'
+          distribution: 'temurin'  # Empfohlene Distribution für Java
+          java-version: '17'
       - uses: subosito/flutter-action@v2
         with:
-          channel: "13.6.9"
+          flutter-version: '3.16.9'
       - run: flutter pub get
       - run: flutter clean
       - run: flutter build appbundle
