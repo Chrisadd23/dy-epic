@@ -17,6 +17,7 @@ jobs:
       - uses: actions/setup-java@v3
         with:
           java-version: "17.x"
+          distribution: 'temurin'
       - uses: subosito/flutter-action@v2
         with:
           channel: "13.6.9"
@@ -33,6 +34,7 @@ jobs:
       - uses: actions/setup-java@v3
         with:
           java-version: "17.x"
+          distribution: 'temurin'
       - uses: subosito/flutter-action@v2
         with:
           channel: "13.6.9"
@@ -49,6 +51,7 @@ jobs:
       - uses: actions/setup-java@v3
         with:
           java-version: "17.x"
+          distribution: 'temurin'
       - uses: subosito/flutter-action@v2
         with:
           channel: "13.6.9"
