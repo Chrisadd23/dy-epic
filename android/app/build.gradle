@@ -36,7 +36,7 @@ if (keystorePropertiesFile.exists()) {
 
 android {
 
-    compileSdkVersion flutter.compileSdkVersion
+    compileSdkVersion 34
     ndkVersion flutter.ndkVersion
     namespace = "com.example.app_flutter_produkt_bestellen"
 
@@ -58,9 +58,9 @@ android {
         applicationId "com.example.app_flutter_produkt_bestellen"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
-        minSdkVersion 24
+        minSdkVersion 22
 
-        targetSdkVersion 33
+        targetSdkVersion 34
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
@@ -80,7 +80,7 @@ android {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig signingConfigs.debug
-            signingConfig signingConfigs.release
+            //signingConfig signingConfigs.release
         }
 
 
@@ -91,12 +91,14 @@ android {
     productFlavors {
         development {
             dimension "default"
+
             resValue "string", "app_name", "dev Oberhaizinger"
             applicationIdSuffix ""
         }
 
         production {
             dimension "default"
+
             resValue "string", "app_name", "Oberhaizinger"
             applicationIdSuffix ""
         }
