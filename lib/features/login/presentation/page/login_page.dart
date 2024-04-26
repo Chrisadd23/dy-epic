@@ -234,7 +234,6 @@ class _PasswordTextWidget extends HookWidget {
           child: BlocBuilder<TextEditingCubit, TextEditingState>(
             builder: (context, state) => TextField(
               controller: state.customerPassword,
-              keyboardType: TextInputType.none,
               decoration: InputDecoration(
                   suffixIcon: InkWell(
                       onTap: () =>
