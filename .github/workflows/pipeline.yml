@@ -12,6 +12,15 @@ jobs:
   flutter_test:
     name: Run flutter test and analyze
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        flavor:
+          - development
+          - production
+        build-type:
+          - release
+          - develop
+
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-java@v3
@@ -39,37 +48,119 @@ jobs:
       - run: flutter analyze
       - run: flutter test
 
-  build_ios:
-    name: Build Flutter (iOS)
+
+  ios_develop:
+    name: Build Flutter (iOS - Debug)
     needs: [ flutter_test ]
     runs-on: macos-latest
+    strategy:
+      matrix:
+        flavor:
+          - development
+          - production
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-java@v3
         with:
           distribution: 'temurin'  # Empfohlene Distribution für Java
           java-version: '17'
-      - uses: subosito/flutter-action@v2
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.16.9'
-      - run: flutter pub get
-      - run: flutter clean
-      - run: flutter build ios --release --no-codesign
+      - name: Install dependencies
+        run: flutter pub get
+      - name: Build iOS
+        run: flutter build ios --flavor ${{ matrix.flavor }} --debug --no-codesign
+      - name: Upload IPA
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.flavor }}-ios-develop
+          path: build/ios/ipa/*.ipa
 
-  build_appbundle:
-    name: Build Flutter (Android)
+  ios_release:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        flavor:
+          - flavor1
+          - flavor2
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'  # Empfohlene Distribution für Java
+          java-version: '17'
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.16.9'
+      - name: Install dependencies
+        run: flutter pub get
+      - name: Build iOS
+        run: flutter build ios --flavor ${{ matrix.flavor }} --release --no-codesign
+      - name: Upload IPA
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.flavor }}-ios-release
+          path: build/ios/ipa/*.ipa
+
+  android_develop:
+    name: Build Flutter (Android - Debug)
     needs: [ flutter_test ]
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        flavor:
+          - development
+          - production
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-java@v3
         with:
           distribution: 'temurin'  # Empfohlene Distribution für Java
           java-version: '17'
-      - uses: subosito/flutter-action@v2
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.16.9'
-      - run: flutter pub get
-      - run: flutter clean
-      - run: flutter build appbundle
+      - name: Install dependencies
+        run: flutter pub get
+      - name: Build APK
+        run: flutter build apk --flavor ${{ matrix.flavor }} --debug
+      - name: Upload APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.flavor }}-android-develop
+          path: build/app/outputs/flutter-apk/*.apk
+
+
+  android_release:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        flavor:
+          - development
+          - production
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'  # Empfohlene Distribution für Java
+          java-version: '17'
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.16.9'
+      - name: Install dependencies
+        run: flutter pub get
+      - name: Build APK
+        run: flutter build apk --flavor ${{ matrix.flavor }} --release
+      - name: Upload APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.flavor }}-android-release
+          path: build/app/outputs/flutter-apk/*.apk
+
+
 
