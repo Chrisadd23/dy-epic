@@ -83,8 +83,8 @@ jobs:
     strategy:
       matrix:
         flavor:
-          - flavor1
-          - flavor2
+          - development
+          - production
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-java@v3
