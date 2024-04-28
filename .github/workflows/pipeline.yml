@@ -1,5 +1,5 @@
 name: "build release on pull request"
-
+#pipline
 on:
   pull_request:
     branches:
@@ -79,6 +79,8 @@ jobs:
           path: build/ios/ipa/*.ipa
 
   ios_release:
+    name: Build Flutter (iOS - Release)
+    needs: [ flutter_test ]
     runs-on: macos-latest
     strategy:
       matrix:
@@ -136,6 +138,8 @@ jobs:
 
 
   android_release:
+    name: Build Flutter (Android - release)
+    needs: [ flutter_test ]
     runs-on: ubuntu-latest
     strategy:
       matrix:
