@@ -26,7 +26,7 @@ jobs:
       - uses: actions/setup-java@v3
         with:
           distribution: 'temurin'  # Empfohlene Distribution für Java
-          java-version: '17'
+          java-version: '17.x'
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.16.9'
@@ -51,7 +51,7 @@ jobs:
       - uses: actions/setup-java@v3
         with:
           distribution: 'temurin'  # Empfohlene Distribution für Java
-          java-version: '17'
+          java-version: '17.x'
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
@@ -80,7 +80,7 @@ jobs:
       - uses: actions/setup-java@v3
         with:
           distribution: 'temurin'  # Empfohlene Distribution für Java
-          java-version: '17'
+          java-version: '17.x'
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
@@ -109,7 +109,7 @@ jobs:
       - uses: actions/setup-java@v3
         with:
           distribution: 'temurin'  # Empfohlene Distribution für Java
-          java-version: '17'
+          java-version: '17.x'
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
