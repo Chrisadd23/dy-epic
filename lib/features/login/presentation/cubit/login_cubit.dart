@@ -31,6 +31,7 @@ class LoginCubit extends Cubit<LoginState> {
 
   bool _loginRules(
       {required String? customerNumber, required String? password}) {
+    //check if customer entered test
     if (customerNumber == null ||
         customerNumber.isEmpty ||
         password == null ||

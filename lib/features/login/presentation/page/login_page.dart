@@ -139,26 +139,35 @@ class _BlocBuilderLoginPage extends StatelessWidget {
   }
 }
 
-class _LoginButton extends StatelessWidget {
+class _LoginButton extends HookWidget {
   const _LoginButton();
 
   @override
   Widget build(BuildContext context) {
+    final isAbleToPressButton = useState<bool>(true);
     return BlocBuilder<TextEditingCubit, TextEditingState>(
         builder: (context, state) {
       return Padding(
         padding: EdgeInsets.symmetric(
             vertical: MediaQuery.sizeOf(context).height * 0.07),
         child: InkWell(
-          onTap: () {
-            context.read<LoginCubit>().login(
-                customerNumber: state.customerNumber.text,
-                password: state.customerPassword.text);
-          },
+          onTap: !isAbleToPressButton.value
+              ? null
+              : () {
+                  isAbleToPressButton.value = false;
+                  context
+                      .read<LoginCubit>()
+                      .login(
+                          customerNumber: state.customerNumber.text,
+                          password: state.customerPassword.text)
+                      .whenComplete(() => isAbleToPressButton.value = true);
+                },
           child: Center(
             child: Container(
               decoration: BoxDecoration(
-                  color: Colors.grey[200],
+                  color: isAbleToPressButton.value
+                      ? Colors.white
+                      : Colors.grey[200],
                   border: Border.all(),
                   borderRadius: const BorderRadius.all(Radius.circular(20))),
               height: 70,
@@ -225,7 +234,6 @@ class _PasswordTextWidget extends HookWidget {
           child: BlocBuilder<TextEditingCubit, TextEditingState>(
             builder: (context, state) => TextField(
               controller: state.customerPassword,
-              keyboardType: TextInputType.none,
               decoration: InputDecoration(
                   suffixIcon: InkWell(
                       onTap: () =>

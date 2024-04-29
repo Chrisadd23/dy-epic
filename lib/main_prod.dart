@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  AppConfig.appFlavor = Flavor.production;
   FirebaseConfiguration.initFirebaseStorage();
-  Flavor.setFlavorOnce(flavor: Flavor.development);
+
   MainConfiguration.configuration();
 }

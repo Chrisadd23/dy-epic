@@ -1,13 +1,19 @@
-abstract class Flavor {
-  static String? _flavor;
+enum Flavor {
+  development,
+  production,
+}
 
-  static void setFlavorOnce({required String flavor}) {
-    _flavor ??= flavor;
+class AppConfig {
+  static Flavor appFlavor = Flavor.development;
+
+  static String get appName => appFlavor.name;
+
+  static String get title {
+    switch (appFlavor) {
+      case Flavor.development:
+        return 'dev Oberhaizinger';
+      case Flavor.production:
+        return 'Oberhaizinger';
+    }
   }
-
-  static String get appFlavor => _flavor ?? 'none';
-
-  static String get development => 'development';
-
-  static String get production => 'production';
 }
