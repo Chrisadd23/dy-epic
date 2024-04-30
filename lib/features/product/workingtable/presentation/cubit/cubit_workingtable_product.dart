@@ -107,13 +107,5 @@ class CubitWorkingTableProduct extends CubitProduct<CubitWorkingTableProduct> {
         selectedBreiteUndTiefe: product.breiteXTiefe?.firstOrNull);
   }
 
-  _getPrice(
-      {double? price,
-      required List<AdditionalAttributes> additionalAttributes}) {
-    if (price == null) return null;
-    for (final attribute in additionalAttributes) {
-      price = price! + attribute.amount;
-    }
-    return price;
-  }
+ 
 }
