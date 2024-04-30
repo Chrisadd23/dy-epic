@@ -12,7 +12,7 @@ part of 'state_workingtable.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$StateArbeitsTischeProduct {
@@ -419,7 +419,7 @@ class _$StateArbeitsTischeProductImpl implements _StateArbeitsTischeProduct {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$StateArbeitsTischeProductImpl &&
@@ -619,7 +619,7 @@ class _$BreiteXTiefeImpl implements _BreiteXTiefe {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BreiteXTiefeImpl &&
@@ -771,7 +771,7 @@ class _$StandbyStromverbrauchImpl implements _StandbyStromverbrauch {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$StandbyStromverbrauchImpl &&
@@ -927,7 +927,7 @@ class _$GerauscheentwicklungImpl implements _Gerauscheentwicklung {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GerauscheentwicklungImpl &&
@@ -1083,7 +1083,7 @@ class _$HubgeschwindigkeitImpl implements _Hubgeschwindigkeit {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$HubgeschwindigkeitImpl &&
@@ -1238,7 +1238,7 @@ class _$HubbereichImpl implements _Hubbereich {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$HubbereichImpl &&
@@ -1391,7 +1391,7 @@ class _$GestellDimensionImpl implements _GestellDimension {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GestellDimensionImpl &&
@@ -1548,7 +1548,7 @@ class _$HoehenVerstellabrkeitImpl implements _HoehenVerstellabrkeit {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$HoehenVerstellabrkeitImpl &&
@@ -1715,7 +1715,7 @@ class _$GestellImpl implements _Gestell {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GestellImpl &&
@@ -1925,7 +1925,7 @@ class _$PlatteImpl implements _Platte {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PlatteImpl &&
@@ -2074,7 +2074,7 @@ class _$BeschichtungImpl implements _Beschichtung {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BeschichtungImpl &&

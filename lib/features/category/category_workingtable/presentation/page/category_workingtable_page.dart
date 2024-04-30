@@ -182,7 +182,7 @@ class CategoryProductState extends State<CategoryProduct> {
             ]),
         child: InkWell(
           onTap: () => context.goNamed(
-              '${AppGoRouter.arbeitstische.name}/${AppGoRouter.product.name}',
+              '${AppGoRouter.arbeitstische.name}/${AppGoRouter.product.title}',
               queryParameters: <String, String>{
                 'productNumber': widget.productNumber
               }),
@@ -320,7 +320,7 @@ class _ProductColors extends StatelessWidget {
               Expanded(
                   child: InkWell(
                 onTap: () => context.goNamed(
-                    '${AppGoRouter.arbeitstische.name}/${AppGoRouter.product.name}',
+                    '${AppGoRouter.arbeitstische.name}/${AppGoRouter.product.title}',
                     queryParameters: {
                       'color': AppColors.white.toString(),
                       'productNumber': product.productNumber
@@ -342,7 +342,7 @@ class _ProductColors extends StatelessWidget {
               Expanded(
                   child: InkWell(
                 onTap: () => context.goNamed(
-                    '${AppGoRouter.arbeitstische.name}/${AppGoRouter.product.name}',
+                    '${AppGoRouter.arbeitstische.name}/${AppGoRouter.product.title}',
                     queryParameters: {
                       'color': '${AppColors.silver989899}',
                       'productNumber': product.productNumber
@@ -364,7 +364,7 @@ class _ProductColors extends StatelessWidget {
               Expanded(
                   child: InkWell(
                 onTap: () => context.goNamed(
-                    '${AppGoRouter.arbeitstische.name}/${AppGoRouter.product.name}',
+                    '${AppGoRouter.arbeitstische.name}/${AppGoRouter.product.title}',
                     queryParameters: {
                       'color': '${Colors.black}',
                       'productNumber': product.productNumber

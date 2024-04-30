@@ -12,14 +12,14 @@ part of 'event_shopping_basket.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$EventShoppingBasket {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ChosenProduct chosenProduct, int? index) add,
-    required TResult Function(int position) change,
+    required TResult Function(int position, String location) change,
     required TResult Function(int position) remove,
     required TResult Function(EnumSortProductOrder orderList) orderList,
     required TResult Function(String customerNumber) send,
@@ -30,7 +30,7 @@ mixin _$EventShoppingBasket {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ChosenProduct chosenProduct, int? index)? add,
-    TResult? Function(int position)? change,
+    TResult? Function(int position, String location)? change,
     TResult? Function(int position)? remove,
     TResult? Function(EnumSortProductOrder orderList)? orderList,
     TResult? Function(String customerNumber)? send,
@@ -41,7 +41,7 @@ mixin _$EventShoppingBasket {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ChosenProduct chosenProduct, int? index)? add,
-    TResult Function(int position)? change,
+    TResult Function(int position, String location)? change,
     TResult Function(int position)? remove,
     TResult Function(EnumSortProductOrder orderList)? orderList,
     TResult Function(String customerNumber)? send,
@@ -164,7 +164,7 @@ class _$AddImpl implements _Add {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddImpl &&
@@ -186,7 +186,7 @@ class _$AddImpl implements _Add {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ChosenProduct chosenProduct, int? index) add,
-    required TResult Function(int position) change,
+    required TResult Function(int position, String location) change,
     required TResult Function(int position) remove,
     required TResult Function(EnumSortProductOrder orderList) orderList,
     required TResult Function(String customerNumber) send,
@@ -200,7 +200,7 @@ class _$AddImpl implements _Add {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ChosenProduct chosenProduct, int? index)? add,
-    TResult? Function(int position)? change,
+    TResult? Function(int position, String location)? change,
     TResult? Function(int position)? remove,
     TResult? Function(EnumSortProductOrder orderList)? orderList,
     TResult? Function(String customerNumber)? send,
@@ -214,7 +214,7 @@ class _$AddImpl implements _Add {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ChosenProduct chosenProduct, int? index)? add,
-    TResult Function(int position)? change,
+    TResult Function(int position, String location)? change,
     TResult Function(int position)? remove,
     TResult Function(EnumSortProductOrder orderList)? orderList,
     TResult Function(String customerNumber)? send,
@@ -293,7 +293,7 @@ abstract class _$$ChangeImplCopyWith<$Res> {
           _$ChangeImpl value, $Res Function(_$ChangeImpl) then) =
       __$$ChangeImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int position});
+  $Res call({int position, String location});
 }
 
 /// @nodoc
@@ -308,12 +308,17 @@ class __$$ChangeImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? position = null,
+    Object? location = null,
   }) {
     return _then(_$ChangeImpl(
       position: null == position
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
               as int,
+      location: null == location
+          ? _value.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -321,27 +326,31 @@ class __$$ChangeImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ChangeImpl implements _Change {
-  const _$ChangeImpl({required this.position});
+  const _$ChangeImpl({required this.position, required this.location});
 
   @override
   final int position;
+  @override
+  final String location;
 
   @override
   String toString() {
-    return 'EventShoppingBasket.change(position: $position)';
+    return 'EventShoppingBasket.change(position: $position, location: $location)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ChangeImpl &&
             (identical(other.position, position) ||
-                other.position == position));
+                other.position == position) &&
+            (identical(other.location, location) ||
+                other.location == location));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, position);
+  int get hashCode => Object.hash(runtimeType, position, location);
 
   @JsonKey(ignore: true)
   @override
@@ -353,35 +362,35 @@ class _$ChangeImpl implements _Change {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ChosenProduct chosenProduct, int? index) add,
-    required TResult Function(int position) change,
+    required TResult Function(int position, String location) change,
     required TResult Function(int position) remove,
     required TResult Function(EnumSortProductOrder orderList) orderList,
     required TResult Function(String customerNumber) send,
     required TResult Function() clear,
     required TResult Function() deleteFailureMessage,
   }) {
-    return change(position);
+    return change(position, location);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ChosenProduct chosenProduct, int? index)? add,
-    TResult? Function(int position)? change,
+    TResult? Function(int position, String location)? change,
     TResult? Function(int position)? remove,
     TResult? Function(EnumSortProductOrder orderList)? orderList,
     TResult? Function(String customerNumber)? send,
     TResult? Function()? clear,
     TResult? Function()? deleteFailureMessage,
   }) {
-    return change?.call(position);
+    return change?.call(position, location);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ChosenProduct chosenProduct, int? index)? add,
-    TResult Function(int position)? change,
+    TResult Function(int position, String location)? change,
     TResult Function(int position)? remove,
     TResult Function(EnumSortProductOrder orderList)? orderList,
     TResult Function(String customerNumber)? send,
@@ -390,7 +399,7 @@ class _$ChangeImpl implements _Change {
     required TResult orElse(),
   }) {
     if (change != null) {
-      return change(position);
+      return change(position, location);
     }
     return orElse();
   }
@@ -443,9 +452,12 @@ class _$ChangeImpl implements _Change {
 }
 
 abstract class _Change implements EventShoppingBasket {
-  const factory _Change({required final int position}) = _$ChangeImpl;
+  const factory _Change(
+      {required final int position,
+      required final String location}) = _$ChangeImpl;
 
   int get position;
+  String get location;
   @JsonKey(ignore: true)
   _$$ChangeImplCopyWith<_$ChangeImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -496,7 +508,7 @@ class _$RemoveImpl implements _Remove {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RemoveImpl &&
@@ -517,7 +529,7 @@ class _$RemoveImpl implements _Remove {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ChosenProduct chosenProduct, int? index) add,
-    required TResult Function(int position) change,
+    required TResult Function(int position, String location) change,
     required TResult Function(int position) remove,
     required TResult Function(EnumSortProductOrder orderList) orderList,
     required TResult Function(String customerNumber) send,
@@ -531,7 +543,7 @@ class _$RemoveImpl implements _Remove {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ChosenProduct chosenProduct, int? index)? add,
-    TResult? Function(int position)? change,
+    TResult? Function(int position, String location)? change,
     TResult? Function(int position)? remove,
     TResult? Function(EnumSortProductOrder orderList)? orderList,
     TResult? Function(String customerNumber)? send,
@@ -545,7 +557,7 @@ class _$RemoveImpl implements _Remove {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ChosenProduct chosenProduct, int? index)? add,
-    TResult Function(int position)? change,
+    TResult Function(int position, String location)? change,
     TResult Function(int position)? remove,
     TResult Function(EnumSortProductOrder orderList)? orderList,
     TResult Function(String customerNumber)? send,
@@ -660,7 +672,7 @@ class _$OrderListImpl implements _OrderList {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OrderListImpl &&
@@ -681,7 +693,7 @@ class _$OrderListImpl implements _OrderList {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ChosenProduct chosenProduct, int? index) add,
-    required TResult Function(int position) change,
+    required TResult Function(int position, String location) change,
     required TResult Function(int position) remove,
     required TResult Function(EnumSortProductOrder orderList) orderList,
     required TResult Function(String customerNumber) send,
@@ -695,7 +707,7 @@ class _$OrderListImpl implements _OrderList {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ChosenProduct chosenProduct, int? index)? add,
-    TResult? Function(int position)? change,
+    TResult? Function(int position, String location)? change,
     TResult? Function(int position)? remove,
     TResult? Function(EnumSortProductOrder orderList)? orderList,
     TResult? Function(String customerNumber)? send,
@@ -709,7 +721,7 @@ class _$OrderListImpl implements _OrderList {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ChosenProduct chosenProduct, int? index)? add,
-    TResult Function(int position)? change,
+    TResult Function(int position, String location)? change,
     TResult Function(int position)? remove,
     TResult Function(EnumSortProductOrder orderList)? orderList,
     TResult Function(String customerNumber)? send,
@@ -824,7 +836,7 @@ class _$SendImpl implements _Send {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SendImpl &&
@@ -845,7 +857,7 @@ class _$SendImpl implements _Send {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ChosenProduct chosenProduct, int? index) add,
-    required TResult Function(int position) change,
+    required TResult Function(int position, String location) change,
     required TResult Function(int position) remove,
     required TResult Function(EnumSortProductOrder orderList) orderList,
     required TResult Function(String customerNumber) send,
@@ -859,7 +871,7 @@ class _$SendImpl implements _Send {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ChosenProduct chosenProduct, int? index)? add,
-    TResult? Function(int position)? change,
+    TResult? Function(int position, String location)? change,
     TResult? Function(int position)? remove,
     TResult? Function(EnumSortProductOrder orderList)? orderList,
     TResult? Function(String customerNumber)? send,
@@ -873,7 +885,7 @@ class _$SendImpl implements _Send {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ChosenProduct chosenProduct, int? index)? add,
-    TResult Function(int position)? change,
+    TResult Function(int position, String location)? change,
     TResult Function(int position)? remove,
     TResult Function(EnumSortProductOrder orderList)? orderList,
     TResult Function(String customerNumber)? send,
@@ -970,7 +982,7 @@ class _$ClearImpl implements _Clear {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$ClearImpl);
   }
@@ -982,7 +994,7 @@ class _$ClearImpl implements _Clear {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ChosenProduct chosenProduct, int? index) add,
-    required TResult Function(int position) change,
+    required TResult Function(int position, String location) change,
     required TResult Function(int position) remove,
     required TResult Function(EnumSortProductOrder orderList) orderList,
     required TResult Function(String customerNumber) send,
@@ -996,7 +1008,7 @@ class _$ClearImpl implements _Clear {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ChosenProduct chosenProduct, int? index)? add,
-    TResult? Function(int position)? change,
+    TResult? Function(int position, String location)? change,
     TResult? Function(int position)? remove,
     TResult? Function(EnumSortProductOrder orderList)? orderList,
     TResult? Function(String customerNumber)? send,
@@ -1010,7 +1022,7 @@ class _$ClearImpl implements _Clear {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ChosenProduct chosenProduct, int? index)? add,
-    TResult Function(int position)? change,
+    TResult Function(int position, String location)? change,
     TResult Function(int position)? remove,
     TResult Function(EnumSortProductOrder orderList)? orderList,
     TResult Function(String customerNumber)? send,
@@ -1102,7 +1114,7 @@ class _$DeleteFailureMessageImpl implements _DeleteFailureMessage {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeleteFailureMessageImpl);
@@ -1115,7 +1127,7 @@ class _$DeleteFailureMessageImpl implements _DeleteFailureMessage {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ChosenProduct chosenProduct, int? index) add,
-    required TResult Function(int position) change,
+    required TResult Function(int position, String location) change,
     required TResult Function(int position) remove,
     required TResult Function(EnumSortProductOrder orderList) orderList,
     required TResult Function(String customerNumber) send,
@@ -1129,7 +1141,7 @@ class _$DeleteFailureMessageImpl implements _DeleteFailureMessage {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ChosenProduct chosenProduct, int? index)? add,
-    TResult? Function(int position)? change,
+    TResult? Function(int position, String location)? change,
     TResult? Function(int position)? remove,
     TResult? Function(EnumSortProductOrder orderList)? orderList,
     TResult? Function(String customerNumber)? send,
@@ -1143,7 +1155,7 @@ class _$DeleteFailureMessageImpl implements _DeleteFailureMessage {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ChosenProduct chosenProduct, int? index)? add,
-    TResult Function(int position)? change,
+    TResult Function(int position, String location)? change,
     TResult Function(int position)? remove,
     TResult Function(EnumSortProductOrder orderList)? orderList,
     TResult Function(String customerNumber)? send,

@@ -193,9 +193,10 @@ class _ShoppingBasketOffer extends HookWidget {
               color: Colors.white,
               onSwiped: (direction) {
                 if (direction == SwipeDirection.startToEnd) {
-                  context
-                      .read<BlocShoppingBasket>()
-                      .add(EventShoppingBasket.change(position: index));
+                  context.read<BlocShoppingBasket>().add(
+                      EventShoppingBasket.change(
+                          position: index,
+                          location: getIt<GoRouter>().location));
                 }
                 if (direction == SwipeDirection.endToStart) {
                   context

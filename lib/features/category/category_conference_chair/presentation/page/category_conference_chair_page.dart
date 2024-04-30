@@ -170,7 +170,7 @@ class _ProductState extends State<Product> {
             ]),
         child: InkWell(
           onTap: () => context.goNamed(
-              '${AppGoRouter.konferenzstuehle.name}/${AppGoRouter.product.name}',
+              '${AppGoRouter.konferenzstuehle.name}/${AppGoRouter.product.title}',
               queryParameters: <String, String>{
                 'productNumber': widget.picturePath
               }),

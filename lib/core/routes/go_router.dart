@@ -114,7 +114,7 @@ enum AppGoRouter {
                     routes: [
                       GoRoute(
                         path: product.title,
-                        name: '${arbeitstische.name}/${product.name}',
+                        name: '${arbeitstische.name}/${product.title}',
                         pageBuilder: (context, state) {
                           debugPrint("check goRouter record ${state.extra as ({
                             ChosenProduct chosenProduct,
@@ -151,7 +151,7 @@ enum AppGoRouter {
                     routes: [
                       GoRoute(
                         path: product.title,
-                        name: '${buerostuehle.name}/${product.name}',
+                        name: '${buerostuehle.name}/${product.title}',
                         pageBuilder: (context, state) {
                           final product =
                               state.queryParameters['productNumber'];
@@ -179,7 +179,7 @@ enum AppGoRouter {
                     routes: [
                       GoRoute(
                         path: product.title,
-                        name: '${konferenzstuehle.name}/${product.name}',
+                        name: '${konferenzstuehle.name}/${product.title}',
                         pageBuilder: (context, state) {
                           debugPrint("check goRouter recor ${state.extra as ({
                             ChosenProduct chosenProduct,
