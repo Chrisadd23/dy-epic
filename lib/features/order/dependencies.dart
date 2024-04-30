@@ -5,8 +5,8 @@ import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 abstract class OrderDependencies {
   static void setUp() {
     //Cubit
-    getIt.registerFactory<OrderCubit>(() => OrderCubit());
-
-    getIt.registerFactory<OrderRequestCubit>(() => OrderRequestCubit());
+    getIt
+      ..registerFactory<OrderCubit>(() => OrderCubit())
+      ..registerFactory<OrderRequestCubit>(() => OrderRequestCubit());
   }
 }

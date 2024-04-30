@@ -5,7 +5,8 @@ import 'package:go_router/go_router.dart';
 
 abstract class CoreDependencies {
   static setUp() {
-    getIt.registerLazySingleton<CubitPictures>(() => CubitPictures());
-    getIt.registerLazySingleton<GoRouter>(() => AppGoRouter.router);
+    getIt
+      ..registerLazySingleton<CubitPictures>(() => CubitPictures())
+      ..registerLazySingleton<GoRouter>(() => AppGoRouter.router);
   }
 }

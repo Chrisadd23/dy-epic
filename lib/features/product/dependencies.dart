@@ -1,7 +1,3 @@
-import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/data/datasource/datasource_product_arbeitstische.dart';
-import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/data/repository/repoitory_product_workingtable_implementation.dart';
-import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/domain/repository/repostiory_workingtable.dart';
-import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/presentation/cubit/cubit_workingtable_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/conferenceChairProduct/data/datasource/datasource_conference_char_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/conferenceChairProduct/data/repository/repository_conference_chair_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/conferenceChairProduct/domain/repository/repository_conference_chair_product.dart';
@@ -10,6 +6,10 @@ import 'package:app_flutter_produkt_bestellen/features/product/officeChairProduc
 import 'package:app_flutter_produkt_bestellen/features/product/officeChairProduct/data/repository/repository_office_chair_product_implementation.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/officeChairProduct/domain/repository/repository_office_chair_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/officeChairProduct/presentation/cubit/cubit_office_chair_product.dart';
+import 'package:app_flutter_produkt_bestellen/features/product/workingtable/data/datasource/datasource_product_arbeitstische.dart';
+import 'package:app_flutter_produkt_bestellen/features/product/workingtable/data/repository/repoitory_product_workingtable_implementation.dart';
+import 'package:app_flutter_produkt_bestellen/features/product/workingtable/domain/repository/repostiory_workingtable.dart';
+import 'package:app_flutter_produkt_bestellen/features/product/workingtable/presentation/cubit/cubit_workingtable_product.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 
 abstract class ProductDependencies {
@@ -22,52 +22,51 @@ abstract class ProductDependencies {
 
 _setUpWorkingTable() {
   //datasource
-  getIt.registerLazySingleton<DataSourceProductWorkingTable>(
-      () => DataSourceProductWorkingtableImplementation());
+  getIt
+    ..registerLazySingleton<DataSourceProductWorkingTable>(
+        () => DataSourceProductWorkingtableImplementation())
 
-  //repository
-  getIt.registerLazySingleton<RepositoryWorkingTable>(() =>
-      RepositoryProductWorkingtableImplementation(
-          dataSourceArbeitstische: getIt()));
+    //repository
+    ..registerLazySingleton<RepositoryWorkingTable>(() =>
+        RepositoryProductWorkingtableImplementation(
+            dataSourceWorkingTable: getIt()))
 
-  //Cubit
-  getIt.registerFactory<CubitWorkingTableProduct>(() =>
-      CubitWorkingTableProduct(getIt(),
-          repositoryProductWorkingTable: getIt()));
+    //Cubit
+    ..registerFactory<CubitWorkingTableProduct>(() => CubitWorkingTableProduct(
+        getIt(),
+        repositoryProductWorkingTable: getIt()));
 }
 
 _setUpConferenceChair() {
-  getIt.registerLazySingleton<DataSourceConferenceChairProduct>(
-    () => DataSourceConferenceChairProductImplementation(),
-  );
-
-  getIt.registerLazySingleton<RepositoryConferenceChairProduct>(
-    () => RepositoryConferenceChairProductImplementation(
-      dataSourceConferenceChairProduct: getIt(),
-    ),
-  );
-
-  getIt.registerFactory<CubitConferenceChairProduct>(
-    () => CubitConferenceChairProduct(
-      repositoryConferenceChairProduct: getIt(),
-    ),
-  );
+  getIt
+    ..registerLazySingleton<DataSourceConferenceChairProduct>(
+      () => DataSourceConferenceChairProductImplementation(),
+    )
+    ..registerLazySingleton<RepositoryConferenceChairProduct>(
+      () => RepositoryConferenceChairProductImplementation(
+        dataSourceConferenceChairProduct: getIt(),
+      ),
+    )
+    ..registerFactory<CubitConferenceChairProduct>(
+      () => CubitConferenceChairProduct(
+        repositoryConferenceChairProduct: getIt(),
+      ),
+    );
 }
 
 _setUpOfficeChair() {
-  getIt.registerLazySingleton<DataSourceOfficeChairProduct>(
-    () => DataSourceOfficeChairProductImplementation(),
-  );
-
-  getIt.registerLazySingleton<RepositoryOfficeChairProduct>(
-    () => RepositoryOfficeChairProductImplementation(
-      dataSourceOfficeChairProduct: getIt(),
-    ),
-  );
-
-  getIt.registerFactory<CubitOfficeChairProduct>(
-    () => CubitOfficeChairProduct(
-      repositoryOfficeChairProduct: getIt(),
-    ),
-  );
+  getIt
+    ..registerLazySingleton<DataSourceOfficeChairProduct>(
+      () => DataSourceOfficeChairProductImplementation(),
+    )
+    ..registerLazySingleton<RepositoryOfficeChairProduct>(
+      () => RepositoryOfficeChairProductImplementation(
+        dataSourceOfficeChairProduct: getIt(),
+      ),
+    )
+    ..registerFactory<CubitOfficeChairProduct>(
+      () => CubitOfficeChairProduct(
+        repositoryOfficeChairProduct: getIt(),
+      ),
+    );
 }

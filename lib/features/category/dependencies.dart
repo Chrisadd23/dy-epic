@@ -24,57 +24,52 @@ abstract class CategoryDependencies {
 }
 
 void setUpCategoryWorkingTable() {
-  getIt.registerLazySingleton<CategoryWorkingTableDatasource>(
-      () => DataSourceWorkingTableImplementation());
-
-  getIt.registerLazySingleton<CategoryWorkingTableRepository>(() =>
-      CategoryWorkingtableRepositoryImplementation(
-          dataSourceWorkingTable: getIt()));
-
-  getIt.registerFactory<CategoryWorkingTableCubit>(() =>
-      CategoryWorkingTableCubit(getIt(), repositoryWorkingTable: getIt()));
+  getIt
+    ..registerLazySingleton<CategoryWorkingTableDatasource>(
+        () => DataSourceWorkingTableImplementation())
+    ..registerLazySingleton<CategoryWorkingTableRepository>(() =>
+        CategoryWorkingtableRepositoryImplementation(
+            dataSourceWorkingTable: getIt()))
+    ..registerFactory<CategoryWorkingTableCubit>(() =>
+        CategoryWorkingTableCubit(getIt(), repositoryWorkingTable: getIt()));
 }
 
 void setUpOfficeChair() {
-  getIt.registerLazySingleton<DataSourceBuerostuehle>(
-      () => DataSourceBuerostuehleImplementation(FirebaseFirestore.instance));
-
-  getIt.registerLazySingleton<RepositoryBuerodrehstuehle>(() =>
-      RepositoryBuerodrehstuehleImplementation(
-          dataSourceBuerostuehle: getIt()));
-
-  getIt.registerSingleton(CubitChooseOfficeChair());
-
-  getIt.registerFactory<CubitOfficeChair>(
-      () => CubitOfficeChair(
-            getIt(),
-            repositoryOfficeChair: getIt(),
-          ),
-      instanceName: EnumSelectOfficeChairCategory.normal.name);
-
-  getIt.registerFactory<CubitOfficeChair>(
-      () => CubitOfficeChair(
-            getIt(),
-            repositoryOfficeChair: getIt(),
-          ),
-      instanceName: EnumSelectOfficeChairCategory.hochlehner.name);
+  getIt
+    ..registerLazySingleton<DataSourceBuerostuehle>(
+        () => DataSourceBuerostuehleImplementation(FirebaseFirestore.instance))
+    ..registerLazySingleton<RepositoryBuerodrehstuehle>(() =>
+        RepositoryBuerodrehstuehleImplementation(
+            dataSourceBuerostuehle: getIt()))
+    ..registerSingleton(CubitChooseOfficeChair())
+    ..registerFactory<CubitOfficeChair>(
+        () => CubitOfficeChair(
+              getIt(),
+              repositoryOfficeChair: getIt(),
+            ),
+        instanceName: EnumSelectOfficeChairCategory.normal.name)
+    ..registerFactory<CubitOfficeChair>(
+        () => CubitOfficeChair(
+              getIt(),
+              repositoryOfficeChair: getIt(),
+            ),
+        instanceName: EnumSelectOfficeChairCategory.hochlehner.name);
 }
 
 void setUpConferenceChair() {
-  getIt.registerLazySingleton<DataSourceConferenceChair>(
-    () => DataSourceConferenceChairImplementation(),
-  );
-
-  getIt.registerLazySingleton<RepositoryConferenceChair>(
-    () => RepositoryConferenceChairImplementation(
-      dataSourceConferenceChair: getIt(),
-    ),
-  );
-
-  getIt.registerFactory<CubitConferenceChair>(
-    () => CubitConferenceChair(
-      getIt(),
-      repositoryConferenceChair: getIt(),
-    ),
-  );
+  getIt
+    ..registerLazySingleton<DataSourceConferenceChair>(
+      () => DataSourceConferenceChairImplementation(),
+    )
+    ..registerLazySingleton<RepositoryConferenceChair>(
+      () => RepositoryConferenceChairImplementation(
+        dataSourceConferenceChair: getIt(),
+      ),
+    )
+    ..registerFactory<CubitConferenceChair>(
+      () => CubitConferenceChair(
+        getIt(),
+        repositoryConferenceChair: getIt(),
+      ),
+    );
 }

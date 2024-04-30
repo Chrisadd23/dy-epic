@@ -7,20 +7,20 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 abstract class ShoppingBasketDependencies {
   static setUp() {
-    getIt.registerLazySingleton<ShoppingBasketDataSource>(
-      () => ShoppingBasketDataSourceImplementation(FirebaseFirestore.instance),
-    );
-
-    getIt.registerLazySingleton<ShoppingBasketRepository>(
-      () => ShoppingBasketRepositoryImplementation(
-        shoppingBasketDataSource: getIt(),
-      ),
-    );
-
-    getIt.registerLazySingleton<BlocShoppingBasket>(
-      () => BlocShoppingBasket(
-        shoppingBasketRepository: getIt(),
-      ),
-    );
+    getIt
+      ..registerLazySingleton<ShoppingBasketDataSource>(
+        () =>
+            ShoppingBasketDataSourceImplementation(FirebaseFirestore.instance),
+      )
+      ..registerLazySingleton<ShoppingBasketRepository>(
+        () => ShoppingBasketRepositoryImplementation(
+          shoppingBasketDataSource: getIt(),
+        ),
+      )
+      ..registerLazySingleton<BlocShoppingBasket>(
+        () => BlocShoppingBasket(
+          shoppingBasketRepository: getIt(),
+        ),
+      );
   }
 }

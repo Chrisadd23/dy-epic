@@ -9,16 +9,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 abstract class LoginDependencies {
   static void setUp() {
     //datasource
-    getIt.registerLazySingleton<LoginDatasource>(
-        () => LoginDatasourceImplementation(FirebaseFirestore.instance));
+    getIt
+      ..registerLazySingleton<LoginDatasource>(
+          () => LoginDatasourceImplementation(FirebaseFirestore.instance))
 
-    //repository
-    getIt.registerLazySingleton<LoginRepository>(
-        () => LoginRepositoryImplementation(loginDataSource: getIt()));
+      //repository
+      ..registerLazySingleton<LoginRepository>(
+          () => LoginRepositoryImplementation(loginDataSource: getIt()))
 
-    //cubit
-    getIt.registerSingleton<LoginCubit>(LoginCubit(loginRepository: getIt()));
-
-    getIt.registerFactory<TextEditingCubit>(() => TextEditingCubit());
+      //cubit
+      ..registerSingleton<LoginCubit>(LoginCubit(loginRepository: getIt()))
+      ..registerFactory<TextEditingCubit>(() => TextEditingCubit());
   }
 }
