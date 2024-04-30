@@ -22,7 +22,7 @@ class SettingsPage extends StatelessWidget {
 }
 
 class _SettingsPageStack extends StatelessWidget {
-  const _SettingsPageStack({super.key});
+  const _SettingsPageStack();
 
   @override
   Widget build(BuildContext context) {
