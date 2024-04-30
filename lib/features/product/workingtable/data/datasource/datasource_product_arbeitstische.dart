@@ -108,7 +108,8 @@ class DataSourceProductWorkingtableImplementation
         if (queryAdditionalAttributes != null) {
           final List<AdditionalAttributes> attributes =
               _getListAdditionalAttributes(
-                  queryAdditionalAttributes: queryAdditionalAttributes);
+                  queryAdditionalAttributes:
+                      queryAdditionalAttributes['additionalAttributes']);
           return attributes;
         }
         return null;
@@ -127,11 +128,11 @@ class DataSourceProductWorkingtableImplementation
   }
 
   List<AdditionalAttributes> _getListAdditionalAttributes(
-      {required Map<String, dynamic> queryAdditionalAttributes}) {
-    return queryAdditionalAttributes.keys
-        .map((key) => AdditionalAttributes(
-            name: key,
-            amount: double.parse(queryAdditionalAttributes[key].toString())))
-        .toList();
+      {required List queryAdditionalAttributes}) {
+    return queryAdditionalAttributes.map((attribute) {
+      return AdditionalAttributes(
+          name: attribute['name'],
+          amount: double.parse(attribute['price'].toString()));
+    }).toList();
   }
 }
