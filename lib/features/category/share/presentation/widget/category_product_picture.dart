@@ -2,11 +2,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class CategoryProductPictureMemoryImage extends StatefulWidget {
-  const CategoryProductPictureMemoryImage(
-      {super.key, this.uint8list, required this.function});
+  const CategoryProductPictureMemoryImage({super.key, this.uint8list});
 
   final Uint8List? uint8list;
-  final VoidCallback function;
 
   @override
   State<CategoryProductPictureMemoryImage> createState() =>
@@ -52,12 +50,9 @@ class _CategoryProductPictureMemoryImageState
                 strokeAlign: BorderSide.strokeAlignInside),
           ),
           child: ClipOval(
-            child: InkWell(
-              onTap: widget.function,
-              child: Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Image.memory(widget.uint8list!),
-              ),
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Image.memory(widget.uint8list!),
             ),
           ),
         ),

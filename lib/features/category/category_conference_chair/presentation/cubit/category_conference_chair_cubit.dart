@@ -70,7 +70,6 @@ class CubitConferenceChair extends Cubit<StateCategory> {
         ),
       );
 
-      debugPrint("successState ==> ${successState.toString()}");
       emit(successState);
 
       return;

@@ -322,36 +322,43 @@ class _ProductState extends State<Product> {
           boxShadow: const [
             BoxShadow(offset: Offset(5, 5), color: Colors.grey)
           ]),
-      child: LayoutBuilder(builder: (context, constraints) {
-        return Padding(
-          padding:
-              EdgeInsets.symmetric(horizontal: constraints.maxWidth * 0.05),
-          child: Column(
-            children: [
-              _ProductPicture(widget: widget),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: CategoryProductName(
-                  name: widget.name,
-                  constraints: constraints,
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  FittedBox(
-                    fit: BoxFit.fill,
-                    child: Text(
-                      'Preis:  ${widget.price.getCurrency()}',
-                      style: AppTextStyle.bold16,
-                    ),
+      child: InkWell(
+        onTap: () => context.goNamed(
+            '${AppGoRouter.buerostuehle.name}/${AppGoRouter.product.name}',
+            queryParameters: <String, String>{
+              'productNumber': widget.picturePath
+            }),
+        child: LayoutBuilder(builder: (context, constraints) {
+          return Padding(
+            padding:
+                EdgeInsets.symmetric(horizontal: constraints.maxWidth * 0.05),
+            child: Column(
+              children: [
+                _ProductPicture(widget: widget),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: CategoryProductName(
+                    name: widget.name,
+                    constraints: constraints,
                   ),
-                ],
-              ),
-            ],
-          ),
-        );
-      }),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    FittedBox(
+                      fit: BoxFit.fill,
+                      child: Text(
+                        'Preis:  ${widget.price.getCurrency()}',
+                        style: AppTextStyle.bold16,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          );
+        }),
+      ),
     );
   }
 
@@ -381,13 +388,6 @@ class _ProductPicture extends StatelessWidget {
         builder: (context, state) {
           return CategoryProductPictureMemoryImage(
             uint8list: state,
-            function: () {
-              context.goNamed(
-                  '${AppGoRouter.buerostuehle.name}/${AppGoRouter.product.name}',
-                  queryParameters: <String, String>{
-                    'productNumber': widget.picturePath
-                  });
-            },
           );
         });
   }

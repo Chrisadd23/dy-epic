@@ -168,31 +168,38 @@ class _ProductState extends State<Product> {
             boxShadow: const [
               BoxShadow(offset: Offset(5, 5), color: Colors.grey)
             ]),
-        child: LayoutBuilder(builder: (context, constraints) {
-          return Padding(
-            padding:
-                EdgeInsets.symmetric(horizontal: constraints.maxWidth * 0.05),
-            child: Column(
-              children: [
-                _ProductPicture(widget: widget),
-                CategoryProductName(
-                  name: widget.name,
-                  constraints: constraints,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    FittedBox(
-                        child: Text(
-                      'Preis:  ${widget.price.getCurrency()}',
-                      style: AppTextStyle.bold18,
-                    )),
-                  ],
-                ),
-              ],
-            ),
-          );
-        }));
+        child: InkWell(
+          onTap: () => context.goNamed(
+              '${AppGoRouter.konferenzstuehle.name}/${AppGoRouter.product.name}',
+              queryParameters: <String, String>{
+                'productNumber': widget.picturePath
+              }),
+          child: LayoutBuilder(builder: (context, constraints) {
+            return Padding(
+              padding:
+                  EdgeInsets.symmetric(horizontal: constraints.maxWidth * 0.05),
+              child: Column(
+                children: [
+                  _ProductPicture(widget: widget),
+                  CategoryProductName(
+                    name: widget.name,
+                    constraints: constraints,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      FittedBox(
+                          child: Text(
+                        'Preis:  ${widget.price.getCurrency()}',
+                        style: AppTextStyle.bold18,
+                      )),
+                    ],
+                  ),
+                ],
+              ),
+            );
+          }),
+        ));
   }
 
   @override
@@ -225,14 +232,8 @@ class _ProductPicture extends StatelessWidget {
                 .pictureByte),
         builder: (context, state) {
           return CategoryProductPictureMemoryImage(
-              uint8list: state,
-              function: () {
-                context.goNamed(
-                    '${AppGoRouter.konferenzstuehle.name}/${AppGoRouter.product.name}',
-                    queryParameters: <String, String>{
-                      'productNumber': widget.picturePath
-                    });
-              });
+            uint8list: state,
+          );
         });
   }
 }

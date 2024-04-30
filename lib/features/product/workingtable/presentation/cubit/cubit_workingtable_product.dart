@@ -32,7 +32,8 @@ class CubitWorkingTableProduct extends CubitProduct<CubitWorkingTableProduct> {
         emit(const StateProduct());
       }, (product) async {
         final workingTableAdditionalAttributes =
-            await _getWorkingTableAdditionAttributes(product: product);
+            await _getWorkingTableAdditionAttributes(
+                product: product, selectedColor: color);
         emit(StateProduct(
             productEntity: EntityProduct(
           productCategory: EnumCategoryProduct.workingTable,
@@ -47,7 +48,8 @@ class CubitWorkingTableProduct extends CubitProduct<CubitWorkingTableProduct> {
   }
 
   Future<WorkingTableAdditionalAttributes?> _getWorkingTableAdditionAttributes(
-      {required EntityWorkingTableProduct product}) async {
+      {required EntityWorkingTableProduct product,
+      String? selectedColor}) async {
     final listPicturePath = product.frameColors
             ?.map((e) => 'product_${product.productNumber}_${e.name}.png')
             .toList() ??
@@ -66,14 +68,6 @@ class CubitWorkingTableProduct extends CubitProduct<CubitWorkingTableProduct> {
             })
             .toList()
             .wait;
-
-        final frameColors = product.frameColors
-            ?.map((frameColor) => frameColor.copyWith(
-                pictureBytes: _cubitPictures.state[
-                    'product_${product.productNumber}_${frameColor.name}.png']))
-            .toList();
-
-        debugPrint("frameColors last ===> ${frameColors?.last.pictureBytes}");
       }
     } catch (error) {
       debugPrint(error.toString());
@@ -85,9 +79,15 @@ class CubitWorkingTableProduct extends CubitProduct<CubitWorkingTableProduct> {
                 'product_${product.productNumber}_${frameColor.name}.png']))
         .toList();
 
+    final selectedEntityGestell = selectedColor == null
+        ? frameColors?.firstOrNull
+        : frameColors
+            ?.where((element) => element.color.toString() == selectedColor)
+            .firstOrNull;
+
     return WorkingTableAdditionalAttributes(
         listEntityGestell: frameColors ?? [],
-        selectedEntityGestell: frameColors?.firstOrNull,
+        selectedEntityGestell: selectedEntityGestell,
         listBreisteUndTiefe: product.breiteXTiefe ?? [],
         selectedBreiteUndTiefe: product.breiteXTiefe?.firstOrNull);
   }

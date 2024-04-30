@@ -129,8 +129,10 @@ enum AppGoRouter {
                           final productNumber =
                               state.queryParameters['productNumber'];
                           debugPrint(
-                              "check queryParameters - ${productNumber.toString()}");
+                              "check queryParameters productNumber - ${productNumber.toString()}");
                           final selectedColor = state.queryParameters['color'];
+                          debugPrint(
+                              "check queryParameters selected Color- ${selectedColor.toString()}");
                           return _getCustomerTransition(
                               PageWorkingTableProduct(
                                   productNumber: productNumber,

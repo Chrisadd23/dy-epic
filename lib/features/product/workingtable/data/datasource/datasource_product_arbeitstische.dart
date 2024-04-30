@@ -28,7 +28,7 @@ class DataSourceProductWorkingtableImplementation
             .timeout(const Duration(seconds: 10))
             .then((querySnapshot) {
           final selectedWorkingTable = querySnapshot.docs.firstOrNull?.data();
-          debugPrint("found data ==> $selectedWorkingTable");
+
           if (selectedWorkingTable != null) {
             return EntityWorkingTableProduct(
               name: selectedWorkingTable['productTitle'].toString(),

@@ -91,7 +91,6 @@ class _ProductPicture extends StatelessWidget {
         selector: (state) => state.productEntity
             ?.workingTableAdditionalAttributes?.selectedEntityGestell,
         builder: (context, state) {
-          debugPrint("pictureByte Widget ===> $state}");
           return WidgetPictureArea(pictureBytes: state?.pictureBytes);
         });
   }
