@@ -56,15 +56,6 @@ class _BlocProviderOfficeChairProduct extends StatelessWidget {
       ),
     );
   }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(StringProperty('product', product));
-    properties.add(
-        DiagnosticsProperty<({ChosenProduct chosenProduct, int index})?>(
-            'recordOrder', recordOrder));
-  }
 }
 
 class _OfficeChairBlocBuilder extends StatelessWidget {

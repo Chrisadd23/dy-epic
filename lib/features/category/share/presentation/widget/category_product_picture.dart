@@ -64,14 +64,4 @@ class _CategoryProductPictureMemoryImageState
       ),
     );
   }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-
-    properties
-        .add(ObjectFlagProperty<VoidCallback>.has('function', widget.function));
-    properties
-        .add(ObjectFlagProperty<Uint8List?>.has('uint8list', widget.uint8list));
-  }
 }
