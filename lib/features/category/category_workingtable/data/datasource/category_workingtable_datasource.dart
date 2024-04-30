@@ -1,5 +1,6 @@
 import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
+import 'package:app_flutter_produkt_bestellen/core/fix_values/flavor.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/category_workingtable/domain/entity/category_workingtable_entity.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/domain/entity/category_product_entity.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -15,14 +16,13 @@ class DataSourceWorkingTableImplementation
   @override
   Future<Either<Failure, CategoryWorkingTableEntity>>
       getWorkingTableData() async {
-    // TODO: implement getArbeitstischeData
     try {
       Failure? failure;
       List<CategoryWorkingTableProductEntity> workingTableList = [];
 
       await FirebaseFirestore.instance
           .collection('Product')
-          .doc('kbLDlq3ItPF7onHoQnYL')
+          .doc(AppConfig.productDocumentId)
           .collection('workingTable')
           .get()
           .timeout(const Duration(seconds: 10))

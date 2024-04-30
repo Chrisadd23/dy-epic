@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class FixDrawerButton extends StatelessWidget {
@@ -44,13 +43,5 @@ class FixDrawerButton extends StatelessWidget {
         )),
       ),
     );
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(StringProperty('title', title));
-    properties.add(DoubleProperty('height', height));
-    properties.add(ObjectFlagProperty<VoidCallback>.has('function', function));
   }
 }

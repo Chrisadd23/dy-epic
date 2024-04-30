@@ -12,40 +12,40 @@ part of 'state_product.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$StateProduct<T> {
+mixin _$StateProduct {
   String get hashKey => throw _privateConstructorUsedError;
   String get category => throw _privateConstructorUsedError;
   int get productOrderCount => throw _privateConstructorUsedError;
-  double get price => throw _privateConstructorUsedError;
-  T? get productEntity => throw _privateConstructorUsedError;
+  EntityProduct? get productEntity => throw _privateConstructorUsedError;
   int? get position => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $StateProductCopyWith<T, StateProduct<T>> get copyWith =>
+  $StateProductCopyWith<StateProduct> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $StateProductCopyWith<T, $Res> {
+abstract class $StateProductCopyWith<$Res> {
   factory $StateProductCopyWith(
-          StateProduct<T> value, $Res Function(StateProduct<T>) then) =
-      _$StateProductCopyWithImpl<T, $Res, StateProduct<T>>;
+          StateProduct value, $Res Function(StateProduct) then) =
+      _$StateProductCopyWithImpl<$Res, StateProduct>;
   @useResult
   $Res call(
       {String hashKey,
       String category,
       int productOrderCount,
-      double price,
-      T? productEntity,
+      EntityProduct? productEntity,
       int? position});
+
+  $EntityProductCopyWith<$Res>? get productEntity;
 }
 
 /// @nodoc
-class _$StateProductCopyWithImpl<T, $Res, $Val extends StateProduct<T>>
-    implements $StateProductCopyWith<T, $Res> {
+class _$StateProductCopyWithImpl<$Res, $Val extends StateProduct>
+    implements $StateProductCopyWith<$Res> {
   _$StateProductCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -59,7 +59,6 @@ class _$StateProductCopyWithImpl<T, $Res, $Val extends StateProduct<T>>
     Object? hashKey = null,
     Object? category = null,
     Object? productOrderCount = null,
-    Object? price = null,
     Object? productEntity = freezed,
     Object? position = freezed,
   }) {
@@ -76,45 +75,55 @@ class _$StateProductCopyWithImpl<T, $Res, $Val extends StateProduct<T>>
           ? _value.productOrderCount
           : productOrderCount // ignore: cast_nullable_to_non_nullable
               as int,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as double,
       productEntity: freezed == productEntity
           ? _value.productEntity
           : productEntity // ignore: cast_nullable_to_non_nullable
-              as T?,
+              as EntityProduct?,
       position: freezed == position
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
               as int?,
     ) as $Val);
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $EntityProductCopyWith<$Res>? get productEntity {
+    if (_value.productEntity == null) {
+      return null;
+    }
+
+    return $EntityProductCopyWith<$Res>(_value.productEntity!, (value) {
+      return _then(_value.copyWith(productEntity: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
-abstract class _$$StateProductImplCopyWith<T, $Res>
-    implements $StateProductCopyWith<T, $Res> {
-  factory _$$StateProductImplCopyWith(_$StateProductImpl<T> value,
-          $Res Function(_$StateProductImpl<T>) then) =
-      __$$StateProductImplCopyWithImpl<T, $Res>;
+abstract class _$$StateProductImplCopyWith<$Res>
+    implements $StateProductCopyWith<$Res> {
+  factory _$$StateProductImplCopyWith(
+          _$StateProductImpl value, $Res Function(_$StateProductImpl) then) =
+      __$$StateProductImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {String hashKey,
       String category,
       int productOrderCount,
-      double price,
-      T? productEntity,
+      EntityProduct? productEntity,
       int? position});
+
+  @override
+  $EntityProductCopyWith<$Res>? get productEntity;
 }
 
 /// @nodoc
-class __$$StateProductImplCopyWithImpl<T, $Res>
-    extends _$StateProductCopyWithImpl<T, $Res, _$StateProductImpl<T>>
-    implements _$$StateProductImplCopyWith<T, $Res> {
+class __$$StateProductImplCopyWithImpl<$Res>
+    extends _$StateProductCopyWithImpl<$Res, _$StateProductImpl>
+    implements _$$StateProductImplCopyWith<$Res> {
   __$$StateProductImplCopyWithImpl(
-      _$StateProductImpl<T> _value, $Res Function(_$StateProductImpl<T>) _then)
+      _$StateProductImpl _value, $Res Function(_$StateProductImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -123,11 +132,10 @@ class __$$StateProductImplCopyWithImpl<T, $Res>
     Object? hashKey = null,
     Object? category = null,
     Object? productOrderCount = null,
-    Object? price = null,
     Object? productEntity = freezed,
     Object? position = freezed,
   }) {
-    return _then(_$StateProductImpl<T>(
+    return _then(_$StateProductImpl(
       hashKey: null == hashKey
           ? _value.hashKey
           : hashKey // ignore: cast_nullable_to_non_nullable
@@ -140,14 +148,10 @@ class __$$StateProductImplCopyWithImpl<T, $Res>
           ? _value.productOrderCount
           : productOrderCount // ignore: cast_nullable_to_non_nullable
               as int,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as double,
       productEntity: freezed == productEntity
           ? _value.productEntity
           : productEntity // ignore: cast_nullable_to_non_nullable
-              as T?,
+              as EntityProduct?,
       position: freezed == position
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
@@ -158,12 +162,11 @@ class __$$StateProductImplCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$StateProductImpl<T> implements _StateProduct<T> {
+class _$StateProductImpl implements _StateProduct {
   const _$StateProductImpl(
       {this.hashKey = '',
       this.category = '',
       this.productOrderCount = 0,
-      this.price = 0.00,
       this.productEntity,
       this.position});
 
@@ -177,61 +180,49 @@ class _$StateProductImpl<T> implements _StateProduct<T> {
   @JsonKey()
   final int productOrderCount;
   @override
-  @JsonKey()
-  final double price;
-  @override
-  final T? productEntity;
+  final EntityProduct? productEntity;
   @override
   final int? position;
 
   @override
   String toString() {
-    return 'StateProduct<$T>(hashKey: $hashKey, category: $category, productOrderCount: $productOrderCount, price: $price, productEntity: $productEntity, position: $position)';
+    return 'StateProduct(hashKey: $hashKey, category: $category, productOrderCount: $productOrderCount, productEntity: $productEntity, position: $position)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$StateProductImpl<T> &&
+            other is _$StateProductImpl &&
             (identical(other.hashKey, hashKey) || other.hashKey == hashKey) &&
             (identical(other.category, category) ||
                 other.category == category) &&
             (identical(other.productOrderCount, productOrderCount) ||
                 other.productOrderCount == productOrderCount) &&
-            (identical(other.price, price) || other.price == price) &&
-            const DeepCollectionEquality()
-                .equals(other.productEntity, productEntity) &&
+            (identical(other.productEntity, productEntity) ||
+                other.productEntity == productEntity) &&
             (identical(other.position, position) ||
                 other.position == position));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      hashKey,
-      category,
-      productOrderCount,
-      price,
-      const DeepCollectionEquality().hash(productEntity),
-      position);
+  int get hashCode => Object.hash(runtimeType, hashKey, category,
+      productOrderCount, productEntity, position);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$StateProductImplCopyWith<T, _$StateProductImpl<T>> get copyWith =>
-      __$$StateProductImplCopyWithImpl<T, _$StateProductImpl<T>>(
-          this, _$identity);
+  _$$StateProductImplCopyWith<_$StateProductImpl> get copyWith =>
+      __$$StateProductImplCopyWithImpl<_$StateProductImpl>(this, _$identity);
 }
 
-abstract class _StateProduct<T> implements StateProduct<T> {
+abstract class _StateProduct implements StateProduct {
   const factory _StateProduct(
       {final String hashKey,
       final String category,
       final int productOrderCount,
-      final double price,
-      final T? productEntity,
-      final int? position}) = _$StateProductImpl<T>;
+      final EntityProduct? productEntity,
+      final int? position}) = _$StateProductImpl;
 
   @override
   String get hashKey;
@@ -240,13 +231,11 @@ abstract class _StateProduct<T> implements StateProduct<T> {
   @override
   int get productOrderCount;
   @override
-  double get price;
-  @override
-  T? get productEntity;
+  EntityProduct? get productEntity;
   @override
   int? get position;
   @override
   @JsonKey(ignore: true)
-  _$$StateProductImplCopyWith<T, _$StateProductImpl<T>> get copyWith =>
+  _$$StateProductImplCopyWith<_$StateProductImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

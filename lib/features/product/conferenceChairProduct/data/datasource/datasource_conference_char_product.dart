@@ -1,4 +1,5 @@
 import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
+import 'package:app_flutter_produkt_bestellen/core/fix_values/flavor.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/conferenceChairProduct/domain/entity/entity_conference_chair_product.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:either_dart/either.dart';
@@ -21,7 +22,7 @@ class DataSourceConferenceChairProductImplementation
           "productNumber ===> ${productNumber.split('_')[1].split('.')[0]}");
       final product = await FirebaseFirestore.instance
           .collection('Product')
-          .doc('kbLDlq3ItPF7onHoQnYL')
+          .doc(AppConfig.productDocumentId)
           .collection('conferenceChair')
           .where('productNumber',
               isEqualTo: productNumber.split('_')[1].split('.')[0])

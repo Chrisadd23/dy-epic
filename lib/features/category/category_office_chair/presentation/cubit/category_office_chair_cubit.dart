@@ -54,8 +54,7 @@ class CubitOfficeChair extends Cubit<StateCategory> {
               _cubitPictures.state[picturePath] != null)) {
             final imageBytes =
                 await FirebaseConfiguration.getImageBytes(picturePath);
-            _cubitPictures.addPicture(
-                key: imageBytes.keys.first, value: imageBytes.values.first);
+            _cubitPictures.addPicture(key: picturePath, value: imageBytes);
           }
         }).wait;
       }

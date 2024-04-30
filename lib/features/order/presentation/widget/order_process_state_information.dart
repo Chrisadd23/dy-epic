@@ -1,6 +1,5 @@
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/cubit/order_customer_state.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class OrderProcessStateInformation extends StatelessWidget {
@@ -56,14 +55,5 @@ class OrderProcessStateInformation extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-
-    properties
-        .add(DiagnosticsProperty<ProductOrder>('productOrder', productOrder));
-    properties.add(StringProperty('category', category));
   }
 }

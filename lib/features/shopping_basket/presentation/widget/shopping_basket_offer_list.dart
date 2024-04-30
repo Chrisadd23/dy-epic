@@ -3,11 +3,10 @@ import 'package:app_flutter_produkt_bestellen/core/global_cubits/cubit_pictures.
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_state.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/page/login_page.dart';
-import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/bloc_shopping_basket.dart';
-import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/event_shopping_basket.dart';
-import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/state_shopping_basket.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket//presentation/bloc/state_shopping_basket.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/bloc/bloc_shopping_basket.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/bloc/event_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -126,13 +125,6 @@ class SendOrderButton extends StatelessWidget {
       ),
     );
   }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-        .add(DiagnosticsProperty<BoxConstraints>('constraints', constraints));
-  }
 }
 
 class _ShoppingBasketOffer extends HookWidget {
@@ -201,9 +193,10 @@ class _ShoppingBasketOffer extends HookWidget {
               color: Colors.white,
               onSwiped: (direction) {
                 if (direction == SwipeDirection.startToEnd) {
-                  context
-                      .read<BlocShoppingBasket>()
-                      .add(EventShoppingBasket.change(position: index));
+                  context.read<BlocShoppingBasket>().add(
+                      EventShoppingBasket.change(
+                          position: index,
+                          location: getIt<GoRouter>().location));
                 }
                 if (direction == SwipeDirection.endToStart) {
                   context
@@ -243,15 +236,6 @@ class _ShoppingBasketOffer extends HookWidget {
         )
       ],
     );
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(IntProperty('index', index));
-    properties
-        .add(DiagnosticsProperty<BoxConstraints>('constraints', constraints));
-    properties.add(DiagnosticsProperty<ChosenProduct>('item', item));
   }
 }
 
@@ -305,7 +289,8 @@ class _OfferInfo extends StatelessWidget {
                 child: Text(
                   NumberFormat.currency(
                           locale: 'de_DE', symbol: '€', decimalDigits: 2)
-                      .format(item.entityProduct.price),
+                      .format(item.entityProduct.price +
+                          item.entityProduct.additionalAmount),
                   style: const TextStyle(
                       fontSize: 20, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.right,
@@ -343,14 +328,6 @@ class _OfferInfo extends StatelessWidget {
         ),
       ],
     );
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-        .add(DiagnosticsProperty<BoxConstraints>('constraints', constraints));
-    properties.add(DiagnosticsProperty<ChosenProduct>('item', item));
   }
 }
 
@@ -395,7 +372,9 @@ class _Offer extends StatelessWidget {
                   child: Text(
                     NumberFormat.currency(
                             locale: 'de_DE', symbol: '€', decimalDigits: 2)
-                        .format(item.entityProduct.price * item.count),
+                        .format((item.entityProduct.price +
+                                item.entityProduct.additionalAmount) *
+                            item.count),
                     style: const TextStyle(
                         fontSize: 20, fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center,
@@ -407,12 +386,5 @@ class _Offer extends StatelessWidget {
         ],
       );
     });
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<ChosenProduct>('item', item));
-    properties.add(IntProperty('index', index));
   }
 }

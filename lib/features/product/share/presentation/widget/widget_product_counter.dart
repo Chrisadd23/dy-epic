@@ -1,5 +1,4 @@
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
-import 'package:app_flutter_produkt_bestellen/core/fix_widgets/loading_widget.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/cubit_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/state_product.dart';
 import 'package:app_flutter_produkt_bestellen/gen/assets.gen.dart';
@@ -87,26 +86,28 @@ class WidgetProductCounter extends HookWidget {
                             color: const Color.fromRGBO(87, 87, 87, 0.4),
                           ),
                           child: Center(
-                              child: BlocSelector<CubitProduct, StateProduct,
-                                      int?>(
-                                  selector: (state) => state.productOrderCount,
-                                  builder: (context, productCount) {
-                                    debugPrint(
-                                        "productCount ===>  $productCount");
-                                    return productCount == null
-                                        ? const LoadingWidget()
-                                        : FittedBox(
-                                            fit: BoxFit.fill,
-                                            child: Text(productCount.toString(),
-                                                style: _counterTextStyle),
-                                          );
-                                  })),
+                              child:
+                                  BlocSelector<CubitProduct, StateProduct, int>(
+                                      selector: (state) =>
+                                          state.productOrderCount,
+                                      builder: (context, productCount) {
+                                        debugPrint(
+                                            "productCount ===>  $productCount");
+                                        return FittedBox(
+                                          fit: BoxFit.fill,
+                                          child: Text(productCount.toString(),
+                                              style: _counterTextStyle),
+                                        );
+                                      })),
                         ),
                       ])),
               BlocSelector<CubitProduct, StateProduct,
                   ({int count, double price})?>(
-                selector: (state) =>
-                    (count: state.productOrderCount, price: state.price),
+                selector: (state) => (
+                  count: state.productOrderCount,
+                  price: (state.productEntity?.price ?? 0) +
+                      (state.productEntity?.additionalAmount ?? 0)
+                ),
                 builder: (context, state) =>
                     state?.count == null || state!.count == 0
                         ? const SizedBox.shrink()

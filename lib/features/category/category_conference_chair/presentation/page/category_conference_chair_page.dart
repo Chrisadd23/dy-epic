@@ -12,7 +12,7 @@ import 'package:app_flutter_produkt_bestellen/features/category/category_confere
 import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/cubit/state_category_generic.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/widget/category_product_name.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/widget/category_product_picture.dart';
-import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/bloc_shopping_basket.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/bloc/bloc_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/widget/shopping_basket_dialog.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/foundation.dart';
@@ -149,16 +149,6 @@ class Product extends StatefulWidget {
 
   @override
   State<Product> createState() => _ProductState();
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(StringProperty('picturePath', picturePath));
-    properties.add(
-        EnumProperty<EnumCategoryConferenceChair>('productType', productType));
-    properties.add(DoubleProperty('price', price));
-    properties.add(StringProperty('name', name));
-  }
 }
 
 class _ProductState extends State<Product> {
@@ -178,31 +168,38 @@ class _ProductState extends State<Product> {
             boxShadow: const [
               BoxShadow(offset: Offset(5, 5), color: Colors.grey)
             ]),
-        child: LayoutBuilder(builder: (context, constraints) {
-          return Padding(
-            padding:
-                EdgeInsets.symmetric(horizontal: constraints.maxWidth * 0.05),
-            child: Column(
-              children: [
-                _ProductPicture(widget: widget),
-                CategoryProductName(
-                  name: widget.name,
-                  constraints: constraints,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    FittedBox(
-                        child: Text(
-                      'Preis:  ${widget.price.getCurrency()}',
-                      style: AppTextStyle.bold18,
-                    )),
-                  ],
-                ),
-              ],
-            ),
-          );
-        }));
+        child: InkWell(
+          onTap: () => context.goNamed(
+              '${AppGoRouter.konferenzstuehle.name}/${AppGoRouter.product.title}',
+              queryParameters: <String, String>{
+                'productNumber': widget.picturePath
+              }),
+          child: LayoutBuilder(builder: (context, constraints) {
+            return Padding(
+              padding:
+                  EdgeInsets.symmetric(horizontal: constraints.maxWidth * 0.05),
+              child: Column(
+                children: [
+                  _ProductPicture(widget: widget),
+                  CategoryProductName(
+                    name: widget.name,
+                    constraints: constraints,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      FittedBox(
+                          child: Text(
+                        'Preis:  ${widget.price.getCurrency()}',
+                        style: AppTextStyle.bold18,
+                      )),
+                    ],
+                  ),
+                ],
+              ),
+            );
+          }),
+        ));
   }
 
   @override
@@ -235,14 +232,8 @@ class _ProductPicture extends StatelessWidget {
                 .pictureByte),
         builder: (context, state) {
           return CategoryProductPictureMemoryImage(
-              uint8list: state,
-              function: () {
-                context.goNamed(
-                    '${AppGoRouter.konferenzstuehle.name}/${AppGoRouter.product.name}',
-                    queryParameters: <String, String>{
-                      'productNumber': widget.picturePath
-                    });
-              });
+            uint8list: state,
+          );
         });
   }
 }

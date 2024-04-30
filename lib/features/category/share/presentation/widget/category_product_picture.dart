@@ -2,22 +2,13 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class CategoryProductPictureMemoryImage extends StatefulWidget {
-  const CategoryProductPictureMemoryImage(
-      {super.key, this.uint8list, required this.function});
+  const CategoryProductPictureMemoryImage({super.key, this.uint8list});
 
   final Uint8List? uint8list;
-  final VoidCallback function;
 
   @override
   State<CategoryProductPictureMemoryImage> createState() =>
       _CategoryProductPictureMemoryImageState();
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(ObjectFlagProperty<Uint8List>('uint8list', uint8list));
-    properties.add(ObjectFlagProperty<VoidCallback>.has('function', function));
-  }
 }
 
 class _CategoryProductPictureMemoryImageState
@@ -59,26 +50,13 @@ class _CategoryProductPictureMemoryImageState
                 strokeAlign: BorderSide.strokeAlignInside),
           ),
           child: ClipOval(
-            child: InkWell(
-              onTap: widget.function,
-              child: Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Image.memory(widget.uint8list!),
-              ),
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Image.memory(widget.uint8list!),
             ),
           ),
         ),
       ),
     );
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-
-    properties
-        .add(ObjectFlagProperty<VoidCallback>.has('function', widget.function));
-    properties
-        .add(ObjectFlagProperty<Uint8List?>.has('uint8list', widget.uint8list));
   }
 }

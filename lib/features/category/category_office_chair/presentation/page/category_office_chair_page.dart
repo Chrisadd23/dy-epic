@@ -15,7 +15,7 @@ import 'package:app_flutter_produkt_bestellen/features/category/category_office_
 import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/cubit/state_category_generic.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/widget/category_product_name.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/widget/category_product_picture.dart';
-import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/bloc_shopping_basket.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/bloc/bloc_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/widget/shopping_basket_dialog.dart';
 import 'package:app_flutter_produkt_bestellen/gen/assets.gen.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
@@ -234,14 +234,6 @@ class _ChooseCategoryButton extends StatelessWidget {
       );
     });
   }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(StringProperty('assetPath', assetPath));
-    properties.add(EnumProperty<EnumSelectOfficeChairCategory>(
-        'enumSelectOfficeChairCategory', enumSelectOfficeChairCategory));
-  }
 }
 
 class ProductListWheel extends StatefulWidget {
@@ -310,16 +302,6 @@ class Product extends StatefulWidget {
 
   @override
   State<Product> createState() => _ProductState();
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(StringProperty('picturePath', picturePath));
-    properties
-        .add(EnumProperty<EnumCategoryOfficeChair>('productType', productType));
-    properties.add(DoubleProperty('price', price));
-    properties.add(StringProperty('name', name));
-  }
 }
 
 class _ProductState extends State<Product> {
@@ -340,36 +322,43 @@ class _ProductState extends State<Product> {
           boxShadow: const [
             BoxShadow(offset: Offset(5, 5), color: Colors.grey)
           ]),
-      child: LayoutBuilder(builder: (context, constraints) {
-        return Padding(
-          padding:
-              EdgeInsets.symmetric(horizontal: constraints.maxWidth * 0.05),
-          child: Column(
-            children: [
-              _ProductPicture(widget: widget),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: CategoryProductName(
-                  name: widget.name,
-                  constraints: constraints,
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  FittedBox(
-                    fit: BoxFit.fill,
-                    child: Text(
-                      'Preis:  ${widget.price.getCurrency()}',
-                      style: AppTextStyle.bold16,
-                    ),
+      child: InkWell(
+        onTap: () => context.goNamed(
+            '${AppGoRouter.buerostuehle.name}/${AppGoRouter.product.title}',
+            queryParameters: <String, String>{
+              'productNumber': widget.picturePath
+            }),
+        child: LayoutBuilder(builder: (context, constraints) {
+          return Padding(
+            padding:
+                EdgeInsets.symmetric(horizontal: constraints.maxWidth * 0.05),
+            child: Column(
+              children: [
+                _ProductPicture(widget: widget),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: CategoryProductName(
+                    name: widget.name,
+                    constraints: constraints,
                   ),
-                ],
-              ),
-            ],
-          ),
-        );
-      }),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    FittedBox(
+                      fit: BoxFit.fill,
+                      child: Text(
+                        'Preis:  ${widget.price.getCurrency()}',
+                        style: AppTextStyle.bold16,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          );
+        }),
+      ),
     );
   }
 
@@ -399,13 +388,6 @@ class _ProductPicture extends StatelessWidget {
         builder: (context, state) {
           return CategoryProductPictureMemoryImage(
             uint8list: state,
-            function: () {
-              context.goNamed(
-                  '${AppGoRouter.buerostuehle.name}/${AppGoRouter.product.name}',
-                  queryParameters: <String, String>{
-                    'productNumber': widget.picturePath
-                  });
-            },
           );
         });
   }

@@ -9,12 +9,12 @@ import 'package:app_flutter_produkt_bestellen/features/login/presentation/page/l
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/page/order_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/page/order_page_shell_navigation.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/page/request_page.dart';
-import 'package:app_flutter_produkt_bestellen/features/product/arbeitstische/presentation/page/workingtable_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/conferenceChairProduct/presentation/page/page_conference_chair_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/officeChairProduct/presentation/page/page_office_chair_product.dart';
+import 'package:app_flutter_produkt_bestellen/features/product/workingtable/presentation/page/workingtable_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/settings/presentation/page/settings_page.dart';
-import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/bloc_shopping_basket.dart';
-import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/state_shopping_basket.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket//presentation/bloc/state_shopping_basket.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/bloc/bloc_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -114,7 +114,7 @@ enum AppGoRouter {
                     routes: [
                       GoRoute(
                         path: product.title,
-                        name: '${arbeitstische.name}/${product.name}',
+                        name: '${arbeitstische.name}/${product.title}',
                         pageBuilder: (context, state) {
                           debugPrint("check goRouter record ${state.extra as ({
                             ChosenProduct chosenProduct,
@@ -129,8 +129,10 @@ enum AppGoRouter {
                           final productNumber =
                               state.queryParameters['productNumber'];
                           debugPrint(
-                              "check queryParameters - ${productNumber.toString()}");
+                              "check queryParameters productNumber - ${productNumber.toString()}");
                           final selectedColor = state.queryParameters['color'];
+                          debugPrint(
+                              "check queryParameters selected Color- ${selectedColor.toString()}");
                           return _getCustomerTransition(
                               PageWorkingTableProduct(
                                   productNumber: productNumber,
@@ -149,7 +151,7 @@ enum AppGoRouter {
                     routes: [
                       GoRoute(
                         path: product.title,
-                        name: '${buerostuehle.name}/${product.name}',
+                        name: '${buerostuehle.name}/${product.title}',
                         pageBuilder: (context, state) {
                           final product =
                               state.queryParameters['productNumber'];
@@ -177,7 +179,7 @@ enum AppGoRouter {
                     routes: [
                       GoRoute(
                         path: product.title,
-                        name: '${konferenzstuehle.name}/${product.name}',
+                        name: '${konferenzstuehle.name}/${product.title}',
                         pageBuilder: (context, state) {
                           debugPrint("check goRouter recor ${state.extra as ({
                             ChosenProduct chosenProduct,

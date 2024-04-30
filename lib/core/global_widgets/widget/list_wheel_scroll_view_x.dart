@@ -1,5 +1,4 @@
 /// A Calculator.
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -157,30 +156,5 @@ class ListWheelScrollViewX extends StatelessWidget {
         childDelegate: listWheelChildDelegate,
       ),
     );
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(EnumProperty<Axis>('scrollDirection', scrollDirection));
-    properties
-        .add(DiagnosticsProperty<ScrollController?>('controller', controller));
-    properties.add(DiagnosticsProperty<ScrollPhysics?>('physics', physics));
-    properties.add(DoubleProperty('diameterRatio', diameterRatio));
-    properties.add(DoubleProperty('perspective', perspective));
-    properties.add(DoubleProperty('offAxisFraction', offAxisFraction));
-    properties.add(DiagnosticsProperty<bool>('useMagnifier', useMagnifier));
-    properties.add(DoubleProperty('magnification', magnification));
-    properties.add(
-        DoubleProperty('overAndUnderCenterOpacity', overAndUnderCenterOpacity));
-    properties.add(DoubleProperty('itemExtent', itemExtent));
-    properties.add(DoubleProperty('squeeze', squeeze));
-    properties.add(ObjectFlagProperty<ValueChanged<int>?>.has(
-        'onSelectedItemChanged', onSelectedItemChanged));
-    properties.add(DiagnosticsProperty<bool>(
-        'renderChildrenOutsideViewport', renderChildrenOutsideViewport));
-    properties.add(DiagnosticsProperty<ListWheelChildDelegate?>(
-        'childDelegate', childDelegate));
-    properties.add(EnumProperty<Clip>('clipBehavior', clipBehavior));
   }
 }

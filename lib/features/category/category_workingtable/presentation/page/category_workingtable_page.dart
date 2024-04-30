@@ -13,7 +13,7 @@ import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/category_workingtable/presentation/cubit/category_workingtable_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/cubit/state_category_generic.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/widget/category_product_picture.dart';
-import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/bloc_shopping_basket.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/bloc/bloc_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/widget/shopping_basket_dialog.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/foundation.dart';
@@ -69,7 +69,6 @@ class _WorkTables extends StatelessWidget {
             failure: (failure) =>
                 FailureWidget(failure: failure.failure.getFailureMessage),
             success: (successState) {
-              debugPrint("successState ==> $successState");
               final listProducts =
                   successState.productCategory?.listProduct.map((product) {
                 return CategoryProduct(
@@ -162,16 +161,6 @@ class CategoryProduct extends StatefulWidget {
 
   @override
   State<CategoryProduct> createState() => CategoryProductState();
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(StringProperty('picturePath', picturePath));
-    properties.add(
-        EnumProperty<EnumCategoryWorkingTable>('productType', productType));
-    properties.add(DoubleProperty('price', price));
-    properties.add(StringProperty('name', name));
-  }
 }
 
 class CategoryProductState extends State<CategoryProduct> {
@@ -191,26 +180,33 @@ class CategoryProductState extends State<CategoryProduct> {
             boxShadow: const [
               BoxShadow(offset: Offset(5, 5), color: Colors.grey)
             ]),
-        child: LayoutBuilder(builder: (context, constraints) {
-          return Padding(
-            padding:
-                EdgeInsets.symmetric(horizontal: constraints.maxWidth * 0.05),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _ProductPicture(widget: widget),
-                _ProductName(
-                  widget: widget,
-                  constraints: constraints,
-                ),
-                _ProductColors(
-                  product: widget,
-                  constraints: constraints,
-                ),
-              ],
-            ),
-          );
-        }));
+        child: InkWell(
+          onTap: () => context.goNamed(
+              '${AppGoRouter.arbeitstische.name}/${AppGoRouter.product.title}',
+              queryParameters: <String, String>{
+                'productNumber': widget.productNumber
+              }),
+          child: LayoutBuilder(builder: (context, constraints) {
+            return Padding(
+              padding:
+                  EdgeInsets.symmetric(horizontal: constraints.maxWidth * 0.05),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  _ProductPicture(widget: widget),
+                  _ProductName(
+                    widget: widget,
+                    constraints: constraints,
+                  ),
+                  _ProductColors(
+                    product: widget,
+                    constraints: constraints,
+                  ),
+                ],
+              ),
+            );
+          }),
+        ));
   }
 
   @override
@@ -279,14 +275,8 @@ class _ProductPicture extends StatelessWidget {
         builder: (context, state) {
           debugPrint("product name ==>${widget.picturePath}");
           return CategoryProductPictureMemoryImage(
-              uint8list: state,
-              function: () {
-                context.goNamed(
-                    '${AppGoRouter.arbeitstische.name}/${AppGoRouter.product.name}',
-                    queryParameters: <String, String>{
-                      'productNumber': widget.productNumber
-                    });
-              });
+            uint8list: state,
+          );
         });
   }
 }
@@ -330,14 +320,14 @@ class _ProductColors extends StatelessWidget {
               Expanded(
                   child: InkWell(
                 onTap: () => context.goNamed(
-                    '${AppGoRouter.arbeitstische.name}/${AppGoRouter.product.name}',
+                    '${AppGoRouter.arbeitstische.name}/${AppGoRouter.product.title}',
                     queryParameters: {
-                      'color': AppColors.whiteD6D6D7.toString(),
+                      'color': AppColors.white.toString(),
                       'productNumber': product.productNumber
                     }),
                 child: Container(
                   decoration: BoxDecoration(
-                      color: AppColors.whiteD6D6D7,
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(color: Colors.black, width: 2)),
                   child: SizedBox(
@@ -352,14 +342,14 @@ class _ProductColors extends StatelessWidget {
               Expanded(
                   child: InkWell(
                 onTap: () => context.goNamed(
-                    '${AppGoRouter.arbeitstische.name}/${AppGoRouter.product.name}',
+                    '${AppGoRouter.arbeitstische.name}/${AppGoRouter.product.title}',
                     queryParameters: {
-                      'color': '${AppColors.grey8D8D8E}',
+                      'color': '${AppColors.silver989899}',
                       'productNumber': product.productNumber
                     }),
                 child: Container(
                   decoration: BoxDecoration(
-                      color: AppColors.grey8D8D8E,
+                      color: AppColors.silver989899,
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(color: Colors.black, width: 2)),
                   child: SizedBox(
@@ -374,9 +364,9 @@ class _ProductColors extends StatelessWidget {
               Expanded(
                   child: InkWell(
                 onTap: () => context.goNamed(
-                    '${AppGoRouter.arbeitstische.name}/${AppGoRouter.product.name}',
+                    '${AppGoRouter.arbeitstische.name}/${AppGoRouter.product.title}',
                     queryParameters: {
-                      'color': '${AppColors.black080808}',
+                      'color': '${Colors.black}',
                       'productNumber': product.productNumber
                     }),
                 child: Container(

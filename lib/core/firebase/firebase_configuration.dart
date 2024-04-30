@@ -10,7 +10,7 @@ abstract class FirebaseConfiguration {
     _firebaseStorage = FirebaseStorage.instance;
   }
 
-  static Future<Map<String, Uint8List?>> getImageBytes(String filename) async {
+  static Future<Uint8List?> getImageBytes(String filename) async {
     debugPrint("Filename ==> $filename");
     Uint8List? imageBytes;
 
@@ -23,6 +23,6 @@ abstract class FirebaseConfiguration {
           (data) => data,
         );
 
-    return {filename: imageBytes};
+    return imageBytes;
   }
 }

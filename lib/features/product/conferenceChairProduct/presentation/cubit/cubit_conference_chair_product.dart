@@ -4,13 +4,13 @@ import 'package:app_flutter_produkt_bestellen/features/product/conferenceChairPr
 import 'package:app_flutter_produkt_bestellen/features/product/share/domain/entity/entity_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/cubit_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/state_product.dart';
-import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/state_shopping_basket.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket//presentation/bloc/state_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:either_dart/either.dart';
 import 'package:flutter/material.dart';
 
 class CubitConferenceChairProduct
-    extends CubitProduct<CubitConferenceChairProduct, EntityProduct> {
+    extends CubitProduct<CubitConferenceChairProduct> {
   CubitConferenceChairProduct({required this.repositoryConferenceChairProduct});
 
   final RepositoryConferenceChairProduct repositoryConferenceChairProduct;
@@ -24,17 +24,17 @@ class CubitConferenceChairProduct
           .getConferenceChairProduct(product: productNumber)
           .fold((failure) {
         debugPrint("failure ===> ${failure.toString()}");
-      }, (conferenceChaire) {
-        var newState = StateProduct<EntityProduct>(
-            productEntity: EntityProduct(
-              productNumber: conferenceChaire.productNumber,
-              pictureBytes: conferenceChaire.pictureBytes,
-              name: conferenceChaire.name,
-              attributes: conferenceChaire.attributes,
-              price: conferenceChaire.price,
-              productCategory: EnumCategoryProduct.conferenceChair,
-            ),
-            price: conferenceChaire.price);
+      }, (conferenceChair) {
+        var newState = StateProduct(
+          productEntity: EntityProduct(
+            productNumber: conferenceChair.productNumber,
+            pictureBytes: conferenceChair.pictureBytes,
+            name: conferenceChair.name,
+            attributes: conferenceChair.attributes,
+            price: conferenceChair.price,
+            productCategory: EnumCategoryProduct.conferenceChair,
+          ),
+        );
 
         debugPrint(
             "product parameter ===> $productNumber, picturelocal keys =>${getIt<CubitPictures>().state.keys}");
