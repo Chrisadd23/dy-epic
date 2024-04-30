@@ -8,7 +8,7 @@ import 'package:app_flutter_produkt_bestellen/features/product/share/presentatio
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/state_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/workingtable/domain/entity/entity_product_workingtable.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/workingtable/domain/repository/repostiory_workingtable.dart';
-import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/state_shopping_basket.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket//presentation/bloc/state_shopping_basket.dart';
 import 'package:either_dart/either.dart';
 import 'package:flutter/material.dart';
 
@@ -44,6 +44,11 @@ class CubitWorkingTableProduct extends CubitProduct<CubitWorkingTableProduct> {
           workingTableAdditionalAttributes: workingTableAdditionalAttributes,
         )));
       });
+    } else {
+      emit(StateProduct(
+          productEntity: recordOrder.chosenProduct.entityProduct,
+          productOrderCount: recordOrder.chosenProduct.count,
+          position: recordOrder.index));
     }
   }
 

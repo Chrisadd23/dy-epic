@@ -13,8 +13,8 @@ import 'package:app_flutter_produkt_bestellen/features/product/conferenceChairPr
 import 'package:app_flutter_produkt_bestellen/features/product/officeChairProduct/presentation/page/page_office_chair_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/workingtable/presentation/page/workingtable_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/settings/presentation/page/settings_page.dart';
-import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/bloc_shopping_basket.dart';
-import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/state_shopping_basket.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket//presentation/bloc/state_shopping_basket.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/bloc/bloc_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

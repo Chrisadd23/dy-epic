@@ -1,9 +1,9 @@
 import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket//presentation/bloc/state_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/domain/repository/shopping_basket_ropository.dart';
-import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/event_shopping_basket.dart';
-import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/state_shopping_basket.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/bloc/event_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -34,30 +34,24 @@ class BlocShoppingBasket
           final ({ChosenProduct chosenProduct, int index}) record =
               (chosenProduct: order, index: index);
 
-          if (!getIt<GoRouter>().location.contains('produkt')) {
-            getIt<GoRouter>().pop(null);
-            if (order.entityProduct.productCategory ==
-                EnumCategoryProduct.workingTable) {
-              getIt<GoRouter>().goNamed(
-                  '${AppGoRouter.arbeitstische.name}/${AppGoRouter.product.name}',
-                  extra: record);
-            } else if (order.entityProduct.productCategory ==
-                    EnumCategoryProduct.officeChairNormal ||
-                order.entityProduct.productCategory ==
-                    EnumCategoryProduct.officeChairHochlehner) {
-              getIt<GoRouter>().goNamed(
-                  '${AppGoRouter.buerostuehle.name}/${AppGoRouter.product.name}',
-                  extra: record);
-            } else if (order.entityProduct.productCategory ==
-                EnumCategoryProduct.conferenceChair) {
-              getIt<GoRouter>().goNamed(
-                  '${AppGoRouter.konferenzstuehle.name}/${AppGoRouter.product.name}',
-                  extra: record);
-            }
-          } else {
-            debugPrint(getIt<GoRouter>().location.split('/').last.toString());
-
-            getIt<GoRouter>().pop(record);
+          getIt<GoRouter>().pop(null);
+          if (order.entityProduct.productCategory ==
+              EnumCategoryProduct.workingTable) {
+            getIt<GoRouter>().goNamed(
+                '${AppGoRouter.arbeitstische.name}/${AppGoRouter.product.name}',
+                extra: record);
+          } else if (order.entityProduct.productCategory ==
+                  EnumCategoryProduct.officeChairNormal ||
+              order.entityProduct.productCategory ==
+                  EnumCategoryProduct.officeChairHochlehner) {
+            getIt<GoRouter>().goNamed(
+                '${AppGoRouter.buerostuehle.name}/${AppGoRouter.product.name}',
+                extra: record);
+          } else if (order.entityProduct.productCategory ==
+              EnumCategoryProduct.conferenceChair) {
+            getIt<GoRouter>().goNamed(
+                '${AppGoRouter.konferenzstuehle.name}/${AppGoRouter.product.name}',
+                extra: record);
           }
         },
         remove: (index) {

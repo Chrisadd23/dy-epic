@@ -4,8 +4,8 @@ import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_pag
 import 'package:app_flutter_produkt_bestellen/features/home/presentation/cubit/home_category_state.dart';
 import 'package:app_flutter_produkt_bestellen/features/home/presentation/cubit/home_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/home/presentation/widget/category_widget.dart';
-import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/bloc_shopping_basket.dart';
-import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/state_shopping_basket.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket//presentation/bloc/state_shopping_basket.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/bloc/bloc_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/widget/shopping_basket_dialog.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/material.dart';
