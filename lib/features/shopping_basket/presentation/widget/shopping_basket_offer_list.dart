@@ -7,7 +7,6 @@ import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentat
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/event_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/state_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -126,13 +125,6 @@ class SendOrderButton extends StatelessWidget {
       ),
     );
   }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-        .add(DiagnosticsProperty<BoxConstraints>('constraints', constraints));
-  }
 }
 
 class _ShoppingBasketOffer extends HookWidget {
@@ -244,15 +236,6 @@ class _ShoppingBasketOffer extends HookWidget {
       ],
     );
   }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(IntProperty('index', index));
-    properties
-        .add(DiagnosticsProperty<BoxConstraints>('constraints', constraints));
-    properties.add(DiagnosticsProperty<ChosenProduct>('item', item));
-  }
 }
 
 class _OfferInfo extends StatelessWidget {
@@ -344,14 +327,6 @@ class _OfferInfo extends StatelessWidget {
       ],
     );
   }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-        .add(DiagnosticsProperty<BoxConstraints>('constraints', constraints));
-    properties.add(DiagnosticsProperty<ChosenProduct>('item', item));
-  }
 }
 
 class _Offer extends StatelessWidget {
@@ -407,12 +382,5 @@ class _Offer extends StatelessWidget {
         ],
       );
     });
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<ChosenProduct>('item', item));
-    properties.add(IntProperty('index', index));
   }
 }

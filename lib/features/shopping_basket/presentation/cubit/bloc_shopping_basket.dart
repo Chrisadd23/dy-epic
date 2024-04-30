@@ -61,8 +61,8 @@ class BlocShoppingBasket
           }
         },
         remove: (index) {
-          List<ChosenProduct> newList = List.from(state.listChosenProduct);
-          newList.removeAt(index);
+          List<ChosenProduct> newList = List.from(state.listChosenProduct)
+            ..removeAt(index);
 
           final newState = state.copyWith(listChosenProduct: newList);
 

@@ -136,11 +136,4 @@ class SizeProductWidget extends StatelessWidget {
       ),
     );
   }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<ValueNotifier<({bool color, bool txb})>>(
-        'expandMenu', expandMenu));
-  }
 }
