@@ -240,12 +240,4 @@ class ColorWidget extends StatelessWidget {
           )),
     );
   }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-
-    properties.add(ColorProperty('color', color));
-    properties.add(ObjectFlagProperty<VoidCallback>.has('onTap', onTap));
-  }
 }

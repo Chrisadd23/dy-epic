@@ -31,15 +31,6 @@ class PageOfficeChairProduct extends StatelessWidget {
         child: _BlocProviderOfficeChairProduct(
             product: product, recordOrder: recordOrder));
   }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(StringProperty('product', product));
-    properties.add(
-        DiagnosticsProperty<({ChosenProduct chosenProduct, int index})?>(
-            'recordOrder', recordOrder));
-  }
 }
 
 class _BlocProviderOfficeChairProduct extends StatelessWidget {

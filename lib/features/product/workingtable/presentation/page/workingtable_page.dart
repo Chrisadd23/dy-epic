@@ -5,7 +5,6 @@ import 'package:app_flutter_produkt_bestellen/features/product/workingtable/pres
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/bloc_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/cubit/state_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -66,15 +65,5 @@ class _BlocProviderWorkingTable extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(StringProperty('product', product));
-    properties.add(
-        DiagnosticsProperty<({ChosenProduct chosenProduct, int index})?>(
-            'recordOrder', recordOrder));
-    properties.add(StringProperty('color', color));
   }
 }

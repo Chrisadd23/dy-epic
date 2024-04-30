@@ -30,15 +30,6 @@ class PageConferenceChairProduct extends StatelessWidget {
           recordOrder: recordOrder,
         ));
   }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(StringProperty('product', product));
-    properties.add(
-        DiagnosticsProperty<({ChosenProduct chosenProduct, int index})?>(
-            'recordOrder', recordOrder));
-  }
 }
 
 class _BlocProviderConferenceChair extends StatelessWidget {

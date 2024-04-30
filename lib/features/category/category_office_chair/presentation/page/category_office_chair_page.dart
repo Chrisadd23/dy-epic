@@ -302,16 +302,6 @@ class Product extends StatefulWidget {
 
   @override
   State<Product> createState() => _ProductState();
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(StringProperty('picturePath', picturePath));
-    properties
-        .add(EnumProperty<EnumCategoryOfficeChair>('productType', productType));
-    properties.add(DoubleProperty('price', price));
-    properties.add(StringProperty('name', name));
-  }
 }
 
 class _ProductState extends State<Product> {

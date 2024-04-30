@@ -11,13 +11,6 @@ class CategoryProductPictureMemoryImage extends StatefulWidget {
   @override
   State<CategoryProductPictureMemoryImage> createState() =>
       _CategoryProductPictureMemoryImageState();
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(ObjectFlagProperty<Uint8List>('uint8list', uint8list));
-    properties.add(ObjectFlagProperty<VoidCallback>.has('function', function));
-  }
 }
 
 class _CategoryProductPictureMemoryImageState
