@@ -1,12 +1,12 @@
 import 'dart:typed_data';
 
 import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
+import 'package:app_flutter_produkt_bestellen/core/fix_values/flavor.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/category_office_chair/domain/entity/entity_buerodrehstuehle.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/domain/entity/category_product_entity.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:either_dart/either.dart';
 import 'package:flutter/material.dart';
-
-import 'package:app_flutter_produkt_bestellen/features/category/category_office_chair/domain/entity/entity_buerodrehstuehle.dart';
 
 abstract class DataSourceBuerostuehle {
   Future<Either<Failure, EntityBuerodrehstuehle>> getBuerodrehstuehle(
@@ -33,9 +33,9 @@ class DataSourceBuerostuehleImplementation extends DataSourceBuerostuehle {
 
       await _firebaseFirestore
           .collection('Product')
-          .doc('kbLDlq3ItPF7onHoQnYL')
+          .doc(AppConfig.productDocumentId)
           .collection('officeChair')
-          .doc('lkO66P0vFh9C2kEaS2dR')
+          .doc(AppConfig.officeChairDocumentId)
           .collection(officeChairCategory!)
           .get()
           .timeout(const Duration(seconds: 10))

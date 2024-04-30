@@ -1,12 +1,12 @@
 import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
+import 'package:app_flutter_produkt_bestellen/core/fix_values/flavor.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/category_office_chair/presentation/cubit/choose_office_chair_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/officeChairProduct/domain/entity/entity_office_chair_product.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:either_dart/either.dart';
 import 'package:flutter/material.dart';
-
-import 'package:app_flutter_produkt_bestellen/features/category/category_office_chair/presentation/cubit/choose_office_chair_cubit.dart';
 
 abstract class DataSourceOfficeChairProduct {
   Future<Either<Failure, EntityOfficeChairProduct>> getOfficeChairProduct(
@@ -24,9 +24,9 @@ class DataSourceOfficeChairProductImplementation
       debugPrint("productNumber ===> $productNumber");
       final product = await FirebaseFirestore.instance
           .collection('Product')
-          .doc('kbLDlq3ItPF7onHoQnYL')
+          .doc(AppConfig.productDocumentId)
           .collection('officeChair')
-          .doc('lkO66P0vFh9C2kEaS2dR')
+          .doc(AppConfig.officeChairDocumentId)
           .collection(category.trim())
           .where('productNumber',
               isEqualTo: productNumber.split('_')[1].split('.')[0])

@@ -1,4 +1,5 @@
 import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
+import 'package:app_flutter_produkt_bestellen/core/fix_values/flavor.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:either_dart/either.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +29,7 @@ class ShoppingBasketDataSourceImplementation extends ShoppingBasketDataSource {
       if (orderList.isNotEmpty) {
         final collection = _firebaseFirestore
             .collection("OrderList")
-            .doc('8ZwDCBhDGrOMF8w7wS7Y')
+            .doc(AppConfig.orderListDocumentId)
             .collection('order');
         await collection.add(order['order']).then(
               (value) => true,
@@ -42,7 +43,7 @@ class ShoppingBasketDataSourceImplementation extends ShoppingBasketDataSource {
       if (requestList.isNotEmpty) {
         final collection = _firebaseFirestore
             .collection("OrderList")
-            .doc('4uKusyoOb8xNXsSwn6KX')
+            .doc(AppConfig.requestListDocumentId)
             .collection('request');
         await collection.add(order['request']).then(
               (value) => true,
