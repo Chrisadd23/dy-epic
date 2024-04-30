@@ -41,17 +41,18 @@ class CubitWorkingTableProduct extends CubitProduct<CubitWorkingTableProduct> {
 
         additionalAttributes.fold((failure) {
           debugPrint("additional Attributes failure => ${failure.toString()}");
-        },
-            (additionalAttributes) => emit(StateProduct(
-                    productEntity: EntityProduct(
-                  productCategory: EnumCategoryProduct.workingTable,
-                  price: product.breiteXTiefe?.firstOrNull?.price ?? 0,
-                  name: product.name,
-                  productNumber: product.productNumber,
-                  attributes: product.attributes,
-                  workingTableSizeAndColor: workingTableAdditionalAttributes,
-                  additionalAttributes: additionalAttributes,
-                ))));
+        }, (additionalAttributes) {
+          emit(StateProduct(
+              productEntity: EntityProduct(
+            productCategory: EnumCategoryProduct.workingTable,
+            price: product.breiteXTiefe?.firstOrNull?.price ?? 0,
+            name: product.name,
+            productNumber: product.productNumber,
+            attributes: product.attributes,
+            workingTableSizeAndColor: workingTableAdditionalAttributes,
+            additionalAttributes: additionalAttributes,
+          )));
+        });
       });
     } else {
       emit(StateProduct(
@@ -104,5 +105,15 @@ class CubitWorkingTableProduct extends CubitProduct<CubitWorkingTableProduct> {
         selectedEntityGestell: selectedEntityGestell,
         listBreisteUndTiefe: product.breiteXTiefe ?? [],
         selectedBreiteUndTiefe: product.breiteXTiefe?.firstOrNull);
+  }
+
+  _getPrice(
+      {double? price,
+      required List<AdditionalAttributes> additionalAttributes}) {
+    if (price == null) return null;
+    for (final attribute in additionalAttributes) {
+      price = price! + attribute.amount;
+    }
+    return price;
   }
 }

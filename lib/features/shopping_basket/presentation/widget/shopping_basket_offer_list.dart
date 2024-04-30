@@ -289,7 +289,8 @@ class _OfferInfo extends StatelessWidget {
                 child: Text(
                   NumberFormat.currency(
                           locale: 'de_DE', symbol: '€', decimalDigits: 2)
-                      .format(item.entityProduct.price),
+                      .format(item.entityProduct.price +
+                          item.entityProduct.additionalAmount),
                   style: const TextStyle(
                       fontSize: 20, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.right,
@@ -371,7 +372,9 @@ class _Offer extends StatelessWidget {
                   child: Text(
                     NumberFormat.currency(
                             locale: 'de_DE', symbol: '€', decimalDigits: 2)
-                        .format(item.entityProduct.price * item.count),
+                        .format((item.entityProduct.price +
+                                item.entityProduct.additionalAmount) *
+                            item.count),
                     style: const TextStyle(
                         fontSize: 20, fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center,

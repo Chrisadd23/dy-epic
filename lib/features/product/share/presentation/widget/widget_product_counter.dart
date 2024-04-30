@@ -105,7 +105,8 @@ class WidgetProductCounter extends HookWidget {
                   ({int count, double price})?>(
                 selector: (state) => (
                   count: state.productOrderCount,
-                  price: state.productEntity?.price ?? 0
+                  price: (state.productEntity?.price ?? 0) +
+                      (state.productEntity?.additionalAmount ?? 0)
                 ),
                 builder: (context, state) =>
                     state?.count == null || state!.count == 0

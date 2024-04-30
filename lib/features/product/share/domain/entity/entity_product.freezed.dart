@@ -217,7 +217,7 @@ class __$$EntityProductImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EntityProductImpl implements _EntityProduct {
+class _$EntityProductImpl extends _EntityProduct {
   const _$EntityProductImpl(
       {required this.productCategory,
       required this.price,
@@ -229,7 +229,8 @@ class _$EntityProductImpl implements _EntityProduct {
       final List<AdditionalAttributes>? additionalAttributes,
       this.offerInPercent})
       : _attributes = attributes,
-        _additionalAttributes = additionalAttributes;
+        _additionalAttributes = additionalAttributes,
+        super._();
 
   @override
   final EnumCategoryProduct productCategory;
@@ -314,7 +315,7 @@ class _$EntityProductImpl implements _EntityProduct {
       __$$EntityProductImplCopyWithImpl<_$EntityProductImpl>(this, _$identity);
 }
 
-abstract class _EntityProduct implements EntityProduct {
+abstract class _EntityProduct extends EntityProduct {
   const factory _EntityProduct(
       {required final EnumCategoryProduct productCategory,
       required final double price,
@@ -325,6 +326,7 @@ abstract class _EntityProduct implements EntityProduct {
       final WorkingTableSizeAndColor? workingTableSizeAndColor,
       final List<AdditionalAttributes>? additionalAttributes,
       final int? offerInPercent}) = _$EntityProductImpl;
+  const _EntityProduct._() : super._();
 
   @override
   EnumCategoryProduct get productCategory;

@@ -17,7 +17,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
-import 'additional_product_information_column.dart';
+import 'package:app_flutter_produkt_bestellen/features/product/workingtable/presentation/widget/additional_product_information_column.dart';
 
 part 'color_product_widget.dart';
 part 'size_product_widget.dart';
