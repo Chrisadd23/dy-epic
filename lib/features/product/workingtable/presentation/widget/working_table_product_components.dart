@@ -80,16 +80,6 @@ class WorkingTableProductComponents extends HookWidget {
       ),
     );
   }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(StringProperty('product', product));
-    properties.add(StringProperty('color', color));
-    properties.add(
-        DiagnosticsProperty<({ChosenProduct chosenProduct, int index})?>(
-            'recordOrder', recordOrder));
-  }
 }
 
 class _ProductPicture extends StatelessWidget {

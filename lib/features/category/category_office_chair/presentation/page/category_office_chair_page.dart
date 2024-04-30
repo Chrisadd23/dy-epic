@@ -234,14 +234,6 @@ class _ChooseCategoryButton extends StatelessWidget {
       );
     });
   }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(StringProperty('assetPath', assetPath));
-    properties.add(EnumProperty<EnumSelectOfficeChairCategory>(
-        'enumSelectOfficeChairCategory', enumSelectOfficeChairCategory));
-  }
 }
 
 class ProductListWheel extends StatefulWidget {

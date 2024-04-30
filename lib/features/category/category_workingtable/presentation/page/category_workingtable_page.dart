@@ -162,16 +162,6 @@ class CategoryProduct extends StatefulWidget {
 
   @override
   State<CategoryProduct> createState() => CategoryProductState();
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(StringProperty('picturePath', picturePath));
-    properties.add(
-        EnumProperty<EnumCategoryWorkingTable>('productType', productType));
-    properties.add(DoubleProperty('price', price));
-    properties.add(StringProperty('name', name));
-  }
 }
 
 class CategoryProductState extends State<CategoryProduct> {

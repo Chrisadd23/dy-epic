@@ -29,16 +29,6 @@ class PageWorkingTableProduct extends HookWidget {
           recordOrder: recordOrder,
         ));
   }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(StringProperty('product', productNumber));
-    properties.add(StringProperty('color', color));
-    properties.add(
-        DiagnosticsProperty<({ChosenProduct chosenProduct, int index})?>(
-            'recordOrder', recordOrder));
-  }
 }
 
 class _BlocProviderWorkingTable extends StatelessWidget {
