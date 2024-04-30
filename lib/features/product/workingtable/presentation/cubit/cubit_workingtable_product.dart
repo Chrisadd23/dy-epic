@@ -8,16 +8,19 @@ import 'package:app_flutter_produkt_bestellen/features/product/share/presentatio
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/state_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/workingtable/domain/entity/entity_product_workingtable.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/workingtable/domain/repository/repostiory_workingtable.dart';
+import 'package:app_flutter_produkt_bestellen/features/product/workingtable/domain/use_case/get_additional_attributes/get_additional_attributes_use_case.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket//presentation/bloc/state_shopping_basket.dart';
 import 'package:either_dart/either.dart';
 import 'package:flutter/material.dart';
 
 class CubitWorkingTableProduct extends CubitProduct<CubitWorkingTableProduct> {
-  CubitWorkingTableProduct(this._cubitPictures,
+  CubitWorkingTableProduct(
+      this._cubitPictures, this._getAdditionalAttributesUseCase,
       {required this.repositoryProductWorkingTable});
 
   final RepositoryWorkingTable repositoryProductWorkingTable;
   final CubitPictures _cubitPictures;
+  final GetAdditionalAttributesUseCase _getAdditionalAttributesUseCase;
 
   @override
   Future<void> load(
@@ -34,15 +37,21 @@ class CubitWorkingTableProduct extends CubitProduct<CubitWorkingTableProduct> {
         final workingTableAdditionalAttributes =
             await _getWorkingTableAdditionAttributes(
                 product: product, selectedColor: color);
-        emit(StateProduct(
-            productEntity: EntityProduct(
-          productCategory: EnumCategoryProduct.workingTable,
-          price: product.breiteXTiefe?.firstOrNull?.price ?? 0,
-          name: product.name,
-          productNumber: product.productNumber,
-          attributes: product.attributes,
-          workingTableSizeAndColor: workingTableAdditionalAttributes,
-        )));
+        final additionalAttributes = await _getAdditionalAttributesUseCase();
+
+        additionalAttributes.fold((failure) {
+          debugPrint("additional Attributes failure => ${failure.toString()}");
+        },
+            (additionalAttributes) => emit(StateProduct(
+                    productEntity: EntityProduct(
+                  productCategory: EnumCategoryProduct.workingTable,
+                  price: product.breiteXTiefe?.firstOrNull?.price ?? 0,
+                  name: product.name,
+                  productNumber: product.productNumber,
+                  attributes: product.attributes,
+                  workingTableSizeAndColor: workingTableAdditionalAttributes,
+                  additionalAttributes: additionalAttributes,
+                ))));
       });
     } else {
       emit(StateProduct(

@@ -16,4 +16,13 @@ class AppConfig {
         return 'Oberhaizinger';
     }
   }
+
+  static String get productDocumentId {
+    switch (appFlavor) {
+      case Flavor.development:
+        return 'kbLDlq3ItPF7onHoQnYL';
+      case Flavor.production:
+        return '';
+    }
+  }
 }

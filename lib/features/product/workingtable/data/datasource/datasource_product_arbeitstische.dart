@@ -1,4 +1,5 @@
 import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
+import 'package:app_flutter_produkt_bestellen/core/fix_values/flavor.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/domain/entity/entity_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/workingtable/domain/entity/entity_product_workingtable.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -24,7 +25,7 @@ class DataSourceProductWorkingtableImplementation
       if (productNumber != null) {
         final entityWorkingTableProduct = await FirebaseFirestore.instance
             .collection('Product')
-            .doc('kbLDlq3ItPF7onHoQnYL')
+            .doc(AppConfig.productDocumentId)
             .collection('workingTable')
             .where('productNumber', isEqualTo: productNumber)
             .get()
@@ -92,8 +93,45 @@ class DataSourceProductWorkingtableImplementation
 
   @override
   Future<Either<Failure, List<AdditionalAttributes>>>
-      getAdditionalAttributes() {
-    // TODO: implement getAdditionalAttributes
-    throw UnimplementedError();
+      getAdditionalAttributes() async {
+    try {
+      final additionalAttributes = await FirebaseFirestore.instance
+          .collection('Product')
+          .doc(AppConfig.productDocumentId)
+          .collection('workingTable')
+          .doc('additionalAttributes')
+          .get()
+          .timeout(const Duration(seconds: 10))
+          .then((querySnapshot) async {
+        final queryAdditionalAttributes = querySnapshot.data();
+
+        if (queryAdditionalAttributes != null) {
+          final List<AdditionalAttributes> attributes =
+              _getListAdditionalAttributes(
+                  queryAdditionalAttributes: queryAdditionalAttributes);
+          return attributes;
+        }
+        return null;
+      });
+
+      if (additionalAttributes != null) {
+        return Right(additionalAttributes);
+      } else {
+        return const Left(Failure.databaseError(
+            "Es sind keine zusätzlichen Attribute vorhanden"));
+      }
+    } catch (error) {
+      return Left(
+          Failure.databaseError('Database Error { ${error.toString()} }'));
+    }
+  }
+
+  List<AdditionalAttributes> _getListAdditionalAttributes(
+      {required Map<String, dynamic> queryAdditionalAttributes}) {
+    return queryAdditionalAttributes.keys
+        .map((key) => AdditionalAttributes(
+            name: key,
+            amount: double.parse(queryAdditionalAttributes[key].toString())))
+        .toList();
   }
 }
