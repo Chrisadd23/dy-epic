@@ -85,8 +85,8 @@ class _ProductPicture extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocSelector<CubitProduct, StateProduct, EntityGestell?>(
-        selector: (state) => state.productEntity
-            ?.workingTableAdditionalAttributes?.selectedEntityGestell,
+        selector: (state) => state
+            .productEntity?.workingTableSizeAndColor?.selectedEntityGestell,
         builder: (context, state) {
           return WidgetPictureArea(pictureBytes: state?.pictureBytes);
         });

@@ -15,16 +15,25 @@ class EntityProduct with _$EntityProduct {
       required String productNumber,
       required List<String> attributes,
       Uint8List? pictureBytes,
-      WorkingTableAdditionalAttributes? workingTableAdditionalAttributes,
+      WorkingTableSizeAndColor? workingTableSizeAndColor,
+      List<AdditionalAttributes>? additionalAttributes,
       int? offerInPercent}) = _EntityProduct;
 }
 
 @freezed
-class WorkingTableAdditionalAttributes with _$WorkingTableAdditionalAttributes {
-  const factory WorkingTableAdditionalAttributes({
+class WorkingTableSizeAndColor with _$WorkingTableSizeAndColor {
+  const factory WorkingTableSizeAndColor({
     required List<EntityGestell> listEntityGestell,
     EntityGestell? selectedEntityGestell,
     required List<EntityBreiteUndTiefe> listBreisteUndTiefe,
     EntityBreiteUndTiefe? selectedBreiteUndTiefe,
-  }) = _WorkingTableAdditionalAttributes;
+  }) = _WorkingTableSizeAndColor;
+}
+
+@freezed
+class AdditionalAttributes with _$AdditionalAttributes {
+  const factory AdditionalAttributes({
+    required String name,
+    required double amount,
+  }) = _AdditionalAttributes;
 }

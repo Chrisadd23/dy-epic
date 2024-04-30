@@ -54,24 +54,24 @@ abstract class CubitProduct<T> extends Cubit<StateProduct> {
   }
 
   void changeColorAttribute({required EntityGestell entityGestell}) {
-    final selectedEntity = state.productEntity?.workingTableAdditionalAttributes
+    final selectedEntity = state.productEntity?.workingTableSizeAndColor
         ?.copyWith(selectedEntityGestell: entityGestell);
     emit(
       state.copyWith(
         productEntity: (state.productEntity
-            ?.copyWith(workingTableAdditionalAttributes: selectedEntity)),
+            ?.copyWith(workingTableSizeAndColor: selectedEntity)),
       ),
     );
   }
 
   void changeBreiteUndTiefeAttribute(
       {required EntityBreiteUndTiefe entityBreiteUndTiefe}) {
-    final selectedEntity = state.productEntity?.workingTableAdditionalAttributes
+    final selectedEntity = state.productEntity?.workingTableSizeAndColor
         ?.copyWith(selectedBreiteUndTiefe: entityBreiteUndTiefe);
     emit(
       state.copyWith(
         productEntity: (state.productEntity?.copyWith(
-            workingTableAdditionalAttributes: selectedEntity,
+            workingTableSizeAndColor: selectedEntity,
             price: entityBreiteUndTiefe.price)),
       ),
     );

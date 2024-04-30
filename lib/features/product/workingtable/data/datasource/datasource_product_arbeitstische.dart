@@ -1,4 +1,5 @@
 import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
+import 'package:app_flutter_produkt_bestellen/features/product/share/domain/entity/entity_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/workingtable/domain/entity/entity_product_workingtable.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:either_dart/either.dart';
@@ -7,6 +8,8 @@ import 'package:flutter/material.dart';
 abstract class DataSourceProductWorkingTable {
   Future<Either<Failure, EntityWorkingTableProduct>> loadData(
       String? productNumber);
+
+  Future<Either<Failure, List<AdditionalAttributes>>> getAdditionalAttributes();
 }
 
 class DataSourceProductWorkingtableImplementation
@@ -85,5 +88,12 @@ class DataSourceProductWorkingtableImplementation
               name: key,
             ))
         .toList();
+  }
+
+  @override
+  Future<Either<Failure, List<AdditionalAttributes>>>
+      getAdditionalAttributes() {
+    // TODO: implement getAdditionalAttributes
+    throw UnimplementedError();
   }
 }

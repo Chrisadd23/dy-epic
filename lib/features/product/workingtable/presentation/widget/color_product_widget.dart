@@ -65,10 +65,8 @@ class ColorProductWidget extends HookWidget {
                       ),
                     ),
                     BlocSelector<CubitProduct, StateProduct, EntityGestell?>(
-                        selector: (state) => state
-                            .productEntity
-                            ?.workingTableAdditionalAttributes
-                            ?.selectedEntityGestell,
+                        selector: (state) => state.productEntity
+                            ?.workingTableSizeAndColor?.selectedEntityGestell,
                         builder: (context, state) {
                           return Flexible(
                               child: Container(
@@ -99,8 +97,8 @@ class ColorProductWidget extends HookWidget {
               height: 10,
             ),
             BlocSelector<CubitProduct, StateProduct, List<EntityGestell>?>(
-              selector: (state) => state.productEntity
-                  ?.workingTableAdditionalAttributes?.listEntityGestell,
+              selector: (state) => state
+                  .productEntity?.workingTableSizeAndColor?.listEntityGestell,
               builder: (BuildContext context, state) {
                 debugPrint("frameColors State ==> $state");
                 return LayoutBuilder(builder: (context, constraints) {

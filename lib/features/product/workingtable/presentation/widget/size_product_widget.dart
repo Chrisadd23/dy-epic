@@ -66,10 +66,8 @@ class SizeProductWidget extends StatelessWidget {
                     ),
                     BlocSelector<CubitProduct, StateProduct,
                             EntityBreiteUndTiefe?>(
-                        selector: (state) => state
-                            .productEntity
-                            ?.workingTableAdditionalAttributes
-                            ?.selectedBreiteUndTiefe,
+                        selector: (state) => state.productEntity
+                            ?.workingTableSizeAndColor?.selectedBreiteUndTiefe,
                         builder: (context, breiteXtiefe) {
                           debugPrint(
                               "==> selected breite x tiefe => $breiteXtiefe");
@@ -103,8 +101,8 @@ class SizeProductWidget extends StatelessWidget {
             ),
             BlocSelector<CubitProduct, StateProduct,
                 List<EntityBreiteUndTiefe>?>(
-              selector: (state) => state.productEntity
-                  ?.workingTableAdditionalAttributes?.listBreisteUndTiefe,
+              selector: (state) => state
+                  .productEntity?.workingTableSizeAndColor?.listBreisteUndTiefe,
               builder: (BuildContext context, state) => Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: List.generate(

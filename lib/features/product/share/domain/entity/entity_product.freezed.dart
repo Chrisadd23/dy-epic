@@ -22,7 +22,9 @@ mixin _$EntityProduct {
   String get productNumber => throw _privateConstructorUsedError;
   List<String> get attributes => throw _privateConstructorUsedError;
   Uint8List? get pictureBytes => throw _privateConstructorUsedError;
-  WorkingTableAdditionalAttributes? get workingTableAdditionalAttributes =>
+  WorkingTableSizeAndColor? get workingTableSizeAndColor =>
+      throw _privateConstructorUsedError;
+  List<AdditionalAttributes>? get additionalAttributes =>
       throw _privateConstructorUsedError;
   int? get offerInPercent => throw _privateConstructorUsedError;
 
@@ -44,11 +46,11 @@ abstract class $EntityProductCopyWith<$Res> {
       String productNumber,
       List<String> attributes,
       Uint8List? pictureBytes,
-      WorkingTableAdditionalAttributes? workingTableAdditionalAttributes,
+      WorkingTableSizeAndColor? workingTableSizeAndColor,
+      List<AdditionalAttributes>? additionalAttributes,
       int? offerInPercent});
 
-  $WorkingTableAdditionalAttributesCopyWith<$Res>?
-      get workingTableAdditionalAttributes;
+  $WorkingTableSizeAndColorCopyWith<$Res>? get workingTableSizeAndColor;
 }
 
 /// @nodoc
@@ -70,7 +72,8 @@ class _$EntityProductCopyWithImpl<$Res, $Val extends EntityProduct>
     Object? productNumber = null,
     Object? attributes = null,
     Object? pictureBytes = freezed,
-    Object? workingTableAdditionalAttributes = freezed,
+    Object? workingTableSizeAndColor = freezed,
+    Object? additionalAttributes = freezed,
     Object? offerInPercent = freezed,
   }) {
     return _then(_value.copyWith(
@@ -98,11 +101,14 @@ class _$EntityProductCopyWithImpl<$Res, $Val extends EntityProduct>
           ? _value.pictureBytes
           : pictureBytes // ignore: cast_nullable_to_non_nullable
               as Uint8List?,
-      workingTableAdditionalAttributes: freezed ==
-              workingTableAdditionalAttributes
-          ? _value.workingTableAdditionalAttributes
-          : workingTableAdditionalAttributes // ignore: cast_nullable_to_non_nullable
-              as WorkingTableAdditionalAttributes?,
+      workingTableSizeAndColor: freezed == workingTableSizeAndColor
+          ? _value.workingTableSizeAndColor
+          : workingTableSizeAndColor // ignore: cast_nullable_to_non_nullable
+              as WorkingTableSizeAndColor?,
+      additionalAttributes: freezed == additionalAttributes
+          ? _value.additionalAttributes
+          : additionalAttributes // ignore: cast_nullable_to_non_nullable
+              as List<AdditionalAttributes>?,
       offerInPercent: freezed == offerInPercent
           ? _value.offerInPercent
           : offerInPercent // ignore: cast_nullable_to_non_nullable
@@ -112,16 +118,14 @@ class _$EntityProductCopyWithImpl<$Res, $Val extends EntityProduct>
 
   @override
   @pragma('vm:prefer-inline')
-  $WorkingTableAdditionalAttributesCopyWith<$Res>?
-      get workingTableAdditionalAttributes {
-    if (_value.workingTableAdditionalAttributes == null) {
+  $WorkingTableSizeAndColorCopyWith<$Res>? get workingTableSizeAndColor {
+    if (_value.workingTableSizeAndColor == null) {
       return null;
     }
 
-    return $WorkingTableAdditionalAttributesCopyWith<$Res>(
-        _value.workingTableAdditionalAttributes!, (value) {
-      return _then(
-          _value.copyWith(workingTableAdditionalAttributes: value) as $Val);
+    return $WorkingTableSizeAndColorCopyWith<$Res>(
+        _value.workingTableSizeAndColor!, (value) {
+      return _then(_value.copyWith(workingTableSizeAndColor: value) as $Val);
     });
   }
 }
@@ -141,12 +145,12 @@ abstract class _$$EntityProductImplCopyWith<$Res>
       String productNumber,
       List<String> attributes,
       Uint8List? pictureBytes,
-      WorkingTableAdditionalAttributes? workingTableAdditionalAttributes,
+      WorkingTableSizeAndColor? workingTableSizeAndColor,
+      List<AdditionalAttributes>? additionalAttributes,
       int? offerInPercent});
 
   @override
-  $WorkingTableAdditionalAttributesCopyWith<$Res>?
-      get workingTableAdditionalAttributes;
+  $WorkingTableSizeAndColorCopyWith<$Res>? get workingTableSizeAndColor;
 }
 
 /// @nodoc
@@ -166,7 +170,8 @@ class __$$EntityProductImplCopyWithImpl<$Res>
     Object? productNumber = null,
     Object? attributes = null,
     Object? pictureBytes = freezed,
-    Object? workingTableAdditionalAttributes = freezed,
+    Object? workingTableSizeAndColor = freezed,
+    Object? additionalAttributes = freezed,
     Object? offerInPercent = freezed,
   }) {
     return _then(_$EntityProductImpl(
@@ -194,11 +199,14 @@ class __$$EntityProductImplCopyWithImpl<$Res>
           ? _value.pictureBytes
           : pictureBytes // ignore: cast_nullable_to_non_nullable
               as Uint8List?,
-      workingTableAdditionalAttributes: freezed ==
-              workingTableAdditionalAttributes
-          ? _value.workingTableAdditionalAttributes
-          : workingTableAdditionalAttributes // ignore: cast_nullable_to_non_nullable
-              as WorkingTableAdditionalAttributes?,
+      workingTableSizeAndColor: freezed == workingTableSizeAndColor
+          ? _value.workingTableSizeAndColor
+          : workingTableSizeAndColor // ignore: cast_nullable_to_non_nullable
+              as WorkingTableSizeAndColor?,
+      additionalAttributes: freezed == additionalAttributes
+          ? _value._additionalAttributes
+          : additionalAttributes // ignore: cast_nullable_to_non_nullable
+              as List<AdditionalAttributes>?,
       offerInPercent: freezed == offerInPercent
           ? _value.offerInPercent
           : offerInPercent // ignore: cast_nullable_to_non_nullable
@@ -217,9 +225,11 @@ class _$EntityProductImpl implements _EntityProduct {
       required this.productNumber,
       required final List<String> attributes,
       this.pictureBytes,
-      this.workingTableAdditionalAttributes,
+      this.workingTableSizeAndColor,
+      final List<AdditionalAttributes>? additionalAttributes,
       this.offerInPercent})
-      : _attributes = attributes;
+      : _attributes = attributes,
+        _additionalAttributes = additionalAttributes;
 
   @override
   final EnumCategoryProduct productCategory;
@@ -240,13 +250,24 @@ class _$EntityProductImpl implements _EntityProduct {
   @override
   final Uint8List? pictureBytes;
   @override
-  final WorkingTableAdditionalAttributes? workingTableAdditionalAttributes;
+  final WorkingTableSizeAndColor? workingTableSizeAndColor;
+  final List<AdditionalAttributes>? _additionalAttributes;
+  @override
+  List<AdditionalAttributes>? get additionalAttributes {
+    final value = _additionalAttributes;
+    if (value == null) return null;
+    if (_additionalAttributes is EqualUnmodifiableListView)
+      return _additionalAttributes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   final int? offerInPercent;
 
   @override
   String toString() {
-    return 'EntityProduct(productCategory: $productCategory, price: $price, name: $name, productNumber: $productNumber, attributes: $attributes, pictureBytes: $pictureBytes, workingTableAdditionalAttributes: $workingTableAdditionalAttributes, offerInPercent: $offerInPercent)';
+    return 'EntityProduct(productCategory: $productCategory, price: $price, name: $name, productNumber: $productNumber, attributes: $attributes, pictureBytes: $pictureBytes, workingTableSizeAndColor: $workingTableSizeAndColor, additionalAttributes: $additionalAttributes, offerInPercent: $offerInPercent)';
   }
 
   @override
@@ -264,10 +285,11 @@ class _$EntityProductImpl implements _EntityProduct {
                 .equals(other._attributes, _attributes) &&
             const DeepCollectionEquality()
                 .equals(other.pictureBytes, pictureBytes) &&
-            (identical(other.workingTableAdditionalAttributes,
-                    workingTableAdditionalAttributes) ||
-                other.workingTableAdditionalAttributes ==
-                    workingTableAdditionalAttributes) &&
+            (identical(
+                    other.workingTableSizeAndColor, workingTableSizeAndColor) ||
+                other.workingTableSizeAndColor == workingTableSizeAndColor) &&
+            const DeepCollectionEquality()
+                .equals(other._additionalAttributes, _additionalAttributes) &&
             (identical(other.offerInPercent, offerInPercent) ||
                 other.offerInPercent == offerInPercent));
   }
@@ -281,7 +303,8 @@ class _$EntityProductImpl implements _EntityProduct {
       productNumber,
       const DeepCollectionEquality().hash(_attributes),
       const DeepCollectionEquality().hash(pictureBytes),
-      workingTableAdditionalAttributes,
+      workingTableSizeAndColor,
+      const DeepCollectionEquality().hash(_additionalAttributes),
       offerInPercent);
 
   @JsonKey(ignore: true)
@@ -299,7 +322,8 @@ abstract class _EntityProduct implements EntityProduct {
       required final String productNumber,
       required final List<String> attributes,
       final Uint8List? pictureBytes,
-      final WorkingTableAdditionalAttributes? workingTableAdditionalAttributes,
+      final WorkingTableSizeAndColor? workingTableSizeAndColor,
+      final List<AdditionalAttributes>? additionalAttributes,
       final int? offerInPercent}) = _$EntityProductImpl;
 
   @override
@@ -315,7 +339,9 @@ abstract class _EntityProduct implements EntityProduct {
   @override
   Uint8List? get pictureBytes;
   @override
-  WorkingTableAdditionalAttributes? get workingTableAdditionalAttributes;
+  WorkingTableSizeAndColor? get workingTableSizeAndColor;
+  @override
+  List<AdditionalAttributes>? get additionalAttributes;
   @override
   int? get offerInPercent;
   @override
@@ -325,7 +351,7 @@ abstract class _EntityProduct implements EntityProduct {
 }
 
 /// @nodoc
-mixin _$WorkingTableAdditionalAttributes {
+mixin _$WorkingTableSizeAndColor {
   List<EntityGestell> get listEntityGestell =>
       throw _privateConstructorUsedError;
   EntityGestell? get selectedEntityGestell =>
@@ -336,17 +362,15 @@ mixin _$WorkingTableAdditionalAttributes {
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $WorkingTableAdditionalAttributesCopyWith<WorkingTableAdditionalAttributes>
-      get copyWith => throw _privateConstructorUsedError;
+  $WorkingTableSizeAndColorCopyWith<WorkingTableSizeAndColor> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $WorkingTableAdditionalAttributesCopyWith<$Res> {
-  factory $WorkingTableAdditionalAttributesCopyWith(
-          WorkingTableAdditionalAttributes value,
-          $Res Function(WorkingTableAdditionalAttributes) then) =
-      _$WorkingTableAdditionalAttributesCopyWithImpl<$Res,
-          WorkingTableAdditionalAttributes>;
+abstract class $WorkingTableSizeAndColorCopyWith<$Res> {
+  factory $WorkingTableSizeAndColorCopyWith(WorkingTableSizeAndColor value,
+          $Res Function(WorkingTableSizeAndColor) then) =
+      _$WorkingTableSizeAndColorCopyWithImpl<$Res, WorkingTableSizeAndColor>;
   @useResult
   $Res call(
       {List<EntityGestell> listEntityGestell,
@@ -359,10 +383,10 @@ abstract class $WorkingTableAdditionalAttributesCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$WorkingTableAdditionalAttributesCopyWithImpl<$Res,
-        $Val extends WorkingTableAdditionalAttributes>
-    implements $WorkingTableAdditionalAttributesCopyWith<$Res> {
-  _$WorkingTableAdditionalAttributesCopyWithImpl(this._value, this._then);
+class _$WorkingTableSizeAndColorCopyWithImpl<$Res,
+        $Val extends WorkingTableSizeAndColor>
+    implements $WorkingTableSizeAndColorCopyWith<$Res> {
+  _$WorkingTableSizeAndColorCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -424,12 +448,12 @@ class _$WorkingTableAdditionalAttributesCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$WorkingTableAdditionalAttributesImplCopyWith<$Res>
-    implements $WorkingTableAdditionalAttributesCopyWith<$Res> {
-  factory _$$WorkingTableAdditionalAttributesImplCopyWith(
-          _$WorkingTableAdditionalAttributesImpl value,
-          $Res Function(_$WorkingTableAdditionalAttributesImpl) then) =
-      __$$WorkingTableAdditionalAttributesImplCopyWithImpl<$Res>;
+abstract class _$$WorkingTableSizeAndColorImplCopyWith<$Res>
+    implements $WorkingTableSizeAndColorCopyWith<$Res> {
+  factory _$$WorkingTableSizeAndColorImplCopyWith(
+          _$WorkingTableSizeAndColorImpl value,
+          $Res Function(_$WorkingTableSizeAndColorImpl) then) =
+      __$$WorkingTableSizeAndColorImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -445,13 +469,13 @@ abstract class _$$WorkingTableAdditionalAttributesImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$WorkingTableAdditionalAttributesImplCopyWithImpl<$Res>
-    extends _$WorkingTableAdditionalAttributesCopyWithImpl<$Res,
-        _$WorkingTableAdditionalAttributesImpl>
-    implements _$$WorkingTableAdditionalAttributesImplCopyWith<$Res> {
-  __$$WorkingTableAdditionalAttributesImplCopyWithImpl(
-      _$WorkingTableAdditionalAttributesImpl _value,
-      $Res Function(_$WorkingTableAdditionalAttributesImpl) _then)
+class __$$WorkingTableSizeAndColorImplCopyWithImpl<$Res>
+    extends _$WorkingTableSizeAndColorCopyWithImpl<$Res,
+        _$WorkingTableSizeAndColorImpl>
+    implements _$$WorkingTableSizeAndColorImplCopyWith<$Res> {
+  __$$WorkingTableSizeAndColorImplCopyWithImpl(
+      _$WorkingTableSizeAndColorImpl _value,
+      $Res Function(_$WorkingTableSizeAndColorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -462,7 +486,7 @@ class __$$WorkingTableAdditionalAttributesImplCopyWithImpl<$Res>
     Object? listBreisteUndTiefe = null,
     Object? selectedBreiteUndTiefe = freezed,
   }) {
-    return _then(_$WorkingTableAdditionalAttributesImpl(
+    return _then(_$WorkingTableSizeAndColorImpl(
       listEntityGestell: null == listEntityGestell
           ? _value._listEntityGestell
           : listEntityGestell // ignore: cast_nullable_to_non_nullable
@@ -485,9 +509,8 @@ class __$$WorkingTableAdditionalAttributesImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$WorkingTableAdditionalAttributesImpl
-    implements _WorkingTableAdditionalAttributes {
-  const _$WorkingTableAdditionalAttributesImpl(
+class _$WorkingTableSizeAndColorImpl implements _WorkingTableSizeAndColor {
+  const _$WorkingTableSizeAndColorImpl(
       {required final List<EntityGestell> listEntityGestell,
       this.selectedEntityGestell,
       required final List<EntityBreiteUndTiefe> listBreisteUndTiefe,
@@ -520,14 +543,14 @@ class _$WorkingTableAdditionalAttributesImpl
 
   @override
   String toString() {
-    return 'WorkingTableAdditionalAttributes(listEntityGestell: $listEntityGestell, selectedEntityGestell: $selectedEntityGestell, listBreisteUndTiefe: $listBreisteUndTiefe, selectedBreiteUndTiefe: $selectedBreiteUndTiefe)';
+    return 'WorkingTableSizeAndColor(listEntityGestell: $listEntityGestell, selectedEntityGestell: $selectedEntityGestell, listBreisteUndTiefe: $listBreisteUndTiefe, selectedBreiteUndTiefe: $selectedBreiteUndTiefe)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$WorkingTableAdditionalAttributesImpl &&
+            other is _$WorkingTableSizeAndColorImpl &&
             const DeepCollectionEquality()
                 .equals(other._listEntityGestell, _listEntityGestell) &&
             (identical(other.selectedEntityGestell, selectedEntityGestell) ||
@@ -549,20 +572,18 @@ class _$WorkingTableAdditionalAttributesImpl
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$WorkingTableAdditionalAttributesImplCopyWith<
-          _$WorkingTableAdditionalAttributesImpl>
-      get copyWith => __$$WorkingTableAdditionalAttributesImplCopyWithImpl<
-          _$WorkingTableAdditionalAttributesImpl>(this, _$identity);
+  _$$WorkingTableSizeAndColorImplCopyWith<_$WorkingTableSizeAndColorImpl>
+      get copyWith => __$$WorkingTableSizeAndColorImplCopyWithImpl<
+          _$WorkingTableSizeAndColorImpl>(this, _$identity);
 }
 
-abstract class _WorkingTableAdditionalAttributes
-    implements WorkingTableAdditionalAttributes {
-  const factory _WorkingTableAdditionalAttributes(
+abstract class _WorkingTableSizeAndColor implements WorkingTableSizeAndColor {
+  const factory _WorkingTableSizeAndColor(
           {required final List<EntityGestell> listEntityGestell,
           final EntityGestell? selectedEntityGestell,
           required final List<EntityBreiteUndTiefe> listBreisteUndTiefe,
           final EntityBreiteUndTiefe? selectedBreiteUndTiefe}) =
-      _$WorkingTableAdditionalAttributesImpl;
+      _$WorkingTableSizeAndColorImpl;
 
   @override
   List<EntityGestell> get listEntityGestell;
@@ -574,7 +595,144 @@ abstract class _WorkingTableAdditionalAttributes
   EntityBreiteUndTiefe? get selectedBreiteUndTiefe;
   @override
   @JsonKey(ignore: true)
-  _$$WorkingTableAdditionalAttributesImplCopyWith<
-          _$WorkingTableAdditionalAttributesImpl>
+  _$$WorkingTableSizeAndColorImplCopyWith<_$WorkingTableSizeAndColorImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$AdditionalAttributes {
+  String get name => throw _privateConstructorUsedError;
+  double get amount => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $AdditionalAttributesCopyWith<AdditionalAttributes> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $AdditionalAttributesCopyWith<$Res> {
+  factory $AdditionalAttributesCopyWith(AdditionalAttributes value,
+          $Res Function(AdditionalAttributes) then) =
+      _$AdditionalAttributesCopyWithImpl<$Res, AdditionalAttributes>;
+  @useResult
+  $Res call({String name, double amount});
+}
+
+/// @nodoc
+class _$AdditionalAttributesCopyWithImpl<$Res,
+        $Val extends AdditionalAttributes>
+    implements $AdditionalAttributesCopyWith<$Res> {
+  _$AdditionalAttributesCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? amount = null,
+  }) {
+    return _then(_value.copyWith(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      amount: null == amount
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as double,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$AdditionalAttributesImplCopyWith<$Res>
+    implements $AdditionalAttributesCopyWith<$Res> {
+  factory _$$AdditionalAttributesImplCopyWith(_$AdditionalAttributesImpl value,
+          $Res Function(_$AdditionalAttributesImpl) then) =
+      __$$AdditionalAttributesImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String name, double amount});
+}
+
+/// @nodoc
+class __$$AdditionalAttributesImplCopyWithImpl<$Res>
+    extends _$AdditionalAttributesCopyWithImpl<$Res, _$AdditionalAttributesImpl>
+    implements _$$AdditionalAttributesImplCopyWith<$Res> {
+  __$$AdditionalAttributesImplCopyWithImpl(_$AdditionalAttributesImpl _value,
+      $Res Function(_$AdditionalAttributesImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+    Object? amount = null,
+  }) {
+    return _then(_$AdditionalAttributesImpl(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      amount: null == amount
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as double,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AdditionalAttributesImpl implements _AdditionalAttributes {
+  const _$AdditionalAttributesImpl({required this.name, required this.amount});
+
+  @override
+  final String name;
+  @override
+  final double amount;
+
+  @override
+  String toString() {
+    return 'AdditionalAttributes(name: $name, amount: $amount)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AdditionalAttributesImpl &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.amount, amount) || other.amount == amount));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, name, amount);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AdditionalAttributesImplCopyWith<_$AdditionalAttributesImpl>
+      get copyWith =>
+          __$$AdditionalAttributesImplCopyWithImpl<_$AdditionalAttributesImpl>(
+              this, _$identity);
+}
+
+abstract class _AdditionalAttributes implements AdditionalAttributes {
+  const factory _AdditionalAttributes(
+      {required final String name,
+      required final double amount}) = _$AdditionalAttributesImpl;
+
+  @override
+  String get name;
+  @override
+  double get amount;
+  @override
+  @JsonKey(ignore: true)
+  _$$AdditionalAttributesImplCopyWith<_$AdditionalAttributesImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

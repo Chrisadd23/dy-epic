@@ -41,7 +41,7 @@ class CubitWorkingTableProduct extends CubitProduct<CubitWorkingTableProduct> {
           name: product.name,
           productNumber: product.productNumber,
           attributes: product.attributes,
-          workingTableAdditionalAttributes: workingTableAdditionalAttributes,
+          workingTableSizeAndColor: workingTableAdditionalAttributes,
         )));
       });
     } else {
@@ -52,7 +52,7 @@ class CubitWorkingTableProduct extends CubitProduct<CubitWorkingTableProduct> {
     }
   }
 
-  Future<WorkingTableAdditionalAttributes?> _getWorkingTableAdditionAttributes(
+  Future<WorkingTableSizeAndColor?> _getWorkingTableAdditionAttributes(
       {required EntityWorkingTableProduct product,
       String? selectedColor}) async {
     final listPicturePath = product.frameColors
@@ -90,7 +90,7 @@ class CubitWorkingTableProduct extends CubitProduct<CubitWorkingTableProduct> {
             ?.where((element) => element.color.toString() == selectedColor)
             .firstOrNull;
 
-    return WorkingTableAdditionalAttributes(
+    return WorkingTableSizeAndColor(
         listEntityGestell: frameColors ?? [],
         selectedEntityGestell: selectedEntityGestell,
         listBreisteUndTiefe: product.breiteXTiefe ?? [],
