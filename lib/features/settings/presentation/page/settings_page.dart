@@ -8,6 +8,7 @@ import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentat
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -33,72 +34,105 @@ class _SettingsPageStack extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(
+          horizontal: MediaQuery.sizeOf(context).width * 0.05),
+      child: BlocSelector<LoginCubit, LoginState, EntityLoginCustomer?>(
+        selector: (state) => state.whenOrNull(loggedIn: (customerEntity) {
+          return customerEntity;
+        }),
+        builder: (context, customerEntity) => customerEntity == null
+            ? const SizedBox.shrink()
+            : CustomerSettingsListView(customerEntity: customerEntity),
+      ),
+    );
+  }
+}
+
+class CustomerSettingsListView extends HookWidget {
+  const CustomerSettingsListView({
+    super.key,
+    required this.customerEntity,
+  });
+
+  final EntityLoginCustomer customerEntity;
+
+  @override
+  Widget build(BuildContext context) {
+    final TextEditingController street =
+        useTextEditingController(text: customerEntity.deliveryAddress?.street);
+    final TextEditingController zipCode =
+        useTextEditingController(text: customerEntity.deliveryAddress?.zipCode);
+    final TextEditingController city =
+        useTextEditingController(text: customerEntity.deliveryAddress?.city);
     return Stack(
       children: [
-        Padding(
-          padding: EdgeInsets.symmetric(
-              horizontal: MediaQuery.sizeOf(context).width * 0.05),
-          child: BlocSelector<LoginCubit, LoginState, EntityLoginCustomer?>(
-            selector: (state) =>
-                state.whenOrNull(loggedIn: (customerEntity) => customerEntity),
-            builder: (context, customerEntity) => customerEntity == null
-                ? const SizedBox.shrink()
-                : ListView(
-                    children: [
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      _CustomerInformationContainer(
-                          attribute: customerEntity.customerNumber,
-                          labelText: 'Kundennummer'),
-                      if (customerEntity.companyName != null &&
-                          customerEntity.companyName!.isNotEmpty) ...[
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        _CustomerInformationContainer(
-                            attribute: customerEntity.companyName!,
-                            labelText: 'Firmenname'),
-                      ],
-                      if (customerEntity.customerName != null &&
-                          customerEntity.customerName!.isNotEmpty) ...[
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        _CustomerInformationContainer(
-                            attribute: customerEntity.customerName!,
-                            labelText: 'Kundenname'),
-                      ],
-                      if (customerEntity.customerSurname != null &&
-                          customerEntity.customerSurname!.isNotEmpty) ...[
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        _CustomerInformationContainer(
-                            attribute: customerEntity.customerSurname!,
-                            labelText: 'Kundennachname'),
-                      ],
-                      if (customerEntity.email != null &&
-                          customerEntity.email!.isNotEmpty) ...[
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        _CustomerInformationContainer(
-                            attribute: customerEntity.email!,
-                            labelText: 'E-Mail'),
-                      ],
-                      ...[
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        const Text('Lieferadresse'),
-                        CustomerAddressColumn(customerEntity: customerEntity)
-                      ]
-                    ],
-                  ),
-          ),
+        ListView(
+          children: [
+            const SizedBox(
+              height: 15,
+            ),
+            _CustomerInformationContainer(
+                attribute: customerEntity.customerNumber,
+                labelText: 'Kundennummer'),
+            if (customerEntity.companyName != null &&
+                customerEntity.companyName!.isNotEmpty) ...[
+              const SizedBox(
+                height: 15,
+              ),
+              _CustomerInformationContainer(
+                  attribute: customerEntity.companyName!,
+                  labelText: 'Firmenname'),
+            ],
+            if (customerEntity.customerName != null &&
+                customerEntity.customerName!.isNotEmpty) ...[
+              const SizedBox(
+                height: 15,
+              ),
+              _CustomerInformationContainer(
+                  attribute: customerEntity.customerName!,
+                  labelText: 'Kundenname'),
+            ],
+            if (customerEntity.customerSurname != null &&
+                customerEntity.customerSurname!.isNotEmpty) ...[
+              const SizedBox(
+                height: 15,
+              ),
+              _CustomerInformationContainer(
+                  attribute: customerEntity.customerSurname!,
+                  labelText: 'Kundennachname'),
+            ],
+            if (customerEntity.email != null &&
+                customerEntity.email!.isNotEmpty) ...[
+              const SizedBox(
+                height: 15,
+              ),
+              _CustomerInformationContainer(
+                  attribute: customerEntity.email!, labelText: 'E-Mail'),
+            ],
+            ...[
+              const SizedBox(
+                height: 15,
+              ),
+              Text(
+                'Lieferadresse',
+                style: AppTextStyle.bold18,
+              ),
+              CustomerAddressColumn(
+                customerEntity: customerEntity,
+                textEditingControllerStreet: street,
+                textEditingControllerZipCode: zipCode,
+                textEditingControllerCity: city,
+              )
+            ],
+            _SaveCustomerSettingsButton(
+              textEditingControllerStreet: street,
+              textEditingControllerZipCode: zipCode,
+              textEditingControllerCity: city,
+            ),
+          ],
         ),
-        const DialogShoppingBasket()
+        const DialogShoppingBasket(),
       ],
     );
   }
@@ -135,9 +169,17 @@ class _CustomerInformationContainer extends StatelessWidget {
 }
 
 class CustomerAddressColumn extends StatelessWidget {
-  const CustomerAddressColumn({super.key, required this.customerEntity});
+  const CustomerAddressColumn(
+      {super.key,
+      required this.customerEntity,
+      required this.textEditingControllerStreet,
+      required this.textEditingControllerZipCode,
+      required this.textEditingControllerCity});
 
   final EntityLoginCustomer customerEntity;
+  final TextEditingController textEditingControllerStreet;
+  final TextEditingController textEditingControllerZipCode;
+  final TextEditingController textEditingControllerCity;
 
   @override
   Widget build(BuildContext context) {
@@ -149,11 +191,51 @@ class CustomerAddressColumn extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
                 color: Colors.white),
             child: TextField(
-              controller: TextEditingController(text: 'attribute'),
+              controller: textEditingControllerStreet,
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
                 border: InputBorder.none,
-                labelText: 'Straße',
+                labelText: 'Straße & Hausnummer',
+                labelStyle: AppTextStyle.bold16.copyWith(
+                    decoration: TextDecoration.underline, color: Colors.black),
+                contentPadding: const EdgeInsets.only(bottom: 0, left: 10),
+                floatingLabelBehavior: FloatingLabelBehavior.always,
+              ),
+            )),
+        const SizedBox(
+          height: 15,
+        ),
+        Container(
+            decoration: BoxDecoration(
+                border: Border.all(),
+                borderRadius: BorderRadius.circular(20),
+                color: Colors.white),
+            child: TextField(
+              controller: textEditingControllerZipCode,
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                labelText: 'Postleitzahl',
+                labelStyle: AppTextStyle.bold16.copyWith(
+                    decoration: TextDecoration.underline, color: Colors.black),
+                contentPadding: const EdgeInsets.only(bottom: 0, left: 10),
+                floatingLabelBehavior: FloatingLabelBehavior.always,
+              ),
+            )),
+        const SizedBox(
+          height: 15,
+        ),
+        Container(
+            decoration: BoxDecoration(
+                border: Border.all(),
+                borderRadius: BorderRadius.circular(20),
+                color: Colors.white),
+            child: TextField(
+              controller: textEditingControllerCity,
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                labelText: 'Stadt',
                 labelStyle: AppTextStyle.bold16.copyWith(
                     decoration: TextDecoration.underline, color: Colors.black),
                 contentPadding: const EdgeInsets.only(bottom: 0, left: 10),
@@ -161,6 +243,58 @@ class CustomerAddressColumn extends StatelessWidget {
               ),
             )),
       ],
+    );
+  }
+}
+
+class _SaveCustomerSettingsButton extends HookWidget {
+  const _SaveCustomerSettingsButton({
+    required this.textEditingControllerStreet,
+    required this.textEditingControllerZipCode,
+    required this.textEditingControllerCity,
+  });
+
+  final TextEditingController textEditingControllerStreet;
+  final TextEditingController textEditingControllerZipCode;
+  final TextEditingController textEditingControllerCity;
+
+  @override
+  Widget build(BuildContext context) {
+    final isAbleToPressButton = useState<bool>(true);
+    return Padding(
+      padding: EdgeInsets.symmetric(
+          vertical: MediaQuery.sizeOf(context).height * 0.07),
+      child: InkWell(
+        onTap: !isAbleToPressButton.value
+            ? null
+            : () {
+                isAbleToPressButton.value = false;
+
+                // Hinweis Cubit needs to be created to start the saving process
+                // context
+                //     .read<LoginCubit>()
+                //     .login(
+                //     customerNumber: state.customerNumber.text,
+                //     password: state.customerPassword.text)
+                //     .whenComplete(() => isAbleToPressButton.value = true);
+              },
+        child: Center(
+          child: Container(
+            decoration: BoxDecoration(
+                color:
+                    isAbleToPressButton.value ? Colors.white : Colors.grey[200],
+                border: Border.all(),
+                borderRadius: const BorderRadius.all(Radius.circular(20))),
+            height: 70,
+            width: 200,
+            child: Center(
+                child: Text(
+              'Speichern',
+              style: AppTextStyle.colorBlackSize20ShadowWhite,
+            )),
+          ),
+        ),
+      ),
     );
   }
 }
