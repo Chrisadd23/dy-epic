@@ -6,7 +6,7 @@ class ListValues {
   static final drawerList = {
     'Produkte': 'home',
     'Bestellungen': 'bestellungen',
-    'Einstellungen': 'einstellung',
+    'Einstellungen': 'profileEinstellungen',
     'Rechtliches': 'rechtliches'
   };
 }

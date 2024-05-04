@@ -12,7 +12,9 @@ import 'package:app_flutter_produkt_bestellen/features/order/presentation/page/r
 import 'package:app_flutter_produkt_bestellen/features/product/conferenceChairProduct/presentation/page/page_conference_chair_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/officeChairProduct/presentation/page/page_office_chair_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/workingtable/presentation/page/workingtable_page.dart';
-import 'package:app_flutter_produkt_bestellen/features/settings/presentation/page/settings_page.dart';
+import 'package:app_flutter_produkt_bestellen/features/settings/presentation/page/customer_settings_page.dart';
+import 'package:app_flutter_produkt_bestellen/features/settings/presentation/page/notification_settings_page.dart';
+import 'package:app_flutter_produkt_bestellen/features/settings/presentation/page/settings_page_shell_navigation.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket//presentation/bloc/state_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/bloc/bloc_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
@@ -30,7 +32,8 @@ enum AppGoRouter {
   product('produkt'),
   order('bestellungen'),
   request('anfragen'),
-  settings('einstellung'),
+  profileSettings('profileEinstellungen'),
+  notificationSettings('notificationEinstellungen'),
   legalities('rechtliches');
 
   const AppGoRouter(this.title);
@@ -99,7 +102,32 @@ enum AppGoRouter {
                     ])
                   ]),
               //---------------------------------------------------
+              StatefulShellRoute.indexedStack(
+                  pageBuilder: (context, state, navigationShell) =>
+                      _getCustomerTransition(
+                          SettingsPageShellNavigation(
+                              navigationShell: navigationShell),
+                          state),
+                  branches: <StatefulShellBranch>[
+                    StatefulShellBranch(routes: [
+                      GoRoute(
+                        path: AppGoRouter.profileSettings.title,
+                        name: AppGoRouter.profileSettings.name,
+                        builder: (context, state) =>
+                            const CustomerSettingsPage(),
+                      ),
+                    ]),
+                    StatefulShellBranch(routes: [
+                      GoRoute(
+                        path: AppGoRouter.notificationSettings.title,
+                        name: AppGoRouter.notificationSettings.name,
+                        builder: (context, state) =>
+                            const NotificationSettingsPage(),
+                      ),
+                    ])
+                  ]),
 
+              //-----------------------------
               GoRoute(
                 path: homePage.title,
                 name: homePage.name,
@@ -209,13 +237,6 @@ enum AppGoRouter {
                 ],
               ),
 
-              // -------------settings
-              GoRoute(
-                path: settings.title,
-                name: settings.name,
-                pageBuilder: (context, state) =>
-                    _getCustomerTransition(const SettingsPage(), state),
-              ),
               //--------------legalities
               GoRoute(
                 path: legalities.title,
