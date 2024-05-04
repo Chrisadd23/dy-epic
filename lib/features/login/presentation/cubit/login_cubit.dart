@@ -11,22 +11,26 @@ class LoginCubit extends Cubit<LoginState> {
 
   final LoginRepository _loginRepository;
 
-  Future<void> login(
+  Future<bool?> login(
       {required String? customerNumber, required String? password}) async {
     emit(const LoginState.loading());
 
     if (_loginRules(customerNumber: customerNumber, password: password)) {
       final login = await _loginRepository.loginCustomer(
-          customerNumber: customerNumber!,
-          password: hash(password!).toString());
-      login.fold((failure) {
+        customerNumber: customerNumber!,
+        password: hash(password!).toString(),
+      );
+
+      return login.fold((failure) {
         emit(LoginState.failure(failure));
+        return false;
       }, (entityLoginCustomer) {
         debugPrint("cubit user exist");
         emit(LoginState.loggedIn(entityLoginCustomer: entityLoginCustomer));
-        return null;
+        return true;
       });
     }
+    return false;
   }
 
   bool _loginRules(

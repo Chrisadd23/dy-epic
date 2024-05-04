@@ -48,10 +48,8 @@ class _BlocBuilderLoginPage extends StatelessWidget {
     return BlocListener<LoginCubit, LoginState>(
       listener: (context, state) {
         debugPrint("listener active ");
-        state.mapOrNull(loggedIn: (loggedIn) async {
-          await context.read<TextEditingCubit>().clearController();
-          getIt<GoRouter>().goNamed(AppGoRouter.homePage.name);
-        }, failure: (failure) {
+
+        state.mapOrNull(failure: (failure) {
           debugPrint(
               "showFailure ${failure.failure.when(message: (message) => message, databaseError: (databaseError) => databaseError)}");
           return ShowFailureDialog.present(
@@ -152,14 +150,19 @@ class _LoginButton extends HookWidget {
         child: InkWell(
           onTap: !isAbleToPressButton.value
               ? null
-              : () {
+              : () async {
                   isAbleToPressButton.value = false;
-                  context
-                      .read<LoginCubit>()
-                      .login(
-                          customerNumber: state.customerNumber.text,
-                          password: state.customerPassword.text)
-                      .whenComplete(() => isAbleToPressButton.value = true);
+                  final loggedIn = await context.read<LoginCubit>().login(
+                      customerNumber: state.customerNumber.text,
+                      password: state.customerPassword.text);
+                  if (context.mounted) {
+                    if (loggedIn != null && loggedIn) {
+                      debugPrint("loggedIn ==> ");
+                      context.goNamed(AppGoRouter.homePage.name);
+                    }
+                    await context.read<TextEditingCubit>().clearController();
+                    isAbleToPressButton.value = true;
+                  }
                 },
           child: Center(
             child: Container(

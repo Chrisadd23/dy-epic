@@ -291,7 +291,7 @@ class _SaveCustomerSettingsButton extends HookWidget {
                         .read<LoginCubit>()
                         .updateCustomer(newCustomerEntity);
                   }
-
+                  debugPrint("switch isAbleToPressButton to true");
                   isAbleToPressButton.value = true;
                 }
               },
