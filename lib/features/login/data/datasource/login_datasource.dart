@@ -7,6 +7,12 @@ import 'package:flutter/foundation.dart';
 abstract class LoginDatasource {
   Future<Either<Failure, EntityLoginCustomer>> login(
       {required String customerNumber, required String password});
+
+  Future<Either<Failure, EntityLoginCustomer>> updateCustomerDeliveryAddress(
+      {required String street,
+      required String zipCode,
+      required String city,
+      required EntityLoginCustomer customerEntity});
 }
 
 class LoginDatasourceImplementation extends LoginDatasource {
@@ -34,6 +40,7 @@ class LoginDatasourceImplementation extends LoginDatasource {
           }
 
           return Right(EntityLoginCustomer(
+            id: value.docs.first.id,
             address: CustomerAddress(
                 street: user['address']['street'].toString(),
                 city: user['address']['city'],
@@ -61,5 +68,36 @@ class LoginDatasourceImplementation extends LoginDatasource {
 
   DateTime? _convertTimestampToDrawDate(Timestamp timestamp) {
     return timestamp.toDate();
+  }
+
+  @override
+  Future<Either<Failure, EntityLoginCustomer>> updateCustomerDeliveryAddress(
+      {required EntityLoginCustomer customerEntity,
+      required String street,
+      required String zipCode,
+      required String city}) async {
+    try {
+      final customer = await _firebaseFirestore
+          .collection('User')
+          .doc(customerEntity.id)
+          .update({
+            'address': {'street': street, 'zipCode': zipCode, 'city': city}
+          })
+          .then(
+            (_) => customerEntity.copyWith(
+              address: CustomerAddress(
+                street: street,
+                zipCode: zipCode,
+                city: city,
+              ),
+            ),
+          )
+          .catchError((errorResponse) {
+            return customerEntity;
+          });
+      return Right(customer);
+    } catch (error) {
+      return Left(Failure.databaseError(error.toString()));
+    }
   }
 }

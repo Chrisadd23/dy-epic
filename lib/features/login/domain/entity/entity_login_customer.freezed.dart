@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$EntityLoginCustomer {
+  String get id => throw _privateConstructorUsedError;
   CustomerAddress get address => throw _privateConstructorUsedError;
   String get customerNumber => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
@@ -37,7 +38,8 @@ abstract class $EntityLoginCustomerCopyWith<$Res> {
       _$EntityLoginCustomerCopyWithImpl<$Res, EntityLoginCustomer>;
   @useResult
   $Res call(
-      {CustomerAddress address,
+      {String id,
+      CustomerAddress address,
       String customerNumber,
       String? email,
       String? companyName,
@@ -63,6 +65,7 @@ class _$EntityLoginCustomerCopyWithImpl<$Res, $Val extends EntityLoginCustomer>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? address = null,
     Object? customerNumber = null,
     Object? email = freezed,
@@ -73,6 +76,10 @@ class _$EntityLoginCustomerCopyWithImpl<$Res, $Val extends EntityLoginCustomer>
     Object? deliveryAddress = freezed,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
@@ -138,7 +145,8 @@ abstract class _$$EntityLoginCustomerImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {CustomerAddress address,
+      {String id,
+      CustomerAddress address,
       String customerNumber,
       String? email,
       String? companyName,
@@ -164,6 +172,7 @@ class __$$EntityLoginCustomerImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? address = null,
     Object? customerNumber = null,
     Object? email = freezed,
@@ -174,6 +183,10 @@ class __$$EntityLoginCustomerImplCopyWithImpl<$Res>
     Object? deliveryAddress = freezed,
   }) {
     return _then(_$EntityLoginCustomerImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
@@ -214,7 +227,8 @@ class __$$EntityLoginCustomerImplCopyWithImpl<$Res>
 
 class _$EntityLoginCustomerImpl implements _EntityLoginCustomer {
   const _$EntityLoginCustomerImpl(
-      {required this.address,
+      {required this.id,
+      required this.address,
       required this.customerNumber,
       this.email,
       this.companyName,
@@ -223,6 +237,8 @@ class _$EntityLoginCustomerImpl implements _EntityLoginCustomer {
       this.registrationDate,
       this.deliveryAddress});
 
+  @override
+  final String id;
   @override
   final CustomerAddress address;
   @override
@@ -242,7 +258,7 @@ class _$EntityLoginCustomerImpl implements _EntityLoginCustomer {
 
   @override
   String toString() {
-    return 'EntityLoginCustomer(address: $address, customerNumber: $customerNumber, email: $email, companyName: $companyName, customerName: $customerName, customerSurname: $customerSurname, registrationDate: $registrationDate, deliveryAddress: $deliveryAddress)';
+    return 'EntityLoginCustomer(id: $id, address: $address, customerNumber: $customerNumber, email: $email, companyName: $companyName, customerName: $customerName, customerSurname: $customerSurname, registrationDate: $registrationDate, deliveryAddress: $deliveryAddress)';
   }
 
   @override
@@ -250,6 +266,7 @@ class _$EntityLoginCustomerImpl implements _EntityLoginCustomer {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EntityLoginCustomerImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.address, address) || other.address == address) &&
             (identical(other.customerNumber, customerNumber) ||
                 other.customerNumber == customerNumber) &&
@@ -269,6 +286,7 @@ class _$EntityLoginCustomerImpl implements _EntityLoginCustomer {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      id,
       address,
       customerNumber,
       email,
@@ -288,7 +306,8 @@ class _$EntityLoginCustomerImpl implements _EntityLoginCustomer {
 
 abstract class _EntityLoginCustomer implements EntityLoginCustomer {
   const factory _EntityLoginCustomer(
-      {required final CustomerAddress address,
+      {required final String id,
+      required final CustomerAddress address,
       required final String customerNumber,
       final String? email,
       final String? companyName,
@@ -297,6 +316,8 @@ abstract class _EntityLoginCustomer implements EntityLoginCustomer {
       final DateTime? registrationDate,
       final CustomerAddress? deliveryAddress}) = _$EntityLoginCustomerImpl;
 
+  @override
+  String get id;
   @override
   CustomerAddress get address;
   @override

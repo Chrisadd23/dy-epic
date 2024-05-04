@@ -270,6 +270,9 @@ class _SaveCustomerSettingsButton extends HookWidget {
             : () {
                 isAbleToPressButton.value = false;
 
+                debugPrint('${textEditingControllerStreet.text} '
+                    '-- ${textEditingControllerZipCode.text} '
+                    '-- ${textEditingControllerCity.text}');
                 // Hinweis Cubit needs to be created to start the saving process
                 // context
                 //     .read<LoginCubit>()

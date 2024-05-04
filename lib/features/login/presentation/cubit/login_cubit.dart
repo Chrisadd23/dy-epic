@@ -6,17 +6,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:path/path.dart';
 
 class LoginCubit extends Cubit<LoginState> {
-  LoginCubit({required this.loginRepository})
-      : super(const LoginState.loggedOut());
+  LoginCubit(this._loginRepository) : super(const LoginState.loggedOut());
 
-  final LoginRepository loginRepository;
+  final LoginRepository _loginRepository;
 
   Future<void> login(
       {required String? customerNumber, required String? password}) async {
     emit(const LoginState.loading());
 
     if (_loginRules(customerNumber: customerNumber, password: password)) {
-      final login = await loginRepository.loginCustomer(
+      final login = await _loginRepository.loginCustomer(
           customerNumber: customerNumber!,
           password: hash(password!).toString());
       login.fold((failure) {

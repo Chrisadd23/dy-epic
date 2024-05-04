@@ -1,6 +1,7 @@
 import 'package:app_flutter_produkt_bestellen/features/login/data/datasource/login_datasource.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/data/repository/login_repository_implementation.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/domain/repository/login_repository.dart';
+import 'package:app_flutter_produkt_bestellen/features/login/domain/use_case/update_customer_use_case.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/text_editing_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
@@ -15,10 +16,12 @@ abstract class LoginDependencies {
 
       //repository
       ..registerLazySingleton<LoginRepository>(
-          () => LoginRepositoryImplementation(loginDataSource: getIt()))
-
+          () => LoginRepositoryImplementation(getIt()))
+      //useCase
+      ..registerLazySingleton<UpdateCustomerUseCase>(
+          () => UpdateCustomerUseCase(getIt()))
       //cubit
-      ..registerSingleton<LoginCubit>(LoginCubit(loginRepository: getIt()))
+      ..registerSingleton<LoginCubit>(LoginCubit(getIt()))
       ..registerFactory<TextEditingCubit>(() => TextEditingCubit());
   }
 }

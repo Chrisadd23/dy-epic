@@ -5,6 +5,7 @@ part 'entity_login_customer.freezed.dart';
 @freezed
 class EntityLoginCustomer with _$EntityLoginCustomer {
   const factory EntityLoginCustomer({
+    required String id,
     required CustomerAddress address,
     required String customerNumber,
     String? email,

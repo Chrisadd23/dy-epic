@@ -5,4 +5,10 @@ import 'package:either_dart/either.dart';
 abstract class LoginRepository {
   Future<Either<Failure, EntityLoginCustomer>> loginCustomer(
       {required String customerNumber, required String password});
+
+  Future<Either<Failure, EntityLoginCustomer>> updateCustomerDeliveryAddress(
+      {required String street,
+      required String zipCode,
+      required String city,
+      required EntityLoginCustomer customerEntity});
 }

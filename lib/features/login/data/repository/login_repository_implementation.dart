@@ -5,14 +5,27 @@ import 'package:app_flutter_produkt_bestellen/features/login/domain/repository/l
 import 'package:either_dart/either.dart';
 
 class LoginRepositoryImplementation extends LoginRepository {
-  final LoginDatasource loginDataSource;
+  final LoginDatasource _loginDataSource;
 
-  LoginRepositoryImplementation({required this.loginDataSource});
+  LoginRepositoryImplementation(this._loginDataSource);
 
   @override
   Future<Either<Failure, EntityLoginCustomer>> loginCustomer(
       {required String customerNumber, required String password}) async {
-    return loginDataSource.login(
+    return _loginDataSource.login(
         customerNumber: customerNumber, password: password);
+  }
+
+  @override
+  Future<Either<Failure, EntityLoginCustomer>> updateCustomerDeliveryAddress(
+      {required EntityLoginCustomer customerEntity,
+      required String street,
+      required String zipCode,
+      required String city}) async {
+    return _loginDataSource.updateCustomerDeliveryAddress(
+        street: street,
+        zipCode: zipCode,
+        city: city,
+        customerEntity: customerEntity);
   }
 }
