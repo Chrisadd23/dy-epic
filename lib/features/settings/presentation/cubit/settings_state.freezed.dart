@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$SettingsState {
   bool get isSaving => throw _privateConstructorUsedError;
-  Notifications? get notifications => throw _privateConstructorUsedError;
+  List<Notifications>? get notifications => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SettingsStateCopyWith<SettingsState> get copyWith =>
@@ -30,9 +30,7 @@ abstract class $SettingsStateCopyWith<$Res> {
           SettingsState value, $Res Function(SettingsState) then) =
       _$SettingsStateCopyWithImpl<$Res, SettingsState>;
   @useResult
-  $Res call({bool isSaving, Notifications? notifications});
-
-  $NotificationsCopyWith<$Res>? get notifications;
+  $Res call({bool isSaving, List<Notifications>? notifications});
 }
 
 /// @nodoc
@@ -59,20 +57,8 @@ class _$SettingsStateCopyWithImpl<$Res, $Val extends SettingsState>
       notifications: freezed == notifications
           ? _value.notifications
           : notifications // ignore: cast_nullable_to_non_nullable
-              as Notifications?,
+              as List<Notifications>?,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $NotificationsCopyWith<$Res>? get notifications {
-    if (_value.notifications == null) {
-      return null;
-    }
-
-    return $NotificationsCopyWith<$Res>(_value.notifications!, (value) {
-      return _then(_value.copyWith(notifications: value) as $Val);
-    });
   }
 }
 
@@ -84,10 +70,7 @@ abstract class _$$SettingsStateImplCopyWith<$Res>
       __$$SettingsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isSaving, Notifications? notifications});
-
-  @override
-  $NotificationsCopyWith<$Res>? get notifications;
+  $Res call({bool isSaving, List<Notifications>? notifications});
 }
 
 /// @nodoc
@@ -110,9 +93,9 @@ class __$$SettingsStateImplCopyWithImpl<$Res>
           : isSaving // ignore: cast_nullable_to_non_nullable
               as bool,
       notifications: freezed == notifications
-          ? _value.notifications
+          ? _value._notifications
           : notifications // ignore: cast_nullable_to_non_nullable
-              as Notifications?,
+              as List<Notifications>?,
     ));
   }
 }
@@ -120,12 +103,21 @@ class __$$SettingsStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SettingsStateImpl implements _SettingsState {
-  const _$SettingsStateImpl({required this.isSaving, this.notifications});
+  const _$SettingsStateImpl(
+      {required this.isSaving, final List<Notifications>? notifications})
+      : _notifications = notifications;
 
   @override
   final bool isSaving;
+  final List<Notifications>? _notifications;
   @override
-  final Notifications? notifications;
+  List<Notifications>? get notifications {
+    final value = _notifications;
+    if (value == null) return null;
+    if (_notifications is EqualUnmodifiableListView) return _notifications;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
@@ -139,12 +131,13 @@ class _$SettingsStateImpl implements _SettingsState {
             other is _$SettingsStateImpl &&
             (identical(other.isSaving, isSaving) ||
                 other.isSaving == isSaving) &&
-            (identical(other.notifications, notifications) ||
-                other.notifications == notifications));
+            const DeepCollectionEquality()
+                .equals(other._notifications, _notifications));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isSaving, notifications);
+  int get hashCode => Object.hash(runtimeType, isSaving,
+      const DeepCollectionEquality().hash(_notifications));
 
   @JsonKey(ignore: true)
   @override
@@ -156,12 +149,12 @@ class _$SettingsStateImpl implements _SettingsState {
 abstract class _SettingsState implements SettingsState {
   const factory _SettingsState(
       {required final bool isSaving,
-      final Notifications? notifications}) = _$SettingsStateImpl;
+      final List<Notifications>? notifications}) = _$SettingsStateImpl;
 
   @override
   bool get isSaving;
   @override
-  Notifications? get notifications;
+  List<Notifications>? get notifications;
   @override
   @JsonKey(ignore: true)
   _$$SettingsStateImplCopyWith<_$SettingsStateImpl> get copyWith =>

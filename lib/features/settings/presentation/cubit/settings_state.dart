@@ -15,7 +15,7 @@ enum NotificationType {
 class SettingsState with _$SettingsState {
   const factory SettingsState({
     required bool isSaving,
-    Notifications? notifications,
+    List<Notifications>? notifications,
   }) = _SettingsState;
 }
 
