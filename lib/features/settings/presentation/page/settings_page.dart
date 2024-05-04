@@ -294,7 +294,7 @@ class _SaveCustomerSettingsButton extends HookWidget {
                     GlobalBottomSheet.showGlobalBottomSheet(
                         context: context,
                         infoText:
-                            'Die Lieferadress wurde erfolgreich gespeichert');
+                            'Die Lieferadresse wurde erfolgreich gespeichert');
                   }
                   debugPrint("switch isAbleToPressButton to true");
                   isAbleToPressButton.value = true;
