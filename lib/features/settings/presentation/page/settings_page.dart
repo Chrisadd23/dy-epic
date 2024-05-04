@@ -3,6 +3,7 @@ import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_pag
 import 'package:app_flutter_produkt_bestellen/features/login/domain/entity/entity_login_customer.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_state.dart';
+import 'package:app_flutter_produkt_bestellen/features/settings/presentation/cubit/settings_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/bloc/bloc_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/widget/shopping_basket_dialog.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
@@ -23,6 +24,8 @@ class SettingsPage extends StatelessWidget {
         BlocProvider<LoginCubit>.value(
           value: getIt<LoginCubit>(),
         ),
+        BlocProvider<SettingsCubit>(
+            create: (context) => SettingsCubit(getIt())),
       ], child: const _SettingsPageStack()),
       showMenuBar: true,
     );
@@ -59,6 +62,7 @@ class CustomerSettingsListView extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint('customerEntity ==> $customerEntity');
     final TextEditingController street =
         useTextEditingController(text: customerEntity.deliveryAddress?.street);
     final TextEditingController zipCode =
@@ -126,6 +130,7 @@ class CustomerSettingsListView extends HookWidget {
               )
             ],
             _SaveCustomerSettingsButton(
+              customerEntity: customerEntity,
               textEditingControllerStreet: street,
               textEditingControllerZipCode: zipCode,
               textEditingControllerCity: city,
@@ -252,8 +257,10 @@ class _SaveCustomerSettingsButton extends HookWidget {
     required this.textEditingControllerStreet,
     required this.textEditingControllerZipCode,
     required this.textEditingControllerCity,
+    required this.customerEntity,
   });
 
+  final EntityLoginCustomer customerEntity;
   final TextEditingController textEditingControllerStreet;
   final TextEditingController textEditingControllerZipCode;
   final TextEditingController textEditingControllerCity;
@@ -267,19 +274,26 @@ class _SaveCustomerSettingsButton extends HookWidget {
       child: InkWell(
         onTap: !isAbleToPressButton.value
             ? null
-            : () {
+            : () async {
                 isAbleToPressButton.value = false;
 
-                debugPrint('${textEditingControllerStreet.text} '
-                    '-- ${textEditingControllerZipCode.text} '
-                    '-- ${textEditingControllerCity.text}');
-                // Hinweis Cubit needs to be created to start the saving process
-                // context
-                //     .read<LoginCubit>()
-                //     .login(
-                //     customerNumber: state.customerNumber.text,
-                //     password: state.customerPassword.text)
-                //     .whenComplete(() => isAbleToPressButton.value = true);
+                final newCustomerEntity = await context
+                    .read<SettingsCubit>()
+                    .saveDeliveryAddress(
+                        customerEntity: customerEntity,
+                        street: textEditingControllerStreet.text,
+                        zipCode: textEditingControllerZipCode.text,
+                        city: textEditingControllerCity.text);
+
+                if (context.mounted) {
+                  if (newCustomerEntity != null) {
+                    context
+                        .read<LoginCubit>()
+                        .updateCustomer(newCustomerEntity);
+                  }
+
+                  isAbleToPressButton.value = true;
+                }
               },
         child: Center(
           child: Container(

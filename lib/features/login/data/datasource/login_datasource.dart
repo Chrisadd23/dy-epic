@@ -52,6 +52,10 @@ class LoginDatasourceImplementation extends LoginDatasource {
             customerSurname: user['lastname'],
             registrationDate: _convertTimestampToDrawDate(
                 user['registrationdate'] as Timestamp),
+            deliveryAddress: CustomerAddress(
+                street: user['deliveryAddress']['street'].toString(),
+                city: user['deliveryAddress']['city'],
+                zipCode: user['deliveryAddress']['zipCode']),
           ));
         } else {
           return const Left(
@@ -81,11 +85,15 @@ class LoginDatasourceImplementation extends LoginDatasource {
           .collection('User')
           .doc(customerEntity.id)
           .update({
-            'address': {'street': street, 'zipCode': zipCode, 'city': city}
+            'deliveryAddress': {
+              'street': street,
+              'zipCode': zipCode,
+              'city': city
+            }
           })
           .then(
             (_) => customerEntity.copyWith(
-              address: CustomerAddress(
+              deliveryAddress: CustomerAddress(
                 street: street,
                 zipCode: zipCode,
                 city: city,
@@ -93,8 +101,10 @@ class LoginDatasourceImplementation extends LoginDatasource {
             ),
           )
           .catchError((errorResponse) {
+            debugPrint('catch Error ==> ${errorResponse.toString()}');
             return customerEntity;
           });
+      debugPrint('newCustomerEntity ==> $customer');
       return Right(customer);
     } catch (error) {
       return Left(Failure.databaseError(error.toString()));

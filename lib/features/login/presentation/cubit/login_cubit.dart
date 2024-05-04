@@ -1,4 +1,5 @@
 import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
+import 'package:app_flutter_produkt_bestellen/features/login/domain/entity/entity_login_customer.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/domain/repository/login_repository.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_state.dart';
 import 'package:flutter/material.dart';
@@ -48,5 +49,11 @@ class LoginCubit extends Cubit<LoginState> {
 
   Future<void> logOut() async {
     emit(const LoginState.loggedOut());
+  }
+
+  void updateCustomer(EntityLoginCustomer newCustomerEntity) {
+    state.mapOrNull(
+        loggedIn: (loggedInState) => emit(
+            loggedInState.copyWith(entityLoginCustomer: newCustomerEntity)));
   }
 }
