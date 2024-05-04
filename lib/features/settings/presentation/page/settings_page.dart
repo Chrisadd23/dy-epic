@@ -1,5 +1,6 @@
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text_style.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_page_widget.dart';
+import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/bottom_sheet.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/domain/entity/entity_login_customer.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_state.dart';
@@ -290,6 +291,10 @@ class _SaveCustomerSettingsButton extends HookWidget {
                     context
                         .read<LoginCubit>()
                         .updateCustomer(newCustomerEntity);
+                    GlobalBottomSheet.showGlobalBottomSheet(
+                        context: context,
+                        infoText:
+                            'Die Lieferadress wurde erfolgreich gespeichert');
                   }
                   debugPrint("switch isAbleToPressButton to true");
                   isAbleToPressButton.value = true;
