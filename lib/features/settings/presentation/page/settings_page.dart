@@ -304,7 +304,7 @@ class _SaveCustomerSettingsButton extends HookWidget {
           child: Container(
             decoration: BoxDecoration(
                 color:
-                    isAbleToPressButton.value ? Colors.white : Colors.grey[200],
+                    isAbleToPressButton.value ? Colors.white : Colors.grey[350],
                 border: Border.all(),
                 borderRadius: const BorderRadius.all(Radius.circular(20))),
             height: 70,
