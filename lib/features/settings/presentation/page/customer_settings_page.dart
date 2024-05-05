@@ -1,3 +1,4 @@
+import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text_style.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/bottom_sheet.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/domain/entity/entity_login_customer.dart';
@@ -109,23 +110,23 @@ class CustomerSettingsListView extends HookWidget {
         ),
         _CustomerInformationContainer(
             attribute: customerEntity.address.street,
-            labelText: 'Straße & Hausnummer'),
+            labelText: AppText.streetAndNumber),
         const SizedBox(
           height: 15,
         ),
         _CustomerInformationContainer(
             attribute: customerEntity.address.zipCode,
-            labelText: 'Postleitzahl'),
+            labelText: AppText.zipCode),
         const SizedBox(
           height: 15,
         ),
         _CustomerInformationContainer(
-            attribute: customerEntity.address.city, labelText: 'Stadt'),
+            attribute: customerEntity.address.city, labelText: AppText.city),
         const SizedBox(
           height: 15,
         ),
         Text(
-          'Lieferadresse',
+          AppText.deliveryAddress,
           style: AppTextStyle.bold18,
         ),
         CustomerAddressColumn(
@@ -202,7 +203,7 @@ class CustomerAddressColumn extends StatelessWidget {
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
                 border: InputBorder.none,
-                labelText: 'Straße & Hausnummer',
+                labelText: AppText.streetAndNumber,
                 labelStyle: AppTextStyle.bold16.copyWith(
                     decoration: TextDecoration.underline, color: Colors.black),
                 contentPadding: const EdgeInsets.only(bottom: 0, left: 10),
@@ -222,7 +223,7 @@ class CustomerAddressColumn extends StatelessWidget {
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
                 border: InputBorder.none,
-                labelText: 'Postleitzahl',
+                labelText: AppText.zipCode,
                 labelStyle: AppTextStyle.bold16.copyWith(
                     decoration: TextDecoration.underline, color: Colors.black),
                 contentPadding: const EdgeInsets.only(bottom: 0, left: 10),
@@ -242,7 +243,7 @@ class CustomerAddressColumn extends StatelessWidget {
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
                 border: InputBorder.none,
-                labelText: 'Stadt',
+                labelText: AppText.city,
                 labelStyle: AppTextStyle.bold16.copyWith(
                     decoration: TextDecoration.underline, color: Colors.black),
                 contentPadding: const EdgeInsets.only(bottom: 0, left: 10),
@@ -290,8 +291,7 @@ class _SaveCustomerSettingsButton extends HookWidget {
                   if (isSuccessful != null && isSuccessful) {
                     GlobalBottomSheet.showGlobalBottomSheet(
                         context: context,
-                        infoText:
-                            'Die Lieferadresse wurde erfolgreich gespeichert');
+                        infoText: AppText.successfullySavedDeliveryAddress);
                   } else {
                     textEditingControllerCity.text =
                         customerEntity.deliveryAddress?.city ?? '';
@@ -314,7 +314,7 @@ class _SaveCustomerSettingsButton extends HookWidget {
             width: 200,
             child: Center(
                 child: Text(
-              'Speichern',
+              AppText.save.toUpperCase(),
               style: AppTextStyle.colorBlackSize20ShadowWhite,
             )),
           ),
