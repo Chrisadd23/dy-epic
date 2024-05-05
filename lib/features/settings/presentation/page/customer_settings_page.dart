@@ -4,7 +4,6 @@ import 'package:app_flutter_produkt_bestellen/features/login/domain/entity/entit
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_state.dart';
 import 'package:app_flutter_produkt_bestellen/features/settings/presentation/cubit/settings_cubit.dart';
-import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/widget/shopping_basket_dialog.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -59,75 +58,68 @@ class CustomerSettingsListView extends HookWidget {
         useTextEditingController(text: customerEntity.deliveryAddress?.zipCode);
     final TextEditingController city =
         useTextEditingController(text: customerEntity.deliveryAddress?.city);
-    return Stack(
+    return ListView(
       children: [
-        ListView(
-          children: [
-            const SizedBox(
-              height: 15,
-            ),
-            _CustomerInformationContainer(
-                attribute: customerEntity.customerNumber,
-                labelText: 'Kundennummer'),
-            if (customerEntity.companyName != null &&
-                customerEntity.companyName!.isNotEmpty) ...[
-              const SizedBox(
-                height: 15,
-              ),
-              _CustomerInformationContainer(
-                  attribute: customerEntity.companyName!,
-                  labelText: 'Firmenname'),
-            ],
-            if (customerEntity.customerName != null &&
-                customerEntity.customerName!.isNotEmpty) ...[
-              const SizedBox(
-                height: 15,
-              ),
-              _CustomerInformationContainer(
-                  attribute: customerEntity.customerName!,
-                  labelText: 'Kundenname'),
-            ],
-            if (customerEntity.customerSurname != null &&
-                customerEntity.customerSurname!.isNotEmpty) ...[
-              const SizedBox(
-                height: 15,
-              ),
-              _CustomerInformationContainer(
-                  attribute: customerEntity.customerSurname!,
-                  labelText: 'Kundennachname'),
-            ],
-            if (customerEntity.email != null &&
-                customerEntity.email!.isNotEmpty) ...[
-              const SizedBox(
-                height: 15,
-              ),
-              _CustomerInformationContainer(
-                  attribute: customerEntity.email!, labelText: 'E-Mail'),
-            ],
-            ...[
-              const SizedBox(
-                height: 15,
-              ),
-              Text(
-                'Lieferadresse',
-                style: AppTextStyle.bold18,
-              ),
-              CustomerAddressColumn(
-                customerEntity: customerEntity,
-                textEditingControllerStreet: street,
-                textEditingControllerZipCode: zipCode,
-                textEditingControllerCity: city,
-              )
-            ],
-            _SaveCustomerSettingsButton(
-              customerEntity: customerEntity,
-              textEditingControllerStreet: street,
-              textEditingControllerZipCode: zipCode,
-              textEditingControllerCity: city,
-            ),
-          ],
+        const SizedBox(
+          height: 15,
         ),
-        const DialogShoppingBasket(),
+        _CustomerInformationContainer(
+            attribute: customerEntity.customerNumber,
+            labelText: 'Kundennummer'),
+        if (customerEntity.companyName != null &&
+            customerEntity.companyName!.isNotEmpty) ...[
+          const SizedBox(
+            height: 15,
+          ),
+          _CustomerInformationContainer(
+              attribute: customerEntity.companyName!, labelText: 'Firmenname'),
+        ],
+        if (customerEntity.customerName != null &&
+            customerEntity.customerName!.isNotEmpty) ...[
+          const SizedBox(
+            height: 15,
+          ),
+          _CustomerInformationContainer(
+              attribute: customerEntity.customerName!, labelText: 'Kundenname'),
+        ],
+        if (customerEntity.customerSurname != null &&
+            customerEntity.customerSurname!.isNotEmpty) ...[
+          const SizedBox(
+            height: 15,
+          ),
+          _CustomerInformationContainer(
+              attribute: customerEntity.customerSurname!,
+              labelText: 'Kundennachname'),
+        ],
+        if (customerEntity.email != null &&
+            customerEntity.email!.isNotEmpty) ...[
+          const SizedBox(
+            height: 15,
+          ),
+          _CustomerInformationContainer(
+              attribute: customerEntity.email!, labelText: 'E-Mail'),
+        ],
+        ...[
+          const SizedBox(
+            height: 15,
+          ),
+          Text(
+            'Lieferadresse',
+            style: AppTextStyle.bold18,
+          ),
+          CustomerAddressColumn(
+            customerEntity: customerEntity,
+            textEditingControllerStreet: street,
+            textEditingControllerZipCode: zipCode,
+            textEditingControllerCity: city,
+          )
+        ],
+        _SaveCustomerSettingsButton(
+          customerEntity: customerEntity,
+          textEditingControllerStreet: street,
+          textEditingControllerZipCode: zipCode,
+          textEditingControllerCity: city,
+        ),
       ],
     );
   }

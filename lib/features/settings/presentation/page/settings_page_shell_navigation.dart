@@ -2,6 +2,7 @@ import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_page_widget.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/bloc/bloc_shopping_basket.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/widget/shopping_basket_dialog.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
@@ -17,14 +18,18 @@ class SettingsPageShellNavigation extends StatelessWidget {
   Widget build(BuildContext context) {
     return GlobalScaffold(
       appBarContext: context,
-      body: MultiBlocProvider(providers: [
-        BlocProvider<BlocShoppingBasket>.value(
-          value: getIt<BlocShoppingBasket>(),
-        ),
-        BlocProvider<LoginCubit>.value(
-          value: getIt<LoginCubit>(),
-        ),
-      ], child: navigationShell),
+      body: MultiBlocProvider(
+          providers: [
+            BlocProvider<BlocShoppingBasket>.value(
+              value: getIt<BlocShoppingBasket>(),
+            ),
+            BlocProvider<LoginCubit>.value(
+              value: getIt<LoginCubit>(),
+            ),
+          ],
+          child: Stack(
+            children: [navigationShell, const DialogShoppingBasket()],
+          )),
       bottomNavigationBar: CurvedNavigationBar(
         buttonBackgroundColor: AppColors.orangeF6A440,
         animationDuration: const Duration(milliseconds: 300),

@@ -2,7 +2,6 @@ import 'package:app_flutter_produkt_bestellen/features/login/domain/entity/entit
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_state.dart';
 import 'package:app_flutter_produkt_bestellen/features/settings/presentation/cubit/settings_cubit.dart';
-import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/widget/shopping_basket_dialog.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -46,10 +45,6 @@ class NotificationSettingsListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Stack(
-      children: [
-        DialogShoppingBasket(),
-      ],
-    );
+    return const SizedBox.shrink();
   }
 }
