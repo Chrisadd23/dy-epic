@@ -4,6 +4,7 @@ import 'package:app_flutter_produkt_bestellen/features/login/domain/entity/entit
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_state.dart';
 import 'package:app_flutter_produkt_bestellen/features/settings/presentation/cubit/settings_cubit.dart';
+import 'package:app_flutter_produkt_bestellen/features/settings/presentation/widget/save_delivery_address_dialog.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -99,21 +100,40 @@ class CustomerSettingsListView extends HookWidget {
           _CustomerInformationContainer(
               attribute: customerEntity.email!, labelText: 'E-Mail'),
         ],
-        ...[
-          const SizedBox(
-            height: 15,
-          ),
-          Text(
-            'Lieferadresse',
-            style: AppTextStyle.bold18,
-          ),
-          CustomerAddressColumn(
-            customerEntity: customerEntity,
-            textEditingControllerStreet: street,
-            textEditingControllerZipCode: zipCode,
-            textEditingControllerCity: city,
-          )
-        ],
+        const SizedBox(
+          height: 15,
+        ),
+        Text(
+          'Adresse',
+          style: AppTextStyle.bold18,
+        ),
+        _CustomerInformationContainer(
+            attribute: customerEntity.address.street,
+            labelText: 'Straße & Hausnummer'),
+        const SizedBox(
+          height: 15,
+        ),
+        _CustomerInformationContainer(
+            attribute: customerEntity.address.zipCode,
+            labelText: 'Postleitzahl'),
+        const SizedBox(
+          height: 15,
+        ),
+        _CustomerInformationContainer(
+            attribute: customerEntity.address.city, labelText: 'Stadt'),
+        const SizedBox(
+          height: 15,
+        ),
+        Text(
+          'Lieferadresse',
+          style: AppTextStyle.bold18,
+        ),
+        CustomerAddressColumn(
+          customerEntity: customerEntity,
+          textEditingControllerStreet: street,
+          textEditingControllerZipCode: zipCode,
+          textEditingControllerCity: city,
+        ),
         _SaveCustomerSettingsButton(
           customerEntity: customerEntity,
           textEditingControllerStreet: street,
@@ -138,7 +158,7 @@ class _CustomerInformationContainer extends StatelessWidget {
         decoration: BoxDecoration(
             border: Border.all(),
             borderRadius: BorderRadius.circular(20),
-            color: Colors.white),
+            color: Colors.grey[100]),
         child: TextField(
           controller: TextEditingController(text: attribute),
           readOnly: true,
@@ -259,25 +279,27 @@ class _SaveCustomerSettingsButton extends HookWidget {
             : () async {
                 isAbleToPressButton.value = false;
 
-                final newCustomerEntity = await context
-                    .read<SettingsCubit>()
-                    .saveDeliveryAddress(
-                        customerEntity: customerEntity,
+                final bool? isSuccessful =
+                    await SaveDeliveryAddressDialog.showSaveDialog(
+                        context: context,
+                        entityLoginCustomer: customerEntity,
                         street: textEditingControllerStreet.text,
                         zipCode: textEditingControllerZipCode.text,
                         city: textEditingControllerCity.text);
-
                 if (context.mounted) {
-                  if (newCustomerEntity != null) {
-                    context
-                        .read<LoginCubit>()
-                        .updateCustomer(newCustomerEntity);
+                  if (isSuccessful != null && isSuccessful) {
                     GlobalBottomSheet.showGlobalBottomSheet(
                         context: context,
                         infoText:
                             'Die Lieferadresse wurde erfolgreich gespeichert');
+                  } else {
+                    textEditingControllerCity.text =
+                        customerEntity.deliveryAddress?.city ?? '';
+                    textEditingControllerStreet.text =
+                        customerEntity.deliveryAddress?.street ?? '';
+                    textEditingControllerZipCode.text =
+                        customerEntity.deliveryAddress?.zipCode ?? '';
                   }
-                  debugPrint("switch isAbleToPressButton to true");
                   isAbleToPressButton.value = true;
                 }
               },
