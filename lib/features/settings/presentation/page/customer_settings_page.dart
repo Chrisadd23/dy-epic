@@ -101,13 +101,13 @@ class CustomerSettingsListView extends HookWidget {
             height: 15,
           ),
           _CustomerInformationContainer(
-              attribute: customerEntity.email!, labelText: 'E-Mail'),
+              attribute: customerEntity.email!, labelText: AppText.email),
         ],
         const SizedBox(
           height: 15,
         ),
         Text(
-          'Adresse',
+          AppText.address,
           style: AppTextStyle.bold18,
         ),
         _CustomerInformationContainer(

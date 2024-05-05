@@ -1,3 +1,4 @@
+import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text_style.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/domain/entity/entity_login_customer.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_cubit.dart';
@@ -58,17 +59,17 @@ class SaveDeliveryAddressDialog extends StatelessWidget {
           const SizedBox(
             height: 15,
           ),
-          const Text('Straße & Hausnummer:'),
+          Text('${AppText.streetAndNumber}:'),
           Text(street),
           const SizedBox(
             height: 5,
           ),
-          const Text('Postleitzahl:'),
+          Text('${AppText.zipCode}:'),
           Text(zipCode),
           const SizedBox(
             height: 5,
           ),
-          const Text('Stadt:'),
+          Text('${AppText.city}:'),
           Text(city),
           const SizedBox(
             height: 15,

@@ -19,4 +19,8 @@ abstract class AppText {
   static String customerNumber = 'Kundennummer';
 
   static String companyName = 'Firmenname';
+
+  static String address = 'Adresse';
+
+  static String email = 'E-Mail';
 }
