@@ -11,4 +11,12 @@ abstract class AppText {
   static String streetAndNumber = 'Straße & Hausnummer';
 
   static String deliveryAddress = 'Lieferadresse';
+
+  static String customerSureName = 'Kundennachname';
+
+  static String customerName = 'Kundenname';
+
+  static String customerNumber = 'Kundennummer';
+
+  static String companyName = 'Firmenname';
 }

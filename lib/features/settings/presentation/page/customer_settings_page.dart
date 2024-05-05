@@ -67,14 +67,15 @@ class CustomerSettingsListView extends HookWidget {
         ),
         _CustomerInformationContainer(
             attribute: customerEntity.customerNumber,
-            labelText: 'Kundennummer'),
+            labelText: AppText.customerNumber),
         if (customerEntity.companyName != null &&
             customerEntity.companyName!.isNotEmpty) ...[
           const SizedBox(
             height: 15,
           ),
           _CustomerInformationContainer(
-              attribute: customerEntity.companyName!, labelText: 'Firmenname'),
+              attribute: customerEntity.companyName!,
+              labelText: AppText.companyName),
         ],
         if (customerEntity.customerName != null &&
             customerEntity.customerName!.isNotEmpty) ...[
@@ -82,7 +83,8 @@ class CustomerSettingsListView extends HookWidget {
             height: 15,
           ),
           _CustomerInformationContainer(
-              attribute: customerEntity.customerName!, labelText: 'Kundenname'),
+              attribute: customerEntity.customerName!,
+              labelText: AppText.customerName),
         ],
         if (customerEntity.customerSurname != null &&
             customerEntity.customerSurname!.isNotEmpty) ...[
@@ -91,7 +93,7 @@ class CustomerSettingsListView extends HookWidget {
           ),
           _CustomerInformationContainer(
               attribute: customerEntity.customerSurname!,
-              labelText: 'Kundennachname'),
+              labelText: AppText.customerSureName),
         ],
         if (customerEntity.email != null &&
             customerEntity.email!.isNotEmpty) ...[
