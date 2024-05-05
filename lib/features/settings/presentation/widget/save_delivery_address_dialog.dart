@@ -59,17 +59,26 @@ class SaveDeliveryAddressDialog extends StatelessWidget {
           const SizedBox(
             height: 15,
           ),
-          Text('${AppText.streetAndNumber}:'),
+          Text(
+            '${AppText.streetAndNumber}:',
+            style: AppTextStyle.bold16,
+          ),
           Text(street),
           const SizedBox(
             height: 5,
           ),
-          Text('${AppText.zipCode}:'),
+          Text(
+            '${AppText.zipCode}:',
+            style: AppTextStyle.bold16,
+          ),
           Text(zipCode),
           const SizedBox(
             height: 5,
           ),
-          Text('${AppText.city}:'),
+          Text(
+            '${AppText.city}:',
+            style: AppTextStyle.bold16,
+          ),
           Text(city),
           const SizedBox(
             height: 15,
