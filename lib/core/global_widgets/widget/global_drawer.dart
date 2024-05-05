@@ -86,7 +86,10 @@ class _DrawerWidget extends StatelessWidget {
                             ),
                           ),
                           InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              context.goNamed(AppGoRouter.profileSettings.name);
+                              Navigator.pop(context);
+                            },
                             child: SizedBox(
                               width: double.infinity,
                               height: 70,
@@ -188,6 +191,8 @@ class _DrawerWidget extends StatelessWidget {
                                 title: key,
                                 function: () {
                                   context.go('/${ListValues.drawerList[key]}');
+
+                                  Navigator.pop(context);
                                 },
                               ))
                           .toList()

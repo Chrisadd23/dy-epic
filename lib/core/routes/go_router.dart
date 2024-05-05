@@ -111,20 +111,20 @@ enum AppGoRouter {
                   branches: <StatefulShellBranch>[
                     StatefulShellBranch(routes: [
                       GoRoute(
+                        path: AppGoRouter.notificationSettings.title,
+                        name: AppGoRouter.notificationSettings.name,
+                        builder: (context, state) =>
+                            const NotificationSettingsPage(),
+                      ),
+                    ]),
+                    StatefulShellBranch(routes: [
+                      GoRoute(
                         path: AppGoRouter.profileSettings.title,
                         name: AppGoRouter.profileSettings.name,
                         builder: (context, state) =>
                             const CustomerSettingsPage(),
                       ),
                     ]),
-                    StatefulShellBranch(routes: [
-                      GoRoute(
-                        path: AppGoRouter.notificationSettings.title,
-                        name: AppGoRouter.notificationSettings.name,
-                        builder: (context, state) =>
-                            const NotificationSettingsPage(),
-                      ),
-                    ])
                   ]),
 
               //-----------------------------
