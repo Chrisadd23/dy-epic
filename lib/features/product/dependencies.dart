@@ -29,7 +29,7 @@ _setUpWorkingTable() {
 
     //repository
     ..registerLazySingleton<RepositoryWorkingTable>(() =>
-        RepositoryProductWorkingtableImplementation(
+        RepositoryProductWorkingTableImplementation(
             dataSourceWorkingTable: getIt()))
 
     //UseCase

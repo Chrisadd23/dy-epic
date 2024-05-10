@@ -111,7 +111,6 @@ class SizeProductWidget extends StatelessWidget {
                     child: BreiteXTiefeWidget(
                       breiteXTiefe: state?[index],
                       onTap: () {
-                        debugPrint("ont Tap breiteXTiefe ");
                         if (state?[index] != null) {
                           context
                               .read<CubitProduct>()

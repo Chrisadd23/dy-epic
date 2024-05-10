@@ -4,6 +4,10 @@ import 'package:app_flutter_produkt_bestellen/features/product/workingtable/doma
 import 'package:either_dart/either.dart';
 
 abstract class RepositoryWorkingTable {
+  List<EntityWorkingTableProduct> get localEntityWorkingTableProduct;
+
+  List<AdditionalAttributes> get localAdditionalAttributes;
+
   Future<Either<Failure, EntityWorkingTableProduct>> getWorkingTableProduct(
       String? productNumber);
 

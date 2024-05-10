@@ -9,7 +9,7 @@ import 'package:app_flutter_produkt_bestellen/features/product/share/presentatio
 import 'package:app_flutter_produkt_bestellen/features/product/workingtable/domain/entity/entity_product_workingtable.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/workingtable/domain/repository/repostiory_workingtable.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/workingtable/domain/use_case/get_additional_attributes/get_additional_attributes_use_case.dart';
-import 'package:app_flutter_produkt_bestellen/features/shopping_basket//presentation/bloc/state_shopping_basket.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket/domain/entity/shopping_basket_entity.dart';
 import 'package:either_dart/either.dart';
 import 'package:flutter/material.dart';
 
@@ -25,23 +25,20 @@ class CubitWorkingTableProduct extends CubitProduct<CubitWorkingTableProduct> {
   @override
   Future<void> load(
       {String? productNumber,
-      ({ChosenProduct chosenProduct, int index})? recordOrder,
+      ({ShoppingBasketProduct chosenProduct, int index})? recordOrder,
       String? color}) async {
     if (recordOrder == null) {
       await repositoryProductWorkingTable
           .getWorkingTableProduct(productNumber)
           .fold((failure) {
-        debugPrint("Failure ==> $failure");
         emit(const StateProduct());
       }, (product) async {
         final workingTableAdditionalAttributes =
-            await _getWorkingTableAdditionAttributes(
+            await _getSizeAndColorAttributes(
                 product: product, selectedColor: color);
         final additionalAttributes = await _getAdditionalAttributesUseCase();
 
-        additionalAttributes.fold((failure) {
-          debugPrint("additional Attributes failure => ${failure.toString()}");
-        }, (additionalAttributes) {
+        additionalAttributes.fold((failure) {}, (additionalAttributes) {
           emit(StateProduct(
               productEntity: EntityProduct(
             productCategory: EnumCategoryProduct.workingTable,
@@ -55,16 +52,46 @@ class CubitWorkingTableProduct extends CubitProduct<CubitWorkingTableProduct> {
         });
       });
     } else {
+      final product = repositoryProductWorkingTable
+          .localEntityWorkingTableProduct
+          .where((element) =>
+              element.productNumber == recordOrder.chosenProduct.productNumber)
+          .first;
+
+      final price = product.breiteXTiefe!
+          .where((element) {
+            return element.breite.contains(
+                    recordOrder.chosenProduct.widthAndHeight!.width) &&
+                element.tiefe
+                    .contains(recordOrder.chosenProduct.widthAndHeight!.height);
+          })
+          .first
+          .price;
+      final sizeAndColor = await _getSizeAndColorAttributes(
+          product: product,
+          selectedColor: recordOrder.chosenProduct.color,
+          size: recordOrder.chosenProduct.widthAndHeight);
+      final additionalAttributes = await _getAdditionalAttributesUseCase()
+          .fold((_) => null, (additionalAttributes) => additionalAttributes);
       emit(StateProduct(
-          productEntity: recordOrder.chosenProduct.entityProduct,
-          productOrderCount: recordOrder.chosenProduct.count,
+          productEntity: EntityProduct(
+              productCategory: EnumCategoryProduct.category(
+                  type: recordOrder.chosenProduct.productType),
+              price: price,
+              name: product.name,
+              productNumber: recordOrder.chosenProduct.productNumber,
+              attributes: product.attributes,
+              additionalAttributes: additionalAttributes,
+              workingTableSizeAndColor: sizeAndColor),
+          productOrderCount: recordOrder.chosenProduct.productCount,
           position: recordOrder.index));
     }
   }
 
-  Future<WorkingTableSizeAndColor?> _getWorkingTableAdditionAttributes(
+  Future<WorkingTableSizeAndColor?> _getSizeAndColorAttributes(
       {required EntityWorkingTableProduct product,
-      String? selectedColor}) async {
+      String? selectedColor,
+      Size? size}) async {
     final listPicturePath = product.frameColors
             ?.map((e) => 'product_${product.productNumber}_${e.name}.png')
             .toList() ??
@@ -85,7 +112,7 @@ class CubitWorkingTableProduct extends CubitProduct<CubitWorkingTableProduct> {
             .wait;
       }
     } catch (error) {
-      debugPrint(error.toString());
+      debugPrint("error => ${error.toString()}");
     }
 
     final frameColors = product.frameColors
@@ -100,12 +127,18 @@ class CubitWorkingTableProduct extends CubitProduct<CubitWorkingTableProduct> {
             ?.where((element) => element.color.toString() == selectedColor)
             .firstOrNull;
 
-    return WorkingTableSizeAndColor(
-        listEntityGestell: frameColors ?? [],
-        selectedEntityGestell: selectedEntityGestell,
-        listBreisteUndTiefe: product.breiteXTiefe ?? [],
-        selectedBreiteUndTiefe: product.breiteXTiefe?.firstOrNull);
-  }
+    final selectedBreiteUndTiefe = size == null
+        ? product.breiteXTiefe?.firstOrNull
+        : product.breiteXTiefe
+            ?.where((element) =>
+                element.tiefe == size.height && element.breite == size.width)
+            .firstOrNull;
 
- 
+    return WorkingTableSizeAndColor(
+      listEntityGestell: frameColors ?? [],
+      selectedEntityGestell: selectedEntityGestell,
+      listBreisteUndTiefe: product.breiteXTiefe ?? [],
+      selectedBreiteUndTiefe: selectedBreiteUndTiefe,
+    );
+  }
 }

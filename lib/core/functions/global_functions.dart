@@ -8,7 +8,6 @@ Future<T?> showColorMenu<T>(BuildContext context, List<T>? list, Widget widget,
       barrierColor: Colors.transparent,
       context: context,
       builder: (context) {
-        debugPrint('builder');
         return Align(
           alignment: Alignment.bottomCenter,
           child: Padding(

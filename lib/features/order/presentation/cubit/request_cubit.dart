@@ -2,7 +2,6 @@ import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/cubit/order_customer_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/cubit/order_customer_state.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
 
 class OrderRequestCubit extends OrderCustomerCubit {
   OrderRequestCubit();
@@ -36,11 +35,9 @@ class OrderRequestCubit extends OrderCustomerCubit {
             );
           }).toList();
 
-          debugPrint('orderRequestList ==> $requestList');
           emit(OrderCustomerState.success(orderList: requestList));
         });
       } catch (error) {
-        debugPrint("error ==> error");
         emit(OrderCustomerState.failure(
             failure: Failure.databaseError(error.toString())));
       }

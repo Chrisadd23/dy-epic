@@ -1,7 +1,6 @@
 import 'dart:typed_data';
 
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/material.dart';
 
 abstract class FirebaseConfiguration {
   static FirebaseStorage? _firebaseStorage;
@@ -11,7 +10,6 @@ abstract class FirebaseConfiguration {
   }
 
   static Future<Uint8List?> getImageBytes(String filename) async {
-    debugPrint("Filename ==> $filename");
     Uint8List? imageBytes;
 
     imageBytes = await _firebaseStorage!

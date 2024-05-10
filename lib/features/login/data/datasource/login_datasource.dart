@@ -31,9 +31,8 @@ class LoginDatasourceImplementation extends LoginDatasource {
               .get()
               .then((value) {
         final Map<String, dynamic>? user = value.docs.firstOrNull?.data();
-        debugPrint("not crashed yet");
+
         if (user != null) {
-          debugPrint("User exist");
           if (user['password'] != password) {
             return const Left(
                 Failure.databaseError('Überprüfen Sie Ihr Passwort'));
@@ -61,8 +60,7 @@ class LoginDatasourceImplementation extends LoginDatasource {
           return const Left(
               Failure.databaseError('Der Benutzer wurde nicht gefunden'));
         }
-      }, onError: (error) => debugPrint(error.toString()));
-      debugPrint("entityLoginCustomer ==> ${entityLoginCustomer.toString()}");
+      }, onError: (error) => debugPrint("error => ${error.toString()}"));
 
       return entityLoginCustomer;
     } catch (e) {
@@ -101,10 +99,9 @@ class LoginDatasourceImplementation extends LoginDatasource {
             ),
           )
           .catchError((errorResponse) {
-            debugPrint('catch Error ==> ${errorResponse.toString()}');
             return customerEntity;
           });
-      debugPrint('newCustomerEntity ==> $customer');
+
       return Right(customer);
     } catch (error) {
       return Left(Failure.databaseError(error.toString()));

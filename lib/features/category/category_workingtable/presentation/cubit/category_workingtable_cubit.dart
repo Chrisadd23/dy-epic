@@ -3,7 +3,7 @@ import 'package:app_flutter_produkt_bestellen/core/global_cubits/cubit_pictures.
 import 'package:app_flutter_produkt_bestellen/features/category/category_workingtable/domain/repository/category_workingtable_repository.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/cubit/state_category_generic.dart';
 import 'package:either_dart/either.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CategoryWorkingTableCubit extends Cubit<StateCategory> {
@@ -39,8 +39,6 @@ class CategoryWorkingTableCubit extends Cubit<StateCategory> {
     });
 
     newState.mapOrNull(success: (successState) async {
-      debugPrint("loadPicturePath ==== continue");
-
       final listPicturePath = successState.productCategory?.listProduct
               .map((e) => e.picturePath)
               .toList() ??
@@ -58,7 +56,7 @@ class CategoryWorkingTableCubit extends Cubit<StateCategory> {
           }).wait;
         }
       } catch (error) {
-        debugPrint(error.toString());
+        debugPrint("error => ${error.toString()}");
       }
 
       successState = successState.copyWith(

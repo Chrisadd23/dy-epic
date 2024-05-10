@@ -7,7 +7,7 @@ import 'package:app_flutter_produkt_bestellen/features/product/share/presentatio
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/widget/widget_product_counter.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/widget/widget_product_info.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/widget/widget_product_title.dart';
-import 'package:app_flutter_produkt_bestellen/features/shopping_basket//presentation/bloc/state_shopping_basket.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket/domain/entity/shopping_basket_entity.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/bloc/bloc_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/widget/shopping_basket_dialog.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
@@ -18,7 +18,7 @@ class PageConferenceChairProduct extends StatelessWidget {
   const PageConferenceChairProduct({super.key, this.product, this.recordOrder});
 
   final String? product;
-  final ({ChosenProduct chosenProduct, int index})? recordOrder;
+  final ({ShoppingBasketProduct chosenProduct, int index})? recordOrder;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ class _BlocProviderConferenceChair extends StatelessWidget {
   const _BlocProviderConferenceChair({this.product, this.recordOrder});
 
   final String? product;
-  final ({ChosenProduct chosenProduct, int index})? recordOrder;
+  final ({ShoppingBasketProduct chosenProduct, int index})? recordOrder;
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +84,6 @@ class _ProductWidget extends StatelessWidget {
                   const WidgetProductCounter(),
                   BlocBuilder<CubitProduct, StateProduct>(
                       builder: (context, state) {
-                    debugPrint("productAttributes => $state");
                     return WidgetProductInfo(
                       productInfo: state.productEntity?.attributes,
                     );

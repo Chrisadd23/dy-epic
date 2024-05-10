@@ -18,9 +18,11 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$EventShoppingBasket {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ChosenProduct chosenProduct, int? index) add,
-    required TResult Function(int position, String location) change,
-    required TResult Function(int position) remove,
+    required TResult Function(ShoppingBasketProduct chosenProduct, int? index,
+            EnumOrderType orderType)
+        add,
+    required TResult Function(int timePosition, String location) change,
+    required TResult Function(int timePosition) remove,
     required TResult Function(EnumSortProductOrder orderList) orderList,
     required TResult Function(String customerNumber) send,
     required TResult Function() clear,
@@ -29,9 +31,11 @@ mixin _$EventShoppingBasket {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ChosenProduct chosenProduct, int? index)? add,
-    TResult? Function(int position, String location)? change,
-    TResult? Function(int position)? remove,
+    TResult? Function(ShoppingBasketProduct chosenProduct, int? index,
+            EnumOrderType orderType)?
+        add,
+    TResult? Function(int timePosition, String location)? change,
+    TResult? Function(int timePosition)? remove,
     TResult? Function(EnumSortProductOrder orderList)? orderList,
     TResult? Function(String customerNumber)? send,
     TResult? Function()? clear,
@@ -40,9 +44,11 @@ mixin _$EventShoppingBasket {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ChosenProduct chosenProduct, int? index)? add,
-    TResult Function(int position, String location)? change,
-    TResult Function(int position)? remove,
+    TResult Function(ShoppingBasketProduct chosenProduct, int? index,
+            EnumOrderType orderType)?
+        add,
+    TResult Function(int timePosition, String location)? change,
+    TResult Function(int timePosition)? remove,
     TResult Function(EnumSortProductOrder orderList)? orderList,
     TResult Function(String customerNumber)? send,
     TResult Function()? clear,
@@ -109,9 +115,12 @@ abstract class _$$AddImplCopyWith<$Res> {
   factory _$$AddImplCopyWith(_$AddImpl value, $Res Function(_$AddImpl) then) =
       __$$AddImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({ChosenProduct chosenProduct, int? index});
+  $Res call(
+      {ShoppingBasketProduct chosenProduct,
+      int? index,
+      EnumOrderType orderType});
 
-  $ChosenProductCopyWith<$Res> get chosenProduct;
+  $ShoppingBasketProductCopyWith<$Res> get chosenProduct;
 }
 
 /// @nodoc
@@ -126,23 +135,28 @@ class __$$AddImplCopyWithImpl<$Res>
   $Res call({
     Object? chosenProduct = null,
     Object? index = freezed,
+    Object? orderType = null,
   }) {
     return _then(_$AddImpl(
       chosenProduct: null == chosenProduct
           ? _value.chosenProduct
           : chosenProduct // ignore: cast_nullable_to_non_nullable
-              as ChosenProduct,
+              as ShoppingBasketProduct,
       index: freezed == index
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
               as int?,
+      orderType: null == orderType
+          ? _value.orderType
+          : orderType // ignore: cast_nullable_to_non_nullable
+              as EnumOrderType,
     ));
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $ChosenProductCopyWith<$Res> get chosenProduct {
-    return $ChosenProductCopyWith<$Res>(_value.chosenProduct, (value) {
+  $ShoppingBasketProductCopyWith<$Res> get chosenProduct {
+    return $ShoppingBasketProductCopyWith<$Res>(_value.chosenProduct, (value) {
       return _then(_value.copyWith(chosenProduct: value));
     });
   }
@@ -151,16 +165,19 @@ class __$$AddImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AddImpl implements _Add {
-  const _$AddImpl({required this.chosenProduct, this.index});
+  const _$AddImpl(
+      {required this.chosenProduct, this.index, required this.orderType});
 
   @override
-  final ChosenProduct chosenProduct;
+  final ShoppingBasketProduct chosenProduct;
   @override
   final int? index;
+  @override
+  final EnumOrderType orderType;
 
   @override
   String toString() {
-    return 'EventShoppingBasket.add(chosenProduct: $chosenProduct, index: $index)';
+    return 'EventShoppingBasket.add(chosenProduct: $chosenProduct, index: $index, orderType: $orderType)';
   }
 
   @override
@@ -170,11 +187,13 @@ class _$AddImpl implements _Add {
             other is _$AddImpl &&
             (identical(other.chosenProduct, chosenProduct) ||
                 other.chosenProduct == chosenProduct) &&
-            (identical(other.index, index) || other.index == index));
+            (identical(other.index, index) || other.index == index) &&
+            (identical(other.orderType, orderType) ||
+                other.orderType == orderType));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, chosenProduct, index);
+  int get hashCode => Object.hash(runtimeType, chosenProduct, index, orderType);
 
   @JsonKey(ignore: true)
   @override
@@ -185,37 +204,43 @@ class _$AddImpl implements _Add {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ChosenProduct chosenProduct, int? index) add,
-    required TResult Function(int position, String location) change,
-    required TResult Function(int position) remove,
+    required TResult Function(ShoppingBasketProduct chosenProduct, int? index,
+            EnumOrderType orderType)
+        add,
+    required TResult Function(int timePosition, String location) change,
+    required TResult Function(int timePosition) remove,
     required TResult Function(EnumSortProductOrder orderList) orderList,
     required TResult Function(String customerNumber) send,
     required TResult Function() clear,
     required TResult Function() deleteFailureMessage,
   }) {
-    return add(chosenProduct, index);
+    return add(chosenProduct, index, orderType);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ChosenProduct chosenProduct, int? index)? add,
-    TResult? Function(int position, String location)? change,
-    TResult? Function(int position)? remove,
+    TResult? Function(ShoppingBasketProduct chosenProduct, int? index,
+            EnumOrderType orderType)?
+        add,
+    TResult? Function(int timePosition, String location)? change,
+    TResult? Function(int timePosition)? remove,
     TResult? Function(EnumSortProductOrder orderList)? orderList,
     TResult? Function(String customerNumber)? send,
     TResult? Function()? clear,
     TResult? Function()? deleteFailureMessage,
   }) {
-    return add?.call(chosenProduct, index);
+    return add?.call(chosenProduct, index, orderType);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ChosenProduct chosenProduct, int? index)? add,
-    TResult Function(int position, String location)? change,
-    TResult Function(int position)? remove,
+    TResult Function(ShoppingBasketProduct chosenProduct, int? index,
+            EnumOrderType orderType)?
+        add,
+    TResult Function(int timePosition, String location)? change,
+    TResult Function(int timePosition)? remove,
     TResult Function(EnumSortProductOrder orderList)? orderList,
     TResult Function(String customerNumber)? send,
     TResult Function()? clear,
@@ -223,7 +248,7 @@ class _$AddImpl implements _Add {
     required TResult orElse(),
   }) {
     if (add != null) {
-      return add(chosenProduct, index);
+      return add(chosenProduct, index, orderType);
     }
     return orElse();
   }
@@ -277,11 +302,13 @@ class _$AddImpl implements _Add {
 
 abstract class _Add implements EventShoppingBasket {
   const factory _Add(
-      {required final ChosenProduct chosenProduct,
-      final int? index}) = _$AddImpl;
+      {required final ShoppingBasketProduct chosenProduct,
+      final int? index,
+      required final EnumOrderType orderType}) = _$AddImpl;
 
-  ChosenProduct get chosenProduct;
+  ShoppingBasketProduct get chosenProduct;
   int? get index;
+  EnumOrderType get orderType;
   @JsonKey(ignore: true)
   _$$AddImplCopyWith<_$AddImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -293,7 +320,7 @@ abstract class _$$ChangeImplCopyWith<$Res> {
           _$ChangeImpl value, $Res Function(_$ChangeImpl) then) =
       __$$ChangeImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int position, String location});
+  $Res call({int timePosition, String location});
 }
 
 /// @nodoc
@@ -307,13 +334,13 @@ class __$$ChangeImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? position = null,
+    Object? timePosition = null,
     Object? location = null,
   }) {
     return _then(_$ChangeImpl(
-      position: null == position
-          ? _value.position
-          : position // ignore: cast_nullable_to_non_nullable
+      timePosition: null == timePosition
+          ? _value.timePosition
+          : timePosition // ignore: cast_nullable_to_non_nullable
               as int,
       location: null == location
           ? _value.location
@@ -326,16 +353,16 @@ class __$$ChangeImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ChangeImpl implements _Change {
-  const _$ChangeImpl({required this.position, required this.location});
+  const _$ChangeImpl({required this.timePosition, required this.location});
 
   @override
-  final int position;
+  final int timePosition;
   @override
   final String location;
 
   @override
   String toString() {
-    return 'EventShoppingBasket.change(position: $position, location: $location)';
+    return 'EventShoppingBasket.change(timePosition: $timePosition, location: $location)';
   }
 
   @override
@@ -343,14 +370,14 @@ class _$ChangeImpl implements _Change {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ChangeImpl &&
-            (identical(other.position, position) ||
-                other.position == position) &&
+            (identical(other.timePosition, timePosition) ||
+                other.timePosition == timePosition) &&
             (identical(other.location, location) ||
                 other.location == location));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, position, location);
+  int get hashCode => Object.hash(runtimeType, timePosition, location);
 
   @JsonKey(ignore: true)
   @override
@@ -361,37 +388,43 @@ class _$ChangeImpl implements _Change {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ChosenProduct chosenProduct, int? index) add,
-    required TResult Function(int position, String location) change,
-    required TResult Function(int position) remove,
+    required TResult Function(ShoppingBasketProduct chosenProduct, int? index,
+            EnumOrderType orderType)
+        add,
+    required TResult Function(int timePosition, String location) change,
+    required TResult Function(int timePosition) remove,
     required TResult Function(EnumSortProductOrder orderList) orderList,
     required TResult Function(String customerNumber) send,
     required TResult Function() clear,
     required TResult Function() deleteFailureMessage,
   }) {
-    return change(position, location);
+    return change(timePosition, location);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ChosenProduct chosenProduct, int? index)? add,
-    TResult? Function(int position, String location)? change,
-    TResult? Function(int position)? remove,
+    TResult? Function(ShoppingBasketProduct chosenProduct, int? index,
+            EnumOrderType orderType)?
+        add,
+    TResult? Function(int timePosition, String location)? change,
+    TResult? Function(int timePosition)? remove,
     TResult? Function(EnumSortProductOrder orderList)? orderList,
     TResult? Function(String customerNumber)? send,
     TResult? Function()? clear,
     TResult? Function()? deleteFailureMessage,
   }) {
-    return change?.call(position, location);
+    return change?.call(timePosition, location);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ChosenProduct chosenProduct, int? index)? add,
-    TResult Function(int position, String location)? change,
-    TResult Function(int position)? remove,
+    TResult Function(ShoppingBasketProduct chosenProduct, int? index,
+            EnumOrderType orderType)?
+        add,
+    TResult Function(int timePosition, String location)? change,
+    TResult Function(int timePosition)? remove,
     TResult Function(EnumSortProductOrder orderList)? orderList,
     TResult Function(String customerNumber)? send,
     TResult Function()? clear,
@@ -399,7 +432,7 @@ class _$ChangeImpl implements _Change {
     required TResult orElse(),
   }) {
     if (change != null) {
-      return change(position, location);
+      return change(timePosition, location);
     }
     return orElse();
   }
@@ -453,10 +486,10 @@ class _$ChangeImpl implements _Change {
 
 abstract class _Change implements EventShoppingBasket {
   const factory _Change(
-      {required final int position,
+      {required final int timePosition,
       required final String location}) = _$ChangeImpl;
 
-  int get position;
+  int get timePosition;
   String get location;
   @JsonKey(ignore: true)
   _$$ChangeImplCopyWith<_$ChangeImpl> get copyWith =>
@@ -469,7 +502,7 @@ abstract class _$$RemoveImplCopyWith<$Res> {
           _$RemoveImpl value, $Res Function(_$RemoveImpl) then) =
       __$$RemoveImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int position});
+  $Res call({int timePosition});
 }
 
 /// @nodoc
@@ -483,12 +516,12 @@ class __$$RemoveImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? position = null,
+    Object? timePosition = null,
   }) {
     return _then(_$RemoveImpl(
-      position: null == position
-          ? _value.position
-          : position // ignore: cast_nullable_to_non_nullable
+      timePosition: null == timePosition
+          ? _value.timePosition
+          : timePosition // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
@@ -497,14 +530,14 @@ class __$$RemoveImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$RemoveImpl implements _Remove {
-  const _$RemoveImpl({required this.position});
+  const _$RemoveImpl({required this.timePosition});
 
   @override
-  final int position;
+  final int timePosition;
 
   @override
   String toString() {
-    return 'EventShoppingBasket.remove(position: $position)';
+    return 'EventShoppingBasket.remove(timePosition: $timePosition)';
   }
 
   @override
@@ -512,12 +545,12 @@ class _$RemoveImpl implements _Remove {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RemoveImpl &&
-            (identical(other.position, position) ||
-                other.position == position));
+            (identical(other.timePosition, timePosition) ||
+                other.timePosition == timePosition));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, position);
+  int get hashCode => Object.hash(runtimeType, timePosition);
 
   @JsonKey(ignore: true)
   @override
@@ -528,37 +561,43 @@ class _$RemoveImpl implements _Remove {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ChosenProduct chosenProduct, int? index) add,
-    required TResult Function(int position, String location) change,
-    required TResult Function(int position) remove,
+    required TResult Function(ShoppingBasketProduct chosenProduct, int? index,
+            EnumOrderType orderType)
+        add,
+    required TResult Function(int timePosition, String location) change,
+    required TResult Function(int timePosition) remove,
     required TResult Function(EnumSortProductOrder orderList) orderList,
     required TResult Function(String customerNumber) send,
     required TResult Function() clear,
     required TResult Function() deleteFailureMessage,
   }) {
-    return remove(position);
+    return remove(timePosition);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ChosenProduct chosenProduct, int? index)? add,
-    TResult? Function(int position, String location)? change,
-    TResult? Function(int position)? remove,
+    TResult? Function(ShoppingBasketProduct chosenProduct, int? index,
+            EnumOrderType orderType)?
+        add,
+    TResult? Function(int timePosition, String location)? change,
+    TResult? Function(int timePosition)? remove,
     TResult? Function(EnumSortProductOrder orderList)? orderList,
     TResult? Function(String customerNumber)? send,
     TResult? Function()? clear,
     TResult? Function()? deleteFailureMessage,
   }) {
-    return remove?.call(position);
+    return remove?.call(timePosition);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ChosenProduct chosenProduct, int? index)? add,
-    TResult Function(int position, String location)? change,
-    TResult Function(int position)? remove,
+    TResult Function(ShoppingBasketProduct chosenProduct, int? index,
+            EnumOrderType orderType)?
+        add,
+    TResult Function(int timePosition, String location)? change,
+    TResult Function(int timePosition)? remove,
     TResult Function(EnumSortProductOrder orderList)? orderList,
     TResult Function(String customerNumber)? send,
     TResult Function()? clear,
@@ -566,7 +605,7 @@ class _$RemoveImpl implements _Remove {
     required TResult orElse(),
   }) {
     if (remove != null) {
-      return remove(position);
+      return remove(timePosition);
     }
     return orElse();
   }
@@ -619,9 +658,9 @@ class _$RemoveImpl implements _Remove {
 }
 
 abstract class _Remove implements EventShoppingBasket {
-  const factory _Remove({required final int position}) = _$RemoveImpl;
+  const factory _Remove({required final int timePosition}) = _$RemoveImpl;
 
-  int get position;
+  int get timePosition;
   @JsonKey(ignore: true)
   _$$RemoveImplCopyWith<_$RemoveImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -692,9 +731,11 @@ class _$OrderListImpl implements _OrderList {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ChosenProduct chosenProduct, int? index) add,
-    required TResult Function(int position, String location) change,
-    required TResult Function(int position) remove,
+    required TResult Function(ShoppingBasketProduct chosenProduct, int? index,
+            EnumOrderType orderType)
+        add,
+    required TResult Function(int timePosition, String location) change,
+    required TResult Function(int timePosition) remove,
     required TResult Function(EnumSortProductOrder orderList) orderList,
     required TResult Function(String customerNumber) send,
     required TResult Function() clear,
@@ -706,9 +747,11 @@ class _$OrderListImpl implements _OrderList {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ChosenProduct chosenProduct, int? index)? add,
-    TResult? Function(int position, String location)? change,
-    TResult? Function(int position)? remove,
+    TResult? Function(ShoppingBasketProduct chosenProduct, int? index,
+            EnumOrderType orderType)?
+        add,
+    TResult? Function(int timePosition, String location)? change,
+    TResult? Function(int timePosition)? remove,
     TResult? Function(EnumSortProductOrder orderList)? orderList,
     TResult? Function(String customerNumber)? send,
     TResult? Function()? clear,
@@ -720,9 +763,11 @@ class _$OrderListImpl implements _OrderList {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ChosenProduct chosenProduct, int? index)? add,
-    TResult Function(int position, String location)? change,
-    TResult Function(int position)? remove,
+    TResult Function(ShoppingBasketProduct chosenProduct, int? index,
+            EnumOrderType orderType)?
+        add,
+    TResult Function(int timePosition, String location)? change,
+    TResult Function(int timePosition)? remove,
     TResult Function(EnumSortProductOrder orderList)? orderList,
     TResult Function(String customerNumber)? send,
     TResult Function()? clear,
@@ -856,9 +901,11 @@ class _$SendImpl implements _Send {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ChosenProduct chosenProduct, int? index) add,
-    required TResult Function(int position, String location) change,
-    required TResult Function(int position) remove,
+    required TResult Function(ShoppingBasketProduct chosenProduct, int? index,
+            EnumOrderType orderType)
+        add,
+    required TResult Function(int timePosition, String location) change,
+    required TResult Function(int timePosition) remove,
     required TResult Function(EnumSortProductOrder orderList) orderList,
     required TResult Function(String customerNumber) send,
     required TResult Function() clear,
@@ -870,9 +917,11 @@ class _$SendImpl implements _Send {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ChosenProduct chosenProduct, int? index)? add,
-    TResult? Function(int position, String location)? change,
-    TResult? Function(int position)? remove,
+    TResult? Function(ShoppingBasketProduct chosenProduct, int? index,
+            EnumOrderType orderType)?
+        add,
+    TResult? Function(int timePosition, String location)? change,
+    TResult? Function(int timePosition)? remove,
     TResult? Function(EnumSortProductOrder orderList)? orderList,
     TResult? Function(String customerNumber)? send,
     TResult? Function()? clear,
@@ -884,9 +933,11 @@ class _$SendImpl implements _Send {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ChosenProduct chosenProduct, int? index)? add,
-    TResult Function(int position, String location)? change,
-    TResult Function(int position)? remove,
+    TResult Function(ShoppingBasketProduct chosenProduct, int? index,
+            EnumOrderType orderType)?
+        add,
+    TResult Function(int timePosition, String location)? change,
+    TResult Function(int timePosition)? remove,
     TResult Function(EnumSortProductOrder orderList)? orderList,
     TResult Function(String customerNumber)? send,
     TResult Function()? clear,
@@ -993,9 +1044,11 @@ class _$ClearImpl implements _Clear {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ChosenProduct chosenProduct, int? index) add,
-    required TResult Function(int position, String location) change,
-    required TResult Function(int position) remove,
+    required TResult Function(ShoppingBasketProduct chosenProduct, int? index,
+            EnumOrderType orderType)
+        add,
+    required TResult Function(int timePosition, String location) change,
+    required TResult Function(int timePosition) remove,
     required TResult Function(EnumSortProductOrder orderList) orderList,
     required TResult Function(String customerNumber) send,
     required TResult Function() clear,
@@ -1007,9 +1060,11 @@ class _$ClearImpl implements _Clear {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ChosenProduct chosenProduct, int? index)? add,
-    TResult? Function(int position, String location)? change,
-    TResult? Function(int position)? remove,
+    TResult? Function(ShoppingBasketProduct chosenProduct, int? index,
+            EnumOrderType orderType)?
+        add,
+    TResult? Function(int timePosition, String location)? change,
+    TResult? Function(int timePosition)? remove,
     TResult? Function(EnumSortProductOrder orderList)? orderList,
     TResult? Function(String customerNumber)? send,
     TResult? Function()? clear,
@@ -1021,9 +1076,11 @@ class _$ClearImpl implements _Clear {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ChosenProduct chosenProduct, int? index)? add,
-    TResult Function(int position, String location)? change,
-    TResult Function(int position)? remove,
+    TResult Function(ShoppingBasketProduct chosenProduct, int? index,
+            EnumOrderType orderType)?
+        add,
+    TResult Function(int timePosition, String location)? change,
+    TResult Function(int timePosition)? remove,
     TResult Function(EnumSortProductOrder orderList)? orderList,
     TResult Function(String customerNumber)? send,
     TResult Function()? clear,
@@ -1126,9 +1183,11 @@ class _$DeleteFailureMessageImpl implements _DeleteFailureMessage {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ChosenProduct chosenProduct, int? index) add,
-    required TResult Function(int position, String location) change,
-    required TResult Function(int position) remove,
+    required TResult Function(ShoppingBasketProduct chosenProduct, int? index,
+            EnumOrderType orderType)
+        add,
+    required TResult Function(int timePosition, String location) change,
+    required TResult Function(int timePosition) remove,
     required TResult Function(EnumSortProductOrder orderList) orderList,
     required TResult Function(String customerNumber) send,
     required TResult Function() clear,
@@ -1140,9 +1199,11 @@ class _$DeleteFailureMessageImpl implements _DeleteFailureMessage {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ChosenProduct chosenProduct, int? index)? add,
-    TResult? Function(int position, String location)? change,
-    TResult? Function(int position)? remove,
+    TResult? Function(ShoppingBasketProduct chosenProduct, int? index,
+            EnumOrderType orderType)?
+        add,
+    TResult? Function(int timePosition, String location)? change,
+    TResult? Function(int timePosition)? remove,
     TResult? Function(EnumSortProductOrder orderList)? orderList,
     TResult? Function(String customerNumber)? send,
     TResult? Function()? clear,
@@ -1154,9 +1215,11 @@ class _$DeleteFailureMessageImpl implements _DeleteFailureMessage {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ChosenProduct chosenProduct, int? index)? add,
-    TResult Function(int position, String location)? change,
-    TResult Function(int position)? remove,
+    TResult Function(ShoppingBasketProduct chosenProduct, int? index,
+            EnumOrderType orderType)?
+        add,
+    TResult Function(int timePosition, String location)? change,
+    TResult Function(int timePosition)? remove,
     TResult Function(EnumSortProductOrder orderList)? orderList,
     TResult Function(String customerNumber)? send,
     TResult Function()? clear,

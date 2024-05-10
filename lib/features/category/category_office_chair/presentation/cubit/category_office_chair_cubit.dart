@@ -5,7 +5,6 @@ import 'package:app_flutter_produkt_bestellen/core/global_cubits/cubit_pictures.
 import 'package:app_flutter_produkt_bestellen/features/category/category_office_chair/domain/repository/category_office_chair_repository.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/cubit/state_category_generic.dart';
 import 'package:either_dart/either.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CubitOfficeChair extends Cubit<StateCategory> {
@@ -20,7 +19,6 @@ class CubitOfficeChair extends Cubit<StateCategory> {
       emit(const StateCategory.loading());
     }
 
-    debugPrint('instanceName ==> $instanceName');
     var newState = state;
     await repositoryOfficeChair
         .getBuerodrehstuehle(officeChairCategory: instanceName)
@@ -41,15 +39,12 @@ class CubitOfficeChair extends Cubit<StateCategory> {
     });
 
     newState.mapOrNull(success: (successState) async {
-      debugPrint("loadPicturePath ==== continue");
-
       final listPicturePath = successState.productCategory?.listProduct
               .map((e) => e.picturePath)
               .toList() ??
           [];
       if (listPicturePath.isNotEmpty) {
         await listPicturePath.map((picturePath) async {
-          debugPrint("picturePath ==> $picturePath");
           if (!(_cubitPictures.state.containsKey(picturePath) &&
               _cubitPictures.state[picturePath] != null)) {
             final imageBytes =

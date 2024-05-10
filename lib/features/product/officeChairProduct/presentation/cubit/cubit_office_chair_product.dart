@@ -3,7 +3,7 @@ import 'package:app_flutter_produkt_bestellen/features/product/officeChairProduc
 import 'package:app_flutter_produkt_bestellen/features/product/share/domain/entity/entity_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/cubit_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/state_product.dart';
-import 'package:app_flutter_produkt_bestellen/features/shopping_basket//presentation/bloc/state_shopping_basket.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket/domain/entity/shopping_basket_entity.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:either_dart/either.dart';
 import 'package:flutter/cupertino.dart';
@@ -16,17 +16,12 @@ class CubitOfficeChairProduct extends CubitProduct<CubitOfficeChairProduct> {
   @override
   Future<void> load(
       {String? productNumber,
-      ({ChosenProduct chosenProduct, int index})? recordOrder}) async {
-    debugPrint("start with OfficeChairCubit");
-
+      ({ShoppingBasketProduct chosenProduct, int index})? recordOrder}) async {
     if (productNumber != null) {
       await repositoryOfficeChairProduct
-          .getOfficeChairProduct(productNumber: productNumber)
-          .fold((failure) {
-        debugPrint("officeChairProductfailure ==> ${failure.toString()}");
-      }, (officeChair) {
-        debugPrint('officeChair => $officeChair');
-
+          .getOfficeChairProduct(
+              productNumber: productNumber.split('_')[1].split('.')[0])
+          .fold((failure) {}, (officeChair) {
         var newState = StateProduct(
           productEntity: EntityProduct(
               productNumber: officeChair.productNumber,
@@ -36,7 +31,7 @@ class CubitOfficeChairProduct extends CubitProduct<CubitOfficeChairProduct> {
               productCategory: officeChair.productCategory,
               price: officeChair.price),
         );
-        debugPrint("continue OfficeChairCubit");
+
         debugPrint(
             "product parameter ===> $productNumber, picturelocal keys =>${getIt<CubitPictures>().state.keys}");
 
@@ -44,19 +39,43 @@ class CubitOfficeChairProduct extends CubitProduct<CubitOfficeChairProduct> {
             getIt<CubitPictures>().state.containsKey(productNumber) &&
                 getIt<CubitPictures>().state[productNumber] != null;
 
-        debugPrint("containsPictureLocal Product ==> $containsPictureLocal");
         if (containsPictureLocal) {
           newState = newState.copyWith(
               productEntity: newState.productEntity?.copyWith(
                   pictureBytes: getIt<CubitPictures>().state[productNumber]));
         }
-        debugPrint("End officeChairCubit load method");
+
         emit(newState);
 
         //if-abfrage getIt<CubitPictures>().state.containsKey(product)
       });
     } else if (recordOrder != null) {
-      changeProduct(order: recordOrder.chosenProduct, index: recordOrder.index);
+      final product = repositoryOfficeChairProduct.listOfficeChairProduct
+          .where(
+            (element) =>
+                element.productNumber ==
+                recordOrder.chosenProduct.productNumber,
+          )
+          .first;
+
+      final picutreBytes = getIt<CubitPictures>()
+          .state
+          .entries
+          .where((element) =>
+              element.key.contains(recordOrder.chosenProduct.productNumber))
+          .firstOrNull!
+          .value!;
+
+      emit(state.copyWith(
+          productOrderCount: recordOrder.chosenProduct.productCount,
+          productEntity: EntityProduct(
+              productCategory: product.productCategory,
+              price: product.price,
+              name: product.name,
+              productNumber: product.productNumber,
+              attributes: product.attributes,
+              pictureBytes: picutreBytes),
+          position: recordOrder.index));
     }
   }
 }

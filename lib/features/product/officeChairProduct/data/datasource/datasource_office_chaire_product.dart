@@ -6,7 +6,6 @@ import 'package:app_flutter_produkt_bestellen/features/product/officeChairProduc
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:either_dart/either.dart';
-import 'package:flutter/material.dart';
 
 abstract class DataSourceOfficeChairProduct {
   Future<Either<Failure, EntityOfficeChairProduct>> getOfficeChairProduct(
@@ -20,22 +19,20 @@ class DataSourceOfficeChairProductImplementation
       {required String productNumber}) async {
     try {
       final category = getIt<CubitChooseOfficeChair>().state.name;
-      debugPrint("categoryName ==> $category");
-      debugPrint("productNumber ===> $productNumber");
+
       final product = await FirebaseFirestore.instance
           .collection('Product')
           .doc(AppConfig.productDocumentId)
           .collection('officeChair')
           .doc(AppConfig.officeChairDocumentId)
           .collection(category.trim())
-          .where('productNumber',
-              isEqualTo: productNumber.split('_')[1].split('.')[0])
+          .where('productNumber', isEqualTo: productNumber)
           .get()
           .timeout(const Duration(seconds: 10))
           .then((querySnapshot) {
         final Map<String, dynamic>? data =
             querySnapshot.docs.firstOrNull?.data();
-        debugPrint("data ===> ${data.toString()}");
+
         if (data != null && data['price'] != null) {
           return EntityOfficeChairProduct(
               productCategory: category == 'normal'
@@ -48,10 +45,8 @@ class DataSourceOfficeChairProductImplementation
               productNumber: data['productNumber'].toString());
         }
       });
-      debugPrint("dataProduct ===> ${product.toString()}");
 
       if (product != null) {
-        debugPrint("dataProduct success ===> ${product.toString()}");
         return Right(product);
       } else {
         return const Left(Failure.databaseError());

@@ -2,7 +2,7 @@ import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/cubit_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/state_product.dart';
-import 'package:app_flutter_produkt_bestellen/features/shopping_basket//presentation/bloc/state_shopping_basket.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket/domain/entity/shopping_basket_entity.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/bloc/bloc_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/bloc/event_shopping_basket.dart';
 import 'package:flutter/material.dart';
@@ -75,14 +75,45 @@ class WidgetOrderProduct extends StatelessWidget {
                           state.productEntity != null) {
                         context.read<BlocShoppingBasket>().add(
                               EventShoppingBasket.add(
-                                  chosenProduct: ChosenProduct(
-                                      name: state.productEntity!.name,
-                                      count: state.productOrderCount,
+                                  chosenProduct: ShoppingBasketProduct(
+                                      productName: state.productEntity!.name,
+                                      productCount: state.productOrderCount,
                                       productNumber:
                                           state.productEntity!.productNumber,
-                                      orderType: EnumOrderType.bestellung,
-                                      entityProduct: state.productEntity!),
-                                  index: state.position),
+                                      productType: state
+                                          .productEntity!.productCategory.type,
+                                      price: state.productEntity!.price +
+                                          state.productEntity!.additionalAmount,
+                                      addedTime: state.position == null
+                                          ? DateTime.now()
+                                              .millisecondsSinceEpoch
+                                          : state.position!,
+                                      color: state
+                                          .productEntity
+                                          ?.workingTableSizeAndColor
+                                          ?.selectedEntityGestell
+                                          ?.color
+                                          .toString(),
+                                      widthAndHeight: state
+                                                  .productEntity
+                                                  ?.workingTableSizeAndColor
+                                                  ?.selectedBreiteUndTiefe ==
+                                              null
+                                          ? null
+                                          : Size(
+                                              height: state
+                                                  .productEntity!
+                                                  .workingTableSizeAndColor!
+                                                  .selectedBreiteUndTiefe!
+                                                  .tiefe,
+                                              width: state
+                                                  .productEntity!
+                                                  .workingTableSizeAndColor!
+                                                  .selectedBreiteUndTiefe!
+                                                  .breite,
+                                            )),
+                                  index: state.position,
+                                  orderType: EnumOrderType.bestellung),
                             );
                       }
                       context.read<CubitProduct>().reset();
@@ -127,22 +158,52 @@ class WidgetOrderProduct extends StatelessWidget {
                       ),
                     ),
                     onTap: () {
-                      debugPrint("start adding");
                       if (state.productOrderCount > 0 &&
                           state.productEntity != null) {
                         context.read<BlocShoppingBasket>().add(
                               EventShoppingBasket.add(
-                                  chosenProduct: ChosenProduct(
-                                      name: state.productEntity!.name,
-                                      count: state.productOrderCount,
-                                      productNumber:
-                                          state.productEntity!.productNumber,
-                                      orderType: EnumOrderType.anfrage,
-                                      entityProduct: state.productEntity!),
-                                  index: state.position),
+                                chosenProduct: ShoppingBasketProduct(
+                                    productName: state.productEntity!.name,
+                                    productCount: state.productOrderCount,
+                                    productNumber:
+                                        state.productEntity!.productNumber,
+                                    productType: state
+                                        .productEntity!.productCategory.type,
+                                    price: state.productEntity!.price +
+                                        state.productEntity!.additionalAmount,
+                                    addedTime: state.position == null
+                                        ? DateTime.now().millisecondsSinceEpoch
+                                        : state.position!,
+                                    color: state
+                                        .productEntity
+                                        ?.workingTableSizeAndColor
+                                        ?.selectedEntityGestell
+                                        ?.color
+                                        .toString(),
+                                    widthAndHeight: state
+                                                .productEntity
+                                                ?.workingTableSizeAndColor
+                                                ?.selectedBreiteUndTiefe ==
+                                            null
+                                        ? null
+                                        : Size(
+                                            height: state
+                                                .productEntity!
+                                                .workingTableSizeAndColor!
+                                                .selectedBreiteUndTiefe!
+                                                .tiefe,
+                                            width: state
+                                                .productEntity!
+                                                .workingTableSizeAndColor!
+                                                .selectedBreiteUndTiefe!
+                                                .breite,
+                                          )),
+                                index: state.position,
+                                orderType: EnumOrderType.anfrage,
+                              ),
                             );
                       }
-                      debugPrint("start reset");
+
                       context.read<CubitProduct>().reset();
                     },
                   ),

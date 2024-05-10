@@ -1,11 +1,12 @@
 import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
+import 'package:app_flutter_produkt_bestellen/core/extension/list_extenstion.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket//presentation/bloc/state_shopping_basket.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket/domain/entity/shopping_basket_entity.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/domain/repository/shopping_basket_ropository.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/bloc/event_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -15,78 +16,145 @@ class BlocShoppingBasket
   final ShoppingBasketRepository shoppingBasketRepository;
 
   BlocShoppingBasket({required this.shoppingBasketRepository})
-      : super(const StateShoppingBasket(listChosenProduct: [])) {
+      : super(const StateShoppingBasket(
+            orderChosenProductList: [], requestChosenProductList: [])) {
     on<EventShoppingBasket>((event, emitState) async {
       await event.when(
-        add: (product, position) {
-          debugPrint("product ==> ${product.toString()}");
-          List<ChosenProduct> newList = List.from(state.listChosenProduct);
-          if (position != null && newList.elementAtOrNull(position) != null) {
-            newList[position] = product;
+        add: (product, timeIndex, orderType) {
+          debugPrint("timeIndex ==> $timeIndex -- ");
+          if (timeIndex != null) {
+            if (orderType == EnumOrderType.bestellung &&
+                state.orderChosenProductList
+                    .any((element) => element.addedTime == timeIndex)) {
+              final newOrderList = state.orderChosenProductList
+                  .replaceAndSortProduct(product: product); //Extension
+
+              emitState(state.copyWith(orderChosenProductList: newOrderList));
+            } else if (orderType == EnumOrderType.anfrage &&
+                state.requestChosenProductList
+                    .any((element) => element.addedTime == timeIndex)) {
+              final newRequestList = state.requestChosenProductList
+                  .replaceAndSortProduct(product: product); //Extension
+
+              emitState(
+                  state.copyWith(requestChosenProductList: newRequestList));
+            } else if (orderType == EnumOrderType.bestellung) {
+              final newOrderList = state.orderChosenProductList
+                  .addAndSortProduct(product: product); //Extension
+              List<ShoppingBasketProduct> newRequestList =
+                  List.from(state.requestChosenProductList)
+                    ..removeWhere((element) => element.addedTime == timeIndex)
+                    ..sort((a, b) => b.addedTime.compareTo(a.addedTime));
+
+              emitState(state.copyWith(
+                  orderChosenProductList: newOrderList,
+                  requestChosenProductList: newRequestList));
+            } else if (orderType == EnumOrderType.anfrage) {
+              final newRequestList = state.requestChosenProductList
+                  .addAndSortProduct(product: product); //Extension
+
+              List<ShoppingBasketProduct> newOrderList =
+                  List<ShoppingBasketProduct>.from(state.orderChosenProductList)
+                    ..removeWhere((element) => element.addedTime == timeIndex)
+                    ..sort((a, b) => b.addedTime.compareTo(a.addedTime));
+
+              emitState(state.copyWith(
+                  orderChosenProductList: newOrderList,
+                  requestChosenProductList: newRequestList));
+            }
           } else {
-            newList.add(product);
+            if (orderType == EnumOrderType.bestellung) {
+              final newOrderList =
+                  List<ShoppingBasketProduct>.from(state.orderChosenProductList)
+                    ..add(product);
+              emitState(state.copyWith(orderChosenProductList: newOrderList));
+            } else {
+              final newRequestList = List<ShoppingBasketProduct>.from(
+                  state.requestChosenProductList)
+                ..add(product);
+              emitState(
+                  state.copyWith(requestChosenProductList: newRequestList));
+            }
           }
-          final newState = state.copyWith(listChosenProduct: newList);
-          emitState(newState);
         },
-        change: (index, location) {
-          final order = state.listChosenProduct.elementAt(index);
-          final ({ChosenProduct chosenProduct, int index}) record =
-              (chosenProduct: order, index: index);
-          final String routeName = _getRouteName(
-              productCategory: order.entityProduct.productCategory);
+        change: (timeIndex, location) {
+          final product = [
+            ...state.orderChosenProductList,
+            ...state.requestChosenProductList
+          ].where((product) => product.addedTime == timeIndex).first;
+          final productCategory = EnumCategoryProduct.values
+              .where((element) => element.type == product.productType)
+              .first;
+          final ({ShoppingBasketProduct chosenProduct, int index}) record =
+              (chosenProduct: product, index: timeIndex);
+          final String routeName =
+              _getRouteName(productCategory: productCategory);
 
           if (location.contains(AppGoRouter.product.title)) {
-            debugPrint("location : $location -- routenName : $routeName");
             if (location.contains(routeName)) {
-              debugPrint("replace Route");
               getIt<GoRouter>().pushReplacementNamed(routeName, extra: record);
             } else {
               getIt<GoRouter>().goNamed(routeName, extra: record);
             }
           } else {
             getIt<GoRouter>().pop(null);
-            if (order.entityProduct.productCategory ==
-                EnumCategoryProduct.workingTable) {
+            if (productCategory == EnumCategoryProduct.workingTable) {
               getIt<GoRouter>().goNamed(routeName, extra: record);
-            } else if (order.entityProduct.productCategory ==
+            } else if (productCategory ==
                     EnumCategoryProduct.officeChairNormal ||
-                order.entityProduct.productCategory ==
-                    EnumCategoryProduct.officeChairHochlehner) {
+                productCategory == EnumCategoryProduct.officeChairHochlehner) {
               getIt<GoRouter>().goNamed(routeName, extra: record);
-            } else if (order.entityProduct.productCategory ==
-                EnumCategoryProduct.conferenceChair) {
+            } else if (productCategory == EnumCategoryProduct.conferenceChair) {
               getIt<GoRouter>().goNamed(routeName, extra: record);
             }
           }
         },
-        remove: (index) {
-          List<ChosenProduct> newList = List.from(state.listChosenProduct)
-            ..removeAt(index);
+        remove: (timeIndex) {
+          List<ShoppingBasketProduct> orderList =
+              List.from(state.orderChosenProductList)
+                ..removeWhere((element) => element.addedTime == timeIndex);
+          List<ShoppingBasketProduct> requestList =
+              List.from(state.requestChosenProductList)
+                ..removeWhere((element) => element.addedTime == timeIndex);
 
-          final newState = state.copyWith(listChosenProduct: newList);
-
-          emitState(newState);
+          emitState(
+            state.copyWith(
+                orderChosenProductList: orderList,
+                requestChosenProductList: requestList),
+          );
         },
         orderList: (enumOrder) {},
         clear: () {
-          final newState = state.copyWith(listChosenProduct: []);
-          emitState(newState);
+          emitState(state.copyWith(
+            orderChosenProductList: [],
+            requestChosenProductList: [],
+          ));
         },
         send: (customerNumber) async {
-          try {
-            final json = await _generateJson(
-              chosenProductList: state.listChosenProduct,
-              customerNumber: customerNumber,
-            );
+          final ShoppingBasketEntity orderShoppingBasketEntity =
+              ShoppingBasketEntity(
+                  id: DateTime.now().millisecondsSinceEpoch.toString(),
+                  userId: customerNumber,
+                  status: 0,
+                  products: state.orderChosenProductList);
 
-            final result =
-                await shoppingBasketRepository.sendOrder(order: json);
+          final ShoppingBasketEntity requestShoppingBasketEntity =
+              ShoppingBasketEntity(
+                  id: DateTime.now().millisecondsSinceEpoch.toString(),
+                  userId: customerNumber,
+                  status: 0,
+                  products: state.requestChosenProductList);
+
+          try {
+            final result = await shoppingBasketRepository.sendOrder(
+                order: orderShoppingBasketEntity,
+                request: requestShoppingBasketEntity);
 
             result.fold(
               (failure) => emitState(state.copyWith(failure: failure)),
               (right) => emitState(
-                state.copyWith(listChosenProduct: []),
+                state.copyWith(
+                    orderChosenProductList: [], requestChosenProductList: []),
               ),
             );
           } catch (e) {
@@ -104,111 +172,6 @@ class BlocShoppingBasket
         },
       );
     });
-  }
-
-  double _completeAmount({required List<Map<String, dynamic>> orderList}) {
-    double amount = 0;
-
-    orderList
-        .map((product) => amount += product['price'] * product['count'])
-        .toList();
-
-    return amount;
-  }
-
-  Future<Map<String, dynamic>> _generateJson(
-      {required List<ChosenProduct> chosenProductList,
-      required String customerNumber}) async {
-    final timestamp = DateTime.now().millisecondsSinceEpoch;
-
-    final date = Timestamp.fromDate(
-      DateTime.now(),
-    );
-
-    final orderJson = _generateOrderJson(
-        chosenProductList: chosenProductList,
-        customerNumber: customerNumber,
-        timestamp: timestamp,
-        date: date);
-
-    final requestJson = _generateRequestJson(
-        chosenProductList: chosenProductList,
-        customerNumber: customerNumber,
-        timestamp: timestamp,
-        date: date);
-
-    final json = {
-      "order": orderJson,
-      "request": requestJson,
-    };
-
-    return json;
-  }
-
-  Map<String, dynamic> _generateOrderJson(
-      {required List<ChosenProduct> chosenProductList,
-      required String customerNumber,
-      required Timestamp date,
-      required int timestamp}) {
-    final orderID = "$timestamp-$customerNumber";
-    final orderList = chosenProductList
-        .where((element) => element.orderType == EnumOrderType.bestellung)
-        .toList()
-        .map((e) => {
-              "count": e.count,
-              "price": e.entityProduct.price,
-              "productNumber": e.productNumber,
-              "productName": e.name,
-            })
-        .toList();
-
-    final orderAmount = _completeAmount(orderList: orderList);
-
-    return {
-      "order_id": orderID,
-      "customerNumber": customerNumber,
-      "amount": orderAmount,
-      "canceledByAdmin": false,
-      "canceledByCustomer": false,
-      "date": date,
-      "finished": false,
-      "inWork": true,
-      "orderList": orderList
-    };
-  }
-
-  Map<String, dynamic> _generateRequestJson(
-      {required List<ChosenProduct> chosenProductList,
-      String? customerNumber,
-      required int timestamp,
-      required Timestamp date}) {
-    final requestList = chosenProductList
-        .where((element) => element.orderType == EnumOrderType.anfrage)
-        .toList()
-        .map((e) => {
-              "count": e.count,
-              "price": e.entityProduct.price,
-              "productNumber": e.productNumber,
-              "productName": e.name,
-            })
-        .toList();
-
-    final requestAmount = _completeAmount(orderList: requestList);
-
-    final requestID =
-        "${timestamp.toString().split('').reversed.join('')}-$customerNumber";
-
-    return {
-      "request_id": requestID,
-      "customerNumber": customerNumber,
-      "amount": requestAmount,
-      "canceledByAdmin": false,
-      "canceledByCustomer": false,
-      "date": date,
-      "finished": false,
-      "inWork": true,
-      "requestList": requestList
-    };
   }
 
   String _getRouteName({required EnumCategoryProduct productCategory}) {

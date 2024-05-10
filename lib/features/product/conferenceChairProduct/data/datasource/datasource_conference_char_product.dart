@@ -3,7 +3,6 @@ import 'package:app_flutter_produkt_bestellen/core/fix_values/flavor.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/conferenceChairProduct/domain/entity/entity_conference_chair_product.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:either_dart/either.dart';
-import 'package:flutter/material.dart';
 
 abstract class DataSourceConferenceChairProduct {
   Future<Either<Failure, EntityConferenceChairProduct>>
@@ -18,20 +17,17 @@ class DataSourceConferenceChairProductImplementation
     // TODO: implement getConferenceChairProduct
 
     try {
-      debugPrint(
-          "productNumber ===> ${productNumber.split('_')[1].split('.')[0]}");
       final product = await FirebaseFirestore.instance
           .collection('Product')
           .doc(AppConfig.productDocumentId)
           .collection('conferenceChair')
-          .where('productNumber',
-              isEqualTo: productNumber.split('_')[1].split('.')[0])
+          .where('productNumber', isEqualTo: productNumber)
           .get()
           .timeout(const Duration(seconds: 10))
           .then((querySnapshot) {
         final Map<String, dynamic>? data =
             querySnapshot.docs.firstOrNull?.data();
-        debugPrint("data ===> ${data.toString()}");
+
         if (data != null && data['price'] != null) {
           return EntityConferenceChairProduct(
               name: data['productTitle'].toString(),
@@ -41,10 +37,8 @@ class DataSourceConferenceChairProductImplementation
               productNumber: data['productNumber'].toString());
         }
       });
-      debugPrint("dataProduct ===> ${product.toString()}");
 
       if (product != null) {
-        debugPrint("dataProduct success ===> ${product.toString()}");
         return Right(product);
       } else {
         return const Left(Failure.databaseError());
@@ -54,20 +48,3 @@ class DataSourceConferenceChairProductImplementation
     }
   }
 }
-/*
-final _dummyListProductConferenceChair = [
-  EntityConferenceChairProduct(
-      name: 'CAMIRO Freischwinger Netz',
-      attributes: [
-        'Rücken Netz - Sitz Polster',
-        'Rücken Stoff Comf Style 4341 schwarz',
-        'Armlehnen fest mit Kunststoffarmauflage',
-        'Sitz Stoff Just 60999 schwarz',
-        'Label OS',
-        'Gestell Ausführung: stapelbar verchromt',
-        'Filzgleiter für harte Böden',
-      ],
-      price: 329.00,
-      picturePath:
-          Assets.products.konferenzstuehle.camiroFreischwingerNetz.path)
-];*/

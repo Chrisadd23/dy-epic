@@ -1,9 +1,11 @@
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
+import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_cubits/cubit_pictures.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_state.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/page/login_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket//presentation/bloc/state_shopping_basket.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket/domain/entity/shopping_basket_entity.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/bloc/bloc_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/bloc/event_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
@@ -24,7 +26,9 @@ class ShoppingBasketOfferList extends StatelessWidget {
         builder: (context, constraints) => Builder(builder: (context) {
           return BlocListener<BlocShoppingBasket, StateShoppingBasket>(
               listenWhen: (_, cState) =>
-                  cState.listChosenProduct.isEmpty || cState.failure != null,
+                  (cState.orderChosenProductList.isEmpty &&
+                      cState.requestChosenProductList.isEmpty) ||
+                  cState.failure != null,
               listener: (context, state) {
                 if (state.failure != null) {
                   ShowFailureDialog.present(
@@ -50,20 +54,35 @@ class ShoppingBasketOfferList extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: const BorderRadius.vertical(
                           bottom: Radius.circular(30)),
-                      child: ListView.builder(
-                        itemCount: state.listChosenProduct.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: constraints.maxWidth * 0.05,
-                                vertical: constraints.maxHeight * 0.02),
-                            child: _ShoppingBasketOffer(
-                                constraints: constraints,
-                                index: index,
-                                item: state.listChosenProduct[index]),
-                          );
-                        },
-                      ),
+                      child: BlocSelector<BlocShoppingBasket,
+                              StateShoppingBasket, List<ShoppingBasketProduct>>(
+                          selector: (state) => [
+                                ...List.of(state.orderChosenProductList),
+                                ...List.of(state.requestChosenProductList)
+                              ]..sort(
+                                  (a, b) => b.addedTime.compareTo(a.addedTime)),
+                          builder: (context, state) {
+                            return ListView.builder(
+                              itemCount: state.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: constraints.maxWidth * 0.05,
+                                      vertical: constraints.maxHeight * 0.02),
+                                  child: _ShoppingBasketOffer(
+                                      constraints: constraints,
+                                      item: state[index],
+                                      addedTime: state[index].addedTime,
+                                      orderType: context
+                                          .read<BlocShoppingBasket>()
+                                          .state
+                                          .getEnumOrderType(
+                                              timeIndex:
+                                                  state[index].addedTime)),
+                                );
+                              },
+                            );
+                          }),
                     ),
                   ),
                   SendOrderButton(constraints: constraints)
@@ -130,13 +149,15 @@ class SendOrderButton extends StatelessWidget {
 class _ShoppingBasketOffer extends HookWidget {
   const _ShoppingBasketOffer({
     required this.constraints,
-    required this.index,
     required this.item,
+    required this.addedTime,
+    required this.orderType,
   });
 
-  final int index;
+  final int addedTime;
   final BoxConstraints constraints;
-  final ChosenProduct item;
+  final ShoppingBasketProduct item;
+  final EnumOrderType orderType;
 
   @override
   Widget build(BuildContext context) {
@@ -193,15 +214,17 @@ class _ShoppingBasketOffer extends HookWidget {
               color: Colors.white,
               onSwiped: (direction) {
                 if (direction == SwipeDirection.startToEnd) {
-                  context.read<BlocShoppingBasket>().add(
-                      EventShoppingBasket.change(
-                          position: index,
-                          location: getIt<GoRouter>().location));
+                  context
+                      .read<BlocShoppingBasket>()
+                      .add(EventShoppingBasket.change(
+                        timePosition: addedTime,
+                        location: getIt<GoRouter>().location,
+                      ));
                 }
                 if (direction == SwipeDirection.endToStart) {
                   context
                       .read<BlocShoppingBasket>()
-                      .add(EventShoppingBasket.remove(position: index));
+                      .add(EventShoppingBasket.remove(timePosition: addedTime));
                 }
               },
               horizontalPadding: 0,
@@ -224,10 +247,13 @@ class _ShoppingBasketOffer extends HookWidget {
                     children: [
                       SizedBox(
                         height: constraints.maxHeight * 0.2,
-                        child: _Offer(item: item, index: index),
+                        child: _Offer(item: item),
                       ),
                       expand.value
-                          ? _OfferInfo(item: item, constraints: constraints)
+                          ? _OfferInfo(
+                              item: item,
+                              constraints: constraints,
+                              orderType: orderType)
                           : const SizedBox.shrink(),
                     ],
                   ),
@@ -243,10 +269,12 @@ class _OfferInfo extends StatelessWidget {
   const _OfferInfo({
     required this.constraints,
     required this.item,
+    required this.orderType,
   });
 
   final BoxConstraints constraints;
-  final ChosenProduct item;
+  final ShoppingBasketProduct item;
+  final EnumOrderType orderType;
 
   @override
   Widget build(BuildContext context) {
@@ -267,7 +295,7 @@ class _OfferInfo extends StatelessWidget {
               ),
               Expanded(
                 child: Text(
-                  item.count.toString(),
+                  item.productCount.toString(),
                   style: const TextStyle(
                       fontSize: 20, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.right,
@@ -289,8 +317,7 @@ class _OfferInfo extends StatelessWidget {
                 child: Text(
                   NumberFormat.currency(
                           locale: 'de_DE', symbol: '€', decimalDigits: 2)
-                      .format(item.entityProduct.price +
-                          item.entityProduct.additionalAmount),
+                      .format(item.price),
                   style: const TextStyle(
                       fontSize: 20, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.right,
@@ -322,7 +349,7 @@ class _OfferInfo extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
           child: Text(
-            item.orderType.name.toUpperCase(),
+            orderType.text,
             style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
         ),
@@ -332,10 +359,9 @@ class _OfferInfo extends StatelessWidget {
 }
 
 class _Offer extends StatelessWidget {
-  const _Offer({required this.item, required this.index});
+  const _Offer({required this.item});
 
-  final ChosenProduct item;
-  final int index;
+  final ShoppingBasketProduct item;
 
   @override
   Widget build(BuildContext context) {
@@ -359,7 +385,7 @@ class _Offer extends StatelessWidget {
                       vertical: constraints.maxHeight * 0.12,
                       horizontal: constraints.maxWidth * 0.02),
                   child: Text(
-                    item.name,
+                    item.productName,
                     style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
@@ -372,9 +398,7 @@ class _Offer extends StatelessWidget {
                   child: Text(
                     NumberFormat.currency(
                             locale: 'de_DE', symbol: '€', decimalDigits: 2)
-                        .format((item.entityProduct.price +
-                                item.entityProduct.additionalAmount) *
-                            item.count),
+                        .format((item.price) * item.productCount),
                     style: const TextStyle(
                         fontSize: 20, fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center,

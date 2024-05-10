@@ -16,7 +16,9 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$StateShoppingBasket {
-  List<ChosenProduct> get listChosenProduct =>
+  List<ShoppingBasketProduct> get orderChosenProductList =>
+      throw _privateConstructorUsedError;
+  List<ShoppingBasketProduct> get requestChosenProductList =>
       throw _privateConstructorUsedError;
   Failure? get failure => throw _privateConstructorUsedError;
 
@@ -31,7 +33,10 @@ abstract class $StateShoppingBasketCopyWith<$Res> {
           StateShoppingBasket value, $Res Function(StateShoppingBasket) then) =
       _$StateShoppingBasketCopyWithImpl<$Res, StateShoppingBasket>;
   @useResult
-  $Res call({List<ChosenProduct> listChosenProduct, Failure? failure});
+  $Res call(
+      {List<ShoppingBasketProduct> orderChosenProductList,
+      List<ShoppingBasketProduct> requestChosenProductList,
+      Failure? failure});
 
   $FailureCopyWith<$Res>? get failure;
 }
@@ -49,14 +54,19 @@ class _$StateShoppingBasketCopyWithImpl<$Res, $Val extends StateShoppingBasket>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? listChosenProduct = null,
+    Object? orderChosenProductList = null,
+    Object? requestChosenProductList = null,
     Object? failure = freezed,
   }) {
     return _then(_value.copyWith(
-      listChosenProduct: null == listChosenProduct
-          ? _value.listChosenProduct
-          : listChosenProduct // ignore: cast_nullable_to_non_nullable
-              as List<ChosenProduct>,
+      orderChosenProductList: null == orderChosenProductList
+          ? _value.orderChosenProductList
+          : orderChosenProductList // ignore: cast_nullable_to_non_nullable
+              as List<ShoppingBasketProduct>,
+      requestChosenProductList: null == requestChosenProductList
+          ? _value.requestChosenProductList
+          : requestChosenProductList // ignore: cast_nullable_to_non_nullable
+              as List<ShoppingBasketProduct>,
       failure: freezed == failure
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
@@ -85,7 +95,10 @@ abstract class _$$StateShoppingBasketImplCopyWith<$Res>
       __$$StateShoppingBasketImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<ChosenProduct> listChosenProduct, Failure? failure});
+  $Res call(
+      {List<ShoppingBasketProduct> orderChosenProductList,
+      List<ShoppingBasketProduct> requestChosenProductList,
+      Failure? failure});
 
   @override
   $FailureCopyWith<$Res>? get failure;
@@ -102,14 +115,19 @@ class __$$StateShoppingBasketImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? listChosenProduct = null,
+    Object? orderChosenProductList = null,
+    Object? requestChosenProductList = null,
     Object? failure = freezed,
   }) {
     return _then(_$StateShoppingBasketImpl(
-      listChosenProduct: null == listChosenProduct
-          ? _value._listChosenProduct
-          : listChosenProduct // ignore: cast_nullable_to_non_nullable
-              as List<ChosenProduct>,
+      orderChosenProductList: null == orderChosenProductList
+          ? _value._orderChosenProductList
+          : orderChosenProductList // ignore: cast_nullable_to_non_nullable
+              as List<ShoppingBasketProduct>,
+      requestChosenProductList: null == requestChosenProductList
+          ? _value._requestChosenProductList
+          : requestChosenProductList // ignore: cast_nullable_to_non_nullable
+              as List<ShoppingBasketProduct>,
       failure: freezed == failure
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
@@ -120,18 +138,31 @@ class __$$StateShoppingBasketImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$StateShoppingBasketImpl implements _StateShoppingBasket {
+class _$StateShoppingBasketImpl extends _StateShoppingBasket {
   const _$StateShoppingBasketImpl(
-      {required final List<ChosenProduct> listChosenProduct, this.failure})
-      : _listChosenProduct = listChosenProduct;
+      {required final List<ShoppingBasketProduct> orderChosenProductList,
+      required final List<ShoppingBasketProduct> requestChosenProductList,
+      this.failure})
+      : _orderChosenProductList = orderChosenProductList,
+        _requestChosenProductList = requestChosenProductList,
+        super._();
 
-  final List<ChosenProduct> _listChosenProduct;
+  final List<ShoppingBasketProduct> _orderChosenProductList;
   @override
-  List<ChosenProduct> get listChosenProduct {
-    if (_listChosenProduct is EqualUnmodifiableListView)
-      return _listChosenProduct;
+  List<ShoppingBasketProduct> get orderChosenProductList {
+    if (_orderChosenProductList is EqualUnmodifiableListView)
+      return _orderChosenProductList;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_listChosenProduct);
+    return EqualUnmodifiableListView(_orderChosenProductList);
+  }
+
+  final List<ShoppingBasketProduct> _requestChosenProductList;
+  @override
+  List<ShoppingBasketProduct> get requestChosenProductList {
+    if (_requestChosenProductList is EqualUnmodifiableListView)
+      return _requestChosenProductList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_requestChosenProductList);
   }
 
   @override
@@ -139,7 +170,7 @@ class _$StateShoppingBasketImpl implements _StateShoppingBasket {
 
   @override
   String toString() {
-    return 'StateShoppingBasket(listChosenProduct: $listChosenProduct, failure: $failure)';
+    return 'StateShoppingBasket(orderChosenProductList: $orderChosenProductList, requestChosenProductList: $requestChosenProductList, failure: $failure)';
   }
 
   @override
@@ -147,14 +178,19 @@ class _$StateShoppingBasketImpl implements _StateShoppingBasket {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$StateShoppingBasketImpl &&
-            const DeepCollectionEquality()
-                .equals(other._listChosenProduct, _listChosenProduct) &&
+            const DeepCollectionEquality().equals(
+                other._orderChosenProductList, _orderChosenProductList) &&
+            const DeepCollectionEquality().equals(
+                other._requestChosenProductList, _requestChosenProductList) &&
             (identical(other.failure, failure) || other.failure == failure));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_listChosenProduct), failure);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_orderChosenProductList),
+      const DeepCollectionEquality().hash(_requestChosenProductList),
+      failure);
 
   @JsonKey(ignore: true)
   @override
@@ -164,235 +200,21 @@ class _$StateShoppingBasketImpl implements _StateShoppingBasket {
           this, _$identity);
 }
 
-abstract class _StateShoppingBasket implements StateShoppingBasket {
+abstract class _StateShoppingBasket extends StateShoppingBasket {
   const factory _StateShoppingBasket(
-      {required final List<ChosenProduct> listChosenProduct,
+      {required final List<ShoppingBasketProduct> orderChosenProductList,
+      required final List<ShoppingBasketProduct> requestChosenProductList,
       final Failure? failure}) = _$StateShoppingBasketImpl;
+  const _StateShoppingBasket._() : super._();
 
   @override
-  List<ChosenProduct> get listChosenProduct;
+  List<ShoppingBasketProduct> get orderChosenProductList;
+  @override
+  List<ShoppingBasketProduct> get requestChosenProductList;
   @override
   Failure? get failure;
   @override
   @JsonKey(ignore: true)
   _$$StateShoppingBasketImplCopyWith<_$StateShoppingBasketImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-mixin _$ChosenProduct {
-  String get name => throw _privateConstructorUsedError;
-  int get count => throw _privateConstructorUsedError;
-  String get productNumber => throw _privateConstructorUsedError;
-  EnumOrderType get orderType => throw _privateConstructorUsedError;
-  EntityProduct get entityProduct => throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $ChosenProductCopyWith<ChosenProduct> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $ChosenProductCopyWith<$Res> {
-  factory $ChosenProductCopyWith(
-          ChosenProduct value, $Res Function(ChosenProduct) then) =
-      _$ChosenProductCopyWithImpl<$Res, ChosenProduct>;
-  @useResult
-  $Res call(
-      {String name,
-      int count,
-      String productNumber,
-      EnumOrderType orderType,
-      EntityProduct entityProduct});
-
-  $EntityProductCopyWith<$Res> get entityProduct;
-}
-
-/// @nodoc
-class _$ChosenProductCopyWithImpl<$Res, $Val extends ChosenProduct>
-    implements $ChosenProductCopyWith<$Res> {
-  _$ChosenProductCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? name = null,
-    Object? count = null,
-    Object? productNumber = null,
-    Object? orderType = null,
-    Object? entityProduct = null,
-  }) {
-    return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      count: null == count
-          ? _value.count
-          : count // ignore: cast_nullable_to_non_nullable
-              as int,
-      productNumber: null == productNumber
-          ? _value.productNumber
-          : productNumber // ignore: cast_nullable_to_non_nullable
-              as String,
-      orderType: null == orderType
-          ? _value.orderType
-          : orderType // ignore: cast_nullable_to_non_nullable
-              as EnumOrderType,
-      entityProduct: null == entityProduct
-          ? _value.entityProduct
-          : entityProduct // ignore: cast_nullable_to_non_nullable
-              as EntityProduct,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $EntityProductCopyWith<$Res> get entityProduct {
-    return $EntityProductCopyWith<$Res>(_value.entityProduct, (value) {
-      return _then(_value.copyWith(entityProduct: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$ChosenProductImplCopyWith<$Res>
-    implements $ChosenProductCopyWith<$Res> {
-  factory _$$ChosenProductImplCopyWith(
-          _$ChosenProductImpl value, $Res Function(_$ChosenProductImpl) then) =
-      __$$ChosenProductImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String name,
-      int count,
-      String productNumber,
-      EnumOrderType orderType,
-      EntityProduct entityProduct});
-
-  @override
-  $EntityProductCopyWith<$Res> get entityProduct;
-}
-
-/// @nodoc
-class __$$ChosenProductImplCopyWithImpl<$Res>
-    extends _$ChosenProductCopyWithImpl<$Res, _$ChosenProductImpl>
-    implements _$$ChosenProductImplCopyWith<$Res> {
-  __$$ChosenProductImplCopyWithImpl(
-      _$ChosenProductImpl _value, $Res Function(_$ChosenProductImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? name = null,
-    Object? count = null,
-    Object? productNumber = null,
-    Object? orderType = null,
-    Object? entityProduct = null,
-  }) {
-    return _then(_$ChosenProductImpl(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      count: null == count
-          ? _value.count
-          : count // ignore: cast_nullable_to_non_nullable
-              as int,
-      productNumber: null == productNumber
-          ? _value.productNumber
-          : productNumber // ignore: cast_nullable_to_non_nullable
-              as String,
-      orderType: null == orderType
-          ? _value.orderType
-          : orderType // ignore: cast_nullable_to_non_nullable
-              as EnumOrderType,
-      entityProduct: null == entityProduct
-          ? _value.entityProduct
-          : entityProduct // ignore: cast_nullable_to_non_nullable
-              as EntityProduct,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$ChosenProductImpl implements _ChosenProduct {
-  const _$ChosenProductImpl(
-      {required this.name,
-      required this.count,
-      required this.productNumber,
-      required this.orderType,
-      required this.entityProduct});
-
-  @override
-  final String name;
-  @override
-  final int count;
-  @override
-  final String productNumber;
-  @override
-  final EnumOrderType orderType;
-  @override
-  final EntityProduct entityProduct;
-
-  @override
-  String toString() {
-    return 'ChosenProduct(name: $name, count: $count, productNumber: $productNumber, orderType: $orderType, entityProduct: $entityProduct)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ChosenProductImpl &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.count, count) || other.count == count) &&
-            (identical(other.productNumber, productNumber) ||
-                other.productNumber == productNumber) &&
-            (identical(other.orderType, orderType) ||
-                other.orderType == orderType) &&
-            (identical(other.entityProduct, entityProduct) ||
-                other.entityProduct == entityProduct));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, name, count, productNumber, orderType, entityProduct);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ChosenProductImplCopyWith<_$ChosenProductImpl> get copyWith =>
-      __$$ChosenProductImplCopyWithImpl<_$ChosenProductImpl>(this, _$identity);
-}
-
-abstract class _ChosenProduct implements ChosenProduct {
-  const factory _ChosenProduct(
-      {required final String name,
-      required final int count,
-      required final String productNumber,
-      required final EnumOrderType orderType,
-      required final EntityProduct entityProduct}) = _$ChosenProductImpl;
-
-  @override
-  String get name;
-  @override
-  int get count;
-  @override
-  String get productNumber;
-  @override
-  EnumOrderType get orderType;
-  @override
-  EntityProduct get entityProduct;
-  @override
-  @JsonKey(ignore: true)
-  _$$ChosenProductImplCopyWith<_$ChosenProductImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

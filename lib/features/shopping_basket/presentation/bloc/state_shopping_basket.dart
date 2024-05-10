@@ -1,23 +1,23 @@
 import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
-import 'package:app_flutter_produkt_bestellen/features/product/share/domain/entity/entity_product.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket/domain/entity/shopping_basket_entity.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'state_shopping_basket.freezed.dart';
 
 @freezed
 class StateShoppingBasket with _$StateShoppingBasket {
-  const factory StateShoppingBasket(
-      {required List<ChosenProduct> listChosenProduct,
-      Failure? failure}) = _StateShoppingBasket;
-}
+  const StateShoppingBasket._();
 
-@freezed
-class ChosenProduct with _$ChosenProduct {
-  const factory ChosenProduct(
-      {required String name,
-      required int count,
-      required String productNumber,
-      required EnumOrderType orderType,
-      required EntityProduct entityProduct}) = _ChosenProduct;
+  const factory StateShoppingBasket(
+      {required List<ShoppingBasketProduct> orderChosenProductList,
+      required List<ShoppingBasketProduct> requestChosenProductList,
+      Failure? failure}) = _StateShoppingBasket;
+
+  EnumOrderType getEnumOrderType({required int timeIndex}) {
+    return orderChosenProductList
+            .any((element) => element.addedTime == timeIndex)
+        ? EnumOrderType.bestellung
+        : EnumOrderType.anfrage;
+  }
 }

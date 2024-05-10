@@ -2,8 +2,6 @@ import 'dart:async';
 
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/state_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/workingtable/domain/entity/entity_product_workingtable.dart';
-import 'package:app_flutter_produkt_bestellen/features/shopping_basket//presentation/bloc/state_shopping_basket.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 abstract class CubitProduct<T> extends Cubit<StateProduct> {
@@ -39,18 +37,6 @@ abstract class CubitProduct<T> extends Cubit<StateProduct> {
   Future<void> close() {
     _timer?.cancel();
     return super.close();
-  }
-
-  Future<void> changeProduct(
-      {required ChosenProduct order, required int index}) async {
-    debugPrint("order : => ${order.toString()} , index : $index");
-    // TODO: implement changeProduct
-    final newState = state.copyWith(
-        productOrderCount: order.count,
-        productEntity: order.entityProduct,
-        position: index);
-
-    emit(newState);
   }
 
   void changeColorAttribute({required EntityGestell entityGestell}) {

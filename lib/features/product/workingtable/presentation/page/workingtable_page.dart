@@ -2,7 +2,7 @@ import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_pag
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/cubit_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/workingtable/presentation/cubit/cubit_workingtable_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/workingtable/presentation/widget/working_table_product_components.dart';
-import 'package:app_flutter_produkt_bestellen/features/shopping_basket//presentation/bloc/state_shopping_basket.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket/domain/entity/shopping_basket_entity.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/bloc/bloc_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/material.dart';
@@ -15,11 +15,10 @@ class PageWorkingTableProduct extends HookWidget {
 
   final String? productNumber;
   final String? color;
-  final ({ChosenProduct chosenProduct, int index})? recordOrder;
+  final ({ShoppingBasketProduct chosenProduct, int index})? recordOrder;
 
   @override
   Widget build(BuildContext context) {
-    debugPrint('productNumber ==> $productNumber');
     return BlocProvider<BlocShoppingBasket>.value(
         value: getIt<BlocShoppingBasket>(),
         child: _BlocProviderWorkingTable(
@@ -39,7 +38,7 @@ class _BlocProviderWorkingTable extends StatelessWidget {
 
   final String? product;
   final String? color;
-  final ({ChosenProduct chosenProduct, int index})? recordOrder;
+  final ({ShoppingBasketProduct chosenProduct, int index})? recordOrder;
 
   @override
   Widget build(BuildContext context) {

@@ -2,7 +2,6 @@ import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/domain/entity/entity_login_customer.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/domain/repository/login_repository.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_state.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:path/path.dart';
 
@@ -25,7 +24,6 @@ class LoginCubit extends Cubit<LoginState> {
         emit(LoginState.failure(failure));
         return false;
       }, (entityLoginCustomer) {
-        debugPrint("cubit user exist");
         emit(LoginState.loggedIn(entityLoginCustomer: entityLoginCustomer));
         return true;
       });

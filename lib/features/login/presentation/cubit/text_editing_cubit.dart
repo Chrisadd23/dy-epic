@@ -15,14 +15,13 @@ class TextEditingCubit extends Cubit<TextEditingState> {
     state.customerPassword.clear();
     state.customerNumber.clear();
     final newState = state.copyWith(hidePassword: true);
-    debugPrint("clear --");
+
     emit(newState);
   }
 
   Future<void> changeVisibility() async {
-    debugPrint("change Password");
     final newState = state.copyWith(hidePassword: !state.hidePassword);
-    debugPrint("hidPassword => ${newState.hidePassword}");
+
     emit(newState);
   }
 

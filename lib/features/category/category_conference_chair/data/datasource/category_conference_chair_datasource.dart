@@ -4,7 +4,6 @@ import 'package:app_flutter_produkt_bestellen/features/category/category_confere
 import 'package:app_flutter_produkt_bestellen/features/category/share/domain/entity/category_product_entity.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:either_dart/either.dart';
-import 'package:flutter/material.dart';
 
 abstract class DataSourceConferenceChair {
   Future<Either<Failure, EntityConferenceChair>> getConferenceChair(
@@ -16,7 +15,6 @@ class DataSourceConferenceChairImplementation
   @override
   Future<Either<Failure, EntityConferenceChair>> getConferenceChair(
       {String? conferenceChairCategory}) async {
-    debugPrint('start datasource request');
     try {
       Failure? failure;
       List<CategoryProductEntity> officeChairs = [];
@@ -29,7 +27,6 @@ class DataSourceConferenceChairImplementation
           .timeout(const Duration(seconds: 10))
           .then((QuerySnapshot querySnapshot) {
         querySnapshot.docs.map((document) async {
-          debugPrint("index =>  document ==> $document");
           final Map<String, dynamic> data =
               document.data() as Map<String, dynamic>;
 
@@ -47,7 +44,6 @@ class DataSourceConferenceChairImplementation
               picturePath: 'product_${data['productNumber']}.png'));
         }).toList();
       }, onError: (error) {
-        debugPrint('dataSource error ===> ${error.toString()}');
         failure = Failure.databaseError(error.toString());
         return failure;
       }).timeout(const Duration(seconds: 10));
@@ -55,8 +51,6 @@ class DataSourceConferenceChairImplementation
       if (failure != null) {
         return Left(failure!);
       } else {
-        debugPrint("return list officeChairs ${officeChairs.toString()}");
-
         return Right(EntityConferenceChair(
             categoryName: 'Bürodrehstühle', listProduct: officeChairs));
       }

@@ -10,12 +10,28 @@ class RepositoryOfficeChairProductImplementation
       {required this.dataSourceOfficeChairProduct});
 
   final DataSourceOfficeChairProduct dataSourceOfficeChairProduct;
+  final List<EntityOfficeChairProduct> _listOfficeChair = [];
 
   @override
   Future<Either<Failure, EntityOfficeChairProduct>> getOfficeChairProduct(
       {required String productNumber}) async {
-    // TODO: implement getOfficeChairProduct
-    return dataSourceOfficeChairProduct.getOfficeChairProduct(
-        productNumber: productNumber);
+    if (_listOfficeChair.isEmpty ||
+        !_listOfficeChair
+            .any((element) => element.productNumber == productNumber)) {
+      return dataSourceOfficeChairProduct
+          .getOfficeChairProduct(productNumber: productNumber)
+          .fold((left) => Left(left), (entityOfficeChair) {
+        _listOfficeChair.add(entityOfficeChair);
+
+        return Right(entityOfficeChair);
+      });
+    } else {
+      return Right(_listOfficeChair
+          .where((element) => element.productNumber == productNumber)
+          .first);
+    }
   }
+
+  @override
+  List<EntityOfficeChairProduct> get listOfficeChairProduct => _listOfficeChair;
 }

@@ -64,6 +64,8 @@ dependencies:
   dropdown_button2: ^2.3.9
   bloc_test: ^9.1.7
   mocktail: ^1.0.3
+  json_annotation: ^4.9.0
+  json_serializable: ^6.8.0
 
 
 

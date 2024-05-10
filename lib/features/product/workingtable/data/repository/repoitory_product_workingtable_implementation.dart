@@ -5,27 +5,54 @@ import 'package:app_flutter_produkt_bestellen/features/product/workingtable/doma
 import 'package:app_flutter_produkt_bestellen/features/product/workingtable/domain/repository/repostiory_workingtable.dart';
 import 'package:either_dart/either.dart';
 
-class RepositoryProductWorkingtableImplementation
+class RepositoryProductWorkingTableImplementation
     extends RepositoryWorkingTable {
-  RepositoryProductWorkingtableImplementation(
+  RepositoryProductWorkingTableImplementation(
       {required this.dataSourceWorkingTable});
 
   final DataSourceProductWorkingTable dataSourceWorkingTable;
+  final List<EntityWorkingTableProduct> _entityWorkingTableProduct = [];
+  final List<AdditionalAttributes> _additionalAttributes = [];
 
   @override
   Future<Either<Failure, EntityWorkingTableProduct>> getWorkingTableProduct(
-      String? productNumber) {
-    final data = dataSourceWorkingTable.loadData(productNumber);
-    return data.fold(
-        (failure) => Left(failure),
-        (listEntityProductArbeitstische) =>
-            Right(listEntityProductArbeitstische));
+      String? productNumber) async {
+    if (_entityWorkingTableProduct.isEmpty ||
+        !_entityWorkingTableProduct
+            .any((element) => element.productNumber == productNumber)) {
+      return dataSourceWorkingTable
+          .loadData(productNumber)
+          .fold((failure) => Left(failure), (entityProductWorkingTable) {
+        _entityWorkingTableProduct.add(entityProductWorkingTable);
+        return Right(entityProductWorkingTable);
+      });
+    }
+
+    return Right(_entityWorkingTableProduct
+        .where((element) => element.productNumber == productNumber)
+        .first);
   }
 
   @override
   Future<Either<Failure, List<AdditionalAttributes>>>
-      getAdditionalAttributes() {
-    final data = dataSourceWorkingTable.getAdditionalAttributes();
-    return data;
+      getAdditionalAttributes() async {
+    if (_additionalAttributes.isEmpty) {
+      return dataSourceWorkingTable
+          .getAdditionalAttributes()
+          .fold((failure) => Left(failure), (additionalAttributes) {
+        _additionalAttributes.addAll(additionalAttributes);
+        return Right(additionalAttributes);
+      });
+    } else {
+      return Right(_additionalAttributes);
+    }
   }
+
+  @override
+  List<EntityWorkingTableProduct> get localEntityWorkingTableProduct =>
+      _entityWorkingTableProduct;
+
+  @override
+  List<AdditionalAttributes> get localAdditionalAttributes =>
+      _additionalAttributes;
 }

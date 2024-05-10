@@ -15,7 +15,7 @@ import 'package:app_flutter_produkt_bestellen/features/product/workingtable/pres
 import 'package:app_flutter_produkt_bestellen/features/settings/presentation/page/customer_settings_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/settings/presentation/page/notification_settings_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/settings/presentation/page/settings_page_shell_navigation.dart';
-import 'package:app_flutter_produkt_bestellen/features/shopping_basket//presentation/bloc/state_shopping_basket.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket/domain/entity/shopping_basket_entity.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/bloc/bloc_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/material.dart';
@@ -145,12 +145,12 @@ enum AppGoRouter {
                         name: '${arbeitstische.name}/${product.title}',
                         pageBuilder: (context, state) {
                           debugPrint("check goRouter record ${state.extra as ({
-                            ChosenProduct chosenProduct,
+                            ShoppingBasketProduct chosenProduct,
                             int index
                           })?}");
 
                           final recordOrder = state.extra as ({
-                            ChosenProduct chosenProduct,
+                            ShoppingBasketProduct chosenProduct,
                             int index
                           })?;
 
@@ -184,11 +184,11 @@ enum AppGoRouter {
                           final product =
                               state.queryParameters['productNumber'];
                           debugPrint("check goRouter recor ${state.extra as ({
-                            ChosenProduct chosenProduct,
+                            ShoppingBasketProduct chosenProduct,
                             int index
                           })?}");
                           final recordOrder = state.extra as ({
-                            ChosenProduct chosenProduct,
+                            ShoppingBasketProduct chosenProduct,
                             int index
                           })?;
                           return _getCustomerTransition(
@@ -210,13 +210,13 @@ enum AppGoRouter {
                         name: '${konferenzstuehle.name}/${product.title}',
                         pageBuilder: (context, state) {
                           debugPrint("check goRouter recor ${state.extra as ({
-                            ChosenProduct chosenProduct,
+                            ShoppingBasketProduct chosenProduct,
                             int index
                           })?}");
                           final product =
                               state.queryParameters['productNumber'];
                           final recordOrder = state.extra as ({
-                            ChosenProduct chosenProduct,
+                            ShoppingBasketProduct chosenProduct,
                             int index
                           })?;
                           return _getCustomerTransition(

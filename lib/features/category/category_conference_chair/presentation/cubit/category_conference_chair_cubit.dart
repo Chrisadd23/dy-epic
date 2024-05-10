@@ -3,7 +3,7 @@ import 'package:app_flutter_produkt_bestellen/core/global_cubits/cubit_pictures.
 import 'package:app_flutter_produkt_bestellen/features/category/category_conference_chair/domain/repository/category_conference_chair_repository.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/cubit/state_category_generic.dart';
 import 'package:either_dart/either.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CubitConferenceChair extends Cubit<StateCategory> {
@@ -18,7 +18,7 @@ class CubitConferenceChair extends Cubit<StateCategory> {
     if (state != const StateCategory.loading()) {
       emit(const StateCategory.loading());
     }
-    debugPrint('instanceName ==> $conferenceChairCategory');
+
     var newState = state;
     await repositoryConferenceChair
         .getConferencChaire(conferenceChairCategory: conferenceChairCategory)
@@ -39,8 +39,6 @@ class CubitConferenceChair extends Cubit<StateCategory> {
     });
 
     newState.mapOrNull(success: (successState) async {
-      debugPrint("loadPicturePath ==== continue");
-
       final listPicturePath = successState.productCategory?.listProduct
               .map((e) => e.picturePath)
               .toList() ??
@@ -48,7 +46,6 @@ class CubitConferenceChair extends Cubit<StateCategory> {
       try {
         if (listPicturePath.isNotEmpty) {
           await listPicturePath.map((picturePath) async {
-            debugPrint("picturePath ==> $picturePath");
             if (!(_cubitPictures.state.containsKey(picturePath) &&
                 _cubitPictures.state[picturePath] != null)) {
               final imageBytes =
@@ -57,8 +54,8 @@ class CubitConferenceChair extends Cubit<StateCategory> {
             }
           }).wait;
         }
-      } catch (e) {
-        debugPrint("catch ==> ${e.toString()}");
+      } catch (error) {
+        debugPrint("error => ${error.toString()}");
       }
 
       successState = successState.copyWith(

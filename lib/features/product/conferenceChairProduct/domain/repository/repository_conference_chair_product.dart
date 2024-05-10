@@ -3,6 +3,8 @@ import 'package:app_flutter_produkt_bestellen/features/product/conferenceChairPr
 import 'package:either_dart/either.dart';
 
 abstract class RepositoryConferenceChairProduct {
+  List<EntityConferenceChairProduct> get listOfficeChairProduct;
+
   Future<Either<Failure, EntityConferenceChairProduct>>
-      getConferenceChairProduct({required String product});
+      getConferenceChairProduct({required String productNumber});
 }

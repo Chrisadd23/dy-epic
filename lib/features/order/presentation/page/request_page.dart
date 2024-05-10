@@ -45,7 +45,6 @@ class _RequestBlocProvider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint("contains BlocProvider");
     return BlocProvider<OrderRequestCubit>(
       create: (context) =>
           getIt<OrderRequestCubit>()..load(customerNumber: customerNumber),

@@ -47,8 +47,6 @@ class _BlocBuilderLoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<LoginCubit, LoginState>(
       listener: (context, state) {
-        debugPrint("listener active ");
-
         state.mapOrNull(failure: (failure) {
           debugPrint(
               "showFailure ${failure.failure.when(message: (message) => message, databaseError: (databaseError) => databaseError)}");
@@ -157,7 +155,6 @@ class _LoginButton extends HookWidget {
                       password: state.customerPassword.text);
                   if (context.mounted) {
                     if (loggedIn != null && loggedIn) {
-                      debugPrint("loggedIn ==> ");
                       context.goNamed(AppGoRouter.homePage.name);
                     }
                     await context.read<TextEditingCubit>().clearController();

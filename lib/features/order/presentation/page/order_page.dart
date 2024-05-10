@@ -141,7 +141,6 @@ class _OrderInfoWidget extends StatelessWidget {
                     child: ListView.builder(
                         itemCount: successState.orderList?.length ?? 0,
                         itemBuilder: (context, index) {
-                          debugPrint("build Widget");
                           return successState.orderList == null ||
                                   successState.orderList!.isEmpty ||
                                   successState.orderList![index].hide!

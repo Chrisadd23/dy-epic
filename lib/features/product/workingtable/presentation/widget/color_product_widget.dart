@@ -100,7 +100,6 @@ class ColorProductWidget extends HookWidget {
               selector: (state) => state
                   .productEntity?.workingTableSizeAndColor?.listEntityGestell,
               builder: (BuildContext context, state) {
-                debugPrint("frameColors State ==> $state");
                 return LayoutBuilder(builder: (context, constraints) {
                   return Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,

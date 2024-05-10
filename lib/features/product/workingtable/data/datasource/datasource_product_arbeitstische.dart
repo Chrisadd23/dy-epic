@@ -21,7 +21,6 @@ class DataSourceProductWorkingtableImplementation
   Future<Either<Failure, EntityWorkingTableProduct>> loadData(
       String? productNumber) async {
     try {
-      debugPrint("productNumber datasource ==> $productNumber");
       if (productNumber != null) {
         final entityWorkingTableProduct = await FirebaseFirestore.instance
             .collection('Product')
@@ -61,7 +60,6 @@ class DataSourceProductWorkingtableImplementation
 
   List<EntityBreiteUndTiefe>? _getWidthAndHeight(
       Map<String, dynamic> selectedWorkingTable) {
-    debugPrint("pricePerSize ==> $selectedWorkingTable");
     return selectedWorkingTable.values
         .map(
           (pricePerSize) => EntityBreiteUndTiefe(
@@ -74,7 +72,6 @@ class DataSourceProductWorkingtableImplementation
   }
 
   List<String> _getListAttributes(List<dynamic> selectedWorkingTable) {
-    debugPrint("selectedWorkingtable attributes => $selectedWorkingTable");
     return selectedWorkingTable
         .map((attribute) => attribute.toString())
         .toList();

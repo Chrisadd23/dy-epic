@@ -156,7 +156,7 @@ class _BlocBuilderBuerostuehle extends StatelessWidget {
                             name: product.name,
                           ))
                       .toList();
-                  debugPrint("Products ===> $listProducts");
+
                   return Stack(children: [
                     Align(child: ProductListWheel(listProducts: listProducts)),
                     const Align(
@@ -378,7 +378,6 @@ class _ProductPicture extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint('asset ==> ${widget.picturePath}');
     return BlocSelector<CubitOfficeChair, StateCategory, Uint8List?>(
         selector: (state) => state.mapOrNull(
             success: (stateSuccess) => stateSuccess.productCategory?.listProduct

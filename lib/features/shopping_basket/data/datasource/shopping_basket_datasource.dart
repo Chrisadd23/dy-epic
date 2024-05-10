@@ -1,12 +1,12 @@
 import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
-import 'package:app_flutter_produkt_bestellen/core/fix_values/flavor.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket/domain/entity/shopping_basket_entity.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:either_dart/either.dart';
-import 'package:flutter/material.dart';
 
 abstract class ShoppingBasketDataSource {
   Future<Either<Failure, bool>> sendOrder({
-    required Map<String, dynamic> order,
+    required ShoppingBasketEntity order,
+    required ShoppingBasketEntity request,
   });
 }
 
@@ -17,21 +17,13 @@ class ShoppingBasketDataSourceImplementation extends ShoppingBasketDataSource {
 
   @override
   Future<Either<Failure, bool>> sendOrder(
-      {required Map<String, dynamic> order}) async {
-    debugPrint("json ==> $order");
-
+      {required ShoppingBasketEntity order,
+      required ShoppingBasketEntity request}) async {
     Failure? failure;
-    final List<Map<String, dynamic>> orderList = order['order']['orderList'];
-    final List<Map<String, dynamic>> requestList =
-        order['request']['requestList'];
 
     try {
-      if (orderList.isNotEmpty) {
-        final collection = _firebaseFirestore
-            .collection("OrderList")
-            .doc(AppConfig.orderListDocumentId)
-            .collection('order');
-        await collection.add(order['order']).then(
+      if (order.products.isNotEmpty) {
+        await _firebaseFirestore.collection("Order").add(order.toJson()).then(
               (value) => true,
               onError: (error) =>
                   failure = Failure.databaseError(error.toString()),
@@ -40,12 +32,11 @@ class ShoppingBasketDataSourceImplementation extends ShoppingBasketDataSource {
           return Left(failure!);
         }
       }
-      if (requestList.isNotEmpty) {
-        final collection = _firebaseFirestore
-            .collection("OrderList")
-            .doc(AppConfig.requestListDocumentId)
-            .collection('request');
-        await collection.add(order['request']).then(
+      if (request.products.isNotEmpty) {
+        await _firebaseFirestore
+            .collection("Request")
+            .add(request.toJson())
+            .then(
               (value) => true,
               onError: (error) =>
                   failure = Failure.databaseError(error.toString()),
@@ -56,7 +47,6 @@ class ShoppingBasketDataSourceImplementation extends ShoppingBasketDataSource {
       }
       return const Right(true);
     } catch (e) {
-      debugPrint("error ==> ${e.toString()}");
       return Left(
         Failure.databaseError(
           e.toString(),

@@ -53,7 +53,6 @@ class CustomerSettingsListView extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint('customerEntity ==> $customerEntity');
     final TextEditingController street =
         useTextEditingController(text: customerEntity.deliveryAddress?.street);
     final TextEditingController zipCode =

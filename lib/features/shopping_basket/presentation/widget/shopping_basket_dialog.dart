@@ -1,7 +1,6 @@
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text_style.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_cubit.dart';
-import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/cubit_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket//presentation/bloc/state_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/bloc/bloc_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/widget/shopping_basket_offer_list.dart';
@@ -17,7 +16,8 @@ class DialogShoppingBasket extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<BlocShoppingBasket, StateShoppingBasket>(
-      builder: (context, state) => state.listChosenProduct.isNotEmpty
+      builder: (context, state) => state.orderChosenProductList.isNotEmpty ||
+              state.requestChosenProductList.isNotEmpty
           ? Padding(
               padding: const EdgeInsets.only(top: 15, right: 15),
               child: Align(
@@ -30,15 +30,7 @@ class DialogShoppingBasket extends StatelessWidget {
                       return const _ShoppingBasketStack();
                     }),
                   ),
-                  onTap: () async {
-                    debugPrint("onTap");
-                    final ({ChosenProduct chosenProduct, int index})? result =
-                        await _ShoppingBasketDialog.show(context: context);
-                    if (context.mounted && result != null) {
-                      context.read<CubitProduct>().changeProduct(
-                          order: result.chosenProduct, index: result.index);
-                    }
-                  },
+                  onTap: () => _ShoppingBasketDialog.show(context: context),
                 ),
               ),
             )
@@ -67,7 +59,9 @@ class _ShoppingBasketStack extends StatelessWidget {
               child: BlocBuilder<BlocShoppingBasket, StateShoppingBasket>(
                   builder: (context, state) {
                 return Text(
-                  state.listChosenProduct.length.toString(),
+                  (state.orderChosenProductList.length +
+                          state.requestChosenProductList.length)
+                      .toString(),
                   style: AppTextStyle.colorWhiteSize20ShadowBlack
                       .copyWith(fontWeight: FontWeight.bold),
                 );
