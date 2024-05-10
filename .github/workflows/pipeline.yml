@@ -59,7 +59,7 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
       - name: Build iOS
-        run: flutter build ios --flavor ${{ matrix.flavor }} --debug --no-codesign
+        run: flutter build ios --flavor ${{ matrix.flavor }} --debug -t lib/main_${{matrix.flavor}}.dart --no-codesign
       - name: Upload IPA
         uses: actions/upload-artifact@v3
         with:
@@ -88,7 +88,7 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
       - name: Build iOS
-        run: flutter build ios --flavor ${{ matrix.flavor }} --release --no-codesign
+        run: flutter build ios --flavor ${{ matrix.flavor }} --release -t lib/main_${{matrix.flavor}}.dart --no-codesign
       - name: Upload IPA
         uses: actions/upload-artifact@v3
         with:
@@ -117,7 +117,7 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
       - name: Build APK
-        run: flutter build apk --flavor ${{ matrix.flavor }} --debug
+        run: flutter build apk --flavor ${{ matrix.flavor }} --debug -t lib/main_${{matrix.flavor}}.dart
       - name: Upload APK
         uses: actions/upload-artifact@v3
         with:
@@ -147,7 +147,7 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
       - name: Build APK
-        run: flutter build apk --flavor ${{ matrix.flavor }} --release
+        run: flutter build apk --flavor ${{ matrix.flavor }} --release -t lib/main_${{matrix.flavor}}.dart
       - name: Upload APK
         uses: actions/upload-artifact@v3
         with:
