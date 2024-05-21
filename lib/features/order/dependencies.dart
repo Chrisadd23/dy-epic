@@ -18,7 +18,6 @@ abstract class OrderDependencies {
           () => GetRequestUseCase(getIt()))
       ..registerLazySingleton<GetOrderUseCase>(() => GetOrderUseCase(getIt()))
       ..registerFactory<OrderCubit>(() => OrderCubit(getIt(), getIt()))
-      ..registerFactory<OrderRequestCubit>(
-          () => OrderRequestCubit(getIt(), getIt()));
+      ..registerFactory<RequestCubit>(() => RequestCubit(getIt(), getIt()));
   }
 }

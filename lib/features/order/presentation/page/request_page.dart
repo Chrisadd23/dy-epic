@@ -14,6 +14,7 @@ import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
 class RequestPage extends StatelessWidget {
   const RequestPage({super.key});
@@ -27,11 +28,12 @@ class RequestPage extends StatelessWidget {
   }
 }
 
-class _RequestBlocProvider extends StatelessWidget {
+class _RequestBlocProvider extends HookWidget {
   const _RequestBlocProvider();
 
   @override
   Widget build(BuildContext context) {
+    final searchTextEditingController = useTextEditingController();
     return BlocBuilder<LoginCubit, LoginState>(
         builder: (context, state) => state.maybeMap(
               orElse: () => const LoadingWidget(
@@ -39,26 +41,28 @@ class _RequestBlocProvider extends StatelessWidget {
               ),
               failure: (failureState) => FailureWidget(
                   failure: failureState.failure.getFailureMessage),
-              loggedIn: (loggedInState) => BlocProvider<OrderRequestCubit>(
-                create: (context) => getIt<OrderRequestCubit>()
+              loggedIn: (loggedInState) => BlocProvider<RequestCubit>(
+                create: (context) => getIt<RequestCubit>()
                   ..load(
                       customerNumber:
                           loggedInState.entityLoginCustomer.customerNumber),
-                child: const Stack(
+                child: Stack(
                   children: [
                     Align(
                       alignment: Alignment.topCenter,
                       child: Column(
                         children: [
                           Padding(
-                            padding: EdgeInsets.symmetric(vertical: 20.0),
-                            child: _DropdownButton2(),
+                            padding: const EdgeInsets.symmetric(vertical: 20.0),
+                            child: _DropdownButton2(
+                                searchTextEditingController:
+                                    searchTextEditingController),
                           ),
-                          Expanded(child: _OrderInfoWidget()),
+                          const Expanded(child: _OrderInfoWidget()),
                         ],
                       ),
                     ),
-                    DialogShoppingBasket(),
+                    const DialogShoppingBasket(),
                   ],
                 ),
               ),
@@ -67,62 +71,190 @@ class _RequestBlocProvider extends StatelessWidget {
 }
 
 class _DropdownButton2 extends StatelessWidget {
-  const _DropdownButton2();
+  const _DropdownButton2({required this.searchTextEditingController});
+
+  final TextEditingController searchTextEditingController;
 
   @override
   Widget build(BuildContext context) {
-    final dropDownComponents = EnumSortProductOrder.values.toList()
-      ..remove(EnumSortProductOrder.sortFinished);
-
-    return DropdownButton2(
-      items: [
-        ...dropDownComponents.map(
-          (sortOrder) => DropdownMenuItem(
-            value: sortOrder,
-            child: Container(
-              decoration: EnumSortProductOrder.values.last != sortOrder
-                  ? const BoxDecoration(
-                      border: Border(bottom: BorderSide(width: 2)),
-                    )
-                  : null,
-              child: Center(
-                child: Text(sortOrder.type),
-              ),
+    return BlocSelector<RequestCubit, OrderCustomerState,
+            EnumSortProductOrder?>(
+        selector: (state) => state.currentSortType,
+        builder: (context, sortType) {
+          final dropDownComponents = EnumSortProductOrder.values.toList()
+            ..removeWhere((element) =>
+                element == EnumSortProductOrder.sortFinished ||
+                element == EnumSortProductOrder.search ||
+                element == EnumSortProductOrder.none);
+          return Padding(
+            padding: const EdgeInsets.only(
+              left: 30.0,
+              right: 30,
             ),
-          ),
+            child: Row(
+              children: [
+                const Spacer(),
+                if (sortType != EnumSortProductOrder.search) ...[
+                  _DropDownButton2Container(
+                      dropDownComponents: dropDownComponents),
+                  Expanded(
+                    child: _SearchIconContainer(
+                        searchTextEditingController:
+                            searchTextEditingController),
+                  )
+                ] else ...[
+                  _TextFieldContainer(
+                      searchTextEditingController: searchTextEditingController),
+                  const Spacer(),
+                  _SearchIconContainer(
+                      sortType: sortType,
+                      searchTextEditingController: searchTextEditingController)
+                ]
+              ],
+            ),
+          );
+        });
+  }
+}
+
+class _TextFieldContainer extends StatelessWidget {
+  const _TextFieldContainer({
+    required this.searchTextEditingController,
+  });
+
+  final TextEditingController searchTextEditingController;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: MediaQuery.sizeOf(context).height * 0.04,
+      width: MediaQuery.sizeOf(context).width * 0.7,
+      decoration: BoxDecoration(
+          border: Border.all(),
+          borderRadius: BorderRadius.circular(10),
+          color: Colors.white),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 5.0),
+        child: TextField(
+          maxLength: 20,
+          maxLines: 1,
+          controller: searchTextEditingController,
+          decoration: const InputDecoration(
+              border: InputBorder.none,
+              floatingLabelBehavior: FloatingLabelBehavior.never,
+              contentPadding: EdgeInsets.symmetric(vertical: 1.0)),
+          style: const TextStyle(letterSpacing: 1.5),
+          onChanged: (input) {
+            context.read<RequestCubit>().searchOrder(input: input);
+          },
         ),
-      ],
-      dropdownStyleData: DropdownStyleData(
-        width: 160,
-        padding: const EdgeInsets.symmetric(vertical: 6),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(4),
-        ),
-        offset: Offset(MediaQuery.sizeOf(context).width * 0.05, -4),
       ),
-      onChanged: (sortType) {
-        context.read<OrderRequestCubit>().sortOrder(sortType: sortType);
-      },
-      customButton: Container(
-        height: MediaQuery.sizeOf(context).height * 0.04,
-        width: MediaQuery.sizeOf(context).width * 0.5,
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: AppColors.orangeF6A440),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 45.0),
-              child: FittedBox(
-                child: Text(
-                  'Anfragen',
-                  style: AppTextStyle.colorWhiteSize20ShadowBlack,
+    );
+  }
+}
+
+class _SearchIconContainer extends StatelessWidget {
+  const _SearchIconContainer({
+    this.sortType,
+    required this.searchTextEditingController,
+  });
+
+  final EnumSortProductOrder? sortType;
+  final TextEditingController searchTextEditingController;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.centerRight,
+      child: InkWell(
+        onTap: () {
+          searchTextEditingController.clear();
+          if (context.read<RequestCubit>().state.areAllHiddenOrDoNotExist) {
+            context
+                .read<RequestCubit>()
+                .sortOrder(sortType: EnumSortProductOrder.sortDate);
+          } else {
+            sortType != EnumSortProductOrder.search
+                ? context
+                    .read<RequestCubit>()
+                    .sortOrder(sortType: EnumSortProductOrder.search)
+                : context
+                    .read<RequestCubit>()
+                    .sortOrder(sortType: EnumSortProductOrder.none);
+          }
+        },
+        child: Icon(
+          sortType != EnumSortProductOrder.search
+              ? Icons.search
+              : Icons.search_off_outlined,
+          size: MediaQuery.sizeOf(context).height * 0.04,
+        ),
+      ),
+    );
+  }
+}
+
+class _DropDownButton2Container extends StatelessWidget {
+  const _DropDownButton2Container({
+    required this.dropDownComponents,
+  });
+
+  final List<EnumSortProductOrder> dropDownComponents;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.center,
+      child: DropdownButton2(
+        items: [
+          ...dropDownComponents.map(
+            (sortOrder) => DropdownMenuItem(
+              value: sortOrder,
+              child: Container(
+                decoration: dropDownComponents.last != sortOrder
+                    ? const BoxDecoration(
+                        border: Border(bottom: BorderSide(width: 2)),
+                      )
+                    : null,
+                child: Center(
+                  child: Text(sortOrder.type),
                 ),
               ),
             ),
-            const Icon(Icons.arrow_drop_down_sharp)
-          ],
+          ),
+        ],
+        dropdownStyleData: DropdownStyleData(
+          width: 160,
+          padding: const EdgeInsets.symmetric(vertical: 6),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(4),
+          ),
+          offset: Offset(MediaQuery.sizeOf(context).width * 0.05, -4),
+        ),
+        onChanged: (sortType) {
+          context.read<RequestCubit>().sortOrder(sortType: sortType);
+        },
+        customButton: Container(
+          height: MediaQuery.sizeOf(context).height * 0.04,
+          width: MediaQuery.sizeOf(context).width * 0.5,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: AppColors.orangeF6A440),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 45.0),
+                child: FittedBox(
+                  child: Text(
+                    'Anfragen',
+                    style: AppTextStyle.colorWhiteSize20ShadowBlack,
+                  ),
+                ),
+              ),
+              const Icon(Icons.arrow_drop_down_sharp)
+            ],
+          ),
         ),
       ),
     );
@@ -134,7 +266,7 @@ class _OrderInfoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<OrderRequestCubit, OrderCustomerState>(
+    return BlocBuilder<RequestCubit, OrderCustomerState>(
       builder: (context, state) => state.map(
           failure: (failureState) => FailureWidget(
               failure: failureState.failure.when(

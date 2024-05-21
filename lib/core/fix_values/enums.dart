@@ -85,7 +85,9 @@ enum EnumSortProductOrder {
   sortPrice(type: 'Preis'),
   sortInWork(type: 'In Arbeit'),
   sortFinished(type: 'Abgeschlossen'),
-  sortCanceled(type: 'Stoniert');
+  sortCanceled(type: 'Stoniert'),
+  search(type: ''),
+  none(type: '');
 
   const EnumSortProductOrder({required this.type});
 

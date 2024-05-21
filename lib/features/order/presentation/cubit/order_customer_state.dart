@@ -21,6 +21,12 @@ class OrderCustomerState with _$OrderCustomerState {
   const factory OrderCustomerState.failure({required Failure failure}) =
       _Failure;
 
+  EnumSortProductOrder? get currentSortType => maybeWhen(
+      orElse: () => null,
+      success: (sortType, _) {
+        return sortType;
+      });
+
   bool get areAllHiddenOrDoNotExist => maybeWhen(
       orElse: () => true,
       success: (_, orderList) {

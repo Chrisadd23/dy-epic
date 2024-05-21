@@ -1,8 +1,10 @@
+import 'package:app_flutter_produkt_bestellen/core/extension/date_time_extension.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/domain/entity/order_entity.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/cubit/order_customer_state.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 
 abstract class OrderCustomerCubit extends Cubit<OrderCustomerState> {
   OrderCustomerCubit() : super(const OrderCustomerState.initialise());
@@ -31,6 +33,29 @@ abstract class OrderCustomerCubit extends Cubit<OrderCustomerState> {
             sortType: sortType);
         emit(successState.copyWith(orderList: newList, sortType: sortType));
       }
+    });
+  }
+
+  void searchOrder({required String input}) {
+    state.mapOrNull(success: (successState) {
+      var newList = List<OrderEntity>.from(successState.orderList ?? []);
+      newList = newList
+          .map(
+            (e) => e.copyWith(
+              hide: !(e.id.contains(input) ||
+                  NumberFormat.currency(
+                          locale: 'de_DE', symbol: '€', decimalDigits: 2)
+                      .format(e.completeAmount)
+                      .contains(input) ||
+                  DateTime.fromMillisecondsSinceEpoch(e.sendDate)
+                      .onlyDateInString
+                      .toString()
+                      .contains(input)),
+            ),
+          )
+          .toList();
+
+      emit(successState.copyWith(orderList: newList));
     });
   }
 
@@ -107,6 +132,10 @@ abstract class OrderCustomerCubit extends Cubit<OrderCustomerState> {
                         EnumOrderProcess.canceledByAdmin.sortIndex ||
                     e.status == EnumOrderProcess.canceledByCustomer.sortIndex)))
             .toList();
+        return listOrderEntity;
+      case EnumSortProductOrder.search:
+        return listOrderEntity;
+      case EnumSortProductOrder.none:
         return listOrderEntity;
     }
   }

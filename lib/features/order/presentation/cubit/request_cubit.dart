@@ -8,8 +8,8 @@ import 'package:app_flutter_produkt_bestellen/features/order/presentation/cubit/
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/cubit/order_customer_state.dart';
 import 'package:flutter/material.dart';
 
-class OrderRequestCubit extends OrderCustomerCubit {
-  OrderRequestCubit(this._getRequestUseCase, this._orderRepository) {
+class RequestCubit extends OrderCustomerCubit {
+  RequestCubit(this._getRequestUseCase, this._orderRepository) {
     _streamSubscription =
         _orderRepository.listRequestStream.listen((listRequestModel) {
       state.maybeMap(
