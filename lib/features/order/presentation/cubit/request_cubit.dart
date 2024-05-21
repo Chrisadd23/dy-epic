@@ -1,46 +1,63 @@
+import 'dart:async';
+
 import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
+import 'package:app_flutter_produkt_bestellen/features/order/data/model/order_model.dart';
+import 'package:app_flutter_produkt_bestellen/features/order/domain/repository/order_repository.dart';
+import 'package:app_flutter_produkt_bestellen/features/order/domain/use_case/get_request_use_case.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/cubit/order_customer_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/cubit/order_customer_state.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 
 class OrderRequestCubit extends OrderCustomerCubit {
-  OrderRequestCubit();
+  OrderRequestCubit(this._getRequestUseCase, this._orderRepository) {
+    _streamSubscription =
+        _orderRepository.listRequestStream.listen((listRequestModel) {
+      state.maybeMap(
+          orElse: () => emit(OrderCustomerState.success(
+              orderList: listRequestModel.map((e) => e.toEntity()).toList())),
+          success: (successState) {
+            debugPrint('sortType orderCubit: ${successState.sortType}');
+            emit(successState.copyWith(
+                orderList: getSortedOrderEntity(
+                    listOrderEntity:
+                        listRequestModel.map((e) => e.toEntity()).toList(),
+                    sortType: successState.sortType),
+                sortType: successState.sortType));
+          });
+    }, onError: (error) {
+      emit(OrderCustomerState.failure(
+          failure: Failure.databaseError(error.toString())));
+    });
+  }
+
+  final GetRequestUseCase _getRequestUseCase;
+  final OrderRepository _orderRepository;
+
+  late final StreamSubscription<List<OrderModel>> _streamSubscription;
 
   @override
   Future<void> load({String? customerNumber}) async {
-    if (state != const OrderCustomerState.loading()) {
-      emit(const OrderCustomerState.loading());
-    }
     if (customerNumber != null) {
       try {
-        final collectionStream = FirebaseFirestore.instance
-            .collection('OrderList')
-            .doc('4uKusyoOb8xNXsSwn6KX')
-            .collection('request');
-        final query =
-            collectionStream.where('customerNumber', isEqualTo: customerNumber);
-
-        query.snapshots().listen((docSnapshot) {
-          final requestList = docSnapshot.docs.map((document) {
-            final data = document.data();
-            final enumOrderProcess = getEnumOrderProcess(data: data);
-
-            return ProductOrder(
-              orderNumber: data['request_id'],
-              amount: double.parse(data['amount'].toString()),
-              productInformationList:
-                  getListProductInformation(data['requestList']),
-              date: (data['date'] as Timestamp).toDate(),
-              enumOrderProcess: enumOrderProcess,
-            );
-          }).toList();
-
-          emit(OrderCustomerState.success(orderList: requestList));
-        });
+        if (_orderRepository.listRequestModel.isEmpty) {
+          debugPrint("activate getRequestUseCase");
+          _getRequestUseCase(customerId: customerNumber);
+        } else {
+          emit(OrderCustomerState.success(
+              orderList: _orderRepository.listRequestModel
+                  .map((e) => e.toEntity())
+                  .toList()));
+        }
       } catch (error) {
-        emit(OrderCustomerState.failure(
-            failure: Failure.databaseError(error.toString())));
+        debugPrint("error ==> ${error.toString()}");
       }
     }
+  }
+
+  @override
+  Future<void> close() {
+    // TODO: implement close
+    _streamSubscription.cancel();
+    return super.close();
   }
 }

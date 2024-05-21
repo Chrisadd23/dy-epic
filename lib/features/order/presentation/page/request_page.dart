@@ -7,12 +7,11 @@ import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_state.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/cubit/order_customer_state.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/cubit/request_cubit.dart';
+import 'package:app_flutter_produkt_bestellen/features/order/presentation/widget/no_order_exist_information_container.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/widget/order_information.dart';
-import 'package:app_flutter_produkt_bestellen/features/order/presentation/widget/order_information_dialog.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/widget/shopping_basket_dialog.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,55 +22,47 @@ class RequestPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<LoginCubit>.value(
       value: getIt<LoginCubit>(),
-      child: BlocBuilder<LoginCubit, LoginState>(
-        builder: (context, state) {
-          return state.mapOrNull(
-                  loggedIn: (loggedIn) => _RequestBlocProvider(
-                      customerNumber:
-                          loggedIn.entityLoginCustomer.customerNumber)) ??
-              const SizedBox.shrink();
-        },
-      ),
+      child: const _RequestBlocProvider(),
     );
   }
 }
 
 class _RequestBlocProvider extends StatelessWidget {
-  const _RequestBlocProvider({
-    required this.customerNumber,
-  });
-
-  final String customerNumber;
+  const _RequestBlocProvider();
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<OrderRequestCubit>(
-      create: (context) =>
-          getIt<OrderRequestCubit>()..load(customerNumber: customerNumber),
-      child: const Stack(
-        children: [
-          Align(
-            alignment: Alignment.topCenter,
-            child: Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 20.0),
-                  child: _DropdownButton2(),
+    return BlocBuilder<LoginCubit, LoginState>(
+        builder: (context, state) => state.maybeMap(
+              orElse: () => const LoadingWidget(
+                firstWidth: 0,
+              ),
+              failure: (failureState) => FailureWidget(
+                  failure: failureState.failure.getFailureMessage),
+              loggedIn: (loggedInState) => BlocProvider<OrderRequestCubit>(
+                create: (context) => getIt<OrderRequestCubit>()
+                  ..load(
+                      customerNumber:
+                          loggedInState.entityLoginCustomer.customerNumber),
+                child: const Stack(
+                  children: [
+                    Align(
+                      alignment: Alignment.topCenter,
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.symmetric(vertical: 20.0),
+                            child: _DropdownButton2(),
+                          ),
+                          Expanded(child: _OrderInfoWidget()),
+                        ],
+                      ),
+                    ),
+                    DialogShoppingBasket(),
+                  ],
                 ),
-                _OrderInfoWidget(),
-              ],
-            ),
-          ),
-          DialogShoppingBasket(),
-        ],
-      ),
-    );
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(StringProperty('customerNumber', customerNumber));
+              ),
+            ));
   }
 }
 
@@ -149,36 +140,43 @@ class _OrderInfoWidget extends StatelessWidget {
               failure: failureState.failure.when(
                   message: (message) => message ?? '',
                   databaseError: (databaseError) => databaseError ?? '')),
-          loading: (loadingState) => const LoadingWidget(),
-          success: (successState) => Expanded(
-                child: Padding(
-                  padding:
-                      const EdgeInsets.only(left: 30.0, right: 30, bottom: 40),
-                  child: ClipRRect(
-                    borderRadius: const BorderRadius.vertical(
-                        bottom: Radius.circular(30)),
-                    child: ListView.builder(
-                        itemCount: successState.orderList?.length ?? 0,
-                        itemBuilder: (context, index) =>
-                            successState.orderList == null ||
-                                    successState.orderList!.isEmpty ||
-                                    successState.orderList![index].hide!
-                                ? const SizedBox.shrink()
-                                : InkWell(
-                                    onTap: () => OrderInformationDialog
-                                        .showOrderInformationDialog(
-                                            context: context,
-                                            productInformationList: successState
-                                                .orderList![index]
-                                                .productInformationList),
-                                    child: OrderInformation(
-                                        productOrder:
-                                            successState.orderList![index],
-                                        category: 'Anfrage'),
-                                  )),
-                  ),
-                ),
-              )),
+          initialise: (initialiseState) => const LoadingWidget(
+                firstWidth: 0,
+              ),
+          loading: (loadingState) => const LoadingWidget(
+                firstWidth: 0,
+              ),
+          success: (successState) => successState.orderList == null ||
+                  successState.orderList!.isEmpty
+              ? const NoOrderExistInformationContainer(
+                  informationText: 'Es sind keine Anfragen vorhanden.')
+              : successState.areAllHiddenOrDoNotExist
+                  ? const NoOrderExistInformationContainer(
+                      informationText:
+                          'Es sind keine Bestellung dieser Art vorhanden.')
+                  : Padding(
+                      padding: const EdgeInsets.only(
+                          left: 30.0, right: 30, bottom: 40),
+                      child: ClipRRect(
+                        borderRadius: const BorderRadius.vertical(
+                            bottom: Radius.circular(30)),
+                        child: ListView.builder(
+                            itemCount: successState.orderList?.length ?? 0,
+                            itemBuilder: (context, index) =>
+                                successState.orderList![index].hide
+                                    ? const SizedBox.shrink()
+                                    : InkWell(
+                                        // onTap: () => context.goNamed(
+                                        //     AppGoRouter
+                                        //         .detailedRequestInformation.name,
+                                        //     extra: successState.orderList![index]),
+                                        child: OrderInformation(
+                                            productOrder:
+                                                successState.orderList![index],
+                                            category: 'Anfrage'),
+                                      )),
+                      ),
+                    )),
     );
   }
 }

@@ -60,6 +60,7 @@ class DataSourceProductWorkingtableImplementation
 
   List<EntityBreiteUndTiefe>? _getWidthAndHeight(
       Map<String, dynamic> selectedWorkingTable) {
+    debugPrint("selectedWorkingTable ==< $selectedWorkingTable");
     return selectedWorkingTable.values
         .map(
           (pricePerSize) => EntityBreiteUndTiefe(

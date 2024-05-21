@@ -7,7 +7,7 @@ import 'package:app_flutter_produkt_bestellen/features/product/officeChairProduc
 import 'package:app_flutter_produkt_bestellen/features/product/officeChairProduct/domain/repository/repository_office_chair_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/officeChairProduct/presentation/cubit/cubit_office_chair_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/workingtable/data/datasource/datasource_product_arbeitstische.dart';
-import 'package:app_flutter_produkt_bestellen/features/product/workingtable/data/repository/repoitory_product_workingtable_implementation.dart';
+import 'package:app_flutter_produkt_bestellen/features/product/workingtable/data/repository/repository_product_workingtable_implementation.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/workingtable/domain/repository/repostiory_workingtable.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/workingtable/domain/use_case/get_additional_attributes/get_additional_attributes_use_case.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/workingtable/presentation/cubit/cubit_workingtable_product.dart';

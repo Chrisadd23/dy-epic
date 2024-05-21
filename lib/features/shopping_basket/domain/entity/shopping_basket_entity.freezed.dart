@@ -25,6 +25,7 @@ mixin _$ShoppingBasketEntity {
   int get status => throw _privateConstructorUsedError;
   List<ShoppingBasketProduct> get products =>
       throw _privateConstructorUsedError;
+  int get sendDate => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,7 +43,8 @@ abstract class $ShoppingBasketEntityCopyWith<$Res> {
       {String id,
       String userId,
       int status,
-      List<ShoppingBasketProduct> products});
+      List<ShoppingBasketProduct> products,
+      int sendDate});
 }
 
 /// @nodoc
@@ -63,6 +65,7 @@ class _$ShoppingBasketEntityCopyWithImpl<$Res,
     Object? userId = null,
     Object? status = null,
     Object? products = null,
+    Object? sendDate = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -81,6 +84,10 @@ class _$ShoppingBasketEntityCopyWithImpl<$Res,
           ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
               as List<ShoppingBasketProduct>,
+      sendDate: null == sendDate
+          ? _value.sendDate
+          : sendDate // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -97,7 +104,8 @@ abstract class _$$ShoppingBasketEntityImplCopyWith<$Res>
       {String id,
       String userId,
       int status,
-      List<ShoppingBasketProduct> products});
+      List<ShoppingBasketProduct> products,
+      int sendDate});
 }
 
 /// @nodoc
@@ -115,6 +123,7 @@ class __$$ShoppingBasketEntityImplCopyWithImpl<$Res>
     Object? userId = null,
     Object? status = null,
     Object? products = null,
+    Object? sendDate = null,
   }) {
     return _then(_$ShoppingBasketEntityImpl(
       id: null == id
@@ -133,6 +142,10 @@ class __$$ShoppingBasketEntityImplCopyWithImpl<$Res>
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
               as List<ShoppingBasketProduct>,
+      sendDate: null == sendDate
+          ? _value.sendDate
+          : sendDate // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -145,7 +158,8 @@ class _$ShoppingBasketEntityImpl implements _ShoppingBasketEntity {
       {required this.id,
       required this.userId,
       required this.status,
-      required final List<ShoppingBasketProduct> products})
+      required final List<ShoppingBasketProduct> products,
+      required this.sendDate})
       : _products = products;
 
   factory _$ShoppingBasketEntityImpl.fromJson(Map<String, dynamic> json) =>
@@ -166,8 +180,11 @@ class _$ShoppingBasketEntityImpl implements _ShoppingBasketEntity {
   }
 
   @override
+  final int sendDate;
+
+  @override
   String toString() {
-    return 'ShoppingBasketEntity(id: $id, userId: $userId, status: $status, products: $products)';
+    return 'ShoppingBasketEntity(id: $id, userId: $userId, status: $status, products: $products, sendDate: $sendDate)';
   }
 
   @override
@@ -178,13 +195,15 @@ class _$ShoppingBasketEntityImpl implements _ShoppingBasketEntity {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.status, status) || other.status == status) &&
-            const DeepCollectionEquality().equals(other._products, _products));
+            const DeepCollectionEquality().equals(other._products, _products) &&
+            (identical(other.sendDate, sendDate) ||
+                other.sendDate == sendDate));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, userId, status,
-      const DeepCollectionEquality().hash(_products));
+      const DeepCollectionEquality().hash(_products), sendDate);
 
   @JsonKey(ignore: true)
   @override
@@ -204,11 +223,11 @@ class _$ShoppingBasketEntityImpl implements _ShoppingBasketEntity {
 
 abstract class _ShoppingBasketEntity implements ShoppingBasketEntity {
   const factory _ShoppingBasketEntity(
-          {required final String id,
-          required final String userId,
-          required final int status,
-          required final List<ShoppingBasketProduct> products}) =
-      _$ShoppingBasketEntityImpl;
+      {required final String id,
+      required final String userId,
+      required final int status,
+      required final List<ShoppingBasketProduct> products,
+      required final int sendDate}) = _$ShoppingBasketEntityImpl;
 
   factory _ShoppingBasketEntity.fromJson(Map<String, dynamic> json) =
       _$ShoppingBasketEntityImpl.fromJson;
@@ -221,6 +240,8 @@ abstract class _ShoppingBasketEntity implements ShoppingBasketEntity {
   int get status;
   @override
   List<ShoppingBasketProduct> get products;
+  @override
+  int get sendDate;
   @override
   @JsonKey(ignore: true)
   _$$ShoppingBasketEntityImplCopyWith<_$ShoppingBasketEntityImpl>

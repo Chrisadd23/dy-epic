@@ -59,12 +59,13 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
       - name: Build iOS
-        run: flutter build ios --flavor ${{ matrix.flavor }} --debug -t lib/main_${{matrix.flavor}}.dart --no-codesign
+        run: flutter build ios --flavor ${{ matrix.flavor }} --debug -t lib/main_${{matrix.flavor}}.dart
       - name: Upload IPA
         uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.flavor }}-ios-develop
-          path: build/ios/ipa/*.ipa
+          path: build/ios/ipa/develop/*.ipa
+
 
   ios_release:
     name: Build Flutter (iOS - Release)
@@ -88,12 +89,12 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
       - name: Build iOS
-        run: flutter build ios --flavor ${{ matrix.flavor }} --release -t lib/main_${{matrix.flavor}}.dart --no-codesign
+        run: flutter build ios --flavor ${{ matrix.flavor }} --release -t lib/main_${{matrix.flavor}}.dart
       - name: Upload IPA
         uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.flavor }}-ios-release
-          path: build/ios/ipa/*.ipa
+          path: build/ios/ipa/release/*.ipa
 
   android_develop:
     name: Build Flutter (Android - Debug)
@@ -116,13 +117,20 @@ jobs:
           flutter-version: '3.16.9'
       - name: Install dependencies
         run: flutter pub get
+      - name: Create key.properties
+        run: |
+          echo "storePassword=${{secrets.KEYSTORE_PASSWORD}}" > android/key.properties
+          echo "keyPassword=${{secrets.KEY_PASSWORD}}" >> android/key.properties
+          echo "keyAlias=${{secrets.KEY_ALIAS}}" >> android/key.properties
+          echo "storeFile=upload-keystore.jks" >> android/key.properties
       - name: Build APK
         run: flutter build apk --flavor ${{ matrix.flavor }} --debug -t lib/main_${{matrix.flavor}}.dart
       - name: Upload APK
         uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.flavor }}-android-develop
-          path: build/app/outputs/flutter-apk/*.apk
+          path: build/app/outputs/flutter-apk/develop/*.apk
+
 
 
   android_release:
@@ -139,20 +147,27 @@ jobs:
       - uses: actions/setup-java@v3
         with:
           distribution: 'temurin'  # Empfohlene Distribution für Java
-          java-version: '17'
+          java-version: '17.x'
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.16.9'
       - name: Install dependencies
         run: flutter pub get
+      - name: Create key.properties
+        run: |
+          echo "storePassword=${{secrets.KEYSTORE_PASSWORD}}" > android/key.properties
+          echo "keyPassword=${{secrets.KEY_PASSWORD}}" >> android/key.properties
+          echo "keyAlias=${{secrets.KEY_ALIAS}}" >> android/key.properties
+          echo "storeFile=upload-keystore.jks" >> android/key.properties
       - name: Build APK
         run: flutter build apk --flavor ${{ matrix.flavor }} --release -t lib/main_${{matrix.flavor}}.dart
       - name: Upload APK
         uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.flavor }}-android-release
-          path: build/app/outputs/flutter-apk/*.apk
+          path: build/app/outputs/flutter-apk/release/*.apk
+
 
 
 

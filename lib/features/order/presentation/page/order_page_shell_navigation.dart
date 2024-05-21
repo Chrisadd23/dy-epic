@@ -1,5 +1,6 @@
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_page_widget.dart';
+import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/bloc/bloc_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/gen/assets.gen.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
@@ -10,12 +11,18 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 class OrderPageShellNavigation extends StatelessWidget {
-  const OrderPageShellNavigation({super.key, required this.navigationShell});
+  const OrderPageShellNavigation(
+      {super.key, required this.navigationShell, required this.goRouterState});
 
   final StatefulNavigationShell navigationShell;
+  final GoRouterState goRouterState;
 
   @override
   Widget build(BuildContext context) {
+    debugPrint(
+        "navigationShell.currentIndex ==> ${navigationShell.currentIndex}");
+    debugPrint("goRouterState.location  ==> ${goRouterState.location}");
+
     return GlobalScaffold(
       appBarContext: context,
       body: BlocProvider<BlocShoppingBasket>.value(
@@ -39,7 +46,10 @@ class OrderPageShellNavigation extends StatelessWidget {
         ],
         onTap: (index) => navigationShell.goBranch(index),
       ),
-      showMenuBar: true,
+      showMenuBar: !(goRouterState.location
+              .contains(AppGoRouter.detailedOrderInformation.title) ||
+          goRouterState.location
+              .contains(AppGoRouter.detailedRequestInformation.title)),
     );
   }
 }

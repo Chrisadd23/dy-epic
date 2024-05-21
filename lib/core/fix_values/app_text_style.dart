@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 
 abstract class AppTextStyle {
+  static TextStyle get normal => const TextStyle(
+      color: Colors.black,
+      fontSize: 12,
+      fontWeight: FontWeight.normal,
+      shadows: []);
+
   static TextStyle get colorBlackSize20ShadowWhite =>
       const TextStyle(color: Colors.black, fontSize: 20, shadows: [
         BoxShadow(offset: Offset(0, 1), color: Colors.white),
@@ -22,4 +28,10 @@ abstract class AppTextStyle {
 
   static TextStyle get bold16 =>
       const TextStyle(fontSize: 16, fontWeight: FontWeight.bold);
+
+  static TextStyle get bold14 =>
+      const TextStyle(fontSize: 14, fontWeight: FontWeight.bold);
+
+  static TextStyle get bold12 =>
+      const TextStyle(fontSize: 12, fontWeight: FontWeight.bold);
 }

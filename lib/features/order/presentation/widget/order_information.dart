@@ -1,5 +1,5 @@
 import 'package:app_flutter_produkt_bestellen/core/extension/date_time_extension.dart';
-import 'package:app_flutter_produkt_bestellen/features/order/presentation/cubit/order_customer_state.dart';
+import 'package:app_flutter_produkt_bestellen/features/order/domain/entity/order_entity.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/widget/order_process_state_information.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -11,7 +11,7 @@ class OrderInformation extends StatelessWidget {
     required this.category,
   });
 
-  final ProductOrder productOrder;
+  final OrderEntity productOrder;
   final String category;
 
   @override
@@ -29,7 +29,7 @@ class OrderInformation extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: FittedBox(
                 child: Text(
-                  productOrder.orderNumber,
+                  productOrder.id,
                   style: const TextStyle(
                       fontSize: 20, fontWeight: FontWeight.bold),
                 ),
@@ -47,7 +47,9 @@ class OrderInformation extends StatelessWidget {
                     ),
                     child: Center(
                       child: Text(
-                        productOrder.date.onlyDateInString,
+                        DateTime.fromMillisecondsSinceEpoch(
+                                productOrder.sendDate)
+                            .onlyDateInString,
                         textAlign: TextAlign.center,
                       ),
                     ),
@@ -76,7 +78,7 @@ class OrderInformation extends StatelessWidget {
                                   locale: 'de_DE',
                                   symbol: '€',
                                   decimalDigits: 2)
-                              .format(productOrder.amount),
+                              .format(productOrder.completeAmount),
                           textAlign: TextAlign.center,
                         ),
                       ),

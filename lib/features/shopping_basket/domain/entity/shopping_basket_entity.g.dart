@@ -15,6 +15,7 @@ _$ShoppingBasketEntityImpl _$$ShoppingBasketEntityImplFromJson(
       products: (json['products'] as List<dynamic>)
           .map((e) => ShoppingBasketProduct.fromJson(e as Map<String, dynamic>))
           .toList(),
+      sendDate: (json['sendDate'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$ShoppingBasketEntityImplToJson(
@@ -24,6 +25,7 @@ Map<String, dynamic> _$$ShoppingBasketEntityImplToJson(
       'userId': instance.userId,
       'status': instance.status,
       'products': instance.products.map((e) => e.toJson()).toList(),
+      'sendDate': instance.sendDate,
     };
 
 _$ShoppingBasketProductImpl _$$ShoppingBasketProductImplFromJson(

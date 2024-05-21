@@ -6,6 +6,8 @@ part 'login_state.freezed.dart';
 
 @freezed
 class LoginState with _$LoginState {
+  const LoginState._();
+
   const factory LoginState.loggedOut() = _LoggedOut;
 
   const factory LoginState.loggedIn({
@@ -15,4 +17,7 @@ class LoginState with _$LoginState {
   const factory LoginState.loading() = _Loading;
 
   const factory LoginState.failure(Failure failure) = _Failure;
+
+  EntityLoginCustomer? get customer =>
+      whenOrNull(loggedIn: (customer) => customer);
 }

@@ -1,9 +1,11 @@
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
+import 'package:app_flutter_produkt_bestellen/features/order/domain/entity/order_entity.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/cubit/order_customer_state.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 abstract class OrderCustomerCubit extends Cubit<OrderCustomerState> {
-  OrderCustomerCubit() : super(const OrderCustomerState.loading());
+  OrderCustomerCubit() : super(const OrderCustomerState.initialise());
 
   Future<void> load({String? customerNumber});
 
@@ -19,85 +21,94 @@ abstract class OrderCustomerCubit extends Cubit<OrderCustomerState> {
     return orderList;
   }
 
+  //-- need to separate between created and inWork that the customer seas which order and request is inWork and which is only created yet
   void sortOrder({EnumSortProductOrder? sortType}) {
     state.mapOrNull(success: (successState) {
-      var newList = List<ProductOrder>.from(successState.orderList ?? []);
-      switch (sortType) {
-        case null:
-        case EnumSortProductOrder.sortDate:
-          newList.sort((a, b) => b.date.compareTo(a.date));
-          newList = newList.map((e) => e.copyWith(hide: false)).toList();
-          return emit(successState.copyWith(orderList: newList));
-        case EnumSortProductOrder.sortPrice:
-          newList.sort((a, b) {
-            int compare = a.enumOrderProcess.sortIndex
-                .compareTo(b.enumOrderProcess.index);
-            if (compare != 0) {
-              return compare;
-            }
-            return a.amount.compareTo(b.amount);
-          });
-          newList = newList.map((e) => e.copyWith(hide: false)).toList();
-          return emit(successState.copyWith(orderList: newList));
-
-        case EnumSortProductOrder.sortInWork:
-          newList.sort((a, b) {
-            final equal = b.enumOrderProcess.sortIndex
-                .compareTo(a.enumOrderProcess.sortIndex);
-            if (equal != 0) {
-              return equal;
-            }
-            final dateEqual = b.date.compareTo(a.date);
-            if (dateEqual != 0) {
-              return dateEqual;
-            }
-            return b.amount.compareTo(a.amount);
-          });
-          newList = newList
-              .map((e) => e.copyWith(
-                  hide: e.enumOrderProcess != EnumOrderProcess.inWork))
-              .toList();
-        case EnumSortProductOrder.sortFinished:
-          newList.sort((a, b) {
-            final equal = b.enumOrderProcess.sortIndex
-                .compareTo(a.enumOrderProcess.sortIndex);
-            if (equal != 0) {
-              return equal;
-            }
-            final dateEqual = b.date.compareTo(a.date);
-            if (dateEqual != 0) {
-              return dateEqual;
-            }
-            return b.amount.compareTo(a.amount);
-          });
-          newList = newList
-              .map((e) => e.copyWith(
-                  hide: e.enumOrderProcess != EnumOrderProcess.finished))
-              .toList();
-        case EnumSortProductOrder.sortCanceled:
-          newList.sort((a, b) {
-            final equal = b.enumOrderProcess.sortIndex
-                .compareTo(a.enumOrderProcess.sortIndex);
-            if (equal != 0) {
-              return equal;
-            }
-            final dateEqual = b.date.compareTo(a.date);
-            if (dateEqual != 0) {
-              return dateEqual;
-            }
-            return b.amount.compareTo(a.amount);
-          });
-          newList = newList
-              .map((e) => e.copyWith(
-                  hide: !(e.enumOrderProcess ==
-                          EnumOrderProcess.canceledByAdmin ||
-                      e.enumOrderProcess ==
-                          EnumOrderProcess.canceledByCustomer)))
-              .toList();
-          break;
+      if (sortType != null) {
+        var newList = getSortedOrderEntity(
+            listOrderEntity:
+                List<OrderEntity>.from(successState.orderList ?? []),
+            sortType: sortType);
+        emit(successState.copyWith(orderList: newList, sortType: sortType));
       }
-      emit(successState.copyWith(orderList: newList));
     });
+  }
+
+  @protected
+  List<OrderEntity> getSortedOrderEntity(
+      {required List<OrderEntity> listOrderEntity,
+      required EnumSortProductOrder sortType}) {
+    debugPrint("sortType ==> $sortType");
+    switch (sortType) {
+      case EnumSortProductOrder.sortDate:
+        listOrderEntity.sort((a, b) => b.sendDate.compareTo(a.sendDate));
+        listOrderEntity =
+            listOrderEntity.map((e) => e.copyWith(hide: false)).toList();
+        return listOrderEntity;
+      case EnumSortProductOrder.sortPrice:
+        listOrderEntity.sort((a, b) {
+          int compare = b.status.compareTo(a.status);
+          if (compare != 0) {
+            return compare;
+          }
+          return b.completeAmount.compareTo(a.completeAmount);
+        });
+        listOrderEntity =
+            listOrderEntity.map((e) => e.copyWith(hide: false)).toList();
+        return listOrderEntity;
+
+      case EnumSortProductOrder.sortInWork:
+        listOrderEntity.sort((a, b) {
+          final equal = b.status.compareTo(a.status);
+          if (equal != 0) {
+            return equal;
+          }
+          final dateEqual = b.sendDate.compareTo(a.sendDate);
+          if (dateEqual != 0) {
+            return dateEqual;
+          }
+          return b.completeAmount.compareTo(a.completeAmount);
+        });
+
+        //
+        listOrderEntity = listOrderEntity
+            .map((e) =>
+                e.copyWith(hide: e.status != EnumOrderProcess.inWork.sortIndex))
+            .toList();
+        return listOrderEntity;
+      case EnumSortProductOrder.sortFinished:
+        listOrderEntity.sort((a, b) {
+          final dateEqual = b.sendDate.compareTo(a.sendDate);
+          if (dateEqual != 0) {
+            return dateEqual;
+          }
+          return b.completeAmount.compareTo(a.completeAmount);
+        });
+        listOrderEntity = listOrderEntity
+            .map((e) => e.copyWith(
+                hide: e.status != EnumOrderProcess.finished.sortIndex))
+            .toList();
+        return listOrderEntity;
+      case EnumSortProductOrder.sortCanceled:
+        listOrderEntity.sort((a, b) {
+          final equal = b.status.compareTo(a.status);
+          if (equal != 0) {
+            return equal;
+          }
+          final dateEqual = b.sendDate.compareTo(a.sendDate);
+          if (dateEqual != 0) {
+            return dateEqual;
+          }
+          return b.completeAmount.compareTo(a.completeAmount);
+        });
+        listOrderEntity = listOrderEntity
+            .map((e) => e.copyWith(
+                hide: !(e.status ==
+                        EnumOrderProcess.canceledByAdmin.sortIndex ||
+                    e.status == EnumOrderProcess.canceledByCustomer.sortIndex)))
+            .toList();
+        return listOrderEntity;
+    }
   }
 
   EnumOrderProcess getEnumOrderProcess({required Map<String, dynamic> data}) {

@@ -1,5 +1,6 @@
 import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/domain/entity/entity_login_customer.dart';
+import 'package:app_flutter_produkt_bestellen/features/settings/presentation/cubit/notification_settings_state.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:either_dart/either.dart';
 import 'package:flutter/foundation.dart';
@@ -13,6 +14,10 @@ abstract class LoginDatasource {
       required String zipCode,
       required String city,
       required EntityLoginCustomer customerEntity});
+
+  Future<Either<Failure, List<UserNotification>>> toggleNotifications(
+      {required String customerNumber,
+      required List<NotificationSetting> newNotificationSettings});
 }
 
 class LoginDatasourceImplementation extends LoginDatasource {
@@ -28,34 +33,14 @@ class LoginDatasourceImplementation extends LoginDatasource {
           await _firebaseFirestore
               .collection('User')
               .where('customerNumber', isEqualTo: customerNumber)
+              .where('password', isEqualTo: password)
               .get()
               .then((value) {
-        final Map<String, dynamic>? user = value.docs.firstOrNull?.data();
+        final Map<String, dynamic>? json = value.docs.firstOrNull?.data();
 
-        if (user != null) {
-          if (user['password'] != password) {
-            return const Left(
-                Failure.databaseError('Überprüfen Sie Ihr Passwort'));
-          }
-
-          return Right(EntityLoginCustomer(
-            id: value.docs.first.id,
-            address: CustomerAddress(
-                street: user['address']['street'].toString(),
-                city: user['address']['city'],
-                zipCode: user['address']['zipCode']),
-            customerNumber: user['customerNumber'].toString(),
-            companyName: user['companyName'],
-            email: user['email'],
-            customerName: user['firstname'],
-            customerSurname: user['lastname'],
-            registrationDate: _convertTimestampToDrawDate(
-                user['registrationdate'] as Timestamp),
-            deliveryAddress: CustomerAddress(
-                street: user['deliveryAddress']['street'].toString(),
-                city: user['deliveryAddress']['city'],
-                zipCode: user['deliveryAddress']['zipCode']),
-          ));
+        if (json != null) {
+          debugPrint("customerJson ==> $json");
+          return Right(EntityLoginCustomer.fromJson(json));
         } else {
           return const Left(
               Failure.databaseError('Der Benutzer wurde nicht gefunden'));
@@ -68,10 +53,6 @@ class LoginDatasourceImplementation extends LoginDatasource {
     }
   }
 
-  DateTime? _convertTimestampToDrawDate(Timestamp timestamp) {
-    return timestamp.toDate();
-  }
-
   @override
   Future<Either<Failure, EntityLoginCustomer>> updateCustomerDeliveryAddress(
       {required EntityLoginCustomer customerEntity,
@@ -81,28 +62,73 @@ class LoginDatasourceImplementation extends LoginDatasource {
     try {
       final customer = await _firebaseFirestore
           .collection('User')
-          .doc(customerEntity.id)
-          .update({
-            'deliveryAddress': {
-              'street': street,
-              'zipCode': zipCode,
-              'city': city
-            }
-          })
+          .where('customerNumber', isEqualTo: customerEntity.customerNumber)
+          .get()
           .then(
-            (_) => customerEntity.copyWith(
-              deliveryAddress: CustomerAddress(
-                street: street,
-                zipCode: zipCode,
-                city: city,
-              ),
-            ),
-          )
-          .catchError((errorResponse) {
-            return customerEntity;
-          });
+            (querySnapshot) => querySnapshot.docs.first.reference
+                .update({
+                  'deliveryAddress': {
+                    'street': street,
+                    'zipCode': zipCode,
+                    'city': city
+                  }
+                })
+                .then(
+                  (_) => customerEntity.copyWith(
+                    deliveryAddress: CustomerAddress(
+                      street: street,
+                      zipCode: zipCode,
+                      city: city,
+                    ),
+                  ),
+                )
+                .catchError((errorResponse) {
+                  return customerEntity;
+                }),
+          );
 
       return Right(customer);
+    } catch (error) {
+      return Left(Failure.databaseError(error.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<UserNotification>>> toggleNotifications(
+      {required String customerNumber,
+      required List<NotificationSetting> newNotificationSettings}) async {
+    try {
+      Failure? failure;
+      final notifications = newNotificationSettings
+          .map((newNotification) => UserNotification(
+                  statusType: newNotification.enumOrderProcess.sortIndex,
+                  active: newNotification.isActive)
+              .toJson())
+          .toList();
+
+      debugPrint("datasource notification json => $notifications");
+
+      await _firebaseFirestore
+          .collection('User')
+          .where('customerNumber', isEqualTo: customerNumber)
+          .get()
+          .then(
+              (query) => query.docs.firstOrNull?.reference
+                  .update({'notifications': notifications}).whenComplete(
+                      () => debugPrint('completed')), onError: (error) {
+        debugPrint(error.toString());
+        failure = Failure.databaseError(error.toString());
+        return error;
+      });
+      if (failure == null) {
+        return Right(newNotificationSettings
+            .map((newNotification) => UserNotification(
+                statusType: newNotification.enumOrderProcess.sortIndex,
+                active: newNotification.isActive))
+            .toList());
+      } else {
+        return Left(failure!);
+      }
     } catch (error) {
       return Left(Failure.databaseError(error.toString()));
     }

@@ -23,4 +23,14 @@ abstract class AppText {
   static String address = 'Adresse';
 
   static String email = 'E-Mail';
+
+  static String pushNotification = 'Push-Benachrichtigungen';
+
+  static String allPushNotification = 'Alle Benachrichtigungen';
+
+  static String orderAndRequest = 'Bestellung / Anfrage';
+
+  static String orderInformation = 'Bestellinformationen';
+
+  static String requestInformation = 'Anfrageinformationen';
 }

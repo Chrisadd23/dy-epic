@@ -1,18 +1,54 @@
-import 'dart:typed_data';
+import 'dart:io';
 
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 abstract class FirebaseConfiguration {
-  static FirebaseStorage? _firebaseStorage;
+  static late final FirebaseStorage _firebaseStorage;
+  static late final FirebaseMessaging _firebaseMessaging;
+  static late final FlutterLocalNotificationsPlugin
+      _flutterLocalNotificationsPlugin;
+  static String? firebaseToken;
 
-  static Future<void> initFirebaseStorage() async {
+  static Future<void> requestPermission() async {
     _firebaseStorage = FirebaseStorage.instance;
+    _firebaseMessaging = FirebaseMessaging.instance;
+    await _firebaseMessaging.requestPermission();
+  }
+
+  static Future<void> initFirebaseSettings() async {
+    initFlutterLocalNotificationAttributes;
+
+    NotificationSettings settings = await _firebaseMessaging.requestPermission(
+      alert: true,
+      announcement: false,
+      badge: true,
+      carPlay: false,
+      criticalAlert: false,
+      provisional: false,
+      sound: true,
+    );
+    debugPrint('User granted permission: ${settings.authorizationStatus}');
+    firebaseToken = Platform.isAndroid
+        ? await _firebaseMessaging.getToken()
+        : await _firebaseMessaging.getAPNSToken();
+
+    debugPrint("firebaseToken ==> $firebaseToken");
+
+    _firebaseMessaging.onTokenRefresh.listen((token) {
+      debugPrint("onTokenRefresh ==> $token");
+    });
+    _initFirebaseMessagingInForegroundListener;
+    _iniTifebaseMessagingInBackgroundListener;
   }
 
   static Future<Uint8List?> getImageBytes(String filename) async {
     Uint8List? imageBytes;
 
-    imageBytes = await _firebaseStorage!
+    imageBytes = await _firebaseStorage
         .ref()
         .child(filename)
         .getData(10000000)
@@ -22,5 +58,62 @@ abstract class FirebaseConfiguration {
         );
 
     return imageBytes;
+  }
+
+  static void _initFirebaseMessagingInForegroundListener() {
+    FirebaseMessaging.onMessage.listen((remoteMessage) {
+      debugPrint('Got a message whilst in the foreground!');
+      debugPrint('Message data: ${remoteMessage.data}');
+
+      if (remoteMessage.notification != null) {
+        _showNotification;
+        debugPrint(
+            'Message also contained a notification: ${remoteMessage.notification}');
+      }
+    });
+  }
+
+  static void _iniTifebaseMessagingInBackgroundListener() {
+    FirebaseMessaging.onBackgroundMessage((remoteMessage) async {
+      // If you're going to use other Firebase services in the background, such as Firestore,
+      // make sure you call `initializeApp` before using other Firebase services.
+      await Firebase.initializeApp();
+
+      debugPrint("Handling a background message: ${remoteMessage.messageId}");
+    });
+  }
+
+  static Future<void> initFlutterLocalNotificationAttributes() async {
+    _flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+    const AndroidInitializationSettings initializationSettingsAndroid =
+        AndroidInitializationSettings('@mipmap/oberhaizinger');
+
+    const DarwinInitializationSettings initSettingsIos =
+        DarwinInitializationSettings();
+
+    const InitializationSettings initializationSettings =
+        InitializationSettings(
+            android: initializationSettingsAndroid, iOS: initSettingsIos);
+
+    await _flutterLocalNotificationsPlugin.initialize(initializationSettings);
+  }
+
+  static _showNotification(RemoteMessage message) async {
+    const AndroidNotificationDetails androidNotificationDetails =
+        AndroidNotificationDetails('channel_id', 'Channel Name',
+            channelDescription: 'Channel Description',
+            importance: Importance.max,
+            priority: Priority.high,
+            ticker: 'ticker');
+
+    const DarwinNotificationDetails iOsNotificationDetails =
+        DarwinNotificationDetails(presentAlert: true, presentSound: true);
+
+    const NotificationDetails notificationDetails = NotificationDetails(
+        android: androidNotificationDetails, iOS: iOsNotificationDetails);
+
+    await _flutterLocalNotificationsPlugin.show(1, message.notification?.title,
+        message.notification?.body, notificationDetails,
+        payload: 'Not present');
   }
 }

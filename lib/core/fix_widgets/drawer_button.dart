@@ -20,7 +20,7 @@ class FixDrawerButton extends StatelessWidget {
         height: height,
         width: double.infinity,
         decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(20)),
+          borderRadius: BorderRadius.all(Radius.circular(10)),
           boxShadow: [
             BoxShadow(
                 color: Colors.black,

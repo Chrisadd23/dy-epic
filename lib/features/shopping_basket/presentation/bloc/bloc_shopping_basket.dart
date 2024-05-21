@@ -133,17 +133,20 @@ class BlocShoppingBasket
         send: (customerNumber) async {
           final ShoppingBasketEntity orderShoppingBasketEntity =
               ShoppingBasketEntity(
-                  id: DateTime.now().millisecondsSinceEpoch.toString(),
+                  id: '${state.orderChosenProductList.hashCode}-$customerNumber',
                   userId: customerNumber,
                   status: 0,
-                  products: state.orderChosenProductList);
+                  products: state.orderChosenProductList,
+                  sendDate: DateTime.now().millisecondsSinceEpoch);
 
           final ShoppingBasketEntity requestShoppingBasketEntity =
               ShoppingBasketEntity(
-                  id: DateTime.now().millisecondsSinceEpoch.toString(),
-                  userId: customerNumber,
-                  status: 0,
-                  products: state.requestChosenProductList);
+            id: '${state.requestChosenProductList.hashCode}-$customerNumber',
+            userId: customerNumber,
+            status: 0,
+            products: state.requestChosenProductList,
+            sendDate: DateTime.now().millisecondsSinceEpoch,
+          );
 
           try {
             final result = await shoppingBasketRepository.sendOrder(

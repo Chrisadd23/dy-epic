@@ -7,8 +7,8 @@ import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_state.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/cubit/order_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/cubit/order_customer_state.dart';
+import 'package:app_flutter_produkt_bestellen/features/order/presentation/widget/no_order_exist_information_container.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/widget/order_information.dart';
-import 'package:app_flutter_produkt_bestellen/features/order/presentation/widget/order_information_dialog.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/widget/shopping_basket_dialog.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
@@ -43,12 +43,13 @@ class _OrderBlocProvider extends StatelessWidget {
                       Align(
                         alignment: Alignment.topCenter,
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Padding(
                               padding: EdgeInsets.symmetric(vertical: 20.0),
                               child: _DropDownButton2(),
                             ),
-                            _OrderInfoWidget(),
+                            Expanded(child: _OrderInfoWidget()),
                           ],
                         ),
                       ),
@@ -64,58 +65,64 @@ class _DropDownButton2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButton2(
-      items: [
-        ...EnumSortProductOrder.values.map(
-          (sortOrder) => DropdownMenuItem(
-            value: sortOrder,
-            child: Container(
-              decoration: EnumSortProductOrder.values.last != sortOrder
-                  ? const BoxDecoration(
-                      border: Border(bottom: BorderSide(width: 2)),
-                    )
-                  : null,
-              child: Center(
-                child: Text(sortOrder.type),
-              ),
-            ),
-          ),
-        ),
-      ],
-      dropdownStyleData: DropdownStyleData(
-        width: 160,
-        padding: const EdgeInsets.symmetric(vertical: 6),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(4),
-        ),
-        offset: Offset(MediaQuery.sizeOf(context).width * 0.05, -4),
-      ),
-      onChanged: (sortType) {
-        context.read<OrderCubit>().sortOrder(sortType: sortType);
-      },
-      customButton: Container(
-        height: MediaQuery.sizeOf(context).height * 0.04,
-        width: MediaQuery.sizeOf(context).width * 0.5,
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: AppColors.orangeF6A440),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 10.0),
-              child: FittedBox(
-                child: Text(
-                  'Bestellungen',
-                  style: AppTextStyle.colorWhiteSize20ShadowBlack,
+    return BlocSelector<OrderCubit, OrderCustomerState, EnumSortProductOrder?>(
+        selector: (state) =>
+            state.mapOrNull(success: (successState) => successState.sortType),
+        builder: (context, sortType) {
+          debugPrint("widgetSortType => $sortType");
+          return DropdownButton2(
+            items: [
+              ...EnumSortProductOrder.values.map(
+                (sortOrder) => DropdownMenuItem(
+                  value: sortOrder,
+                  child: Container(
+                    decoration: EnumSortProductOrder.values.last != sortOrder
+                        ? const BoxDecoration(
+                            border: Border(bottom: BorderSide(width: 2)),
+                          )
+                        : null,
+                    child: Center(
+                      child: Text(sortOrder.type),
+                    ),
+                  ),
                 ),
               ),
+            ],
+            dropdownStyleData: DropdownStyleData(
+              width: 160,
+              padding: const EdgeInsets.symmetric(vertical: 6),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(4),
+              ),
+              offset: Offset(MediaQuery.sizeOf(context).width * 0.05, -4),
             ),
-            const Icon(Icons.arrow_drop_down_sharp)
-          ],
-        ),
-      ),
-    );
+            onChanged: (sortType) {
+              context.read<OrderCubit>().sortOrder(sortType: sortType);
+            },
+            customButton: Container(
+              height: MediaQuery.sizeOf(context).height * 0.04,
+              width: MediaQuery.sizeOf(context).width * 0.5,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: AppColors.orangeF6A440),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10.0),
+                    child: FittedBox(
+                      child: Text(
+                        'Bestellungen',
+                        style: AppTextStyle.colorWhiteSize20ShadowBlack,
+                      ),
+                    ),
+                  ),
+                  const Icon(Icons.arrow_drop_down_sharp)
+                ],
+              ),
+            ),
+          );
+        });
   }
 }
 
@@ -126,43 +133,56 @@ class _OrderInfoWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<OrderCubit, OrderCustomerState>(
       builder: (context, state) => state.map(
-          failure: (failureState) => FailureWidget(
-              failure: failureState.failure.when(
-                  message: (message) => message ?? '',
-                  databaseError: (databaseError) => databaseError ?? '')),
-          loading: (loadingState) => const LoadingWidget(),
-          success: (successState) => Expanded(
-                child: Padding(
-                  padding:
-                      const EdgeInsets.only(left: 30.0, right: 30, bottom: 40),
-                  child: ClipRRect(
-                    borderRadius: const BorderRadius.vertical(
-                        bottom: Radius.circular(30)),
-                    child: ListView.builder(
-                        itemCount: successState.orderList?.length ?? 0,
-                        itemBuilder: (context, index) {
-                          return successState.orderList == null ||
-                                  successState.orderList!.isEmpty ||
-                                  successState.orderList![index].hide!
-                              ? const SizedBox.shrink()
-                              : Padding(
-                                  padding: const EdgeInsets.only(bottom: 20.0),
-                                  child: InkWell(
-                                      onTap: () => OrderInformationDialog
-                                          .showOrderInformationDialog(
-                                              context: context,
-                                              productInformationList:
-                                                  successState.orderList![index]
-                                                      .productInformationList),
-                                      child: OrderInformation(
-                                          productOrder:
-                                              successState.orderList![index],
-                                          category: 'Bestellung')),
-                                );
-                        }),
-                  ),
-                ),
-              )),
+        failure: (failureState) => FailureWidget(
+            failure: failureState.failure.when(
+                message: (message) => message ?? '',
+                databaseError: (databaseError) => databaseError ?? '')),
+        initialise: (initialiseState) => const LoadingWidget(
+          firstWidth: 0,
+        ),
+        loading: (loadingState) => const LoadingWidget(
+          firstWidth: 0,
+        ),
+        success: (successState) {
+          debugPrint(
+              "successState areAllHiddenOrDoNotExist ==> ${successState.areAllHiddenOrDoNotExist}");
+          return successState.orderList == null ||
+                  successState.orderList!.isEmpty
+              ? const NoOrderExistInformationContainer(
+                  informationText: 'Es sind keine Bestellungen vorhanden.')
+              : successState.areAllHiddenOrDoNotExist
+                  ? const NoOrderExistInformationContainer(
+                      informationText:
+                          'Es sind keine Bestellungen dieser Art vorhanden.')
+                  : Padding(
+                      padding: const EdgeInsets.only(
+                          left: 30.0, right: 30, bottom: 40),
+                      child: ClipRRect(
+                        borderRadius: const BorderRadius.vertical(
+                            bottom: Radius.circular(30)),
+                        child: ListView.builder(
+                          itemCount: successState.orderList?.length ?? 0,
+                          itemBuilder: (context, index) => Padding(
+                            padding: const EdgeInsets.only(bottom: 20.0),
+                            child: successState.orderList![index].hide
+                                ? const SizedBox.shrink()
+                                : InkWell(
+                                    // onTap: () => context.goNamed(
+                                    //     AppGoRouter
+                                    //         .detailedOrderInformation.name,
+                                    //     extra: successState.orderList![index]),
+                                    child: OrderInformation(
+                                      productOrder:
+                                          successState.orderList![index],
+                                      category: 'Bestellung',
+                                    ),
+                                  ),
+                          ),
+                        ),
+                      ),
+                    );
+        },
+      ),
     );
   }
 }

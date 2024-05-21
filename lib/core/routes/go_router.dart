@@ -1,4 +1,5 @@
 import 'package:app_flutter_produkt_bestellen/core/error/page_not_found.dart';
+import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/category_conference_chair/presentation/page/category_conference_chair_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/category_office_chair/presentation/page/category_office_chair_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/category_workingtable/presentation/page/category_workingtable_page.dart';
@@ -6,9 +7,11 @@ import 'package:app_flutter_produkt_bestellen/features/category/konferenztische/
 import 'package:app_flutter_produkt_bestellen/features/home/presentation/page/home_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/legalities/presentation/page/legalities_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/page/login_page.dart';
+import 'package:app_flutter_produkt_bestellen/features/order/domain/entity/order_entity.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/page/order_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/page/order_page_shell_navigation.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/page/request_page.dart';
+import 'package:app_flutter_produkt_bestellen/features/order/presentation/widget/detailed_order_information.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/conferenceChairProduct/presentation/page/page_conference_chair_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/officeChairProduct/presentation/page/page_office_chair_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/workingtable/presentation/page/workingtable_page.dart';
@@ -16,10 +19,7 @@ import 'package:app_flutter_produkt_bestellen/features/settings/presentation/pag
 import 'package:app_flutter_produkt_bestellen/features/settings/presentation/page/notification_settings_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/settings/presentation/page/settings_page_shell_navigation.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/domain/entity/shopping_basket_entity.dart';
-import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/bloc/bloc_shopping_basket.dart';
-import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 enum AppGoRouter {
@@ -34,32 +34,24 @@ enum AppGoRouter {
   request('anfragen'),
   profileSettings('profileEinstellungen'),
   notificationSettings('notificationEinstellungen'),
-  legalities('rechtliches');
+  legalities('rechtliches'),
+  detailedRequestInformation('requestInformation'),
+  detailedOrderInformation('orderInformation');
 
   const AppGoRouter(this.title);
 
   final String title;
 
-  static Map<String, List<String>> routeMap = {
-    'root': [AppGoRouter.root.title],
-    'home': ['/${AppGoRouter.homePage.title}'],
-    'bestellungen': ['/${AppGoRouter.order.title}'],
-    'arbeitstische': [
-      '/${AppGoRouter.homePage.title}/${AppGoRouter.arbeitstische.title}'
-    ],
-    'product': [
-      '/${AppGoRouter.homePage.title}/${AppGoRouter.arbeitstische.title}/${AppGoRouter.product.title}',
-      '',
-      ''
-    ]
-  };
-
   static CustomTransitionPage<void> _getCustomerTransition(
-          Widget page, GoRouterState state) =>
+          Widget page, GoRouterState state,
+          {Duration transitionDuration = const Duration(milliseconds: 150),
+          Duration reverseTransitionDuration =
+              const Duration(milliseconds: 300)}) =>
       CustomTransitionPage<void>(
         key: state.pageKey,
         child: page,
-        transitionDuration: const Duration(milliseconds: 150),
+        transitionDuration: transitionDuration,
+        reverseTransitionDuration: reverseTransitionDuration,
         transitionsBuilder: (BuildContext context, Animation<double> animation,
             Animation<double> secondaryAnimation, Widget child) {
           // Change the opacity of the screen using a Curve based on the the animation's
@@ -76,29 +68,63 @@ enum AppGoRouter {
       routes: <GoRoute>[
         GoRoute(
             path: root.title,
-            builder: (context, state) => BlocProvider<BlocShoppingBasket>.value(
-                value: getIt<BlocShoppingBasket>(), child: const Login()),
+            builder: (context, state) => const Login(),
             routes: [
               StatefulShellRoute.indexedStack(
                   pageBuilder: (context, state, navigationShell) =>
                       _getCustomerTransition(
                           OrderPageShellNavigation(
-                              navigationShell: navigationShell),
+                              navigationShell: navigationShell,
+                              goRouterState: state),
                           state),
                   branches: <StatefulShellBranch>[
                     StatefulShellBranch(routes: [
                       GoRoute(
-                        path: AppGoRouter.order.title,
-                        name: AppGoRouter.order.name,
-                        builder: (context, state) => const OrderPage(),
-                      ),
+                          path: AppGoRouter.order.title,
+                          name: AppGoRouter.order.name,
+                          builder: (context, state) => const OrderPage(),
+                          routes: [
+                            GoRoute(
+                              path: AppGoRouter.detailedOrderInformation.title,
+                              name: AppGoRouter.detailedOrderInformation.name,
+                              pageBuilder: (context, state) {
+                                final orderEntity = state.extra as OrderEntity;
+                                return _getCustomerTransition(
+                                    DetailedOrderInformation(
+                                        informationTitle:
+                                            AppText.orderInformation,
+                                        orderEntity: orderEntity),
+                                    state,
+                                    transitionDuration: Duration.zero,
+                                    reverseTransitionDuration: Duration.zero);
+                              },
+                            )
+                          ]),
                     ]),
                     StatefulShellBranch(routes: [
                       GoRoute(
-                        path: AppGoRouter.request.title,
-                        name: AppGoRouter.request.name,
-                        builder: (context, state) => const RequestPage(),
-                      ),
+                          path: AppGoRouter.request.title,
+                          name: AppGoRouter.request.name,
+                          builder: (context, state) => const RequestPage(),
+                          routes: [
+                            GoRoute(
+                              path:
+                                  AppGoRouter.detailedRequestInformation.title,
+                              name: AppGoRouter.detailedRequestInformation.name,
+                              pageBuilder: (context, state) {
+                                final orderEntity = state.extra as OrderEntity;
+                                return _getCustomerTransition(
+                                    DetailedOrderInformation(
+                                      informationTitle:
+                                          AppText.requestInformation,
+                                      orderEntity: orderEntity,
+                                    ),
+                                    state,
+                                    transitionDuration: Duration.zero,
+                                    reverseTransitionDuration: Duration.zero);
+                              },
+                            ),
+                          ]),
                     ])
                   ]),
               //---------------------------------------------------

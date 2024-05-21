@@ -104,8 +104,8 @@ class __$$LoggedOutImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoggedOutImpl implements _LoggedOut {
-  const _$LoggedOutImpl();
+class _$LoggedOutImpl extends _LoggedOut {
+  const _$LoggedOutImpl() : super._();
 
   @override
   String toString() {
@@ -196,8 +196,9 @@ class _$LoggedOutImpl implements _LoggedOut {
   }
 }
 
-abstract class _LoggedOut implements LoginState {
+abstract class _LoggedOut extends LoginState {
   const factory _LoggedOut() = _$LoggedOutImpl;
+  const _LoggedOut._() : super._();
 }
 
 /// @nodoc
@@ -244,8 +245,8 @@ class __$$LoggedInImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoggedInImpl implements _LoggedIn {
-  const _$LoggedInImpl({required this.entityLoginCustomer});
+class _$LoggedInImpl extends _LoggedIn {
+  const _$LoggedInImpl({required this.entityLoginCustomer}) : super._();
 
   @override
   final EntityLoginCustomer entityLoginCustomer;
@@ -348,10 +349,11 @@ class _$LoggedInImpl implements _LoggedIn {
   }
 }
 
-abstract class _LoggedIn implements LoginState {
+abstract class _LoggedIn extends LoginState {
   const factory _LoggedIn(
           {required final EntityLoginCustomer entityLoginCustomer}) =
       _$LoggedInImpl;
+  const _LoggedIn._() : super._();
 
   EntityLoginCustomer get entityLoginCustomer;
   @JsonKey(ignore: true)
@@ -377,8 +379,8 @@ class __$$LoadingImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoadingImpl implements _Loading {
-  const _$LoadingImpl();
+class _$LoadingImpl extends _Loading {
+  const _$LoadingImpl() : super._();
 
   @override
   String toString() {
@@ -469,8 +471,9 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements LoginState {
+abstract class _Loading extends LoginState {
   const factory _Loading() = _$LoadingImpl;
+  const _Loading._() : super._();
 }
 
 /// @nodoc
@@ -516,8 +519,8 @@ class __$$FailureImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$FailureImpl implements _Failure {
-  const _$FailureImpl(this.failure);
+class _$FailureImpl extends _Failure {
+  const _$FailureImpl(this.failure) : super._();
 
   @override
   final Failure failure;
@@ -619,8 +622,9 @@ class _$FailureImpl implements _Failure {
   }
 }
 
-abstract class _Failure implements LoginState {
+abstract class _Failure extends LoginState {
   const factory _Failure(final Failure failure) = _$FailureImpl;
+  const _Failure._() : super._();
 
   Failure get failure;
   @JsonKey(ignore: true)

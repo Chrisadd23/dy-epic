@@ -18,28 +18,38 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$OrderCustomerState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() initialise,
     required TResult Function() loading,
-    required TResult Function(List<ProductOrder>? orderList) success,
+    required TResult Function(
+            EnumSortProductOrder sortType, List<OrderEntity>? orderList)
+        success,
     required TResult Function(Failure failure) failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialise,
     TResult? Function()? loading,
-    TResult? Function(List<ProductOrder>? orderList)? success,
+    TResult? Function(
+            EnumSortProductOrder sortType, List<OrderEntity>? orderList)?
+        success,
     TResult? Function(Failure failure)? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialise,
     TResult Function()? loading,
-    TResult Function(List<ProductOrder>? orderList)? success,
+    TResult Function(
+            EnumSortProductOrder sortType, List<OrderEntity>? orderList)?
+        success,
     TResult Function(Failure failure)? failure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Initialise value) initialise,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
@@ -47,6 +57,7 @@ mixin _$OrderCustomerState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialise value)? initialise,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
@@ -54,6 +65,7 @@ mixin _$OrderCustomerState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialise value)? initialise,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
@@ -81,6 +93,127 @@ class _$OrderCustomerStateCopyWithImpl<$Res, $Val extends OrderCustomerState>
 }
 
 /// @nodoc
+abstract class _$$InitialiseImplCopyWith<$Res> {
+  factory _$$InitialiseImplCopyWith(
+          _$InitialiseImpl value, $Res Function(_$InitialiseImpl) then) =
+      __$$InitialiseImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$InitialiseImplCopyWithImpl<$Res>
+    extends _$OrderCustomerStateCopyWithImpl<$Res, _$InitialiseImpl>
+    implements _$$InitialiseImplCopyWith<$Res> {
+  __$$InitialiseImplCopyWithImpl(
+      _$InitialiseImpl _value, $Res Function(_$InitialiseImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$InitialiseImpl extends _Initialise {
+  const _$InitialiseImpl() : super._();
+
+  @override
+  String toString() {
+    return 'OrderCustomerState.initialise()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$InitialiseImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialise,
+    required TResult Function() loading,
+    required TResult Function(
+            EnumSortProductOrder sortType, List<OrderEntity>? orderList)
+        success,
+    required TResult Function(Failure failure) failure,
+  }) {
+    return initialise();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialise,
+    TResult? Function()? loading,
+    TResult? Function(
+            EnumSortProductOrder sortType, List<OrderEntity>? orderList)?
+        success,
+    TResult? Function(Failure failure)? failure,
+  }) {
+    return initialise?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialise,
+    TResult Function()? loading,
+    TResult Function(
+            EnumSortProductOrder sortType, List<OrderEntity>? orderList)?
+        success,
+    TResult Function(Failure failure)? failure,
+    required TResult orElse(),
+  }) {
+    if (initialise != null) {
+      return initialise();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialise value) initialise,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Failure value) failure,
+  }) {
+    return initialise(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialise value)? initialise,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Failure value)? failure,
+  }) {
+    return initialise?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialise value)? initialise,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Failure value)? failure,
+    required TResult orElse(),
+  }) {
+    if (initialise != null) {
+      return initialise(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Initialise extends OrderCustomerState {
+  const factory _Initialise() = _$InitialiseImpl;
+  const _Initialise._() : super._();
+}
+
+/// @nodoc
 abstract class _$$LoadingImplCopyWith<$Res> {
   factory _$$LoadingImplCopyWith(
           _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
@@ -98,8 +231,8 @@ class __$$LoadingImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoadingImpl implements _Loading {
-  const _$LoadingImpl();
+class _$LoadingImpl extends _Loading {
+  const _$LoadingImpl() : super._();
 
   @override
   String toString() {
@@ -118,8 +251,11 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() initialise,
     required TResult Function() loading,
-    required TResult Function(List<ProductOrder>? orderList) success,
+    required TResult Function(
+            EnumSortProductOrder sortType, List<OrderEntity>? orderList)
+        success,
     required TResult Function(Failure failure) failure,
   }) {
     return loading();
@@ -128,8 +264,11 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialise,
     TResult? Function()? loading,
-    TResult? Function(List<ProductOrder>? orderList)? success,
+    TResult? Function(
+            EnumSortProductOrder sortType, List<OrderEntity>? orderList)?
+        success,
     TResult? Function(Failure failure)? failure,
   }) {
     return loading?.call();
@@ -138,8 +277,11 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialise,
     TResult Function()? loading,
-    TResult Function(List<ProductOrder>? orderList)? success,
+    TResult Function(
+            EnumSortProductOrder sortType, List<OrderEntity>? orderList)?
+        success,
     TResult Function(Failure failure)? failure,
     required TResult orElse(),
   }) {
@@ -152,6 +294,7 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Initialise value) initialise,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
@@ -162,6 +305,7 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialise value)? initialise,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
@@ -172,6 +316,7 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialise value)? initialise,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
@@ -184,8 +329,9 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements OrderCustomerState {
+abstract class _Loading extends OrderCustomerState {
   const factory _Loading() = _$LoadingImpl;
+  const _Loading._() : super._();
 }
 
 /// @nodoc
@@ -194,7 +340,7 @@ abstract class _$$SuccessImplCopyWith<$Res> {
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<ProductOrder>? orderList});
+  $Res call({EnumSortProductOrder sortType, List<OrderEntity>? orderList});
 }
 
 /// @nodoc
@@ -208,26 +354,37 @@ class __$$SuccessImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? sortType = null,
     Object? orderList = freezed,
   }) {
     return _then(_$SuccessImpl(
+      sortType: null == sortType
+          ? _value.sortType
+          : sortType // ignore: cast_nullable_to_non_nullable
+              as EnumSortProductOrder,
       orderList: freezed == orderList
           ? _value._orderList
           : orderList // ignore: cast_nullable_to_non_nullable
-              as List<ProductOrder>?,
+              as List<OrderEntity>?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$SuccessImpl implements _Success {
-  const _$SuccessImpl({required final List<ProductOrder>? orderList})
-      : _orderList = orderList;
+class _$SuccessImpl extends _Success {
+  const _$SuccessImpl(
+      {this.sortType = EnumSortProductOrder.sortDate,
+      required final List<OrderEntity>? orderList})
+      : _orderList = orderList,
+        super._();
 
-  final List<ProductOrder>? _orderList;
   @override
-  List<ProductOrder>? get orderList {
+  @JsonKey()
+  final EnumSortProductOrder sortType;
+  final List<OrderEntity>? _orderList;
+  @override
+  List<OrderEntity>? get orderList {
     final value = _orderList;
     if (value == null) return null;
     if (_orderList is EqualUnmodifiableListView) return _orderList;
@@ -237,7 +394,7 @@ class _$SuccessImpl implements _Success {
 
   @override
   String toString() {
-    return 'OrderCustomerState.success(orderList: $orderList)';
+    return 'OrderCustomerState.success(sortType: $sortType, orderList: $orderList)';
   }
 
   @override
@@ -245,13 +402,15 @@ class _$SuccessImpl implements _Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessImpl &&
+            (identical(other.sortType, sortType) ||
+                other.sortType == sortType) &&
             const DeepCollectionEquality()
                 .equals(other._orderList, _orderList));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_orderList));
+  int get hashCode => Object.hash(
+      runtimeType, sortType, const DeepCollectionEquality().hash(_orderList));
 
   @JsonKey(ignore: true)
   @override
@@ -262,33 +421,42 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() initialise,
     required TResult Function() loading,
-    required TResult Function(List<ProductOrder>? orderList) success,
+    required TResult Function(
+            EnumSortProductOrder sortType, List<OrderEntity>? orderList)
+        success,
     required TResult Function(Failure failure) failure,
   }) {
-    return success(orderList);
+    return success(sortType, orderList);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialise,
     TResult? Function()? loading,
-    TResult? Function(List<ProductOrder>? orderList)? success,
+    TResult? Function(
+            EnumSortProductOrder sortType, List<OrderEntity>? orderList)?
+        success,
     TResult? Function(Failure failure)? failure,
   }) {
-    return success?.call(orderList);
+    return success?.call(sortType, orderList);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialise,
     TResult Function()? loading,
-    TResult Function(List<ProductOrder>? orderList)? success,
+    TResult Function(
+            EnumSortProductOrder sortType, List<OrderEntity>? orderList)?
+        success,
     TResult Function(Failure failure)? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(orderList);
+      return success(sortType, orderList);
     }
     return orElse();
   }
@@ -296,6 +464,7 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Initialise value) initialise,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
@@ -306,6 +475,7 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialise value)? initialise,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
@@ -316,6 +486,7 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialise value)? initialise,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
@@ -328,11 +499,14 @@ class _$SuccessImpl implements _Success {
   }
 }
 
-abstract class _Success implements OrderCustomerState {
-  const factory _Success({required final List<ProductOrder>? orderList}) =
-      _$SuccessImpl;
+abstract class _Success extends OrderCustomerState {
+  const factory _Success(
+      {final EnumSortProductOrder sortType,
+      required final List<OrderEntity>? orderList}) = _$SuccessImpl;
+  const _Success._() : super._();
 
-  List<ProductOrder>? get orderList;
+  EnumSortProductOrder get sortType;
+  List<OrderEntity>? get orderList;
   @JsonKey(ignore: true)
   _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -381,8 +555,8 @@ class __$$FailureImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$FailureImpl implements _Failure {
-  const _$FailureImpl({required this.failure});
+class _$FailureImpl extends _Failure {
+  const _$FailureImpl({required this.failure}) : super._();
 
   @override
   final Failure failure;
@@ -412,8 +586,11 @@ class _$FailureImpl implements _Failure {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() initialise,
     required TResult Function() loading,
-    required TResult Function(List<ProductOrder>? orderList) success,
+    required TResult Function(
+            EnumSortProductOrder sortType, List<OrderEntity>? orderList)
+        success,
     required TResult Function(Failure failure) failure,
   }) {
     return failure(this.failure);
@@ -422,8 +599,11 @@ class _$FailureImpl implements _Failure {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialise,
     TResult? Function()? loading,
-    TResult? Function(List<ProductOrder>? orderList)? success,
+    TResult? Function(
+            EnumSortProductOrder sortType, List<OrderEntity>? orderList)?
+        success,
     TResult? Function(Failure failure)? failure,
   }) {
     return failure?.call(this.failure);
@@ -432,8 +612,11 @@ class _$FailureImpl implements _Failure {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialise,
     TResult Function()? loading,
-    TResult Function(List<ProductOrder>? orderList)? success,
+    TResult Function(
+            EnumSortProductOrder sortType, List<OrderEntity>? orderList)?
+        success,
     TResult Function(Failure failure)? failure,
     required TResult orElse(),
   }) {
@@ -446,6 +629,7 @@ class _$FailureImpl implements _Failure {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Initialise value) initialise,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
@@ -456,6 +640,7 @@ class _$FailureImpl implements _Failure {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialise value)? initialise,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
@@ -466,6 +651,7 @@ class _$FailureImpl implements _Failure {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialise value)? initialise,
     TResult Function(_Loading value)? loading,
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
@@ -478,8 +664,9 @@ class _$FailureImpl implements _Failure {
   }
 }
 
-abstract class _Failure implements OrderCustomerState {
+abstract class _Failure extends OrderCustomerState {
   const factory _Failure({required final Failure failure}) = _$FailureImpl;
+  const _Failure._() : super._();
 
   Failure get failure;
   @JsonKey(ignore: true)

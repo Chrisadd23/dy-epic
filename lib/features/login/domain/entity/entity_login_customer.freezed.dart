@@ -14,18 +14,26 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
+EntityLoginCustomer _$EntityLoginCustomerFromJson(Map<String, dynamic> json) {
+  return _EntityLoginCustomer.fromJson(json);
+}
+
 /// @nodoc
 mixin _$EntityLoginCustomer {
-  String get id => throw _privateConstructorUsedError;
   CustomerAddress get address => throw _privateConstructorUsedError;
   String get customerNumber => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
   String? get companyName => throw _privateConstructorUsedError;
+  @JsonKey(name: 'firstname')
   String? get customerName => throw _privateConstructorUsedError;
+  @JsonKey(name: 'lastname')
   String? get customerSurname => throw _privateConstructorUsedError;
-  DateTime? get registrationDate => throw _privateConstructorUsedError;
+  int? get registrationDate => throw _privateConstructorUsedError;
   CustomerAddress? get deliveryAddress => throw _privateConstructorUsedError;
+  List<UserNotification> get notifications =>
+      throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $EntityLoginCustomerCopyWith<EntityLoginCustomer> get copyWith =>
       throw _privateConstructorUsedError;
@@ -38,15 +46,15 @@ abstract class $EntityLoginCustomerCopyWith<$Res> {
       _$EntityLoginCustomerCopyWithImpl<$Res, EntityLoginCustomer>;
   @useResult
   $Res call(
-      {String id,
-      CustomerAddress address,
+      {CustomerAddress address,
       String customerNumber,
       String? email,
       String? companyName,
-      String? customerName,
-      String? customerSurname,
-      DateTime? registrationDate,
-      CustomerAddress? deliveryAddress});
+      @JsonKey(name: 'firstname') String? customerName,
+      @JsonKey(name: 'lastname') String? customerSurname,
+      int? registrationDate,
+      CustomerAddress? deliveryAddress,
+      List<UserNotification> notifications});
 
   $CustomerAddressCopyWith<$Res> get address;
   $CustomerAddressCopyWith<$Res>? get deliveryAddress;
@@ -65,7 +73,6 @@ class _$EntityLoginCustomerCopyWithImpl<$Res, $Val extends EntityLoginCustomer>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
     Object? address = null,
     Object? customerNumber = null,
     Object? email = freezed,
@@ -74,12 +81,9 @@ class _$EntityLoginCustomerCopyWithImpl<$Res, $Val extends EntityLoginCustomer>
     Object? customerSurname = freezed,
     Object? registrationDate = freezed,
     Object? deliveryAddress = freezed,
+    Object? notifications = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
       address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
@@ -107,11 +111,15 @@ class _$EntityLoginCustomerCopyWithImpl<$Res, $Val extends EntityLoginCustomer>
       registrationDate: freezed == registrationDate
           ? _value.registrationDate
           : registrationDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as int?,
       deliveryAddress: freezed == deliveryAddress
           ? _value.deliveryAddress
           : deliveryAddress // ignore: cast_nullable_to_non_nullable
               as CustomerAddress?,
+      notifications: null == notifications
+          ? _value.notifications
+          : notifications // ignore: cast_nullable_to_non_nullable
+              as List<UserNotification>,
     ) as $Val);
   }
 
@@ -145,15 +153,15 @@ abstract class _$$EntityLoginCustomerImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id,
-      CustomerAddress address,
+      {CustomerAddress address,
       String customerNumber,
       String? email,
       String? companyName,
-      String? customerName,
-      String? customerSurname,
-      DateTime? registrationDate,
-      CustomerAddress? deliveryAddress});
+      @JsonKey(name: 'firstname') String? customerName,
+      @JsonKey(name: 'lastname') String? customerSurname,
+      int? registrationDate,
+      CustomerAddress? deliveryAddress,
+      List<UserNotification> notifications});
 
   @override
   $CustomerAddressCopyWith<$Res> get address;
@@ -172,7 +180,6 @@ class __$$EntityLoginCustomerImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
     Object? address = null,
     Object? customerNumber = null,
     Object? email = freezed,
@@ -181,12 +188,9 @@ class __$$EntityLoginCustomerImplCopyWithImpl<$Res>
     Object? customerSurname = freezed,
     Object? registrationDate = freezed,
     Object? deliveryAddress = freezed,
+    Object? notifications = null,
   }) {
     return _then(_$EntityLoginCustomerImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
       address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
@@ -214,31 +218,39 @@ class __$$EntityLoginCustomerImplCopyWithImpl<$Res>
       registrationDate: freezed == registrationDate
           ? _value.registrationDate
           : registrationDate // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as int?,
       deliveryAddress: freezed == deliveryAddress
           ? _value.deliveryAddress
           : deliveryAddress // ignore: cast_nullable_to_non_nullable
               as CustomerAddress?,
+      notifications: null == notifications
+          ? _value._notifications
+          : notifications // ignore: cast_nullable_to_non_nullable
+              as List<UserNotification>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$EntityLoginCustomerImpl implements _EntityLoginCustomer {
+@JsonSerializable(explicitToJson: true)
+class _$EntityLoginCustomerImpl extends _EntityLoginCustomer {
   const _$EntityLoginCustomerImpl(
-      {required this.id,
-      required this.address,
+      {required this.address,
       required this.customerNumber,
       this.email,
       this.companyName,
-      this.customerName,
-      this.customerSurname,
+      @JsonKey(name: 'firstname') this.customerName,
+      @JsonKey(name: 'lastname') this.customerSurname,
       this.registrationDate,
-      this.deliveryAddress});
+      this.deliveryAddress,
+      final List<UserNotification> notifications = const []})
+      : _notifications = notifications,
+        super._();
 
-  @override
-  final String id;
+  factory _$EntityLoginCustomerImpl.fromJson(Map<String, dynamic> json) =>
+      _$$EntityLoginCustomerImplFromJson(json);
+
   @override
   final CustomerAddress address;
   @override
@@ -248,17 +260,27 @@ class _$EntityLoginCustomerImpl implements _EntityLoginCustomer {
   @override
   final String? companyName;
   @override
+  @JsonKey(name: 'firstname')
   final String? customerName;
   @override
+  @JsonKey(name: 'lastname')
   final String? customerSurname;
   @override
-  final DateTime? registrationDate;
+  final int? registrationDate;
   @override
   final CustomerAddress? deliveryAddress;
+  final List<UserNotification> _notifications;
+  @override
+  @JsonKey()
+  List<UserNotification> get notifications {
+    if (_notifications is EqualUnmodifiableListView) return _notifications;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_notifications);
+  }
 
   @override
   String toString() {
-    return 'EntityLoginCustomer(id: $id, address: $address, customerNumber: $customerNumber, email: $email, companyName: $companyName, customerName: $customerName, customerSurname: $customerSurname, registrationDate: $registrationDate, deliveryAddress: $deliveryAddress)';
+    return 'EntityLoginCustomer(address: $address, customerNumber: $customerNumber, email: $email, companyName: $companyName, customerName: $customerName, customerSurname: $customerSurname, registrationDate: $registrationDate, deliveryAddress: $deliveryAddress, notifications: $notifications)';
   }
 
   @override
@@ -266,7 +288,6 @@ class _$EntityLoginCustomerImpl implements _EntityLoginCustomer {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EntityLoginCustomerImpl &&
-            (identical(other.id, id) || other.id == id) &&
             (identical(other.address, address) || other.address == address) &&
             (identical(other.customerNumber, customerNumber) ||
                 other.customerNumber == customerNumber) &&
@@ -280,13 +301,15 @@ class _$EntityLoginCustomerImpl implements _EntityLoginCustomer {
             (identical(other.registrationDate, registrationDate) ||
                 other.registrationDate == registrationDate) &&
             (identical(other.deliveryAddress, deliveryAddress) ||
-                other.deliveryAddress == deliveryAddress));
+                other.deliveryAddress == deliveryAddress) &&
+            const DeepCollectionEquality()
+                .equals(other._notifications, _notifications));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      id,
       address,
       customerNumber,
       email,
@@ -294,7 +317,8 @@ class _$EntityLoginCustomerImpl implements _EntityLoginCustomer {
       customerName,
       customerSurname,
       registrationDate,
-      deliveryAddress);
+      deliveryAddress,
+      const DeepCollectionEquality().hash(_notifications));
 
   @JsonKey(ignore: true)
   @override
@@ -302,22 +326,31 @@ class _$EntityLoginCustomerImpl implements _EntityLoginCustomer {
   _$$EntityLoginCustomerImplCopyWith<_$EntityLoginCustomerImpl> get copyWith =>
       __$$EntityLoginCustomerImplCopyWithImpl<_$EntityLoginCustomerImpl>(
           this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$EntityLoginCustomerImplToJson(
+      this,
+    );
+  }
 }
 
-abstract class _EntityLoginCustomer implements EntityLoginCustomer {
+abstract class _EntityLoginCustomer extends EntityLoginCustomer {
   const factory _EntityLoginCustomer(
-      {required final String id,
-      required final CustomerAddress address,
+      {required final CustomerAddress address,
       required final String customerNumber,
       final String? email,
       final String? companyName,
-      final String? customerName,
-      final String? customerSurname,
-      final DateTime? registrationDate,
-      final CustomerAddress? deliveryAddress}) = _$EntityLoginCustomerImpl;
+      @JsonKey(name: 'firstname') final String? customerName,
+      @JsonKey(name: 'lastname') final String? customerSurname,
+      final int? registrationDate,
+      final CustomerAddress? deliveryAddress,
+      final List<UserNotification> notifications}) = _$EntityLoginCustomerImpl;
+  const _EntityLoginCustomer._() : super._();
 
-  @override
-  String get id;
+  factory _EntityLoginCustomer.fromJson(Map<String, dynamic> json) =
+      _$EntityLoginCustomerImpl.fromJson;
+
   @override
   CustomerAddress get address;
   @override
@@ -327,17 +360,25 @@ abstract class _EntityLoginCustomer implements EntityLoginCustomer {
   @override
   String? get companyName;
   @override
+  @JsonKey(name: 'firstname')
   String? get customerName;
   @override
+  @JsonKey(name: 'lastname')
   String? get customerSurname;
   @override
-  DateTime? get registrationDate;
+  int? get registrationDate;
   @override
   CustomerAddress? get deliveryAddress;
+  @override
+  List<UserNotification> get notifications;
   @override
   @JsonKey(ignore: true)
   _$$EntityLoginCustomerImplCopyWith<_$EntityLoginCustomerImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+CustomerAddress _$CustomerAddressFromJson(Map<String, dynamic> json) {
+  return _CustomerAddress.fromJson(json);
 }
 
 /// @nodoc
@@ -346,6 +387,7 @@ mixin _$CustomerAddress {
   String get city => throw _privateConstructorUsedError;
   String get zipCode => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $CustomerAddressCopyWith<CustomerAddress> get copyWith =>
       throw _privateConstructorUsedError;
@@ -439,9 +481,13 @@ class __$$CustomerAddressImplCopyWithImpl<$Res>
 
 /// @nodoc
 
+@JsonSerializable(explicitToJson: true)
 class _$CustomerAddressImpl implements _CustomerAddress {
   const _$CustomerAddressImpl(
       {required this.street, required this.city, required this.zipCode});
+
+  factory _$CustomerAddressImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CustomerAddressImplFromJson(json);
 
   @override
   final String street;
@@ -465,6 +511,7 @@ class _$CustomerAddressImpl implements _CustomerAddress {
             (identical(other.zipCode, zipCode) || other.zipCode == zipCode));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, street, city, zipCode);
 
@@ -474,6 +521,13 @@ class _$CustomerAddressImpl implements _CustomerAddress {
   _$$CustomerAddressImplCopyWith<_$CustomerAddressImpl> get copyWith =>
       __$$CustomerAddressImplCopyWithImpl<_$CustomerAddressImpl>(
           this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$CustomerAddressImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _CustomerAddress implements CustomerAddress {
@@ -481,6 +535,9 @@ abstract class _CustomerAddress implements CustomerAddress {
       {required final String street,
       required final String city,
       required final String zipCode}) = _$CustomerAddressImpl;
+
+  factory _CustomerAddress.fromJson(Map<String, dynamic> json) =
+      _$CustomerAddressImpl.fromJson;
 
   @override
   String get street;
@@ -491,5 +548,164 @@ abstract class _CustomerAddress implements CustomerAddress {
   @override
   @JsonKey(ignore: true)
   _$$CustomerAddressImplCopyWith<_$CustomerAddressImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+UserNotification _$UserNotificationFromJson(Map<String, dynamic> json) {
+  return _UserNotification.fromJson(json);
+}
+
+/// @nodoc
+mixin _$UserNotification {
+  int get statusType => throw _privateConstructorUsedError;
+  bool get active => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $UserNotificationCopyWith<UserNotification> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $UserNotificationCopyWith<$Res> {
+  factory $UserNotificationCopyWith(
+          UserNotification value, $Res Function(UserNotification) then) =
+      _$UserNotificationCopyWithImpl<$Res, UserNotification>;
+  @useResult
+  $Res call({int statusType, bool active});
+}
+
+/// @nodoc
+class _$UserNotificationCopyWithImpl<$Res, $Val extends UserNotification>
+    implements $UserNotificationCopyWith<$Res> {
+  _$UserNotificationCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? statusType = null,
+    Object? active = null,
+  }) {
+    return _then(_value.copyWith(
+      statusType: null == statusType
+          ? _value.statusType
+          : statusType // ignore: cast_nullable_to_non_nullable
+              as int,
+      active: null == active
+          ? _value.active
+          : active // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$UserNotificationImplCopyWith<$Res>
+    implements $UserNotificationCopyWith<$Res> {
+  factory _$$UserNotificationImplCopyWith(_$UserNotificationImpl value,
+          $Res Function(_$UserNotificationImpl) then) =
+      __$$UserNotificationImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int statusType, bool active});
+}
+
+/// @nodoc
+class __$$UserNotificationImplCopyWithImpl<$Res>
+    extends _$UserNotificationCopyWithImpl<$Res, _$UserNotificationImpl>
+    implements _$$UserNotificationImplCopyWith<$Res> {
+  __$$UserNotificationImplCopyWithImpl(_$UserNotificationImpl _value,
+      $Res Function(_$UserNotificationImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? statusType = null,
+    Object? active = null,
+  }) {
+    return _then(_$UserNotificationImpl(
+      statusType: null == statusType
+          ? _value.statusType
+          : statusType // ignore: cast_nullable_to_non_nullable
+              as int,
+      active: null == active
+          ? _value.active
+          : active // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _$UserNotificationImpl extends _UserNotification {
+  const _$UserNotificationImpl({required this.statusType, required this.active})
+      : super._();
+
+  factory _$UserNotificationImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UserNotificationImplFromJson(json);
+
+  @override
+  final int statusType;
+  @override
+  final bool active;
+
+  @override
+  String toString() {
+    return 'UserNotification(statusType: $statusType, active: $active)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UserNotificationImpl &&
+            (identical(other.statusType, statusType) ||
+                other.statusType == statusType) &&
+            (identical(other.active, active) || other.active == active));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, statusType, active);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UserNotificationImplCopyWith<_$UserNotificationImpl> get copyWith =>
+      __$$UserNotificationImplCopyWithImpl<_$UserNotificationImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$UserNotificationImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _UserNotification extends UserNotification {
+  const factory _UserNotification(
+      {required final int statusType,
+      required final bool active}) = _$UserNotificationImpl;
+  const _UserNotification._() : super._();
+
+  factory _UserNotification.fromJson(Map<String, dynamic> json) =
+      _$UserNotificationImpl.fromJson;
+
+  @override
+  int get statusType;
+  @override
+  bool get active;
+  @override
+  @JsonKey(ignore: true)
+  _$$UserNotificationImplCopyWith<_$UserNotificationImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

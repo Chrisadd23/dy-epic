@@ -13,6 +13,7 @@ class ShoppingBasketEntity with _$ShoppingBasketEntity {
     required String userId,
     required int status,
     required List<ShoppingBasketProduct> products,
+    required int sendDate,
   }) = _ShoppingBasketEntity;
 
   factory ShoppingBasketEntity.fromJson(Map<String, dynamic> json) =>

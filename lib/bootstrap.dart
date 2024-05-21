@@ -5,12 +5,15 @@ import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-abstract class MainConfiguration {
+abstract class Bootstrap {
   static VoidCallback get configuration => () async {
         await Firebase.initializeApp(
           options: DefaultFirebaseOptions.currentPlatform,
         );
-        FirebaseConfiguration.initFirebaseStorage();
+        await FirebaseConfiguration.requestPermission();
+        await FirebaseConfiguration.initFlutterLocalNotificationAttributes();
+        await FirebaseConfiguration.initFirebaseSettings();
+
         //SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
         setUpMainDependencies();
         runApp(const MyApp());

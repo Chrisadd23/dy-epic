@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 enum EnumCategoryWorkingTable {
   slavonischeEiche(type: 'Slavonische Eiche'),
   ahorn(type: 'Ahorn'),
@@ -30,16 +32,42 @@ enum EnumSelectOfficeChairCategory {
 }
 
 enum EnumOrderProcess {
-  created(sortIndex: 0, information: 'wurde erstellt'),
-  inWork(sortIndex: 1, information: 'wird bearbeitet'),
-  finished(sortIndex: 2, information: 'abgeschlossen'),
-  canceledByAdmin(sortIndex: 3, information: 'stoniert'),
-  canceledByCustomer(sortIndex: 4, information: 'stoniert');
+  created(
+    sortIndex: 0,
+    information: 'wurde erstellt',
+  ),
+  inWork(
+      sortIndex: 1,
+      information: 'wird bearbeitet',
+      processColor: Colors.blue,
+      icon: Icons.update),
+  finished(
+    sortIndex: 2,
+    information: 'abgeschlossen',
+    processColor: Colors.green,
+    icon: Icons.done,
+  ),
+  canceledByAdmin(
+      sortIndex: 3,
+      information: 'stoniert',
+      processColor: Colors.red,
+      icon: Icons.cancel_outlined),
+  canceledByCustomer(
+      sortIndex: 4,
+      information: 'stoniert',
+      processColor: Colors.red,
+      icon: Icons.cancel_outlined);
 
-  const EnumOrderProcess({required this.sortIndex, required this.information});
+  const EnumOrderProcess(
+      {required this.sortIndex,
+      required this.information,
+      this.processColor,
+      this.icon});
 
   final int sortIndex;
   final String information;
+  final Color? processColor;
+  final IconData? icon;
 }
 
 enum EnumOrderType {
