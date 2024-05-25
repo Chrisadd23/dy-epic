@@ -58,8 +58,7 @@ class _BlocBuilderConferenceChair extends StatelessWidget {
     return BlocBuilder<CubitConferenceChair, StateCategory>(
         builder: (context, state) => state.map(
               loading: (loading) => const LoadingWidget(
-                firstWidth: 110,
-                secondWidth: 60,
+                diameter: 60,
               ),
               failure: (failure) => FailureWidget(
                   failure: failure.failure.when(

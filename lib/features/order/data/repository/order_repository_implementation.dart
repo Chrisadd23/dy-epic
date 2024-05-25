@@ -56,4 +56,14 @@ class OrderRepositoryImplementation extends OrderRepository {
       });
     });
   }
+
+  @override
+  void clearOrderList() {
+    _listOrderModel.clear();
+  }
+
+  @override
+  void clearRequestList() {
+    _listRequestModel.clear();
+  }
 }

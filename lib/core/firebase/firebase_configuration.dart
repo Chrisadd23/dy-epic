@@ -32,17 +32,21 @@ abstract class FirebaseConfiguration {
       sound: true,
     );
     debugPrint('User granted permission: ${settings.authorizationStatus}');
-    firebaseToken = Platform.isAndroid
-        ? await _firebaseMessaging.getToken()
-        : await _firebaseMessaging.getAPNSToken();
+    try {
+      firebaseToken = Platform.isAndroid
+          ? await _firebaseMessaging.getToken()
+          : await _firebaseMessaging.getAPNSToken();
 
-    debugPrint("firebaseToken ==> $firebaseToken");
+      debugPrint("firebaseToken ==> $firebaseToken");
 
-    _firebaseMessaging.onTokenRefresh.listen((token) {
-      debugPrint("onTokenRefresh ==> $token");
-    });
-    _initFirebaseMessagingInForegroundListener;
-    _iniTifebaseMessagingInBackgroundListener;
+      _firebaseMessaging.onTokenRefresh.listen((token) {
+        debugPrint("onTokenRefresh ==> $token");
+      });
+      _initFirebaseMessagingInForegroundListener;
+      _iniTifebaseMessagingInBackgroundListener;
+    } catch (error) {
+      debugPrint(error.toString());
+    }
   }
 
   static Future<Uint8List?> getImageBytes(String filename) async {

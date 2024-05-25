@@ -16,8 +16,7 @@ class DialogShoppingBasket extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<BlocShoppingBasket, StateShoppingBasket>(
-      builder: (context, state) => state.orderChosenProductList.isNotEmpty ||
-              state.requestChosenProductList.isNotEmpty
+      builder: (context, state) => !state.isEmpty
           ? Padding(
               padding: const EdgeInsets.only(top: 15, right: 15),
               child: Align(

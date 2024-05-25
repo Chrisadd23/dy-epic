@@ -1,5 +1,6 @@
 import 'package:app_flutter_produkt_bestellen/core/error/page_not_found.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text.dart';
+import 'package:app_flutter_produkt_bestellen/features/app_start/presentation/page/app_start_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/category_conference_chair/presentation/page/category_conference_chair_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/category_office_chair/presentation/page/category_office_chair_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/category_workingtable/presentation/page/category_workingtable_page.dart';
@@ -24,7 +25,8 @@ import 'package:go_router/go_router.dart';
 
 enum AppGoRouter {
   root('/'),
-  homePage('home'),
+  home('home'),
+  login('login'),
   arbeitstische('arbeitstische'),
   buerostuehle('buerostuehle'),
   konferenzstuehle('konferenzstuehle'),
@@ -64,219 +66,241 @@ enum AppGoRouter {
       );
 
   static final GoRouter _router = GoRouter(
-      debugLogDiagnostics: true,
-      routes: <GoRoute>[
-        GoRoute(
-            path: root.title,
-            builder: (context, state) => const Login(),
-            routes: [
-              StatefulShellRoute.indexedStack(
-                  pageBuilder: (context, state, navigationShell) =>
-                      _getCustomerTransition(
-                          OrderPageShellNavigation(
-                              navigationShell: navigationShell,
-                              goRouterState: state),
-                          state),
-                  branches: <StatefulShellBranch>[
-                    StatefulShellBranch(routes: [
-                      GoRoute(
-                          path: AppGoRouter.order.title,
-                          name: AppGoRouter.order.name,
-                          builder: (context, state) => const OrderPage(),
-                          routes: [
-                            GoRoute(
-                              path: AppGoRouter.detailedOrderInformation.title,
-                              name: AppGoRouter.detailedOrderInformation.name,
-                              pageBuilder: (context, state) {
-                                final orderEntity = state.extra as OrderEntity;
-                                return _getCustomerTransition(
-                                    DetailedOrderInformation(
-                                        informationTitle:
-                                            AppText.orderInformation,
-                                        orderEntity: orderEntity),
-                                    state,
-                                    transitionDuration: Duration.zero,
-                                    reverseTransitionDuration: Duration.zero);
-                              },
-                            )
-                          ]),
-                    ]),
-                    StatefulShellBranch(routes: [
-                      GoRoute(
-                          path: AppGoRouter.request.title,
-                          name: AppGoRouter.request.name,
-                          builder: (context, state) => const RequestPage(),
-                          routes: [
-                            GoRoute(
-                              path:
-                                  AppGoRouter.detailedRequestInformation.title,
-                              name: AppGoRouter.detailedRequestInformation.name,
-                              pageBuilder: (context, state) {
-                                final orderEntity = state.extra as OrderEntity;
-                                return _getCustomerTransition(
-                                    DetailedOrderInformation(
-                                      informationTitle:
-                                          AppText.requestInformation,
-                                      orderEntity: orderEntity,
-                                    ),
-                                    state,
-                                    transitionDuration: Duration.zero,
-                                    reverseTransitionDuration: Duration.zero);
-                              },
-                            ),
-                          ]),
-                    ])
-                  ]),
-              //---------------------------------------------------
-              StatefulShellRoute.indexedStack(
-                  pageBuilder: (context, state, navigationShell) =>
-                      _getCustomerTransition(
-                          SettingsPageShellNavigation(
-                              navigationShell: navigationShell),
-                          state),
-                  branches: <StatefulShellBranch>[
-                    StatefulShellBranch(routes: [
-                      GoRoute(
-                        path: AppGoRouter.notificationSettings.title,
-                        name: AppGoRouter.notificationSettings.name,
-                        builder: (context, state) =>
-                            const NotificationSettingsPage(),
-                      ),
-                    ]),
-                    StatefulShellBranch(routes: [
-                      GoRoute(
-                        path: AppGoRouter.profileSettings.title,
-                        name: AppGoRouter.profileSettings.name,
-                        builder: (context, state) =>
-                            const CustomerSettingsPage(),
-                      ),
-                    ]),
-                  ]),
+    debugLogDiagnostics: true,
+    routes: [
+      GoRoute(
+          path: root.title,
+          name: root.name,
+          pageBuilder: (context, state) =>
+              _getCustomerTransition(const AppStartPage(), state),
+          routes: [
+            GoRoute(
+                path: login.title,
+                name: login.name,
+                pageBuilder: (context, state) {
+                  final redirectName = state.queryParameters['redirectName'];
+                  return _getCustomerTransition(
+                      LoginPage(redirectName: redirectName), state);
+                }),
+            GoRoute(
+              path: home.title,
+              name: home.name,
+              pageBuilder: (context, state) =>
+                  _getCustomerTransition(const HomePage(), state),
+              routes: [
+                GoRoute(
+                  path: arbeitstische.title,
+                  name: arbeitstische.name,
+                  pageBuilder: (context, state) => _getCustomerTransition(
+                      const CategoryWorkingTablePage(), state),
+                  routes: [
+                    GoRoute(
+                      path: product.title,
+                      name: '${arbeitstische.name}/${product.title}',
+                      pageBuilder: (context, state) {
+                        debugPrint("check goRouter record ${state.extra as ({
+                          ShoppingBasketProduct chosenProduct,
+                          int index
+                        })?}");
 
-              //-----------------------------
-              GoRoute(
-                path: homePage.title,
-                name: homePage.name,
-                pageBuilder: (context, state) =>
-                    _getCustomerTransition(const HomePage(), state),
-                routes: [
-                  GoRoute(
-                    path: arbeitstische.title,
-                    name: arbeitstische.name,
-                    pageBuilder: (context, state) => _getCustomerTransition(
-                        const CategoryWorkingTablePage(), state),
-                    routes: [
-                      GoRoute(
-                        path: product.title,
-                        name: '${arbeitstische.name}/${product.title}',
-                        pageBuilder: (context, state) {
-                          debugPrint("check goRouter record ${state.extra as ({
-                            ShoppingBasketProduct chosenProduct,
-                            int index
-                          })?}");
+                        final recordOrder = state.extra as ({
+                          ShoppingBasketProduct chosenProduct,
+                          int index
+                        })?;
 
-                          final recordOrder = state.extra as ({
-                            ShoppingBasketProduct chosenProduct,
-                            int index
-                          })?;
-
-                          final productNumber =
-                              state.queryParameters['productNumber'];
-                          debugPrint(
-                              "check queryParameters productNumber - ${productNumber.toString()}");
-                          final selectedColor = state.queryParameters['color'];
-                          debugPrint(
-                              "check queryParameters selected Color- ${selectedColor.toString()}");
-                          return _getCustomerTransition(
-                              PageWorkingTableProduct(
-                                  productNumber: productNumber,
-                                  color: selectedColor,
-                                  recordOrder: recordOrder),
-                              state);
-                        },
-                      )
-                    ],
-                  ),
-                  GoRoute(
-                    path: buerostuehle.title,
-                    name: buerostuehle.name,
-                    pageBuilder: (context, state) =>
-                        _getCustomerTransition(const PageBuerostuehle(), state),
-                    routes: [
-                      GoRoute(
-                        path: product.title,
-                        name: '${buerostuehle.name}/${product.title}',
-                        pageBuilder: (context, state) {
-                          final product =
-                              state.queryParameters['productNumber'];
-                          debugPrint("check goRouter recor ${state.extra as ({
-                            ShoppingBasketProduct chosenProduct,
-                            int index
-                          })?}");
-                          final recordOrder = state.extra as ({
-                            ShoppingBasketProduct chosenProduct,
-                            int index
-                          })?;
-                          return _getCustomerTransition(
-                              PageOfficeChairProduct(
-                                  product: product, recordOrder: recordOrder),
-                              state);
-                        },
-                      )
-                    ],
-                  ),
-                  GoRoute(
-                    path: konferenzstuehle.title,
-                    name: konferenzstuehle.name,
-                    pageBuilder: (context, state) => _getCustomerTransition(
-                        const PageKonferenzstuehle(), state),
-                    routes: [
-                      GoRoute(
-                        path: product.title,
-                        name: '${konferenzstuehle.name}/${product.title}',
-                        pageBuilder: (context, state) {
-                          debugPrint("check goRouter recor ${state.extra as ({
-                            ShoppingBasketProduct chosenProduct,
-                            int index
-                          })?}");
-                          final product =
-                              state.queryParameters['productNumber'];
-                          final recordOrder = state.extra as ({
-                            ShoppingBasketProduct chosenProduct,
-                            int index
-                          })?;
-                          return _getCustomerTransition(
-                              PageConferenceChairProduct(
-                                product: product,
-                                recordOrder: recordOrder,
-                              ),
-                              state);
-                        },
-                      )
-                    ],
-                  ),
-                  GoRoute(
-                    path: konferenztische.title,
-                    name: konferenztische.name,
-                    builder: (context, state) => const PageKonferenztische(),
-                  )
-                ],
+                        final productNumber =
+                            state.queryParameters['productNumber'];
+                        debugPrint(
+                            "check queryParameters productNumber - ${productNumber.toString()}");
+                        final selectedColor = state.queryParameters['color'];
+                        debugPrint(
+                            "check queryParameters selected Color- ${selectedColor.toString()}");
+                        return _getCustomerTransition(
+                          PageWorkingTableProduct(
+                            productNumber: productNumber,
+                            color: selectedColor,
+                            recordOrder: recordOrder,
+                          ),
+                          state,
+                        );
+                      },
+                    ),
+                  ],
+                ),
+                GoRoute(
+                  path: buerostuehle.title,
+                  name: buerostuehle.name,
+                  pageBuilder: (context, state) =>
+                      _getCustomerTransition(const PageBuerostuehle(), state),
+                  routes: [
+                    GoRoute(
+                      path: product.title,
+                      name: '${buerostuehle.name}/${product.title}',
+                      pageBuilder: (context, state) {
+                        final product = state.queryParameters['productNumber'];
+                        debugPrint("check goRouter record ${state.extra as ({
+                          ShoppingBasketProduct chosenProduct,
+                          int index
+                        })?}");
+                        final recordOrder = state.extra as ({
+                          ShoppingBasketProduct chosenProduct,
+                          int index
+                        })?;
+                        return _getCustomerTransition(
+                          PageOfficeChairProduct(
+                            product: product,
+                            recordOrder: recordOrder,
+                          ),
+                          state,
+                        );
+                      },
+                    ),
+                  ],
+                ),
+                GoRoute(
+                  path: konferenzstuehle.title,
+                  name: konferenzstuehle.name,
+                  pageBuilder: (context, state) => _getCustomerTransition(
+                      const PageKonferenzstuehle(), state),
+                  routes: [
+                    GoRoute(
+                      path: product.title,
+                      name: '${konferenzstuehle.name}/${product.title}',
+                      pageBuilder: (context, state) {
+                        debugPrint("check goRouter record ${state.extra as ({
+                          ShoppingBasketProduct chosenProduct,
+                          int index
+                        })?}");
+                        final product = state.queryParameters['productNumber'];
+                        final recordOrder = state.extra as ({
+                          ShoppingBasketProduct chosenProduct,
+                          int index
+                        })?;
+                        return _getCustomerTransition(
+                          PageConferenceChairProduct(
+                            product: product,
+                            recordOrder: recordOrder,
+                          ),
+                          state,
+                        );
+                      },
+                    ),
+                  ],
+                ),
+                GoRoute(
+                  path: konferenztische.title,
+                  name: konferenztische.name,
+                  builder: (context, state) => const PageKonferenztische(),
+                ),
+              ],
+            ),
+            StatefulShellRoute.indexedStack(
+              pageBuilder: (context, state, navigationShell) =>
+                  _getCustomerTransition(
+                OrderPageShellNavigation(
+                  navigationShell: navigationShell,
+                  goRouterState: state,
+                ),
+                state,
               ),
-
-              //--------------legalities
-              GoRoute(
-                path: legalities.title,
-                name: legalities.name,
-                pageBuilder: (context, state) =>
-                    _getCustomerTransition(const LegalitiesPage(), state),
-              )
-              //----------------------------------------------------------------
-            ]),
-      ],
-      errorBuilder: (context, state) => PageNotFound(state.error),
-      redirect: (context, state) {
-        return null;
-      });
+              branches: <StatefulShellBranch>[
+                StatefulShellBranch(
+                  routes: [
+                    GoRoute(
+                      path: order.title,
+                      name: order.name,
+                      builder: (context, state) => const OrderPage(),
+                      routes: [
+                        GoRoute(
+                          path: detailedOrderInformation.title,
+                          name: detailedOrderInformation.name,
+                          pageBuilder: (context, state) {
+                            final orderEntity = state.extra as OrderEntity;
+                            return _getCustomerTransition(
+                              DetailedOrderInformation(
+                                informationTitle: AppText.orderInformation,
+                                orderEntity: orderEntity,
+                              ),
+                              state,
+                              transitionDuration: Duration.zero,
+                              reverseTransitionDuration: Duration.zero,
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                StatefulShellBranch(
+                  routes: [
+                    GoRoute(
+                      path: request.title,
+                      name: request.name,
+                      builder: (context, state) => const RequestPage(),
+                      routes: [
+                        GoRoute(
+                          path: detailedRequestInformation.title,
+                          name: detailedRequestInformation.name,
+                          pageBuilder: (context, state) {
+                            final orderEntity = state.extra as OrderEntity;
+                            return _getCustomerTransition(
+                              DetailedOrderInformation(
+                                informationTitle: AppText.requestInformation,
+                                orderEntity: orderEntity,
+                              ),
+                              state,
+                              transitionDuration: Duration.zero,
+                              reverseTransitionDuration: Duration.zero,
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            StatefulShellRoute.indexedStack(
+              pageBuilder: (context, state, navigationShell) =>
+                  _getCustomerTransition(
+                SettingsPageShellNavigation(navigationShell: navigationShell),
+                state,
+              ),
+              branches: <StatefulShellBranch>[
+                StatefulShellBranch(
+                  routes: [
+                    GoRoute(
+                      path: notificationSettings.title,
+                      name: notificationSettings.name,
+                      builder: (context, state) =>
+                          const NotificationSettingsPage(),
+                    ),
+                  ],
+                ),
+                StatefulShellBranch(
+                  routes: [
+                    GoRoute(
+                      path: profileSettings.title,
+                      name: profileSettings.name,
+                      builder: (context, state) => const CustomerSettingsPage(),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            GoRoute(
+              path: legalities.title,
+              name: legalities.name,
+              pageBuilder: (context, state) =>
+                  _getCustomerTransition(const LegalitiesPage(), state),
+            ),
+          ])
+    ],
+    errorBuilder: (context, state) => PageNotFound(state.error),
+    redirect: (context, state) {
+      return null;
+    },
+  );
 
   static GoRouter get router => _router;
 }

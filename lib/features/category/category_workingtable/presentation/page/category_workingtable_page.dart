@@ -63,8 +63,7 @@ class _WorkTables extends StatelessWidget {
     return BlocBuilder<CategoryWorkingTableCubit, StateCategory>(
         builder: (context, state) => state.map(
             loading: (_) => const LoadingWidget(
-                  firstWidth: 110,
-                  secondWidth: 60,
+                  diameter: 60,
                 ),
             failure: (failure) =>
                 FailureWidget(failure: failure.failure.getFailureMessage),

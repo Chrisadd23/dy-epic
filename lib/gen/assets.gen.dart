@@ -35,8 +35,16 @@ class $AssetsIconGen {
   AssetGenImage get oberhaizingerOfficesolutionAppIcon => const AssetGenImage(
       'assets/icon/oberhaizinger_officesolution_app_icon.png');
 
+  /// File path: assets/icon/oberhaizinger_officesolution_app_icon_white.png
+  AssetGenImage get oberhaizingerOfficesolutionAppIconWhite =>
+      const AssetGenImage(
+          'assets/icon/oberhaizinger_officesolution_app_icon_white.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [oberhaizingerOfficesolutionAppIcon];
+  List<AssetGenImage> get values => [
+        oberhaizingerOfficesolutionAppIcon,
+        oberhaizingerOfficesolutionAppIconWhite
+      ];
 }
 
 class $AssetsProductsGen {

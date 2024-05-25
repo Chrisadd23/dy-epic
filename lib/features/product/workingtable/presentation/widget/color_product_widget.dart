@@ -81,7 +81,7 @@ class ColorProductWidget extends HookWidget {
                                   ),
                                   child: state == null
                                       ? const LoadingWidget(
-                                          secondWidth: 0,
+                                          diameter: 0,
                                         )
                                       : ColorWidget(
                                           color: state.color,

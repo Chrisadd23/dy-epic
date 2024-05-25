@@ -1,3 +1,4 @@
+import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_widgets/loading_widget.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -22,9 +23,8 @@ class WidgetPictureArea extends StatelessWidget {
         color: Colors.white,
       ),
       child: pictureBytes == null
-          ? LoadingWidget(
-              firstWidth: MediaQuery.of(context).size.width * 0.3,
-              secondWidth: 0,
+          ? const LoadingWidget(
+              color: AppColors.greyCACACA,
             )
           : Image(
               fit: BoxFit.fitHeight,

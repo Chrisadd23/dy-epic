@@ -70,6 +70,24 @@ enum EnumOrderProcess {
   final IconData? icon;
 }
 
+enum AppDrawerCategoriesEnum {
+  products(title: 'Produkte', name: 'home', isLoginRequired: false),
+  orders(title: 'Bestellungen', name: 'order', isLoginRequired: true),
+  requests(title: 'Anfragen', name: 'request', isLoginRequired: true),
+  notificationSettings(
+      title: 'Einstellungen',
+      name: 'notificationSettings',
+      isLoginRequired: true),
+  legalities(title: 'Rechtliches', name: 'legalities', isLoginRequired: false);
+
+  const AppDrawerCategoriesEnum(
+      {required this.title, required this.name, required this.isLoginRequired});
+
+  final String title;
+  final String name;
+  final bool isLoginRequired;
+}
+
 enum EnumOrderType {
   bestellung(type: 1, text: 'Bestellung'),
   anfrage(type: 2, text: 'Anfrage');

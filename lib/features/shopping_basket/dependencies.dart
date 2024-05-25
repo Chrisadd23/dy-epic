@@ -19,7 +19,7 @@ abstract class ShoppingBasketDependencies {
       )
       ..registerLazySingleton<BlocShoppingBasket>(
         () => BlocShoppingBasket(
-          shoppingBasketRepository: getIt(),
+          getIt(),
         ),
       );
   }

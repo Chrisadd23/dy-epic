@@ -21,7 +21,7 @@ abstract class LoginDependencies {
       ..registerLazySingleton<UpdateCustomerUseCase>(
           () => UpdateCustomerUseCase(getIt()))
       //cubit
-      ..registerSingleton<LoginCubit>(LoginCubit(getIt()))
+      ..registerSingleton<LoginCubit>(LoginCubit(getIt(), getIt()))
       ..registerFactory<TextEditingCubit>(() => TextEditingCubit());
   }
 }

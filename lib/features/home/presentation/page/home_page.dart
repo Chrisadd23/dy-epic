@@ -43,8 +43,7 @@ class CategoryPage extends StatelessWidget {
               BlocBuilder<HomeCubit, HomeCategoryState>(
                 builder: (context, state) => state.when(
                   loading: () => const LoadingWidget(
-                    firstWidth: 110,
-                    secondWidth: 60,
+                    diameter: 60,
                   ),
                   failure: (failure) => FailureWidget(
                     failure: failure.toString(),

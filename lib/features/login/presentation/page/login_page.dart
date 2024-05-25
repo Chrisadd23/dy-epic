@@ -1,5 +1,6 @@
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text_style.dart';
+import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_page_widget.dart';
 import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_state.dart';
@@ -12,36 +13,31 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 
-class Login extends StatelessWidget {
-  const Login({super.key});
+class LoginPage extends StatelessWidget {
+  const LoginPage({super.key, this.redirectName});
+
+  final String? redirectName;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: MultiBlocProvider(providers: [
-          BlocProvider<TextEditingCubit>(
-              create: (context) => getIt<TextEditingCubit>()),
-          BlocProvider<LoginCubit>.value(
-            value: getIt<LoginCubit>(),
-          )
-        ], child: const LoginPage()),
-      ),
+    return GlobalScaffold(
+      appBarContext: context,
+      showMenuBar: true,
+      body: MultiBlocProvider(providers: [
+        BlocProvider<TextEditingCubit>(
+            create: (context) => getIt<TextEditingCubit>()),
+        BlocProvider<LoginCubit>.value(
+          value: getIt<LoginCubit>(),
+        )
+      ], child: _BlocBuilderLoginPage(redirectName: redirectName)),
     );
   }
 }
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const _BlocBuilderLoginPage();
-  }
-}
-
 class _BlocBuilderLoginPage extends StatelessWidget {
-  const _BlocBuilderLoginPage();
+  const _BlocBuilderLoginPage({this.redirectName});
+
+  final String? redirectName;
 
   @override
   Widget build(BuildContext context) {
@@ -59,35 +55,6 @@ class _BlocBuilderLoginPage extends StatelessWidget {
       },
       child: Column(
         children: <Widget>[
-          ShaderMask(
-            blendMode: BlendMode.dstOut,
-            shaderCallback: (Rect rect) {
-              return const LinearGradient(
-                      begin: Alignment.bottomCenter,
-                      end: Alignment.topCenter,
-                      colors: [Colors.white, Colors.transparent])
-                  .createShader(Rect.fromLTWH(
-                rect.left,
-                rect.top + 60,
-                rect.width,
-                rect.height,
-              ));
-            },
-            child: SizedBox(
-              width: double.infinity,
-              height: 110,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: FittedBox(
-                  fit: BoxFit.fitWidth,
-                  child: Image.asset(
-                    Assets.company.appBarLogo.path,
-                    fit: BoxFit.fitWidth,
-                  ),
-                ),
-              ),
-            ),
-          ),
           Expanded(
             child: ShaderMask(
               blendMode: BlendMode.dstATop,
@@ -115,14 +82,14 @@ class _BlocBuilderLoginPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                child: const Column(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    _CustomerNumberTextWidget(),
-                    SizedBox(height: 30),
-                    _PasswordTextWidget(),
-                    _LoginButton(),
+                    const _CustomerNumberTextWidget(),
+                    const SizedBox(height: 30),
+                    const _PasswordTextWidget(),
+                    _LoginButton(redirectName: redirectName),
                   ],
                 ),
               ),
@@ -135,7 +102,9 @@ class _BlocBuilderLoginPage extends StatelessWidget {
 }
 
 class _LoginButton extends HookWidget {
-  const _LoginButton();
+  const _LoginButton({this.redirectName});
+
+  final String? redirectName;
 
   @override
   Widget build(BuildContext context) {
@@ -155,7 +124,9 @@ class _LoginButton extends HookWidget {
                       password: state.customerPassword.text);
                   if (context.mounted) {
                     if (loggedIn != null && loggedIn) {
-                      context.goNamed(AppGoRouter.homePage.name);
+                      context.goNamed(redirectName != null
+                          ? redirectName!
+                          : AppGoRouter.home.name);
                     }
                     await context.read<TextEditingCubit>().clearController();
                     isAbleToPressButton.value = true;

@@ -33,4 +33,6 @@ abstract class AppText {
   static String orderInformation = 'Bestellinformationen';
 
   static String requestInformation = 'Anfrageinformationen';
+
+  static String needsToBeLoggedInToSend  = 'Das absenden ist nur im eingeloggten Zustand möglich';
 }

@@ -20,4 +20,7 @@ class StateShoppingBasket with _$StateShoppingBasket {
         ? EnumOrderType.bestellung
         : EnumOrderType.anfrage;
   }
+
+  bool get isEmpty =>
+      requestChosenProductList.isEmpty && orderChosenProductList.isEmpty;
 }

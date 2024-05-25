@@ -31,7 +31,7 @@ class GlobalAppBar extends AppBar {
               children: [
                 InkWell(
                   onTap: () =>
-                      getIt<GoRouter>().goNamed(AppGoRouter.homePage.name),
+                      getIt<GoRouter>().goNamed(AppGoRouter.home.name),
                   child: Container(
                     height: 67,
                     width: MediaQuery.of(context).size.width * 0.7,

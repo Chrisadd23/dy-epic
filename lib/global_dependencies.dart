@@ -1,4 +1,5 @@
 import 'package:app_flutter_produkt_bestellen/core/dependencies.dart';
+import 'package:app_flutter_produkt_bestellen/features/app_start/dependencies.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/dependencies.dart';
 import 'package:app_flutter_produkt_bestellen/features/home/dependencies.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/dependencies.dart';
@@ -12,12 +13,13 @@ final getIt = GetIt.instance;
 
 void setUpMainDependencies() {
   //Features
+  AppStartDependencies.setUp();
   HomeDependencies.setUp();
   CategoryDependencies.setUp();
   ProductDependencies.setUp();
   ShoppingBasketDependencies.setUp();
-  LoginDependencies.setUp();
   OrderDependencies.setUp();
+  LoginDependencies.setUp();
   SettingsDependencies.setUp();
 
   //core

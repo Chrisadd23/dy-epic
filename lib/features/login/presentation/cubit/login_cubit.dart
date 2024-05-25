@@ -2,13 +2,16 @@ import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/domain/entity/entity_login_customer.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/domain/repository/login_repository.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_state.dart';
+import 'package:app_flutter_produkt_bestellen/features/order/domain/repository/order_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:path/path.dart';
 
 class LoginCubit extends Cubit<LoginState> {
-  LoginCubit(this._loginRepository) : super(const LoginState.loggedOut());
+  LoginCubit(this._loginRepository, this._orderRepository)
+      : super(const LoginState.loggedOut());
 
   final LoginRepository _loginRepository;
+  final OrderRepository _orderRepository;
 
   Future<bool?> login(
       {required String? customerNumber, required String? password}) async {
@@ -50,6 +53,9 @@ class LoginCubit extends Cubit<LoginState> {
   }
 
   Future<void> logOut() async {
+    _orderRepository
+      ..clearOrderList()
+      ..clearRequestList();
     emit(const LoginState.loggedOut());
   }
 

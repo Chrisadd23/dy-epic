@@ -84,7 +84,7 @@ class SizeProductWidget extends StatelessWidget {
                                   ),
                                   child: breiteXtiefe == null
                                       ? const LoadingWidget(
-                                          secondWidth: 0,
+                                          diameter: 0,
                                         )
                                       : BreiteXTiefeWidget(
                                           breiteXTiefe: breiteXtiefe,

@@ -1,5 +1,6 @@
+
+import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_widgets/drawer_button.dart';
-import 'package:app_flutter_produkt_bestellen/core/list_values/list_values.dart';
 import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_state.dart';
@@ -60,7 +61,7 @@ class _DrawerWidget extends StatelessWidget {
                         children: [
                           InkWell(
                             onTap: () =>
-                                context.goNamed(AppGoRouter.homePage.name),
+                                context.goNamed(AppGoRouter.home.name),
                             child: Container(
                               height: 68,
                               width: double.infinity,
@@ -87,7 +88,14 @@ class _DrawerWidget extends StatelessWidget {
                           ),
                           InkWell(
                             onTap: () {
-                              context.goNamed(AppGoRouter.profileSettings.name);
+                              if(context.read<LoginCubit>().state.customer == null) {
+                                context.goNamed(AppGoRouter.login.name,queryParameters: {
+                                  "redirectName": AppGoRouter.profileSettings.name
+                                });
+                              }else {
+                                context.goNamed(
+                                    AppGoRouter.profileSettings.name);
+                              }
                               Navigator.pop(context);
                             },
                             child: SizedBox(
@@ -186,12 +194,17 @@ class _DrawerWidget extends StatelessWidget {
                     ),
                     const SizedBox(height: 70),
                     Column(children: [
-                      ...ListValues.drawerList.keys
-                          .map((key) => FixDrawerButton(
-                                title: key,
+                      ...AppDrawerCategoriesEnum.values
+                          .map((category) => FixDrawerButton(
+                                title: category.title,
                                 function: () {
-                                  context.go('/${ListValues.drawerList[key]}');
-
+                                  if(category.isLoginRequired && context.read<LoginCubit>().state.customer == null) {
+                                    context.goNamed(AppGoRouter.login.name,queryParameters: {
+                                      "redirectName": category.name
+                                    });
+                                  }else {
+                                    context.goNamed(category.name);
+                                  }
                                   Navigator.pop(context);
                                 },
                               ))
@@ -200,20 +213,23 @@ class _DrawerWidget extends StatelessWidget {
                     const SizedBox(height: 50),
                     BlocBuilder<LoginCubit, LoginState>(
                         builder: (context, state) {
-                      return FixDrawerButton(
-                          title: 'Logout',
-                          height: 40,
-                          function: () async {
+                          final title = state.maybeMap(orElse: () => 'Login',loggedIn: (loggedInState) => 'Logout');
+                          final function = state.maybeMap(orElse: () => () {
+                            context.goNamed(AppGoRouter.login.name);
+                          },loggedIn: (loggedInState) => ()async {
                             await context.read<LoginCubit>().logOut();
 
                             if (context.mounted) {
                               context
                                   .read<BlocShoppingBasket>()
                                   .add(const EventShoppingBasket.clear());
-
-                              context.go('/');
+                              context.goNamed(AppGoRouter.home.name);
                             }
                           });
+                      return FixDrawerButton(
+                          title: title,
+                          height: 40,
+                          function: function);
                     }),
                   ],
                 ),

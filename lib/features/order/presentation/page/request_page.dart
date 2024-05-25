@@ -9,6 +9,7 @@ import 'package:app_flutter_produkt_bestellen/features/order/presentation/cubit/
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/cubit/request_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/widget/no_order_exist_information_container.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/widget/order_information.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/bloc/bloc_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/widget/shopping_basket_dialog.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
@@ -36,9 +37,7 @@ class _RequestBlocProvider extends HookWidget {
     final searchTextEditingController = useTextEditingController();
     return BlocBuilder<LoginCubit, LoginState>(
         builder: (context, state) => state.maybeMap(
-              orElse: () => const LoadingWidget(
-                firstWidth: 0,
-              ),
+              orElse: () => const LoadingWidget(),
               failure: (failureState) => FailureWidget(
                   failure: failureState.failure.getFailureMessage),
               loggedIn: (loggedInState) => BlocProvider<RequestCubit>(
@@ -62,11 +61,28 @@ class _RequestBlocProvider extends HookWidget {
                         ],
                       ),
                     ),
-                    const DialogShoppingBasket(),
+                    const _ShoppingBasketHideProcess(),
                   ],
                 ),
               ),
             ));
+  }
+}
+
+class _ShoppingBasketHideProcess extends StatelessWidget {
+  const _ShoppingBasketHideProcess();
+
+  @override
+  Widget build(BuildContext context) {
+    final currentSortType = context.watch<RequestCubit>().state.currentSortType;
+    return currentSortType != null &&
+            currentSortType != EnumSortProductOrder.search
+        ? const DialogShoppingBasket()
+        : Padding(
+            padding:
+                EdgeInsets.only(top: MediaQuery.sizeOf(context).height * 0.055),
+            child: const DialogShoppingBasket(),
+          );
   }
 }
 
@@ -81,39 +97,77 @@ class _DropdownButton2 extends StatelessWidget {
             EnumSortProductOrder?>(
         selector: (state) => state.currentSortType,
         builder: (context, sortType) {
-          final dropDownComponents = EnumSortProductOrder.values.toList()
-            ..removeWhere((element) =>
-                element == EnumSortProductOrder.sortFinished ||
-                element == EnumSortProductOrder.search ||
-                element == EnumSortProductOrder.none);
           return Padding(
             padding: const EdgeInsets.only(
               left: 30.0,
               right: 30,
             ),
-            child: Row(
-              children: [
-                const Spacer(),
-                if (sortType != EnumSortProductOrder.search) ...[
-                  _DropDownButton2Container(
-                      dropDownComponents: dropDownComponents),
-                  Expanded(
-                    child: _SearchIconContainer(
-                        searchTextEditingController:
-                            searchTextEditingController),
-                  )
-                ] else ...[
-                  _TextFieldContainer(
-                      searchTextEditingController: searchTextEditingController),
-                  const Spacer(),
-                  _SearchIconContainer(
-                      sortType: sortType,
-                      searchTextEditingController: searchTextEditingController)
-                ]
-              ],
-            ),
+            child: _ShoppingBasketBlocSelector(
+                searchTextEditingController: searchTextEditingController,
+                sortType: sortType),
           );
         });
+  }
+}
+
+class _ShoppingBasketBlocSelector extends StatelessWidget {
+  const _ShoppingBasketBlocSelector({
+    required this.searchTextEditingController,
+    this.sortType,
+  });
+
+  final TextEditingController searchTextEditingController;
+  final EnumSortProductOrder? sortType;
+
+  @override
+  Widget build(BuildContext context) {
+    final isShoppingBasketEmpty =
+        context.watch<BlocShoppingBasket>().state.isEmpty;
+    return Row(
+      children: [
+        if (sortType != EnumSortProductOrder.search)
+          if (isShoppingBasketEmpty) ...[
+            const Spacer(),
+            const _DropDownButton2Container(),
+            Expanded(
+              child: _SearchIconContainer(
+                isShoppingBasketEmpty: isShoppingBasketEmpty,
+                sortType: sortType,
+                searchTextEditingController: searchTextEditingController,
+              ),
+            ),
+          ] else ...[
+            Expanded(
+              child: _SearchIconContainer(
+                isShoppingBasketEmpty: isShoppingBasketEmpty,
+                sortType: sortType,
+                searchTextEditingController: searchTextEditingController,
+              ),
+            ),
+            const _DropDownButton2Container(),
+            const Spacer()
+          ]
+        else if (isShoppingBasketEmpty) ...[
+          const Spacer(),
+          _TextFieldContainer(
+              searchTextEditingController: searchTextEditingController),
+          const Spacer(),
+          _SearchIconContainer(
+              isShoppingBasketEmpty: isShoppingBasketEmpty,
+              sortType: sortType,
+              searchTextEditingController: searchTextEditingController)
+        ] else ...[
+          _SearchIconContainer(
+              isShoppingBasketEmpty: isShoppingBasketEmpty,
+              sortType: sortType,
+              searchTextEditingController: searchTextEditingController),
+          const Spacer(),
+          _TextFieldContainer(
+              searchTextEditingController: searchTextEditingController),
+          const Spacer(),
+        ]
+      ],
+    );
   }
 }
 
@@ -154,25 +208,33 @@ class _TextFieldContainer extends StatelessWidget {
 }
 
 class _SearchIconContainer extends StatelessWidget {
-  const _SearchIconContainer({
-    this.sortType,
-    required this.searchTextEditingController,
-  });
+  const _SearchIconContainer(
+      {this.sortType,
+      required this.searchTextEditingController,
+      required this.isShoppingBasketEmpty});
 
+  final bool isShoppingBasketEmpty;
   final EnumSortProductOrder? sortType;
   final TextEditingController searchTextEditingController;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      alignment: Alignment.centerRight,
+      alignment:
+          isShoppingBasketEmpty ? Alignment.centerRight : Alignment.centerLeft,
       child: InkWell(
         onTap: () {
           searchTextEditingController.clear();
           if (context.read<RequestCubit>().state.areAllHiddenOrDoNotExist) {
-            context
-                .read<RequestCubit>()
-                .sortOrder(sortType: EnumSortProductOrder.sortDate);
+            if (sortType == EnumSortProductOrder.search) {
+              context
+                  .read<RequestCubit>()
+                  .sortOrder(sortType: EnumSortProductOrder.sortDate);
+            } else {
+              context
+                  .read<RequestCubit>()
+                  .sortOrder(sortType: EnumSortProductOrder.search);
+            }
           } else {
             sortType != EnumSortProductOrder.search
                 ? context
@@ -195,14 +257,15 @@ class _SearchIconContainer extends StatelessWidget {
 }
 
 class _DropDownButton2Container extends StatelessWidget {
-  const _DropDownButton2Container({
-    required this.dropDownComponents,
-  });
-
-  final List<EnumSortProductOrder> dropDownComponents;
+  const _DropDownButton2Container();
 
   @override
   Widget build(BuildContext context) {
+    final dropDownComponents = EnumSortProductOrder.values.toList()
+      ..removeWhere((element) =>
+          element == EnumSortProductOrder.sortFinished ||
+          element == EnumSortProductOrder.search ||
+          element == EnumSortProductOrder.none);
     return Container(
       alignment: Alignment.center,
       child: DropdownButton2(
@@ -267,48 +330,48 @@ class _OrderInfoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<RequestCubit, OrderCustomerState>(
-      builder: (context, state) => state.map(
-          failure: (failureState) => FailureWidget(
-              failure: failureState.failure.when(
-                  message: (message) => message ?? '',
-                  databaseError: (databaseError) => databaseError ?? '')),
-          initialise: (initialiseState) => const LoadingWidget(
-                firstWidth: 0,
+      builder: (context, state) => state.maybeMap(
+        orElse: () => const LoadingWidget(),
+        failure: (failureState) =>
+            FailureWidget(failure: failureState.failure.getFailureMessage),
+        success: (successState) {
+          if (successState.orderList == null ||
+              successState.orderList!.isEmpty) {
+            return const NoOrderExistInformationContainer(
+                informationText: 'Es sind keine Anfragen vorhanden.');
+          } else if (successState.areAllHiddenOrDoNotExist) {
+            return const NoOrderExistInformationContainer(
+                informationText:
+                    'Es sind keine Anfragen dieser Art vorhanden.');
+          } else {
+            return Padding(
+              padding: const EdgeInsets.only(left: 30.0, right: 30, bottom: 40),
+              child: ClipRRect(
+                borderRadius:
+                    const BorderRadius.vertical(bottom: Radius.circular(30)),
+                child: ListView.builder(
+                  itemCount: successState.orderList?.length ?? 0,
+                  itemBuilder: (context, index) => Padding(
+                    padding: const EdgeInsets.only(bottom: 20.0),
+                    child: successState.orderList![index].hide
+                        ? const SizedBox.shrink()
+                        : InkWell(
+                            // onTap: () => context.goNamed(
+                            //     AppGoRouter
+                            //         .detailedOrderInformation.name,
+                            //     extra: successState.orderList![index]),
+                            child: OrderInformation(
+                              productOrder: successState.orderList![index],
+                              category: 'Anfragen',
+                            ),
+                          ),
+                  ),
+                ),
               ),
-          loading: (loadingState) => const LoadingWidget(
-                firstWidth: 0,
-              ),
-          success: (successState) => successState.orderList == null ||
-                  successState.orderList!.isEmpty
-              ? const NoOrderExistInformationContainer(
-                  informationText: 'Es sind keine Anfragen vorhanden.')
-              : successState.areAllHiddenOrDoNotExist
-                  ? const NoOrderExistInformationContainer(
-                      informationText:
-                          'Es sind keine Bestellung dieser Art vorhanden.')
-                  : Padding(
-                      padding: const EdgeInsets.only(
-                          left: 30.0, right: 30, bottom: 40),
-                      child: ClipRRect(
-                        borderRadius: const BorderRadius.vertical(
-                            bottom: Radius.circular(30)),
-                        child: ListView.builder(
-                            itemCount: successState.orderList?.length ?? 0,
-                            itemBuilder: (context, index) =>
-                                successState.orderList![index].hide
-                                    ? const SizedBox.shrink()
-                                    : InkWell(
-                                        // onTap: () => context.goNamed(
-                                        //     AppGoRouter
-                                        //         .detailedRequestInformation.name,
-                                        //     extra: successState.orderList![index]),
-                                        child: OrderInformation(
-                                            productOrder:
-                                                successState.orderList![index],
-                                            category: 'Anfrage'),
-                                      )),
-                      ),
-                    )),
+            );
+          }
+        },
+      ),
     );
   }
 }

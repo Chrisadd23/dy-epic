@@ -14,16 +14,25 @@ class WidgetProductTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-          top: MediaQuery.of(context).size.height * 0.015,
-          bottom: MediaQuery.sizeOf(context).height * 0.015),
+          top: MediaQuery
+              .of(context)
+              .size
+              .height * 0.015,
+          bottom: MediaQuery
+              .sizeOf(context)
+              .height * 0.015),
       child: Container(
-        height: MediaQuery.sizeOf(context).height * 0.05,
-        width: MediaQuery.sizeOf(context).width * 0.5,
+        height: MediaQuery
+            .sizeOf(context)
+            .height * 0.05,
+        width: MediaQuery
+            .sizeOf(context)
+            .width * 0.5,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(40),
             color: AppColors.grey8D8D8E.withOpacity(0.4)),
         child:
-            BlocBuilder<CubitProduct, StateProduct>(builder: (context, state) {
+        BlocBuilder<CubitProduct, StateProduct>(builder: (context, state) {
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: FittedBox(
@@ -32,21 +41,21 @@ class WidgetProductTitle extends StatelessWidget {
                   : BoxFit.fill,
               child: state.productEntity?.name == null
                   ? const LoadingWidget(
-                      firstWidth: 0,
-                    )
+
+              )
                   : Text(
-                      state.productEntity!.name,
-                      style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 35,
-                          fontWeight: FontWeight.bold,
-                          shadows: [
-                            Shadow(color: Colors.black, offset: Offset(1, 1)),
-                            Shadow(color: Colors.black, offset: Offset(-1, 1)),
-                            Shadow(color: Colors.black, offset: Offset(-1, -1)),
-                            Shadow(color: Colors.black, offset: Offset(1, -1)),
-                          ]),
-                    ),
+                state.productEntity!.name,
+                style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 35,
+                    fontWeight: FontWeight.bold,
+                    shadows: [
+                      Shadow(color: Colors.black, offset: Offset(1, 1)),
+                      Shadow(color: Colors.black, offset: Offset(-1, 1)),
+                      Shadow(color: Colors.black, offset: Offset(-1, -1)),
+                      Shadow(color: Colors.black, offset: Offset(1, -1)),
+                    ]),
+              ),
             ),
           );
         }),

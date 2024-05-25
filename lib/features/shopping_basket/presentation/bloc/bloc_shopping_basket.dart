@@ -13,9 +13,7 @@ import 'package:go_router/go_router.dart';
 
 class BlocShoppingBasket
     extends Bloc<EventShoppingBasket, StateShoppingBasket> {
-  final ShoppingBasketRepository shoppingBasketRepository;
-
-  BlocShoppingBasket({required this.shoppingBasketRepository})
+  BlocShoppingBasket(this._shoppingBasketRepository)
       : super(const StateShoppingBasket(
             orderChosenProductList: [], requestChosenProductList: [])) {
     on<EventShoppingBasket>((event, emitState) async {
@@ -149,7 +147,7 @@ class BlocShoppingBasket
           );
 
           try {
-            final result = await shoppingBasketRepository.sendOrder(
+            final result = await _shoppingBasketRepository.sendOrder(
                 order: orderShoppingBasketEntity,
                 request: requestShoppingBasketEntity);
 
@@ -186,7 +184,9 @@ class BlocShoppingBasket
     } else if (productCategory == EnumCategoryProduct.conferenceChair) {
       return '${AppGoRouter.konferenzstuehle.name}/${AppGoRouter.product.title}';
     } else {
-      return AppGoRouter.homePage.name;
+      return AppGoRouter.home.name;
     }
   }
+
+  final ShoppingBasketRepository _shoppingBasketRepository;
 }

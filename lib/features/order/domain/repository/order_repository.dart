@@ -5,6 +5,10 @@ abstract class OrderRepository {
 
   void getRequest({required String customerId});
 
+  void clearOrderList();
+
+  void clearRequestList();
+
   List<OrderModel> get listOrderModel;
 
   List<OrderModel> get listRequestModel;
