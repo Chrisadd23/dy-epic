@@ -1,0 +1,13 @@
+import 'dart:typed_data';
+
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'entity_core_pictures.freezed.dart';
+
+@freezed
+class EntityCorePictures with _$EntityCorePictures {
+  const factory EntityCorePictures({
+    required String name,
+    required Uint8List uint8List,
+  }) = _EntityCorePictures;
+}

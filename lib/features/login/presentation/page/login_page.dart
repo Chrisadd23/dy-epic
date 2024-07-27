@@ -44,13 +44,9 @@ class _BlocBuilderLoginPage extends StatelessWidget {
     return BlocListener<LoginCubit, LoginState>(
       listener: (context, state) {
         state.mapOrNull(failure: (failure) {
-          debugPrint(
-              "showFailure ${failure.failure.when(message: (message) => message, databaseError: (databaseError) => databaseError)}");
+          debugPrint("showFailure ${failure.failure.getFailureMessage}");
           return ShowFailureDialog.present(
-              context: context,
-              failure: failure.failure.when(
-                  message: (message) => message ?? '',
-                  databaseError: (databaseError) => databaseError ?? ''));
+              context: context, failure: failure.failure.getFailureMessage);
         });
       },
       child: Column(

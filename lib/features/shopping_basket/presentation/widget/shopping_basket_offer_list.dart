@@ -36,11 +36,7 @@ class ShoppingBasketOfferList extends StatelessWidget {
               if (state.failure != null) {
                 ShowFailureDialog.present(
                     context: context,
-                    failure: state.failure?.when(
-                            message: (message) => message ?? '',
-                            databaseError: (databaseError) =>
-                                databaseError ?? '') ??
-                        '');
+                    failure: state.failure!.getFailureMessage);
                 if (context.mounted) {
                   context
                       .read<BlocShoppingBasket>()

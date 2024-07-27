@@ -81,7 +81,7 @@ class BlocShoppingBasket
             ...state.requestChosenProductList
           ].where((product) => product.addedTime == timeIndex).first;
           final productCategory = EnumCategoryProduct.values
-              .where((element) => element.type == product.productType)
+              .where((element) => element.index == product.productType)
               .first;
           final ({ShoppingBasketProduct chosenProduct, int index}) record =
               (chosenProduct: product, index: timeIndex);

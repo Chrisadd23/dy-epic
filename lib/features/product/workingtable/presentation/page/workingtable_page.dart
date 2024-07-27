@@ -1,4 +1,5 @@
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_page_widget.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/share/domain/entity/category_entity.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/cubit_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/workingtable/presentation/cubit/cubit_workingtable_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/workingtable/presentation/widget/working_table_product_components.dart';
@@ -11,18 +12,18 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 
 class PageWorkingTableProduct extends HookWidget {
   const PageWorkingTableProduct(
-      {super.key, this.productNumber, this.color, this.recordOrder});
+      {super.key, this.color, this.recordOrder, this.product});
 
-  final String? productNumber;
   final String? color;
   final ({ShoppingBasketProduct chosenProduct, int index})? recordOrder;
+  final CategoryEntity? product;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider<BlocShoppingBasket>.value(
         value: getIt<BlocShoppingBasket>(),
         child: _BlocProviderWorkingTable(
-          product: productNumber,
+          product: product,
           color: color,
           recordOrder: recordOrder,
         ));
@@ -36,7 +37,7 @@ class _BlocProviderWorkingTable extends StatelessWidget {
     this.recordOrder,
   });
 
-  final String? product;
+  final CategoryEntity? product;
   final String? color;
   final ({ShoppingBasketProduct chosenProduct, int index})? recordOrder;
 
@@ -49,9 +50,7 @@ class _BlocProviderWorkingTable extends StatelessWidget {
           BlocProvider<CubitProduct>(
               create: (context) => getIt<CubitWorkingTableProduct>()
                 ..load(
-                    productNumber: product,
-                    color: color,
-                    recordOrder: recordOrder)),
+                    product: product, color: color, recordOrder: recordOrder)),
         ],
         child: SizedBox(
           height: MediaQuery.of(context).size.height,

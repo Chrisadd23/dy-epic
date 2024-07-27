@@ -34,5 +34,16 @@ abstract class AppText {
 
   static String requestInformation = 'Anfrageinformationen';
 
-  static String needsToBeLoggedInToSend  = 'Das absenden ist nur im eingeloggten Zustand möglich';
+  static String needsToBeLoggedInToSend =
+      'Das absenden ist nur im eingeloggten Zustand möglich';
+
+  static String categoryWorkingTable = 'categoryWorkingTable';
+
+  static String categoryOfficeChairNormal = 'categoryOfficeChairNormal';
+
+  static String categoryOfficeChairHochlehner = 'categoryOfficeChairHochlehner';
+
+  static String categoryConferenceChair = 'categoryConferenceChair';
+
+  static String black = 'black';
 }

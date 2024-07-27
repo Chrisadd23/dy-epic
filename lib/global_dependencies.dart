@@ -12,16 +12,17 @@ import 'package:get_it/get_it.dart';
 final getIt = GetIt.instance;
 
 void setUpMainDependencies() {
+  //core
+  CoreDependencies.setUp();
+
   //Features
   AppStartDependencies.setUp();
-  HomeDependencies.setUp();
   CategoryDependencies.setUp();
+  HomeDependencies.setUp();
+
   ProductDependencies.setUp();
   ShoppingBasketDependencies.setUp();
   OrderDependencies.setUp();
   LoginDependencies.setUp();
   SettingsDependencies.setUp();
-
-  //core
-  CoreDependencies.setUp();
 }

@@ -20,18 +20,21 @@ mixin _$Failure {
   TResult when<TResult extends Object?>({
     required TResult Function(String? message) message,
     required TResult Function(String? databaseMessage) databaseError,
+    required TResult Function(String? storageMessage) storageError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? message)? message,
     TResult? Function(String? databaseMessage)? databaseError,
+    TResult? Function(String? storageMessage)? storageError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? message)? message,
     TResult Function(String? databaseMessage)? databaseError,
+    TResult Function(String? storageMessage)? storageError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$Failure {
   TResult map<TResult extends Object?>({
     required TResult Function(_FailureMessage value) message,
     required TResult Function(_DatabaseError value) databaseError,
+    required TResult Function(_StorageError value) storageError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FailureMessage value)? message,
     TResult? Function(_DatabaseError value)? databaseError,
+    TResult? Function(_StorageError value)? storageError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FailureMessage value)? message,
     TResult Function(_DatabaseError value)? databaseError,
+    TResult Function(_StorageError value)? storageError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -140,6 +146,7 @@ class _$FailureMessageImpl extends _FailureMessage {
   TResult when<TResult extends Object?>({
     required TResult Function(String? message) message,
     required TResult Function(String? databaseMessage) databaseError,
+    required TResult Function(String? storageMessage) storageError,
   }) {
     return message(this.message);
   }
@@ -149,6 +156,7 @@ class _$FailureMessageImpl extends _FailureMessage {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? message)? message,
     TResult? Function(String? databaseMessage)? databaseError,
+    TResult? Function(String? storageMessage)? storageError,
   }) {
     return message?.call(this.message);
   }
@@ -158,6 +166,7 @@ class _$FailureMessageImpl extends _FailureMessage {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? message)? message,
     TResult Function(String? databaseMessage)? databaseError,
+    TResult Function(String? storageMessage)? storageError,
     required TResult orElse(),
   }) {
     if (message != null) {
@@ -171,6 +180,7 @@ class _$FailureMessageImpl extends _FailureMessage {
   TResult map<TResult extends Object?>({
     required TResult Function(_FailureMessage value) message,
     required TResult Function(_DatabaseError value) databaseError,
+    required TResult Function(_StorageError value) storageError,
   }) {
     return message(this);
   }
@@ -180,6 +190,7 @@ class _$FailureMessageImpl extends _FailureMessage {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FailureMessage value)? message,
     TResult? Function(_DatabaseError value)? databaseError,
+    TResult? Function(_StorageError value)? storageError,
   }) {
     return message?.call(this);
   }
@@ -189,6 +200,7 @@ class _$FailureMessageImpl extends _FailureMessage {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FailureMessage value)? message,
     TResult Function(_DatabaseError value)? databaseError,
+    TResult Function(_StorageError value)? storageError,
     required TResult orElse(),
   }) {
     if (message != null) {
@@ -275,6 +287,7 @@ class _$DatabaseErrorImpl extends _DatabaseError {
   TResult when<TResult extends Object?>({
     required TResult Function(String? message) message,
     required TResult Function(String? databaseMessage) databaseError,
+    required TResult Function(String? storageMessage) storageError,
   }) {
     return databaseError(databaseMessage);
   }
@@ -284,6 +297,7 @@ class _$DatabaseErrorImpl extends _DatabaseError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? message)? message,
     TResult? Function(String? databaseMessage)? databaseError,
+    TResult? Function(String? storageMessage)? storageError,
   }) {
     return databaseError?.call(databaseMessage);
   }
@@ -293,6 +307,7 @@ class _$DatabaseErrorImpl extends _DatabaseError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? message)? message,
     TResult Function(String? databaseMessage)? databaseError,
+    TResult Function(String? storageMessage)? storageError,
     required TResult orElse(),
   }) {
     if (databaseError != null) {
@@ -306,6 +321,7 @@ class _$DatabaseErrorImpl extends _DatabaseError {
   TResult map<TResult extends Object?>({
     required TResult Function(_FailureMessage value) message,
     required TResult Function(_DatabaseError value) databaseError,
+    required TResult Function(_StorageError value) storageError,
   }) {
     return databaseError(this);
   }
@@ -315,6 +331,7 @@ class _$DatabaseErrorImpl extends _DatabaseError {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FailureMessage value)? message,
     TResult? Function(_DatabaseError value)? databaseError,
+    TResult? Function(_StorageError value)? storageError,
   }) {
     return databaseError?.call(this);
   }
@@ -324,6 +341,7 @@ class _$DatabaseErrorImpl extends _DatabaseError {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FailureMessage value)? message,
     TResult Function(_DatabaseError value)? databaseError,
+    TResult Function(_StorageError value)? storageError,
     required TResult orElse(),
   }) {
     if (databaseError != null) {
@@ -341,5 +359,147 @@ abstract class _DatabaseError extends Failure {
   String? get databaseMessage;
   @JsonKey(ignore: true)
   _$$DatabaseErrorImplCopyWith<_$DatabaseErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$StorageErrorImplCopyWith<$Res> {
+  factory _$$StorageErrorImplCopyWith(
+          _$StorageErrorImpl value, $Res Function(_$StorageErrorImpl) then) =
+      __$$StorageErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String? storageMessage});
+}
+
+/// @nodoc
+class __$$StorageErrorImplCopyWithImpl<$Res>
+    extends _$FailureCopyWithImpl<$Res, _$StorageErrorImpl>
+    implements _$$StorageErrorImplCopyWith<$Res> {
+  __$$StorageErrorImplCopyWithImpl(
+      _$StorageErrorImpl _value, $Res Function(_$StorageErrorImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? storageMessage = freezed,
+  }) {
+    return _then(_$StorageErrorImpl(
+      freezed == storageMessage
+          ? _value.storageMessage
+          : storageMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$StorageErrorImpl extends _StorageError {
+  const _$StorageErrorImpl([this.storageMessage]) : super._();
+
+  @override
+  final String? storageMessage;
+
+  @override
+  String toString() {
+    return 'Failure.storageError(storageMessage: $storageMessage)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$StorageErrorImpl &&
+            (identical(other.storageMessage, storageMessage) ||
+                other.storageMessage == storageMessage));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, storageMessage);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$StorageErrorImplCopyWith<_$StorageErrorImpl> get copyWith =>
+      __$$StorageErrorImplCopyWithImpl<_$StorageErrorImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? message) message,
+    required TResult Function(String? databaseMessage) databaseError,
+    required TResult Function(String? storageMessage) storageError,
+  }) {
+    return storageError(storageMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String? message)? message,
+    TResult? Function(String? databaseMessage)? databaseError,
+    TResult? Function(String? storageMessage)? storageError,
+  }) {
+    return storageError?.call(storageMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? message)? message,
+    TResult Function(String? databaseMessage)? databaseError,
+    TResult Function(String? storageMessage)? storageError,
+    required TResult orElse(),
+  }) {
+    if (storageError != null) {
+      return storageError(storageMessage);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FailureMessage value) message,
+    required TResult Function(_DatabaseError value) databaseError,
+    required TResult Function(_StorageError value) storageError,
+  }) {
+    return storageError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FailureMessage value)? message,
+    TResult? Function(_DatabaseError value)? databaseError,
+    TResult? Function(_StorageError value)? storageError,
+  }) {
+    return storageError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FailureMessage value)? message,
+    TResult Function(_DatabaseError value)? databaseError,
+    TResult Function(_StorageError value)? storageError,
+    required TResult orElse(),
+  }) {
+    if (storageError != null) {
+      return storageError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _StorageError extends Failure {
+  const factory _StorageError([final String? storageMessage]) =
+      _$StorageErrorImpl;
+  const _StorageError._() : super._();
+
+  String? get storageMessage;
+  @JsonKey(ignore: true)
+  _$$StorageErrorImplCopyWith<_$StorageErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -13,22 +13,18 @@ enum EnumCategoryWorkingTable {
 }
 
 enum EnumCategoryProduct {
-  workingTable(type: 1),
-  officeChairNormal(type: 2),
-  officeChairHochlehner(type: 3),
-  conferenceChair(type: 4);
+  workingTable,
+  officeChairNormal,
+  officeChairHochlehner,
+  conferenceChair;
 
-  const EnumCategoryProduct({required this.type});
-
-  final int type;
-
-  static EnumCategoryProduct category({required int type}) =>
-      values.where((element) => element.type == type).first;
+  static EnumCategoryProduct category({required int typeIndex}) =>
+      values.where((element) => element.index == typeIndex).first;
 }
 
 enum EnumSelectOfficeChairCategory {
-  normal,
-  hochlehner,
+  categoryOfficeChairNormal,
+  categoryOfficeChairHochlehner,
 }
 
 enum EnumOrderProcess {

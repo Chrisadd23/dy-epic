@@ -81,7 +81,7 @@ class WidgetOrderProduct extends StatelessWidget {
                                       productNumber:
                                           state.productEntity!.productNumber,
                                       productType: state
-                                          .productEntity!.productCategory.type,
+                                          .productEntity!.productCategory.index,
                                       price: state.productEntity!.price +
                                           state.productEntity!.additionalAmount,
                                       addedTime: state.position == null
@@ -168,7 +168,7 @@ class WidgetOrderProduct extends StatelessWidget {
                                     productNumber:
                                         state.productEntity!.productNumber,
                                     productType: state
-                                        .productEntity!.productCategory.type,
+                                        .productEntity!.productCategory.index,
                                     price: state.productEntity!.price +
                                         state.productEntity!.additionalAmount,
                                     addedTime: state.position == null

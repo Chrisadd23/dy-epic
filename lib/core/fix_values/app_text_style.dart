@@ -1,9 +1,27 @@
 import 'package:flutter/material.dart';
 
 abstract class AppTextStyle {
-  static TextStyle get normal => const TextStyle(
+  static TextStyle get regular12 => const TextStyle(
       color: Colors.black,
       fontSize: 12,
+      fontWeight: FontWeight.normal,
+      shadows: []);
+
+  static TextStyle get regular14 => const TextStyle(
+      color: Colors.black,
+      fontSize: 14,
+      fontWeight: FontWeight.normal,
+      shadows: []);
+
+  static TextStyle get regular16 => const TextStyle(
+      color: Colors.black,
+      fontSize: 16,
+      fontWeight: FontWeight.normal,
+      shadows: []);
+
+  static TextStyle get regular18 => const TextStyle(
+      color: Colors.black,
+      fontSize: 18,
       fontWeight: FontWeight.normal,
       shadows: []);
 

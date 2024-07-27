@@ -3,7 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CubitChooseOfficeChair extends Cubit<EnumSelectOfficeChairCategory> {
   CubitChooseOfficeChair([EnumSelectOfficeChairCategory? initialEnum])
-      : super(initialEnum ?? EnumSelectOfficeChairCategory.normal);
+      : super(initialEnum ??
+            EnumSelectOfficeChairCategory.categoryOfficeChairNormal);
 
   void change(EnumSelectOfficeChairCategory enumSelectOfficeChairCategory) {
     emit(enumSelectOfficeChairCategory);

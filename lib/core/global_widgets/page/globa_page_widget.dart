@@ -33,7 +33,7 @@ class GlobalScaffold extends Scaffold {
                 ),
               ),
             ),
-            body: body,
+            body: SafeArea(child: body),
             backgroundColor: AppColors.greyCACACA,
             drawer: const GlobalDrawer(),
             bottomNavigationBar: bottomNavigationBar);

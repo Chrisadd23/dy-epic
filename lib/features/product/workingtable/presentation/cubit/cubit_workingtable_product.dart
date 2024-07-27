@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:app_flutter_produkt_bestellen/core/firebase/firebase_configuration.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_cubits/cubit_pictures.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/share/domain/entity/category_entity.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/domain/entity/entity_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/cubit_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/state_product.dart';
@@ -26,7 +27,8 @@ class CubitWorkingTableProduct extends CubitProduct<CubitWorkingTableProduct> {
   Future<void> load(
       {String? productNumber,
       ({ShoppingBasketProduct chosenProduct, int index})? recordOrder,
-      String? color}) async {
+      String? color,
+      CategoryEntity? product}) async {
     if (recordOrder == null) {
       await repositoryProductWorkingTable
           .getWorkingTableProduct(productNumber)
@@ -76,7 +78,7 @@ class CubitWorkingTableProduct extends CubitProduct<CubitWorkingTableProduct> {
       emit(StateProduct(
           productEntity: EntityProduct(
               productCategory: EnumCategoryProduct.category(
-                  type: recordOrder.chosenProduct.productType),
+                  typeIndex: recordOrder.chosenProduct.productType),
               price: price,
               name: product.name,
               productNumber: recordOrder.chosenProduct.productNumber,

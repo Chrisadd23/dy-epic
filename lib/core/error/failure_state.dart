@@ -11,8 +11,11 @@ class Failure with _$Failure {
   const factory Failure.databaseError([String? databaseMessage]) =
       _DatabaseError;
 
+  const factory Failure.storageError([String? storageMessage]) = _StorageError;
+
   String get getFailureMessage => when(
         message: (message) => message ?? '',
         databaseError: (databaseError) => databaseError ?? '',
+        storageError: (storageError) => storageError ?? '',
       );
 }

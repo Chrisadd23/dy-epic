@@ -39,7 +39,8 @@ class DetailedOrderInformation extends StatelessWidget {
                         style: AppTextStyle.bold14,
                         children: <TextSpan>[
                           TextSpan(
-                              text: orderEntity.id, style: AppTextStyle.normal)
+                              text: orderEntity.id,
+                              style: AppTextStyle.regular12)
                         ]),
                   ),
                   Text(orderEntity.orderProcess.information)

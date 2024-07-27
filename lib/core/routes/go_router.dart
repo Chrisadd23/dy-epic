@@ -1,10 +1,9 @@
+import 'dart:convert';
+
 import 'package:app_flutter_produkt_bestellen/core/error/page_not_found.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text.dart';
 import 'package:app_flutter_produkt_bestellen/features/app_start/presentation/page/app_start_page.dart';
-import 'package:app_flutter_produkt_bestellen/features/category/category_conference_chair/presentation/page/category_conference_chair_page.dart';
-import 'package:app_flutter_produkt_bestellen/features/category/category_office_chair/presentation/page/category_office_chair_page.dart';
-import 'package:app_flutter_produkt_bestellen/features/category/category_workingtable/presentation/page/category_workingtable_page.dart';
-import 'package:app_flutter_produkt_bestellen/features/category/konferenztische/presentation/page/page_konferenztische.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/share/domain/entity/category_entity.dart';
 import 'package:app_flutter_produkt_bestellen/features/home/presentation/page/home_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/legalities/presentation/page/legalities_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/page/login_page.dart';
@@ -13,8 +12,6 @@ import 'package:app_flutter_produkt_bestellen/features/order/presentation/page/o
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/page/order_page_shell_navigation.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/page/request_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/widget/detailed_order_information.dart';
-import 'package:app_flutter_produkt_bestellen/features/product/conferenceChairProduct/presentation/page/page_conference_chair_product.dart';
-import 'package:app_flutter_produkt_bestellen/features/product/officeChairProduct/presentation/page/page_office_chair_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/workingtable/presentation/page/workingtable_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/settings/presentation/page/customer_settings_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/settings/presentation/page/notification_settings_page.dart';
@@ -89,108 +86,45 @@ enum AppGoRouter {
                   _getCustomerTransition(const HomePage(), state),
               routes: [
                 GoRoute(
-                  path: arbeitstische.title,
-                  name: arbeitstische.name,
-                  pageBuilder: (context, state) => _getCustomerTransition(
-                      const CategoryWorkingTablePage(), state),
-                  routes: [
-                    GoRoute(
-                      path: product.title,
-                      name: '${arbeitstische.name}/${product.title}',
-                      pageBuilder: (context, state) {
-                        debugPrint("check goRouter record ${state.extra as ({
-                          ShoppingBasketProduct chosenProduct,
-                          int index
-                        })?}");
+                  path: product.title,
+                  name: product.name,
+                  pageBuilder: (context, state) {
+                    debugPrint("check goRouter record ${state.extra as ({
+                      ShoppingBasketProduct chosenProduct,
+                      int index
+                    })?}");
 
-                        final recordOrder = state.extra as ({
-                          ShoppingBasketProduct chosenProduct,
-                          int index
-                        })?;
+                    final recordOrder = state.extra as ({
+                      ShoppingBasketProduct chosenProduct,
+                      int index
+                    })?;
 
-                        final productNumber =
-                            state.queryParameters['productNumber'];
-                        debugPrint(
-                            "check queryParameters productNumber - ${productNumber.toString()}");
-                        final selectedColor = state.queryParameters['color'];
-                        debugPrint(
-                            "check queryParameters selected Color- ${selectedColor.toString()}");
-                        return _getCustomerTransition(
-                          PageWorkingTableProduct(
-                            productNumber: productNumber,
-                            color: selectedColor,
-                            recordOrder: recordOrder,
-                          ),
-                          state,
-                        );
-                      },
-                    ),
-                  ],
-                ),
-                GoRoute(
-                  path: buerostuehle.title,
-                  name: buerostuehle.name,
-                  pageBuilder: (context, state) =>
-                      _getCustomerTransition(const PageBuerostuehle(), state),
-                  routes: [
-                    GoRoute(
-                      path: product.title,
-                      name: '${buerostuehle.name}/${product.title}',
-                      pageBuilder: (context, state) {
-                        final product = state.queryParameters['productNumber'];
-                        debugPrint("check goRouter record ${state.extra as ({
-                          ShoppingBasketProduct chosenProduct,
-                          int index
-                        })?}");
-                        final recordOrder = state.extra as ({
-                          ShoppingBasketProduct chosenProduct,
-                          int index
-                        })?;
-                        return _getCustomerTransition(
-                          PageOfficeChairProduct(
-                            product: product,
-                            recordOrder: recordOrder,
-                          ),
-                          state,
-                        );
-                      },
-                    ),
-                  ],
-                ),
-                GoRoute(
-                  path: konferenzstuehle.title,
-                  name: konferenzstuehle.name,
-                  pageBuilder: (context, state) => _getCustomerTransition(
-                      const PageKonferenzstuehle(), state),
-                  routes: [
-                    GoRoute(
-                      path: product.title,
-                      name: '${konferenzstuehle.name}/${product.title}',
-                      pageBuilder: (context, state) {
-                        debugPrint("check goRouter record ${state.extra as ({
-                          ShoppingBasketProduct chosenProduct,
-                          int index
-                        })?}");
-                        final product = state.queryParameters['productNumber'];
-                        final recordOrder = state.extra as ({
-                          ShoppingBasketProduct chosenProduct,
-                          int index
-                        })?;
-                        return _getCustomerTransition(
-                          PageConferenceChairProduct(
-                            product: product,
-                            recordOrder: recordOrder,
-                          ),
-                          state,
-                        );
-                      },
-                    ),
-                  ],
-                ),
-                GoRoute(
-                  path: konferenztische.title,
-                  name: konferenztische.name,
-                  builder: (context, state) => const PageKonferenztische(),
+                    debugPrint(
+                        "state.queryParameters['product'] ==> ${state.queryParameters['product']}");
+
+                    if (state.queryParameters['product'] != null) {
+                      final jsonObject =
+                          jsonDecode(state.queryParameters['product']!);
+                      debugPrint("jsonObject ==> $jsonObject");
+                      final product = CategoryEntity.fromJson(jsonObject);
+                      return _getCustomerTransition(
+                        PageWorkingTableProduct(
+                          product: product,
+                        ),
+                        state,
+                      );
+                    }
+                    final selectedColor = state.queryParameters['color'];
+                    debugPrint(
+                        "check queryParameters selected Color- ${selectedColor.toString()}");
+                    return _getCustomerTransition(
+                      PageWorkingTableProduct(
+                        color: selectedColor,
+                        recordOrder: recordOrder,
+                      ),
+                      state,
+                    );
+                  },
                 ),
               ],
             ),

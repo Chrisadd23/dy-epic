@@ -1,62 +1,43 @@
-import 'package:flutter/foundation.dart';
+import 'package:app_flutter_produkt_bestellen/core/domain/entity/entity_core_pictures.dart';
+import 'package:app_flutter_produkt_bestellen/core/presentation/cubit/cubit_core_pictures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CategoryProductPictureMemoryImage extends StatefulWidget {
-  const CategoryProductPictureMemoryImage({super.key, this.uint8list});
+class CategoryImageContainer extends StatelessWidget {
+  const CategoryImageContainer({
+    super.key,
+    required this.productNumber,
+    this.color,
+    this.height = 150,
+  });
 
-  final Uint8List? uint8list;
-
-  @override
-  State<CategoryProductPictureMemoryImage> createState() =>
-      _CategoryProductPictureMemoryImageState();
-}
-
-class _CategoryProductPictureMemoryImageState
-    extends State<CategoryProductPictureMemoryImage> {
-  @override
-  void didChangeDependencies() {
-    // TODO: implement didChangeDependencies
-    if (widget.uint8list != null) {
-      precacheImage(MemoryImage(widget.uint8list!), context);
-    }
-    super.didChangeDependencies();
-  }
+  final String productNumber;
+  final String? color;
+  final double height;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 10),
-      child: LayoutBuilder(
-        builder: (context, constraints) =>
-            // navigation Test
-            Container(
-          height: constraints.maxWidth,
-          width: constraints.maxWidth,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            shape: BoxShape.circle,
-            boxShadow: const [
-              BoxShadow(
-                  color: Colors.grey,
-                  offset: Offset(2, 3),
-                  blurStyle: BlurStyle.outer),
-              BoxShadow(
-                  color: Colors.grey,
-                  offset: Offset(2, -3),
-                  blurStyle: BlurStyle.outer)
-            ],
-            border: Border.all(
-                color: Colors.black45,
-                strokeAlign: BorderSide.strokeAlignInside),
-          ),
-          child: ClipOval(
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Image.memory(widget.uint8list!),
-            ),
+    return BlocBuilder<CubitCorePictures, List<EntityCorePictures>>(
+        builder: (context, state) {
+      return Container(
+        height: height,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(width: 0.5),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(5),
+          child: Image.memory(
+            state
+                .where((entityCorePicture) => entityCorePicture.name.contains(
+                    '$productNumber${color == null ? '' : '_$color'}'))
+                .first
+                .uint8List,
+            fit: BoxFit.fill,
           ),
         ),
-      ),
-    );
+      );
+    });
   }
 }

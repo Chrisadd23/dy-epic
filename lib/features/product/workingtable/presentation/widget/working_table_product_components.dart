@@ -2,6 +2,7 @@ library my_product_widget;
 
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_widgets/loading_widget.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/share/domain/entity/category_entity.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/domain/entity/entity_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/cubit_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/share/presentation/cubit/state_product.dart';
@@ -19,14 +20,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 part 'color_product_widget.dart';
-
 part 'size_product_widget.dart';
 
 class WorkingTableProductComponents extends HookWidget {
   const WorkingTableProductComponents(
       {super.key, this.product, this.color, this.recordOrder});
 
-  final String? product;
+  final CategoryEntity? product;
   final String? color;
   final ({ShoppingBasketProduct chosenProduct, int index})? recordOrder;
 
