@@ -84,7 +84,7 @@ dependency_overrides:
 
 
 flutter_launcher_icons:
-  android: "DY E.p.i.c"
+  android: "dy_epic"
   ios: true
   image_path: assets/company/epic_logo_scaled.png
   min_sdk_android: 21
