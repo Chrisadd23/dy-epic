@@ -11,9 +11,9 @@ class AppConfig {
   static String get title {
     switch (appFlavor) {
       case Flavor.development:
-        return 'dev Oberhaizinger';
+        return 'dev DY E.p.i.c';
       case Flavor.production:
-        return 'Oberhaizinger';
+        return 'DY E.p.i.c';
     }
   }
 

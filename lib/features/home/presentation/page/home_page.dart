@@ -79,7 +79,7 @@ class CategoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(0),
       child: Column(
         children: [
           const SizedBox(
@@ -106,7 +106,7 @@ class CategoryPage extends StatelessWidget {
                   categoryProduct: EnumCategoryProduct.officeChairHochlehner,
                 ),
                 _CategoryListRow(
-                  category: 'Konferenztische',
+                  category: 'Konferenzstühle',
                   categoryProduct: EnumCategoryProduct.conferenceChair,
                 ),
               ],

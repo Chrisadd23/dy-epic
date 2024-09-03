@@ -21,22 +21,15 @@ CategoryProductModel _$CategoryProductModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$CategoryProductModel {
   String? get productNumber => throw _privateConstructorUsedError;
-
   String? get productTitle => throw _privateConstructorUsedError;
-
   String? get type => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'price')
   double? get normalPrice => throw _privateConstructorUsedError;
-
   List<String>? get attributes => throw _privateConstructorUsedError;
-
   List<PricePerSize>? get pricePerSize => throw _privateConstructorUsedError;
-
   List<FrameColor>? get frameColors => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $CategoryProductModelCopyWith<CategoryProductModel> get copyWith =>
       throw _privateConstructorUsedError;
@@ -47,7 +40,6 @@ abstract class $CategoryProductModelCopyWith<$Res> {
   factory $CategoryProductModelCopyWith(CategoryProductModel value,
           $Res Function(CategoryProductModel) then) =
       _$CategoryProductModelCopyWithImpl<$Res, CategoryProductModel>;
-
   @useResult
   $Res call(
       {String? productNumber,
@@ -67,7 +59,6 @@ class _$CategoryProductModelCopyWithImpl<$Res,
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -121,7 +112,6 @@ abstract class _$$CategoryProductModelImplCopyWith<$Res>
   factory _$$CategoryProductModelImplCopyWith(_$CategoryProductModelImpl value,
           $Res Function(_$CategoryProductModelImpl) then) =
       __$$CategoryProductModelImplCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -215,7 +205,6 @@ class _$CategoryProductModelImpl extends _CategoryProductModel {
   @JsonKey(name: 'price')
   final double? normalPrice;
   final List<String>? _attributes;
-
   @override
   List<String>? get attributes {
     final value = _attributes;
@@ -226,7 +215,6 @@ class _$CategoryProductModelImpl extends _CategoryProductModel {
   }
 
   final List<PricePerSize>? _pricePerSize;
-
   @override
   List<PricePerSize>? get pricePerSize {
     final value = _pricePerSize;
@@ -237,7 +225,6 @@ class _$CategoryProductModelImpl extends _CategoryProductModel {
   }
 
   final List<FrameColor>? _frameColors;
-
   @override
   List<FrameColor>? get frameColors {
     final value = _frameColors;
@@ -309,7 +296,6 @@ abstract class _CategoryProductModel extends CategoryProductModel {
       final List<String>? attributes,
       final List<PricePerSize>? pricePerSize,
       final List<FrameColor>? frameColors}) = _$CategoryProductModelImpl;
-
   const _CategoryProductModel._() : super._();
 
   factory _CategoryProductModel.fromJson(Map<String, dynamic> json) =
@@ -317,25 +303,19 @@ abstract class _CategoryProductModel extends CategoryProductModel {
 
   @override
   String? get productNumber;
-
   @override
   String? get productTitle;
-
   @override
   String? get type;
-
+  @override
   @JsonKey(name: 'price')
   double? get normalPrice;
-
   @override
   List<String>? get attributes;
-
   @override
   List<PricePerSize>? get pricePerSize;
-
   @override
   List<FrameColor>? get frameColors;
-
   @override
   @JsonKey(ignore: true)
   _$$CategoryProductModelImplCopyWith<_$CategoryProductModelImpl>
@@ -349,13 +329,10 @@ PricePerSize _$PricePerSizeFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$PricePerSize {
   String get height => throw _privateConstructorUsedError;
-
   String get width => throw _privateConstructorUsedError;
-
   String get price => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $PricePerSizeCopyWith<PricePerSize> get copyWith =>
       throw _privateConstructorUsedError;
@@ -366,7 +343,6 @@ abstract class $PricePerSizeCopyWith<$Res> {
   factory $PricePerSizeCopyWith(
           PricePerSize value, $Res Function(PricePerSize) then) =
       _$PricePerSizeCopyWithImpl<$Res, PricePerSize>;
-
   @useResult
   $Res call({String height, String width, String price});
 }
@@ -378,7 +354,6 @@ class _$PricePerSizeCopyWithImpl<$Res, $Val extends PricePerSize>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -412,7 +387,6 @@ abstract class _$$PricePerSizeImplCopyWith<$Res>
   factory _$$PricePerSizeImplCopyWith(
           _$PricePerSizeImpl value, $Res Function(_$PricePerSizeImpl) then) =
       __$$PricePerSizeImplCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({String height, String width, String price});
@@ -511,13 +485,10 @@ abstract class _PricePerSize implements PricePerSize {
 
   @override
   String get height;
-
   @override
   String get width;
-
   @override
   String get price;
-
   @override
   @JsonKey(ignore: true)
   _$$PricePerSizeImplCopyWith<_$PricePerSizeImpl> get copyWith =>
@@ -531,11 +502,9 @@ FrameColor _$FrameColorFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FrameColor {
   String get color => throw _privateConstructorUsedError;
-
   String get hexValue => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $FrameColorCopyWith<FrameColor> get copyWith =>
       throw _privateConstructorUsedError;
@@ -546,7 +515,6 @@ abstract class $FrameColorCopyWith<$Res> {
   factory $FrameColorCopyWith(
           FrameColor value, $Res Function(FrameColor) then) =
       _$FrameColorCopyWithImpl<$Res, FrameColor>;
-
   @useResult
   $Res call({String color, String hexValue});
 }
@@ -558,7 +526,6 @@ class _$FrameColorCopyWithImpl<$Res, $Val extends FrameColor>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -587,7 +554,6 @@ abstract class _$$FrameColorImplCopyWith<$Res>
   factory _$$FrameColorImplCopyWith(
           _$FrameColorImpl value, $Res Function(_$FrameColorImpl) then) =
       __$$FrameColorImplCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({String color, String hexValue});
@@ -677,10 +643,8 @@ abstract class _FrameColor implements FrameColor {
 
   @override
   String get color;
-
   @override
   String get hexValue;
-
   @override
   @JsonKey(ignore: true)
   _$$FrameColorImplCopyWith<_$FrameColorImpl> get copyWith =>

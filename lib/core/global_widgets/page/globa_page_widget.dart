@@ -1,7 +1,7 @@
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/global_appbar.dart';
+import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/global_curved_navigation_bar.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/global_drawer.dart';
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
 class GlobalScaffold extends Scaffold {
@@ -10,18 +10,19 @@ class GlobalScaffold extends Scaffold {
     required BuildContext appBarContext,
     required Widget body,
     bool? showMenuBar = false,
-    CurvedNavigationBar? bottomNavigationBar,
+    GlobalCurvedNavigationBar? bottomNavigationBar,
   }) : super(
             key: key,
+            extendBody: true,
             appBar: PreferredSize(
               preferredSize: const Size.fromHeight(70),
               child: SafeArea(
+                bottom: false,
                 child: Container(
                   decoration: const BoxDecoration(
                       border: Border(
                           top: BorderSide(color: Colors.black, width: 2),
                           left: BorderSide(color: Colors.black, width: 1),
-                          right: BorderSide(color: Colors.black, width: 2),
                           bottom: BorderSide(
                               color: Colors.black,
                               width: 0.3,
@@ -33,7 +34,7 @@ class GlobalScaffold extends Scaffold {
                 ),
               ),
             ),
-            body: SafeArea(child: body),
+            body: SafeArea(bottom: false, child: body),
             backgroundColor: AppColors.greyCACACA,
             drawer: const GlobalDrawer(),
             bottomNavigationBar: bottomNavigationBar);

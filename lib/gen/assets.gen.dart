@@ -24,8 +24,12 @@ class $AssetsCompanyGen {
   AssetGenImage get appBarLogo =>
       const AssetGenImage('assets/company/appBarLogo.png');
 
+  /// File path: assets/company/epic_logo_scaled.png
+  AssetGenImage get epicLogoScaled =>
+      const AssetGenImage('assets/company/epic_logo_scaled.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [appBarLogo];
+  List<AssetGenImage> get values => [appBarLogo, epicLogoScaled];
 }
 
 class $AssetsIconGen {
@@ -77,9 +81,18 @@ class $AssetsAppComponentsJpgGen {
   AssetGenImage get konferenztische =>
       const AssetGenImage('assets/appComponents/jpg/Konferenztische.jpg');
 
+  /// File path: assets/appComponents/jpg/login_background.jpg
+  AssetGenImage get loginBackground =>
+      const AssetGenImage('assets/appComponents/jpg/login_background.jpg');
+
   /// List of all assets
-  List<AssetGenImage> get values =>
-      [arbeitstisch, buerodrehstuehle, konferenzstuehle, konferenztische];
+  List<AssetGenImage> get values => [
+        arbeitstisch,
+        buerodrehstuehle,
+        konferenzstuehle,
+        konferenztische,
+        loginBackground
+      ];
 }
 
 class $AssetsAppComponentsPngGen {

@@ -60,7 +60,6 @@ dependencies:
   cloud_firestore: ^4.15.8
   firebase_storage: ^11.6.0
   swipeable_tile: ^2.0.0+3
-  curved_navigation_bar: ^1.0.3
   dropdown_button2: ^2.3.9
   bloc_test: ^9.1.7
   mocktail: ^1.0.3
@@ -68,6 +67,7 @@ dependencies:
   json_serializable: ^6.8.0
   flutter_local_notifications: ^17.1.2
   permission_handler: ^11.3.1
+  google_fonts: ^6.2.0
 
 
 
@@ -84,9 +84,9 @@ dependency_overrides:
 
 
 flutter_launcher_icons:
-  android: "oberhaizinger"
+  android: "DY E.p.i.c"
   ios: true
-  image_path: assets/icon/oberhaizinger_officesolution_app_icon.png
+  image_path: assets/company/epic_logo_scaled.png
   min_sdk_android: 21
 
   # The "flutter_lints" package below contains a set of recommended lints to

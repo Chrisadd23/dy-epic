@@ -1,4 +1,3 @@
-
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_widgets/drawer_button.dart';
 import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
@@ -11,6 +10,7 @@ import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class GlobalDrawer extends StatelessWidget {
   const GlobalDrawer({Key? key}) : super(key: key);
@@ -60,8 +60,7 @@ class _DrawerWidget extends StatelessWidget {
                       child: Column(
                         children: [
                           InkWell(
-                            onTap: () =>
-                                context.goNamed(AppGoRouter.home.name),
+                            onTap: () => context.goNamed(AppGoRouter.home.name),
                             child: Container(
                               height: 68,
                               width: double.infinity,
@@ -79,22 +78,50 @@ class _DrawerWidget extends StatelessWidget {
                               child: Padding(
                                 padding:
                                     const EdgeInsets.only(left: 5, right: 5),
-                                child: Image.asset(
-                                  Assets.company.appBarLogo.path,
-                                  fit: BoxFit.fitWidth,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 5.0, right: 20),
+                                  child: Row(
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 10.0),
+                                        child: Image.asset(
+                                          Assets.company.epicLogoScaled.path,
+                                          fit: BoxFit.fitHeight,
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              vertical: 10),
+                                          child: FittedBox(
+                                            fit: BoxFit.fill,
+                                            child: Text(
+                                              'DY E.p.i.c',
+                                              style: GoogleFonts.sevillana(),
+                                            ),
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
                           ),
                           InkWell(
                             onTap: () {
-                              if(context.read<LoginCubit>().state.customer == null) {
-                                context.goNamed(AppGoRouter.login.name,queryParameters: {
-                                  "redirectName": AppGoRouter.profileSettings.name
-                                });
-                              }else {
-                                context.goNamed(
-                                    AppGoRouter.profileSettings.name);
+                              if (context.read<LoginCubit>().state.customer ==
+                                  null) {
+                                context.goNamed(AppGoRouter.login.name,
+                                    queryParameters: {
+                                      "redirectName":
+                                          AppGoRouter.profileSettings.name
+                                    });
+                              } else {
+                                context
+                                    .goNamed(AppGoRouter.profileSettings.name);
                               }
                               Navigator.pop(context);
                             },
@@ -198,11 +225,17 @@ class _DrawerWidget extends StatelessWidget {
                           .map((category) => FixDrawerButton(
                                 title: category.title,
                                 function: () {
-                                  if(category.isLoginRequired && context.read<LoginCubit>().state.customer == null) {
-                                    context.goNamed(AppGoRouter.login.name,queryParameters: {
-                                      "redirectName": category.name
-                                    });
-                                  }else {
+                                  if (category.isLoginRequired &&
+                                      context
+                                              .read<LoginCubit>()
+                                              .state
+                                              .customer ==
+                                          null) {
+                                    context.goNamed(AppGoRouter.login.name,
+                                        queryParameters: {
+                                          "redirectName": category.name
+                                        });
+                                  } else {
                                     context.goNamed(category.name);
                                   }
                                   Navigator.pop(context);
@@ -213,23 +246,25 @@ class _DrawerWidget extends StatelessWidget {
                     const SizedBox(height: 50),
                     BlocBuilder<LoginCubit, LoginState>(
                         builder: (context, state) {
-                          final title = state.maybeMap(orElse: () => 'Login',loggedIn: (loggedInState) => 'Logout');
-                          final function = state.maybeMap(orElse: () => () {
-                            context.goNamed(AppGoRouter.login.name);
-                          },loggedIn: (loggedInState) => ()async {
-                            await context.read<LoginCubit>().logOut();
+                      final title = state.maybeMap(
+                          orElse: () => 'Login',
+                          loggedIn: (loggedInState) => 'Logout');
+                      final function = state.maybeMap(
+                          orElse: () => () {
+                                context.goNamed(AppGoRouter.login.name);
+                              },
+                          loggedIn: (loggedInState) => () async {
+                                await context.read<LoginCubit>().logOut();
 
-                            if (context.mounted) {
-                              context
-                                  .read<BlocShoppingBasket>()
-                                  .add(const EventShoppingBasket.clear());
-                              context.goNamed(AppGoRouter.home.name);
-                            }
-                          });
+                                if (context.mounted) {
+                                  context
+                                      .read<BlocShoppingBasket>()
+                                      .add(const EventShoppingBasket.clear());
+                                  context.goNamed(AppGoRouter.home.name);
+                                }
+                              });
                       return FixDrawerButton(
-                          title: title,
-                          height: 40,
-                          function: function);
+                          title: title, height: 40, function: function);
                     }),
                   ],
                 ),

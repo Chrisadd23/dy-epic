@@ -1,9 +1,10 @@
+import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
 import 'package:app_flutter_produkt_bestellen/gen/assets.gen.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class GlobalAppBar extends AppBar {
   GlobalAppBar({
@@ -30,8 +31,7 @@ class GlobalAppBar extends AppBar {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 InkWell(
-                  onTap: () =>
-                      getIt<GoRouter>().goNamed(AppGoRouter.home.name),
+                  onTap: () => getIt<GoRouter>().goNamed(AppGoRouter.home.name),
                   child: Container(
                     height: 67,
                     width: MediaQuery.of(context).size.width * 0.7,
@@ -47,13 +47,29 @@ class GlobalAppBar extends AppBar {
                               offset: Offset(0, 2)),
                         ]),
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 5, right: 5),
-                      child: FittedBox(
-                        fit: BoxFit.fitWidth,
-                        child: Image.asset(
-                          Assets.company.appBarLogo.path,
-                          fit: BoxFit.fitWidth,
-                        ),
+                      padding: const EdgeInsets.only(left: 5.0, right: 20),
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10.0),
+                            child: Image.asset(
+                              Assets.company.epicLogoScaled.path,
+                              fit: BoxFit.fitHeight,
+                            ),
+                          ),
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              child: FittedBox(
+                                fit: BoxFit.fill,
+                                child: Text(
+                                  'DY E.p.i.c',
+                                  style: GoogleFonts.sevillana(),
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
                       ),
                     ),
                   ),
@@ -93,12 +109,50 @@ class AppBarMenuButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      onPressed: () {
-        showMenuBar ? Scaffold.of(context).openDrawer() : context.pop();
-      },
-      icon: SvgPicture.asset(
-        imagePath,
+    return UnconstrainedBox(
+      child: InkWell(
+        onTap: () {
+          showMenuBar ? Scaffold.of(context).openDrawer() : context.pop();
+        },
+        child: SizedBox(
+          width: 40,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                height: 5,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(),
+                    color: AppColors.whiteD6D6D7),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              Container(
+                height: 5,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(),
+                    color: AppColors.whiteD6D6D7),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              Container(
+                height: 5,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(),
+                    color: AppColors.whiteD6D6D7),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }

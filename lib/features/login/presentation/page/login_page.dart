@@ -34,10 +34,33 @@ class LoginPage extends StatelessWidget {
   }
 }
 
-class _BlocBuilderLoginPage extends StatelessWidget {
+class _BlocBuilderLoginPage extends StatefulWidget {
   const _BlocBuilderLoginPage({this.redirectName});
 
   final String? redirectName;
+
+  @override
+  State<_BlocBuilderLoginPage> createState() => _BlocBuilderLoginPageState();
+}
+
+class _BlocBuilderLoginPageState extends State<_BlocBuilderLoginPage> {
+  late Image image;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    image = Image.asset(
+      Assets.appComponents.jpg.loginBackground.path,
+      fit: BoxFit.fill,
+    );
+  }
+
+  @override
+  void didChangeDependencies() {
+    precacheImage(image.image, context);
+    super.didChangeDependencies();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,47 +72,37 @@ class _BlocBuilderLoginPage extends StatelessWidget {
               context: context, failure: failure.failure.getFailureMessage);
         });
       },
-      child: Column(
-        children: <Widget>[
-          Expanded(
-            child: ShaderMask(
-              blendMode: BlendMode.dstATop,
-              shaderCallback: (Rect rect) {
-                return const LinearGradient(colors: [
-                  AppColors.whiteD6D6D7,
-                  AppColors.orangeF6A440,
-                  Colors.white
-                ], begin: Alignment.topCenter, end: Alignment.bottomCenter)
-                    .createShader(Rect.fromLTWH(
-                  rect.left,
-                  rect.top,
-                  rect.width,
-                  rect.height,
-                ));
-              },
-              child: Container(
+      child: Stack(
+        children: [
+          ShaderMask(
+            blendMode: BlendMode.dstATop,
+            shaderCallback: (Rect rect) {
+              return const LinearGradient(colors: [
+                AppColors.whiteD6D6D7,
+                AppColors.orangeF6A440,
+                Colors.white
+              ], begin: Alignment.topCenter, end: Alignment.bottomCenter)
+                  .createShader(Rect.fromLTWH(
+                rect.left,
+                rect.top,
+                rect.width,
+                rect.height,
+              ));
+            },
+            child: SizedBox(
                 width: double.infinity,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    opacity: 0.5,
-                    fit: BoxFit.fill,
-                    image: AssetImage(
-                      Assets.appComponents.png.oberhaizingerStartBild.path,
-                    ),
-                  ),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const _CustomerNumberTextWidget(),
-                    const SizedBox(height: 30),
-                    const _PasswordTextWidget(),
-                    _LoginButton(redirectName: redirectName),
-                  ],
-                ),
-              ),
-            ),
+                height: MediaQuery.sizeOf(context).height,
+                child: Opacity(opacity: 0.5, child: image)),
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const _CustomerNumberTextWidget(),
+              const SizedBox(height: 30),
+              const _PasswordTextWidget(),
+              _LoginButton(redirectName: widget.redirectName),
+            ],
           ),
         ],
       ),

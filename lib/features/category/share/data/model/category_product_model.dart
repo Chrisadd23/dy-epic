@@ -1,3 +1,4 @@
+//ignore_for_file: invalid_annotation_target
 import 'package:app_flutter_produkt_bestellen/features/category/share/domain/entity/category_entity.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -12,7 +13,6 @@ class CategoryProductModel with _$CategoryProductModel {
     String? productNumber,
     String? productTitle,
     String? type,
-    //ignore:  invalid_annotation_target
     @JsonKey(name: 'price') double? normalPrice,
     List<String>? attributes,
     List<PricePerSize>? pricePerSize,
@@ -37,7 +37,6 @@ class CategoryProductModel with _$CategoryProductModel {
 
 @freezed
 class PricePerSize with _$PricePerSize {
-  //ignore:  invalid_annotation_target
   @JsonSerializable(explicitToJson: true)
   const factory PricePerSize({
     required String height,
@@ -51,7 +50,6 @@ class PricePerSize with _$PricePerSize {
 
 @freezed
 class FrameColor with _$FrameColor {
-  //ignore:  invalid_annotation_target
   @JsonSerializable(explicitToJson: true)
   const factory FrameColor({
     required String color,

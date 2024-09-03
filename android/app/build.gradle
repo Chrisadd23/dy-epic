@@ -88,14 +88,14 @@ android {
         development {
             dimension "default"
 
-            resValue "string", "app_name", "dev Oberhaizinger"
+            resValue "string", "app_name", "dev DY E.p.i.c"
             applicationIdSuffix ""
         }
 
         production {
             dimension "default"
 
-            resValue "string", "app_name", "Oberhaizinger"
+            resValue "string", "app_name", "DY E.p.i.c"
             applicationIdSuffix ".prod"
         }
     }

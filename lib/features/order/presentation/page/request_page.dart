@@ -301,8 +301,17 @@ class _DropDownButton2Container extends StatelessWidget {
           height: MediaQuery.sizeOf(context).height * 0.04,
           width: MediaQuery.sizeOf(context).width * 0.5,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: AppColors.orangeF6A440),
+            borderRadius: BorderRadius.circular(20),
+            color: AppColors.whiteD6D6D7,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 3,
+                blurRadius: 7,
+                offset: const Offset(0, 2), // changes position of shadow
+              ),
+            ],
+          ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [

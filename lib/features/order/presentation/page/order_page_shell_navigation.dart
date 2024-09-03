@@ -1,9 +1,9 @@
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_page_widget.dart';
+import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/global_curved_navigation_bar.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/bloc/bloc_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/gen/assets.gen.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -27,11 +27,11 @@ class OrderPageShellNavigation extends StatelessWidget {
       showMenuBar: true,
       body: BlocProvider<BlocShoppingBasket>.value(
           value: getIt<BlocShoppingBasket>(), child: navigationShell),
-      bottomNavigationBar: CurvedNavigationBar(
-        buttonBackgroundColor: AppColors.orangeF6A440,
+      bottomNavigationBar: GlobalCurvedNavigationBar(
+        buttonBackgroundColor: AppColors.whiteD6D6D7,
         animationDuration: const Duration(milliseconds: 300),
         index: navigationShell.currentIndex,
-        backgroundColor: AppColors.greyCACACA,
+        backgroundColor: Colors.transparent,
         items: [
           SvgPicture.asset(
             Assets.appComponents.svg.orderBasket,

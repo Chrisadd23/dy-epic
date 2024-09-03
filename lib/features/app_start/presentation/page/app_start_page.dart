@@ -15,7 +15,7 @@ class AppStartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.orangeF6A440,
+      backgroundColor: AppColors.whiteD6D6D7,
       body: SafeArea(
         child: BlocProvider<AppStartCubit>.value(
           value: getIt<AppStartCubit>()..start(),
@@ -39,8 +39,9 @@ class _AppStart extends StatelessWidget {
           children: [
             const Spacer(),
             Image.asset(
-              Assets.icon.oberhaizingerOfficesolutionAppIconWhite.path,
-              height: 100,
+              Assets.company.epicLogoScaled.path,
+              height: 150,
+              fit: BoxFit.fitHeight,
             ),
             Container(
                 alignment: Alignment.center, child: const LoadingWidget()),

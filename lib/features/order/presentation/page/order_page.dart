@@ -226,9 +226,10 @@ class _TextFieldContainer extends StatelessWidget {
       height: MediaQuery.sizeOf(context).height * 0.04,
       width: MediaQuery.sizeOf(context).width * 0.7,
       decoration: BoxDecoration(
-          border: Border.all(),
-          borderRadius: BorderRadius.circular(10),
-          color: Colors.white),
+        border: Border.all(),
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white,
+      ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 5.0),
         child: TextField(
@@ -293,8 +294,17 @@ class _DropDownButton2Container extends StatelessWidget {
           height: MediaQuery.sizeOf(context).height * 0.04,
           width: MediaQuery.sizeOf(context).width * 0.5,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: AppColors.orangeF6A440),
+            borderRadius: BorderRadius.circular(20),
+            color: AppColors.whiteD6D6D7,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 3,
+                blurRadius: 7,
+                offset: const Offset(0, 2), // changes position of shadow
+              ),
+            ],
+          ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -337,7 +347,10 @@ class _OrderInfoWidget extends StatelessWidget {
                     'Es sind keine Bestellungen dieser Art vorhanden.');
           } else {
             return Padding(
-              padding: const EdgeInsets.only(left: 30.0, right: 30, bottom: 40),
+              padding: const EdgeInsets.only(
+                left: 30.0,
+                right: 30,
+              ),
               child: ClipRRect(
                 borderRadius:
                     const BorderRadius.vertical(bottom: Radius.circular(30)),

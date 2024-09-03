@@ -28,14 +28,23 @@ class CategoryImageContainer extends StatelessWidget {
         ),
         child: Padding(
           padding: const EdgeInsets.all(5),
-          child: Image.memory(
-            state
-                .where((entityCorePicture) => entityCorePicture.name.contains(
-                    '$productNumber${color == null ? '' : '_$color'}'))
-                .first
-                .uint8List,
-            fit: BoxFit.fill,
-          ),
+          child: state
+                      .where((entityCorePicture) => entityCorePicture.name
+                          .contains(
+                              '$productNumber${color == null ? '' : '_$color'}'))
+                      .firstOrNull
+                      ?.uint8List !=
+                  null
+              ? Image.memory(
+                  state
+                      .where((entityCorePicture) => entityCorePicture.name
+                          .contains(
+                              '$productNumber${color == null ? '' : '_$color'}'))
+                      .first
+                      .uint8List,
+                  fit: BoxFit.fill,
+                )
+              : const SizedBox.shrink(),
         ),
       );
     });
