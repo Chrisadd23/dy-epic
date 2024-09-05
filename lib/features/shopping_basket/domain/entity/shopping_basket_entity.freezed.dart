@@ -256,8 +256,6 @@ ShoppingBasketProduct _$ShoppingBasketProductFromJson(
 /// @nodoc
 mixin _$ShoppingBasketProduct {
   CategoryEntity get categoryEntity => throw _privateConstructorUsedError;
-  EntityCorePictures? get entityCorePictures =>
-      throw _privateConstructorUsedError;
   int get addedTime => throw _privateConstructorUsedError;
   int get productCount => throw _privateConstructorUsedError;
   String get completeAmount => throw _privateConstructorUsedError;
@@ -276,13 +274,11 @@ abstract class $ShoppingBasketProductCopyWith<$Res> {
   @useResult
   $Res call(
       {CategoryEntity categoryEntity,
-      EntityCorePictures? entityCorePictures,
       int addedTime,
       int productCount,
       String completeAmount});
 
   $CategoryEntityCopyWith<$Res> get categoryEntity;
-  $EntityCorePicturesCopyWith<$Res>? get entityCorePictures;
 }
 
 /// @nodoc
@@ -300,7 +296,6 @@ class _$ShoppingBasketProductCopyWithImpl<$Res,
   @override
   $Res call({
     Object? categoryEntity = null,
-    Object? entityCorePictures = freezed,
     Object? addedTime = null,
     Object? productCount = null,
     Object? completeAmount = null,
@@ -310,10 +305,6 @@ class _$ShoppingBasketProductCopyWithImpl<$Res,
           ? _value.categoryEntity
           : categoryEntity // ignore: cast_nullable_to_non_nullable
               as CategoryEntity,
-      entityCorePictures: freezed == entityCorePictures
-          ? _value.entityCorePictures
-          : entityCorePictures // ignore: cast_nullable_to_non_nullable
-              as EntityCorePictures?,
       addedTime: null == addedTime
           ? _value.addedTime
           : addedTime // ignore: cast_nullable_to_non_nullable
@@ -336,19 +327,6 @@ class _$ShoppingBasketProductCopyWithImpl<$Res,
       return _then(_value.copyWith(categoryEntity: value) as $Val);
     });
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $EntityCorePicturesCopyWith<$Res>? get entityCorePictures {
-    if (_value.entityCorePictures == null) {
-      return null;
-    }
-
-    return $EntityCorePicturesCopyWith<$Res>(_value.entityCorePictures!,
-        (value) {
-      return _then(_value.copyWith(entityCorePictures: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -362,15 +340,12 @@ abstract class _$$ShoppingBasketProductImplCopyWith<$Res>
   @useResult
   $Res call(
       {CategoryEntity categoryEntity,
-      EntityCorePictures? entityCorePictures,
       int addedTime,
       int productCount,
       String completeAmount});
 
   @override
   $CategoryEntityCopyWith<$Res> get categoryEntity;
-  @override
-  $EntityCorePicturesCopyWith<$Res>? get entityCorePictures;
 }
 
 /// @nodoc
@@ -386,7 +361,6 @@ class __$$ShoppingBasketProductImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? categoryEntity = null,
-    Object? entityCorePictures = freezed,
     Object? addedTime = null,
     Object? productCount = null,
     Object? completeAmount = null,
@@ -396,10 +370,6 @@ class __$$ShoppingBasketProductImplCopyWithImpl<$Res>
           ? _value.categoryEntity
           : categoryEntity // ignore: cast_nullable_to_non_nullable
               as CategoryEntity,
-      entityCorePictures: freezed == entityCorePictures
-          ? _value.entityCorePictures
-          : entityCorePictures // ignore: cast_nullable_to_non_nullable
-              as EntityCorePictures?,
       addedTime: null == addedTime
           ? _value.addedTime
           : addedTime // ignore: cast_nullable_to_non_nullable
@@ -422,7 +392,6 @@ class __$$ShoppingBasketProductImplCopyWithImpl<$Res>
 class _$ShoppingBasketProductImpl implements _ShoppingBasketProduct {
   const _$ShoppingBasketProductImpl(
       {required this.categoryEntity,
-      required this.entityCorePictures,
       required this.addedTime,
       required this.productCount,
       required this.completeAmount});
@@ -433,8 +402,6 @@ class _$ShoppingBasketProductImpl implements _ShoppingBasketProduct {
   @override
   final CategoryEntity categoryEntity;
   @override
-  final EntityCorePictures? entityCorePictures;
-  @override
   final int addedTime;
   @override
   final int productCount;
@@ -443,7 +410,7 @@ class _$ShoppingBasketProductImpl implements _ShoppingBasketProduct {
 
   @override
   String toString() {
-    return 'ShoppingBasketProduct(categoryEntity: $categoryEntity, entityCorePictures: $entityCorePictures, addedTime: $addedTime, productCount: $productCount, completeAmount: $completeAmount)';
+    return 'ShoppingBasketProduct(categoryEntity: $categoryEntity, addedTime: $addedTime, productCount: $productCount, completeAmount: $completeAmount)';
   }
 
   @override
@@ -453,8 +420,6 @@ class _$ShoppingBasketProductImpl implements _ShoppingBasketProduct {
             other is _$ShoppingBasketProductImpl &&
             (identical(other.categoryEntity, categoryEntity) ||
                 other.categoryEntity == categoryEntity) &&
-            (identical(other.entityCorePictures, entityCorePictures) ||
-                other.entityCorePictures == entityCorePictures) &&
             (identical(other.addedTime, addedTime) ||
                 other.addedTime == addedTime) &&
             (identical(other.productCount, productCount) ||
@@ -465,8 +430,8 @@ class _$ShoppingBasketProductImpl implements _ShoppingBasketProduct {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, categoryEntity,
-      entityCorePictures, addedTime, productCount, completeAmount);
+  int get hashCode => Object.hash(
+      runtimeType, categoryEntity, addedTime, productCount, completeAmount);
 
   @JsonKey(ignore: true)
   @override
@@ -486,7 +451,6 @@ class _$ShoppingBasketProductImpl implements _ShoppingBasketProduct {
 abstract class _ShoppingBasketProduct implements ShoppingBasketProduct {
   const factory _ShoppingBasketProduct(
       {required final CategoryEntity categoryEntity,
-      required final EntityCorePictures? entityCorePictures,
       required final int addedTime,
       required final int productCount,
       required final String completeAmount}) = _$ShoppingBasketProductImpl;
@@ -496,8 +460,6 @@ abstract class _ShoppingBasketProduct implements ShoppingBasketProduct {
 
   @override
   CategoryEntity get categoryEntity;
-  @override
-  EntityCorePictures? get entityCorePictures;
   @override
   int get addedTime;
   @override

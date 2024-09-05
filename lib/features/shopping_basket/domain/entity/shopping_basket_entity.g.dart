@@ -33,10 +33,6 @@ _$ShoppingBasketProductImpl _$$ShoppingBasketProductImplFromJson(
     _$ShoppingBasketProductImpl(
       categoryEntity: CategoryEntity.fromJson(
           json['categoryEntity'] as Map<String, dynamic>),
-      entityCorePictures: json['entityCorePictures'] == null
-          ? null
-          : EntityCorePictures.fromJson(
-              json['entityCorePictures'] as Map<String, dynamic>),
       addedTime: (json['addedTime'] as num).toInt(),
       productCount: (json['productCount'] as num).toInt(),
       completeAmount: json['completeAmount'] as String,
@@ -46,7 +42,6 @@ Map<String, dynamic> _$$ShoppingBasketProductImplToJson(
         _$ShoppingBasketProductImpl instance) =>
     <String, dynamic>{
       'categoryEntity': instance.categoryEntity.toJson(),
-      'entityCorePictures': instance.entityCorePictures?.toJson(),
       'addedTime': instance.addedTime,
       'productCount': instance.productCount,
       'completeAmount': instance.completeAmount,

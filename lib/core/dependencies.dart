@@ -35,9 +35,7 @@ abstract class CoreDependencies {
       ..registerLazySingleton<CubitPictures>(() => CubitPictures())
       ..registerLazySingleton<GoRouter>(() => AppGoRouter.router)
       ..registerFactory<CubitCorePictures>(
-        () => CubitCorePictures(
-          getIt(),
-        ),
+        () => CubitCorePictures(getIt(), getIt()),
       );
   }
 }

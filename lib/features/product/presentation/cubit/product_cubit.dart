@@ -23,11 +23,14 @@ class ProductCubit extends Cubit<ProductState> {
     } else {
       final timeIndex = recordOrder!.index;
       final productState = recordOrder.chosenProduct;
+      final entityCorePicture = _useCaseGetSingleLocalImage(
+          productNumber:
+              recordOrder.chosenProduct.categoryEntity.productNumber);
       emit(
         state.copyWith(
           productOrderCount: productState.productCount,
           productEntity: productState.categoryEntity,
-          entityCorePicture: productState.entityCorePictures,
+          entityCorePicture: entityCorePicture,
           position: timeIndex,
         ),
       );
@@ -45,6 +48,8 @@ class ProductCubit extends Cubit<ProductState> {
   }
 
   void clear() {
-    emit(state.copyWith(productOrderCount: 0));
+    emit(
+      state.copyWith(productOrderCount: 0, position: null),
+    );
   }
 }

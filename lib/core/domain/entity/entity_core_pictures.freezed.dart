@@ -14,16 +14,11 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-EntityCorePictures _$EntityCorePicturesFromJson(Map<String, dynamic> json) {
-  return _EntityCorePictures.fromJson(json);
-}
-
 /// @nodoc
 mixin _$EntityCorePictures {
   String get name => throw _privateConstructorUsedError;
-  List<int> get listIntForUint8List => throw _privateConstructorUsedError;
+  Uint8List get listIntForUint8List => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $EntityCorePicturesCopyWith<EntityCorePictures> get copyWith =>
       throw _privateConstructorUsedError;
@@ -35,7 +30,7 @@ abstract class $EntityCorePicturesCopyWith<$Res> {
           EntityCorePictures value, $Res Function(EntityCorePictures) then) =
       _$EntityCorePicturesCopyWithImpl<$Res, EntityCorePictures>;
   @useResult
-  $Res call({String name, List<int> listIntForUint8List});
+  $Res call({String name, Uint8List listIntForUint8List});
 }
 
 /// @nodoc
@@ -62,7 +57,7 @@ class _$EntityCorePicturesCopyWithImpl<$Res, $Val extends EntityCorePictures>
       listIntForUint8List: null == listIntForUint8List
           ? _value.listIntForUint8List
           : listIntForUint8List // ignore: cast_nullable_to_non_nullable
-              as List<int>,
+              as Uint8List,
     ) as $Val);
   }
 }
@@ -75,7 +70,7 @@ abstract class _$$EntityCorePicturesImplCopyWith<$Res>
       __$$EntityCorePicturesImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, List<int> listIntForUint8List});
+  $Res call({String name, Uint8List listIntForUint8List});
 }
 
 /// @nodoc
@@ -98,34 +93,23 @@ class __$$EntityCorePicturesImplCopyWithImpl<$Res>
           : name // ignore: cast_nullable_to_non_nullable
               as String,
       listIntForUint8List: null == listIntForUint8List
-          ? _value._listIntForUint8List
+          ? _value.listIntForUint8List
           : listIntForUint8List // ignore: cast_nullable_to_non_nullable
-              as List<int>,
+              as Uint8List,
     ));
   }
 }
 
 /// @nodoc
 
-@JsonSerializable(explicitToJson: true)
 class _$EntityCorePicturesImpl implements _EntityCorePictures {
   const _$EntityCorePicturesImpl(
-      {required this.name, required final List<int> listIntForUint8List})
-      : _listIntForUint8List = listIntForUint8List;
-
-  factory _$EntityCorePicturesImpl.fromJson(Map<String, dynamic> json) =>
-      _$$EntityCorePicturesImplFromJson(json);
+      {required this.name, required this.listIntForUint8List});
 
   @override
   final String name;
-  final List<int> _listIntForUint8List;
   @override
-  List<int> get listIntForUint8List {
-    if (_listIntForUint8List is EqualUnmodifiableListView)
-      return _listIntForUint8List;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_listIntForUint8List);
-  }
+  final Uint8List listIntForUint8List;
 
   @override
   String toString() {
@@ -139,13 +123,12 @@ class _$EntityCorePicturesImpl implements _EntityCorePictures {
             other is _$EntityCorePicturesImpl &&
             (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality()
-                .equals(other._listIntForUint8List, _listIntForUint8List));
+                .equals(other.listIntForUint8List, listIntForUint8List));
   }
 
-  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, name,
-      const DeepCollectionEquality().hash(_listIntForUint8List));
+      const DeepCollectionEquality().hash(listIntForUint8List));
 
   @JsonKey(ignore: true)
   @override
@@ -153,27 +136,17 @@ class _$EntityCorePicturesImpl implements _EntityCorePictures {
   _$$EntityCorePicturesImplCopyWith<_$EntityCorePicturesImpl> get copyWith =>
       __$$EntityCorePicturesImplCopyWithImpl<_$EntityCorePicturesImpl>(
           this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$EntityCorePicturesImplToJson(
-      this,
-    );
-  }
 }
 
 abstract class _EntityCorePictures implements EntityCorePictures {
   const factory _EntityCorePictures(
       {required final String name,
-      required final List<int> listIntForUint8List}) = _$EntityCorePicturesImpl;
-
-  factory _EntityCorePictures.fromJson(Map<String, dynamic> json) =
-      _$EntityCorePicturesImpl.fromJson;
+      required final Uint8List listIntForUint8List}) = _$EntityCorePicturesImpl;
 
   @override
   String get name;
   @override
-  List<int> get listIntForUint8List;
+  Uint8List get listIntForUint8List;
   @override
   @JsonKey(ignore: true)
   _$$EntityCorePicturesImplCopyWith<_$EntityCorePicturesImpl> get copyWith =>

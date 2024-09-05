@@ -200,8 +200,12 @@ class _DrawerWidget extends StatelessWidget {
                                                     FittedBox(
                                                   child: Text(
                                                     stateLoggedIn
-                                                        .entityLoginCustomer
-                                                        .customerNumber,
+                                                            .entityLoginCustomer
+                                                            .customerName ??
+                                                        stateLoggedIn
+                                                            .entityLoginCustomer
+                                                            .companyName ??
+                                                        '',
                                                     style: const TextStyle(
                                                         fontWeight:
                                                             FontWeight.bold,

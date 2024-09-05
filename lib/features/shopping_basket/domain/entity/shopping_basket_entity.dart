@@ -1,4 +1,3 @@
-import 'package:app_flutter_produkt_bestellen/core/domain/entity/entity_core_pictures.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/domain/entity/category_entity.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -28,7 +27,6 @@ class ShoppingBasketProduct with _$ShoppingBasketProduct {
   @JsonSerializable(explicitToJson: true)
   const factory ShoppingBasketProduct({
     required CategoryEntity categoryEntity,
-    required EntityCorePictures? entityCorePictures,
     required int addedTime,
     required int productCount,
     required String completeAmount,

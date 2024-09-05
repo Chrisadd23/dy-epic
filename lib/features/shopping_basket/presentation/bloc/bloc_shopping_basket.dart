@@ -13,8 +13,9 @@ import 'package:go_router/go_router.dart';
 
 class BlocShoppingBasket
     extends Bloc<EventShoppingBasket, StateShoppingBasket> {
-  BlocShoppingBasket(this._shoppingBasketRepository)
-      : super(const StateShoppingBasket(orderChosenProductList: [])) {
+  BlocShoppingBasket(
+    this._shoppingBasketRepository,
+  ) : super(const StateShoppingBasket(orderChosenProductList: [])) {
     on<EventShoppingBasket>((event, emitState) async {
       await event.when(
         add: (category, count, categoryEntity, entityCorePicture, timeIndex) {
@@ -23,27 +24,38 @@ class BlocShoppingBasket
           if (timeIndex == null) {
             listOrderProduct.add(ShoppingBasketProduct(
                 categoryEntity: categoryEntity,
-                entityCorePictures: entityCorePicture,
                 addedTime: DateTime.now().millisecondsSinceEpoch,
                 productCount: count,
                 completeAmount:
                     (count * categoryEntity.normalPrice!).getCurrency()));
             emitState(state.copyWith(orderChosenProductList: listOrderProduct));
           } else {
-            final newOrderList = state.copyWith(
-              orderChosenProductList:
-                  state.orderChosenProductList.replaceAndSortProduct(
-                product: ShoppingBasketProduct(
+            if (state.orderChosenProductList.isEmpty ||
+                !state.orderChosenProductList
+                    .any((order) => order.addedTime == timeIndex)) {
+              listOrderProduct.add(ShoppingBasketProduct(
                   categoryEntity: categoryEntity,
-                  entityCorePictures: entityCorePicture,
-                  addedTime: timeIndex,
+                  addedTime: DateTime.now().millisecondsSinceEpoch,
                   productCount: count,
                   completeAmount:
-                      (count * categoryEntity.normalPrice!).getCurrency(),
+                      (count * categoryEntity.normalPrice!).getCurrency()));
+              emitState(
+                  state.copyWith(orderChosenProductList: listOrderProduct));
+            } else {
+              final newOrderList = state.copyWith(
+                orderChosenProductList:
+                    state.orderChosenProductList.replaceAndSortProduct(
+                  product: ShoppingBasketProduct(
+                    categoryEntity: categoryEntity,
+                    addedTime: timeIndex,
+                    productCount: count,
+                    completeAmount:
+                        (count * categoryEntity.normalPrice!).getCurrency(),
+                  ),
                 ),
-              ),
-            );
-            emitState(newOrderList);
+              );
+              emitState(newOrderList);
+            }
           }
         },
         change: (timeIndex, location) {

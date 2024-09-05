@@ -1,9 +1,11 @@
 import 'dart:typed_data';
 
+import 'package:app_flutter_produkt_bestellen/core/domain/entity/entity_core_pictures.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/bottom_sheet.dart';
+import 'package:app_flutter_produkt_bestellen/core/presentation/cubit/cubit_core_pictures.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/domain/entity/entity_login_customer.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_state.dart';
@@ -261,7 +263,13 @@ class _ShoppingBasketOffer extends HookWidget {
                     children: [
                       SizedBox(
                         height: constraints.maxHeight * 0.2,
-                        child: _Offer(item: item),
+                        child: _Offer(
+                            item: item,
+                            picture: context
+                                .read<CubitCorePictures>()
+                                .getSinglePicture(
+                                    productNumber:
+                                        item.categoryEntity.productNumber)),
                       ),
                       expand.value
                           ? _OfferInfo(
@@ -371,8 +379,9 @@ class _OfferInfo extends StatelessWidget {
 }
 
 class _Offer extends StatefulWidget {
-  const _Offer({required this.item});
+  const _Offer({this.picture, required this.item});
 
+  final EntityCorePictures? picture;
   final ShoppingBasketProduct item;
 
   @override
@@ -382,10 +391,9 @@ class _Offer extends StatefulWidget {
 class _OfferState extends State<_Offer> {
   @override
   void didChangeDependencies() {
-    precacheImage(
-        MemoryImage(Uint8List.fromList(
-            widget.item.entityCorePictures!.listIntForUint8List)),
-        context);
+    if (widget.picture != null) {
+      precacheImage(MemoryImage(widget.picture!.listIntForUint8List), context);
+    }
     super.didChangeDependencies();
   }
 
@@ -396,9 +404,9 @@ class _OfferState extends State<_Offer> {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(20),
-            child: widget.item.entityCorePictures != null
-                ? Image.memory(Uint8List.fromList(
-                    widget.item.entityCorePictures!.listIntForUint8List))
+            child: widget.picture?.listIntForUint8List != null
+                ? Image.memory(
+                    Uint8List.fromList(widget.picture!.listIntForUint8List))
                 : const SizedBox.shrink(),
           ),
           Expanded(
