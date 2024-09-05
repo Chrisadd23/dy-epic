@@ -16,7 +16,7 @@ class DialogShoppingBasket extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<BlocShoppingBasket, StateShoppingBasket>(
-      builder: (context, state) => !state.isEmpty
+      builder: (context, state) => state.orderChosenProductList.isNotEmpty
           ? Padding(
               padding: const EdgeInsets.only(top: 15, right: 15),
               child: Align(
@@ -58,9 +58,7 @@ class _ShoppingBasketStack extends StatelessWidget {
               child: BlocBuilder<BlocShoppingBasket, StateShoppingBasket>(
                   builder: (context, state) {
                 return Text(
-                  (state.orderChosenProductList.length +
-                          state.requestChosenProductList.length)
-                      .toString(),
+                  state.orderChosenProductList.length.toString(),
                   style: AppTextStyle.colorWhiteSize20ShadowBlack
                       .copyWith(fontWeight: FontWeight.bold),
                 );

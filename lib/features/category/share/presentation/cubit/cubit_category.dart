@@ -12,7 +12,7 @@ class CubitCategory extends Cubit<StateCategory> {
   ) : super(const StateCategory.loading());
 
   final UseCaseGetCategoryProduct _useCaseGetCategoryProduct;
-  final UseCaseGetPictures _useCaseGetPictures;
+  final UseCaseGetPicture _useCaseGetPictures;
 
   Future<void> load() async {
     if (state != const StateCategory.loading()) {

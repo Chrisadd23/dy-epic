@@ -8,4 +8,6 @@ abstract class RepositoryCore {
   Future<Either<Failure, List<EntityCorePictures>>> getImageBytes({
     required List<String> fileNames,
   });
+
+  EntityCorePictures? getSingleImageBytes(String productNumber);
 }

@@ -10,8 +10,7 @@ part 'order_model.g.dart';
 class OrderModel with _$OrderModel {
   const OrderModel._();
 
-  @JsonSerializable(
-      explicitToJson: true) // Verschachtelte Objekte korrekt serialisieren
+  @JsonSerializable(explicitToJson: true)
   const factory OrderModel({
     String? id,
     @JsonKey(name: 'userId') String? customerId,

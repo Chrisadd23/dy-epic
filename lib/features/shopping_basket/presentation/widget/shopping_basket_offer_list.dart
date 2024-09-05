@@ -1,7 +1,8 @@
+import 'dart:typed_data';
+
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
-import 'package:app_flutter_produkt_bestellen/core/global_cubits/cubit_pictures.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/bottom_sheet.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/domain/entity/entity_login_customer.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_cubit.dart';
@@ -16,7 +17,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
-import 'package:intl/intl.dart';
 import 'package:swipeable_tile/swipeable_tile.dart';
 
 class ShoppingBasketOfferList extends StatelessWidget {
@@ -29,9 +29,7 @@ class ShoppingBasketOfferList extends StatelessWidget {
         builder: (context, constraints) => BlocListener<BlocShoppingBasket,
                 StateShoppingBasket>(
             listenWhen: (_, cState) =>
-                (cState.orderChosenProductList.isEmpty &&
-                    cState.requestChosenProductList.isEmpty) ||
-                cState.failure != null,
+                cState.orderChosenProductList.isEmpty || cState.failure != null,
             listener: (context, state) {
               if (state.failure != null) {
                 ShowFailureDialog.present(
@@ -56,10 +54,10 @@ class ShoppingBasketOfferList extends StatelessWidget {
                     child: BlocSelector<BlocShoppingBasket, StateShoppingBasket,
                             List<ShoppingBasketProduct>>(
                         selector: (state) => [
-                              ...List.of(state.orderChosenProductList),
-                              ...List.of(state.requestChosenProductList)
-                            ]..sort(
-                                (a, b) => b.addedTime.compareTo(a.addedTime)),
+                              ...List.of(state.orderChosenProductList)
+                                ..sort((a, b) =>
+                                    b.addedTime.compareTo(a.addedTime)),
+                            ],
                         builder: (context, state) {
                           return ListView.builder(
                             itemCount: state.length,
@@ -331,9 +329,7 @@ class _OfferInfo extends StatelessWidget {
               ),
               Expanded(
                 child: Text(
-                  NumberFormat.currency(
-                          locale: 'de_DE', symbol: '€', decimalDigits: 2)
-                      .format(item.price),
+                  item.completeAmount,
                   style: const TextStyle(
                       fontSize: 20, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.right,
@@ -353,7 +349,7 @@ class _OfferInfo extends StatelessWidget {
               ),
               Expanded(
                 child: Text(
-                  item.productNumber,
+                  item.categoryEntity.productNumber,
                   style: const TextStyle(
                       fontSize: 20, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.right,
@@ -374,10 +370,24 @@ class _OfferInfo extends StatelessWidget {
   }
 }
 
-class _Offer extends StatelessWidget {
+class _Offer extends StatefulWidget {
   const _Offer({required this.item});
 
   final ShoppingBasketProduct item;
+
+  @override
+  State<_Offer> createState() => _OfferState();
+}
+
+class _OfferState extends State<_Offer> {
+  @override
+  void didChangeDependencies() {
+    precacheImage(
+        MemoryImage(Uint8List.fromList(
+            widget.item.entityCorePictures!.listIntForUint8List)),
+        context);
+    super.didChangeDependencies();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -386,12 +396,10 @@ class _Offer extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(20),
-            child: Image.memory(getIt<CubitPictures>()
-                .state
-                .entries
-                .where((element) => element.key.contains(item.productNumber))
-                .firstOrNull!
-                .value!),
+            child: widget.item.entityCorePictures != null
+                ? Image.memory(Uint8List.fromList(
+                    widget.item.entityCorePictures!.listIntForUint8List))
+                : const SizedBox.shrink(),
           ),
           Expanded(
             child: Column(
@@ -401,7 +409,7 @@ class _Offer extends StatelessWidget {
                       vertical: constraints.maxHeight * 0.12,
                       horizontal: constraints.maxWidth * 0.02),
                   child: Text(
-                    item.productName,
+                    widget.item.categoryEntity.productTitle,
                     style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
@@ -412,9 +420,7 @@ class _Offer extends StatelessWidget {
                 ),
                 Expanded(
                   child: Text(
-                    NumberFormat.currency(
-                            locale: 'de_DE', symbol: '€', decimalDigits: 2)
-                        .format((item.price) * item.productCount),
+                    widget.item.completeAmount,
                     style: const TextStyle(
                         fontSize: 20, fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center,

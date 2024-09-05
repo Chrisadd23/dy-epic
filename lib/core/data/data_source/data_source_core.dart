@@ -20,7 +20,8 @@ class DataSourceImplementationCore extends DataSourceCore {
             debugPrint("getImageBytes $name --  ");
             final uInt8List = await FirebaseConfiguration.getImageBytes(name);
             debugPrint("--count ==> ${i++} getImageBytes $name --  ");
-            return EntityCorePictures(name: name, uint8List: uInt8List!);
+            return EntityCorePictures(
+                name: name, listIntForUint8List: uInt8List!.toList());
           })
           .toList()
           .wait;

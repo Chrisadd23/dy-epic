@@ -31,29 +31,25 @@ Map<String, dynamic> _$$ShoppingBasketEntityImplToJson(
 _$ShoppingBasketProductImpl _$$ShoppingBasketProductImplFromJson(
         Map<String, dynamic> json) =>
     _$ShoppingBasketProductImpl(
-      productNumber: json['productNumber'] as String,
-      productName: json['productName'] as String,
-      productType: (json['productType'] as num).toInt(),
-      productCount: (json['productCount'] as num).toInt(),
-      price: (json['price'] as num).toDouble(),
-      addedTime: (json['addedTime'] as num).toInt(),
-      color: json['color'] as String?,
-      widthAndHeight: json['widthAndHeight'] == null
+      categoryEntity: CategoryEntity.fromJson(
+          json['categoryEntity'] as Map<String, dynamic>),
+      entityCorePictures: json['entityCorePictures'] == null
           ? null
-          : Size.fromJson(json['widthAndHeight'] as Map<String, dynamic>),
+          : EntityCorePictures.fromJson(
+              json['entityCorePictures'] as Map<String, dynamic>),
+      addedTime: (json['addedTime'] as num).toInt(),
+      productCount: (json['productCount'] as num).toInt(),
+      completeAmount: json['completeAmount'] as String,
     );
 
 Map<String, dynamic> _$$ShoppingBasketProductImplToJson(
         _$ShoppingBasketProductImpl instance) =>
     <String, dynamic>{
-      'productNumber': instance.productNumber,
-      'productName': instance.productName,
-      'productType': instance.productType,
-      'productCount': instance.productCount,
-      'price': instance.price,
+      'categoryEntity': instance.categoryEntity.toJson(),
+      'entityCorePictures': instance.entityCorePictures?.toJson(),
       'addedTime': instance.addedTime,
-      'color': instance.color,
-      'widthAndHeight': instance.widthAndHeight?.toJson(),
+      'productCount': instance.productCount,
+      'completeAmount': instance.completeAmount,
     };
 
 _$SizeImpl _$$SizeImplFromJson(Map<String, dynamic> json) => _$SizeImpl(

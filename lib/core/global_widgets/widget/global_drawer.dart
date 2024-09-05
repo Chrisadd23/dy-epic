@@ -195,19 +195,21 @@ class _DrawerWidget extends StatelessWidget {
                                         return Padding(
                                           padding: const EdgeInsets.symmetric(
                                               horizontal: 8.0),
-                                          child: FittedBox(
-                                            child: Text(
-                                              state.mapOrNull(
-                                                      loggedIn: (stateLoggedIn) =>
-                                                          stateLoggedIn
-                                                              .entityLoginCustomer
-                                                              .customerNumber) ??
-                                                  'Kundennummer',
-                                              style: const TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 20),
-                                            ),
-                                          ),
+                                          child: state.mapOrNull(
+                                                loggedIn: (stateLoggedIn) =>
+                                                    FittedBox(
+                                                  child: Text(
+                                                    stateLoggedIn
+                                                        .entityLoginCustomer
+                                                        .customerNumber,
+                                                    style: const TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 20),
+                                                  ),
+                                                ),
+                                              ) ??
+                                              const SizedBox.shrink(),
                                         );
                                       }),
                                     ))

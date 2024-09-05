@@ -11,7 +11,6 @@ class StateShoppingBasket with _$StateShoppingBasket {
 
   const factory StateShoppingBasket(
       {required List<ShoppingBasketProduct> orderChosenProductList,
-      required List<ShoppingBasketProduct> requestChosenProductList,
       Failure? failure}) = _StateShoppingBasket;
 
   EnumOrderType getEnumOrderType({required int timeIndex}) {
@@ -20,7 +19,4 @@ class StateShoppingBasket with _$StateShoppingBasket {
         ? EnumOrderType.bestellung
         : EnumOrderType.anfrage;
   }
-
-  bool get isEmpty =>
-      requestChosenProductList.isEmpty && orderChosenProductList.isEmpty;
 }

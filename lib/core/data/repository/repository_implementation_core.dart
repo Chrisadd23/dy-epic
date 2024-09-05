@@ -47,4 +47,14 @@ class RepositoryImplementationCore extends RepositoryCore {
 
   @override
   List<EntityCorePictures> get entityPictures => _entityPictures;
+
+  @override
+  EntityCorePictures? getSingleImageBytes(String productNumber) {
+    debugPrint('product number ==> $productNumber');
+    final entityCore = entityPictures
+        .where((entity) => entity.name.contains(productNumber))
+        .firstOrNull;
+    debugPrint('entityCore == null : ${entityCore == null}');
+    return entityCore;
+  }
 }

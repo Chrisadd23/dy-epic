@@ -1,6 +1,6 @@
 import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
+import 'package:app_flutter_produkt_bestellen/core/extension/double.dart';
 import 'package:app_flutter_produkt_bestellen/core/extension/list_extenstion.dart';
-import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket//presentation/bloc/state_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/domain/entity/shopping_basket_entity.dart';
@@ -14,118 +14,69 @@ import 'package:go_router/go_router.dart';
 class BlocShoppingBasket
     extends Bloc<EventShoppingBasket, StateShoppingBasket> {
   BlocShoppingBasket(this._shoppingBasketRepository)
-      : super(const StateShoppingBasket(
-            orderChosenProductList: [], requestChosenProductList: [])) {
+      : super(const StateShoppingBasket(orderChosenProductList: [])) {
     on<EventShoppingBasket>((event, emitState) async {
       await event.when(
-        add: (product, timeIndex, orderType) {
-          debugPrint("timeIndex ==> $timeIndex -- ");
-          if (timeIndex != null) {
-            if (orderType == EnumOrderType.bestellung &&
-                state.orderChosenProductList
-                    .any((element) => element.addedTime == timeIndex)) {
-              final newOrderList = state.orderChosenProductList
-                  .replaceAndSortProduct(product: product); //Extension
-
-              emitState(state.copyWith(orderChosenProductList: newOrderList));
-            } else if (orderType == EnumOrderType.anfrage &&
-                state.requestChosenProductList
-                    .any((element) => element.addedTime == timeIndex)) {
-              final newRequestList = state.requestChosenProductList
-                  .replaceAndSortProduct(product: product); //Extension
-
-              emitState(
-                  state.copyWith(requestChosenProductList: newRequestList));
-            } else if (orderType == EnumOrderType.bestellung) {
-              final newOrderList = state.orderChosenProductList
-                  .addAndSortProduct(product: product); //Extension
-              List<ShoppingBasketProduct> newRequestList =
-                  List.from(state.requestChosenProductList)
-                    ..removeWhere((element) => element.addedTime == timeIndex)
-                    ..sort((a, b) => b.addedTime.compareTo(a.addedTime));
-
-              emitState(state.copyWith(
-                  orderChosenProductList: newOrderList,
-                  requestChosenProductList: newRequestList));
-            } else if (orderType == EnumOrderType.anfrage) {
-              final newRequestList = state.requestChosenProductList
-                  .addAndSortProduct(product: product); //Extension
-
-              List<ShoppingBasketProduct> newOrderList =
-                  List<ShoppingBasketProduct>.from(state.orderChosenProductList)
-                    ..removeWhere((element) => element.addedTime == timeIndex)
-                    ..sort((a, b) => b.addedTime.compareTo(a.addedTime));
-
-              emitState(state.copyWith(
-                  orderChosenProductList: newOrderList,
-                  requestChosenProductList: newRequestList));
-            }
+        add: (category, count, categoryEntity, entityCorePicture, timeIndex) {
+          debugPrint("add product");
+          final listOrderProduct = List.of(state.orderChosenProductList);
+          if (timeIndex == null) {
+            listOrderProduct.add(ShoppingBasketProduct(
+                categoryEntity: categoryEntity,
+                entityCorePictures: entityCorePicture,
+                addedTime: DateTime.now().millisecondsSinceEpoch,
+                productCount: count,
+                completeAmount:
+                    (count * categoryEntity.normalPrice!).getCurrency()));
+            emitState(state.copyWith(orderChosenProductList: listOrderProduct));
           } else {
-            if (orderType == EnumOrderType.bestellung) {
-              final newOrderList =
-                  List<ShoppingBasketProduct>.from(state.orderChosenProductList)
-                    ..add(product);
-              emitState(state.copyWith(orderChosenProductList: newOrderList));
-            } else {
-              final newRequestList = List<ShoppingBasketProduct>.from(
-                  state.requestChosenProductList)
-                ..add(product);
-              emitState(
-                  state.copyWith(requestChosenProductList: newRequestList));
-            }
+            final newOrderList = state.copyWith(
+              orderChosenProductList:
+                  state.orderChosenProductList.replaceAndSortProduct(
+                product: ShoppingBasketProduct(
+                  categoryEntity: categoryEntity,
+                  entityCorePictures: entityCorePicture,
+                  addedTime: timeIndex,
+                  productCount: count,
+                  completeAmount:
+                      (count * categoryEntity.normalPrice!).getCurrency(),
+                ),
+              ),
+            );
+            emitState(newOrderList);
           }
         },
         change: (timeIndex, location) {
-          final product = [
-            ...state.orderChosenProductList,
-            ...state.requestChosenProductList
-          ].where((product) => product.addedTime == timeIndex).first;
-          final productCategory = EnumCategoryProduct.values
-              .where((element) => element.index == product.productType)
+          final product = state.orderChosenProductList
+              .where((product) => product.addedTime == timeIndex)
               .first;
+
           final ({ShoppingBasketProduct chosenProduct, int index}) record =
               (chosenProduct: product, index: timeIndex);
-          final String routeName =
-              _getRouteName(productCategory: productCategory);
 
           if (location.contains(AppGoRouter.product.title)) {
-            if (location.contains(routeName)) {
-              getIt<GoRouter>().pushReplacementNamed(routeName, extra: record);
-            } else {
-              getIt<GoRouter>().goNamed(routeName, extra: record);
-            }
+            getIt<GoRouter>()
+                .pushReplacementNamed(AppGoRouter.product.name, extra: record);
           } else {
             getIt<GoRouter>().pop(null);
-            if (productCategory == EnumCategoryProduct.workingTable) {
-              getIt<GoRouter>().goNamed(routeName, extra: record);
-            } else if (productCategory ==
-                    EnumCategoryProduct.officeChairNormal ||
-                productCategory == EnumCategoryProduct.officeChairHochlehner) {
-              getIt<GoRouter>().goNamed(routeName, extra: record);
-            } else if (productCategory == EnumCategoryProduct.conferenceChair) {
-              getIt<GoRouter>().goNamed(routeName, extra: record);
-            }
+            getIt<GoRouter>().goNamed(AppGoRouter.product.name, extra: record);
           }
         },
         remove: (timeIndex) {
           List<ShoppingBasketProduct> orderList =
               List.from(state.orderChosenProductList)
                 ..removeWhere((element) => element.addedTime == timeIndex);
-          List<ShoppingBasketProduct> requestList =
-              List.from(state.requestChosenProductList)
-                ..removeWhere((element) => element.addedTime == timeIndex);
 
           emitState(
             state.copyWith(
-                orderChosenProductList: orderList,
-                requestChosenProductList: requestList),
+              orderChosenProductList: orderList,
+            ),
           );
         },
         orderList: (enumOrder) {},
         clear: () {
           emitState(state.copyWith(
             orderChosenProductList: [],
-            requestChosenProductList: [],
           ));
         },
         send: (customerNumber) async {
@@ -137,25 +88,15 @@ class BlocShoppingBasket
                   products: state.orderChosenProductList,
                   sendDate: DateTime.now().millisecondsSinceEpoch);
 
-          final ShoppingBasketEntity requestShoppingBasketEntity =
-              ShoppingBasketEntity(
-            id: '${state.requestChosenProductList.hashCode}-$customerNumber',
-            userId: customerNumber,
-            status: 0,
-            products: state.requestChosenProductList,
-            sendDate: DateTime.now().millisecondsSinceEpoch,
-          );
-
           try {
             final result = await _shoppingBasketRepository.sendOrder(
-                order: orderShoppingBasketEntity,
-                request: requestShoppingBasketEntity);
+              order: orderShoppingBasketEntity,
+            );
 
             result.fold(
               (failure) => emitState(state.copyWith(failure: failure)),
               (right) => emitState(
-                state.copyWith(
-                    orderChosenProductList: [], requestChosenProductList: []),
+                state.copyWith(orderChosenProductList: []),
               ),
             );
           } catch (e) {
@@ -173,19 +114,6 @@ class BlocShoppingBasket
         },
       );
     });
-  }
-
-  String _getRouteName({required EnumCategoryProduct productCategory}) {
-    if (productCategory == EnumCategoryProduct.workingTable) {
-      return '${AppGoRouter.arbeitstische.name}/${AppGoRouter.product.title}';
-    } else if (productCategory == EnumCategoryProduct.officeChairNormal ||
-        productCategory == EnumCategoryProduct.officeChairHochlehner) {
-      return '${AppGoRouter.buerostuehle.name}/${AppGoRouter.product.title}';
-    } else if (productCategory == EnumCategoryProduct.conferenceChair) {
-      return '${AppGoRouter.konferenzstuehle.name}/${AppGoRouter.product.title}';
-    } else {
-      return AppGoRouter.home.name;
-    }
   }
 
   final ShoppingBasketRepository _shoppingBasketRepository;

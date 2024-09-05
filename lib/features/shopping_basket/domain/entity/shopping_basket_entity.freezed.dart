@@ -255,14 +255,12 @@ ShoppingBasketProduct _$ShoppingBasketProductFromJson(
 
 /// @nodoc
 mixin _$ShoppingBasketProduct {
-  String get productNumber => throw _privateConstructorUsedError;
-  String get productName => throw _privateConstructorUsedError;
-  int get productType => throw _privateConstructorUsedError;
-  int get productCount => throw _privateConstructorUsedError;
-  double get price => throw _privateConstructorUsedError;
+  CategoryEntity get categoryEntity => throw _privateConstructorUsedError;
+  EntityCorePictures? get entityCorePictures =>
+      throw _privateConstructorUsedError;
   int get addedTime => throw _privateConstructorUsedError;
-  String? get color => throw _privateConstructorUsedError;
-  Size? get widthAndHeight => throw _privateConstructorUsedError;
+  int get productCount => throw _privateConstructorUsedError;
+  String get completeAmount => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -277,16 +275,14 @@ abstract class $ShoppingBasketProductCopyWith<$Res> {
       _$ShoppingBasketProductCopyWithImpl<$Res, ShoppingBasketProduct>;
   @useResult
   $Res call(
-      {String productNumber,
-      String productName,
-      int productType,
-      int productCount,
-      double price,
+      {CategoryEntity categoryEntity,
+      EntityCorePictures? entityCorePictures,
       int addedTime,
-      String? color,
-      Size? widthAndHeight});
+      int productCount,
+      String completeAmount});
 
-  $SizeCopyWith<$Res>? get widthAndHeight;
+  $CategoryEntityCopyWith<$Res> get categoryEntity;
+  $EntityCorePicturesCopyWith<$Res>? get entityCorePictures;
 }
 
 /// @nodoc
@@ -303,60 +299,54 @@ class _$ShoppingBasketProductCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? productNumber = null,
-    Object? productName = null,
-    Object? productType = null,
-    Object? productCount = null,
-    Object? price = null,
+    Object? categoryEntity = null,
+    Object? entityCorePictures = freezed,
     Object? addedTime = null,
-    Object? color = freezed,
-    Object? widthAndHeight = freezed,
+    Object? productCount = null,
+    Object? completeAmount = null,
   }) {
     return _then(_value.copyWith(
-      productNumber: null == productNumber
-          ? _value.productNumber
-          : productNumber // ignore: cast_nullable_to_non_nullable
-              as String,
-      productName: null == productName
-          ? _value.productName
-          : productName // ignore: cast_nullable_to_non_nullable
-              as String,
-      productType: null == productType
-          ? _value.productType
-          : productType // ignore: cast_nullable_to_non_nullable
+      categoryEntity: null == categoryEntity
+          ? _value.categoryEntity
+          : categoryEntity // ignore: cast_nullable_to_non_nullable
+              as CategoryEntity,
+      entityCorePictures: freezed == entityCorePictures
+          ? _value.entityCorePictures
+          : entityCorePictures // ignore: cast_nullable_to_non_nullable
+              as EntityCorePictures?,
+      addedTime: null == addedTime
+          ? _value.addedTime
+          : addedTime // ignore: cast_nullable_to_non_nullable
               as int,
       productCount: null == productCount
           ? _value.productCount
           : productCount // ignore: cast_nullable_to_non_nullable
               as int,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as double,
-      addedTime: null == addedTime
-          ? _value.addedTime
-          : addedTime // ignore: cast_nullable_to_non_nullable
-              as int,
-      color: freezed == color
-          ? _value.color
-          : color // ignore: cast_nullable_to_non_nullable
-              as String?,
-      widthAndHeight: freezed == widthAndHeight
-          ? _value.widthAndHeight
-          : widthAndHeight // ignore: cast_nullable_to_non_nullable
-              as Size?,
+      completeAmount: null == completeAmount
+          ? _value.completeAmount
+          : completeAmount // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $SizeCopyWith<$Res>? get widthAndHeight {
-    if (_value.widthAndHeight == null) {
+  $CategoryEntityCopyWith<$Res> get categoryEntity {
+    return $CategoryEntityCopyWith<$Res>(_value.categoryEntity, (value) {
+      return _then(_value.copyWith(categoryEntity: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $EntityCorePicturesCopyWith<$Res>? get entityCorePictures {
+    if (_value.entityCorePictures == null) {
       return null;
     }
 
-    return $SizeCopyWith<$Res>(_value.widthAndHeight!, (value) {
-      return _then(_value.copyWith(widthAndHeight: value) as $Val);
+    return $EntityCorePicturesCopyWith<$Res>(_value.entityCorePictures!,
+        (value) {
+      return _then(_value.copyWith(entityCorePictures: value) as $Val);
     });
   }
 }
@@ -371,17 +361,16 @@ abstract class _$$ShoppingBasketProductImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String productNumber,
-      String productName,
-      int productType,
-      int productCount,
-      double price,
+      {CategoryEntity categoryEntity,
+      EntityCorePictures? entityCorePictures,
       int addedTime,
-      String? color,
-      Size? widthAndHeight});
+      int productCount,
+      String completeAmount});
 
   @override
-  $SizeCopyWith<$Res>? get widthAndHeight;
+  $CategoryEntityCopyWith<$Res> get categoryEntity;
+  @override
+  $EntityCorePicturesCopyWith<$Res>? get entityCorePictures;
 }
 
 /// @nodoc
@@ -396,48 +385,33 @@ class __$$ShoppingBasketProductImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? productNumber = null,
-    Object? productName = null,
-    Object? productType = null,
-    Object? productCount = null,
-    Object? price = null,
+    Object? categoryEntity = null,
+    Object? entityCorePictures = freezed,
     Object? addedTime = null,
-    Object? color = freezed,
-    Object? widthAndHeight = freezed,
+    Object? productCount = null,
+    Object? completeAmount = null,
   }) {
     return _then(_$ShoppingBasketProductImpl(
-      productNumber: null == productNumber
-          ? _value.productNumber
-          : productNumber // ignore: cast_nullable_to_non_nullable
-              as String,
-      productName: null == productName
-          ? _value.productName
-          : productName // ignore: cast_nullable_to_non_nullable
-              as String,
-      productType: null == productType
-          ? _value.productType
-          : productType // ignore: cast_nullable_to_non_nullable
+      categoryEntity: null == categoryEntity
+          ? _value.categoryEntity
+          : categoryEntity // ignore: cast_nullable_to_non_nullable
+              as CategoryEntity,
+      entityCorePictures: freezed == entityCorePictures
+          ? _value.entityCorePictures
+          : entityCorePictures // ignore: cast_nullable_to_non_nullable
+              as EntityCorePictures?,
+      addedTime: null == addedTime
+          ? _value.addedTime
+          : addedTime // ignore: cast_nullable_to_non_nullable
               as int,
       productCount: null == productCount
           ? _value.productCount
           : productCount // ignore: cast_nullable_to_non_nullable
               as int,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as double,
-      addedTime: null == addedTime
-          ? _value.addedTime
-          : addedTime // ignore: cast_nullable_to_non_nullable
-              as int,
-      color: freezed == color
-          ? _value.color
-          : color // ignore: cast_nullable_to_non_nullable
-              as String?,
-      widthAndHeight: freezed == widthAndHeight
-          ? _value.widthAndHeight
-          : widthAndHeight // ignore: cast_nullable_to_non_nullable
-              as Size?,
+      completeAmount: null == completeAmount
+          ? _value.completeAmount
+          : completeAmount // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -447,38 +421,29 @@ class __$$ShoppingBasketProductImplCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 class _$ShoppingBasketProductImpl implements _ShoppingBasketProduct {
   const _$ShoppingBasketProductImpl(
-      {required this.productNumber,
-      required this.productName,
-      required this.productType,
-      required this.productCount,
-      required this.price,
+      {required this.categoryEntity,
+      required this.entityCorePictures,
       required this.addedTime,
-      this.color,
-      this.widthAndHeight});
+      required this.productCount,
+      required this.completeAmount});
 
   factory _$ShoppingBasketProductImpl.fromJson(Map<String, dynamic> json) =>
       _$$ShoppingBasketProductImplFromJson(json);
 
   @override
-  final String productNumber;
+  final CategoryEntity categoryEntity;
   @override
-  final String productName;
-  @override
-  final int productType;
-  @override
-  final int productCount;
-  @override
-  final double price;
+  final EntityCorePictures? entityCorePictures;
   @override
   final int addedTime;
   @override
-  final String? color;
+  final int productCount;
   @override
-  final Size? widthAndHeight;
+  final String completeAmount;
 
   @override
   String toString() {
-    return 'ShoppingBasketProduct(productNumber: $productNumber, productName: $productName, productType: $productType, productCount: $productCount, price: $price, addedTime: $addedTime, color: $color, widthAndHeight: $widthAndHeight)';
+    return 'ShoppingBasketProduct(categoryEntity: $categoryEntity, entityCorePictures: $entityCorePictures, addedTime: $addedTime, productCount: $productCount, completeAmount: $completeAmount)';
   }
 
   @override
@@ -486,26 +451,22 @@ class _$ShoppingBasketProductImpl implements _ShoppingBasketProduct {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ShoppingBasketProductImpl &&
-            (identical(other.productNumber, productNumber) ||
-                other.productNumber == productNumber) &&
-            (identical(other.productName, productName) ||
-                other.productName == productName) &&
-            (identical(other.productType, productType) ||
-                other.productType == productType) &&
-            (identical(other.productCount, productCount) ||
-                other.productCount == productCount) &&
-            (identical(other.price, price) || other.price == price) &&
+            (identical(other.categoryEntity, categoryEntity) ||
+                other.categoryEntity == categoryEntity) &&
+            (identical(other.entityCorePictures, entityCorePictures) ||
+                other.entityCorePictures == entityCorePictures) &&
             (identical(other.addedTime, addedTime) ||
                 other.addedTime == addedTime) &&
-            (identical(other.color, color) || other.color == color) &&
-            (identical(other.widthAndHeight, widthAndHeight) ||
-                other.widthAndHeight == widthAndHeight));
+            (identical(other.productCount, productCount) ||
+                other.productCount == productCount) &&
+            (identical(other.completeAmount, completeAmount) ||
+                other.completeAmount == completeAmount));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, productNumber, productName,
-      productType, productCount, price, addedTime, color, widthAndHeight);
+  int get hashCode => Object.hash(runtimeType, categoryEntity,
+      entityCorePictures, addedTime, productCount, completeAmount);
 
   @JsonKey(ignore: true)
   @override
@@ -524,34 +485,25 @@ class _$ShoppingBasketProductImpl implements _ShoppingBasketProduct {
 
 abstract class _ShoppingBasketProduct implements ShoppingBasketProduct {
   const factory _ShoppingBasketProduct(
-      {required final String productNumber,
-      required final String productName,
-      required final int productType,
-      required final int productCount,
-      required final double price,
+      {required final CategoryEntity categoryEntity,
+      required final EntityCorePictures? entityCorePictures,
       required final int addedTime,
-      final String? color,
-      final Size? widthAndHeight}) = _$ShoppingBasketProductImpl;
+      required final int productCount,
+      required final String completeAmount}) = _$ShoppingBasketProductImpl;
 
   factory _ShoppingBasketProduct.fromJson(Map<String, dynamic> json) =
       _$ShoppingBasketProductImpl.fromJson;
 
   @override
-  String get productNumber;
+  CategoryEntity get categoryEntity;
   @override
-  String get productName;
-  @override
-  int get productType;
-  @override
-  int get productCount;
-  @override
-  double get price;
+  EntityCorePictures? get entityCorePictures;
   @override
   int get addedTime;
   @override
-  String? get color;
+  int get productCount;
   @override
-  Size? get widthAndHeight;
+  String get completeAmount;
   @override
   @JsonKey(ignore: true)
   _$$ShoppingBasketProductImplCopyWith<_$ShoppingBasketProductImpl>

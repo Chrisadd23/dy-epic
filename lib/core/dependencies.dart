@@ -3,6 +3,7 @@ import 'package:app_flutter_produkt_bestellen/core/data/repository/repository_im
 import 'package:app_flutter_produkt_bestellen/core/domain/repository/repository_core.dart';
 import 'package:app_flutter_produkt_bestellen/core/domain/use_case/use_case_get_local_pictures.dart';
 import 'package:app_flutter_produkt_bestellen/core/domain/use_case/use_case_get_pictures.dart';
+import 'package:app_flutter_produkt_bestellen/core/domain/use_case/use_case_get_single_image.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_cubits/cubit_pictures.dart';
 import 'package:app_flutter_produkt_bestellen/core/presentation/cubit/cubit_core_pictures.dart';
 import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
@@ -16,13 +17,18 @@ abstract class CoreDependencies {
           () => DataSourceImplementationCore())
       ..registerLazySingleton<RepositoryCore>(
           () => RepositoryImplementationCore(getIt()))
-      ..registerLazySingleton<UseCaseGetPictures>(
-        () => UseCaseGetPictures(
+      ..registerLazySingleton<UseCaseGetPicture>(
+        () => UseCaseGetPicture(
           getIt(),
         ),
       )
       ..registerLazySingleton(
         () => UseCaseGetLocalPictures(
+          getIt(),
+        ),
+      )
+      ..registerLazySingleton<UseCaseGetSingleLocalImage>(
+        () => UseCaseGetSingleLocalImage(
           getIt(),
         ),
       )

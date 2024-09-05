@@ -18,8 +18,6 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$StateShoppingBasket {
   List<ShoppingBasketProduct> get orderChosenProductList =>
       throw _privateConstructorUsedError;
-  List<ShoppingBasketProduct> get requestChosenProductList =>
-      throw _privateConstructorUsedError;
   Failure? get failure => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -34,9 +32,7 @@ abstract class $StateShoppingBasketCopyWith<$Res> {
       _$StateShoppingBasketCopyWithImpl<$Res, StateShoppingBasket>;
   @useResult
   $Res call(
-      {List<ShoppingBasketProduct> orderChosenProductList,
-      List<ShoppingBasketProduct> requestChosenProductList,
-      Failure? failure});
+      {List<ShoppingBasketProduct> orderChosenProductList, Failure? failure});
 
   $FailureCopyWith<$Res>? get failure;
 }
@@ -55,17 +51,12 @@ class _$StateShoppingBasketCopyWithImpl<$Res, $Val extends StateShoppingBasket>
   @override
   $Res call({
     Object? orderChosenProductList = null,
-    Object? requestChosenProductList = null,
     Object? failure = freezed,
   }) {
     return _then(_value.copyWith(
       orderChosenProductList: null == orderChosenProductList
           ? _value.orderChosenProductList
           : orderChosenProductList // ignore: cast_nullable_to_non_nullable
-              as List<ShoppingBasketProduct>,
-      requestChosenProductList: null == requestChosenProductList
-          ? _value.requestChosenProductList
-          : requestChosenProductList // ignore: cast_nullable_to_non_nullable
               as List<ShoppingBasketProduct>,
       failure: freezed == failure
           ? _value.failure
@@ -96,9 +87,7 @@ abstract class _$$StateShoppingBasketImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<ShoppingBasketProduct> orderChosenProductList,
-      List<ShoppingBasketProduct> requestChosenProductList,
-      Failure? failure});
+      {List<ShoppingBasketProduct> orderChosenProductList, Failure? failure});
 
   @override
   $FailureCopyWith<$Res>? get failure;
@@ -116,17 +105,12 @@ class __$$StateShoppingBasketImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? orderChosenProductList = null,
-    Object? requestChosenProductList = null,
     Object? failure = freezed,
   }) {
     return _then(_$StateShoppingBasketImpl(
       orderChosenProductList: null == orderChosenProductList
           ? _value._orderChosenProductList
           : orderChosenProductList // ignore: cast_nullable_to_non_nullable
-              as List<ShoppingBasketProduct>,
-      requestChosenProductList: null == requestChosenProductList
-          ? _value._requestChosenProductList
-          : requestChosenProductList // ignore: cast_nullable_to_non_nullable
               as List<ShoppingBasketProduct>,
       failure: freezed == failure
           ? _value.failure
@@ -141,10 +125,8 @@ class __$$StateShoppingBasketImplCopyWithImpl<$Res>
 class _$StateShoppingBasketImpl extends _StateShoppingBasket {
   const _$StateShoppingBasketImpl(
       {required final List<ShoppingBasketProduct> orderChosenProductList,
-      required final List<ShoppingBasketProduct> requestChosenProductList,
       this.failure})
       : _orderChosenProductList = orderChosenProductList,
-        _requestChosenProductList = requestChosenProductList,
         super._();
 
   final List<ShoppingBasketProduct> _orderChosenProductList;
@@ -156,21 +138,12 @@ class _$StateShoppingBasketImpl extends _StateShoppingBasket {
     return EqualUnmodifiableListView(_orderChosenProductList);
   }
 
-  final List<ShoppingBasketProduct> _requestChosenProductList;
-  @override
-  List<ShoppingBasketProduct> get requestChosenProductList {
-    if (_requestChosenProductList is EqualUnmodifiableListView)
-      return _requestChosenProductList;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_requestChosenProductList);
-  }
-
   @override
   final Failure? failure;
 
   @override
   String toString() {
-    return 'StateShoppingBasket(orderChosenProductList: $orderChosenProductList, requestChosenProductList: $requestChosenProductList, failure: $failure)';
+    return 'StateShoppingBasket(orderChosenProductList: $orderChosenProductList, failure: $failure)';
   }
 
   @override
@@ -180,17 +153,12 @@ class _$StateShoppingBasketImpl extends _StateShoppingBasket {
             other is _$StateShoppingBasketImpl &&
             const DeepCollectionEquality().equals(
                 other._orderChosenProductList, _orderChosenProductList) &&
-            const DeepCollectionEquality().equals(
-                other._requestChosenProductList, _requestChosenProductList) &&
             (identical(other.failure, failure) || other.failure == failure));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_orderChosenProductList),
-      const DeepCollectionEquality().hash(_requestChosenProductList),
-      failure);
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_orderChosenProductList), failure);
 
   @JsonKey(ignore: true)
   @override
@@ -203,14 +171,11 @@ class _$StateShoppingBasketImpl extends _StateShoppingBasket {
 abstract class _StateShoppingBasket extends StateShoppingBasket {
   const factory _StateShoppingBasket(
       {required final List<ShoppingBasketProduct> orderChosenProductList,
-      required final List<ShoppingBasketProduct> requestChosenProductList,
       final Failure? failure}) = _$StateShoppingBasketImpl;
   const _StateShoppingBasket._() : super._();
 
   @override
   List<ShoppingBasketProduct> get orderChosenProductList;
-  @override
-  List<ShoppingBasketProduct> get requestChosenProductList;
   @override
   Failure? get failure;
   @override

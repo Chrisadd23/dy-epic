@@ -1,3 +1,5 @@
+import 'package:app_flutter_produkt_bestellen/core/domain/entity/entity_core_pictures.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/share/domain/entity/category_entity.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'shopping_basket_entity.freezed.dart';
@@ -25,14 +27,11 @@ class ShoppingBasketProduct with _$ShoppingBasketProduct {
   //ignore: invalid_annotation_target
   @JsonSerializable(explicitToJson: true)
   const factory ShoppingBasketProduct({
-    required String productNumber,
-    required String productName,
-    required int productType,
-    required int productCount,
-    required double price,
+    required CategoryEntity categoryEntity,
+    required EntityCorePictures? entityCorePictures,
     required int addedTime,
-    String? color,
-    Size? widthAndHeight,
+    required int productCount,
+    required String completeAmount,
   }) = _ShoppingBasketProduct;
 
   factory ShoppingBasketProduct.fromJson(Map<String, dynamic> json) =>

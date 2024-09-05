@@ -12,8 +12,7 @@ class ShoppingBasketRepositoryImplementation extends ShoppingBasketRepository {
 
   @override
   Future<Either<Failure, bool>> sendOrder(
-      {required ShoppingBasketEntity order,
-      required ShoppingBasketEntity request}) {
-    return shoppingBasketDataSource.sendOrder(order: order, request: request);
+      {required ShoppingBasketEntity order}) {
+    return shoppingBasketDataSource.sendOrder(order: order);
   }
 }

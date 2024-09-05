@@ -5,6 +5,5 @@ import 'package:either_dart/either.dart';
 abstract class ShoppingBasketRepository {
   Future<Either<Failure, bool>> sendOrder({
     required ShoppingBasketEntity order,
-    required ShoppingBasketEntity request,
   });
 }

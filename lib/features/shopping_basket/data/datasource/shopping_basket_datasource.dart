@@ -6,7 +6,6 @@ import 'package:either_dart/either.dart';
 abstract class ShoppingBasketDataSource {
   Future<Either<Failure, bool>> sendOrder({
     required ShoppingBasketEntity order,
-    required ShoppingBasketEntity request,
   });
 }
 
@@ -16,9 +15,9 @@ class ShoppingBasketDataSourceImplementation extends ShoppingBasketDataSource {
   final FirebaseFirestore _firebaseFirestore;
 
   @override
-  Future<Either<Failure, bool>> sendOrder(
-      {required ShoppingBasketEntity order,
-      required ShoppingBasketEntity request}) async {
+  Future<Either<Failure, bool>> sendOrder({
+    required ShoppingBasketEntity order,
+  }) async {
     Failure? failure;
 
     try {
@@ -32,19 +31,7 @@ class ShoppingBasketDataSourceImplementation extends ShoppingBasketDataSource {
           return Left(failure!);
         }
       }
-      if (request.products.isNotEmpty) {
-        await _firebaseFirestore
-            .collection("Request")
-            .add(request.toJson())
-            .then(
-              (value) => true,
-              onError: (error) =>
-                  failure = Failure.databaseError(error.toString()),
-            );
-        if (failure != null) {
-          return Left(failure!);
-        }
-      }
+
       return const Right(true);
     } catch (e) {
       return Left(

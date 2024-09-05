@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:app_flutter_produkt_bestellen/core/domain/entity/entity_core_pictures.dart';
 import 'package:app_flutter_produkt_bestellen/core/presentation/cubit/cubit_core_pictures.dart';
 import 'package:flutter/material.dart';
@@ -33,15 +35,15 @@ class CategoryImageContainer extends StatelessWidget {
                           .contains(
                               '$productNumber${color == null ? '' : '_$color'}'))
                       .firstOrNull
-                      ?.uint8List !=
+                      ?.listIntForUint8List !=
                   null
               ? Image.memory(
-                  state
+                  Uint8List.fromList(state
                       .where((entityCorePicture) => entityCorePicture.name
                           .contains(
                               '$productNumber${color == null ? '' : '_$color'}'))
                       .first
-                      .uint8List,
+                      .listIntForUint8List),
                   fit: BoxFit.fill,
                 )
               : const SizedBox.shrink(),

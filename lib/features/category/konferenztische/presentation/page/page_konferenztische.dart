@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_page_widget.dart';
+import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_scaffold.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/list_wheel_scroll_view_x.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';

@@ -44,6 +44,9 @@ abstract class AppTextStyle {
   static TextStyle get bold18 =>
       const TextStyle(fontSize: 18, fontWeight: FontWeight.bold);
 
+  static TextStyle get bold22 =>
+      const TextStyle(fontSize: 22, fontWeight: FontWeight.bold);
+
   static TextStyle get bold16 =>
       const TextStyle(fontSize: 16, fontWeight: FontWeight.bold);
 

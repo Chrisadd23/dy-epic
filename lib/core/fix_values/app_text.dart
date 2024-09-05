@@ -46,4 +46,8 @@ abstract class AppText {
   static String categoryConferenceChair = 'categoryConferenceChair';
 
   static String black = 'black';
+
+  static String addToShoppingBasket = 'Zum Warenkorb hinzufügen';
+
+  static String productInformation = 'Produktinformationen';
 }

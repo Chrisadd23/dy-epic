@@ -113,8 +113,11 @@ class _ShoppingBasketBlocSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isShoppingBasketEmpty =
-        context.watch<BlocShoppingBasket>().state.isEmpty;
+    final isShoppingBasketEmpty = context
+        .watch<BlocShoppingBasket>()
+        .state
+        .orderChosenProductList
+        .isEmpty;
     return Row(
       children: [
         if (sortType != EnumSortProductOrder.search)

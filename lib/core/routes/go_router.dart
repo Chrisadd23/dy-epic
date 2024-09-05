@@ -12,7 +12,7 @@ import 'package:app_flutter_produkt_bestellen/features/order/presentation/page/o
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/page/order_page_shell_navigation.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/page/request_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/widget/detailed_order_information.dart';
-import 'package:app_flutter_produkt_bestellen/features/product/workingtable/presentation/page/workingtable_page.dart';
+import 'package:app_flutter_produkt_bestellen/features/product/presentation/page/product_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/settings/presentation/page/customer_settings_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/settings/presentation/page/notification_settings_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/settings/presentation/page/settings_page_shell_navigation.dart';
@@ -108,7 +108,7 @@ enum AppGoRouter {
                       debugPrint("jsonObject ==> $jsonObject");
                       final product = CategoryEntity.fromJson(jsonObject);
                       return _getCustomerTransition(
-                        PageWorkingTableProduct(
+                        ProductPage(
                           product: product,
                         ),
                         state,
@@ -118,7 +118,7 @@ enum AppGoRouter {
                     debugPrint(
                         "check queryParameters selected Color- ${selectedColor.toString()}");
                     return _getCustomerTransition(
-                      PageWorkingTableProduct(
+                      ProductPage(
                         color: selectedColor,
                         recordOrder: recordOrder,
                       ),

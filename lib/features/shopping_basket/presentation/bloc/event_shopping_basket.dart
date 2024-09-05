@@ -1,15 +1,19 @@
+import 'package:app_flutter_produkt_bestellen/core/domain/entity/entity_core_pictures.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
-import 'package:app_flutter_produkt_bestellen/features/shopping_basket/domain/entity/shopping_basket_entity.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/share/domain/entity/category_entity.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'event_shopping_basket.freezed.dart';
 
 @freezed
 class EventShoppingBasket with _$EventShoppingBasket {
-  const factory EventShoppingBasket.add(
-      {required ShoppingBasketProduct chosenProduct,
-      int? index,
-      required EnumOrderType orderType}) = _Add;
+  const factory EventShoppingBasket.add({
+    required String category,
+    required int productOrderCount,
+    required CategoryEntity productEntity,
+    required EntityCorePictures entityCorePicture,
+    int? timeIndex,
+  }) = _Add;
 
   const factory EventShoppingBasket.change(
       {required int timePosition, required String location}) = _Change;

@@ -3,8 +3,8 @@ import 'package:app_flutter_produkt_bestellen/core/domain/repository/repository_
 import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
 import 'package:either_dart/either.dart';
 
-class UseCaseGetPictures {
-  UseCaseGetPictures(this._repositoryCore);
+class UseCaseGetPicture {
+  UseCaseGetPicture(this._repositoryCore);
 
   final RepositoryCore _repositoryCore;
 
