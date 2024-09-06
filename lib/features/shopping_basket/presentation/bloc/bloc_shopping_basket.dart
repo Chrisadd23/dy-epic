@@ -1,5 +1,4 @@
 import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
-import 'package:app_flutter_produkt_bestellen/core/extension/double.dart';
 import 'package:app_flutter_produkt_bestellen/core/extension/list_extenstion.dart';
 import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket//presentation/bloc/state_shopping_basket.dart';
@@ -26,8 +25,7 @@ class BlocShoppingBasket
                 categoryEntity: categoryEntity,
                 addedTime: DateTime.now().millisecondsSinceEpoch,
                 productCount: count,
-                completeAmount:
-                    (count * categoryEntity.normalPrice!).getCurrency()));
+                completeAmount: count * categoryEntity.normalPrice!));
             emitState(state.copyWith(orderChosenProductList: listOrderProduct));
           } else {
             if (state.orderChosenProductList.isEmpty ||
@@ -37,8 +35,7 @@ class BlocShoppingBasket
                   categoryEntity: categoryEntity,
                   addedTime: DateTime.now().millisecondsSinceEpoch,
                   productCount: count,
-                  completeAmount:
-                      (count * categoryEntity.normalPrice!).getCurrency()));
+                  completeAmount: count * categoryEntity.normalPrice!));
               emitState(
                   state.copyWith(orderChosenProductList: listOrderProduct));
             } else {
@@ -49,8 +46,7 @@ class BlocShoppingBasket
                     categoryEntity: categoryEntity,
                     addedTime: timeIndex,
                     productCount: count,
-                    completeAmount:
-                        (count * categoryEntity.normalPrice!).getCurrency(),
+                    completeAmount: count * categoryEntity.normalPrice!,
                   ),
                 ),
               );

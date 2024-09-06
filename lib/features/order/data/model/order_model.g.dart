@@ -12,7 +12,7 @@ _$OrderModelImpl _$$OrderModelImplFromJson(Map<String, dynamic> json) =>
       customerId: json['userId'] as String?,
       status: (json['status'] as num?)?.toInt(),
       products: (json['products'] as List<dynamic>?)
-          ?.map((e) => OrderModelProduct.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => Order.fromJson(e as Map<String, dynamic>))
           .toList(),
       sendDate: (json['sendDate'] as num?)?.toInt(),
     );
@@ -26,30 +26,18 @@ Map<String, dynamic> _$$OrderModelImplToJson(_$OrderModelImpl instance) =>
       'sendDate': instance.sendDate,
     };
 
-_$OrderModelProductImpl _$$OrderModelProductImplFromJson(
-        Map<String, dynamic> json) =>
-    _$OrderModelProductImpl(
-      productNumber: json['productNumber'] as String,
-      productName: json['productName'] as String,
-      productType: (json['productType'] as num).toInt(),
+_$OrderImpl _$$OrderImplFromJson(Map<String, dynamic> json) => _$OrderImpl(
+      categoryEntity: CategoryEntity.fromJson(
+          json['categoryEntity'] as Map<String, dynamic>),
       productCount: (json['productCount'] as num).toInt(),
-      price: (json['price'] as num).toDouble(),
+      completeAmount: (json['completeAmount'] as num).toDouble(),
       addedTime: (json['addedTime'] as num).toInt(),
-      color: json['color'] as String?,
-      widthAndHeight: json['widthAndHeight'] == null
-          ? null
-          : Size.fromJson(json['widthAndHeight'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$OrderModelProductImplToJson(
-        _$OrderModelProductImpl instance) =>
+Map<String, dynamic> _$$OrderImplToJson(_$OrderImpl instance) =>
     <String, dynamic>{
-      'productNumber': instance.productNumber,
-      'productName': instance.productName,
-      'productType': instance.productType,
+      'categoryEntity': instance.categoryEntity.toJson(),
       'productCount': instance.productCount,
-      'price': instance.price,
+      'completeAmount': instance.completeAmount,
       'addedTime': instance.addedTime,
-      'color': instance.color,
-      'widthAndHeight': instance.widthAndHeight?.toJson(),
     };

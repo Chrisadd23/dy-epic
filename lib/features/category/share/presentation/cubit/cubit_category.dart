@@ -26,14 +26,6 @@ class CubitCategory extends Cubit<StateCategory> {
       emit(StateCategory.failure(failure: failure));
     }, (categoryEntityList) async {
       debugPrint(categoryEntityList.toString());
-      categoryEntityList = categoryEntityList.map((entity) {
-        return entity.pricePerSize == null
-            ? entity
-            : entity.copyWith(
-                pricePerSize: List.of(entity.pricePerSize!)
-                  ..sort((a, b) =>
-                      double.parse(a.price).compareTo(double.parse(b.price))));
-      }).toList();
 
       try {
         final categoryEntityPicturePath = getCategoryEntityPicturePath(

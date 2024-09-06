@@ -1,6 +1,6 @@
 //ignore_for_file: invalid_annotation_target
+import 'package:app_flutter_produkt_bestellen/features/category/share/domain/entity/category_entity.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/domain/entity/order_entity.dart';
-import 'package:app_flutter_produkt_bestellen/features/shopping_basket/domain/entity/shopping_basket_entity.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'order_model.freezed.dart';
@@ -15,27 +15,17 @@ class OrderModel with _$OrderModel {
     String? id,
     @JsonKey(name: 'userId') String? customerId,
     int? status,
-    List<OrderModelProduct>? products,
+    List<Order>? products,
     int? sendDate,
   }) = _OrderModel;
 
   OrderEntity toEntity() {
-    final listProducts = products
-        ?.map((e) => Order(
-              productNumber: e.productNumber,
-              productName: e.productName,
-              productType: e.productType,
-              productCount: e.productCount,
-              productPrice: e.price,
-              addedTime: e.addedTime,
-            ))
-        .toList();
     return OrderEntity(
         id: id!.split('-')[0],
         customerId: customerId!,
         status: status!,
         sendDate: sendDate!,
-        listOrderEntity: listProducts!);
+        listOrderEntity: products ?? []);
   }
 
   factory OrderModel.fromJson(Map<String, dynamic> json) =>
@@ -43,19 +33,16 @@ class OrderModel with _$OrderModel {
 }
 
 @freezed
-class OrderModelProduct with _$OrderModelProduct {
-  @JsonSerializable(explicitToJson: true)
-  const factory OrderModelProduct({
-    required String productNumber,
-    required String productName,
-    required int productType,
-    required int productCount,
-    required double price,
-    required int addedTime,
-    String? color,
-    Size? widthAndHeight,
-  }) = _OrderModelProduct;
+class Order with _$Order {
+  const Order._();
 
-  factory OrderModelProduct.fromJson(Map<String, dynamic> json) =>
-      _$OrderModelProductFromJson(json);
+  @JsonSerializable(explicitToJson: true)
+  const factory Order({
+    required CategoryEntity categoryEntity,
+    required int productCount,
+    required double completeAmount,
+    required int addedTime,
+  }) = _Order;
+
+  factory Order.fromJson(Map<String, dynamic> json) => _$OrderFromJson(json);
 }

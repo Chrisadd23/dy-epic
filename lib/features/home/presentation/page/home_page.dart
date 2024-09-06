@@ -1,8 +1,10 @@
+import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_widgets/failure_widget.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_widgets/loading_widget.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_scaffold.dart';
+import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/local_neumorphic_button.dart';
 import 'package:app_flutter_produkt_bestellen/core/presentation/cubit/cubit_core_pictures.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/category_conference_chair/presentation/cubit/category_conference_chair_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/category_conference_chair/presentation/page/category_conference_chair_page.dart';
@@ -52,26 +54,30 @@ class _CategoryListRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 8.0),
-      child: InkWell(
-        onTap: () => context
-            .read<HomeCategoryCubit>()
-            .changeCategory(categoryProduct: categoryProduct),
-        child: Container(
-          width: MediaQuery.sizeOf(context).width * 0.4,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            border: Border.all(),
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 2),
-            child: FittedBox(fit: BoxFit.fitHeight, child: Text(category)),
+    return BlocBuilder<HomeCategoryCubit, EnumCategoryProduct>(
+        builder: (context, enumCategory) {
+      return Padding(
+        padding: const EdgeInsets.only(right: 8.0),
+        child: LocalNeumorphicButton(
+          color: enumCategory == categoryProduct
+              ? AppColors.greyA7A7A7
+              : Colors.white,
+          onPressedBasedOnDuration: () => context
+              .read<HomeCategoryCubit>()
+              .changeCategory(categoryProduct: categoryProduct),
+          borderRadius: 10,
+          child: Container(
+            width: MediaQuery.sizeOf(context).width * 0.4,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10), border: Border.all()),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 2),
+              child: FittedBox(fit: BoxFit.fitHeight, child: Text(category)),
+            ),
           ),
         ),
-      ),
-    );
+      );
+    });
   }
 }
 

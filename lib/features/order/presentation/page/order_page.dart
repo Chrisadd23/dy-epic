@@ -35,8 +35,8 @@ class _OrderBlocProvider extends StatelessWidget {
     return BlocBuilder<LoginCubit, LoginState>(
         builder: (context, loginState) => loginState.maybeMap(
             orElse: () => const LoadingWidget(),
-            loggedIn: (loggedInState) => BlocProvider(
-                  create: (context) => getIt<OrderCubit>()
+            loggedIn: (loggedInState) => BlocProvider<OrderCubit>.value(
+                  value: getIt<OrderCubit>()
                     ..load(
                         customerNumber:
                             loggedInState.entityLoginCustomer.customerNumber),
@@ -44,21 +44,30 @@ class _OrderBlocProvider extends StatelessWidget {
                     children: [
                       Align(
                         alignment: Alignment.topCenter,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.symmetric(vertical: 20.0),
-                              child: _DropDownButton2(),
-                            ),
-                            Expanded(child: _OrderInfoWidget()),
-                          ],
-                        ),
+                        child: _OrderColumn(),
                       ),
                       _ShoppingBasketHideProcess(),
                     ],
                   ),
                 )));
+  }
+}
+
+class _OrderColumn extends StatelessWidget {
+  const _OrderColumn();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 20.0),
+          child: _DropDownButton2(),
+        ),
+        Expanded(child: _OrderInfoWidget()),
+      ],
+    );
   }
 }
 

@@ -35,7 +35,7 @@ _$ShoppingBasketProductImpl _$$ShoppingBasketProductImplFromJson(
           json['categoryEntity'] as Map<String, dynamic>),
       addedTime: (json['addedTime'] as num).toInt(),
       productCount: (json['productCount'] as num).toInt(),
-      completeAmount: json['completeAmount'] as String,
+      completeAmount: (json['completeAmount'] as num).toDouble(),
     );
 
 Map<String, dynamic> _$$ShoppingBasketProductImplToJson(
@@ -45,15 +45,4 @@ Map<String, dynamic> _$$ShoppingBasketProductImplToJson(
       'addedTime': instance.addedTime,
       'productCount': instance.productCount,
       'completeAmount': instance.completeAmount,
-    };
-
-_$SizeImpl _$$SizeImplFromJson(Map<String, dynamic> json) => _$SizeImpl(
-      width: json['width'] as String,
-      height: json['height'] as String,
-    );
-
-Map<String, dynamic> _$$SizeImplToJson(_$SizeImpl instance) =>
-    <String, dynamic>{
-      'width': instance.width,
-      'height': instance.height,
     };

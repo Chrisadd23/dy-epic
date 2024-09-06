@@ -24,7 +24,7 @@ mixin _$OrderModel {
   @JsonKey(name: 'userId')
   String? get customerId => throw _privateConstructorUsedError;
   int? get status => throw _privateConstructorUsedError;
-  List<OrderModelProduct>? get products => throw _privateConstructorUsedError;
+  List<Order>? get products => throw _privateConstructorUsedError;
   int? get sendDate => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -43,7 +43,7 @@ abstract class $OrderModelCopyWith<$Res> {
       {String? id,
       @JsonKey(name: 'userId') String? customerId,
       int? status,
-      List<OrderModelProduct>? products,
+      List<Order>? products,
       int? sendDate});
 }
 
@@ -82,7 +82,7 @@ class _$OrderModelCopyWithImpl<$Res, $Val extends OrderModel>
       products: freezed == products
           ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
-              as List<OrderModelProduct>?,
+              as List<Order>?,
       sendDate: freezed == sendDate
           ? _value.sendDate
           : sendDate // ignore: cast_nullable_to_non_nullable
@@ -103,7 +103,7 @@ abstract class _$$OrderModelImplCopyWith<$Res>
       {String? id,
       @JsonKey(name: 'userId') String? customerId,
       int? status,
-      List<OrderModelProduct>? products,
+      List<Order>? products,
       int? sendDate});
 }
 
@@ -140,7 +140,7 @@ class __$$OrderModelImplCopyWithImpl<$Res>
       products: freezed == products
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
-              as List<OrderModelProduct>?,
+              as List<Order>?,
       sendDate: freezed == sendDate
           ? _value.sendDate
           : sendDate // ignore: cast_nullable_to_non_nullable
@@ -157,7 +157,7 @@ class _$OrderModelImpl extends _OrderModel {
       {this.id,
       @JsonKey(name: 'userId') this.customerId,
       this.status,
-      final List<OrderModelProduct>? products,
+      final List<Order>? products,
       this.sendDate})
       : _products = products,
         super._();
@@ -172,9 +172,9 @@ class _$OrderModelImpl extends _OrderModel {
   final String? customerId;
   @override
   final int? status;
-  final List<OrderModelProduct>? _products;
+  final List<Order>? _products;
   @override
-  List<OrderModelProduct>? get products {
+  List<Order>? get products {
     final value = _products;
     if (value == null) return null;
     if (_products is EqualUnmodifiableListView) return _products;
@@ -228,7 +228,7 @@ abstract class _OrderModel extends OrderModel {
       {final String? id,
       @JsonKey(name: 'userId') final String? customerId,
       final int? status,
-      final List<OrderModelProduct>? products,
+      final List<Order>? products,
       final int? sendDate}) = _$OrderModelImpl;
   const _OrderModel._() : super._();
 
@@ -243,7 +243,7 @@ abstract class _OrderModel extends OrderModel {
   @override
   int? get status;
   @override
-  List<OrderModelProduct>? get products;
+  List<Order>? get products;
   @override
   int? get sendDate;
   @override
@@ -252,50 +252,40 @@ abstract class _OrderModel extends OrderModel {
       throw _privateConstructorUsedError;
 }
 
-OrderModelProduct _$OrderModelProductFromJson(Map<String, dynamic> json) {
-  return _OrderModelProduct.fromJson(json);
+Order _$OrderFromJson(Map<String, dynamic> json) {
+  return _Order.fromJson(json);
 }
 
 /// @nodoc
-mixin _$OrderModelProduct {
-  String get productNumber => throw _privateConstructorUsedError;
-  String get productName => throw _privateConstructorUsedError;
-  int get productType => throw _privateConstructorUsedError;
+mixin _$Order {
+  CategoryEntity get categoryEntity => throw _privateConstructorUsedError;
   int get productCount => throw _privateConstructorUsedError;
-  double get price => throw _privateConstructorUsedError;
+  double get completeAmount => throw _privateConstructorUsedError;
   int get addedTime => throw _privateConstructorUsedError;
-  String? get color => throw _privateConstructorUsedError;
-  Size? get widthAndHeight => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $OrderModelProductCopyWith<OrderModelProduct> get copyWith =>
-      throw _privateConstructorUsedError;
+  $OrderCopyWith<Order> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $OrderModelProductCopyWith<$Res> {
-  factory $OrderModelProductCopyWith(
-          OrderModelProduct value, $Res Function(OrderModelProduct) then) =
-      _$OrderModelProductCopyWithImpl<$Res, OrderModelProduct>;
+abstract class $OrderCopyWith<$Res> {
+  factory $OrderCopyWith(Order value, $Res Function(Order) then) =
+      _$OrderCopyWithImpl<$Res, Order>;
   @useResult
   $Res call(
-      {String productNumber,
-      String productName,
-      int productType,
+      {CategoryEntity categoryEntity,
       int productCount,
-      double price,
-      int addedTime,
-      String? color,
-      Size? widthAndHeight});
+      double completeAmount,
+      int addedTime});
 
-  $SizeCopyWith<$Res>? get widthAndHeight;
+  $CategoryEntityCopyWith<$Res> get categoryEntity;
 }
 
 /// @nodoc
-class _$OrderModelProductCopyWithImpl<$Res, $Val extends OrderModelProduct>
-    implements $OrderModelProductCopyWith<$Res> {
-  _$OrderModelProductCopyWithImpl(this._value, this._then);
+class _$OrderCopyWithImpl<$Res, $Val extends Order>
+    implements $OrderCopyWith<$Res> {
+  _$OrderCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -305,139 +295,90 @@ class _$OrderModelProductCopyWithImpl<$Res, $Val extends OrderModelProduct>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? productNumber = null,
-    Object? productName = null,
-    Object? productType = null,
+    Object? categoryEntity = null,
     Object? productCount = null,
-    Object? price = null,
+    Object? completeAmount = null,
     Object? addedTime = null,
-    Object? color = freezed,
-    Object? widthAndHeight = freezed,
   }) {
     return _then(_value.copyWith(
-      productNumber: null == productNumber
-          ? _value.productNumber
-          : productNumber // ignore: cast_nullable_to_non_nullable
-              as String,
-      productName: null == productName
-          ? _value.productName
-          : productName // ignore: cast_nullable_to_non_nullable
-              as String,
-      productType: null == productType
-          ? _value.productType
-          : productType // ignore: cast_nullable_to_non_nullable
-              as int,
+      categoryEntity: null == categoryEntity
+          ? _value.categoryEntity
+          : categoryEntity // ignore: cast_nullable_to_non_nullable
+              as CategoryEntity,
       productCount: null == productCount
           ? _value.productCount
           : productCount // ignore: cast_nullable_to_non_nullable
               as int,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
+      completeAmount: null == completeAmount
+          ? _value.completeAmount
+          : completeAmount // ignore: cast_nullable_to_non_nullable
               as double,
       addedTime: null == addedTime
           ? _value.addedTime
           : addedTime // ignore: cast_nullable_to_non_nullable
               as int,
-      color: freezed == color
-          ? _value.color
-          : color // ignore: cast_nullable_to_non_nullable
-              as String?,
-      widthAndHeight: freezed == widthAndHeight
-          ? _value.widthAndHeight
-          : widthAndHeight // ignore: cast_nullable_to_non_nullable
-              as Size?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $SizeCopyWith<$Res>? get widthAndHeight {
-    if (_value.widthAndHeight == null) {
-      return null;
-    }
-
-    return $SizeCopyWith<$Res>(_value.widthAndHeight!, (value) {
-      return _then(_value.copyWith(widthAndHeight: value) as $Val);
+  $CategoryEntityCopyWith<$Res> get categoryEntity {
+    return $CategoryEntityCopyWith<$Res>(_value.categoryEntity, (value) {
+      return _then(_value.copyWith(categoryEntity: value) as $Val);
     });
   }
 }
 
 /// @nodoc
-abstract class _$$OrderModelProductImplCopyWith<$Res>
-    implements $OrderModelProductCopyWith<$Res> {
-  factory _$$OrderModelProductImplCopyWith(_$OrderModelProductImpl value,
-          $Res Function(_$OrderModelProductImpl) then) =
-      __$$OrderModelProductImplCopyWithImpl<$Res>;
+abstract class _$$OrderImplCopyWith<$Res> implements $OrderCopyWith<$Res> {
+  factory _$$OrderImplCopyWith(
+          _$OrderImpl value, $Res Function(_$OrderImpl) then) =
+      __$$OrderImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {String productNumber,
-      String productName,
-      int productType,
+      {CategoryEntity categoryEntity,
       int productCount,
-      double price,
-      int addedTime,
-      String? color,
-      Size? widthAndHeight});
+      double completeAmount,
+      int addedTime});
 
   @override
-  $SizeCopyWith<$Res>? get widthAndHeight;
+  $CategoryEntityCopyWith<$Res> get categoryEntity;
 }
 
 /// @nodoc
-class __$$OrderModelProductImplCopyWithImpl<$Res>
-    extends _$OrderModelProductCopyWithImpl<$Res, _$OrderModelProductImpl>
-    implements _$$OrderModelProductImplCopyWith<$Res> {
-  __$$OrderModelProductImplCopyWithImpl(_$OrderModelProductImpl _value,
-      $Res Function(_$OrderModelProductImpl) _then)
+class __$$OrderImplCopyWithImpl<$Res>
+    extends _$OrderCopyWithImpl<$Res, _$OrderImpl>
+    implements _$$OrderImplCopyWith<$Res> {
+  __$$OrderImplCopyWithImpl(
+      _$OrderImpl _value, $Res Function(_$OrderImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? productNumber = null,
-    Object? productName = null,
-    Object? productType = null,
+    Object? categoryEntity = null,
     Object? productCount = null,
-    Object? price = null,
+    Object? completeAmount = null,
     Object? addedTime = null,
-    Object? color = freezed,
-    Object? widthAndHeight = freezed,
   }) {
-    return _then(_$OrderModelProductImpl(
-      productNumber: null == productNumber
-          ? _value.productNumber
-          : productNumber // ignore: cast_nullable_to_non_nullable
-              as String,
-      productName: null == productName
-          ? _value.productName
-          : productName // ignore: cast_nullable_to_non_nullable
-              as String,
-      productType: null == productType
-          ? _value.productType
-          : productType // ignore: cast_nullable_to_non_nullable
-              as int,
+    return _then(_$OrderImpl(
+      categoryEntity: null == categoryEntity
+          ? _value.categoryEntity
+          : categoryEntity // ignore: cast_nullable_to_non_nullable
+              as CategoryEntity,
       productCount: null == productCount
           ? _value.productCount
           : productCount // ignore: cast_nullable_to_non_nullable
               as int,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
+      completeAmount: null == completeAmount
+          ? _value.completeAmount
+          : completeAmount // ignore: cast_nullable_to_non_nullable
               as double,
       addedTime: null == addedTime
           ? _value.addedTime
           : addedTime // ignore: cast_nullable_to_non_nullable
               as int,
-      color: freezed == color
-          ? _value.color
-          : color // ignore: cast_nullable_to_non_nullable
-              as String?,
-      widthAndHeight: freezed == widthAndHeight
-          ? _value.widthAndHeight
-          : widthAndHeight // ignore: cast_nullable_to_non_nullable
-              as Size?,
     ));
   }
 }
@@ -445,115 +386,85 @@ class __$$OrderModelProductImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$OrderModelProductImpl implements _OrderModelProduct {
-  const _$OrderModelProductImpl(
-      {required this.productNumber,
-      required this.productName,
-      required this.productType,
+class _$OrderImpl extends _Order {
+  const _$OrderImpl(
+      {required this.categoryEntity,
       required this.productCount,
-      required this.price,
-      required this.addedTime,
-      this.color,
-      this.widthAndHeight});
+      required this.completeAmount,
+      required this.addedTime})
+      : super._();
 
-  factory _$OrderModelProductImpl.fromJson(Map<String, dynamic> json) =>
-      _$$OrderModelProductImplFromJson(json);
+  factory _$OrderImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OrderImplFromJson(json);
 
   @override
-  final String productNumber;
-  @override
-  final String productName;
-  @override
-  final int productType;
+  final CategoryEntity categoryEntity;
   @override
   final int productCount;
   @override
-  final double price;
+  final double completeAmount;
   @override
   final int addedTime;
-  @override
-  final String? color;
-  @override
-  final Size? widthAndHeight;
 
   @override
   String toString() {
-    return 'OrderModelProduct(productNumber: $productNumber, productName: $productName, productType: $productType, productCount: $productCount, price: $price, addedTime: $addedTime, color: $color, widthAndHeight: $widthAndHeight)';
+    return 'Order(categoryEntity: $categoryEntity, productCount: $productCount, completeAmount: $completeAmount, addedTime: $addedTime)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$OrderModelProductImpl &&
-            (identical(other.productNumber, productNumber) ||
-                other.productNumber == productNumber) &&
-            (identical(other.productName, productName) ||
-                other.productName == productName) &&
-            (identical(other.productType, productType) ||
-                other.productType == productType) &&
+            other is _$OrderImpl &&
+            (identical(other.categoryEntity, categoryEntity) ||
+                other.categoryEntity == categoryEntity) &&
             (identical(other.productCount, productCount) ||
                 other.productCount == productCount) &&
-            (identical(other.price, price) || other.price == price) &&
+            (identical(other.completeAmount, completeAmount) ||
+                other.completeAmount == completeAmount) &&
             (identical(other.addedTime, addedTime) ||
-                other.addedTime == addedTime) &&
-            (identical(other.color, color) || other.color == color) &&
-            (identical(other.widthAndHeight, widthAndHeight) ||
-                other.widthAndHeight == widthAndHeight));
+                other.addedTime == addedTime));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, productNumber, productName,
-      productType, productCount, price, addedTime, color, widthAndHeight);
+  int get hashCode => Object.hash(
+      runtimeType, categoryEntity, productCount, completeAmount, addedTime);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$OrderModelProductImplCopyWith<_$OrderModelProductImpl> get copyWith =>
-      __$$OrderModelProductImplCopyWithImpl<_$OrderModelProductImpl>(
-          this, _$identity);
+  _$$OrderImplCopyWith<_$OrderImpl> get copyWith =>
+      __$$OrderImplCopyWithImpl<_$OrderImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$OrderModelProductImplToJson(
+    return _$$OrderImplToJson(
       this,
     );
   }
 }
 
-abstract class _OrderModelProduct implements OrderModelProduct {
-  const factory _OrderModelProduct(
-      {required final String productNumber,
-      required final String productName,
-      required final int productType,
+abstract class _Order extends Order {
+  const factory _Order(
+      {required final CategoryEntity categoryEntity,
       required final int productCount,
-      required final double price,
-      required final int addedTime,
-      final String? color,
-      final Size? widthAndHeight}) = _$OrderModelProductImpl;
+      required final double completeAmount,
+      required final int addedTime}) = _$OrderImpl;
+  const _Order._() : super._();
 
-  factory _OrderModelProduct.fromJson(Map<String, dynamic> json) =
-      _$OrderModelProductImpl.fromJson;
+  factory _Order.fromJson(Map<String, dynamic> json) = _$OrderImpl.fromJson;
 
   @override
-  String get productNumber;
-  @override
-  String get productName;
-  @override
-  int get productType;
+  CategoryEntity get categoryEntity;
   @override
   int get productCount;
   @override
-  double get price;
+  double get completeAmount;
   @override
   int get addedTime;
   @override
-  String? get color;
-  @override
-  Size? get widthAndHeight;
-  @override
   @JsonKey(ignore: true)
-  _$$OrderModelProductImplCopyWith<_$OrderModelProductImpl> get copyWith =>
+  _$$OrderImplCopyWith<_$OrderImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

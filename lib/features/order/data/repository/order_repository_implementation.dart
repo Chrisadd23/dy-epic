@@ -1,8 +1,10 @@
 import 'dart:async';
 
+import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/data/datasource/order_datasource.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/data/model/order_model.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/domain/repository/order_repository.dart';
+import 'package:flutter/cupertino.dart';
 
 class OrderRepositoryImplementation extends OrderRepository {
   OrderRepositoryImplementation(
@@ -19,6 +21,8 @@ class OrderRepositoryImplementation extends OrderRepository {
   final _listRequestModelController =
       StreamController<List<OrderModel>>.broadcast();
 
+  final _failureRequestController = StreamController<Failure>.broadcast();
+
   @override
   Stream<List<OrderModel>> get listOrderStream =>
       _listOrderModelController.stream;
@@ -34,13 +38,17 @@ class OrderRepositoryImplementation extends OrderRepository {
   List<OrderModel> get listRequestModel => _listRequestModel;
 
   @override
+  Stream<Failure> get failure => _failureRequestController.stream;
+
+  @override
   void getOrders({required String customerId}) {
     _orderDatasource.getOrderData(customerId: customerId).listen((event) {
-      event.fold((left) {}, (right) {
+      event.fold((failure) => _failureRequestController.add(failure), (right) {
         _listOrderModel
           ..clear()
           ..addAll(right);
-        _listOrderModelController.add(_listOrderModel);
+        debugPrint('repository right ==> $_listOrderModel');
+        _listOrderModelController.add(listOrderModel);
       });
     });
   }

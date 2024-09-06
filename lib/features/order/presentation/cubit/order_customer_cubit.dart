@@ -128,9 +128,8 @@ abstract class OrderCustomerCubit extends Cubit<OrderCustomerState> {
         });
         listOrderEntity = listOrderEntity
             .map((e) => e.copyWith(
-                hide: !(e.status ==
-                        EnumOrderProcess.canceledByAdmin.sortIndex ||
-                    e.status == EnumOrderProcess.canceledByCustomer.sortIndex)))
+                hide:
+                    !(e.status == EnumOrderProcess.canceledByAdmin.sortIndex)))
             .toList();
         return listOrderEntity;
       case EnumSortProductOrder.search:
@@ -146,11 +145,8 @@ abstract class OrderCustomerCubit extends Cubit<OrderCustomerState> {
     }
     if (data['finished']) {
       return EnumOrderProcess.finished;
-    }
-    if (data['canceledByAdmin']) {
-      return EnumOrderProcess.canceledByAdmin;
     } else {
-      return EnumOrderProcess.canceledByCustomer;
+      return EnumOrderProcess.canceledByAdmin;
     }
   }
 }

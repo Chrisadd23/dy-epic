@@ -25,8 +25,6 @@ mixin _$CategoryEntity {
   String get type => throw _privateConstructorUsedError;
   double? get normalPrice => throw _privateConstructorUsedError;
   List<String>? get attributes => throw _privateConstructorUsedError;
-  List<PricePerSize>? get pricePerSize => throw _privateConstructorUsedError;
-  List<FrameColor>? get frameColors => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,9 +43,7 @@ abstract class $CategoryEntityCopyWith<$Res> {
       String productTitle,
       String type,
       double? normalPrice,
-      List<String>? attributes,
-      List<PricePerSize>? pricePerSize,
-      List<FrameColor>? frameColors});
+      List<String>? attributes});
 }
 
 /// @nodoc
@@ -68,8 +64,6 @@ class _$CategoryEntityCopyWithImpl<$Res, $Val extends CategoryEntity>
     Object? type = null,
     Object? normalPrice = freezed,
     Object? attributes = freezed,
-    Object? pricePerSize = freezed,
-    Object? frameColors = freezed,
   }) {
     return _then(_value.copyWith(
       productNumber: null == productNumber
@@ -92,14 +86,6 @@ class _$CategoryEntityCopyWithImpl<$Res, $Val extends CategoryEntity>
           ? _value.attributes
           : attributes // ignore: cast_nullable_to_non_nullable
               as List<String>?,
-      pricePerSize: freezed == pricePerSize
-          ? _value.pricePerSize
-          : pricePerSize // ignore: cast_nullable_to_non_nullable
-              as List<PricePerSize>?,
-      frameColors: freezed == frameColors
-          ? _value.frameColors
-          : frameColors // ignore: cast_nullable_to_non_nullable
-              as List<FrameColor>?,
     ) as $Val);
   }
 }
@@ -117,9 +103,7 @@ abstract class _$$CategoryEntityImplCopyWith<$Res>
       String productTitle,
       String type,
       double? normalPrice,
-      List<String>? attributes,
-      List<PricePerSize>? pricePerSize,
-      List<FrameColor>? frameColors});
+      List<String>? attributes});
 }
 
 /// @nodoc
@@ -138,8 +122,6 @@ class __$$CategoryEntityImplCopyWithImpl<$Res>
     Object? type = null,
     Object? normalPrice = freezed,
     Object? attributes = freezed,
-    Object? pricePerSize = freezed,
-    Object? frameColors = freezed,
   }) {
     return _then(_$CategoryEntityImpl(
       productNumber: null == productNumber
@@ -162,14 +144,6 @@ class __$$CategoryEntityImplCopyWithImpl<$Res>
           ? _value._attributes
           : attributes // ignore: cast_nullable_to_non_nullable
               as List<String>?,
-      pricePerSize: freezed == pricePerSize
-          ? _value._pricePerSize
-          : pricePerSize // ignore: cast_nullable_to_non_nullable
-              as List<PricePerSize>?,
-      frameColors: freezed == frameColors
-          ? _value._frameColors
-          : frameColors // ignore: cast_nullable_to_non_nullable
-              as List<FrameColor>?,
     ));
   }
 }
@@ -183,12 +157,8 @@ class _$CategoryEntityImpl implements _CategoryEntity {
       required this.productTitle,
       required this.type,
       this.normalPrice,
-      final List<String>? attributes,
-      final List<PricePerSize>? pricePerSize,
-      final List<FrameColor>? frameColors})
-      : _attributes = attributes,
-        _pricePerSize = pricePerSize,
-        _frameColors = frameColors;
+      final List<String>? attributes})
+      : _attributes = attributes;
 
   factory _$CategoryEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$CategoryEntityImplFromJson(json);
@@ -211,29 +181,9 @@ class _$CategoryEntityImpl implements _CategoryEntity {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<PricePerSize>? _pricePerSize;
-  @override
-  List<PricePerSize>? get pricePerSize {
-    final value = _pricePerSize;
-    if (value == null) return null;
-    if (_pricePerSize is EqualUnmodifiableListView) return _pricePerSize;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  final List<FrameColor>? _frameColors;
-  @override
-  List<FrameColor>? get frameColors {
-    final value = _frameColors;
-    if (value == null) return null;
-    if (_frameColors is EqualUnmodifiableListView) return _frameColors;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
   @override
   String toString() {
-    return 'CategoryEntity(productNumber: $productNumber, productTitle: $productTitle, type: $type, normalPrice: $normalPrice, attributes: $attributes, pricePerSize: $pricePerSize, frameColors: $frameColors)';
+    return 'CategoryEntity(productNumber: $productNumber, productTitle: $productTitle, type: $type, normalPrice: $normalPrice, attributes: $attributes)';
   }
 
   @override
@@ -249,24 +199,13 @@ class _$CategoryEntityImpl implements _CategoryEntity {
             (identical(other.normalPrice, normalPrice) ||
                 other.normalPrice == normalPrice) &&
             const DeepCollectionEquality()
-                .equals(other._attributes, _attributes) &&
-            const DeepCollectionEquality()
-                .equals(other._pricePerSize, _pricePerSize) &&
-            const DeepCollectionEquality()
-                .equals(other._frameColors, _frameColors));
+                .equals(other._attributes, _attributes));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      productNumber,
-      productTitle,
-      type,
-      normalPrice,
-      const DeepCollectionEquality().hash(_attributes),
-      const DeepCollectionEquality().hash(_pricePerSize),
-      const DeepCollectionEquality().hash(_frameColors));
+  int get hashCode => Object.hash(runtimeType, productNumber, productTitle,
+      type, normalPrice, const DeepCollectionEquality().hash(_attributes));
 
   @JsonKey(ignore: true)
   @override
@@ -289,9 +228,7 @@ abstract class _CategoryEntity implements CategoryEntity {
       required final String productTitle,
       required final String type,
       final double? normalPrice,
-      final List<String>? attributes,
-      final List<PricePerSize>? pricePerSize,
-      final List<FrameColor>? frameColors}) = _$CategoryEntityImpl;
+      final List<String>? attributes}) = _$CategoryEntityImpl;
 
   factory _CategoryEntity.fromJson(Map<String, dynamic> json) =
       _$CategoryEntityImpl.fromJson;
@@ -306,10 +243,6 @@ abstract class _CategoryEntity implements CategoryEntity {
   double? get normalPrice;
   @override
   List<String>? get attributes;
-  @override
-  List<PricePerSize>? get pricePerSize;
-  @override
-  List<FrameColor>? get frameColors;
   @override
   @JsonKey(ignore: true)
   _$$CategoryEntityImplCopyWith<_$CategoryEntityImpl> get copyWith =>

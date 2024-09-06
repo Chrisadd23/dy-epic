@@ -2,6 +2,7 @@ import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/data/model/order_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:either_dart/either.dart';
+import 'package:flutter/cupertino.dart';
 
 abstract class OrderDatasource {
   Stream<Either<Failure, List<OrderModel>>> getOrderData(
@@ -19,11 +20,16 @@ class OrderDatasourceImplementation extends OrderDatasource {
         .collection('Order')
         .where('userId', isEqualTo: customerId)
         .snapshots()
+        .timeout(const Duration(seconds: 10),
+            onTimeout: (_) => const Left(Failure.databaseError(
+                'Es konnten keine Daten gefunden werden.')))
         .map((docSnapshot) {
       try {
         final orderList = docSnapshot.docs
             .map((query) => OrderModel.fromJson(query.data()))
             .toList();
+
+        debugPrint('orderList ==> $orderList');
 
         return Right(orderList);
       } catch (error) {

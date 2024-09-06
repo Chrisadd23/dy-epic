@@ -15,8 +15,6 @@ class CategoryProductModel with _$CategoryProductModel {
     String? type,
     @JsonKey(name: 'price') double? normalPrice,
     List<String>? attributes,
-    List<PricePerSize>? pricePerSize,
-    List<FrameColor>? frameColors,
   }) = _CategoryProductModel;
 
   CategoryEntity toEntity() {
@@ -26,36 +24,9 @@ class CategoryProductModel with _$CategoryProductModel {
       type: type!,
       normalPrice: normalPrice,
       attributes: attributes,
-      pricePerSize: pricePerSize,
-      frameColors: frameColors,
     );
   }
 
   factory CategoryProductModel.fromJson(Map<String, dynamic> json) =>
       _$CategoryProductModelFromJson(json);
-}
-
-@freezed
-class PricePerSize with _$PricePerSize {
-  @JsonSerializable(explicitToJson: true)
-  const factory PricePerSize({
-    required String height,
-    required String width,
-    required String price,
-  }) = _PricePerSize;
-
-  factory PricePerSize.fromJson(Map<String, dynamic> json) =>
-      _$PricePerSizeFromJson(json);
-}
-
-@freezed
-class FrameColor with _$FrameColor {
-  @JsonSerializable(explicitToJson: true)
-  const factory FrameColor({
-    required String color,
-    required String hexValue,
-  }) = _FrameColor;
-
-  factory FrameColor.fromJson(Map<String, dynamic> json) =>
-      _$FrameColorFromJson(json);
 }

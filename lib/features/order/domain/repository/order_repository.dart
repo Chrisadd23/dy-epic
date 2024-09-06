@@ -1,3 +1,4 @@
+import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/data/model/order_model.dart';
 
 abstract class OrderRepository {
@@ -16,4 +17,6 @@ abstract class OrderRepository {
   Stream<List<OrderModel>> get listOrderStream;
 
   Stream<List<OrderModel>> get listRequestStream;
+
+  Stream<Failure> get failure;
 }

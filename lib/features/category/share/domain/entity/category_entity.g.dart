@@ -15,12 +15,6 @@ _$CategoryEntityImpl _$$CategoryEntityImplFromJson(Map<String, dynamic> json) =>
       attributes: (json['attributes'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
-      pricePerSize: (json['pricePerSize'] as List<dynamic>?)
-          ?.map((e) => PricePerSize.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      frameColors: (json['frameColors'] as List<dynamic>?)
-          ?.map((e) => FrameColor.fromJson(e as Map<String, dynamic>))
-          .toList(),
     );
 
 Map<String, dynamic> _$$CategoryEntityImplToJson(
@@ -31,6 +25,4 @@ Map<String, dynamic> _$$CategoryEntityImplToJson(
       'type': instance.type,
       'normalPrice': instance.normalPrice,
       'attributes': instance.attributes,
-      'pricePerSize': instance.pricePerSize?.map((e) => e.toJson()).toList(),
-      'frameColors': instance.frameColors?.map((e) => e.toJson()).toList(),
     };

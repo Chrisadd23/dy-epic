@@ -29,21 +29,9 @@ class ShoppingBasketProduct with _$ShoppingBasketProduct {
     required CategoryEntity categoryEntity,
     required int addedTime,
     required int productCount,
-    required String completeAmount,
+    required double completeAmount,
   }) = _ShoppingBasketProduct;
 
   factory ShoppingBasketProduct.fromJson(Map<String, dynamic> json) =>
       _$ShoppingBasketProductFromJson(json);
-}
-
-@freezed
-class Size with _$Size {
-  //ignore: invalid_annotation_target
-  @JsonSerializable()
-  const factory Size({
-    required String width, // Typ zu double geändert für Maße
-    required String height,
-  }) = _Size;
-
-  factory Size.fromJson(Map<String, dynamic> json) => _$SizeFromJson(json);
 }

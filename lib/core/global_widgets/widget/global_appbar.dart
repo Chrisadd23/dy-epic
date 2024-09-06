@@ -3,6 +3,7 @@ import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
 import 'package:app_flutter_produkt_bestellen/gen/assets.gen.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -109,51 +110,55 @@ class AppBarMenuButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return UnconstrainedBox(
-      child: InkWell(
-        onTap: () {
-          showMenuBar ? Scaffold.of(context).openDrawer() : context.pop();
-        },
-        child: SizedBox(
-          width: 40,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                height: 5,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(),
-                    color: AppColors.whiteD6D6D7),
+    return !showMenuBar
+        ? InkWell(
+            onTap: () => context.pop(),
+            child: SvgPicture.asset(Assets.appComponents.svg.returnIcon))
+        : UnconstrainedBox(
+            child: InkWell(
+              onTap: () {
+                showMenuBar ? Scaffold.of(context).openDrawer() : context.pop();
+              },
+              child: SizedBox(
+                width: 40,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      height: 5,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(),
+                          color: AppColors.whiteD6D6D7),
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    Container(
+                      height: 5,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(),
+                          color: AppColors.whiteD6D6D7),
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    Container(
+                      height: 5,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(),
+                          color: AppColors.whiteD6D6D7),
+                    )
+                  ],
+                ),
               ),
-              const SizedBox(
-                height: 5,
-              ),
-              Container(
-                height: 5,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(),
-                    color: AppColors.whiteD6D6D7),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              Container(
-                height: 5,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(),
-                    color: AppColors.whiteD6D6D7),
-              )
-            ],
-          ),
-        ),
-      ),
-    );
+            ),
+          );
   }
 }

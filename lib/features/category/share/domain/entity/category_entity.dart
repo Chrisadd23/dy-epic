@@ -1,5 +1,4 @@
 //ignore_for_file: invalid_annotation_target
-import 'package:app_flutter_produkt_bestellen/features/category/share/data/model/category_product_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'category_entity.freezed.dart';
@@ -14,8 +13,6 @@ class CategoryEntity with _$CategoryEntity {
     required String type,
     double? normalPrice,
     List<String>? attributes,
-    List<PricePerSize>? pricePerSize,
-    List<FrameColor>? frameColors,
   }) = _CategoryEntity;
 
   factory CategoryEntity.fromJson(Map<String, dynamic> json) =>

@@ -258,7 +258,7 @@ mixin _$ShoppingBasketProduct {
   CategoryEntity get categoryEntity => throw _privateConstructorUsedError;
   int get addedTime => throw _privateConstructorUsedError;
   int get productCount => throw _privateConstructorUsedError;
-  String get completeAmount => throw _privateConstructorUsedError;
+  double get completeAmount => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -276,7 +276,7 @@ abstract class $ShoppingBasketProductCopyWith<$Res> {
       {CategoryEntity categoryEntity,
       int addedTime,
       int productCount,
-      String completeAmount});
+      double completeAmount});
 
   $CategoryEntityCopyWith<$Res> get categoryEntity;
 }
@@ -316,7 +316,7 @@ class _$ShoppingBasketProductCopyWithImpl<$Res,
       completeAmount: null == completeAmount
           ? _value.completeAmount
           : completeAmount // ignore: cast_nullable_to_non_nullable
-              as String,
+              as double,
     ) as $Val);
   }
 
@@ -342,7 +342,7 @@ abstract class _$$ShoppingBasketProductImplCopyWith<$Res>
       {CategoryEntity categoryEntity,
       int addedTime,
       int productCount,
-      String completeAmount});
+      double completeAmount});
 
   @override
   $CategoryEntityCopyWith<$Res> get categoryEntity;
@@ -381,7 +381,7 @@ class __$$ShoppingBasketProductImplCopyWithImpl<$Res>
       completeAmount: null == completeAmount
           ? _value.completeAmount
           : completeAmount // ignore: cast_nullable_to_non_nullable
-              as String,
+              as double,
     ));
   }
 }
@@ -406,7 +406,7 @@ class _$ShoppingBasketProductImpl implements _ShoppingBasketProduct {
   @override
   final int productCount;
   @override
-  final String completeAmount;
+  final double completeAmount;
 
   @override
   String toString() {
@@ -453,7 +453,7 @@ abstract class _ShoppingBasketProduct implements ShoppingBasketProduct {
       {required final CategoryEntity categoryEntity,
       required final int addedTime,
       required final int productCount,
-      required final String completeAmount}) = _$ShoppingBasketProductImpl;
+      required final double completeAmount}) = _$ShoppingBasketProductImpl;
 
   factory _ShoppingBasketProduct.fromJson(Map<String, dynamic> json) =
       _$ShoppingBasketProductImpl.fromJson;
@@ -465,160 +465,9 @@ abstract class _ShoppingBasketProduct implements ShoppingBasketProduct {
   @override
   int get productCount;
   @override
-  String get completeAmount;
+  double get completeAmount;
   @override
   @JsonKey(ignore: true)
   _$$ShoppingBasketProductImplCopyWith<_$ShoppingBasketProductImpl>
       get copyWith => throw _privateConstructorUsedError;
-}
-
-Size _$SizeFromJson(Map<String, dynamic> json) {
-  return _Size.fromJson(json);
-}
-
-/// @nodoc
-mixin _$Size {
-  String get width =>
-      throw _privateConstructorUsedError; // Typ zu double geändert für Maße
-  String get height => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $SizeCopyWith<Size> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $SizeCopyWith<$Res> {
-  factory $SizeCopyWith(Size value, $Res Function(Size) then) =
-      _$SizeCopyWithImpl<$Res, Size>;
-  @useResult
-  $Res call({String width, String height});
-}
-
-/// @nodoc
-class _$SizeCopyWithImpl<$Res, $Val extends Size>
-    implements $SizeCopyWith<$Res> {
-  _$SizeCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? width = null,
-    Object? height = null,
-  }) {
-    return _then(_value.copyWith(
-      width: null == width
-          ? _value.width
-          : width // ignore: cast_nullable_to_non_nullable
-              as String,
-      height: null == height
-          ? _value.height
-          : height // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$SizeImplCopyWith<$Res> implements $SizeCopyWith<$Res> {
-  factory _$$SizeImplCopyWith(
-          _$SizeImpl value, $Res Function(_$SizeImpl) then) =
-      __$$SizeImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String width, String height});
-}
-
-/// @nodoc
-class __$$SizeImplCopyWithImpl<$Res>
-    extends _$SizeCopyWithImpl<$Res, _$SizeImpl>
-    implements _$$SizeImplCopyWith<$Res> {
-  __$$SizeImplCopyWithImpl(_$SizeImpl _value, $Res Function(_$SizeImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? width = null,
-    Object? height = null,
-  }) {
-    return _then(_$SizeImpl(
-      width: null == width
-          ? _value.width
-          : width // ignore: cast_nullable_to_non_nullable
-              as String,
-      height: null == height
-          ? _value.height
-          : height // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-@JsonSerializable()
-class _$SizeImpl implements _Size {
-  const _$SizeImpl({required this.width, required this.height});
-
-  factory _$SizeImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SizeImplFromJson(json);
-
-  @override
-  final String width;
-// Typ zu double geändert für Maße
-  @override
-  final String height;
-
-  @override
-  String toString() {
-    return 'Size(width: $width, height: $height)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SizeImpl &&
-            (identical(other.width, width) || other.width == width) &&
-            (identical(other.height, height) || other.height == height));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, width, height);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SizeImplCopyWith<_$SizeImpl> get copyWith =>
-      __$$SizeImplCopyWithImpl<_$SizeImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$SizeImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _Size implements Size {
-  const factory _Size(
-      {required final String width, required final String height}) = _$SizeImpl;
-
-  factory _Size.fromJson(Map<String, dynamic> json) = _$SizeImpl.fromJson;
-
-  @override
-  String get width;
-  @override // Typ zu double geändert für Maße
-  String get height;
-  @override
-  @JsonKey(ignore: true)
-  _$$SizeImplCopyWith<_$SizeImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }

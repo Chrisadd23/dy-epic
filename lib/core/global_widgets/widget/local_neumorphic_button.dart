@@ -4,16 +4,16 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_inset_shadow/flutter_inset_shadow.dart';
 
 class LocalNeumorphicButton extends HookWidget {
-  const LocalNeumorphicButton({
-    super.key,
-    required this.child,
-    required this.onPressedBasedOnDuration,
-    this.labelStyle,
-    this.padding,
-    this.duration,
-    this.functionDuration,
-    this.borderRadius,
-  });
+  const LocalNeumorphicButton(
+      {super.key,
+      required this.child,
+      required this.onPressedBasedOnDuration,
+      this.labelStyle,
+      this.padding,
+      this.duration,
+      this.functionDuration,
+      this.borderRadius,
+      this.color});
 
   final Widget child;
   final VoidCallback onPressedBasedOnDuration;
@@ -22,6 +22,7 @@ class LocalNeumorphicButton extends HookWidget {
   final Duration? duration;
   final Duration? functionDuration;
   final double? borderRadius;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +45,7 @@ class LocalNeumorphicButton extends HookWidget {
         duration: duration ?? const Duration(milliseconds: 200),
         padding: padding,
         decoration: BoxDecoration(
-          color: Colors.grey[300],
+          color: color ?? Colors.grey[300],
           borderRadius: BorderRadius.circular(borderRadius ?? 0),
           // when _isElevated is false, value
           // of inset parameter will be true

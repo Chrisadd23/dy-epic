@@ -47,11 +47,6 @@ enum EnumOrderProcess {
       sortIndex: 3,
       information: 'stoniert',
       processColor: Colors.red,
-      icon: Icons.cancel_outlined),
-  canceledByCustomer(
-      sortIndex: 4,
-      information: 'stoniert',
-      processColor: Colors.red,
       icon: Icons.cancel_outlined);
 
   const EnumOrderProcess(

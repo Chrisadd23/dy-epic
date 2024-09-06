@@ -422,7 +422,7 @@ class _Offer extends StatelessWidget {
                 ),
                 Expanded(
                   child: Text(
-                    item.completeAmount,
+                    item.completeAmount.getCurrency(),
                     style: const TextStyle(
                         fontSize: 20, fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center,

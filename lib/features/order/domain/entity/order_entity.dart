@@ -1,5 +1,5 @@
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
-import 'package:app_flutter_produkt_bestellen/features/shopping_basket/domain/entity/shopping_basket_entity.dart';
+import 'package:app_flutter_produkt_bestellen/features/order/data/model/order_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'order_entity.freezed.dart';
@@ -19,27 +19,11 @@ class OrderEntity with _$OrderEntity {
   DateTime? get createdDate => DateTime.fromMillisecondsSinceEpoch(sendDate);
 
   double get completeAmount => listOrderEntity.fold(
-      0, (previousValue, element) => previousValue + element.orderAmount);
+        0,
+        (previousValue, element) => previousValue + element.completeAmount,
+      );
 
   EnumOrderProcess get orderProcess => EnumOrderProcess.values
       .where((element) => element.sortIndex == status)
       .first;
-}
-
-@freezed
-class Order with _$Order {
-  const Order._();
-
-  const factory Order({
-    required String productNumber,
-    required String productName,
-    required int productType,
-    required int productCount,
-    required double productPrice,
-    required int addedTime,
-    String? color,
-    Size? widthAndHeight,
-  }) = _Order;
-
-  double get orderAmount => productPrice * productCount;
 }

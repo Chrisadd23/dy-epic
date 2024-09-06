@@ -12,28 +12,25 @@ class OrderCubit extends OrderCustomerCubit {
   OrderCubit(this._getOrderUseCase, this._orderRepository) {
     _streamSubscription =
         _orderRepository.listOrderStream.listen((listOrderModel) {
-      state.maybeMap(
-          success: (successState) {
-            debugPrint('sortType orderCubit: ${successState.sortType}');
-            emit(successState.copyWith(
-                orderList: getSortedOrderEntity(
-                    listOrderEntity:
-                        listOrderModel.map((e) => e.toEntity()).toList(),
-                    sortType: successState.sortType),
-                sortType: successState.sortType));
-          },
-          orElse: () => emit(OrderCustomerState.success(
-              orderList: listOrderModel.map((e) => e.toEntity()).toList())));
+      emit(
+        OrderCustomerState.success(
+          orderList: listOrderModel.map((order) => order.toEntity()).toList(),
+        ),
+      );
     }, onError: (error) {
       emit(OrderCustomerState.failure(
           failure: Failure.databaseError(error.toString())));
     });
+
+    _failureStreamSubscription = _orderRepository.failure.listen(
+        (failure) => emit(OrderCustomerState.failure(failure: failure)));
   }
 
   final GetOrderUseCase _getOrderUseCase;
   final OrderRepository _orderRepository;
 
   late final StreamSubscription<List<OrderModel>> _streamSubscription;
+  late final StreamSubscription<Failure> _failureStreamSubscription;
 
   @override
   Future<void> load({String? customerNumber}) async {
@@ -57,6 +54,7 @@ class OrderCubit extends OrderCustomerCubit {
   @override
   Future<void> close() {
     _streamSubscription.cancel();
+    _failureStreamSubscription.cancel();
     return super.close();
   }
 }
