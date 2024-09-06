@@ -5,8 +5,4 @@ class CubitChooseOfficeChair extends Cubit<EnumSelectOfficeChairCategory> {
   CubitChooseOfficeChair([EnumSelectOfficeChairCategory? initialEnum])
       : super(initialEnum ??
             EnumSelectOfficeChairCategory.categoryOfficeChairNormal);
-
-  void change(EnumSelectOfficeChairCategory enumSelectOfficeChairCategory) {
-    emit(enumSelectOfficeChairCategory);
-  }
 }

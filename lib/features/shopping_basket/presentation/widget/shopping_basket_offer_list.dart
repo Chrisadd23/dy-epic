@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:app_flutter_produkt_bestellen/core/domain/entity/entity_core_pictures.dart';
+import 'package:app_flutter_produkt_bestellen/core/extension/double.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
@@ -347,7 +348,7 @@ class _OfferInfo extends StatelessWidget {
               ),
               Expanded(
                 child: Text(
-                  item.completeAmount,
+                  item.categoryEntity.normalPrice!.getCurrency(),
                   style: const TextStyle(
                       fontSize: 20, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.right,
@@ -395,7 +396,11 @@ class _Offer extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(20),
             child: picture?.listIntForUint8List != null
-                ? Image.memory(Uint8List.fromList(picture!.listIntForUint8List))
+                ? Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Image.memory(
+                        Uint8List.fromList(picture!.listIntForUint8List)),
+                  )
                 : const SizedBox.shrink(),
           ),
           Expanded(

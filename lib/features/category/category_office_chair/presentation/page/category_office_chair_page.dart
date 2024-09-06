@@ -45,6 +45,7 @@ class CategoryOfficeChairGridList extends StatelessWidget {
                             productNumber:
                                 categoryEntityList![index].productNumber,
                             height: constraints.maxHeight * 0.75,
+                            fit: BoxFit.fitHeight,
                           ),
                           Expanded(
                             child: Padding(

@@ -1,12 +1,12 @@
 import 'dart:convert';
 
+import 'package:app_flutter_produkt_bestellen/core/extension/double.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text_style.dart';
 import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/domain/entity/category_entity.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/widget/category_product_picture.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:intl/intl.dart';
 
 class CategoryWorkingTableGridList extends StatelessWidget {
   const CategoryWorkingTableGridList({
@@ -51,23 +51,16 @@ class CategoryWorkingTableGridList extends StatelessWidget {
                             child: Padding(
                               padding: const EdgeInsets.only(top: 5.0),
                               child: Text(
-                                'E-Smart ${categoryEntityList![index].type}',
+                                categoryEntityList![index].type,
                                 style: AppTextStyle.regular14,
                               ),
                             ),
                           ),
-                          if (categoryEntityList?[index]
-                                  .pricePerSize!
-                                  .first
-                                  .price !=
-                              null)
+                          if (categoryEntityList?[index].normalPrice != null)
                             Text(
-                              NumberFormat.currency(
-                                      locale: 'de_DE', symbol: '€')
-                                  .format(int.parse(categoryEntityList![index]
-                                      .pricePerSize!
-                                      .first
-                                      .price)),
+                              categoryEntityList![index]
+                                  .normalPrice!
+                                  .getCurrency(),
                               style: AppTextStyle.bold18,
                             )
                         ],

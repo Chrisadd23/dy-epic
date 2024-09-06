@@ -6,16 +6,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CategoryImageContainer extends StatelessWidget {
-  const CategoryImageContainer({
-    super.key,
-    required this.productNumber,
-    this.color,
-    this.height = 150,
-  });
+  const CategoryImageContainer(
+      {super.key,
+      required this.productNumber,
+      this.color,
+      this.height = 150,
+      this.fit = BoxFit.fill});
 
   final String productNumber;
   final String? color;
   final double height;
+  final BoxFit fit;
 
   @override
   Widget build(BuildContext context) {
@@ -31,20 +32,18 @@ class CategoryImageContainer extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(5),
           child: state
-                      .where((entityCorePicture) => entityCorePicture.name
-                          .contains(
-                              '$productNumber${color == null ? '' : '_$color'}'))
+                      .where((entityCorePicture) =>
+                          entityCorePicture.name.contains(productNumber))
                       .firstOrNull
                       ?.listIntForUint8List !=
                   null
               ? Image.memory(
                   Uint8List.fromList(state
-                      .where((entityCorePicture) => entityCorePicture.name
-                          .contains(
-                              '$productNumber${color == null ? '' : '_$color'}'))
+                      .where((entityCorePicture) =>
+                          entityCorePicture.name.contains(productNumber))
                       .first
                       .listIntForUint8List),
-                  fit: BoxFit.fill,
+                  fit: fit,
                 )
               : const SizedBox.shrink(),
         ),
