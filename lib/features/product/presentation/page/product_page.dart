@@ -97,43 +97,49 @@ class _ProductPageClipPathColumn extends StatelessWidget {
                     horizontal: 20.0,
                   ),
                   child: BlocSelector<ProductCubit, ProductState,
-                          List<String>?>(
-                      selector: (state) => state.productEntity?.attributes,
-                      builder: (context, listAttributes) {
+                          ({List<String>? attributes, String? title})>(
+                      selector: (state) => (
+                            attributes: state.productEntity?.attributes,
+                            title: state.productEntity?.productTitle
+                          ),
+                      builder: (context, productInfoRecord) {
                         return SizedBox(
                             width: double.infinity,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Text(
-                                  AppText.productInformation,
+                                  productInfoRecord.title ??
+                                      AppText.productInformation,
                                   style: AppTextStyle.bold18,
                                 ),
-                                if (listAttributes != null &&
-                                    listAttributes.isNotEmpty)
-                                  ...listAttributes.map((attribute) => Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: 5.0),
-                                        child: Row(
-                                          children: [
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
+                                if (productInfoRecord.attributes != null &&
+                                    productInfoRecord.attributes!.isNotEmpty)
+                                  ...productInfoRecord.attributes!
+                                      .map((attribute) => Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                vertical: 5.0),
+                                            child: Row(
+                                              children: [
+                                                Padding(
+                                                  padding: const EdgeInsets
+                                                      .symmetric(
                                                       horizontal: 5.0),
-                                              child: Container(
-                                                height: 5,
-                                                width: 5,
-                                                decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            35),
-                                                    color: Colors.black),
-                                              ),
+                                                  child: Container(
+                                                    height: 5,
+                                                    width: 5,
+                                                    decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(35),
+                                                        color: Colors.black),
+                                                  ),
+                                                ),
+                                                Expanded(
+                                                    child: Text(attribute)),
+                                              ],
                                             ),
-                                            Expanded(child: Text(attribute)),
-                                          ],
-                                        ),
-                                      )),
+                                          )),
                               ],
                             ));
                       }),
