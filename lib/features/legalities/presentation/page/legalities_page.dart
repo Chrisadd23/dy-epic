@@ -8,8 +8,28 @@ class LegalitiesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return GlobalScaffold(
       appBarContext: context,
-      body: const SizedBox.shrink(),
+      body: const _AppRights(),
       showMenuBar: true,
+    );
+  }
+}
+
+class _AppRights extends StatelessWidget {
+  const _AppRights();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(Icons.copyright),
+          Text(
+            'Christopher Michael Haas',
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
     );
   }
 }
