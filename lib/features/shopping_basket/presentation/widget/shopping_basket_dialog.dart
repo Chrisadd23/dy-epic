@@ -94,7 +94,7 @@ class _ShoppingBasketDialog extends StatelessWidget {
         ),
         BlocProvider.value(
           value: getIt<CubitCorePictures>()..loadLocalPictures(),
-        )
+        ),
       ],
       child: Container(
         decoration: BoxDecoration(

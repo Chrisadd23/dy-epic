@@ -1,3 +1,4 @@
+import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/local_neumorphic_button.dart';
 import 'package:flutter/material.dart';
 
 class FixDrawerButton extends StatelessWidget {
@@ -13,34 +14,25 @@ class FixDrawerButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: function,
-      child: Container(
-        margin: const EdgeInsets.only(bottom: 10),
-        height: height,
-        width: double.infinity,
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(10)),
-          boxShadow: [
-            BoxShadow(
-                color: Colors.black,
-                blurStyle: BlurStyle.inner,
-                offset: Offset(0, 2)),
-            BoxShadow(
-                color: Colors.black,
-                blurStyle: BlurStyle.inner,
-                offset: Offset(0, -2)),
-          ],
-          gradient: LinearGradient(
-              colors: [Colors.white, Color.fromRGBO(221, 221, 221, 1)],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 20, left: 10, right: 10),
+      child: LocalNeumorphicButton(
+        borderRadius: 10,
+        duration: const Duration(milliseconds: 50),
+        functionDuration: const Duration(milliseconds: 150),
+        onPressedBasedOnDuration: function,
+        child: Container(
+          height: height,
+          width: double.infinity,
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+          ),
+          child: Center(
+              child: Text(
+            title,
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+          )),
         ),
-        child: Center(
-            child: Text(
-          title,
-          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-        )),
       ),
     );
   }

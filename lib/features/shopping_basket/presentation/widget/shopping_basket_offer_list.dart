@@ -13,11 +13,11 @@ import 'package:app_flutter_produkt_bestellen/features/login/presentation/page/l
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket//presentation/bloc/state_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/domain/entity/shopping_basket_entity.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/bloc/bloc_shopping_basket.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/bloc/cubit_expand_information_widget.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/bloc/event_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:swipeable_tile/swipeable_tile.dart';
 
@@ -68,15 +68,21 @@ class ShoppingBasketOfferList extends StatelessWidget {
                                 padding: EdgeInsets.symmetric(
                                     horizontal: constraints.maxWidth * 0.05,
                                     vertical: constraints.maxHeight * 0.02),
-                                child: _ShoppingBasketOffer(
-                                    constraints: constraints,
-                                    item: state[index],
-                                    addedTime: state[index].addedTime,
-                                    orderType: context
-                                        .read<BlocShoppingBasket>()
-                                        .state
-                                        .getEnumOrderType(
-                                            timeIndex: state[index].addedTime)),
+                                child:
+                                    BlocProvider<CubitExpandInformationWidget>(
+                                  create: (context) =>
+                                      getIt<CubitExpandInformationWidget>(),
+                                  child: _ShoppingBasketOffer(
+                                      constraints: constraints,
+                                      item: state[index],
+                                      addedTime: state[index].addedTime,
+                                      orderType: context
+                                          .read<BlocShoppingBasket>()
+                                          .state
+                                          .getEnumOrderType(
+                                              timeIndex:
+                                                  state[index].addedTime)),
+                                ),
                               );
                             },
                           );
@@ -162,7 +168,7 @@ class SendOrderButton extends StatelessWidget {
   }
 }
 
-class _ShoppingBasketOffer extends HookWidget {
+class _ShoppingBasketOffer extends StatelessWidget {
   const _ShoppingBasketOffer({
     required this.constraints,
     required this.item,
@@ -177,11 +183,10 @@ class _ShoppingBasketOffer extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final expand = useState<bool>(false);
     return Stack(
       children: [
         InkWell(
-          onTap: () => expand.value = !expand.value,
+          onTap: () => context.read<CubitExpandInformationWidget>().onTap(),
           child: SwipeableTile.swipeToTriggerCard(
               borderRadius: 20,
               key: Key(DateTime.now().toString()),
@@ -271,12 +276,17 @@ class _ShoppingBasketOffer extends HookWidget {
                                     productNumber:
                                         item.categoryEntity.productNumber)),
                       ),
-                      expand.value
-                          ? _OfferInfo(
+                      BlocBuilder<CubitExpandInformationWidget, bool>(
+                          builder: (context, expand) {
+                        if (expand) {
+                          return _OfferInfo(
                               item: item,
                               constraints: constraints,
-                              orderType: orderType)
-                          : const SizedBox.shrink(),
+                              orderType: orderType);
+                        } else {
+                          return const SizedBox.shrink();
+                        }
+                      }),
                     ],
                   ),
                 ),
@@ -366,36 +376,16 @@ class _OfferInfo extends StatelessWidget {
             ],
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-          child: Text(
-            orderType.text,
-            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-        ),
       ],
     );
   }
 }
 
-class _Offer extends StatefulWidget {
+class _Offer extends StatelessWidget {
   const _Offer({this.picture, required this.item});
 
   final EntityCorePictures? picture;
   final ShoppingBasketProduct item;
-
-  @override
-  State<_Offer> createState() => _OfferState();
-}
-
-class _OfferState extends State<_Offer> {
-  @override
-  void didChangeDependencies() {
-    if (widget.picture != null) {
-      precacheImage(MemoryImage(widget.picture!.listIntForUint8List), context);
-    }
-    super.didChangeDependencies();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -404,9 +394,8 @@ class _OfferState extends State<_Offer> {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(20),
-            child: widget.picture?.listIntForUint8List != null
-                ? Image.memory(
-                    Uint8List.fromList(widget.picture!.listIntForUint8List))
+            child: picture?.listIntForUint8List != null
+                ? Image.memory(Uint8List.fromList(picture!.listIntForUint8List))
                 : const SizedBox.shrink(),
           ),
           Expanded(
@@ -417,7 +406,7 @@ class _OfferState extends State<_Offer> {
                       vertical: constraints.maxHeight * 0.12,
                       horizontal: constraints.maxWidth * 0.02),
                   child: Text(
-                    widget.item.categoryEntity.productTitle,
+                    item.categoryEntity.productTitle,
                     style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
@@ -428,7 +417,7 @@ class _OfferState extends State<_Offer> {
                 ),
                 Expanded(
                   child: Text(
-                    widget.item.completeAmount,
+                    item.completeAmount,
                     style: const TextStyle(
                         fontSize: 20, fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center,

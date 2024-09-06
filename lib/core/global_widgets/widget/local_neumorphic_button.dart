@@ -11,6 +11,7 @@ class LocalNeumorphicButton extends HookWidget {
     this.labelStyle,
     this.padding,
     this.duration,
+    this.functionDuration,
     this.borderRadius,
   });
 
@@ -19,6 +20,7 @@ class LocalNeumorphicButton extends HookWidget {
   final TextStyle? labelStyle;
   final EdgeInsetsGeometry? padding;
   final Duration? duration;
+  final Duration? functionDuration;
   final double? borderRadius;
 
   @override
@@ -28,7 +30,8 @@ class LocalNeumorphicButton extends HookWidget {
     return GestureDetector(
       onTapDown: (_) {
         isElevated.value = false;
-        Future.delayed(duration ?? const Duration(milliseconds: 200),
+        Future.delayed(
+            functionDuration ?? duration ?? const Duration(milliseconds: 200),
             onPressedBasedOnDuration);
       },
       onTapUp: (_) {

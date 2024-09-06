@@ -7,6 +7,7 @@ import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text_style.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_scaffold.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/local_neumorphic_button.dart';
+import 'package:app_flutter_produkt_bestellen/core/scaffold_messengers.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/domain/entity/category_entity.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/presentation/cubit/product_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/presentation/cubit/product_state.dart';
@@ -20,6 +21,7 @@ import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentat
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
 class ProductPage extends StatelessWidget {
   const ProductPage({super.key, this.product, this.color, this.recordOrder});
@@ -154,58 +156,72 @@ class _ProductPageClipPathColumn extends StatelessWidget {
   }
 }
 
-class _ProductShoppingBasketContainer extends StatelessWidget {
+class _ProductShoppingBasketContainer extends HookWidget {
   const _ProductShoppingBasketContainer();
 
   @override
   Widget build(BuildContext context) {
+    ValueNotifier isInProcess = useState(false);
     return Padding(
       padding:
           const EdgeInsets.only(top: 10.0, right: 35, left: 35, bottom: 20),
       child: LocalNeumorphicButton(
         borderRadius: 10,
-        onPressedBasedOnDuration: () {},
+        onPressedBasedOnDuration: isInProcess.value
+            ? () {}
+            : () {
+                isInProcess.value = true;
+                final productState = context.read<ProductCubit>().state;
+                final productErrorMessage = context
+                    .read<ProductCubit>()
+                    .checkIfStateCanBeAddedToTheBasket();
+                if (productErrorMessage == null) {
+                  context.read<BlocShoppingBasket>().add(
+                      EventShoppingBasket.add(
+                          category: '',
+                          productOrderCount: productState.productOrderCount,
+                          productEntity: productState.productEntity!,
+                          entityCorePicture: productState.entityCorePicture!,
+                          timeIndex: productState.position));
+                  context.read<ProductCubit>().clear();
+                  isInProcess.value = false;
+                } else {
+                  GlobalScaffoldMessenger.error(
+                    context: context,
+                    information: productErrorMessage,
+                    gradient: const LinearGradient(
+                        colors: [Color.fromRGBO(87, 87, 87, 0.0), Colors.white],
+                        begin: Alignment.bottomRight,
+                        end: Alignment.bottomLeft),
+                  );
+                  Future.delayed(const Duration(milliseconds: 4000),
+                      () => isInProcess.value = false);
+                }
+              },
         child: LayoutBuilder(builder: (context, constraints) {
-          return InkWell(
-            onTap: () {
-              final productState = context.read<ProductCubit>().state;
-              if (productState.productEntity != null &&
-                  productState.productOrderCount > 0 &&
-                  productState.entityCorePicture != null) {
-                context.read<BlocShoppingBasket>().add(EventShoppingBasket.add(
-                    category: '',
-                    productOrderCount: productState.productOrderCount,
-                    productEntity: productState.productEntity!,
-                    entityCorePicture: productState.entityCorePicture!,
-                    timeIndex: productState.position));
-                context.read<ProductCubit>().clear();
-              }
-            },
-            child: Container(
-                padding: const EdgeInsets.all(10),
-                height: MediaQuery.sizeOf(context).height * 0.1,
-                width: double.infinity,
-                child: Row(
-                  children: [
-                    _ShoppingBasketButtonText(
-                        width: constraints.maxWidth * 0.6),
-                    Expanded(
-                      child: BlocSelector<ProductCubit, ProductState, double>(
-                          selector: (state) =>
-                              (state.productEntity?.normalPrice ?? 0) *
-                              state.productOrderCount,
-                          builder: (context, amount) => Center(
-                                  child: FittedBox(
-                                fit: BoxFit.fill,
-                                child: Text(
-                                  amount.getCurrency(),
-                                  style: AppTextStyle.bold18,
-                                ),
-                              ))),
-                    )
-                  ],
-                )),
-          );
+          return Container(
+              padding: const EdgeInsets.all(10),
+              height: MediaQuery.sizeOf(context).height * 0.1,
+              width: double.infinity,
+              child: Row(
+                children: [
+                  _ShoppingBasketButtonText(width: constraints.maxWidth * 0.6),
+                  Expanded(
+                    child: BlocSelector<ProductCubit, ProductState, double>(
+                        selector: (state) =>
+                            (state.productEntity?.normalPrice ?? 0) *
+                            state.productOrderCount,
+                        builder: (context, amount) => Center(
+                                child: FittedBox(
+                              fit: BoxFit.fill,
+                              child: Text(
+                                amount.getCurrency(),
+                                style: AppTextStyle.bold18,
+                              ),
+                            ))),
+                  )
+                ],
+              ));
         }),
       ),
     );

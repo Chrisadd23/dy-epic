@@ -52,4 +52,22 @@ class ProductCubit extends Cubit<ProductState> {
       state.copyWith(productOrderCount: 0, position: null),
     );
   }
+
+  String? checkIfStateCanBeAddedToTheBasket() {
+    if (state.productEntity == null) {
+      return 'Das Produkt kann nicht hinzugefügt werden.';
+    }
+
+    if (state.entityCorePicture == null) {
+      return 'Es schein ein Problem mit dem Laden des Produkts zu geben.';
+    }
+    if (state.productEntity!.normalPrice == null) {
+      return 'Der Preis ist aktuell nicht vorhanden';
+    }
+    if (state.productOrderCount <= 0) {
+      return 'Bitte wählen sie die Menge aus die Sie zum Warenkorb hinzufügen wollen.';
+    }
+
+    return null;
+  }
 }

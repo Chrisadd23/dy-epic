@@ -2,6 +2,7 @@ import 'package:app_flutter_produkt_bestellen/features/shopping_basket/data/data
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/data/repository/shopping_basket_repository_implementation.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/domain/repository/shopping_basket_ropository.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/bloc/bloc_shopping_basket.dart';
+import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/bloc/cubit_expand_information_widget.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -21,6 +22,8 @@ abstract class ShoppingBasketDependencies {
         () => BlocShoppingBasket(
           getIt(),
         ),
-      );
+      )
+      ..registerFactory<CubitExpandInformationWidget>(
+          () => CubitExpandInformationWidget());
   }
 }
