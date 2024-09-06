@@ -55,4 +55,76 @@ abstract class AppTextStyle {
 
   static TextStyle get bold12 =>
       const TextStyle(fontSize: 12, fontWeight: FontWeight.bold);
+
+  static TextStyle get colorWhiteBorder12 =>
+      const TextStyle(color: Colors.white, fontSize: 12, shadows: [
+        BoxShadow(offset: Offset(0, 1), color: Colors.black),
+        BoxShadow(offset: Offset(0, -1), color: Colors.black),
+        BoxShadow(offset: Offset(1, 0), color: Colors.black),
+        BoxShadow(offset: Offset(-1, 0), color: Colors.black),
+      ]);
+
+  static TextStyle get colorWhiteBorder14 =>
+      const TextStyle(color: Colors.white, fontSize: 14, shadows: [
+        BoxShadow(offset: Offset(0, 1), color: Colors.black),
+        BoxShadow(offset: Offset(0, -1), color: Colors.black),
+        BoxShadow(offset: Offset(1, 0), color: Colors.black),
+        BoxShadow(offset: Offset(-1, 0), color: Colors.black),
+      ]);
+
+  static TextStyle get colorWhiteBorder16 =>
+      const TextStyle(color: Colors.white, fontSize: 16, shadows: [
+        BoxShadow(offset: Offset(0, 1), color: Colors.black),
+        BoxShadow(offset: Offset(0, -1), color: Colors.black),
+        BoxShadow(offset: Offset(1, 0), color: Colors.black),
+        BoxShadow(offset: Offset(-1, 0), color: Colors.black),
+      ]);
+
+  static TextStyle get colorBlackBorder12 =>
+      const TextStyle(color: Colors.black, fontSize: 12, shadows: [
+        BoxShadow(offset: Offset(0, 1), color: Colors.white),
+        BoxShadow(offset: Offset(0, -1), color: Colors.white),
+        BoxShadow(offset: Offset(1, 0), color: Colors.white),
+        BoxShadow(offset: Offset(-1, 0), color: Colors.white),
+      ]);
+
+  static TextStyle get colorBlackBorder14 =>
+      const TextStyle(color: Colors.black, fontSize: 14, shadows: [
+        BoxShadow(offset: Offset(0, 1), color: Colors.white),
+        BoxShadow(offset: Offset(0, -1), color: Colors.white),
+        BoxShadow(offset: Offset(1, 0), color: Colors.white),
+        BoxShadow(offset: Offset(-1, 0), color: Colors.white),
+      ]);
+
+  static TextStyle get colorBlackBorder16 =>
+      const TextStyle(color: Colors.black, fontSize: 16, shadows: [
+        BoxShadow(offset: Offset(0, 1), color: Colors.white),
+        BoxShadow(offset: Offset(0, -1), color: Colors.white),
+        BoxShadow(offset: Offset(1, 0), color: Colors.white),
+        BoxShadow(offset: Offset(-1, 0), color: Colors.white),
+      ]);
+
+  static TextStyle get colorBlackBorder18 =>
+      const TextStyle(color: Colors.black, fontSize: 18, shadows: [
+        BoxShadow(offset: Offset(0, 1), color: Colors.white),
+        BoxShadow(offset: Offset(0, -1), color: Colors.white),
+        BoxShadow(offset: Offset(1, 0), color: Colors.white),
+        BoxShadow(offset: Offset(-1, 0), color: Colors.white),
+      ]);
+
+  static TextStyle get colorBlackBorder24 =>
+      const TextStyle(color: Colors.black, fontSize: 24, shadows: [
+        BoxShadow(offset: Offset(0, 1), color: Colors.white),
+        BoxShadow(offset: Offset(0, -1), color: Colors.white),
+        BoxShadow(offset: Offset(1, 0), color: Colors.white),
+        BoxShadow(offset: Offset(-1, 0), color: Colors.white),
+      ]);
+
+  static TextStyle get colorBlackBorder30 =>
+      const TextStyle(color: Colors.black, fontSize: 30, shadows: [
+        BoxShadow(offset: Offset(0, 1), color: Colors.white),
+        BoxShadow(offset: Offset(0, -1), color: Colors.white),
+        BoxShadow(offset: Offset(1, 0), color: Colors.white),
+        BoxShadow(offset: Offset(-1, 0), color: Colors.white),
+      ]);
 }

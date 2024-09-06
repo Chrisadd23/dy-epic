@@ -12,6 +12,7 @@ import 'package:app_flutter_produkt_bestellen/features/category/category_working
 import 'package:app_flutter_produkt_bestellen/features/category/category_workingtable/presentation/page/category_workingtable_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/cubit/state_category.dart';
 import 'package:app_flutter_produkt_bestellen/features/home/presentation/cubit/home_cubit_category.dart';
+import 'package:app_flutter_produkt_bestellen/features/home/presentation/widget/company_info.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/bloc/bloc_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/widget/shopping_basket_dialog.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
@@ -81,47 +82,50 @@ class CategoryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 70),
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 20,
+        Column(
+          children: [
+            const SizedBox(
+              height: 20,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            const CompanyInfo(),
+            const SizedBox(
+              height: 20,
+            ),
+            SizedBox(
+              height: 35,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: const [
+                  Padding(
+                    padding: EdgeInsets.only(left: 10.0),
+                    child: _CategoryListRow(
+                      category: 'Arbeitstische',
+                      categoryProduct: EnumCategoryProduct.workingTable,
+                    ),
+                  ),
+                  _CategoryListRow(
+                    category: 'Bürostühle',
+                    categoryProduct: EnumCategoryProduct.officeChairNormal,
+                  ),
+                  _CategoryListRow(
+                    category: 'Hochlehner',
+                    categoryProduct: EnumCategoryProduct.officeChairHochlehner,
+                  ),
+                  _CategoryListRow(
+                    category: 'Konferenzstühle',
+                    categoryProduct: EnumCategoryProduct.conferenceChair,
+                  ),
+                ],
               ),
-              SizedBox(
-                height: 35,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: const [
-                    Padding(
-                      padding: EdgeInsets.only(left: 10.0),
-                      child: _CategoryListRow(
-                        category: 'Arbeitstische',
-                        categoryProduct: EnumCategoryProduct.workingTable,
-                      ),
-                    ),
-                    _CategoryListRow(
-                      category: 'Bürostühle',
-                      categoryProduct: EnumCategoryProduct.officeChairNormal,
-                    ),
-                    _CategoryListRow(
-                      category: 'Hochlehner',
-                      categoryProduct:
-                          EnumCategoryProduct.officeChairHochlehner,
-                    ),
-                    _CategoryListRow(
-                      category: 'Konferenzstühle',
-                      categoryProduct: EnumCategoryProduct.conferenceChair,
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              const _ProductColumn(),
-            ],
-          ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            const _ProductColumn(),
+          ],
         ),
         const DialogShoppingBasket(),
       ],
