@@ -1,6 +1,6 @@
 abstract class AppText {
   static String successfullySavedDeliveryAddress =
-      'Die Lieferadresse wurde erfolgreich gespeichert';
+      'Die Lieferadresse wurde erfolgreich gespeichert.';
 
   static String save = 'Speichern';
 
@@ -35,7 +35,7 @@ abstract class AppText {
   static String requestInformation = 'Anfrageinformationen';
 
   static String needsToBeLoggedInToSend =
-      'Das absenden ist nur im eingeloggten Zustand möglich';
+      'Das absenden ist nur im eingeloggten Zustand möglich.';
 
   static String categoryWorkingTable = 'categoryWorkingTable';
 

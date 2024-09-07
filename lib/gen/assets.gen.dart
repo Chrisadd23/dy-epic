@@ -13,53 +13,30 @@ class $AssetsAppComponentsGen {
   const $AssetsAppComponentsGen();
 
   $AssetsAppComponentsJpgGen get jpg => const $AssetsAppComponentsJpgGen();
-  $AssetsAppComponentsPngGen get png => const $AssetsAppComponentsPngGen();
+
+  /// File path: assets/appComponents/office_with_city_white.png
+  AssetGenImage get officeWithCityWhite =>
+      const AssetGenImage('assets/appComponents/office_with_city_white.png');
+
+  /// File path: assets/appComponents/office_with_forest_dark.png
+  AssetGenImage get officeWithForestDark =>
+      const AssetGenImage('assets/appComponents/office_with_forest_dark.png');
+
   $AssetsAppComponentsSvgGen get svg => const $AssetsAppComponentsSvgGen();
+
+  /// List of all assets
+  List<AssetGenImage> get values => [officeWithCityWhite, officeWithForestDark];
 }
 
 class $AssetsCompanyGen {
   const $AssetsCompanyGen();
-
-  /// File path: assets/company/appBarLogo.png
-  AssetGenImage get appBarLogo =>
-      const AssetGenImage('assets/company/appBarLogo.png');
 
   /// File path: assets/company/epic_logo_scaled.png
   AssetGenImage get epicLogoScaled =>
       const AssetGenImage('assets/company/epic_logo_scaled.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [appBarLogo, epicLogoScaled];
-}
-
-class $AssetsIconGen {
-  const $AssetsIconGen();
-
-  /// File path: assets/icon/oberhaizinger_officesolution_app_icon.png
-  AssetGenImage get oberhaizingerOfficesolutionAppIcon => const AssetGenImage(
-      'assets/icon/oberhaizinger_officesolution_app_icon.png');
-
-  /// File path: assets/icon/oberhaizinger_officesolution_app_icon_white.png
-  AssetGenImage get oberhaizingerOfficesolutionAppIconWhite =>
-      const AssetGenImage(
-          'assets/icon/oberhaizinger_officesolution_app_icon_white.png');
-
-  /// List of all assets
-  List<AssetGenImage> get values => [
-        oberhaizingerOfficesolutionAppIcon,
-        oberhaizingerOfficesolutionAppIconWhite
-      ];
-}
-
-class $AssetsProductsGen {
-  const $AssetsProductsGen();
-
-  $AssetsProductsArbeitstischeGen get arbeitstische =>
-      const $AssetsProductsArbeitstischeGen();
-  $AssetsProductsBuerodrehstuehleGen get buerodrehstuehle =>
-      const $AssetsProductsBuerodrehstuehleGen();
-  $AssetsProductsKonferenzstuehleGen get konferenzstuehle =>
-      const $AssetsProductsKonferenzstuehleGen();
+  List<AssetGenImage> get values => [epicLogoScaled];
 }
 
 class $AssetsAppComponentsJpgGen {
@@ -95,43 +72,8 @@ class $AssetsAppComponentsJpgGen {
       ];
 }
 
-class $AssetsAppComponentsPngGen {
-  const $AssetsAppComponentsPngGen();
-
-  /// File path: assets/appComponents/png/oberhaizinger_start_bild.png
-  AssetGenImage get oberhaizingerStartBild => const AssetGenImage(
-      'assets/appComponents/png/oberhaizinger_start_bild.png');
-
-  /// List of all assets
-  List<AssetGenImage> get values => [oberhaizingerStartBild];
-}
-
 class $AssetsAppComponentsSvgGen {
   const $AssetsAppComponentsSvgGen();
-
-  /// File path: assets/appComponents/svg/chair1.svg
-  String get chair1 => 'assets/appComponents/svg/chair1.svg';
-
-  /// File path: assets/appComponents/svg/chair3.svg
-  String get chair3 => 'assets/appComponents/svg/chair3.svg';
-
-  /// File path: assets/appComponents/svg/chair4.svg
-  String get chair4 => 'assets/appComponents/svg/chair4.svg';
-
-  /// File path: assets/appComponents/svg/chairHochlehner.svg
-  String get chairHochlehner => 'assets/appComponents/svg/chairHochlehner.svg';
-
-  /// File path: assets/appComponents/svg/char2.svg
-  String get char2 => 'assets/appComponents/svg/char2.svg';
-
-  /// File path: assets/appComponents/svg/icon _minus.svg
-  String get iconMinus => 'assets/appComponents/svg/icon _minus.svg';
-
-  /// File path: assets/appComponents/svg/icon _plus.svg
-  String get iconPlus => 'assets/appComponents/svg/icon _plus.svg';
-
-  /// File path: assets/appComponents/svg/icon_menu.svg
-  String get iconMenu => 'assets/appComponents/svg/icon_menu.svg';
 
   /// File path: assets/appComponents/svg/order_basket.svg
   String get orderBasket => 'assets/appComponents/svg/order_basket.svg';
@@ -146,147 +88,8 @@ class $AssetsAppComponentsSvgGen {
   String get shoppingBasket => 'assets/appComponents/svg/shoppingBasket.svg';
 
   /// List of all assets
-  List<String> get values => [
-        chair1,
-        chair3,
-        chair4,
-        chairHochlehner,
-        char2,
-        iconMinus,
-        iconPlus,
-        iconMenu,
-        orderBasket,
-        orderRequest,
-        returnIcon,
-        shoppingBasket
-      ];
-}
-
-class $AssetsProductsArbeitstischeGen {
-  const $AssetsProductsArbeitstischeGen();
-
-  /// File path: assets/products/arbeitstische/ahornSchwarz.png
-  AssetGenImage get ahornSchwarz =>
-      const AssetGenImage('assets/products/arbeitstische/ahornSchwarz.png');
-
-  /// File path: assets/products/arbeitstische/ahornSilber.png
-  AssetGenImage get ahornSilber =>
-      const AssetGenImage('assets/products/arbeitstische/ahornSilber.png');
-
-  /// File path: assets/products/arbeitstische/ahornWeiss.png
-  AssetGenImage get ahornWeiss =>
-      const AssetGenImage('assets/products/arbeitstische/ahornWeiss.png');
-
-  /// File path: assets/products/arbeitstische/bucheSchwarz.png
-  AssetGenImage get bucheSchwarz =>
-      const AssetGenImage('assets/products/arbeitstische/bucheSchwarz.png');
-
-  /// File path: assets/products/arbeitstische/bucheSilber.png
-  AssetGenImage get bucheSilber =>
-      const AssetGenImage('assets/products/arbeitstische/bucheSilber.png');
-
-  /// File path: assets/products/arbeitstische/bucheWeiss.png
-  AssetGenImage get bucheWeiss =>
-      const AssetGenImage('assets/products/arbeitstische/bucheWeiss.png');
-
-  /// File path: assets/products/arbeitstische/lSchwarz.png
-  AssetGenImage get lSchwarz =>
-      const AssetGenImage('assets/products/arbeitstische/lSchwarz.png');
-
-  /// File path: assets/products/arbeitstische/lSilber.png
-  AssetGenImage get lSilber =>
-      const AssetGenImage('assets/products/arbeitstische/lSilber.png');
-
-  /// File path: assets/products/arbeitstische/lWeiss.png
-  AssetGenImage get lWeiss =>
-      const AssetGenImage('assets/products/arbeitstische/lWeiss.png');
-
-  /// File path: assets/products/arbeitstische/slavonischeEicheSchwarz.png
-  AssetGenImage get slavonischeEicheSchwarz => const AssetGenImage(
-      'assets/products/arbeitstische/slavonischeEicheSchwarz.png');
-
-  /// File path: assets/products/arbeitstische/slavonischeEicheSilber.png
-  AssetGenImage get slavonischeEicheSilber => const AssetGenImage(
-      'assets/products/arbeitstische/slavonischeEicheSilber.png');
-
-  /// File path: assets/products/arbeitstische/slavonischeEicheWeiss.png
-  AssetGenImage get slavonischeEicheWeiss => const AssetGenImage(
-      'assets/products/arbeitstische/slavonischeEicheWeiss.png');
-
-  /// File path: assets/products/arbeitstische/wSchwarz.png
-  AssetGenImage get wSchwarz =>
-      const AssetGenImage('assets/products/arbeitstische/wSchwarz.png');
-
-  /// File path: assets/products/arbeitstische/wSilber.png
-  AssetGenImage get wSilber =>
-      const AssetGenImage('assets/products/arbeitstische/wSilber.png');
-
-  /// File path: assets/products/arbeitstische/wWeiss.png
-  AssetGenImage get wWeiss =>
-      const AssetGenImage('assets/products/arbeitstische/wWeiss.png');
-
-  /// List of all assets
-  List<AssetGenImage> get values => [
-        ahornSchwarz,
-        ahornSilber,
-        ahornWeiss,
-        bucheSchwarz,
-        bucheSilber,
-        bucheWeiss,
-        lSchwarz,
-        lSilber,
-        lWeiss,
-        slavonischeEicheSchwarz,
-        slavonischeEicheSilber,
-        slavonischeEicheWeiss,
-        wSchwarz,
-        wSilber,
-        wWeiss
-      ];
-}
-
-class $AssetsProductsBuerodrehstuehleGen {
-  const $AssetsProductsBuerodrehstuehleGen();
-
-  /// File path: assets/products/buerodrehstuehle/Kyra_hochlehner.png
-  AssetGenImage get kyraHochlehner => const AssetGenImage(
-      'assets/products/buerodrehstuehle/Kyra_hochlehner.png');
-
-  /// File path: assets/products/buerodrehstuehle/camiro_hochlehner.png
-  AssetGenImage get camiroHochlehner => const AssetGenImage(
-      'assets/products/buerodrehstuehle/camiro_hochlehner.png');
-
-  /// File path: assets/products/buerodrehstuehle/kyra.png
-  AssetGenImage get kyra =>
-      const AssetGenImage('assets/products/buerodrehstuehle/kyra.png');
-
-  /// File path: assets/products/buerodrehstuehle/lo_punk133.png
-  AssetGenImage get loPunk133 =>
-      const AssetGenImage('assets/products/buerodrehstuehle/lo_punk133.png');
-
-  /// File path: assets/products/buerodrehstuehle/xenon_net.png
-  AssetGenImage get xenonNet =>
-      const AssetGenImage('assets/products/buerodrehstuehle/xenon_net.png');
-
-  /// List of all assets
-  List<AssetGenImage> get values =>
-      [kyraHochlehner, camiroHochlehner, kyra, loPunk133, xenonNet];
-}
-
-class $AssetsProductsKonferenzstuehleGen {
-  const $AssetsProductsKonferenzstuehleGen();
-
-  /// File path: assets/products/konferenzstuehle/camiroFreischwingerNetz.png
-  AssetGenImage get camiroFreischwingerNetz => const AssetGenImage(
-      'assets/products/konferenzstuehle/camiroFreischwingerNetz.png');
-
-  /// File path: assets/products/konferenzstuehle/camiroFreischwingerPolster.png
-  AssetGenImage get camiroFreischwingerPolster => const AssetGenImage(
-      'assets/products/konferenzstuehle/camiroFreischwingerPolster.png');
-
-  /// List of all assets
-  List<AssetGenImage> get values =>
-      [camiroFreischwingerNetz, camiroFreischwingerPolster];
+  List<String> get values =>
+      [orderBasket, orderRequest, returnIcon, shoppingBasket];
 }
 
 class Assets {
@@ -295,8 +98,6 @@ class Assets {
   static const $AssetsAppComponentsGen appComponents =
       $AssetsAppComponentsGen();
   static const $AssetsCompanyGen company = $AssetsCompanyGen();
-  static const $AssetsIconGen icon = $AssetsIconGen();
-  static const $AssetsProductsGen products = $AssetsProductsGen();
 }
 
 class AssetGenImage {

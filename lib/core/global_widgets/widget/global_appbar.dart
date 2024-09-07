@@ -104,10 +104,6 @@ class AppBarMenuButton extends StatelessWidget {
 
   final bool showMenuBar;
 
-  String get imagePath => showMenuBar
-      ? Assets.appComponents.svg.iconMenu
-      : Assets.appComponents.svg.returnIcon;
-
   @override
   Widget build(BuildContext context) {
     return !showMenuBar
