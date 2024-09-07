@@ -35,7 +35,7 @@ abstract class AppText {
   static String requestInformation = 'Anfrageinformationen';
 
   static String needsToBeLoggedInToSend =
-      'Das absenden ist nur im eingeloggten Zustand möglich.';
+      'Das Absenden ist nur im eingeloggten Zustand möglich.';
 
   static String categoryWorkingTable = 'categoryWorkingTable';
 
