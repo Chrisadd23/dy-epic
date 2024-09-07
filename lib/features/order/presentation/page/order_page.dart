@@ -235,7 +235,7 @@ class _TextFieldContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.sizeOf(context).height * 0.04,
+      height: 35,
       width: MediaQuery.sizeOf(context).width * 0.7,
       decoration: BoxDecoration(
         border: Border.all(),
@@ -251,7 +251,7 @@ class _TextFieldContainer extends StatelessWidget {
           decoration: const InputDecoration(
               border: InputBorder.none,
               floatingLabelBehavior: FloatingLabelBehavior.never,
-              contentPadding: EdgeInsets.symmetric(vertical: 1.0)),
+              contentPadding: EdgeInsets.symmetric(vertical: 5.0)),
           style: const TextStyle(letterSpacing: 1.5),
           onChanged: (input) {
             context.read<OrderCubit>().searchOrder(input: input);
