@@ -1,5 +1,6 @@
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_widgets/drawer_button.dart';
+import 'package:app_flutter_produkt_bestellen/core/global_scaffold_messenger.dart';
 import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_state.dart';
@@ -260,8 +261,13 @@ class _DrawerWidget extends StatelessWidget {
                                 context.goNamed(AppGoRouter.login.name);
                               },
                           loggedIn: (loggedInState) => () async {
-                                await context.read<LoginCubit>().logOut();
-
+                                final failure =
+                                    await context.read<LoginCubit>().logOut();
+                                if (failure != null && context.mounted) {
+                                  GlobalScaffoldMessenger.error(
+                                      context: context,
+                                      information: failure.getFailureMessage);
+                                }
                                 if (context.mounted) {
                                   context
                                       .read<BlocShoppingBasket>()

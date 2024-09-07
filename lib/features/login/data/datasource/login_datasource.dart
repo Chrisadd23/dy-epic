@@ -1,4 +1,5 @@
 import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
+import 'package:app_flutter_produkt_bestellen/core/shared_preferences_handling.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/domain/entity/entity_login_customer.dart';
 import 'package:app_flutter_produkt_bestellen/features/settings/presentation/cubit/notification_settings_state.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -7,7 +8,9 @@ import 'package:flutter/foundation.dart';
 
 abstract class LoginDatasource {
   Future<Either<Failure, EntityLoginCustomer>> login(
-      {required String customerNumber, required String password});
+      {required String customerNumber,
+      required String password,
+      required bool stayLoggedIn});
 
   Future<Either<Failure, EntityLoginCustomer>> updateCustomerDeliveryAddress(
       {required String street,
@@ -18,6 +21,11 @@ abstract class LoginDatasource {
   Future<Either<Failure, List<UserNotification>>> toggleNotifications(
       {required String customerNumber,
       required List<NotificationSetting> newNotificationSettings});
+
+  Future<Either<Failure, EntityLoginCustomer>>
+      getCustomerDataBasedOnCustomerNumber({required String customerNumber});
+
+  Future<Failure?> logOut();
 }
 
 class LoginDatasourceImplementation extends LoginDatasource {
@@ -27,7 +35,9 @@ class LoginDatasourceImplementation extends LoginDatasource {
 
   @override
   Future<Either<Failure, EntityLoginCustomer>> login(
-      {required String customerNumber, required String password}) async {
+      {required String customerNumber,
+      required String password,
+      required bool stayLoggedIn}) async {
     try {
       final Either<Failure, EntityLoginCustomer> entityLoginCustomer =
           await _firebaseFirestore
@@ -40,12 +50,25 @@ class LoginDatasourceImplementation extends LoginDatasource {
 
         if (json != null) {
           debugPrint("customerJson ==> $json");
+
           return Right(EntityLoginCustomer.fromJson(json));
         } else {
           return const Left(
-              Failure.databaseError('Der Benutzer wurde nicht gefunden'));
+              Failure.databaseError('Der Benutzer wurde nicht gefunden.'));
         }
       }, onError: (error) => debugPrint("error => ${error.toString()}"));
+
+      entityLoginCustomer.fold((failure) => Left(failure),
+          (customerEntity) async {
+        try {
+          if (stayLoggedIn) {
+            await SharedPreferencesHandling.setCustomerToken(
+                customerNumber: customerNumber);
+          }
+        } catch (error) {
+          debugPrint('stay logged in error => ${error.toString()}');
+        }
+      });
 
       return entityLoginCustomer;
     } catch (e) {
@@ -131,6 +154,45 @@ class LoginDatasourceImplementation extends LoginDatasource {
       }
     } catch (error) {
       return Left(Failure.databaseError(error.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, EntityLoginCustomer>>
+      getCustomerDataBasedOnCustomerNumber(
+          {required String customerNumber}) async {
+    try {
+      final Either<Failure, EntityLoginCustomer> entityLoginCustomer =
+          await _firebaseFirestore
+              .collection('User')
+              .where('customerNumber', isEqualTo: customerNumber)
+              .get()
+              .then((value) {
+        final Map<String, dynamic>? json = value.docs.firstOrNull?.data();
+
+        if (json != null) {
+          debugPrint("customerJson ==> $json");
+          return Right(EntityLoginCustomer.fromJson(json));
+        } else {
+          return const Left(
+              Failure.databaseError('Der Benutzer wurde nicht gefunden.'));
+        }
+      }, onError: (error) => debugPrint("error => ${error.toString()}"));
+
+      return entityLoginCustomer;
+    } catch (e) {
+      return Left(Failure.databaseError(e.toString()));
+    }
+  }
+
+  @override
+  Future<Failure?> logOut() async {
+    try {
+      await SharedPreferencesHandling.removeCustomerToken();
+      return null;
+    } catch (error) {
+      return const Failure.message(
+          'Sie konnten nicht permanent ausgeloggt werden');
     }
   }
 }

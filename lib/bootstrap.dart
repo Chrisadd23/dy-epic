@@ -1,5 +1,6 @@
 import 'package:app_flutter_produkt_bestellen/core/firebase/firebase_configuration.dart';
 import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
+import 'package:app_flutter_produkt_bestellen/core/shared_preferences_handling.dart';
 import 'package:app_flutter_produkt_bestellen/firebase_options.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -13,6 +14,7 @@ abstract class Bootstrap {
         await FirebaseConfiguration.requestPermission();
         await FirebaseConfiguration.initFlutterLocalNotificationAttributes();
         await FirebaseConfiguration.initFirebaseSettings();
+        await SharedPreferencesHandling.initialise();
 
         //SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
         setUpMainDependencies();

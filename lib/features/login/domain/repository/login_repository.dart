@@ -5,7 +5,9 @@ import 'package:either_dart/either.dart';
 
 abstract class LoginRepository {
   Future<Either<Failure, EntityLoginCustomer>> loginCustomer(
-      {required String customerNumber, required String password});
+      {required String customerNumber,
+      required String password,
+      required bool stayLoggedIn});
 
   Future<Either<Failure, EntityLoginCustomer>> updateCustomerDeliveryAddress(
       {required String street,
@@ -18,4 +20,13 @@ abstract class LoginRepository {
       required List<NotificationSetting> newNotificationSettings});
 
   EntityLoginCustomer? get customer;
+
+  Stream<EntityLoginCustomer> get entityLoginCustomer;
+
+  Future<Either<Failure, EntityLoginCustomer>>
+      getCustomerDataBasedOnCustomerNumber({required String customerNumber});
+
+  String? getLocalCustomerNumber();
+
+  Future<Failure?> logout();
 }

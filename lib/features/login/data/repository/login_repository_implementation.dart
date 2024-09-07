@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
+import 'package:app_flutter_produkt_bestellen/core/shared_preferences_handling.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/data/datasource/login_datasource.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/domain/entity/entity_login_customer.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/domain/repository/login_repository.dart';
@@ -12,13 +15,26 @@ class LoginRepositoryImplementation extends LoginRepository {
 
   EntityLoginCustomer? _loginCustomer;
 
+  final _entityLoginCustomerController =
+      StreamController<EntityLoginCustomer>.broadcast();
+
+  @override
+  Stream<EntityLoginCustomer> get entityLoginCustomer =>
+      _entityLoginCustomerController.stream;
+
   @override
   Future<Either<Failure, EntityLoginCustomer>> loginCustomer(
-      {required String customerNumber, required String password}) async {
+      {required String customerNumber,
+      required String password,
+      required bool stayLoggedIn}) async {
     return _loginDataSource
-        .login(customerNumber: customerNumber, password: password)
+        .login(
+            customerNumber: customerNumber,
+            password: password,
+            stayLoggedIn: stayLoggedIn)
         .fold((left) => Left(left), (entityLoginCustomer) {
       _loginCustomer = entityLoginCustomer;
+      _entityLoginCustomerController.add(_loginCustomer!);
       return Right(entityLoginCustomer);
     });
   }
@@ -37,7 +53,7 @@ class LoginRepositoryImplementation extends LoginRepository {
             customerEntity: customerEntity)
         .fold((left) => Left(left), (entityLoginCustomer) {
       _loginCustomer = entityLoginCustomer;
-
+      _entityLoginCustomerController.add(_loginCustomer!);
       return Right(entityLoginCustomer);
     });
   }
@@ -55,10 +71,33 @@ class LoginRepositoryImplementation extends LoginRepository {
     )
         .fold((left) => Left(left), (customerEntity) {
       _loginCustomer = _loginCustomer!.copyWith(notifications: customerEntity);
+      _entityLoginCustomerController.add(_loginCustomer!);
       return const Right(true);
     });
   }
 
   @override
   EntityLoginCustomer? get customer => _loginCustomer;
+
+  @override
+  Future<Either<Failure, EntityLoginCustomer>>
+      getCustomerDataBasedOnCustomerNumber({required String customerNumber}) {
+    return _loginDataSource
+        .getCustomerDataBasedOnCustomerNumber(customerNumber: customerNumber)
+        .fold((failure) => Left(failure), (customerEntity) {
+      _loginCustomer = customerEntity;
+      _entityLoginCustomerController.add(_loginCustomer!);
+      return Right(customerEntity);
+    });
+  }
+
+  @override
+  String? getLocalCustomerNumber() {
+    return SharedPreferencesHandling.getCustomerToken();
+  }
+
+  @override
+  Future<Failure?> logout() async {
+    return _loginDataSource.logOut();
+  }
 }

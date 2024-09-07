@@ -4,6 +4,7 @@ import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_sca
 import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_state.dart';
+import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/stay_logged_in_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/text_editing_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/text_editing_state.dart';
 import 'package:app_flutter_produkt_bestellen/gen/assets.gen.dart';
@@ -28,7 +29,9 @@ class LoginPage extends StatelessWidget {
             create: (context) => getIt<TextEditingCubit>()),
         BlocProvider<LoginCubit>.value(
           value: getIt<LoginCubit>(),
-        )
+        ),
+        BlocProvider<StayLoggedInCubit>(
+            create: (context) => getIt<StayLoggedInCubit>())
       ], child: _BlocBuilderLoginPage(redirectName: redirectName)),
     );
   }
@@ -48,7 +51,6 @@ class _BlocBuilderLoginPageState extends State<_BlocBuilderLoginPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     image = Image.asset(
       Assets.appComponents.jpg.loginBackground.path,
@@ -101,11 +103,36 @@ class _BlocBuilderLoginPageState extends State<_BlocBuilderLoginPage> {
               const _CustomerNumberTextWidget(),
               const SizedBox(height: 30),
               const _PasswordTextWidget(),
+              const _StayLoggedInRow(),
               _LoginButton(redirectName: widget.redirectName),
             ],
           ),
         ],
       ),
+    );
+  }
+}
+
+class _StayLoggedInRow extends StatelessWidget {
+  const _StayLoggedInRow();
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Text('angemeldet bleiben?'),
+        BlocBuilder<StayLoggedInCubit, bool>(builder: (context, isActive) {
+          return Checkbox(
+            value: isActive,
+            onChanged: (value) {
+              context.read<StayLoggedInCubit>().triggerCheckbox();
+            },
+            checkColor: Colors.green,
+            fillColor: const MaterialStatePropertyAll(Colors.white),
+          );
+        }),
+      ],
     );
   }
 }
@@ -130,7 +157,8 @@ class _LoginButton extends HookWidget {
                   isAbleToPressButton.value = false;
                   final loggedIn = await context.read<LoginCubit>().login(
                       customerNumber: state.customerNumber.text,
-                      password: state.customerPassword.text);
+                      password: state.customerPassword.text,
+                      stayLoggedIn: context.read<StayLoggedInCubit>().state);
                   if (context.mounted) {
                     if (loggedIn != null && loggedIn) {
                       context.goNamed(redirectName != null

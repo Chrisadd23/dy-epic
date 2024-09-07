@@ -67,3 +67,4 @@ amplifytools.xcconfig
 
 # FVM Version Cache
 .fvm/
+.fvmrc
