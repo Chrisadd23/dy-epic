@@ -1,25 +1,37 @@
-import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text_style.dart';
 import 'package:flutter/material.dart';
 
 class GlobalScaffoldMessenger {
   const GlobalScaffoldMessenger._();
 
-  static error({
-    required BuildContext context,
-    required String information,
-    Color? color,
-    Gradient? gradient,
-  }) =>
+  static error(
+          {required BuildContext context,
+          required String information,
+          Color? color,
+          Gradient? gradient,
+          TextStyle? textStyle}) =>
       ScaffoldMessenger.of(context).showSnackBar(_snackBar(
-          information: information, color: color, gradient: gradient));
+          information: information,
+          color: color,
+          gradient: gradient,
+          textStyle: textStyle));
 
   static success(
-          {required BuildContext context, required String information, t}) =>
-      ScaffoldMessenger.of(context)
-          .showSnackBar(_snackBar(information: information));
+          {required BuildContext context,
+          required String information,
+          Color? color,
+          Gradient? gradient,
+          TextStyle? textStyle}) =>
+      ScaffoldMessenger.of(context).showSnackBar(_snackBar(
+          information: information,
+          color: color,
+          gradient: gradient,
+          textStyle: textStyle));
 
   static SnackBar _snackBar(
-          {required String information, Color? color, Gradient? gradient}) =>
+          {required String information,
+          Color? color,
+          Gradient? gradient,
+          TextStyle? textStyle}) =>
       SnackBar(
         content: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -28,11 +40,12 @@ class GlobalScaffoldMessenger {
             child: ColoredBox(
               color: Colors.white,
               child: Container(
+                padding: const EdgeInsets.all(5),
                 decoration: BoxDecoration(
                   color: color,
                   gradient: gradient,
-                  border:
-                      Border.all(color: Colors.grey.withOpacity(0.5), width: 3),
+                  border: Border.all(
+                      color: Colors.black.withOpacity(0.5), width: 3),
                   borderRadius: BorderRadius.circular(20),
                   boxShadow: [
                     BoxShadow(
@@ -45,13 +58,7 @@ class GlobalScaffoldMessenger {
                 child: Center(
                   child: Text(
                     information,
-                    style: AppTextStyle.bold22
-                        .copyWith(color: Colors.red, shadows: [
-                      const BoxShadow(
-                          color: Colors.white,
-                          blurStyle: BlurStyle.outer,
-                          offset: Offset(0, 2)),
-                    ]),
+                    style: textStyle,
                     textAlign: TextAlign.center,
                   ),
                 ),

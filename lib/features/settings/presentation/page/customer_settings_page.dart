@@ -1,6 +1,6 @@
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text_style.dart';
-import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/bottom_sheet.dart';
+import 'package:app_flutter_produkt_bestellen/core/global_scaffold_messenger.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/domain/entity/entity_login_customer.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_state.dart';
@@ -290,9 +290,18 @@ class _SaveCustomerSettingsButton extends HookWidget {
                         city: textEditingControllerCity.text);
                 if (context.mounted) {
                   if (isSuccessful != null && isSuccessful) {
-                    GlobalBottomSheet.showGlobalBottomSheet(
-                        context: context,
-                        infoText: AppText.successfullySavedDeliveryAddress);
+                    GlobalScaffoldMessenger.success(
+                      context: context,
+                      information: AppText.successfullySavedDeliveryAddress,
+                      color: Colors.white,
+                      textStyle: AppTextStyle.bold22
+                          .copyWith(color: Colors.green, shadows: [
+                        const BoxShadow(
+                            color: Colors.black,
+                            blurStyle: BlurStyle.outer,
+                            offset: Offset(0, 1)),
+                      ]),
+                    );
                   } else {
                     textEditingControllerCity.text =
                         customerEntity.deliveryAddress?.city ?? '';

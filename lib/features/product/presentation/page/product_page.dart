@@ -193,6 +193,13 @@ class _ProductShoppingBasketContainer extends HookWidget {
                         colors: [Color.fromRGBO(87, 87, 87, 0.0), Colors.white],
                         begin: Alignment.bottomRight,
                         end: Alignment.bottomLeft),
+                    textStyle: AppTextStyle.bold22
+                        .copyWith(color: Colors.red, shadows: [
+                      const BoxShadow(
+                          color: Colors.white,
+                          blurStyle: BlurStyle.outer,
+                          offset: Offset(0, 2)),
+                    ]),
                   );
                   Future.delayed(const Duration(milliseconds: 4000),
                       () => isInProcess.value = false);
