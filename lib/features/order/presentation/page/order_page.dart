@@ -368,21 +368,19 @@ class _OrderInfoWidget extends StatelessWidget {
                     const BorderRadius.vertical(bottom: Radius.circular(30)),
                 child: ListView.builder(
                   itemCount: successState.orderList?.length ?? 0,
-                  itemBuilder: (context, index) => Padding(
-                    padding: const EdgeInsets.only(bottom: 20.0),
-                    child: successState.orderList![index].hide
-                        ? const SizedBox.shrink()
-                        : InkWell(
-                            // onTap: () => context.goNamed(
-                            //     AppGoRouter
-                            //         .detailedOrderInformation.name,
-                            //     extra: successState.orderList![index]),
-                            child: OrderInformation(
-                              productOrder: successState.orderList![index],
-                              category: 'Bestellung',
+                  itemBuilder: (context, index) =>
+                      successState.orderList![index].hide
+                          ? const SizedBox.shrink()
+                          : InkWell(
+                              // onTap: () => context.goNamed(
+                              //     AppGoRouter
+                              //         .detailedOrderInformation.name,
+                              //     extra: successState.orderList![index]),
+                              child: OrderInformation(
+                                productOrder: successState.orderList![index],
+                                category: 'Bestellung',
+                              ),
                             ),
-                          ),
-                  ),
                 ),
               ),
             );

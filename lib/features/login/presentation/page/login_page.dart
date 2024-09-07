@@ -129,7 +129,8 @@ class _StayLoggedInRow extends StatelessWidget {
               context.read<StayLoggedInCubit>().triggerCheckbox();
             },
             checkColor: Colors.green,
-            fillColor: const MaterialStatePropertyAll(Colors.white),
+            //ignore: creation_with_non_type
+            fillColor: const WidgetStatePropertyAll(Colors.white),
           );
         }),
       ],
