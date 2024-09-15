@@ -84,9 +84,13 @@ class _NotificationSettingsColumn extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    AppText.allPushNotification,
-                    style: AppTextStyle.bold18,
+                  Flexible(
+                    child: FittedBox(
+                      child: Text(
+                        AppText.allPushNotification,
+                        style: AppTextStyle.bold18,
+                      ),
+                    ),
                   ),
                   const _NotificationSwitchAll(),
                 ],

@@ -4,6 +4,7 @@ import 'package:app_flutter_produkt_bestellen/core/domain/entity/entity_core_pic
 import 'package:app_flutter_produkt_bestellen/core/extension/double.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text.dart';
+import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text_style.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/bottom_sheet.dart';
 import 'package:app_flutter_produkt_bestellen/core/presentation/cubit/cubit_core_pictures.dart';
@@ -311,73 +312,49 @@ class _OfferInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          child: Divider(),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-          child: Row(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+      child: Column(
+        children: [
+          const Divider(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
-                'Anzahl: ',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.center,
-              ),
-              Expanded(
+              Text('Anzahl: ', style: AppTextStyle.bold18),
+              Flexible(
                 child: Text(
                   item.productCount.toString(),
-                  style: const TextStyle(
-                      fontSize: 20, fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.right,
+                  style: AppTextStyle.regular18,
                 ),
               ),
             ],
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-          child: Row(
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
-                'Preis: ',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.center,
-              ),
-              Expanded(
+              Text('Preis: ', style: AppTextStyle.bold18),
+              Flexible(
                 child: Text(
                   item.categoryEntity.normalPrice!.getCurrency(),
-                  style: const TextStyle(
-                      fontSize: 20, fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.right,
+                  style: AppTextStyle.regular18,
                 ),
               ),
             ],
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-          child: Row(
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
-                'Produktnr: ',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.center,
-              ),
-              Expanded(
+              Text('Produktnr: ', style: AppTextStyle.bold18),
+              Flexible(
                 child: Text(
                   item.categoryEntity.productNumber,
-                  style: const TextStyle(
-                      fontSize: 20, fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.right,
+                  style: AppTextStyle.regular18,
                 ),
               ),
             ],
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
@@ -391,47 +368,48 @@ class _Offer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
-      return Row(
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(20),
-            child: picture?.listIntForUint8List != null
-                ? Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Image.memory(
-                        Uint8List.fromList(picture!.listIntForUint8List)),
-                  )
-                : const SizedBox.shrink(),
-          ),
-          Expanded(
-            child: Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                      vertical: constraints.maxHeight * 0.12,
-                      horizontal: constraints.maxWidth * 0.02),
-                  child: Text(
-                    item.categoryEntity.productTitle,
-                    style: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        decoration: TextDecoration.underline),
-                    textAlign: TextAlign.center,
-                    maxLines: 2,
-                  ),
-                ),
-                Expanded(
-                  child: Text(
-                    item.completeAmount.getCurrency(),
-                    style: const TextStyle(
-                        fontSize: 20, fontWeight: FontWeight.bold),
-                    textAlign: TextAlign.center,
-                  ),
-                )
-              ],
+      return Padding(
+        padding: const EdgeInsets.only(right: 10.0),
+        child: Row(
+          children: [
+            Expanded(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: picture?.listIntForUint8List != null
+                    ? Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Image.memory(
+                            Uint8List.fromList(picture!.listIntForUint8List)),
+                      )
+                    : const SizedBox.shrink(),
+              ),
             ),
-          ),
-        ],
+            Expanded(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                        vertical: constraints.maxHeight * 0.12,
+                        horizontal: constraints.maxWidth * 0.02),
+                    child: Text(
+                      item.categoryEntity.productTitle,
+                      style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          decoration: TextDecoration.underline),
+                      textAlign: TextAlign.center,
+                      maxLines: 2,
+                    ),
+                  ),
+                  FittedBox(
+                    child: Text(item.completeAmount.getCurrency(),
+                        style: AppTextStyle.bold12),
+                  )
+                ],
+              ),
+            ),
+          ],
+        ),
       );
     });
   }

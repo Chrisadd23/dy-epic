@@ -24,14 +24,18 @@ class _AppRights extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Icon(
-            Icons.copyright,
-            size: 30,
+          const Flexible(
+            child: Icon(
+              Icons.copyright,
+              size: 30,
+            ),
           ),
-          Text(
-            'Christopher Michael Haas',
-            textAlign: TextAlign.center,
-            style: AppTextStyle.bold22,
+          FittedBox(
+            child: Text(
+              'Christopher Michael Haas',
+              textAlign: TextAlign.center,
+              style: AppTextStyle.bold18,
+            ),
           ),
         ],
       ),

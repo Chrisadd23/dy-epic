@@ -94,11 +94,13 @@ class SaveDeliveryAddressDialog extends StatelessWidget {
                         borderRadius: BorderRadius.circular(5)),
                     height: 50,
                     child: Center(
-                      child: Text(
-                        'Abbrechen'.toUpperCase(),
-                        style: AppTextStyle.bold18
-                            .copyWith(fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.center,
+                      child: FittedBox(
+                        child: Text(
+                          'Abbrechen'.toUpperCase(),
+                          style: AppTextStyle.bold16
+                              .copyWith(fontWeight: FontWeight.bold),
+                          textAlign: TextAlign.center,
+                        ),
                       ),
                     ),
                   ),
@@ -132,10 +134,12 @@ class SaveDeliveryAddressDialog extends StatelessWidget {
                         color: Colors.red,
                         borderRadius: BorderRadius.circular(5)),
                     child: Center(
-                      child: Text(
-                        'Speichern'.toUpperCase(),
-                        style: AppTextStyle.bold18.copyWith(
-                            color: Colors.white, fontWeight: FontWeight.bold),
+                      child: FittedBox(
+                        child: Text(
+                          'Speichern'.toUpperCase(),
+                          style: AppTextStyle.bold16.copyWith(
+                              color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ),
                   ),

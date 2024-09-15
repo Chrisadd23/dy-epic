@@ -71,8 +71,8 @@ class _CategoryListRow extends StatelessWidget {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10), border: Border.all()),
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 2),
-              child: FittedBox(fit: BoxFit.fitHeight, child: Text(category)),
+              padding: const EdgeInsets.all(5),
+              child: FittedBox(child: Text(category)),
             ),
           ),
         ),

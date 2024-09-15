@@ -35,13 +35,13 @@ class OrderPageShellNavigation extends StatelessWidget {
         items: [
           SvgPicture.asset(
             Assets.appComponents.svg.orderBasket,
-            width: 45,
-            height: 45,
+            width: 35,
+            height: 35,
           ),
           SvgPicture.asset(
             Assets.appComponents.svg.orderRequest,
-            width: 45,
-            height: 45,
+            width: 35,
+            height: 35,
           ),
         ],
         onTap: (index) => navigationShell.goBranch(index),
