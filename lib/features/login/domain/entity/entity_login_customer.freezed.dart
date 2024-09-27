@@ -22,6 +22,7 @@ EntityLoginCustomer _$EntityLoginCustomerFromJson(Map<String, dynamic> json) {
 mixin _$EntityLoginCustomer {
   CustomerAddress get address => throw _privateConstructorUsedError;
   String get customerNumber => throw _privateConstructorUsedError;
+  int get userTypeIndex => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
   String? get companyName => throw _privateConstructorUsedError;
   @JsonKey(name: 'firstname')
@@ -48,6 +49,7 @@ abstract class $EntityLoginCustomerCopyWith<$Res> {
   $Res call(
       {CustomerAddress address,
       String customerNumber,
+      int userTypeIndex,
       String? email,
       String? companyName,
       @JsonKey(name: 'firstname') String? customerName,
@@ -75,6 +77,7 @@ class _$EntityLoginCustomerCopyWithImpl<$Res, $Val extends EntityLoginCustomer>
   $Res call({
     Object? address = null,
     Object? customerNumber = null,
+    Object? userTypeIndex = null,
     Object? email = freezed,
     Object? companyName = freezed,
     Object? customerName = freezed,
@@ -92,6 +95,10 @@ class _$EntityLoginCustomerCopyWithImpl<$Res, $Val extends EntityLoginCustomer>
           ? _value.customerNumber
           : customerNumber // ignore: cast_nullable_to_non_nullable
               as String,
+      userTypeIndex: null == userTypeIndex
+          ? _value.userTypeIndex
+          : userTypeIndex // ignore: cast_nullable_to_non_nullable
+              as int,
       email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -155,6 +162,7 @@ abstract class _$$EntityLoginCustomerImplCopyWith<$Res>
   $Res call(
       {CustomerAddress address,
       String customerNumber,
+      int userTypeIndex,
       String? email,
       String? companyName,
       @JsonKey(name: 'firstname') String? customerName,
@@ -182,6 +190,7 @@ class __$$EntityLoginCustomerImplCopyWithImpl<$Res>
   $Res call({
     Object? address = null,
     Object? customerNumber = null,
+    Object? userTypeIndex = null,
     Object? email = freezed,
     Object? companyName = freezed,
     Object? customerName = freezed,
@@ -199,6 +208,10 @@ class __$$EntityLoginCustomerImplCopyWithImpl<$Res>
           ? _value.customerNumber
           : customerNumber // ignore: cast_nullable_to_non_nullable
               as String,
+      userTypeIndex: null == userTypeIndex
+          ? _value.userTypeIndex
+          : userTypeIndex // ignore: cast_nullable_to_non_nullable
+              as int,
       email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -238,6 +251,7 @@ class _$EntityLoginCustomerImpl extends _EntityLoginCustomer {
   const _$EntityLoginCustomerImpl(
       {required this.address,
       required this.customerNumber,
+      required this.userTypeIndex,
       this.email,
       this.companyName,
       @JsonKey(name: 'firstname') this.customerName,
@@ -255,6 +269,8 @@ class _$EntityLoginCustomerImpl extends _EntityLoginCustomer {
   final CustomerAddress address;
   @override
   final String customerNumber;
+  @override
+  final int userTypeIndex;
   @override
   final String? email;
   @override
@@ -280,7 +296,7 @@ class _$EntityLoginCustomerImpl extends _EntityLoginCustomer {
 
   @override
   String toString() {
-    return 'EntityLoginCustomer(address: $address, customerNumber: $customerNumber, email: $email, companyName: $companyName, customerName: $customerName, customerSurname: $customerSurname, registrationDate: $registrationDate, deliveryAddress: $deliveryAddress, notifications: $notifications)';
+    return 'EntityLoginCustomer(address: $address, customerNumber: $customerNumber, userTypeIndex: $userTypeIndex, email: $email, companyName: $companyName, customerName: $customerName, customerSurname: $customerSurname, registrationDate: $registrationDate, deliveryAddress: $deliveryAddress, notifications: $notifications)';
   }
 
   @override
@@ -291,6 +307,8 @@ class _$EntityLoginCustomerImpl extends _EntityLoginCustomer {
             (identical(other.address, address) || other.address == address) &&
             (identical(other.customerNumber, customerNumber) ||
                 other.customerNumber == customerNumber) &&
+            (identical(other.userTypeIndex, userTypeIndex) ||
+                other.userTypeIndex == userTypeIndex) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.companyName, companyName) ||
                 other.companyName == companyName) &&
@@ -312,6 +330,7 @@ class _$EntityLoginCustomerImpl extends _EntityLoginCustomer {
       runtimeType,
       address,
       customerNumber,
+      userTypeIndex,
       email,
       companyName,
       customerName,
@@ -339,6 +358,7 @@ abstract class _EntityLoginCustomer extends EntityLoginCustomer {
   const factory _EntityLoginCustomer(
       {required final CustomerAddress address,
       required final String customerNumber,
+      required final int userTypeIndex,
       final String? email,
       final String? companyName,
       @JsonKey(name: 'firstname') final String? customerName,
@@ -355,6 +375,8 @@ abstract class _EntityLoginCustomer extends EntityLoginCustomer {
   CustomerAddress get address;
   @override
   String get customerNumber;
+  @override
+  int get userTypeIndex;
   @override
   String? get email;
   @override

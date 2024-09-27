@@ -55,10 +55,10 @@ dependencies:
   image: ^4.1.0
   flutter_svg: ^2.0.9
   intl: ^0.19.0
-  firebase_core: ^2.24.2
-  firebase_messaging: ^14.7.19
-  cloud_firestore: ^4.15.8
-  firebase_storage: ^11.6.0
+  firebase_core: ^3.6.0
+  firebase_messaging: ^15.1.3
+  cloud_firestore: ^5.4.3
+  firebase_storage: ^12.3.2
   swipeable_tile: ^2.0.0+3
   dropdown_button2: ^2.3.9
   bloc_test: ^9.1.7
@@ -70,6 +70,8 @@ dependencies:
   google_fonts: ^6.2.0
   flutter_inset_shadow: ^2.0.3
   shared_preferences: ^2.2.3
+  build_runner: ^2.4.12
+
 
 
 
@@ -77,12 +79,10 @@ dependencies:
 
 
 dev_dependencies:
-  build_runner: ^2.4.4
   flutter_test:
     sdk: flutter
 
-dependency_overrides:
-  freezed: ^2.4.1
+
 
 
 flutter_launcher_icons:

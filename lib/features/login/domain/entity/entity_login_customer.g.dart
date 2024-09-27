@@ -12,6 +12,7 @@ _$EntityLoginCustomerImpl _$$EntityLoginCustomerImplFromJson(
       address:
           CustomerAddress.fromJson(json['address'] as Map<String, dynamic>),
       customerNumber: json['customerNumber'] as String,
+      userTypeIndex: (json['userTypeIndex'] as num).toInt(),
       email: json['email'] as String?,
       companyName: json['companyName'] as String?,
       customerName: json['firstname'] as String?,
@@ -32,6 +33,7 @@ Map<String, dynamic> _$$EntityLoginCustomerImplToJson(
     <String, dynamic>{
       'address': instance.address.toJson(),
       'customerNumber': instance.customerNumber,
+      'userTypeIndex': instance.userTypeIndex,
       'email': instance.email,
       'companyName': instance.companyName,
       'firstname': instance.customerName,

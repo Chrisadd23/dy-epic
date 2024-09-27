@@ -5,6 +5,12 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'entity_login_customer.freezed.dart';
 part 'entity_login_customer.g.dart';
 
+enum UserType {
+  owner,
+  worker,
+  customer,
+}
+
 @freezed
 class EntityLoginCustomer with _$EntityLoginCustomer {
   const EntityLoginCustomer._();
@@ -13,6 +19,7 @@ class EntityLoginCustomer with _$EntityLoginCustomer {
   const factory EntityLoginCustomer({
     required CustomerAddress address,
     required String customerNumber,
+    required int userTypeIndex,
     String? email,
     String? companyName,
     @JsonKey(name: 'firstname') String? customerName,
@@ -21,6 +28,12 @@ class EntityLoginCustomer with _$EntityLoginCustomer {
     CustomerAddress? deliveryAddress,
     @Default([]) List<UserNotification> notifications,
   }) = _EntityLoginCustomer;
+
+  UserType get getUserType {
+    return UserType.values
+        .where((userType) => userType.index == userTypeIndex)
+        .first;
+  }
 
   bool get areAllNotificationsActive {
     return notifications.any((element) => element.active == false) == false;
