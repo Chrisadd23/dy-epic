@@ -27,14 +27,9 @@ class CubitCategory extends Cubit<StateCategory> {
     }, (categoryEntityList) async {
       debugPrint(categoryEntityList.toString());
 
-      try {
-        final categoryEntityPicturePath = getCategoryEntityPicturePath(
-            categoryEntityList: categoryEntityList);
-        await _useCaseGetPictures(fileNames: categoryEntityPicturePath);
-      } catch (error) {
-        debugPrint(
-            "pictures couldn't be loaded | error ==> ${error.toString()}");
-      }
+      final categoryEntityPicturePath =
+          getCategoryEntityPicturePath(categoryEntityList: categoryEntityList);
+      await _useCaseGetPictures(fileNames: categoryEntityPicturePath);
 
       emit(
         StateCategory.success(categoryEntityList: categoryEntityList),
@@ -48,7 +43,7 @@ class CubitCategory extends Cubit<StateCategory> {
     return categoryEntityList.fold(<String>[],
         (previousElement, currentElement) {
       previousElement.add(
-        "product_${currentElement.productNumber}.png",
+        "product_${currentElement.productNumber}",
       );
       return previousElement;
     });

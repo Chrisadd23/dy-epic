@@ -8,6 +8,6 @@ part 'entity_core_pictures.freezed.dart';
 class EntityCorePictures with _$EntityCorePictures {
   const factory EntityCorePictures({
     required String name,
-    required Uint8List listIntForUint8List,
+    required Uint8List? listIntForUint8List,
   }) = _EntityCorePictures;
 }

@@ -19,6 +19,7 @@ mixin _$Failure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? message) message,
+    required TResult Function(String? dataMessage) localData,
     required TResult Function(String? databaseMessage) databaseError,
     required TResult Function(String? storageMessage) storageError,
   }) =>
@@ -26,6 +27,7 @@ mixin _$Failure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? message)? message,
+    TResult? Function(String? dataMessage)? localData,
     TResult? Function(String? databaseMessage)? databaseError,
     TResult? Function(String? storageMessage)? storageError,
   }) =>
@@ -33,6 +35,7 @@ mixin _$Failure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? message)? message,
+    TResult Function(String? dataMessage)? localData,
     TResult Function(String? databaseMessage)? databaseError,
     TResult Function(String? storageMessage)? storageError,
     required TResult orElse(),
@@ -41,6 +44,7 @@ mixin _$Failure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_FailureMessage value) message,
+    required TResult Function(_FailureLocalData value) localData,
     required TResult Function(_DatabaseError value) databaseError,
     required TResult Function(_StorageError value) storageError,
   }) =>
@@ -48,6 +52,7 @@ mixin _$Failure {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FailureMessage value)? message,
+    TResult? Function(_FailureLocalData value)? localData,
     TResult? Function(_DatabaseError value)? databaseError,
     TResult? Function(_StorageError value)? storageError,
   }) =>
@@ -55,6 +60,7 @@ mixin _$Failure {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FailureMessage value)? message,
+    TResult Function(_FailureLocalData value)? localData,
     TResult Function(_DatabaseError value)? databaseError,
     TResult Function(_StorageError value)? storageError,
     required TResult orElse(),
@@ -145,6 +151,7 @@ class _$FailureMessageImpl extends _FailureMessage {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? message) message,
+    required TResult Function(String? dataMessage) localData,
     required TResult Function(String? databaseMessage) databaseError,
     required TResult Function(String? storageMessage) storageError,
   }) {
@@ -155,6 +162,7 @@ class _$FailureMessageImpl extends _FailureMessage {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? message)? message,
+    TResult? Function(String? dataMessage)? localData,
     TResult? Function(String? databaseMessage)? databaseError,
     TResult? Function(String? storageMessage)? storageError,
   }) {
@@ -165,6 +173,7 @@ class _$FailureMessageImpl extends _FailureMessage {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? message)? message,
+    TResult Function(String? dataMessage)? localData,
     TResult Function(String? databaseMessage)? databaseError,
     TResult Function(String? storageMessage)? storageError,
     required TResult orElse(),
@@ -179,6 +188,7 @@ class _$FailureMessageImpl extends _FailureMessage {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_FailureMessage value) message,
+    required TResult Function(_FailureLocalData value) localData,
     required TResult Function(_DatabaseError value) databaseError,
     required TResult Function(_StorageError value) storageError,
   }) {
@@ -189,6 +199,7 @@ class _$FailureMessageImpl extends _FailureMessage {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FailureMessage value)? message,
+    TResult? Function(_FailureLocalData value)? localData,
     TResult? Function(_DatabaseError value)? databaseError,
     TResult? Function(_StorageError value)? storageError,
   }) {
@@ -199,6 +210,7 @@ class _$FailureMessageImpl extends _FailureMessage {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FailureMessage value)? message,
+    TResult Function(_FailureLocalData value)? localData,
     TResult Function(_DatabaseError value)? databaseError,
     TResult Function(_StorageError value)? storageError,
     required TResult orElse(),
@@ -217,6 +229,155 @@ abstract class _FailureMessage extends Failure {
   String? get message;
   @JsonKey(ignore: true)
   _$$FailureMessageImplCopyWith<_$FailureMessageImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$FailureLocalDataImplCopyWith<$Res> {
+  factory _$$FailureLocalDataImplCopyWith(_$FailureLocalDataImpl value,
+          $Res Function(_$FailureLocalDataImpl) then) =
+      __$$FailureLocalDataImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String? dataMessage});
+}
+
+/// @nodoc
+class __$$FailureLocalDataImplCopyWithImpl<$Res>
+    extends _$FailureCopyWithImpl<$Res, _$FailureLocalDataImpl>
+    implements _$$FailureLocalDataImplCopyWith<$Res> {
+  __$$FailureLocalDataImplCopyWithImpl(_$FailureLocalDataImpl _value,
+      $Res Function(_$FailureLocalDataImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? dataMessage = freezed,
+  }) {
+    return _then(_$FailureLocalDataImpl(
+      freezed == dataMessage
+          ? _value.dataMessage
+          : dataMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FailureLocalDataImpl extends _FailureLocalData {
+  const _$FailureLocalDataImpl([this.dataMessage]) : super._();
+
+  @override
+  final String? dataMessage;
+
+  @override
+  String toString() {
+    return 'Failure.localData(dataMessage: $dataMessage)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FailureLocalDataImpl &&
+            (identical(other.dataMessage, dataMessage) ||
+                other.dataMessage == dataMessage));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, dataMessage);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FailureLocalDataImplCopyWith<_$FailureLocalDataImpl> get copyWith =>
+      __$$FailureLocalDataImplCopyWithImpl<_$FailureLocalDataImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? message) message,
+    required TResult Function(String? dataMessage) localData,
+    required TResult Function(String? databaseMessage) databaseError,
+    required TResult Function(String? storageMessage) storageError,
+  }) {
+    return localData(dataMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String? message)? message,
+    TResult? Function(String? dataMessage)? localData,
+    TResult? Function(String? databaseMessage)? databaseError,
+    TResult? Function(String? storageMessage)? storageError,
+  }) {
+    return localData?.call(dataMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? message)? message,
+    TResult Function(String? dataMessage)? localData,
+    TResult Function(String? databaseMessage)? databaseError,
+    TResult Function(String? storageMessage)? storageError,
+    required TResult orElse(),
+  }) {
+    if (localData != null) {
+      return localData(dataMessage);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FailureMessage value) message,
+    required TResult Function(_FailureLocalData value) localData,
+    required TResult Function(_DatabaseError value) databaseError,
+    required TResult Function(_StorageError value) storageError,
+  }) {
+    return localData(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FailureMessage value)? message,
+    TResult? Function(_FailureLocalData value)? localData,
+    TResult? Function(_DatabaseError value)? databaseError,
+    TResult? Function(_StorageError value)? storageError,
+  }) {
+    return localData?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FailureMessage value)? message,
+    TResult Function(_FailureLocalData value)? localData,
+    TResult Function(_DatabaseError value)? databaseError,
+    TResult Function(_StorageError value)? storageError,
+    required TResult orElse(),
+  }) {
+    if (localData != null) {
+      return localData(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FailureLocalData extends Failure {
+  const factory _FailureLocalData([final String? dataMessage]) =
+      _$FailureLocalDataImpl;
+  const _FailureLocalData._() : super._();
+
+  String? get dataMessage;
+  @JsonKey(ignore: true)
+  _$$FailureLocalDataImplCopyWith<_$FailureLocalDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -286,6 +447,7 @@ class _$DatabaseErrorImpl extends _DatabaseError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? message) message,
+    required TResult Function(String? dataMessage) localData,
     required TResult Function(String? databaseMessage) databaseError,
     required TResult Function(String? storageMessage) storageError,
   }) {
@@ -296,6 +458,7 @@ class _$DatabaseErrorImpl extends _DatabaseError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? message)? message,
+    TResult? Function(String? dataMessage)? localData,
     TResult? Function(String? databaseMessage)? databaseError,
     TResult? Function(String? storageMessage)? storageError,
   }) {
@@ -306,6 +469,7 @@ class _$DatabaseErrorImpl extends _DatabaseError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? message)? message,
+    TResult Function(String? dataMessage)? localData,
     TResult Function(String? databaseMessage)? databaseError,
     TResult Function(String? storageMessage)? storageError,
     required TResult orElse(),
@@ -320,6 +484,7 @@ class _$DatabaseErrorImpl extends _DatabaseError {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_FailureMessage value) message,
+    required TResult Function(_FailureLocalData value) localData,
     required TResult Function(_DatabaseError value) databaseError,
     required TResult Function(_StorageError value) storageError,
   }) {
@@ -330,6 +495,7 @@ class _$DatabaseErrorImpl extends _DatabaseError {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FailureMessage value)? message,
+    TResult? Function(_FailureLocalData value)? localData,
     TResult? Function(_DatabaseError value)? databaseError,
     TResult? Function(_StorageError value)? storageError,
   }) {
@@ -340,6 +506,7 @@ class _$DatabaseErrorImpl extends _DatabaseError {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FailureMessage value)? message,
+    TResult Function(_FailureLocalData value)? localData,
     TResult Function(_DatabaseError value)? databaseError,
     TResult Function(_StorageError value)? storageError,
     required TResult orElse(),
@@ -428,6 +595,7 @@ class _$StorageErrorImpl extends _StorageError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? message) message,
+    required TResult Function(String? dataMessage) localData,
     required TResult Function(String? databaseMessage) databaseError,
     required TResult Function(String? storageMessage) storageError,
   }) {
@@ -438,6 +606,7 @@ class _$StorageErrorImpl extends _StorageError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String? message)? message,
+    TResult? Function(String? dataMessage)? localData,
     TResult? Function(String? databaseMessage)? databaseError,
     TResult? Function(String? storageMessage)? storageError,
   }) {
@@ -448,6 +617,7 @@ class _$StorageErrorImpl extends _StorageError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? message)? message,
+    TResult Function(String? dataMessage)? localData,
     TResult Function(String? databaseMessage)? databaseError,
     TResult Function(String? storageMessage)? storageError,
     required TResult orElse(),
@@ -462,6 +632,7 @@ class _$StorageErrorImpl extends _StorageError {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_FailureMessage value) message,
+    required TResult Function(_FailureLocalData value) localData,
     required TResult Function(_DatabaseError value) databaseError,
     required TResult Function(_StorageError value) storageError,
   }) {
@@ -472,6 +643,7 @@ class _$StorageErrorImpl extends _StorageError {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FailureMessage value)? message,
+    TResult? Function(_FailureLocalData value)? localData,
     TResult? Function(_DatabaseError value)? databaseError,
     TResult? Function(_StorageError value)? storageError,
   }) {
@@ -482,6 +654,7 @@ class _$StorageErrorImpl extends _StorageError {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FailureMessage value)? message,
+    TResult Function(_FailureLocalData value)? localData,
     TResult Function(_DatabaseError value)? databaseError,
     TResult Function(_StorageError value)? storageError,
     required TResult orElse(),

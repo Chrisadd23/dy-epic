@@ -30,6 +30,7 @@ class GlobalAppBar extends AppBar {
             ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 InkWell(
                   onTap: () => getIt<GoRouter>().goNamed(AppGoRouter.home.name),
@@ -48,7 +49,7 @@ class GlobalAppBar extends AppBar {
                               offset: Offset(0, 2)),
                         ]),
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 5.0, right: 20),
+                      padding: const EdgeInsets.only(right: 20),
                       child: Row(
                         children: [
                           Padding(

@@ -8,6 +8,8 @@ class Failure with _$Failure {
 
   const factory Failure.message([String? message]) = _FailureMessage;
 
+  const factory Failure.localData([String? dataMessage]) = _FailureLocalData;
+
   const factory Failure.databaseError([String? databaseMessage]) =
       _DatabaseError;
 
@@ -17,5 +19,6 @@ class Failure with _$Failure {
         message: (message) => message ?? '',
         databaseError: (databaseError) => databaseError ?? '',
         storageError: (storageError) => storageError ?? '',
+        localData: (String? dataMessage) => dataMessage ?? '',
       );
 }

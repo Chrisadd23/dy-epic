@@ -8,73 +8,58 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 
-class CategoryOfficeChairGridList extends StatelessWidget {
-  const CategoryOfficeChairGridList({
-    super.key,
-    this.categoryEntityList,
-  });
+class ProductInformationContainer extends StatelessWidget {
+  const ProductInformationContainer(
+      {super.key, required this.categoryEntity, required this.fit});
 
-  final List<CategoryEntity>? categoryEntityList;
+  final CategoryEntity categoryEntity;
+  final BoxFit fit;
 
   @override
   Widget build(BuildContext context) {
-    return categoryEntityList == null || categoryEntityList!.isEmpty
-        ? const SizedBox.shrink()
-        : Expanded(
-            child: GridView.builder(
-              itemCount: categoryEntityList!.length,
-              itemBuilder: (context, index) => Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: InkWell(
-                  onTap: () {
-                    context.goNamed(AppGoRouter.product.name, queryParameters: {
-                      "product": jsonEncode(categoryEntityList![index].toJson())
-                    });
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(20),
-                        border: Border.all()),
-                    child: LayoutBuilder(builder: (context, constraints) {
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          CategoryImageContainer(
-                            productNumber:
-                                categoryEntityList![index].productNumber,
-                            height: constraints.maxHeight * 0.75,
-                            fit: BoxFit.fitHeight,
-                          ),
-                          Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.only(top: 5.0),
-                              child: Text(
-                                categoryEntityList![index].type,
-                                style: AppTextStyle.regular14,
-                              ),
-                            ),
-                          ),
-                          if (categoryEntityList?[index].normalPrice != null)
-                            Text(
-                              NumberFormat.currency(
-                                      locale: 'de_DE', symbol: '€')
-                                  .format(double.parse(
-                                      categoryEntityList![index]
-                                          .normalPrice
-                                          .toString())),
-                              style: AppTextStyle.bold18,
-                            )
-                        ],
-                      );
-                    }),
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: InkWell(
+        onTap: () {
+          context.goNamed(AppGoRouter.product.name, queryParameters: {
+            "product": jsonEncode(categoryEntity.toJson())
+          });
+        },
+        child: Container(
+          padding: const EdgeInsets.all(10),
+          decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all()),
+          child: LayoutBuilder(builder: (context, constraints) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CategoryImageContainer(
+                  productNumber: categoryEntity.productNumber,
+                  height: constraints.maxHeight * 0.75,
+                  fit: fit,
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 5.0),
+                    child: Text(
+                      categoryEntity.type,
+                      style: AppTextStyle.regular14,
+                    ),
                   ),
                 ),
-              ),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2, childAspectRatio: 0.68),
-            ),
-          );
+                if (categoryEntity.normalPrice != null)
+                  Text(
+                    NumberFormat.currency(locale: 'de_DE', symbol: '€').format(
+                        double.parse(categoryEntity.normalPrice.toString())),
+                    style: AppTextStyle.bold18,
+                  )
+              ],
+            );
+          }),
+        ),
+      ),
+    );
   }
 }

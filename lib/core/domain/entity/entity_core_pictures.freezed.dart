@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$EntityCorePictures {
   String get name => throw _privateConstructorUsedError;
-  Uint8List get listIntForUint8List => throw _privateConstructorUsedError;
+  Uint8List? get listIntForUint8List => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EntityCorePicturesCopyWith<EntityCorePictures> get copyWith =>
@@ -30,7 +30,7 @@ abstract class $EntityCorePicturesCopyWith<$Res> {
           EntityCorePictures value, $Res Function(EntityCorePictures) then) =
       _$EntityCorePicturesCopyWithImpl<$Res, EntityCorePictures>;
   @useResult
-  $Res call({String name, Uint8List listIntForUint8List});
+  $Res call({String name, Uint8List? listIntForUint8List});
 }
 
 /// @nodoc
@@ -47,17 +47,17 @@ class _$EntityCorePicturesCopyWithImpl<$Res, $Val extends EntityCorePictures>
   @override
   $Res call({
     Object? name = null,
-    Object? listIntForUint8List = null,
+    Object? listIntForUint8List = freezed,
   }) {
     return _then(_value.copyWith(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      listIntForUint8List: null == listIntForUint8List
+      listIntForUint8List: freezed == listIntForUint8List
           ? _value.listIntForUint8List
           : listIntForUint8List // ignore: cast_nullable_to_non_nullable
-              as Uint8List,
+              as Uint8List?,
     ) as $Val);
   }
 }
@@ -70,7 +70,7 @@ abstract class _$$EntityCorePicturesImplCopyWith<$Res>
       __$$EntityCorePicturesImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, Uint8List listIntForUint8List});
+  $Res call({String name, Uint8List? listIntForUint8List});
 }
 
 /// @nodoc
@@ -85,17 +85,17 @@ class __$$EntityCorePicturesImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = null,
-    Object? listIntForUint8List = null,
+    Object? listIntForUint8List = freezed,
   }) {
     return _then(_$EntityCorePicturesImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      listIntForUint8List: null == listIntForUint8List
+      listIntForUint8List: freezed == listIntForUint8List
           ? _value.listIntForUint8List
           : listIntForUint8List // ignore: cast_nullable_to_non_nullable
-              as Uint8List,
+              as Uint8List?,
     ));
   }
 }
@@ -109,7 +109,7 @@ class _$EntityCorePicturesImpl implements _EntityCorePictures {
   @override
   final String name;
   @override
-  final Uint8List listIntForUint8List;
+  final Uint8List? listIntForUint8List;
 
   @override
   String toString() {
@@ -140,13 +140,14 @@ class _$EntityCorePicturesImpl implements _EntityCorePictures {
 
 abstract class _EntityCorePictures implements EntityCorePictures {
   const factory _EntityCorePictures(
-      {required final String name,
-      required final Uint8List listIntForUint8List}) = _$EntityCorePicturesImpl;
+          {required final String name,
+          required final Uint8List? listIntForUint8List}) =
+      _$EntityCorePicturesImpl;
 
   @override
   String get name;
   @override
-  Uint8List get listIntForUint8List;
+  Uint8List? get listIntForUint8List;
   @override
   @JsonKey(ignore: true)
   _$$EntityCorePicturesImplCopyWith<_$EntityCorePicturesImpl> get copyWith =>

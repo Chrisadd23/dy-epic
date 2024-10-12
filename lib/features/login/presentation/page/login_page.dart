@@ -1,5 +1,6 @@
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text_style.dart';
+import 'package:app_flutter_produkt_bestellen/core/fix_widgets/show_failure_dialog.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_scaffold.dart';
 import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_cubit.dart';
@@ -71,43 +72,48 @@ class _BlocBuilderLoginPageState extends State<_BlocBuilderLoginPage> {
         state.mapOrNull(failure: (failure) {
           debugPrint("showFailure ${failure.failure.getFailureMessage}");
           return ShowFailureDialog.present(
-              context: context, failure: failure.failure.getFailureMessage);
+              id: 'login_failure',
+              context: context,
+              failure: failure.failure.getFailureMessage);
         });
       },
-      child: Stack(
-        children: [
-          ShaderMask(
-            blendMode: BlendMode.dstATop,
-            shaderCallback: (Rect rect) {
-              return const LinearGradient(colors: [
-                AppColors.whiteD6D6D7,
-                AppColors.orangeF6A440,
-                Colors.white
-              ], begin: Alignment.topCenter, end: Alignment.bottomCenter)
-                  .createShader(Rect.fromLTWH(
-                rect.left,
-                rect.top,
-                rect.width,
-                rect.height,
-              ));
-            },
-            child: SizedBox(
-                width: double.infinity,
-                height: MediaQuery.sizeOf(context).height,
-                child: Opacity(opacity: 0.5, child: image)),
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const _CustomerNumberTextWidget(),
-              const SizedBox(height: 30),
-              const _PasswordTextWidget(),
-              const _StayLoggedInRow(),
-              _LoginButton(redirectName: widget.redirectName),
-            ],
-          ),
-        ],
+      child: GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: Stack(
+          children: [
+            ShaderMask(
+              blendMode: BlendMode.dstATop,
+              shaderCallback: (Rect rect) {
+                return const LinearGradient(colors: [
+                  AppColors.whiteD6D6D7,
+                  AppColors.orangeF6A440,
+                  Colors.white
+                ], begin: Alignment.topCenter, end: Alignment.bottomCenter)
+                    .createShader(Rect.fromLTWH(
+                  rect.left,
+                  rect.top,
+                  rect.width,
+                  rect.height,
+                ));
+              },
+              child: SizedBox(
+                  width: double.infinity,
+                  height: MediaQuery.sizeOf(context).height,
+                  child: Opacity(opacity: 0.5, child: image)),
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const _CustomerNumberTextWidget(),
+                const SizedBox(height: 30),
+                const _PasswordTextWidget(),
+                const _StayLoggedInRow(),
+                _LoginButton(redirectName: widget.redirectName),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -256,63 +262,6 @@ class _PasswordTextWidget extends HookWidget {
               obscureText: state.hidePassword,
             ),
           )),
-    );
-  }
-}
-
-class ShowFailureDialog extends StatelessWidget {
-  const ShowFailureDialog._({required this.failure});
-
-  final String failure;
-
-  static present({required BuildContext context, required String failure}) =>
-      showDialog(
-          context: context,
-          builder: (context) => ShowFailureDialog._(
-                failure: failure,
-              ));
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: SingleChildScrollView(
-        child: Container(
-          height: MediaQuery.sizeOf(context).height * 0.4,
-          width: MediaQuery.sizeOf(context).width * 0.7,
-          decoration: BoxDecoration(
-            color: AppColors.greyCACACA,
-            border: Border.all(color: Colors.black),
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const SizedBox(
-                  height: 20,
-                ),
-                const Icon(
-                  Icons.error_outline_rounded,
-                  size: 60,
-                  color: Colors.red,
-                ),
-                const SizedBox(
-                  height: 50,
-                ),
-                Expanded(
-                  child: Text(
-                    failure,
-                    textAlign: TextAlign.center,
-                    style: AppTextStyle.colorWhiteSize20ShadowBlack
-                        .copyWith(fontSize: 25),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
     );
   }
 }

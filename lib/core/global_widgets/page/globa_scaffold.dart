@@ -9,9 +9,11 @@ class GlobalScaffold extends Scaffold {
     Key? key,
     required BuildContext appBarContext,
     required Widget body,
-    bool? showMenuBar = false,
+    bool showMenuBar = false,
     GlobalCurvedNavigationBar? bottomNavigationBar,
+    bool resizeToAvoidBottomInset = false,
   }) : super(
+            resizeToAvoidBottomInset: resizeToAvoidBottomInset,
             key: key,
             extendBody: true,
             appBar: PreferredSize(
@@ -28,7 +30,7 @@ class GlobalScaffold extends Scaffold {
                               width: 0.3,
                               style: BorderStyle.none))),
                   child: GlobalAppBar(
-                    showMenuBar: showMenuBar!,
+                    showMenuBar: showMenuBar,
                     context: appBarContext,
                   ),
                 ),

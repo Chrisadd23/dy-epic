@@ -12,6 +12,7 @@ import 'package:app_flutter_produkt_bestellen/features/order/presentation/page/o
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/page/order_page_shell_navigation.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/page/request_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/widget/detailed_order_information.dart';
+import 'package:app_flutter_produkt_bestellen/features/product/presentation/page/product_adding_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/presentation/page/product_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/settings/presentation/page/customer_settings_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/settings/presentation/page/notification_settings_page.dart';
@@ -35,11 +36,12 @@ enum AppGoRouter {
   notificationSettings('notificationEinstellungen'),
   legalities('rechtliches'),
   detailedRequestInformation('requestInformation'),
-  detailedOrderInformation('orderInformation');
+  detailedOrderInformation('orderInformation'),
+  productAdding('productIntegration');
 
-  const AppGoRouter(this.title);
+  const AppGoRouter(this.path);
 
-  final String title;
+  final String path;
 
   static CustomTransitionPage<void> _getCustomerTransition(
           Widget page, GoRouterState state,
@@ -66,13 +68,13 @@ enum AppGoRouter {
     debugLogDiagnostics: true,
     routes: [
       GoRoute(
-          path: root.title,
+          path: root.path,
           name: root.name,
           pageBuilder: (context, state) =>
               _getCustomerTransition(const AppStartPage(), state),
           routes: [
             GoRoute(
-                path: login.title,
+                path: login.path,
                 name: login.name,
                 pageBuilder: (context, state) {
                   final redirectName = state.queryParameters['redirectName'];
@@ -80,13 +82,13 @@ enum AppGoRouter {
                       LoginPage(redirectName: redirectName), state);
                 }),
             GoRoute(
-              path: home.title,
+              path: home.path,
               name: home.name,
               pageBuilder: (context, state) =>
                   _getCustomerTransition(const HomePage(), state),
               routes: [
                 GoRoute(
-                  path: product.title,
+                  path: product.path,
                   name: product.name,
                   pageBuilder: (context, state) {
                     debugPrint("check goRouter record ${state.extra as ({
@@ -126,6 +128,12 @@ enum AppGoRouter {
                     );
                   },
                 ),
+                GoRoute(
+                  path: AppGoRouter.productAdding.path,
+                  name: AppGoRouter.productAdding.name,
+                  pageBuilder: (context, state) => _getCustomerTransition(
+                      const ProductIntegrationPage(), state),
+                )
               ],
             ),
             StatefulShellRoute.indexedStack(
@@ -141,12 +149,12 @@ enum AppGoRouter {
                 StatefulShellBranch(
                   routes: [
                     GoRoute(
-                      path: order.title,
+                      path: order.path,
                       name: order.name,
                       builder: (context, state) => const OrderPage(),
                       routes: [
                         GoRoute(
-                          path: detailedOrderInformation.title,
+                          path: detailedOrderInformation.path,
                           name: detailedOrderInformation.name,
                           pageBuilder: (context, state) {
                             final orderEntity = state.extra as OrderEntity;
@@ -168,12 +176,12 @@ enum AppGoRouter {
                 StatefulShellBranch(
                   routes: [
                     GoRoute(
-                      path: request.title,
+                      path: request.path,
                       name: request.name,
                       builder: (context, state) => const RequestPage(),
                       routes: [
                         GoRoute(
-                          path: detailedRequestInformation.title,
+                          path: detailedRequestInformation.path,
                           name: detailedRequestInformation.name,
                           pageBuilder: (context, state) {
                             final orderEntity = state.extra as OrderEntity;
@@ -204,7 +212,7 @@ enum AppGoRouter {
                 StatefulShellBranch(
                   routes: [
                     GoRoute(
-                      path: notificationSettings.title,
+                      path: notificationSettings.path,
                       name: notificationSettings.name,
                       builder: (context, state) =>
                           const NotificationSettingsPage(),
@@ -214,7 +222,7 @@ enum AppGoRouter {
                 StatefulShellBranch(
                   routes: [
                     GoRoute(
-                      path: profileSettings.title,
+                      path: profileSettings.path,
                       name: profileSettings.name,
                       builder: (context, state) => const CustomerSettingsPage(),
                     ),
@@ -223,7 +231,7 @@ enum AppGoRouter {
               ],
             ),
             GoRoute(
-              path: legalities.title,
+              path: legalities.path,
               name: legalities.name,
               pageBuilder: (context, state) =>
                   _getCustomerTransition(const LegalitiesPage(), state),

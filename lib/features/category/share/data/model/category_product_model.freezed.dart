@@ -20,12 +20,12 @@ CategoryProductModel _$CategoryProductModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CategoryProductModel {
+  bool? get isVisible => throw _privateConstructorUsedError;
   String? get productNumber => throw _privateConstructorUsedError;
   String? get productTitle => throw _privateConstructorUsedError;
   String? get type => throw _privateConstructorUsedError;
-  @JsonKey(name: 'price')
-  double? get normalPrice => throw _privateConstructorUsedError;
-  List<String>? get attributes => throw _privateConstructorUsedError;
+  double? get price => throw _privateConstructorUsedError;
+  List<String> get attributes => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,11 +40,12 @@ abstract class $CategoryProductModelCopyWith<$Res> {
       _$CategoryProductModelCopyWithImpl<$Res, CategoryProductModel>;
   @useResult
   $Res call(
-      {String? productNumber,
+      {bool? isVisible,
+      String? productNumber,
       String? productTitle,
       String? type,
-      @JsonKey(name: 'price') double? normalPrice,
-      List<String>? attributes});
+      double? price,
+      List<String> attributes});
 }
 
 /// @nodoc
@@ -61,13 +62,18 @@ class _$CategoryProductModelCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? isVisible = freezed,
     Object? productNumber = freezed,
     Object? productTitle = freezed,
     Object? type = freezed,
-    Object? normalPrice = freezed,
-    Object? attributes = freezed,
+    Object? price = freezed,
+    Object? attributes = null,
   }) {
     return _then(_value.copyWith(
+      isVisible: freezed == isVisible
+          ? _value.isVisible
+          : isVisible // ignore: cast_nullable_to_non_nullable
+              as bool?,
       productNumber: freezed == productNumber
           ? _value.productNumber
           : productNumber // ignore: cast_nullable_to_non_nullable
@@ -80,14 +86,14 @@ class _$CategoryProductModelCopyWithImpl<$Res,
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String?,
-      normalPrice: freezed == normalPrice
-          ? _value.normalPrice
-          : normalPrice // ignore: cast_nullable_to_non_nullable
+      price: freezed == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
               as double?,
-      attributes: freezed == attributes
+      attributes: null == attributes
           ? _value.attributes
           : attributes // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<String>,
     ) as $Val);
   }
 }
@@ -101,11 +107,12 @@ abstract class _$$CategoryProductModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? productNumber,
+      {bool? isVisible,
+      String? productNumber,
       String? productTitle,
       String? type,
-      @JsonKey(name: 'price') double? normalPrice,
-      List<String>? attributes});
+      double? price,
+      List<String> attributes});
 }
 
 /// @nodoc
@@ -119,13 +126,18 @@ class __$$CategoryProductModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? isVisible = freezed,
     Object? productNumber = freezed,
     Object? productTitle = freezed,
     Object? type = freezed,
-    Object? normalPrice = freezed,
-    Object? attributes = freezed,
+    Object? price = freezed,
+    Object? attributes = null,
   }) {
     return _then(_$CategoryProductModelImpl(
+      isVisible: freezed == isVisible
+          ? _value.isVisible
+          : isVisible // ignore: cast_nullable_to_non_nullable
+              as bool?,
       productNumber: freezed == productNumber
           ? _value.productNumber
           : productNumber // ignore: cast_nullable_to_non_nullable
@@ -138,27 +150,29 @@ class __$$CategoryProductModelImplCopyWithImpl<$Res>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String?,
-      normalPrice: freezed == normalPrice
-          ? _value.normalPrice
-          : normalPrice // ignore: cast_nullable_to_non_nullable
+      price: freezed == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
               as double?,
-      attributes: freezed == attributes
+      attributes: null == attributes
           ? _value._attributes
           : attributes // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<String>,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 class _$CategoryProductModelImpl extends _CategoryProductModel {
   const _$CategoryProductModelImpl(
-      {this.productNumber,
+      {this.isVisible,
+      this.productNumber,
       this.productTitle,
       this.type,
-      @JsonKey(name: 'price') this.normalPrice,
-      final List<String>? attributes})
+      this.price,
+      final List<String> attributes = const []})
       : _attributes = attributes,
         super._();
 
@@ -166,27 +180,27 @@ class _$CategoryProductModelImpl extends _CategoryProductModel {
       _$$CategoryProductModelImplFromJson(json);
 
   @override
+  final bool? isVisible;
+  @override
   final String? productNumber;
   @override
   final String? productTitle;
   @override
   final String? type;
   @override
-  @JsonKey(name: 'price')
-  final double? normalPrice;
-  final List<String>? _attributes;
+  final double? price;
+  final List<String> _attributes;
   @override
-  List<String>? get attributes {
-    final value = _attributes;
-    if (value == null) return null;
+  @JsonKey()
+  List<String> get attributes {
     if (_attributes is EqualUnmodifiableListView) return _attributes;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableListView(_attributes);
   }
 
   @override
   String toString() {
-    return 'CategoryProductModel(productNumber: $productNumber, productTitle: $productTitle, type: $type, normalPrice: $normalPrice, attributes: $attributes)';
+    return 'CategoryProductModel(isVisible: $isVisible, productNumber: $productNumber, productTitle: $productTitle, type: $type, price: $price, attributes: $attributes)';
   }
 
   @override
@@ -194,21 +208,28 @@ class _$CategoryProductModelImpl extends _CategoryProductModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CategoryProductModelImpl &&
+            (identical(other.isVisible, isVisible) ||
+                other.isVisible == isVisible) &&
             (identical(other.productNumber, productNumber) ||
                 other.productNumber == productNumber) &&
             (identical(other.productTitle, productTitle) ||
                 other.productTitle == productTitle) &&
             (identical(other.type, type) || other.type == type) &&
-            (identical(other.normalPrice, normalPrice) ||
-                other.normalPrice == normalPrice) &&
+            (identical(other.price, price) || other.price == price) &&
             const DeepCollectionEquality()
                 .equals(other._attributes, _attributes));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, productNumber, productTitle,
-      type, normalPrice, const DeepCollectionEquality().hash(_attributes));
+  int get hashCode => Object.hash(
+      runtimeType,
+      isVisible,
+      productNumber,
+      productTitle,
+      type,
+      price,
+      const DeepCollectionEquality().hash(_attributes));
 
   @JsonKey(ignore: true)
   @override
@@ -228,16 +249,19 @@ class _$CategoryProductModelImpl extends _CategoryProductModel {
 
 abstract class _CategoryProductModel extends CategoryProductModel {
   const factory _CategoryProductModel(
-      {final String? productNumber,
+      {final bool? isVisible,
+      final String? productNumber,
       final String? productTitle,
       final String? type,
-      @JsonKey(name: 'price') final double? normalPrice,
-      final List<String>? attributes}) = _$CategoryProductModelImpl;
+      final double? price,
+      final List<String> attributes}) = _$CategoryProductModelImpl;
   const _CategoryProductModel._() : super._();
 
   factory _CategoryProductModel.fromJson(Map<String, dynamic> json) =
       _$CategoryProductModelImpl.fromJson;
 
+  @override
+  bool? get isVisible;
   @override
   String? get productNumber;
   @override
@@ -245,10 +269,9 @@ abstract class _CategoryProductModel extends CategoryProductModel {
   @override
   String? get type;
   @override
-  @JsonKey(name: 'price')
-  double? get normalPrice;
+  double? get price;
   @override
-  List<String>? get attributes;
+  List<String> get attributes;
   @override
   @JsonKey(ignore: true)
   _$$CategoryProductModelImplCopyWith<_$CategoryProductModelImpl>

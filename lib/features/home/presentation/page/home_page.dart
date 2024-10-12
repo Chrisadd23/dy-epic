@@ -1,20 +1,22 @@
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
-import 'package:app_flutter_produkt_bestellen/core/fix_widgets/failure_widget.dart';
+import 'package:app_flutter_produkt_bestellen/core/fix_widgets/failure_coumn.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_widgets/loading_widget.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_scaffold.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/local_neumorphic_button.dart';
 import 'package:app_flutter_produkt_bestellen/core/presentation/cubit/cubit_core_pictures.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/category_conference_chair/presentation/cubit/category_conference_chair_cubit.dart';
-import 'package:app_flutter_produkt_bestellen/features/category/category_conference_chair/presentation/page/category_conference_chair_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/category_office_chair/presentation/cubit/category_office_chair_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/category_office_chair/presentation/page/category_office_chair_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/category_workingtable/presentation/cubit/cubit_category_workingtable.dart';
-import 'package:app_flutter_produkt_bestellen/features/category/category_workingtable/presentation/page/category_workingtable_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/cubit/state_category.dart';
 import 'package:app_flutter_produkt_bestellen/features/home/presentation/cubit/home_cubit_category.dart';
+import 'package:app_flutter_produkt_bestellen/features/home/presentation/widget/add_product_ink_well.dart';
 import 'package:app_flutter_produkt_bestellen/features/home/presentation/widget/company_info.dart';
+import 'package:app_flutter_produkt_bestellen/features/login/domain/entity/entity_login_customer.dart';
+import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_cubit.dart';
+import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_state.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/bloc/bloc_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/widget/shopping_basket_dialog.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
@@ -36,7 +38,11 @@ class HomePage extends StatelessWidget {
           BlocProvider<CubitCorePictures>.value(
               value: CubitCorePictures(getIt(), getIt())),
           BlocProvider<HomeCategoryCubit>(
-              create: (context) => HomeCategoryCubit()),
+            create: (context) => HomeCategoryCubit(),
+          ),
+          BlocProvider<LoginCubit>.value(
+            value: getIt<LoginCubit>(),
+          ),
         ],
         child: const CategoryPage(),
       ),
@@ -58,21 +64,25 @@ class _CategoryListRow extends StatelessWidget {
         builder: (context, enumCategory) {
       return Padding(
         padding: const EdgeInsets.only(right: 8.0),
-        child: LocalNeumorphicButton(
-          color: enumCategory == categoryProduct
-              ? AppColors.greyA7A7A7
-              : Colors.white,
-          onPressedBasedOnDuration: () => context
-              .read<HomeCategoryCubit>()
-              .changeCategory(categoryProduct: categoryProduct),
-          borderRadius: 10,
-          child: Container(
-            width: MediaQuery.sizeOf(context).width * 0.4,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10), border: Border.all()),
-            child: Padding(
-              padding: const EdgeInsets.all(5),
-              child: FittedBox(child: Text(category)),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(10),
+          child: LocalNeumorphicButton(
+            color: enumCategory == categoryProduct
+                ? AppColors.greyA7A7A7
+                : Colors.white,
+            onPressedBasedOnDuration: () => context
+                .read<HomeCategoryCubit>()
+                .changeCategory(categoryProduct: categoryProduct),
+            borderRadius: 10,
+            child: Container(
+              width: MediaQuery.sizeOf(context).width * 0.4,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all()),
+              child: Padding(
+                padding: const EdgeInsets.all(5),
+                child: FittedBox(child: Text(category)),
+              ),
             ),
           ),
         ),
@@ -186,11 +196,33 @@ class _CategoryWorkingTableList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CubitCategoryWorkingTable, StateCategory>(
-        builder: (context, state) {
-      return state.map(
+        builder: (context, categoryState) {
+      return categoryState.map(
           loading: (_) => const LoadingWidget(),
-          success: (success) => CategoryWorkingTableGridList(
-              categoryEntityList: success.categoryEntityList),
+          success: (success) => BlocBuilder<LoginCubit, LoginState>(
+                  builder: (context, loginState) {
+                final itemCount =
+                    loginState.customer?.getUserType == UserType.owner
+                        ? (success.categoryEntityList?.length ?? 0) + 1
+                        : success.categoryEntityList?.length ?? 0;
+                return Expanded(
+                  child: GridView.builder(
+                    itemCount: itemCount,
+                    itemBuilder: (context, index) =>
+                        loginState.customer?.getUserType == UserType.owner &&
+                                index == itemCount - 1
+                            ? const AddProductInkWell()
+                            : ProductInformationContainer(
+                                categoryEntity:
+                                    success.categoryEntityList![index],
+                                fit: BoxFit.fitWidth,
+                              ),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2, childAspectRatio: 0.68),
+                  ),
+                );
+              }),
           failure: (failure) =>
               FailureWidget(failure: failure.failure.getFailureMessage));
     });
@@ -203,11 +235,33 @@ class _CategoryOfficeChair extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CubitCategoryOfficeChair, StateCategory>(
-        builder: (context, state) {
-      return state.map(
+        builder: (context, categoryState) {
+      return categoryState.map(
           loading: (_) => const LoadingWidget(),
-          success: (success) => CategoryOfficeChairGridList(
-              categoryEntityList: success.categoryEntityList),
+          success: (success) => BlocBuilder<LoginCubit, LoginState>(
+                  builder: (context, loginState) {
+                final itemCount =
+                    loginState.customer?.getUserType == UserType.owner
+                        ? (success.categoryEntityList?.length ?? 0) + 1
+                        : success.categoryEntityList?.length ?? 0;
+                return Expanded(
+                  child: GridView.builder(
+                    itemCount: itemCount,
+                    itemBuilder: (context, index) =>
+                        loginState.customer?.getUserType == UserType.owner &&
+                                index == itemCount - 1
+                            ? const AddProductInkWell()
+                            : ProductInformationContainer(
+                                categoryEntity:
+                                    success.categoryEntityList![index],
+                                fit: BoxFit.fitHeight,
+                              ),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2, childAspectRatio: 0.68),
+                  ),
+                );
+              }),
           failure: (failure) =>
               FailureWidget(failure: failure.failure.getFailureMessage));
     });
@@ -220,12 +274,33 @@ class _CategoryConferenceChair extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CubitCategoryConferenceChair, StateCategory>(
-        builder: (context, state) {
-      return state.map(
+        builder: (context, categoryState) {
+      return categoryState.map(
           loading: (_) => const LoadingWidget(),
-          success: (success) => CategoryConferenceChairGridList(
-                categoryEntityList: success.categoryEntityList,
-              ),
+          success: (success) => BlocBuilder<LoginCubit, LoginState>(
+                  builder: (context, loginState) {
+                final itemCount =
+                    loginState.customer?.getUserType == UserType.owner
+                        ? (success.categoryEntityList?.length ?? 0) + 1
+                        : success.categoryEntityList?.length ?? 0;
+                return Expanded(
+                  child: GridView.builder(
+                    itemCount: itemCount,
+                    itemBuilder: (context, index) =>
+                        loginState.customer?.getUserType == UserType.owner &&
+                                index == itemCount - 1
+                            ? const AddProductInkWell()
+                            : ProductInformationContainer(
+                                categoryEntity:
+                                    success.categoryEntityList![index],
+                                fit: BoxFit.fitHeight,
+                              ),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2, childAspectRatio: 0.68),
+                  ),
+                );
+              }),
           failure: (failure) =>
               FailureWidget(failure: failure.failure.getFailureMessage));
     });

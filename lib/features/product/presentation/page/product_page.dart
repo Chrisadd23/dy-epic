@@ -1,5 +1,3 @@
-import 'dart:typed_data';
-
 import 'package:app_flutter_produkt_bestellen/core/domain/entity/entity_core_pictures.dart';
 import 'package:app_flutter_produkt_bestellen/core/extension/double.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
@@ -99,10 +97,10 @@ class _ProductPageClipPathColumn extends StatelessWidget {
                     horizontal: 20.0,
                   ),
                   child: BlocSelector<ProductCubit, ProductState,
-                          ({List<String>? attributes, String? title})>(
+                          ({List<String>? attributes, String? path})>(
                       selector: (state) => (
                             attributes: state.productEntity?.attributes,
-                            title: state.productEntity?.productTitle
+                            path: state.productEntity?.productTitle
                           ),
                       builder: (context, productInfoRecord) {
                         return SizedBox(
@@ -111,7 +109,7 @@ class _ProductPageClipPathColumn extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Text(
-                                  productInfoRecord.title ??
+                                  productInfoRecord.path ??
                                       AppText.productInformation,
                                   style: AppTextStyle.bold18,
                                 ),
@@ -383,9 +381,8 @@ class _BackgroundCustomPaint extends StatelessWidget {
                                   child:
                                       entityCorePicture?.listIntForUint8List !=
                                               null
-                                          ? Image.memory(Uint8List.fromList(
-                                              entityCorePicture!
-                                                  .listIntForUint8List))
+                                          ? Image.memory(entityCorePicture!
+                                              .listIntForUint8List!)
                                           : const SizedBox.shrink(),
                                 ),
                               ),

@@ -1,7 +1,7 @@
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text_style.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
-import 'package:app_flutter_produkt_bestellen/core/fix_widgets/failure_widget.dart';
+import 'package:app_flutter_produkt_bestellen/core/fix_widgets/failure_coumn.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_widgets/loading_widget.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_state.dart';

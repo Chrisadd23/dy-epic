@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+enum PictureFileType { png, jpg }
+
 enum EnumCategoryWorkingTable {
   slavonischeEiche(type: 'Slavonische Eiche'),
   ahorn(type: 'Ahorn'),

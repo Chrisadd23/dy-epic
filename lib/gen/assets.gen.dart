@@ -12,6 +12,8 @@ import 'package:flutter/widgets.dart';
 class $AssetsAppComponentsGen {
   const $AssetsAppComponentsGen();
 
+  $AssetsAppComponentsFailureGen get failure =>
+      const $AssetsAppComponentsFailureGen();
   $AssetsAppComponentsJpgGen get jpg => const $AssetsAppComponentsJpgGen();
 
   /// File path: assets/appComponents/office_with_city_white.png
@@ -37,6 +39,21 @@ class $AssetsCompanyGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [epicLogoScaled];
+}
+
+class $AssetsAppComponentsFailureGen {
+  const $AssetsAppComponentsFailureGen();
+
+  /// File path: assets/appComponents/failure/bottom_failure_image.png
+  AssetGenImage get bottomFailureImage => const AssetGenImage(
+      'assets/appComponents/failure/bottom_failure_image.png');
+
+  /// File path: assets/appComponents/failure/right_failure_image.png
+  AssetGenImage get rightFailureImage => const AssetGenImage(
+      'assets/appComponents/failure/right_failure_image.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [bottomFailureImage, rightFailureImage];
 }
 
 class $AssetsAppComponentsJpgGen {

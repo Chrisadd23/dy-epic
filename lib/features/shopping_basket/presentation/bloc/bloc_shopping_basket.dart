@@ -62,7 +62,7 @@ class BlocShoppingBasket
           final ({ShoppingBasketProduct chosenProduct, int index}) record =
               (chosenProduct: product, index: timeIndex);
 
-          if (location.contains(AppGoRouter.product.title)) {
+          if (location.contains(AppGoRouter.product.path)) {
             getIt<GoRouter>()
                 .pushReplacementNamed(AppGoRouter.product.name, extra: record);
           } else {

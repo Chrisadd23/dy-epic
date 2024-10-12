@@ -17,3 +17,10 @@ extension ListShoppingBasketProduct on List<ShoppingBasketProduct> {
     return newList;
   }
 }
+
+extension IndexedIterable<E> on Iterable<E> {
+  Iterable<T> mapIndexed<T>(T Function(E attribute, int index) f) {
+    var i = 0;
+    return map((e) => f(e, i++));
+  }
+}

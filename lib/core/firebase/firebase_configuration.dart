@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
+import 'package:either_dart/either.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -51,17 +53,36 @@ abstract class FirebaseConfiguration {
 
   static Future<Uint8List?> getImageBytes(String filename) async {
     Uint8List? imageBytes;
-
-    imageBytes = await _firebaseStorage
-        .ref()
-        .child(filename)
-        .getData(10000000)
-        .timeout(const Duration(seconds: 10))
-        .then(
-          (data) => data,
-        );
+    try {
+      imageBytes = await _firebaseStorage
+          .ref()
+          .child(filename)
+          .getData(10000000)
+          .timeout(const Duration(seconds: 10))
+          .then(
+            (data) => data,
+          );
+    } catch (error) {
+      return null;
+    }
 
     return imageBytes;
+  }
+
+  static Future<Either<Failure, bool>> uploadImage(
+      {required String productNumber,
+      required File image,
+      required String fileType}) async {
+    try {
+      await _firebaseStorage
+          .ref()
+          .child('product_$productNumber.$fileType')
+          .putFile(image)
+          .timeout(const Duration(seconds: 10));
+      return const Right(true);
+    } catch (failure) {
+      return Left(Failure.storageError(failure.toString()));
+    }
   }
 
   static void _initFirebaseMessagingInForegroundListener() {

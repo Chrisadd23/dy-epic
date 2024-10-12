@@ -9,12 +9,14 @@ part 'category_product_model.g.dart';
 class CategoryProductModel with _$CategoryProductModel {
   const CategoryProductModel._();
 
+  @JsonSerializable(explicitToJson: true)
   const factory CategoryProductModel({
+    bool? isVisible,
     String? productNumber,
     String? productTitle,
     String? type,
-    @JsonKey(name: 'price') double? normalPrice,
-    List<String>? attributes,
+    double? price,
+    @Default([]) List<String> attributes,
   }) = _CategoryProductModel;
 
   CategoryEntity toEntity() {
@@ -22,7 +24,8 @@ class CategoryProductModel with _$CategoryProductModel {
       productNumber: productNumber!,
       productTitle: productTitle!,
       type: type!,
-      normalPrice: normalPrice,
+      isVisible: isVisible ?? false,
+      normalPrice: price,
       attributes: attributes,
     );
   }

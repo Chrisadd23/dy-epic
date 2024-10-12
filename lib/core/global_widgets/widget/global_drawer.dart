@@ -165,7 +165,7 @@ class _DrawerWidget extends StatelessWidget {
                                               Icons.person,
                                               color: Color.fromRGBO(
                                                   221, 221, 221, 1),
-                                              size: 45,
+                                              size: 40,
                                               shadows: [
                                                 BoxShadow(
                                                     color: Colors.black,

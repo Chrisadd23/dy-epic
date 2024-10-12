@@ -11,6 +11,7 @@ _$CategoryEntityImpl _$$CategoryEntityImplFromJson(Map<String, dynamic> json) =>
       productNumber: json['productNumber'] as String,
       productTitle: json['productTitle'] as String,
       type: json['type'] as String,
+      isVisible: json['isVisible'] as bool,
       normalPrice: (json['normalPrice'] as num?)?.toDouble(),
       attributes: (json['attributes'] as List<dynamic>?)
           ?.map((e) => e as String)
@@ -23,6 +24,7 @@ Map<String, dynamic> _$$CategoryEntityImplToJson(
       'productNumber': instance.productNumber,
       'productTitle': instance.productTitle,
       'type': instance.type,
+      'isVisible': instance.isVisible,
       'normalPrice': instance.normalPrice,
       'attributes': instance.attributes,
     };

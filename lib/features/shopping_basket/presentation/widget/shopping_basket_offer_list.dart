@@ -6,12 +6,12 @@ import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text_style.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
+import 'package:app_flutter_produkt_bestellen/core/fix_widgets/show_failure_dialog.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/bottom_sheet.dart';
 import 'package:app_flutter_produkt_bestellen/core/presentation/cubit/cubit_core_pictures.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/domain/entity/entity_login_customer.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_state.dart';
-import 'package:app_flutter_produkt_bestellen/features/login/presentation/page/login_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket//presentation/bloc/state_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/domain/entity/shopping_basket_entity.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/bloc/bloc_shopping_basket.dart';
@@ -37,6 +37,7 @@ class ShoppingBasketOfferList extends StatelessWidget {
             listener: (context, state) {
               if (state.failure != null) {
                 ShowFailureDialog.present(
+                    id: 'shopping_basket_failure',
                     context: context,
                     failure: state.failure!.getFailureMessage);
                 if (context.mounted) {
@@ -379,7 +380,7 @@ class _Offer extends StatelessWidget {
                     ? Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Image.memory(
-                            Uint8List.fromList(picture!.listIntForUint8List)),
+                            Uint8List.fromList(picture!.listIntForUint8List!)),
                       )
                     : const SizedBox.shrink(),
               ),
@@ -403,7 +404,7 @@ class _Offer extends StatelessWidget {
                   ),
                   FittedBox(
                     child: Text(item.completeAmount.getCurrency(),
-                        style: AppTextStyle.bold12),
+                        style: AppTextStyle.bold14),
                   )
                 ],
               ),

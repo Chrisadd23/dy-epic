@@ -30,7 +30,7 @@ class PageNotFound extends StatelessWidget {
               height: 20,
             ),
             InkWell(
-              onTap: () => getIt<GoRouter>().go(AppGoRouter.root.title),
+              onTap: () => getIt<GoRouter>().go(AppGoRouter.root.path),
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),

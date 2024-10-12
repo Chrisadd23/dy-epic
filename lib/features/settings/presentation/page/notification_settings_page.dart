@@ -75,26 +75,27 @@ class _NotificationSettingsColumn extends StatelessWidget {
             height: 10,
           ),
           Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              height: 60,
-              decoration: BoxDecoration(
-                  border: Border.all(),
-                  borderRadius: BorderRadius.circular(30),
-                  color: Colors.grey[100]),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Flexible(
-                    child: FittedBox(
-                      child: Text(
-                        AppText.allPushNotification,
-                        style: AppTextStyle.bold18,
-                      ),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            height: 60,
+            decoration: BoxDecoration(
+                border: Border.all(),
+                borderRadius: BorderRadius.circular(30),
+                color: Colors.grey[100]),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Flexible(
+                  child: FittedBox(
+                    child: Text(
+                      AppText.allPushNotification,
+                      style: AppTextStyle.bold18,
                     ),
                   ),
-                  const _NotificationSwitchAll(),
-                ],
-              )),
+                ),
+                const _NotificationSwitchAll(),
+              ],
+            ),
+          ),
           BlocSelector<LoginCubit, LoginState, List<UserNotification>>(
               selector: (state) => state.customer?.notifications ?? [],
               builder: (context, notifications) {

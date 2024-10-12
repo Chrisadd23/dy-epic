@@ -1,6 +1,9 @@
+import 'dart:typed_data';
+
 import 'package:app_flutter_produkt_bestellen/core/domain/entity/entity_core_pictures.dart';
 import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
 import 'package:app_flutter_produkt_bestellen/core/firebase/firebase_configuration.dart';
+import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:either_dart/either.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -18,10 +21,15 @@ class DataSourceImplementationCore extends DataSourceCore {
       final listEntityPictures = await filenames
           .map((name) async {
             debugPrint("getImageBytes $name --  ");
-            final uInt8List = await FirebaseConfiguration.getImageBytes(name);
+            Uint8List? uInt8List;
+            for (var type in PictureFileType.values) {
+              uInt8List = await FirebaseConfiguration.getImageBytes(
+                  '$name.${type.name}');
+              if (uInt8List != null) break;
+            }
             debugPrint("--count ==> ${i++} getImageBytes $name --  ");
             return EntityCorePictures(
-                name: name, listIntForUint8List: uInt8List!);
+                name: name, listIntForUint8List: uInt8List);
           })
           .toList()
           .wait;

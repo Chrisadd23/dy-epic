@@ -42,7 +42,7 @@ class CategoryImageContainer extends StatelessWidget {
                       .where((entityCorePicture) =>
                           entityCorePicture.name.contains(productNumber))
                       .first
-                      .listIntForUint8List),
+                      .listIntForUint8List!),
                   fit: fit,
                 )
               : const SizedBox.shrink(),

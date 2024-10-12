@@ -2,12 +2,19 @@ import 'package:app_flutter_produkt_bestellen/core/firebase/firebase_configurati
 import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
 import 'package:app_flutter_produkt_bestellen/core/shared_preferences_handling.dart';
 import 'package:app_flutter_produkt_bestellen/firebase_options.dart';
+import 'package:app_flutter_produkt_bestellen/gen/assets.gen.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 abstract class Bootstrap {
   static VoidCallback get configuration => () async {
+        WidgetsFlutterBinding.ensureInitialized();
+
+        SystemChrome.setPreferredOrientations([
+          DeviceOrientation.portraitUp,
+        ]);
         await Firebase.initializeApp(
           options: DefaultFirebaseOptions.currentPlatform,
         );
@@ -28,6 +35,18 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    precacheImage(
+        AssetImage(Assets.appComponents.jpg.loginBackground.path), context);
+    precacheImage(
+        AssetImage(Assets.appComponents.officeWithCityWhite.path), context);
+    precacheImage(
+        AssetImage(Assets.appComponents.officeWithForestDark.path), context);
+    precacheImage(
+        AssetImage(Assets.appComponents.failure.bottomFailureImage.path),
+        context);
+    precacheImage(
+        AssetImage(Assets.appComponents.failure.rightFailureImage.path),
+        context);
     return MaterialApp.router(
       title: 'Flutter Demo',
       theme: ThemeData(
