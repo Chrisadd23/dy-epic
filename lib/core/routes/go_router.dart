@@ -103,12 +103,9 @@ enum AppGoRouter {
 
                     debugPrint(
                         "state.queryParameters['product'] ==> ${state.queryParameters['product']}");
-
-                    if (state.queryParameters['product'] != null) {
-                      final jsonObject =
-                          jsonDecode(state.queryParameters['product']!);
-                      debugPrint("jsonObject ==> $jsonObject");
-                      final product = CategoryEntity.fromJson(jsonObject);
+                    final product = _getCategoryEntityFromJsonDecode(
+                        jsonEncoded: state.queryParameters['product']);
+                    if (product != null) {
                       return _getCustomerTransition(
                         ProductPage(
                           product: product,
@@ -131,8 +128,17 @@ enum AppGoRouter {
                 GoRoute(
                   path: AppGoRouter.productAdding.path,
                   name: AppGoRouter.productAdding.name,
-                  pageBuilder: (context, state) => _getCustomerTransition(
-                      const ProductIntegrationPage(), state),
+                  pageBuilder: (context, state) {
+                    final product = _getCategoryEntityFromJsonDecode(
+                        jsonEncoded: state.queryParameters['product']);
+
+                    final categoryIndex =
+                        state.queryParameters['categoryIndex'];
+                    return _getCustomerTransition(
+                        ProductIntegrationPage(
+                            product: product, categoryIndex: categoryIndex),
+                        state);
+                  },
                 )
               ],
             ),
@@ -243,6 +249,16 @@ enum AppGoRouter {
       return null;
     },
   );
+
+  static CategoryEntity? _getCategoryEntityFromJsonDecode(
+      {String? jsonEncoded}) {
+    if (jsonEncoded != null) {
+      final jsonObject = jsonDecode(jsonEncoded);
+      debugPrint("jsonObject ==> $jsonObject");
+      return CategoryEntity.fromJson(jsonObject);
+    }
+    return null;
+  }
 
   static GoRouter get router => _router;
 }

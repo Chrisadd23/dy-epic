@@ -1,5 +1,3 @@
-import 'dart:typed_data';
-
 import 'package:app_flutter_produkt_bestellen/core/domain/entity/entity_core_pictures.dart';
 import 'package:app_flutter_produkt_bestellen/core/presentation/cubit/cubit_core_pictures.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +18,13 @@ class CategoryImageContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final uInt8ListImage = context
+        .read<CubitCorePictures>()
+        .state
+        .where((entityCorePicture) =>
+            entityCorePicture.name.contains(productNumber))
+        .firstOrNull
+        ?.listIntForUint8List;
     return BlocBuilder<CubitCorePictures, List<EntityCorePictures>>(
         builder: (context, state) {
       return Container(
@@ -31,18 +36,9 @@ class CategoryImageContainer extends StatelessWidget {
         ),
         child: Padding(
           padding: const EdgeInsets.all(5),
-          child: state
-                      .where((entityCorePicture) =>
-                          entityCorePicture.name.contains(productNumber))
-                      .firstOrNull
-                      ?.listIntForUint8List !=
-                  null
+          child: uInt8ListImage != null
               ? Image.memory(
-                  Uint8List.fromList(state
-                      .where((entityCorePicture) =>
-                          entityCorePicture.name.contains(productNumber))
-                      .first
-                      .listIntForUint8List!),
+                  uInt8ListImage,
                   fit: fit,
                 )
               : const SizedBox.shrink(),

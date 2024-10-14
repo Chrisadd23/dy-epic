@@ -23,7 +23,11 @@ abstract class ProductDependencies {
       ..registerLazySingleton<UploadProductImageUseCase>(
           () => UploadProductImageUseCase(getIt()))
       ..registerFactory<ProductCubit>(() => ProductCubit(getIt()))
-      ..registerFactory<ProductIntegrationCubit>(
-          () => ProductIntegrationCubit(getIt(), getIt(), getIt()));
+      ..registerFactory<ProductIntegrationCubit>(() => ProductIntegrationCubit(
+            getIt(),
+            getIt(),
+            getIt(),
+            getIt(),
+          ));
   }
 }

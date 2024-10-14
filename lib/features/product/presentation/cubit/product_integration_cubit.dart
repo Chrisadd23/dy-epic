@@ -1,6 +1,8 @@
+import 'package:app_flutter_produkt_bestellen/core/domain/use_case/use_case_get_single_image.dart';
 import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/data/model/category_product_model.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/share/domain/entity/category_entity.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/domain/use_case/get_image_use_case.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/domain/use_case/upload_product_image_use_case.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/domain/use_case/upload_product_info_use_case.dart';
@@ -10,17 +12,33 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductIntegrationCubit extends Cubit<ProductIntegrationState> {
   ProductIntegrationCubit(this._uploadProductInfoUseCase, this._getImageUseCase,
-      this._uploadProductImageUseCase)
+      this._uploadProductImageUseCase, this._getLocalPicture)
       : super(const ProductIntegrationState(
-          imageUploadInProcess: false,
-          infoUploadInProcess: false,
-          isProductVisible: true,
-          categoryProduct: EnumCategoryProduct.workingTable,
-        ));
+            imageUploadInProcess: false,
+            infoUploadInProcess: false,
+            isProductVisible: true,
+            categoryProduct: EnumCategoryProduct.workingTable,
+            changeProduct: false));
 
   final UploadProductInfoUseCase _uploadProductInfoUseCase;
   final UploadProductImageUseCase _uploadProductImageUseCase;
   final GetImageUseCase _getImageUseCase;
+  final UseCaseGetSingleLocalImage _getLocalPicture;
+
+  void changeProduct({CategoryEntity? product, String? categoryIndex}) {
+    if (product != null && categoryIndex != null) {
+      debugPrint("changeProduct $product");
+      final image = _getLocalPicture(productNumber: product.productNumber);
+      final category =
+          EnumCategoryProduct.category(typeIndex: int.parse(categoryIndex));
+      emit(state.copyWith(
+          imageUint8List: image?.listIntForUint8List,
+          attributes: product.attributes ?? [],
+          isProductVisible: product.isVisible,
+          categoryProduct: category,
+          changeProduct: true));
+    }
+  }
 
   Future<void> getImage() async {
     final image = await _getImageUseCase();
@@ -31,6 +49,8 @@ class ProductIntegrationCubit extends Cubit<ProductIntegrationState> {
   }
 
   Future<void> uploadImage({required String productNumber}) async {
+    if (state.changeProduct) return;
+
     emit(state.copyWith(imageUploadInProcess: true));
     if (state.imageUint8List == null) {
       emit(state.copyWith(
@@ -64,8 +84,10 @@ class ProductIntegrationCubit extends Cubit<ProductIntegrationState> {
         productTitle: productTitle,
         type: type,
         price: price)) {
-      final double numPrice = double.parse(
-          price.replaceAll('.', '').replaceAll(RegExp(r'[^0-9,]'), ''));
+      final double numPrice = double.parse(price
+          .replaceAll('.', '')
+          .replaceAll(RegExp(r'[^0-9,]'), '')
+          .replaceAll(',', '.'));
 
       final productJson = CategoryProductModel(
               isVisible: state.isProductVisible,

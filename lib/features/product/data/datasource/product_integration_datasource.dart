@@ -53,20 +53,21 @@ class ProductIntegrationDataSourceImplementation
           .collection(category)
           .where('productNumber', isEqualTo: json['productNumber'])
           .get()
+          .timeout(const Duration(seconds: 20))
           .then((querySnapshot) async {
         if (querySnapshot.docs.firstOrNull == null) {
-          return document
+          await document
               .collection(category)
               .add(json)
               .then((_) => const Right(true), onError: (error) {
             failure = Failure.databaseError(error.toString());
-          });
+          }).timeout(const Duration(seconds: 10));
         } else {
-          return querySnapshot.docs.first.reference
+          await querySnapshot.docs.first.reference
               .update(json)
               .then((_) => const Right(true), onError: (error) {
             failure = Failure.databaseError(error.toString());
-          });
+          }).timeout(const Duration(seconds: 10));
         }
       });
 

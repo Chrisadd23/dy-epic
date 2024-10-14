@@ -1,4 +1,5 @@
 import 'package:app_flutter_produkt_bestellen/core/classes/euro_input_formatter.dart';
+import 'package:app_flutter_produkt_bestellen/core/extension/double.dart';
 import 'package:app_flutter_produkt_bestellen/core/extension/list_extenstion.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text_style.dart';
@@ -7,6 +8,7 @@ import 'package:app_flutter_produkt_bestellen/core/fix_widgets/loading_widget.da
 import 'package:app_flutter_produkt_bestellen/core/fix_widgets/show_failure_dialog.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_scaffold.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/local_neumorphic_button.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/share/domain/entity/category_entity.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/presentation/cubit/product_integration_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/presentation/cubit/product_integration_state.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/presentation/widget/background_custom_paint.dart';
@@ -18,34 +20,35 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 class ProductIntegrationPage extends StatelessWidget {
-  const ProductIntegrationPage({super.key});
+  const ProductIntegrationPage({super.key, this.product, this.categoryIndex});
+
+  final CategoryEntity? product;
+  final String? categoryIndex;
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
         BlocProvider<ProductIntegrationCubit>(
-          create: (context) => getIt<ProductIntegrationCubit>(),
+          create: (context) => getIt<ProductIntegrationCubit>()
+            ..changeProduct(product: product, categoryIndex: categoryIndex),
         ),
       ],
       child: GlobalScaffold(
         appBarContext: context,
-        body: const _ProductIntegrationBody(),
+        body: _ProductIntegrationBody(product: product),
       ),
     );
   }
 }
 
-class _ProductIntegrationBody extends HookWidget {
-  const _ProductIntegrationBody();
+class _ProductIntegrationBody extends StatelessWidget {
+  const _ProductIntegrationBody({this.product});
+
+  final CategoryEntity? product;
 
   @override
   Widget build(BuildContext context) {
-    final attributeController = useTextEditingController();
-    final priceTextController = useTextEditingController();
-    final productMarcController = useTextEditingController();
-    final productNameController = useTextEditingController();
-    final productNumberController = useTextEditingController();
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Stack(
@@ -56,7 +59,7 @@ class _ProductIntegrationBody extends HookWidget {
                 selector: (state) => state.imageUint8List,
                 builder: (context, uInt8List) {
                   if (uInt8List != null) {
-                    return Image.memory(Uint8List.fromList(uInt8List));
+                    return Image.memory(uInt8List);
                   } else {
                     return const _PictureIntegrationButton();
                   }
@@ -68,12 +71,7 @@ class _ProductIntegrationBody extends HookWidget {
               clipper: ProductInfoCustomClipper(),
               child: Container(
                 color: AppColors.greyCACACA,
-                child: _ProductInformationIntegrationColumn(
-                    productNumberController: productNumberController,
-                    productMarcController: productMarcController,
-                    productNameController: productNameController,
-                    priceTextController: priceTextController,
-                    attributeController: attributeController),
+                child: _ProductInformationIntegrationColumn(product),
               ),
             ),
           ),
@@ -83,23 +81,21 @@ class _ProductIntegrationBody extends HookWidget {
   }
 }
 
-class _ProductInformationIntegrationColumn extends StatelessWidget {
-  const _ProductInformationIntegrationColumn({
-    required this.productNumberController,
-    required this.productMarcController,
-    required this.productNameController,
-    required this.priceTextController,
-    required this.attributeController,
-  });
+class _ProductInformationIntegrationColumn extends HookWidget {
+  const _ProductInformationIntegrationColumn(this.product);
 
-  final TextEditingController productNumberController;
-  final TextEditingController productMarcController;
-  final TextEditingController productNameController;
-  final TextEditingController priceTextController;
-  final TextEditingController attributeController;
+  final CategoryEntity? product;
 
   @override
   Widget build(BuildContext context) {
+    final attributeController = useTextEditingController();
+    final priceTextController =
+        useTextEditingController(text: product?.normalPrice?.getCurrency());
+    final productMarcController = useTextEditingController(text: product?.type);
+    final productNameController =
+        useTextEditingController(text: product?.productTitle);
+    final productNumberController =
+        useTextEditingController(text: product?.productNumber);
     return LayoutBuilder(builder: (context, constraints) {
       return ListView(
         children: [
@@ -127,6 +123,7 @@ class _ProductInformationIntegrationColumn extends StatelessWidget {
             ],
           ),
           _ProductInformationColumn(
+            isOnlyReadable: true,
             productMarcController: productNumberController,
             hintText: 'Produktnummer',
             textInputFormatters: [
@@ -136,11 +133,13 @@ class _ProductInformationIntegrationColumn extends StatelessWidget {
             ],
           ),
           _ProductInformationColumn(
+            isOnlyReadable: true,
             productMarcController: productMarcController,
             hintText: 'Marke',
             textInputFormatters: const [],
           ),
           _ProductInformationColumn(
+            isOnlyReadable: true,
             productMarcController: productNameController,
             hintText: 'Name',
             textInputFormatters: const [],
@@ -321,11 +320,13 @@ class _ProductInformationColumn extends StatelessWidget {
     required this.productMarcController,
     required this.textInputFormatters,
     required this.hintText,
+    this.isOnlyReadable = false,
   });
 
   final TextEditingController productMarcController;
   final List<TextInputFormatter> textInputFormatters;
   final String hintText;
+  final bool isOnlyReadable;
 
   @override
   Widget build(BuildContext context) {
@@ -343,10 +344,10 @@ class _ProductInformationColumn extends StatelessWidget {
         SizedBox(
           height: 40,
           child: _InputTextForm(
-            controller: productMarcController,
-            hintText: hintText,
-            textInputFormatters: textInputFormatters,
-          ),
+              controller: productMarcController,
+              hintText: hintText,
+              textInputFormatters: textInputFormatters,
+              isOnlyReadable: isOnlyReadable),
         ),
         const SizedBox(
           height: 30,
@@ -361,11 +362,13 @@ class _InputTextForm extends StatelessWidget {
     required this.controller,
     required this.textInputFormatters,
     required this.hintText,
+    required this.isOnlyReadable,
   });
 
   final TextEditingController controller;
   final List<TextInputFormatter> textInputFormatters;
   final String hintText;
+  final bool isOnlyReadable;
 
   @override
   Widget build(BuildContext context) {
@@ -376,6 +379,7 @@ class _InputTextForm extends StatelessWidget {
           controller: controller,
           hintText: hintText,
           textInputFormatters: textInputFormatters,
+          isOnlyReadable: isOnlyReadable,
         ),
       );
     });
@@ -512,29 +516,35 @@ class _CategoryListView extends StatelessWidget {
 }
 
 class _TextFormField extends StatelessWidget {
-  const _TextFormField(
-      {required this.controller,
-      required this.hintText,
-      required this.textInputFormatters});
+  const _TextFormField({
+    required this.controller,
+    required this.hintText,
+    required this.textInputFormatters,
+    required this.isOnlyReadable,
+  });
 
   final TextEditingController controller;
   final List<TextInputFormatter> textInputFormatters;
   final String hintText;
+  final bool isOnlyReadable;
 
   @override
   Widget build(BuildContext context) {
+    final readOnly = isOnlyReadable &&
+        context.read<ProductIntegrationCubit>().state.changeProduct;
     return Padding(
       padding: const EdgeInsets.only(right: 10.0),
       child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 5),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: readOnly ? Colors.grey[300] : Colors.white,
             border: Border.all(),
             borderRadius: BorderRadius.circular(
               10,
             ),
           ),
           child: TextFormField(
+            readOnly: readOnly,
             inputFormatters: textInputFormatters,
             textAlign: TextAlign.center,
             controller: controller,
@@ -632,9 +642,12 @@ class _CategoryListRow extends StatelessWidget {
                 color: enumCategory == categoryProduct
                     ? AppColors.greyA7A7A7
                     : Colors.white,
-                onPressedBasedOnDuration: () => context
-                    .read<ProductIntegrationCubit>()
-                    .changeCategory(categoryProduct: categoryProduct),
+                onPressedBasedOnDuration:
+                    context.read<ProductIntegrationCubit>().state.changeProduct
+                        ? () {}
+                        : () => context
+                            .read<ProductIntegrationCubit>()
+                            .changeCategory(categoryProduct: categoryProduct),
                 borderRadius: 10,
                 child: Container(
                   width: MediaQuery.sizeOf(context).width * 0.4,

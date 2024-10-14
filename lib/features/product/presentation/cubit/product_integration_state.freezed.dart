@@ -20,6 +20,7 @@ mixin _$ProductIntegrationState {
   bool get imageUploadInProcess => throw _privateConstructorUsedError;
   bool get infoUploadInProcess => throw _privateConstructorUsedError;
   bool get isProductVisible => throw _privateConstructorUsedError;
+  bool get changeProduct => throw _privateConstructorUsedError;
   Uint8List? get imageUint8List => throw _privateConstructorUsedError;
   List<String> get attributes => throw _privateConstructorUsedError;
   Failure? get failure => throw _privateConstructorUsedError;
@@ -40,6 +41,7 @@ abstract class $ProductIntegrationStateCopyWith<$Res> {
       bool imageUploadInProcess,
       bool infoUploadInProcess,
       bool isProductVisible,
+      bool changeProduct,
       Uint8List? imageUint8List,
       List<String> attributes,
       Failure? failure});
@@ -65,6 +67,7 @@ class _$ProductIntegrationStateCopyWithImpl<$Res,
     Object? imageUploadInProcess = null,
     Object? infoUploadInProcess = null,
     Object? isProductVisible = null,
+    Object? changeProduct = null,
     Object? imageUint8List = freezed,
     Object? attributes = null,
     Object? failure = freezed,
@@ -85,6 +88,10 @@ class _$ProductIntegrationStateCopyWithImpl<$Res,
       isProductVisible: null == isProductVisible
           ? _value.isProductVisible
           : isProductVisible // ignore: cast_nullable_to_non_nullable
+              as bool,
+      changeProduct: null == changeProduct
+          ? _value.changeProduct
+          : changeProduct // ignore: cast_nullable_to_non_nullable
               as bool,
       imageUint8List: freezed == imageUint8List
           ? _value.imageUint8List
@@ -128,6 +135,7 @@ abstract class _$$ProductIntegrationStateImplCopyWith<$Res>
       bool imageUploadInProcess,
       bool infoUploadInProcess,
       bool isProductVisible,
+      bool changeProduct,
       Uint8List? imageUint8List,
       List<String> attributes,
       Failure? failure});
@@ -153,6 +161,7 @@ class __$$ProductIntegrationStateImplCopyWithImpl<$Res>
     Object? imageUploadInProcess = null,
     Object? infoUploadInProcess = null,
     Object? isProductVisible = null,
+    Object? changeProduct = null,
     Object? imageUint8List = freezed,
     Object? attributes = null,
     Object? failure = freezed,
@@ -173,6 +182,10 @@ class __$$ProductIntegrationStateImplCopyWithImpl<$Res>
       isProductVisible: null == isProductVisible
           ? _value.isProductVisible
           : isProductVisible // ignore: cast_nullable_to_non_nullable
+              as bool,
+      changeProduct: null == changeProduct
+          ? _value.changeProduct
+          : changeProduct // ignore: cast_nullable_to_non_nullable
               as bool,
       imageUint8List: freezed == imageUint8List
           ? _value.imageUint8List
@@ -198,6 +211,7 @@ class _$ProductIntegrationStateImpl implements _ProductIntegrationState {
       required this.imageUploadInProcess,
       required this.infoUploadInProcess,
       required this.isProductVisible,
+      required this.changeProduct,
       this.imageUint8List,
       final List<String> attributes = const [],
       this.failure})
@@ -211,6 +225,8 @@ class _$ProductIntegrationStateImpl implements _ProductIntegrationState {
   final bool infoUploadInProcess;
   @override
   final bool isProductVisible;
+  @override
+  final bool changeProduct;
   @override
   final Uint8List? imageUint8List;
   final List<String> _attributes;
@@ -227,7 +243,7 @@ class _$ProductIntegrationStateImpl implements _ProductIntegrationState {
 
   @override
   String toString() {
-    return 'ProductIntegrationState(categoryProduct: $categoryProduct, imageUploadInProcess: $imageUploadInProcess, infoUploadInProcess: $infoUploadInProcess, isProductVisible: $isProductVisible, imageUint8List: $imageUint8List, attributes: $attributes, failure: $failure)';
+    return 'ProductIntegrationState(categoryProduct: $categoryProduct, imageUploadInProcess: $imageUploadInProcess, infoUploadInProcess: $infoUploadInProcess, isProductVisible: $isProductVisible, changeProduct: $changeProduct, imageUint8List: $imageUint8List, attributes: $attributes, failure: $failure)';
   }
 
   @override
@@ -243,6 +259,8 @@ class _$ProductIntegrationStateImpl implements _ProductIntegrationState {
                 other.infoUploadInProcess == infoUploadInProcess) &&
             (identical(other.isProductVisible, isProductVisible) ||
                 other.isProductVisible == isProductVisible) &&
+            (identical(other.changeProduct, changeProduct) ||
+                other.changeProduct == changeProduct) &&
             const DeepCollectionEquality()
                 .equals(other.imageUint8List, imageUint8List) &&
             const DeepCollectionEquality()
@@ -257,6 +275,7 @@ class _$ProductIntegrationStateImpl implements _ProductIntegrationState {
       imageUploadInProcess,
       infoUploadInProcess,
       isProductVisible,
+      changeProduct,
       const DeepCollectionEquality().hash(imageUint8List),
       const DeepCollectionEquality().hash(_attributes),
       failure);
@@ -275,6 +294,7 @@ abstract class _ProductIntegrationState implements ProductIntegrationState {
       required final bool imageUploadInProcess,
       required final bool infoUploadInProcess,
       required final bool isProductVisible,
+      required final bool changeProduct,
       final Uint8List? imageUint8List,
       final List<String> attributes,
       final Failure? failure}) = _$ProductIntegrationStateImpl;
@@ -287,6 +307,8 @@ abstract class _ProductIntegrationState implements ProductIntegrationState {
   bool get infoUploadInProcess;
   @override
   bool get isProductVisible;
+  @override
+  bool get changeProduct;
   @override
   Uint8List? get imageUint8List;
   @override

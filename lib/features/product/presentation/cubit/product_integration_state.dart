@@ -13,6 +13,7 @@ class ProductIntegrationState with _$ProductIntegrationState {
       required bool imageUploadInProcess,
       required bool infoUploadInProcess,
       required bool isProductVisible,
+      required bool changeProduct,
       Uint8List? imageUint8List,
       @Default([]) List<String> attributes,
       Failure? failure}) = _ProductIntegrationState;
