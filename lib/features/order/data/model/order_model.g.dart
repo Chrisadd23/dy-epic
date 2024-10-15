@@ -27,7 +27,7 @@ Map<String, dynamic> _$$OrderModelImplToJson(_$OrderModelImpl instance) =>
     };
 
 _$OrderImpl _$$OrderImplFromJson(Map<String, dynamic> json) => _$OrderImpl(
-      categoryEntity: CategoryEntity.fromJson(
+      categoryEntity: CategoryProductModel.fromJson(
           json['categoryEntity'] as Map<String, dynamic>),
       productCount: (json['productCount'] as num).toInt(),
       completeAmount: (json['completeAmount'] as num).toDouble(),

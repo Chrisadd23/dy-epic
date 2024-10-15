@@ -1,5 +1,5 @@
 //ignore_for_file: invalid_annotation_target
-import 'package:app_flutter_produkt_bestellen/features/category/share/domain/entity/category_entity.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/share/data/model/category_product_model.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/domain/entity/order_entity.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -38,7 +38,7 @@ class Order with _$Order {
 
   @JsonSerializable(explicitToJson: true)
   const factory Order({
-    required CategoryEntity categoryEntity,
+    required CategoryProductModel categoryEntity,
     required int productCount,
     required double completeAmount,
     required int addedTime,

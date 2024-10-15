@@ -10,6 +10,7 @@ import 'package:app_flutter_produkt_bestellen/features/category/category_confere
 import 'package:app_flutter_produkt_bestellen/features/category/category_office_chair/presentation/cubit/category_office_chair_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/category_office_chair/presentation/page/category_office_chair_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/category_workingtable/presentation/cubit/cubit_category_workingtable.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/share/domain/entity/category_entity.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/cubit/state_category.dart';
 import 'package:app_flutter_produkt_bestellen/features/home/presentation/cubit/home_cubit_category.dart';
 import 'package:app_flutter_produkt_bestellen/features/home/presentation/widget/add_product_ink_well.dart';
@@ -201,26 +202,9 @@ class _CategoryWorkingTableList extends StatelessWidget {
           loading: (_) => const LoadingWidget(),
           success: (success) => BlocBuilder<LoginCubit, LoginState>(
                   builder: (context, loginState) {
-                final itemCount =
-                    loginState.customer?.getUserType == UserType.owner
-                        ? (success.categoryEntityList?.length ?? 0) + 1
-                        : success.categoryEntityList?.length ?? 0;
-                return Expanded(
-                  child: GridView.builder(
-                    itemCount: itemCount,
-                    itemBuilder: (context, index) =>
-                        loginState.customer?.getUserType == UserType.owner &&
-                                index == itemCount - 1
-                            ? const AddProductInkWell()
-                            : ProductInformationContainer(
-                                categoryEntity:
-                                    success.categoryEntityList![index],
-                                fit: BoxFit.fitWidth,
-                              ),
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2, childAspectRatio: 0.68),
-                  ),
+                return _CategoryGridViewBuilder(
+                  fit: BoxFit.fitWidth,
+                  categoryEntities: success.categoryEntityList ?? [],
                 );
               }),
           failure: (failure) =>
@@ -240,26 +224,8 @@ class _CategoryOfficeChair extends StatelessWidget {
           loading: (_) => const LoadingWidget(),
           success: (success) => BlocBuilder<LoginCubit, LoginState>(
                   builder: (context, loginState) {
-                final itemCount =
-                    loginState.customer?.getUserType == UserType.owner
-                        ? (success.categoryEntityList?.length ?? 0) + 1
-                        : success.categoryEntityList?.length ?? 0;
-                return Expanded(
-                  child: GridView.builder(
-                    itemCount: itemCount,
-                    itemBuilder: (context, index) =>
-                        loginState.customer?.getUserType == UserType.owner &&
-                                index == itemCount - 1
-                            ? const AddProductInkWell()
-                            : ProductInformationContainer(
-                                categoryEntity:
-                                    success.categoryEntityList![index],
-                                fit: BoxFit.fitHeight,
-                              ),
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2, childAspectRatio: 0.68),
-                  ),
+                return _CategoryGridViewBuilder(
+                  categoryEntities: success.categoryEntityList ?? [],
                 );
               }),
           failure: (failure) =>
@@ -279,30 +245,47 @@ class _CategoryConferenceChair extends StatelessWidget {
           loading: (_) => const LoadingWidget(),
           success: (success) => BlocBuilder<LoginCubit, LoginState>(
                   builder: (context, loginState) {
-                final itemCount =
-                    loginState.customer?.getUserType == UserType.owner
-                        ? (success.categoryEntityList?.length ?? 0) + 1
-                        : success.categoryEntityList?.length ?? 0;
-                return Expanded(
-                  child: GridView.builder(
-                    itemCount: itemCount,
-                    itemBuilder: (context, index) =>
-                        loginState.customer?.getUserType == UserType.owner &&
-                                index == itemCount - 1
-                            ? const AddProductInkWell()
-                            : ProductInformationContainer(
-                                categoryEntity:
-                                    success.categoryEntityList![index],
-                                fit: BoxFit.fitHeight,
-                              ),
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2, childAspectRatio: 0.68),
-                  ),
+                return _CategoryGridViewBuilder(
+                  categoryEntities: success.categoryEntityList ?? [],
                 );
               }),
           failure: (failure) =>
               FailureWidget(failure: failure.failure.getFailureMessage));
     });
+  }
+}
+
+class _CategoryGridViewBuilder extends StatelessWidget {
+  const _CategoryGridViewBuilder({
+    required this.categoryEntities,
+    this.fit = BoxFit.fitHeight,
+  });
+
+  final List<CategoryEntity> categoryEntities;
+  final BoxFit fit;
+
+  @override
+  Widget build(BuildContext context) {
+    final bool isUserOwner =
+        context.read<LoginCubit>().state.customer?.getUserType ==
+            UserType.owner;
+    final categoryList = isUserOwner
+        ? categoryEntities
+        : categoryEntities.removeInvisibleEntities();
+    final itemCount =
+        isUserOwner ? categoryEntities.length + 1 : categoryList.length;
+    return Expanded(
+      child: GridView.builder(
+        itemCount: itemCount,
+        itemBuilder: (context, index) => isUserOwner && index == itemCount - 1
+            ? const AddProductInkWell()
+            : ProductInformationContainer(
+                categoryEntity: categoryList[index],
+                fit: fit,
+              ),
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2, childAspectRatio: 0.68),
+      ),
+    );
   }
 }

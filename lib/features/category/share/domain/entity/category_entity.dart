@@ -19,3 +19,8 @@ class CategoryEntity with _$CategoryEntity {
   factory CategoryEntity.fromJson(Map<String, dynamic> json) =>
       _$CategoryEntityFromJson(json);
 }
+
+extension RemoveEntityFromCategoryEntityList on List<CategoryEntity> {
+  List<CategoryEntity> removeInvisibleEntities() =>
+      List.of(this)..removeWhere((entity) => !entity.isVisible);
+}

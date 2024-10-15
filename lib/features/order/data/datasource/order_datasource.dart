@@ -25,6 +25,7 @@ class OrderDatasourceImplementation extends OrderDatasource {
                 'Es konnten keine Daten gefunden werden.')))
         .map((docSnapshot) {
       try {
+        debugPrint('map order list');
         final orderList = docSnapshot.docs
             .map((query) => OrderModel.fromJson(query.data()))
             .toList();

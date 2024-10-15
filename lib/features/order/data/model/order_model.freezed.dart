@@ -258,7 +258,7 @@ Order _$OrderFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Order {
-  CategoryEntity get categoryEntity => throw _privateConstructorUsedError;
+  CategoryProductModel get categoryEntity => throw _privateConstructorUsedError;
   int get productCount => throw _privateConstructorUsedError;
   double get completeAmount => throw _privateConstructorUsedError;
   int get addedTime => throw _privateConstructorUsedError;
@@ -274,12 +274,12 @@ abstract class $OrderCopyWith<$Res> {
       _$OrderCopyWithImpl<$Res, Order>;
   @useResult
   $Res call(
-      {CategoryEntity categoryEntity,
+      {CategoryProductModel categoryEntity,
       int productCount,
       double completeAmount,
       int addedTime});
 
-  $CategoryEntityCopyWith<$Res> get categoryEntity;
+  $CategoryProductModelCopyWith<$Res> get categoryEntity;
 }
 
 /// @nodoc
@@ -304,7 +304,7 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
       categoryEntity: null == categoryEntity
           ? _value.categoryEntity
           : categoryEntity // ignore: cast_nullable_to_non_nullable
-              as CategoryEntity,
+              as CategoryProductModel,
       productCount: null == productCount
           ? _value.productCount
           : productCount // ignore: cast_nullable_to_non_nullable
@@ -322,8 +322,8 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
 
   @override
   @pragma('vm:prefer-inline')
-  $CategoryEntityCopyWith<$Res> get categoryEntity {
-    return $CategoryEntityCopyWith<$Res>(_value.categoryEntity, (value) {
+  $CategoryProductModelCopyWith<$Res> get categoryEntity {
+    return $CategoryProductModelCopyWith<$Res>(_value.categoryEntity, (value) {
       return _then(_value.copyWith(categoryEntity: value) as $Val);
     });
   }
@@ -337,13 +337,13 @@ abstract class _$$OrderImplCopyWith<$Res> implements $OrderCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {CategoryEntity categoryEntity,
+      {CategoryProductModel categoryEntity,
       int productCount,
       double completeAmount,
       int addedTime});
 
   @override
-  $CategoryEntityCopyWith<$Res> get categoryEntity;
+  $CategoryProductModelCopyWith<$Res> get categoryEntity;
 }
 
 /// @nodoc
@@ -366,7 +366,7 @@ class __$$OrderImplCopyWithImpl<$Res>
       categoryEntity: null == categoryEntity
           ? _value.categoryEntity
           : categoryEntity // ignore: cast_nullable_to_non_nullable
-              as CategoryEntity,
+              as CategoryProductModel,
       productCount: null == productCount
           ? _value.productCount
           : productCount // ignore: cast_nullable_to_non_nullable
@@ -398,7 +398,7 @@ class _$OrderImpl extends _Order {
       _$$OrderImplFromJson(json);
 
   @override
-  final CategoryEntity categoryEntity;
+  final CategoryProductModel categoryEntity;
   @override
   final int productCount;
   @override
@@ -447,7 +447,7 @@ class _$OrderImpl extends _Order {
 
 abstract class _Order extends Order {
   const factory _Order(
-      {required final CategoryEntity categoryEntity,
+      {required final CategoryProductModel categoryEntity,
       required final int productCount,
       required final double completeAmount,
       required final int addedTime}) = _$OrderImpl;
@@ -456,7 +456,7 @@ abstract class _Order extends Order {
   factory _Order.fromJson(Map<String, dynamic> json) = _$OrderImpl.fromJson;
 
   @override
-  CategoryEntity get categoryEntity;
+  CategoryProductModel get categoryEntity;
   @override
   int get productCount;
   @override
