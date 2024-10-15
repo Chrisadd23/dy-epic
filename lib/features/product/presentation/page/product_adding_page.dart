@@ -9,6 +9,7 @@ import 'package:app_flutter_produkt_bestellen/core/fix_widgets/show_failure_dial
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_scaffold.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/local_neumorphic_button.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/domain/entity/category_entity.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/cubit/cubit_category.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/presentation/cubit/product_integration_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/presentation/cubit/product_integration_state.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/presentation/widget/background_custom_paint.dart';
@@ -191,11 +192,19 @@ class _ProductInformationIntegrationColumn extends HookWidget {
               child: SizedBox(
                 height: 50,
                 width: 200,
-                child: _SendButtonContainer(
-                    productNumberController: productNumberController,
-                    productNameController: productNameController,
-                    productMarcController: productMarcController,
-                    priceTextController: priceTextController),
+                child: BlocProvider<CubitCategory>.value(
+                  value: getIt<CubitCategory>(
+                      instanceName: context
+                          .read<ProductIntegrationCubit>()
+                          .state
+                          .categoryProduct
+                          .name),
+                  child: _SendButtonContainer(
+                      productNumberController: productNumberController,
+                      productNameController: productNameController,
+                      productMarcController: productMarcController,
+                      priceTextController: priceTextController),
+                ),
               ),
             ),
           ),
@@ -287,13 +296,20 @@ class _SendButtonContainer extends StatelessWidget {
                               .uploadImage(
                                   productNumber: productNumberController.text);
                           if (context.mounted) {
-                            await context
+                            final categoryProductModel = await context
                                 .read<ProductIntegrationCubit>()
                                 .uploadProduct(
                                     productNumber: productNumberController.text,
                                     productTitle: productNameController.text,
                                     type: productMarcController.text,
                                     price: priceTextController.text);
+                            if (context.mounted &&
+                                categoryProductModel != null) {
+                              context
+                                  .read<CubitCategory>()
+                                  .replaceProductAttributes(
+                                      categoryModel: categoryProductModel);
+                            }
                           }
                         },
                   child: isInProcess

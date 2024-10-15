@@ -10,14 +10,13 @@ class CategoryProductRepository {
 
   final CategoryRemoteDataSource _categoryRemoteDataSource;
 
-  List<CategoryProductModel>? _listCategoryProductModel;
+  List<CategoryProductModel> _listCategoryProductModel = [];
 
   List<CategoryProductModel>? get listCategoryProductModel =>
       _listCategoryProductModel;
 
   Future<Either<Failure, List<CategoryEntity>>> getListCategory() async {
-    if (_listCategoryProductModel == null ||
-        _listCategoryProductModel!.isEmpty) {
+    if (_listCategoryProductModel.isEmpty) {
       return _categoryRemoteDataSource.getProductData().fold(
         (left) => Left(left),
         (listCategoryModel) {
@@ -37,5 +36,16 @@ class CategoryProductRepository {
             .toList(),
       );
     }
+  }
+
+  List<CategoryEntity> changeCategoryProduct(
+      {required CategoryProductModel categoryModel}) {
+    final index = _listCategoryProductModel.indexWhere((categoryProduct) =>
+        categoryProduct.productNumber == categoryModel.productNumber);
+    _listCategoryProductModel.replaceRange(index, index + 1, [categoryModel]);
+
+    return listCategoryProductModel!
+        .map((product) => product.toEntity())
+        .toList();
   }
 }

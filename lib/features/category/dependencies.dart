@@ -1,15 +1,13 @@
-import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text.dart';
+import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/category_conference_chair/data/datasource/category_conference_chair_datasource.dart';
-import 'package:app_flutter_produkt_bestellen/features/category/category_conference_chair/presentation/cubit/category_conference_chair_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/category_office_chair/data/datasource/category_office_chair_hochlehner_data_source.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/category_office_chair/data/datasource/category_office_chair_normal_data_source.dart';
-import 'package:app_flutter_produkt_bestellen/features/category/category_office_chair/presentation/cubit/category_office_chair_cubit.dart';
-import 'package:app_flutter_produkt_bestellen/features/category/category_office_chair/presentation/cubit/choose_office_chair_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/category_workingtable/data/datasource/category_workingtable_datasource.dart';
-import 'package:app_flutter_produkt_bestellen/features/category/category_workingtable/presentation/cubit/cubit_category_workingtable.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/data/datasource/category_remote_data_source.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/domain/repository/category_product_repository.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/share/domain/use_case_get_category_product/change_attributes_from_product_use_case.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/domain/use_case_get_category_product/use_case_get_category_workingtable.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/cubit/cubit_category.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 
 abstract class CategoryDependencies {
@@ -23,26 +21,30 @@ abstract class CategoryDependencies {
     getIt
       ..registerLazySingleton<CategoryRemoteDataSource>(
         () => CategoryWorkingTableDataSource(),
-        instanceName: AppText.categoryWorkingTable,
+        instanceName: EnumCategoryProduct.workingTable.name,
       )
       ..registerLazySingleton<CategoryProductRepository>(
         () => CategoryProductRepository(
-            getIt(instanceName: AppText.categoryWorkingTable)),
-        instanceName: AppText.categoryWorkingTable,
+            getIt(instanceName: EnumCategoryProduct.workingTable.name)),
+        instanceName: EnumCategoryProduct.workingTable.name,
       )
       ..registerLazySingleton<UseCaseGetCategoryProduct>(
           () => UseCaseGetCategoryProduct(
                 getIt(
-                  instanceName: AppText.categoryWorkingTable,
+                  instanceName: EnumCategoryProduct.workingTable.name,
                 ),
               ),
-          instanceName: AppText.categoryWorkingTable)
-      ..registerFactory<CubitCategoryWorkingTable>(
-        () => CubitCategoryWorkingTable(
-          getIt(instanceName: AppText.categoryWorkingTable),
-          getIt(),
-        ),
-        instanceName: AppText.categoryWorkingTable,
+          instanceName: EnumCategoryProduct.workingTable.name)
+      ..registerLazySingleton<UseCaseChangeAttributesFromProduct>(
+          () => UseCaseChangeAttributesFromProduct(
+              getIt(instanceName: EnumCategoryProduct.workingTable.name)),
+          instanceName: EnumCategoryProduct.workingTable.name)
+      ..registerLazySingleton<CubitCategory>(
+        () => CubitCategory(
+            getIt(instanceName: EnumCategoryProduct.workingTable.name),
+            getIt(),
+            getIt(instanceName: EnumCategoryProduct.workingTable.name)),
+        instanceName: EnumCategoryProduct.workingTable.name,
       );
   }
 
@@ -50,79 +52,97 @@ abstract class CategoryDependencies {
     getIt
       ..registerLazySingleton<CategoryRemoteDataSource>(
         () => CategoryConferenceChairDataSource(),
-        instanceName: AppText.categoryConferenceChair,
+        instanceName: EnumCategoryProduct.conferenceChair.name,
       )
       ..registerLazySingleton<CategoryProductRepository>(
         () => CategoryProductRepository(
-          getIt(instanceName: AppText.categoryConferenceChair),
+          getIt(instanceName: EnumCategoryProduct.conferenceChair.name),
         ),
-        instanceName: AppText.categoryConferenceChair,
+        instanceName: EnumCategoryProduct.conferenceChair.name,
       )
       ..registerLazySingleton<UseCaseGetCategoryProduct>(
         () => UseCaseGetCategoryProduct(
-          getIt(instanceName: AppText.categoryConferenceChair),
+          getIt(instanceName: EnumCategoryProduct.conferenceChair.name),
         ),
-        instanceName: AppText.categoryConferenceChair,
+        instanceName: EnumCategoryProduct.conferenceChair.name,
       )
-      ..registerFactory<CubitCategoryConferenceChair>(
-          () => CubitCategoryConferenceChair(
-                getIt(instanceName: AppText.categoryConferenceChair),
-                getIt(),
-              ),
-          instanceName: AppText.categoryConferenceChair);
+      ..registerLazySingleton<UseCaseChangeAttributesFromProduct>(
+          () => UseCaseChangeAttributesFromProduct(
+              getIt(instanceName: EnumCategoryProduct.conferenceChair.name)),
+          instanceName: EnumCategoryProduct.conferenceChair.name)
+      ..registerLazySingleton<CubitCategory>(
+          () => CubitCategory(
+              getIt(instanceName: EnumCategoryProduct.conferenceChair.name),
+              getIt(),
+              getIt(instanceName: EnumCategoryProduct.conferenceChair.name)),
+          instanceName: EnumCategoryProduct.conferenceChair.name);
   }
 
   static void _setUpOfficeChair() {
     getIt
       ..registerLazySingleton<CategoryRemoteDataSource>(
         () => CategoryOfficeChairNormalDataSource(),
-        instanceName: AppText.categoryOfficeChairNormal,
+        instanceName: EnumCategoryProduct.officeChairNormal.name,
       )
       ..registerLazySingleton<CategoryRemoteDataSource>(
         () => CategoryOfficeChairHochlehnerDataSource(),
-        instanceName: AppText.categoryOfficeChairHochlehner,
+        instanceName: EnumCategoryProduct.officeChairHochlehner.name,
       )
       ..registerLazySingleton<CategoryProductRepository>(
           () => CategoryProductRepository(
-                getIt(instanceName: AppText.categoryOfficeChairNormal),
+                getIt(instanceName: EnumCategoryProduct.officeChairNormal.name),
               ),
-          instanceName: AppText.categoryOfficeChairNormal)
+          instanceName: EnumCategoryProduct.officeChairNormal.name)
       ..registerLazySingleton<CategoryProductRepository>(
           () => CategoryProductRepository(
-                getIt(instanceName: AppText.categoryOfficeChairHochlehner),
+                getIt(
+                    instanceName:
+                        EnumCategoryProduct.officeChairHochlehner.name),
               ),
-          instanceName: AppText.categoryOfficeChairHochlehner)
+          instanceName: EnumCategoryProduct.officeChairHochlehner.name)
       ..registerLazySingleton<UseCaseGetCategoryProduct>(
         () => UseCaseGetCategoryProduct(
-          getIt(instanceName: AppText.categoryOfficeChairNormal),
+          getIt(instanceName: EnumCategoryProduct.officeChairNormal.name),
         ),
-        instanceName: AppText.categoryOfficeChairNormal,
+        instanceName: EnumCategoryProduct.officeChairNormal.name,
       )
       ..registerLazySingleton<UseCaseGetCategoryProduct>(
         () => UseCaseGetCategoryProduct(
-          getIt(instanceName: AppText.categoryOfficeChairHochlehner),
+          getIt(instanceName: EnumCategoryProduct.officeChairHochlehner.name),
         ),
-        instanceName: AppText.categoryOfficeChairHochlehner,
+        instanceName: EnumCategoryProduct.officeChairHochlehner.name,
       )
-      ..registerLazySingleton<CubitChooseOfficeChair>(
-          () => CubitChooseOfficeChair())
-      ..registerFactory<CubitCategoryOfficeChair>(
-        () => CubitCategoryOfficeChair(
+      ..registerLazySingleton<UseCaseChangeAttributesFromProduct>(
+          () => UseCaseChangeAttributesFromProduct(
+              getIt(instanceName: EnumCategoryProduct.officeChairNormal.name)),
+          instanceName: EnumCategoryProduct.officeChairNormal.name)
+      ..registerLazySingleton<UseCaseChangeAttributesFromProduct>(
+          () => UseCaseChangeAttributesFromProduct(getIt(
+              instanceName: EnumCategoryProduct.officeChairHochlehner.name)),
+          instanceName: EnumCategoryProduct.officeChairHochlehner.name)
+      ..registerLazySingleton<CubitCategory>(
+        () => CubitCategory(
           getIt(
-            instanceName: AppText.categoryOfficeChairNormal,
+            instanceName: EnumCategoryProduct.officeChairNormal.name,
           ),
           getIt(),
-        ),
-        instanceName: AppText.categoryOfficeChairNormal,
-      )
-      ..registerFactory<CubitCategoryOfficeChair>(
-        () => CubitCategoryOfficeChair(
           getIt(
-            instanceName: AppText.categoryOfficeChairHochlehner,
+            instanceName: EnumCategoryProduct.officeChairNormal.name,
+          ),
+        ),
+        instanceName: EnumCategoryProduct.officeChairNormal.name,
+      )
+      ..registerLazySingleton<CubitCategory>(
+        () => CubitCategory(
+          getIt(
+            instanceName: EnumCategoryProduct.officeChairHochlehner.name,
           ),
           getIt(),
+          getIt(
+            instanceName: EnumCategoryProduct.officeChairHochlehner.name,
+          ),
         ),
-        instanceName: AppText.categoryOfficeChairHochlehner,
+        instanceName: EnumCategoryProduct.officeChairHochlehner.name,
       );
   }
 }

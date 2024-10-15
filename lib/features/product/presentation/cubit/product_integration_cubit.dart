@@ -68,7 +68,7 @@ class ProductIntegrationCubit extends Cubit<ProductIntegrationState> {
         (success) => emit(state.copyWith(imageUploadInProcess: false)));
   }
 
-  Future<void> uploadProduct({
+  Future<CategoryProductModel?> uploadProduct({
     required String productNumber,
     required String productTitle,
     required String type,
@@ -89,26 +89,31 @@ class ProductIntegrationCubit extends Cubit<ProductIntegrationState> {
           .replaceAll(RegExp(r'[^0-9,]'), '')
           .replaceAll(',', '.'));
 
-      final productJson = CategoryProductModel(
-              isVisible: state.isProductVisible,
-              productNumber: productNumber,
-              productTitle: productTitle,
-              type: type,
-              price: numPrice,
-              attributes: state.attributes)
-          .toJson();
-      debugPrint('productJson => ${_uploadProductInfoUseCase.toString()}');
+      CategoryProductModel? productModel = CategoryProductModel(
+          isVisible: state.isProductVisible,
+          productNumber: productNumber,
+          productTitle: productTitle,
+          type: type,
+          price: numPrice,
+          attributes: state.attributes);
+      debugPrint('productModel => ${_uploadProductInfoUseCase.toString()}');
       final response = await _uploadProductInfoUseCase(
-          json: productJson, category: state.categoryProduct.name);
+          json: productModel.toJson(), category: state.categoryProduct.name);
       response.fold(
-        (failure) =>
-            emit(state.copyWith(failure: failure, infoUploadInProcess: false)),
-        (success) => emit(
-          state.copyWith(infoUploadInProcess: false),
-        ),
+        (failure) {
+          productModel = null;
+          emit(state.copyWith(failure: failure, infoUploadInProcess: false));
+        },
+        (success) {
+          emit(
+            state.copyWith(infoUploadInProcess: false),
+          );
+        },
       );
-      debugPrint('productJson => $productJson');
+      debugPrint('productModel => $productModel');
+      return productModel;
     }
+    return null;
   }
 
   void addProductAttribute({required String attribute}) {

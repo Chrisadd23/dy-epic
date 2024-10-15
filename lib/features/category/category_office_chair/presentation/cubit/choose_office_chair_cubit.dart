@@ -1,8 +1,0 @@
-import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-class CubitChooseOfficeChair extends Cubit<EnumSelectOfficeChairCategory> {
-  CubitChooseOfficeChair([EnumSelectOfficeChairCategory? initialEnum])
-      : super(initialEnum ??
-            EnumSelectOfficeChairCategory.categoryOfficeChairNormal);
-}

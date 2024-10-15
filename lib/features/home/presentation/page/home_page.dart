@@ -1,16 +1,13 @@
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
-import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_widgets/failure_coumn.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_widgets/loading_widget.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_scaffold.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/local_neumorphic_button.dart';
 import 'package:app_flutter_produkt_bestellen/core/presentation/cubit/cubit_core_pictures.dart';
-import 'package:app_flutter_produkt_bestellen/features/category/category_conference_chair/presentation/cubit/category_conference_chair_cubit.dart';
-import 'package:app_flutter_produkt_bestellen/features/category/category_office_chair/presentation/cubit/category_office_chair_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/category_office_chair/presentation/page/category_office_chair_page.dart';
-import 'package:app_flutter_produkt_bestellen/features/category/category_workingtable/presentation/cubit/cubit_category_workingtable.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/domain/entity/category_entity.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/cubit/cubit_category.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/cubit/state_category.dart';
 import 'package:app_flutter_produkt_bestellen/features/home/presentation/cubit/home_cubit_category.dart';
 import 'package:app_flutter_produkt_bestellen/features/home/presentation/widget/add_product_ink_well.dart';
@@ -160,27 +157,28 @@ class _ProductColumn extends StatelessWidget {
       productColum() {
         switch (category) {
           case EnumCategoryProduct.workingTable:
-            return BlocProvider<CubitCategoryWorkingTable>.value(
-                value: getIt<CubitCategoryWorkingTable>(
-                    instanceName: AppText.categoryWorkingTable)
+            return BlocProvider<CubitCategory>.value(
+                value: getIt<CubitCategory>(
+                    instanceName: EnumCategoryProduct.workingTable.name)
                   ..load(),
                 child: const _CategoryWorkingTableList());
           case EnumCategoryProduct.officeChairNormal:
-            return BlocProvider<CubitCategoryOfficeChair>.value(
-                value: getIt<CubitCategoryOfficeChair>(
-                    instanceName: AppText.categoryOfficeChairNormal)
+            return BlocProvider<CubitCategory>.value(
+                value: getIt<CubitCategory>(
+                    instanceName: EnumCategoryProduct.officeChairNormal.name)
                   ..load(),
                 child: const _CategoryOfficeChair());
           case EnumCategoryProduct.officeChairHochlehner:
-            return BlocProvider<CubitCategoryOfficeChair>.value(
-                value: getIt<CubitCategoryOfficeChair>(
-                    instanceName: AppText.categoryOfficeChairHochlehner)
+            return BlocProvider<CubitCategory>.value(
+                value: getIt<CubitCategory>(
+                    instanceName:
+                        EnumCategoryProduct.officeChairHochlehner.name)
                   ..load(),
                 child: const _CategoryOfficeChair());
           case EnumCategoryProduct.conferenceChair:
-            return BlocProvider<CubitCategoryConferenceChair>.value(
-                value: getIt<CubitCategoryConferenceChair>(
-                    instanceName: AppText.categoryConferenceChair)
+            return BlocProvider<CubitCategory>.value(
+                value: getIt<CubitCategory>(
+                    instanceName: EnumCategoryProduct.conferenceChair.name)
                   ..load(),
                 child: const _CategoryConferenceChair());
         }
@@ -196,7 +194,7 @@ class _CategoryWorkingTableList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CubitCategoryWorkingTable, StateCategory>(
+    return BlocBuilder<CubitCategory, StateCategory>(
         builder: (context, categoryState) {
       return categoryState.map(
           loading: (_) => const LoadingWidget(),
@@ -218,7 +216,7 @@ class _CategoryOfficeChair extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CubitCategoryOfficeChair, StateCategory>(
+    return BlocBuilder<CubitCategory, StateCategory>(
         builder: (context, categoryState) {
       return categoryState.map(
           loading: (_) => const LoadingWidget(),
@@ -239,7 +237,7 @@ class _CategoryConferenceChair extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CubitCategoryConferenceChair, StateCategory>(
+    return BlocBuilder<CubitCategory, StateCategory>(
         builder: (context, categoryState) {
       return categoryState.map(
           loading: (_) => const LoadingWidget(),
