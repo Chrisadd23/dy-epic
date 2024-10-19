@@ -304,11 +304,19 @@ class _SendButtonContainer extends StatelessWidget {
                                     type: productMarcController.text,
                                     price: priceTextController.text);
                             if (context.mounted &&
+                                context
+                                    .read<ProductIntegrationCubit>()
+                                    .state
+                                    .changeProduct &&
                                 categoryProductModel != null) {
                               context
                                   .read<CubitCategory>()
                                   .replaceProductAttributes(
                                       categoryModel: categoryProductModel);
+                            } else if (context.mounted &&
+                                categoryProductModel != null) {
+                              context.read<CubitCategory>().updateProducts(
+                                  categoryModel: categoryProductModel);
                             }
                           }
                         },

@@ -2,6 +2,7 @@ import 'package:app_flutter_produkt_bestellen/core/domain/use_case/use_case_get_
 import 'package:app_flutter_produkt_bestellen/features/category/share/data/model/category_product_model.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/domain/entity/category_entity.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/domain/use_case_get_category_product/change_attributes_from_product_use_case.dart';
+import 'package:app_flutter_produkt_bestellen/features/category/share/domain/use_case_get_category_product/use_case_add_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/domain/use_case_get_category_product/use_case_delete_product.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/domain/use_case_get_category_product/use_case_get_category_workingtable.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/presentation/cubit/state_category.dart';
@@ -14,12 +15,14 @@ class CubitCategory extends Cubit<StateCategory> {
     this._useCaseGetPictures,
     this._useCaseChangeAttributesFromProduct,
     this._useCaseDeleteProduct,
+    this._useCaseAddProduct,
   ) : super(const StateCategory.loading());
 
   final UseCaseGetCategoryProduct _useCaseGetCategoryProduct;
   final UseCaseGetPicture _useCaseGetPictures;
   final UseCaseChangeAttributesFromProduct _useCaseChangeAttributesFromProduct;
   final UseCaseDeleteProduct _useCaseDeleteProduct;
+  final UseCaseAddProduct _useCaseAddProduct;
 
   Future<void> load() async {
     final getCategoryProduct = await _useCaseGetCategoryProduct();
@@ -74,5 +77,10 @@ class CubitCategory extends Cubit<StateCategory> {
       );
       return previousElement;
     });
+  }
+
+  void updateProducts({required CategoryProductModel categoryModel}) {
+    _useCaseAddProduct(categoryProductModel: categoryModel);
+    load();
   }
 }

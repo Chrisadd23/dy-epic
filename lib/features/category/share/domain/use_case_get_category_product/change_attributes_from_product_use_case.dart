@@ -8,6 +8,6 @@ class UseCaseChangeAttributesFromProduct {
   final CategoryProductRepository _categoryProductRepository;
 
   List<CategoryEntity> call({required CategoryProductModel categoryModel}) =>
-      _categoryProductRepository.changeCategoryProduct(
+      _categoryProductRepository.replaceCategoryProduct(
           categoryModel: categoryModel);
 }

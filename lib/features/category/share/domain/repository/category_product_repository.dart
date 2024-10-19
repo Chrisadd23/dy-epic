@@ -38,7 +38,7 @@ class CategoryProductRepository {
     }
   }
 
-  List<CategoryEntity> changeCategoryProduct(
+  List<CategoryEntity> replaceCategoryProduct(
       {required CategoryProductModel categoryModel}) {
     final index = _listCategoryProductModel.indexWhere((categoryProduct) =>
         categoryProduct.productNumber == categoryModel.productNumber);
@@ -65,5 +65,9 @@ class CategoryProductRepository {
           .map((product) => product.toEntity())
           .toList());
     });
+  }
+
+  void addProduct({required CategoryProductModel categoryProductModel}) {
+    _listCategoryProductModel.add(categoryProductModel);
   }
 }
