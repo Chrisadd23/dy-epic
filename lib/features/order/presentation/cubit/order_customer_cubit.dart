@@ -1,5 +1,6 @@
 import 'package:app_flutter_produkt_bestellen/core/extension/date_time_extension.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
+import 'package:app_flutter_produkt_bestellen/features/login/domain/entity/entity_login_customer.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/domain/entity/order_entity.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/cubit/order_customer_state.dart';
 import 'package:flutter/cupertino.dart';
@@ -9,7 +10,7 @@ import 'package:intl/intl.dart';
 abstract class OrderCustomerCubit extends Cubit<OrderCustomerState> {
   OrderCustomerCubit() : super(const OrderCustomerState.initialise());
 
-  Future<void> load({String? customerNumber});
+  Future<void> load({String? customerNumber, required UserType userType});
 
   List<ProductInformation> getListProductInformation(orderMap) {
     final List<ProductInformation> orderList =

@@ -5,20 +5,46 @@ import 'package:either_dart/either.dart';
 import 'package:flutter/cupertino.dart';
 
 abstract class OrderDatasource {
-  Stream<Either<Failure, List<OrderModel>>> getOrderData(
+  Stream<Either<Failure, List<OrderModel>>> getCustomerOrderData(
       {required String customerId});
 
   Stream<Either<Failure, List<OrderModel>>> getRequestData(
       {required String customerId});
+
+  Stream<Either<Failure, List<OrderModel>>> getOwnerOrderData();
 }
 
 class OrderDatasourceImplementation extends OrderDatasource {
   @override
-  Stream<Either<Failure, List<OrderModel>>> getOrderData(
+  Stream<Either<Failure, List<OrderModel>>> getCustomerOrderData(
       {required String customerId}) {
     return FirebaseFirestore.instance
         .collection('Order')
         .where('userId', isEqualTo: customerId)
+        .snapshots()
+        .timeout(const Duration(seconds: 10),
+            onTimeout: (_) => const Left(Failure.databaseError(
+                'Es konnten keine Daten gefunden werden.')))
+        .map((docSnapshot) {
+      try {
+        debugPrint('map order list');
+        final orderList = docSnapshot.docs
+            .map((query) => OrderModel.fromJson(query.data()))
+            .toList();
+
+        debugPrint('orderList ==> $orderList');
+
+        return Right(orderList);
+      } catch (error) {
+        return Left(Failure.databaseError(error.toString()));
+      }
+    });
+  }
+
+  @override
+  Stream<Either<Failure, List<OrderModel>>> getOwnerOrderData() {
+    return FirebaseFirestore.instance
+        .collection('Order')
         .snapshots()
         .timeout(const Duration(seconds: 10),
             onTimeout: (_) => const Left(Failure.databaseError(

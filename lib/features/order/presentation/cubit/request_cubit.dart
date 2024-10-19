@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
+import 'package:app_flutter_produkt_bestellen/features/login/domain/entity/entity_login_customer.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/data/model/order_model.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/domain/repository/order_repository.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/domain/use_case/get_request_use_case.dart';
@@ -36,7 +37,8 @@ class RequestCubit extends OrderCustomerCubit {
   late final StreamSubscription<List<OrderModel>> _streamSubscription;
 
   @override
-  Future<void> load({String? customerNumber}) async {
+  Future<void> load(
+      {String? customerNumber, required UserType userType}) async {
     if (customerNumber != null) {
       try {
         if (_orderRepository.listRequestModel.isEmpty) {

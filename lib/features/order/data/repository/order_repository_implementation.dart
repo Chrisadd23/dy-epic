@@ -4,6 +4,7 @@ import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/data/datasource/order_datasource.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/data/model/order_model.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/domain/repository/order_repository.dart';
+import 'package:either_dart/either.dart';
 import 'package:flutter/cupertino.dart';
 
 class OrderRepositoryImplementation extends OrderRepository {
@@ -40,14 +41,31 @@ class OrderRepositoryImplementation extends OrderRepository {
   @override
   Stream<Failure> get failure => _failureRequestController.stream;
 
+  StreamSubscription<Either<Failure, List<OrderModel>>>? streamSub;
+
   @override
-  void getOrders({required String customerId}) {
-    _orderDatasource.getOrderData(customerId: customerId).listen((event) {
+  void getCustomerOrders({required String customerId}) {
+    streamSub = _orderDatasource
+        .getCustomerOrderData(customerId: customerId)
+        .listen((event) {
       event.fold((failure) => _failureRequestController.add(failure), (right) {
         _listOrderModel
           ..clear()
           ..addAll(right);
-        debugPrint('repository right ==> $_listOrderModel');
+        debugPrint('repository customer request right ==> $_listOrderModel');
+        _listOrderModelController.add(listOrderModel);
+      });
+    });
+  }
+
+  @override
+  void getOwnerOrders() {
+    streamSub = _orderDatasource.getOwnerOrderData().listen((event) {
+      event.fold((failure) => _failureRequestController.add(failure), (right) {
+        _listOrderModel
+          ..clear()
+          ..addAll(right);
+        debugPrint('repository owner request right ==> $_listOrderModel');
         _listOrderModelController.add(listOrderModel);
       });
     });
@@ -68,6 +86,7 @@ class OrderRepositoryImplementation extends OrderRepository {
   @override
   void clearOrderList() {
     _listOrderModel.clear();
+    streamSub?.cancel();
   }
 
   @override

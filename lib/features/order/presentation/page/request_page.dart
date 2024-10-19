@@ -45,8 +45,10 @@ class _RequestBlocProvider extends HookWidget {
               loggedIn: (loggedInState) => BlocProvider<RequestCubit>(
                 create: (context) => getIt<RequestCubit>()
                   ..load(
-                      customerNumber:
-                          loggedInState.entityLoginCustomer.customerNumber),
+                    customerNumber:
+                        loggedInState.entityLoginCustomer.customerNumber,
+                    userType: loggedInState.entityLoginCustomer.getUserType,
+                  ),
                 child: Stack(
                   children: [
                     Align(

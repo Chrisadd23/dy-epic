@@ -39,7 +39,9 @@ class _OrderBlocProvider extends StatelessWidget {
                   value: getIt<OrderCubit>()
                     ..load(
                         customerNumber:
-                            loggedInState.entityLoginCustomer.customerNumber),
+                            loggedInState.entityLoginCustomer.customerNumber,
+                        userType:
+                            loggedInState.entityLoginCustomer.getUserType),
                   child: const Stack(
                     children: [
                       Align(
