@@ -12,6 +12,7 @@ import 'package:app_flutter_produkt_bestellen/features/category/share/presentati
 import 'package:app_flutter_produkt_bestellen/features/home/presentation/cubit/home_cubit_category.dart';
 import 'package:app_flutter_produkt_bestellen/features/home/presentation/widget/add_product_ink_well.dart';
 import 'package:app_flutter_produkt_bestellen/features/home/presentation/widget/company_info.dart';
+import 'package:app_flutter_produkt_bestellen/features/home/presentation/widget/delete_dialog.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/domain/entity/entity_login_customer.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_state.dart';
@@ -275,15 +276,70 @@ class _CategoryGridViewBuilder extends StatelessWidget {
     return Expanded(
       child: GridView.builder(
         itemCount: itemCount,
+        padding: const EdgeInsets.symmetric(horizontal: 10),
         itemBuilder: (context, index) => isUserOwner && index == itemCount - 1
             ? const AddProductInkWell()
-            : ProductInformationContainer(
-                categoryEntity: categoryList[index],
-                fit: fit,
-              ),
+            : isUserOwner
+                ? _ProductInformationAndDeleteButtonStack(
+                    categoryProduct: categoryList[index], fit: fit)
+                : ProductInformationContainer(
+                    categoryEntity: categoryList[index],
+                    fit: fit,
+                  ),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2, childAspectRatio: 0.68),
       ),
+    );
+  }
+}
+
+class _ProductInformationAndDeleteButtonStack extends StatelessWidget {
+  const _ProductInformationAndDeleteButtonStack({
+    required this.categoryProduct,
+    required this.fit,
+  });
+
+  final CategoryEntity categoryProduct;
+  final BoxFit fit;
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        ProductInformationContainer(
+          categoryEntity: categoryProduct,
+          fit: fit,
+        ),
+        Positioned(
+          top: 0,
+          right: 0,
+          child: Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(40),
+                border: Border.all(),
+                color: Colors.white,
+                boxShadow: const [
+                  BoxShadow(
+                    color: Colors.grey,
+                    offset: Offset(0.0, 1.0),
+                    blurRadius: 6.0,
+                  ),
+                ]),
+            child: InkWell(
+              onTap: () => DeleteDialog.show(
+                context: context,
+                categoryEntity: categoryProduct,
+                enumCategoryProduct: context.read<HomeCategoryCubit>().state,
+              ),
+              child: const Icon(
+                Icons.delete,
+                color: Colors.red,
+                size: 40,
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

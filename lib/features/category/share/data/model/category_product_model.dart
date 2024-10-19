@@ -11,6 +11,7 @@ class CategoryProductModel with _$CategoryProductModel {
 
   @JsonSerializable(explicitToJson: true)
   const factory CategoryProductModel({
+    String? id,
     bool? isVisible,
     String? productNumber,
     String? productTitle,

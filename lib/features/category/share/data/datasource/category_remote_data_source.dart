@@ -8,7 +8,7 @@ import 'package:flutter/cupertino.dart';
 abstract class CategoryRemoteDataSource {
   Future<Either<Failure, List<CategoryProductModel>>> getProductData() async {
     try {
-      final categoryProductModelList = await collection.get().then(
+      final categoryProductModelList = await _collection.get().then(
             (querySnapshot) => querySnapshot.docs
                 .where((documentSnapshot) {
                   return documentSnapshot.id != 'additionalAttributes';
@@ -16,7 +16,7 @@ abstract class CategoryRemoteDataSource {
                 .map(
                   (product) => CategoryProductModel.fromJson(
                     product.data(),
-                  ),
+                  ).copyWith(id: product.id),
                 )
                 .toList(),
           );
@@ -31,11 +31,22 @@ abstract class CategoryRemoteDataSource {
   }
 
   @protected
-  CollectionReference<Map<String, dynamic>> get collection =>
+  CollectionReference<Map<String, dynamic>> get _collection =>
       FirebaseFirestore.instance
           .collection('Product')
           .doc(AppConfig.productDocumentId)
           .collection(categoryCollectionName);
 
   String get categoryCollectionName;
+
+  Future<Either<Failure, bool>> deleteProduct(
+      {required String? productId}) async {
+    try {
+      debugPrint('doc id => $productId');
+      await _collection.doc(productId).delete();
+      return const Right(true);
+    } catch (failure) {
+      return Left(Failure.databaseError(failure.toString()));
+    }
+  }
 }

@@ -9,6 +9,7 @@ part of 'category_product_model.dart';
 _$CategoryProductModelImpl _$$CategoryProductModelImplFromJson(
         Map<String, dynamic> json) =>
     _$CategoryProductModelImpl(
+      id: json['id'] as String?,
       isVisible: json['isVisible'] as bool?,
       productNumber: json['productNumber'] as String?,
       productTitle: json['productTitle'] as String?,
@@ -23,6 +24,7 @@ _$CategoryProductModelImpl _$$CategoryProductModelImplFromJson(
 Map<String, dynamic> _$$CategoryProductModelImplToJson(
         _$CategoryProductModelImpl instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'isVisible': instance.isVisible,
       'productNumber': instance.productNumber,
       'productTitle': instance.productTitle,

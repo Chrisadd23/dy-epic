@@ -20,6 +20,7 @@ CategoryProductModel _$CategoryProductModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CategoryProductModel {
+  String? get id => throw _privateConstructorUsedError;
   bool? get isVisible => throw _privateConstructorUsedError;
   String? get productNumber => throw _privateConstructorUsedError;
   String? get productTitle => throw _privateConstructorUsedError;
@@ -40,7 +41,8 @@ abstract class $CategoryProductModelCopyWith<$Res> {
       _$CategoryProductModelCopyWithImpl<$Res, CategoryProductModel>;
   @useResult
   $Res call(
-      {bool? isVisible,
+      {String? id,
+      bool? isVisible,
       String? productNumber,
       String? productTitle,
       String? type,
@@ -62,6 +64,7 @@ class _$CategoryProductModelCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? isVisible = freezed,
     Object? productNumber = freezed,
     Object? productTitle = freezed,
@@ -70,6 +73,10 @@ class _$CategoryProductModelCopyWithImpl<$Res,
     Object? attributes = null,
   }) {
     return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
       isVisible: freezed == isVisible
           ? _value.isVisible
           : isVisible // ignore: cast_nullable_to_non_nullable
@@ -107,7 +114,8 @@ abstract class _$$CategoryProductModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {bool? isVisible,
+      {String? id,
+      bool? isVisible,
       String? productNumber,
       String? productTitle,
       String? type,
@@ -126,6 +134,7 @@ class __$$CategoryProductModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? isVisible = freezed,
     Object? productNumber = freezed,
     Object? productTitle = freezed,
@@ -134,6 +143,10 @@ class __$$CategoryProductModelImplCopyWithImpl<$Res>
     Object? attributes = null,
   }) {
     return _then(_$CategoryProductModelImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
       isVisible: freezed == isVisible
           ? _value.isVisible
           : isVisible // ignore: cast_nullable_to_non_nullable
@@ -167,7 +180,8 @@ class __$$CategoryProductModelImplCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 class _$CategoryProductModelImpl extends _CategoryProductModel {
   const _$CategoryProductModelImpl(
-      {this.isVisible,
+      {this.id,
+      this.isVisible,
       this.productNumber,
       this.productTitle,
       this.type,
@@ -179,6 +193,8 @@ class _$CategoryProductModelImpl extends _CategoryProductModel {
   factory _$CategoryProductModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$CategoryProductModelImplFromJson(json);
 
+  @override
+  final String? id;
   @override
   final bool? isVisible;
   @override
@@ -200,7 +216,7 @@ class _$CategoryProductModelImpl extends _CategoryProductModel {
 
   @override
   String toString() {
-    return 'CategoryProductModel(isVisible: $isVisible, productNumber: $productNumber, productTitle: $productTitle, type: $type, price: $price, attributes: $attributes)';
+    return 'CategoryProductModel(id: $id, isVisible: $isVisible, productNumber: $productNumber, productTitle: $productTitle, type: $type, price: $price, attributes: $attributes)';
   }
 
   @override
@@ -208,6 +224,7 @@ class _$CategoryProductModelImpl extends _CategoryProductModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CategoryProductModelImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.isVisible, isVisible) ||
                 other.isVisible == isVisible) &&
             (identical(other.productNumber, productNumber) ||
@@ -224,6 +241,7 @@ class _$CategoryProductModelImpl extends _CategoryProductModel {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      id,
       isVisible,
       productNumber,
       productTitle,
@@ -249,7 +267,8 @@ class _$CategoryProductModelImpl extends _CategoryProductModel {
 
 abstract class _CategoryProductModel extends CategoryProductModel {
   const factory _CategoryProductModel(
-      {final bool? isVisible,
+      {final String? id,
+      final bool? isVisible,
       final String? productNumber,
       final String? productTitle,
       final String? type,
@@ -260,6 +279,8 @@ abstract class _CategoryProductModel extends CategoryProductModel {
   factory _CategoryProductModel.fromJson(Map<String, dynamic> json) =
       _$CategoryProductModelImpl.fromJson;
 
+  @override
+  String? get id;
   @override
   bool? get isVisible;
   @override

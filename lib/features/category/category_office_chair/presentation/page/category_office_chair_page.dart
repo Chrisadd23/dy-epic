@@ -38,7 +38,7 @@ class ProductInformationContainer extends StatelessWidget {
           });
         },
         child: Container(
-          padding: const EdgeInsets.all(10),
+          padding: const EdgeInsets.all(15),
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(20),
@@ -52,9 +52,9 @@ class ProductInformationContainer extends StatelessWidget {
                   height: constraints.maxHeight * 0.75,
                   fit: fit,
                 ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 5.0),
+                Padding(
+                  padding: const EdgeInsets.only(top: 5.0),
+                  child: FittedBox(
                     child: Text(
                       categoryEntity.type,
                       style: AppTextStyle.regular14,
@@ -62,10 +62,15 @@ class ProductInformationContainer extends StatelessWidget {
                   ),
                 ),
                 if (categoryEntity.normalPrice != null)
-                  Text(
-                    NumberFormat.currency(locale: 'de_DE', symbol: '€').format(
-                        double.parse(categoryEntity.normalPrice.toString())),
-                    style: AppTextStyle.bold18,
+                  Flexible(
+                    child: FittedBox(
+                      child: Text(
+                        NumberFormat.currency(locale: 'de_DE', symbol: '€')
+                            .format(double.parse(
+                                categoryEntity.normalPrice.toString())),
+                        style: AppTextStyle.bold18,
+                      ),
+                    ),
                   )
               ],
             );

@@ -12,7 +12,7 @@ class CategoryProductRepository {
 
   List<CategoryProductModel> _listCategoryProductModel = [];
 
-  List<CategoryProductModel>? get listCategoryProductModel =>
+  List<CategoryProductModel> get listCategoryProductModel =>
       _listCategoryProductModel;
 
   Future<Either<Failure, List<CategoryEntity>>> getListCategory() async {
@@ -29,7 +29,7 @@ class CategoryProductRepository {
     } else {
       debugPrint('_listCategoryProductModel is not empty');
       return Right(
-        listCategoryProductModel!
+        listCategoryProductModel
             .map(
               (model) => model.toEntity(),
             )
@@ -44,8 +44,26 @@ class CategoryProductRepository {
         categoryProduct.productNumber == categoryModel.productNumber);
     _listCategoryProductModel.replaceRange(index, index + 1, [categoryModel]);
 
-    return listCategoryProductModel!
+    return listCategoryProductModel
         .map((product) => product.toEntity())
         .toList();
+  }
+
+  Future<Either<Failure, List<CategoryEntity>>> deleteProduct(
+      {required String productNumber}) async {
+    final productId = listCategoryProductModel
+        .where(
+            (productCategory) => productCategory.productNumber == productNumber)
+        .first
+        .id;
+    return _categoryRemoteDataSource
+        .deleteProduct(productId: productId)
+        .fold((failure) => Left(failure), (success) {
+      _listCategoryProductModel
+          .removeWhere((product) => product.productNumber == productNumber);
+      return Right(listCategoryProductModel
+          .map((product) => product.toEntity())
+          .toList());
+    });
   }
 }
