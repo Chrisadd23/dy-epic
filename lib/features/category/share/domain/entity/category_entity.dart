@@ -12,7 +12,7 @@ class CategoryEntity with _$CategoryEntity {
     required String productTitle,
     required String type,
     required bool isVisible,
-    double? normalPrice,
+    double? price,
     List<String>? attributes,
   }) = _CategoryEntity;
 

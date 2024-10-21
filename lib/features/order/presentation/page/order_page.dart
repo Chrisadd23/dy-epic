@@ -3,6 +3,7 @@ import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text_style.dar
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_widgets/failure_coumn.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_widgets/loading_widget.dart';
+import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_state.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/cubit/order_cubit.dart';
@@ -16,6 +17,7 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
 
 class OrderPage extends StatelessWidget {
   const OrderPage({super.key});
@@ -299,7 +301,7 @@ class _DropDownButton2Container extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(4),
           ),
-          offset: Offset(MediaQuery.sizeOf(context).width * 0.05, -4),
+          offset: const Offset(0, -4),
         ),
         onChanged: (sortType) {
           context.read<OrderCubit>().sortOrder(sortType: sortType);
@@ -374,10 +376,9 @@ class _OrderInfoWidget extends StatelessWidget {
                       successState.orderList![index].hide
                           ? const SizedBox.shrink()
                           : InkWell(
-                              // onTap: () => context.goNamed(
-                              //     AppGoRouter
-                              //         .detailedOrderInformation.name,
-                              //     extra: successState.orderList![index]),
+                              onTap: () => context.goNamed(
+                                  AppGoRouter.detailedOrderInformation.name,
+                                  extra: successState.orderList![index]),
                               child: OrderInformation(
                                 productOrder: successState.orderList![index],
                                 category: 'Bestellung',

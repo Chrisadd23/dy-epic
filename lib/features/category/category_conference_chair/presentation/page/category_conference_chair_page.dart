@@ -56,13 +56,13 @@ class CategoryConferenceChairGridList extends StatelessWidget {
                               ),
                             ),
                           ),
-                          if (categoryEntityList?[index].normalPrice != null)
+                          if (categoryEntityList?[index].price != null)
                             Text(
                               NumberFormat.currency(
                                       locale: 'de_DE', symbol: '€')
                                   .format(double.parse(
                                       categoryEntityList![index]
-                                          .normalPrice
+                                          .price
                                           .toString())),
                               style: AppTextStyle.bold18,
                             )

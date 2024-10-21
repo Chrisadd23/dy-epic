@@ -99,7 +99,7 @@ abstract class OrderCustomerCubit extends Cubit<OrderCustomerState> {
         //
         listOrderEntity = listOrderEntity
             .map((e) =>
-                e.copyWith(hide: e.status != EnumOrderProcess.inWork.sortIndex))
+                e.copyWith(hide: e.status != EnumOrderProcess.inWork.index))
             .toList();
         return listOrderEntity;
       case EnumSortProductOrder.sortFinished:
@@ -111,8 +111,8 @@ abstract class OrderCustomerCubit extends Cubit<OrderCustomerState> {
           return b.completeAmount.compareTo(a.completeAmount);
         });
         listOrderEntity = listOrderEntity
-            .map((e) => e.copyWith(
-                hide: e.status != EnumOrderProcess.finished.sortIndex))
+            .map((e) =>
+                e.copyWith(hide: e.status != EnumOrderProcess.finished.index))
             .toList();
         return listOrderEntity;
       case EnumSortProductOrder.sortCanceled:
@@ -129,8 +129,7 @@ abstract class OrderCustomerCubit extends Cubit<OrderCustomerState> {
         });
         listOrderEntity = listOrderEntity
             .map((e) => e.copyWith(
-                hide:
-                    !(e.status == EnumOrderProcess.canceledByAdmin.sortIndex)))
+                hide: !(e.status == EnumOrderProcess.canceledByAdmin.index)))
             .toList();
         return listOrderEntity;
       case EnumSortProductOrder.search:

@@ -214,7 +214,7 @@ class _ProductShoppingBasketContainer extends HookWidget {
                   Expanded(
                     child: BlocSelector<ProductCubit, ProductState, double>(
                         selector: (state) =>
-                            (state.productEntity?.normalPrice ?? 0) *
+                            (state.productEntity?.price ?? 0) *
                             state.productOrderCount,
                         builder: (context, amount) => Center(
                                 child: FittedBox(
@@ -397,7 +397,7 @@ class _BackgroundCustomPaint extends StatelessWidget {
               SizedBox(
                 height: MediaQuery.sizeOf(context).height * 0.07,
                 child: BlocSelector<ProductCubit, ProductState, double>(
-                    selector: (state) => state.productEntity?.normalPrice ?? 0,
+                    selector: (state) => state.productEntity?.price ?? 0,
                     builder: (context, price) {
                       return Center(
                         child: Text(

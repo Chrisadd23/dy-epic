@@ -31,33 +31,25 @@ enum EnumSelectOfficeChairCategory {
 
 enum EnumOrderProcess {
   created(
-    sortIndex: 0,
     information: 'wurde erstellt',
   ),
   inWork(
-      sortIndex: 1,
       information: 'wird bearbeitet',
       processColor: Colors.blue,
       icon: Icons.update),
   finished(
-    sortIndex: 2,
     information: 'abgeschlossen',
     processColor: Colors.green,
     icon: Icons.done,
   ),
   canceledByAdmin(
-      sortIndex: 3,
       information: 'stoniert',
       processColor: Colors.red,
       icon: Icons.cancel_outlined);
 
   const EnumOrderProcess(
-      {required this.sortIndex,
-      required this.information,
-      this.processColor,
-      this.icon});
+      {required this.information, this.processColor, this.icon});
 
-  final int sortIndex;
   final String information;
   final Color? processColor;
   final IconData? icon;

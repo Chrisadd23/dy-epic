@@ -56,11 +56,9 @@ class CategoryWorkingTableGridList extends StatelessWidget {
                               ),
                             ),
                           ),
-                          if (categoryEntityList?[index].normalPrice != null)
+                          if (categoryEntityList?[index].price != null)
                             Text(
-                              categoryEntityList![index]
-                                  .normalPrice!
-                                  .getCurrency(),
+                              categoryEntityList![index].price!.getCurrency(),
                               style: AppTextStyle.bold18,
                             )
                         ],

@@ -336,7 +336,7 @@ class _OfferInfo extends StatelessWidget {
               Text('Preis: ', style: AppTextStyle.bold18),
               Flexible(
                 child: Text(
-                  item.categoryEntity.normalPrice!.getCurrency(),
+                  item.categoryEntity.price!.getCurrency(),
                   style: AppTextStyle.regular18,
                 ),
               ),

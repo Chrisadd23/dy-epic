@@ -1,6 +1,7 @@
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_colors.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_scaffold.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/widget/global_curved_navigation_bar.dart';
+import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/bloc/bloc_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/gen/assets.gen.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
@@ -24,7 +25,8 @@ class OrderPageShellNavigation extends StatelessWidget {
 
     return GlobalScaffold(
       appBarContext: context,
-      showMenuBar: true,
+      showMenuBar: !goRouterState.location
+          .contains(AppGoRouter.detailedOrderInformation.path),
       body: BlocProvider<BlocShoppingBasket>.value(
           value: getIt<BlocShoppingBasket>(), child: navigationShell),
       bottomNavigationBar: GlobalCurvedNavigationBar(

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
+import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/data/datasource/order_datasource.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/data/model/order_model.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/domain/repository/order_repository.dart';
@@ -92,5 +93,17 @@ class OrderRepositoryImplementation extends OrderRepository {
   @override
   void clearRequestList() {
     _listRequestModel.clear();
+  }
+
+  @override
+  Future<Either<Failure, bool>> updateOrderStatus(
+      {required String orderID, required EnumOrderProcess orderProcess}) async {
+    final orderModel = listOrderModel
+        .where((orderModel) =>
+            orderModel.id != null && orderModel.id!.contains(orderID))
+        .firstOrNull;
+
+    return _orderDatasource.updateOrderStatus(
+        orderModel: orderModel, orderProcess: orderProcess);
   }
 }

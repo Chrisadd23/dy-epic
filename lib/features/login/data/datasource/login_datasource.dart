@@ -124,7 +124,7 @@ class LoginDatasourceImplementation extends LoginDatasource {
       Failure? failure;
       final notifications = newNotificationSettings
           .map((newNotification) => UserNotification(
-                  statusType: newNotification.enumOrderProcess.sortIndex,
+                  statusType: newNotification.enumOrderProcess.index,
                   active: newNotification.isActive)
               .toJson())
           .toList();
@@ -146,7 +146,7 @@ class LoginDatasourceImplementation extends LoginDatasource {
       if (failure == null) {
         return Right(newNotificationSettings
             .map((newNotification) => UserNotification(
-                statusType: newNotification.enumOrderProcess.sortIndex,
+                statusType: newNotification.enumOrderProcess.index,
                 active: newNotification.isActive))
             .toList());
       } else {
@@ -167,6 +167,7 @@ class LoginDatasourceImplementation extends LoginDatasource {
               .collection('User')
               .where('customerNumber', isEqualTo: customerNumber)
               .get()
+              .timeout(const Duration(seconds: 10))
               .then((value) {
         final Map<String, dynamic>? json = value.docs.firstOrNull?.data();
 

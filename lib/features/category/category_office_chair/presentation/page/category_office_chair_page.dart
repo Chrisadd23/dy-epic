@@ -61,13 +61,13 @@ class ProductInformationContainer extends StatelessWidget {
                     ),
                   ),
                 ),
-                if (categoryEntity.normalPrice != null)
+                if (categoryEntity.price != null)
                   Flexible(
                     child: FittedBox(
                       child: Text(
                         NumberFormat.currency(locale: 'de_DE', symbol: '€')
-                            .format(double.parse(
-                                categoryEntity.normalPrice.toString())),
+                            .format(
+                                double.parse(categoryEntity.price.toString())),
                         style: AppTextStyle.bold18,
                       ),
                     ),

@@ -24,7 +24,7 @@ mixin _$CategoryEntity {
   String get productTitle => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
   bool get isVisible => throw _privateConstructorUsedError;
-  double? get normalPrice => throw _privateConstructorUsedError;
+  double? get price => throw _privateConstructorUsedError;
   List<String>? get attributes => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -44,7 +44,7 @@ abstract class $CategoryEntityCopyWith<$Res> {
       String productTitle,
       String type,
       bool isVisible,
-      double? normalPrice,
+      double? price,
       List<String>? attributes});
 }
 
@@ -65,7 +65,7 @@ class _$CategoryEntityCopyWithImpl<$Res, $Val extends CategoryEntity>
     Object? productTitle = null,
     Object? type = null,
     Object? isVisible = null,
-    Object? normalPrice = freezed,
+    Object? price = freezed,
     Object? attributes = freezed,
   }) {
     return _then(_value.copyWith(
@@ -85,9 +85,9 @@ class _$CategoryEntityCopyWithImpl<$Res, $Val extends CategoryEntity>
           ? _value.isVisible
           : isVisible // ignore: cast_nullable_to_non_nullable
               as bool,
-      normalPrice: freezed == normalPrice
-          ? _value.normalPrice
-          : normalPrice // ignore: cast_nullable_to_non_nullable
+      price: freezed == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
               as double?,
       attributes: freezed == attributes
           ? _value.attributes
@@ -110,7 +110,7 @@ abstract class _$$CategoryEntityImplCopyWith<$Res>
       String productTitle,
       String type,
       bool isVisible,
-      double? normalPrice,
+      double? price,
       List<String>? attributes});
 }
 
@@ -129,7 +129,7 @@ class __$$CategoryEntityImplCopyWithImpl<$Res>
     Object? productTitle = null,
     Object? type = null,
     Object? isVisible = null,
-    Object? normalPrice = freezed,
+    Object? price = freezed,
     Object? attributes = freezed,
   }) {
     return _then(_$CategoryEntityImpl(
@@ -149,9 +149,9 @@ class __$$CategoryEntityImplCopyWithImpl<$Res>
           ? _value.isVisible
           : isVisible // ignore: cast_nullable_to_non_nullable
               as bool,
-      normalPrice: freezed == normalPrice
-          ? _value.normalPrice
-          : normalPrice // ignore: cast_nullable_to_non_nullable
+      price: freezed == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
               as double?,
       attributes: freezed == attributes
           ? _value._attributes
@@ -170,7 +170,7 @@ class _$CategoryEntityImpl implements _CategoryEntity {
       required this.productTitle,
       required this.type,
       required this.isVisible,
-      this.normalPrice,
+      this.price,
       final List<String>? attributes})
       : _attributes = attributes;
 
@@ -186,7 +186,7 @@ class _$CategoryEntityImpl implements _CategoryEntity {
   @override
   final bool isVisible;
   @override
-  final double? normalPrice;
+  final double? price;
   final List<String>? _attributes;
   @override
   List<String>? get attributes {
@@ -199,7 +199,7 @@ class _$CategoryEntityImpl implements _CategoryEntity {
 
   @override
   String toString() {
-    return 'CategoryEntity(productNumber: $productNumber, productTitle: $productTitle, type: $type, isVisible: $isVisible, normalPrice: $normalPrice, attributes: $attributes)';
+    return 'CategoryEntity(productNumber: $productNumber, productTitle: $productTitle, type: $type, isVisible: $isVisible, price: $price, attributes: $attributes)';
   }
 
   @override
@@ -214,22 +214,15 @@ class _$CategoryEntityImpl implements _CategoryEntity {
             (identical(other.type, type) || other.type == type) &&
             (identical(other.isVisible, isVisible) ||
                 other.isVisible == isVisible) &&
-            (identical(other.normalPrice, normalPrice) ||
-                other.normalPrice == normalPrice) &&
+            (identical(other.price, price) || other.price == price) &&
             const DeepCollectionEquality()
                 .equals(other._attributes, _attributes));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      productNumber,
-      productTitle,
-      type,
-      isVisible,
-      normalPrice,
-      const DeepCollectionEquality().hash(_attributes));
+  int get hashCode => Object.hash(runtimeType, productNumber, productTitle,
+      type, isVisible, price, const DeepCollectionEquality().hash(_attributes));
 
   @JsonKey(ignore: true)
   @override
@@ -252,7 +245,7 @@ abstract class _CategoryEntity implements CategoryEntity {
       required final String productTitle,
       required final String type,
       required final bool isVisible,
-      final double? normalPrice,
+      final double? price,
       final List<String>? attributes}) = _$CategoryEntityImpl;
 
   factory _CategoryEntity.fromJson(Map<String, dynamic> json) =
@@ -267,7 +260,7 @@ abstract class _CategoryEntity implements CategoryEntity {
   @override
   bool get isVisible;
   @override
-  double? get normalPrice;
+  double? get price;
   @override
   List<String>? get attributes;
   @override

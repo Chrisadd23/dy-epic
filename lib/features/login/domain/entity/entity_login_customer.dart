@@ -68,7 +68,7 @@ class UserNotification with _$UserNotification {
 
   EnumOrderProcess get orderProcessTyp => EnumOrderProcess.values
       .toList()
-      .where((element) => element.sortIndex == statusType)
+      .where((element) => element.index == statusType)
       .first;
 
   factory UserNotification.fromJson(Map<String, dynamic> json) =>

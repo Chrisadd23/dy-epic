@@ -23,7 +23,6 @@ class OrderEntity with _$OrderEntity {
         (previousValue, element) => previousValue + element.completeAmount,
       );
 
-  EnumOrderProcess get orderProcess => EnumOrderProcess.values
-      .where((element) => element.sortIndex == status)
-      .first;
+  EnumOrderProcess get orderProcess =>
+      EnumOrderProcess.values.where((element) => element.index == status).first;
 }

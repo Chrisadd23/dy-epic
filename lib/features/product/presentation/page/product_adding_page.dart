@@ -91,7 +91,7 @@ class _ProductInformationIntegrationColumn extends HookWidget {
   Widget build(BuildContext context) {
     final attributeController = useTextEditingController();
     final priceTextController =
-        useTextEditingController(text: product?.normalPrice?.getCurrency());
+        useTextEditingController(text: product?.price?.getCurrency());
     final productMarcController = useTextEditingController(text: product?.type);
     final productNameController =
         useTextEditingController(text: product?.productTitle);

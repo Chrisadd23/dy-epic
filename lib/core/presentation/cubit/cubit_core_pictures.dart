@@ -5,8 +5,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CubitCorePictures extends Cubit<List<EntityCorePictures>> {
   CubitCorePictures(
-      this._useCaseGetLocalPictures, this._useCaseGetSingleLocalImage)
-      : super([]) {
+    this._useCaseGetLocalPictures,
+    this._useCaseGetSingleLocalImage,
+  ) : super([]) {
     emit(_useCaseGetLocalPictures());
   }
 

@@ -8,10 +8,10 @@ import 'package:app_flutter_produkt_bestellen/features/home/presentation/page/ho
 import 'package:app_flutter_produkt_bestellen/features/legalities/presentation/page/legalities_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/page/login_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/domain/entity/order_entity.dart';
+import 'package:app_flutter_produkt_bestellen/features/order/presentation/page/detailed_order_information.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/page/order_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/page/order_page_shell_navigation.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/page/request_page.dart';
-import 'package:app_flutter_produkt_bestellen/features/order/presentation/widget/detailed_order_information.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/presentation/page/product_adding_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/presentation/page/product_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/settings/presentation/page/customer_settings_page.dart';

@@ -26,7 +26,7 @@ class CategoryProductModel with _$CategoryProductModel {
       productTitle: productTitle!,
       type: type!,
       isVisible: isVisible ?? false,
-      normalPrice: price,
+      price: price,
       attributes: attributes,
     );
   }

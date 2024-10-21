@@ -95,13 +95,13 @@ abstract class CategoryDependencies {
               getIt(instanceName: EnumCategoryProduct.conferenceChair.name)),
           instanceName: EnumCategoryProduct.conferenceChair.name)
       ..registerLazySingleton<CubitCategory>(
-        () => CubitCategory(
-            getIt(instanceName: EnumCategoryProduct.conferenceChair.name),
-            getIt(),
-            getIt(instanceName: EnumCategoryProduct.conferenceChair.name),
-            getIt(instanceName: EnumCategoryProduct.conferenceChair.name),
-            getIt(instanceName: EnumCategoryProduct.conferenceChair.name)),
-      );
+          () => CubitCategory(
+              getIt(instanceName: EnumCategoryProduct.conferenceChair.name),
+              getIt(),
+              getIt(instanceName: EnumCategoryProduct.conferenceChair.name),
+              getIt(instanceName: EnumCategoryProduct.conferenceChair.name),
+              getIt(instanceName: EnumCategoryProduct.conferenceChair.name)),
+          instanceName: EnumCategoryProduct.conferenceChair.name);
   }
 
   static void _setUpOfficeChair() {

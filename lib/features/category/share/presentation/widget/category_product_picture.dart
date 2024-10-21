@@ -1,4 +1,3 @@
-import 'package:app_flutter_produkt_bestellen/core/domain/entity/entity_core_pictures.dart';
 import 'package:app_flutter_produkt_bestellen/core/presentation/cubit/cubit_core_pictures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,25 +24,22 @@ class CategoryImageContainer extends StatelessWidget {
             entityCorePicture.name.contains(productNumber))
         .firstOrNull
         ?.listIntForUint8List;
-    return BlocBuilder<CubitCorePictures, List<EntityCorePictures>>(
-        builder: (context, state) {
-      return Container(
-        height: height,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(width: 0.5),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(5),
-          child: uInt8ListImage != null
-              ? Image.memory(
-                  uInt8ListImage,
-                  fit: fit,
-                )
-              : const SizedBox.shrink(),
-        ),
-      );
-    });
+    return Container(
+      height: height,
+      width: double.infinity,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(width: 0.5),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(5),
+        child: uInt8ListImage != null
+            ? Image.memory(
+                uInt8ListImage,
+                fit: fit,
+              )
+            : const SizedBox.shrink(),
+      ),
+    );
   }
 }

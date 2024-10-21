@@ -35,7 +35,10 @@ class HomePage extends StatelessWidget {
             value: getIt<BlocShoppingBasket>(),
           ),
           BlocProvider<CubitCorePictures>.value(
-              value: CubitCorePictures(getIt(), getIt())),
+              value: CubitCorePictures(
+            getIt(),
+            getIt(),
+          )),
           BlocProvider<HomeCategoryCubit>(
             create: (context) => HomeCategoryCubit(),
           ),

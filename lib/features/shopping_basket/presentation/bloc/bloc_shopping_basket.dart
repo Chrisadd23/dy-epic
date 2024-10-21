@@ -25,7 +25,7 @@ class BlocShoppingBasket
                 categoryEntity: categoryEntity,
                 addedTime: DateTime.now().millisecondsSinceEpoch,
                 productCount: count,
-                completeAmount: count * categoryEntity.normalPrice!));
+                completeAmount: count * categoryEntity.price!));
             emitState(state.copyWith(orderChosenProductList: listOrderProduct));
           } else {
             if (state.orderChosenProductList.isEmpty ||
@@ -35,7 +35,7 @@ class BlocShoppingBasket
                   categoryEntity: categoryEntity,
                   addedTime: DateTime.now().millisecondsSinceEpoch,
                   productCount: count,
-                  completeAmount: count * categoryEntity.normalPrice!));
+                  completeAmount: count * categoryEntity.price!));
               emitState(
                   state.copyWith(orderChosenProductList: listOrderProduct));
             } else {
@@ -46,7 +46,7 @@ class BlocShoppingBasket
                     categoryEntity: categoryEntity,
                     addedTime: timeIndex,
                     productCount: count,
-                    completeAmount: count * categoryEntity.normalPrice!,
+                    completeAmount: count * categoryEntity.price!,
                   ),
                 ),
               );

@@ -61,7 +61,7 @@ class ProductCubit extends Cubit<ProductState> {
     if (state.entityCorePicture == null) {
       return 'Es schein ein Problem mit dem Laden des Produkts zu geben.';
     }
-    if (state.productEntity!.normalPrice == null) {
+    if (state.productEntity!.price == null) {
       return 'Der Preis ist aktuell nicht vorhanden';
     }
     if (state.productOrderCount <= 0) {
