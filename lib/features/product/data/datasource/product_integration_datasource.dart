@@ -37,6 +37,12 @@ class ProductIntegrationDataSourceImplementation
       }
 
       final imageTemp = File(image.path);
+      final dataType = imageTemp.path.split('.').last;
+
+      if (dataType != 'png' || dataType != 'jpg') {
+        return const Left(Failure.message(
+            'Bitte wählen sie eine .png order .jpg Datei aus.'));
+      }
 
       return Right(imageTemp);
     } catch (failure) {
