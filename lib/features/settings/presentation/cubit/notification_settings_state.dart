@@ -7,6 +7,7 @@ part 'notification_settings_state.freezed.dart';
 @freezed
 class NotificationSettingsState with _$NotificationSettingsState {
   const factory NotificationSettingsState({
+    @Default(false) bool isInProcess,
     @Default(false) bool areAllActive,
     @Default([]) List<NotificationSetting> listNotificationSetting,
     Failure? failure,
@@ -16,7 +17,6 @@ class NotificationSettingsState with _$NotificationSettingsState {
 @freezed
 class NotificationSetting with _$NotificationSetting {
   const factory NotificationSetting({
-    @Default(false) bool isInUse,
     required bool isActive,
     required EnumOrderProcess enumOrderProcess,
   }) = _NotificationSetting;

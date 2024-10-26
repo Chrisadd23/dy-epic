@@ -40,10 +40,20 @@ abstract class FirebaseConfiguration {
           : await _firebaseMessaging.getAPNSToken();
 
       debugPrint("firebaseToken ==> $firebaseToken");
-
+      await _firebaseMessaging.setForegroundNotificationPresentationOptions(
+        alert: true, // Required to display a heads up notification
+        badge: true,
+        sound: true,
+      );
       _firebaseMessaging.onTokenRefresh.listen((token) {
         debugPrint("onTokenRefresh ==> $token");
       });
+
+      RemoteMessage? initialMessage =
+          await _firebaseMessaging.getInitialMessage();
+      if (initialMessage != null) {
+        debugPrint("handle initialMessage");
+      }
       _initFirebaseMessagingInForegroundListener;
       _iniTifebaseMessagingInBackgroundListener;
     } catch (error) {

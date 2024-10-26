@@ -9,7 +9,6 @@ import 'package:app_flutter_produkt_bestellen/features/settings/presentation/cub
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 
 class NotificationSettingsPage extends StatelessWidget {
   const NotificationSettingsPage({super.key});
@@ -111,28 +110,25 @@ class _NotificationSettingsColumn extends StatelessWidget {
   }
 }
 
-class _NotificationSwitchAll extends HookWidget {
+class _NotificationSwitchAll extends StatelessWidget {
   const _NotificationSwitchAll();
 
   @override
   Widget build(BuildContext context) {
-    final ValueNotifier buttonActiv = useState(false);
     return BlocSelector<NotificationSettingsCubit, NotificationSettingsState,
             bool>(
         selector: (state) => state.areAllActive,
-        builder: (context, active) {
-          debugPrint("areAll Activated ==> $active");
+        builder: (context, areAllActive) {
           return Switch(
-            value: active,
-            onChanged: buttonActiv.value
-                ? null
-                : (value) async {
-                    debugPrint("value ==> $value --- allActive ==> $active");
-                    await context
-                        .read<NotificationSettingsCubit>()
-                        .toggleAll(toggleAll: value)
-                        .whenComplete(() => buttonActiv.value = false);
-                  },
+            value: areAllActive,
+            onChanged:
+                context.read<NotificationSettingsCubit>().state.isInProcess
+                    ? null
+                    : (value) async {
+                        await context
+                            .read<NotificationSettingsCubit>()
+                            .toggleAll(toggleAll: value);
+                      },
             activeColor: Colors.green,
             inactiveTrackColor: Colors.transparent,
             hoverColor: Colors.blue,
@@ -173,7 +169,10 @@ class _NotificationSettingsListView extends StatelessWidget {
                           ),
                           Switch(
                             value: state[index].isActive,
-                            onChanged: state[index].isInUse
+                            onChanged: context
+                                    .read<NotificationSettingsCubit>()
+                                    .state
+                                    .isInProcess
                                 ? null
                                 : (value) async {
                                     debugPrint(

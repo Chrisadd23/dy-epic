@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$NotificationSettingsState {
+  bool get isInProcess => throw _privateConstructorUsedError;
   bool get areAllActive => throw _privateConstructorUsedError;
   List<NotificationSetting> get listNotificationSetting =>
       throw _privateConstructorUsedError;
@@ -33,7 +34,8 @@ abstract class $NotificationSettingsStateCopyWith<$Res> {
       _$NotificationSettingsStateCopyWithImpl<$Res, NotificationSettingsState>;
   @useResult
   $Res call(
-      {bool areAllActive,
+      {bool isInProcess,
+      bool areAllActive,
       List<NotificationSetting> listNotificationSetting,
       Failure? failure});
 
@@ -54,11 +56,16 @@ class _$NotificationSettingsStateCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? isInProcess = null,
     Object? areAllActive = null,
     Object? listNotificationSetting = null,
     Object? failure = freezed,
   }) {
     return _then(_value.copyWith(
+      isInProcess: null == isInProcess
+          ? _value.isInProcess
+          : isInProcess // ignore: cast_nullable_to_non_nullable
+              as bool,
       areAllActive: null == areAllActive
           ? _value.areAllActive
           : areAllActive // ignore: cast_nullable_to_non_nullable
@@ -97,7 +104,8 @@ abstract class _$$NotificationSettingsStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {bool areAllActive,
+      {bool isInProcess,
+      bool areAllActive,
       List<NotificationSetting> listNotificationSetting,
       Failure? failure});
 
@@ -118,11 +126,16 @@ class __$$NotificationSettingsStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? isInProcess = null,
     Object? areAllActive = null,
     Object? listNotificationSetting = null,
     Object? failure = freezed,
   }) {
     return _then(_$NotificationSettingsStateImpl(
+      isInProcess: null == isInProcess
+          ? _value.isInProcess
+          : isInProcess // ignore: cast_nullable_to_non_nullable
+              as bool,
       areAllActive: null == areAllActive
           ? _value.areAllActive
           : areAllActive // ignore: cast_nullable_to_non_nullable
@@ -143,11 +156,15 @@ class __$$NotificationSettingsStateImplCopyWithImpl<$Res>
 
 class _$NotificationSettingsStateImpl implements _NotificationSettingsState {
   const _$NotificationSettingsStateImpl(
-      {this.areAllActive = false,
+      {this.isInProcess = false,
+      this.areAllActive = false,
       final List<NotificationSetting> listNotificationSetting = const [],
       this.failure})
       : _listNotificationSetting = listNotificationSetting;
 
+  @override
+  @JsonKey()
+  final bool isInProcess;
   @override
   @JsonKey()
   final bool areAllActive;
@@ -166,7 +183,7 @@ class _$NotificationSettingsStateImpl implements _NotificationSettingsState {
 
   @override
   String toString() {
-    return 'NotificationSettingsState(areAllActive: $areAllActive, listNotificationSetting: $listNotificationSetting, failure: $failure)';
+    return 'NotificationSettingsState(isInProcess: $isInProcess, areAllActive: $areAllActive, listNotificationSetting: $listNotificationSetting, failure: $failure)';
   }
 
   @override
@@ -174,6 +191,8 @@ class _$NotificationSettingsStateImpl implements _NotificationSettingsState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NotificationSettingsStateImpl &&
+            (identical(other.isInProcess, isInProcess) ||
+                other.isInProcess == isInProcess) &&
             (identical(other.areAllActive, areAllActive) ||
                 other.areAllActive == areAllActive) &&
             const DeepCollectionEquality().equals(
@@ -182,7 +201,7 @@ class _$NotificationSettingsStateImpl implements _NotificationSettingsState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, areAllActive,
+  int get hashCode => Object.hash(runtimeType, isInProcess, areAllActive,
       const DeepCollectionEquality().hash(_listNotificationSetting), failure);
 
   @JsonKey(ignore: true)
@@ -195,10 +214,13 @@ class _$NotificationSettingsStateImpl implements _NotificationSettingsState {
 
 abstract class _NotificationSettingsState implements NotificationSettingsState {
   const factory _NotificationSettingsState(
-      {final bool areAllActive,
+      {final bool isInProcess,
+      final bool areAllActive,
       final List<NotificationSetting> listNotificationSetting,
       final Failure? failure}) = _$NotificationSettingsStateImpl;
 
+  @override
+  bool get isInProcess;
   @override
   bool get areAllActive;
   @override
@@ -213,7 +235,6 @@ abstract class _NotificationSettingsState implements NotificationSettingsState {
 
 /// @nodoc
 mixin _$NotificationSetting {
-  bool get isInUse => throw _privateConstructorUsedError;
   bool get isActive => throw _privateConstructorUsedError;
   EnumOrderProcess get enumOrderProcess => throw _privateConstructorUsedError;
 
@@ -228,7 +249,7 @@ abstract class $NotificationSettingCopyWith<$Res> {
           NotificationSetting value, $Res Function(NotificationSetting) then) =
       _$NotificationSettingCopyWithImpl<$Res, NotificationSetting>;
   @useResult
-  $Res call({bool isInUse, bool isActive, EnumOrderProcess enumOrderProcess});
+  $Res call({bool isActive, EnumOrderProcess enumOrderProcess});
 }
 
 /// @nodoc
@@ -244,15 +265,10 @@ class _$NotificationSettingCopyWithImpl<$Res, $Val extends NotificationSetting>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isInUse = null,
     Object? isActive = null,
     Object? enumOrderProcess = null,
   }) {
     return _then(_value.copyWith(
-      isInUse: null == isInUse
-          ? _value.isInUse
-          : isInUse // ignore: cast_nullable_to_non_nullable
-              as bool,
       isActive: null == isActive
           ? _value.isActive
           : isActive // ignore: cast_nullable_to_non_nullable
@@ -273,7 +289,7 @@ abstract class _$$NotificationSettingImplCopyWith<$Res>
       __$$NotificationSettingImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isInUse, bool isActive, EnumOrderProcess enumOrderProcess});
+  $Res call({bool isActive, EnumOrderProcess enumOrderProcess});
 }
 
 /// @nodoc
@@ -287,15 +303,10 @@ class __$$NotificationSettingImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isInUse = null,
     Object? isActive = null,
     Object? enumOrderProcess = null,
   }) {
     return _then(_$NotificationSettingImpl(
-      isInUse: null == isInUse
-          ? _value.isInUse
-          : isInUse // ignore: cast_nullable_to_non_nullable
-              as bool,
       isActive: null == isActive
           ? _value.isActive
           : isActive // ignore: cast_nullable_to_non_nullable
@@ -312,13 +323,8 @@ class __$$NotificationSettingImplCopyWithImpl<$Res>
 
 class _$NotificationSettingImpl implements _NotificationSetting {
   const _$NotificationSettingImpl(
-      {this.isInUse = false,
-      required this.isActive,
-      required this.enumOrderProcess});
+      {required this.isActive, required this.enumOrderProcess});
 
-  @override
-  @JsonKey()
-  final bool isInUse;
   @override
   final bool isActive;
   @override
@@ -326,7 +332,7 @@ class _$NotificationSettingImpl implements _NotificationSetting {
 
   @override
   String toString() {
-    return 'NotificationSetting(isInUse: $isInUse, isActive: $isActive, enumOrderProcess: $enumOrderProcess)';
+    return 'NotificationSetting(isActive: $isActive, enumOrderProcess: $enumOrderProcess)';
   }
 
   @override
@@ -334,7 +340,6 @@ class _$NotificationSettingImpl implements _NotificationSetting {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$NotificationSettingImpl &&
-            (identical(other.isInUse, isInUse) || other.isInUse == isInUse) &&
             (identical(other.isActive, isActive) ||
                 other.isActive == isActive) &&
             (identical(other.enumOrderProcess, enumOrderProcess) ||
@@ -342,8 +347,7 @@ class _$NotificationSettingImpl implements _NotificationSetting {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, isInUse, isActive, enumOrderProcess);
+  int get hashCode => Object.hash(runtimeType, isActive, enumOrderProcess);
 
   @JsonKey(ignore: true)
   @override
@@ -355,13 +359,10 @@ class _$NotificationSettingImpl implements _NotificationSetting {
 
 abstract class _NotificationSetting implements NotificationSetting {
   const factory _NotificationSetting(
-          {final bool isInUse,
-          required final bool isActive,
+          {required final bool isActive,
           required final EnumOrderProcess enumOrderProcess}) =
       _$NotificationSettingImpl;
 
-  @override
-  bool get isInUse;
   @override
   bool get isActive;
   @override

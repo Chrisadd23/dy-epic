@@ -28,15 +28,17 @@ class NotificationSettingsCubit extends Cubit<NotificationSettingsState> {
   }
 
   Future<void> toggleAll({required bool toggleAll}) async {
+    emit(state.copyWith(isInProcess: true));
     final currentList =
         List<NotificationSetting>.of(state.listNotificationSetting);
     debugPrint("currentList ==> $currentList\n\n");
     final newList = currentList
-        .map((e) => e.copyWith(isActive: toggleAll, isInUse: true))
+        .map((e) => e.copyWith(
+              isActive: toggleAll,
+            ))
         .toList();
     debugPrint("still currentList ==> $currentList");
-    emit(state.copyWith(
-        listNotificationSetting: newList, areAllActive: toggleAll));
+
     if (_loginRepository.customer != null) {
       final newNotificationState = await _loginRepository.toggleNotifications(
         newNotificationSettings: newList,
@@ -45,14 +47,20 @@ class NotificationSettingsCubit extends Cubit<NotificationSettingsState> {
       newNotificationState.fold((failure) {
         debugPrint("left ==> $failure");
         emit(state.copyWith(
+            isInProcess: false,
             listNotificationSetting: currentList,
             areAllActive: !toggleAll,
             failure: failure));
       }, (success) {
         emit(state.copyWith(
-            listNotificationSetting:
-                newList.map((e) => e.copyWith(isInUse: false)).toList()));
+            isInProcess: false,
+            areAllActive: toggleAll,
+            listNotificationSetting: newList));
       });
+    } else {
+      emit(state.copyWith(
+        isInProcess: true,
+      ));
     }
   }
 
@@ -62,20 +70,18 @@ class NotificationSettingsCubit extends Cubit<NotificationSettingsState> {
 
   Future<void> toggle(
       {required bool toggle, required EnumOrderProcess orderProcess}) async {
+    emit(state.copyWith(isInProcess: true));
     final currentList =
         List<NotificationSetting>.of(state.listNotificationSetting);
     debugPrint("currentList ==> $currentList\n\n");
     final newList = currentList
         .map((notification) => notification.enumOrderProcess == orderProcess
-            ? notification.copyWith(isActive: toggle, isInUse: true)
+            ? notification.copyWith(isActive: toggle)
             : notification)
         .toList();
 
     debugPrint("still currentList ==> $currentList");
-    emit(state.copyWith(
-        listNotificationSetting: newList,
-        areAllActive:
-            _areAllNotificationsActivated(listNotificationSetting: newList)));
+
     if (_loginRepository.customer != null) {
       final newNotificationState = await _loginRepository.toggleNotifications(
         newNotificationSettings: newList,
@@ -84,21 +90,22 @@ class NotificationSettingsCubit extends Cubit<NotificationSettingsState> {
       newNotificationState.fold((failure) {
         debugPrint("left ==> $failure");
         emit(state.copyWith(
+            isInProcess: false,
             listNotificationSetting: currentList,
             failure: failure,
             areAllActive: _areAllNotificationsActivated(
                 listNotificationSetting: currentList)));
       }, (success) {
         emit(state.copyWith(
+            isInProcess: false,
             areAllActive:
                 _areAllNotificationsActivated(listNotificationSetting: newList),
-            listNotificationSetting: newList
-                .map((notification) =>
-                    notification.enumOrderProcess == orderProcess
-                        ? notification.copyWith(isInUse: false)
-                        : notification)
-                .toList()));
+            listNotificationSetting: newList));
       });
+    } else {
+      emit(state.copyWith(
+        isInProcess: false,
+      ));
     }
   }
 
