@@ -41,7 +41,7 @@ class ProductIntegrationDataSourceImplementation
 
       if (dataType != 'png' || dataType != 'jpg') {
         return const Left(Failure.message(
-            'Bitte wählen sie eine .png order .jpg Datei aus.'));
+            'Bitte wählen Sie eine .png order .jpg Datei aus.'));
       }
 
       return Right(imageTemp);
