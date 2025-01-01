@@ -38,8 +38,8 @@ class ProductIntegrationDataSourceImplementation
 
       final imageTemp = File(image.path);
       final dataType = imageTemp.path.split('.').last;
-
-      if (dataType != 'png' || dataType != 'jpg') {
+      debugPrint("dataType ==> $dataType");
+      if (!(dataType == 'png' || dataType == 'jpg')) {
         return const Left(Failure.message(
             'Bitte wählen Sie eine .png order .jpg Datei aus.'));
       }

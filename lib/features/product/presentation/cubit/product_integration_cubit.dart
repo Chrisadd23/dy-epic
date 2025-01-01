@@ -41,6 +41,7 @@ class ProductIntegrationCubit extends Cubit<ProductIntegrationState> {
   }
 
   Future<void> getImage() async {
+    emit(state.copyWith(failure: null));
     final image = await _getImageUseCase();
     image.fold(
         (failure) => emit(state.copyWith(failure: failure)),
