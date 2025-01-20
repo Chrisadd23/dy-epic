@@ -6,7 +6,6 @@ import 'package:app_flutter_produkt_bestellen/features/order/data/datasource/ord
 import 'package:app_flutter_produkt_bestellen/features/order/data/model/order_model.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/domain/repository/order_repository.dart';
 import 'package:either_dart/either.dart';
-import 'package:flutter/cupertino.dart';
 
 class OrderRepositoryImplementation extends OrderRepository {
   OrderRepositoryImplementation(
@@ -53,7 +52,6 @@ class OrderRepositoryImplementation extends OrderRepository {
         _listOrderModel
           ..clear()
           ..addAll(right);
-        debugPrint('repository customer request right ==> $_listOrderModel');
         _listOrderModelController.add(listOrderModel);
       });
     });
@@ -66,7 +64,6 @@ class OrderRepositoryImplementation extends OrderRepository {
         _listOrderModel
           ..clear()
           ..addAll(right);
-        debugPrint('repository owner request right ==> $_listOrderModel');
         _listOrderModelController.add(listOrderModel);
       });
     });

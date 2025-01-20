@@ -101,8 +101,6 @@ enum AppGoRouter {
                       int index
                     })?;
 
-                    debugPrint(
-                        "state.queryParameters['product'] ==> ${state.queryParameters['product']}");
                     final product = _getCategoryEntityFromJsonDecode(
                         jsonEncoded: state.queryParameters['product']);
                     if (product != null) {
@@ -114,8 +112,7 @@ enum AppGoRouter {
                       );
                     }
                     final selectedColor = state.queryParameters['color'];
-                    debugPrint(
-                        "check queryParameters selected Color- ${selectedColor.toString()}");
+
                     return _getCustomerTransition(
                       ProductPage(
                         color: selectedColor,
@@ -254,7 +251,6 @@ enum AppGoRouter {
       {String? jsonEncoded}) {
     if (jsonEncoded != null) {
       final jsonObject = jsonDecode(jsonEncoded);
-      debugPrint("jsonObject ==> $jsonObject");
       return CategoryEntity.fromJson(jsonObject);
     }
     return null;

@@ -22,7 +22,6 @@ class RepositoryImplementationCore extends RepositoryCore {
       }
     }).toList();
 
-    debugPrint("neededImages ==> $fileNames");
     if (fileNames.isEmpty) {
       return Right(
         fileNames
@@ -50,11 +49,9 @@ class RepositoryImplementationCore extends RepositoryCore {
 
   @override
   EntityCorePictures? getSingleImageBytes(String productNumber) {
-    debugPrint('product number ==> $productNumber');
     final entityCore = entityPictures
         .where((entity) => entity.name.contains(productNumber))
         .firstOrNull;
-    debugPrint('entityCore == null : ${entityCore == null}');
     return entityCore;
   }
 }

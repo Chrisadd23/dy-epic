@@ -7,7 +7,6 @@ import 'package:app_flutter_produkt_bestellen/features/product/domain/use_case/g
 import 'package:app_flutter_produkt_bestellen/features/product/domain/use_case/upload_product_image_use_case.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/domain/use_case/upload_product_info_use_case.dart';
 import 'package:app_flutter_produkt_bestellen/features/product/presentation/cubit/product_integration_state.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductIntegrationCubit extends Cubit<ProductIntegrationState> {
@@ -27,7 +26,6 @@ class ProductIntegrationCubit extends Cubit<ProductIntegrationState> {
 
   void changeProduct({CategoryEntity? product, String? categoryIndex}) {
     if (product != null && categoryIndex != null) {
-      debugPrint("changeProduct $product");
       final image = _getLocalPicture(productNumber: product.productNumber);
       final category =
           EnumCategoryProduct.category(typeIndex: int.parse(categoryIndex));
@@ -75,10 +73,6 @@ class ProductIntegrationCubit extends Cubit<ProductIntegrationState> {
     required String type,
     required String price,
   }) async {
-    debugPrint('required String productNumber $productNumber,'
-        'required String productTitle $productTitle,'
-        'required String type $type,'
-        'required String price ${price.replaceAll('.', '').replaceAll(RegExp(r'[^0-9,]'), '')},');
     emit(state.copyWith(infoUploadInProcess: true));
     if (_isNecessaryAttributeNotEmpty(
         productNumber: productNumber,
@@ -97,7 +91,6 @@ class ProductIntegrationCubit extends Cubit<ProductIntegrationState> {
           type: type,
           price: numPrice,
           attributes: state.attributes);
-      debugPrint('productModel => ${_uploadProductInfoUseCase.toString()}');
       final response = await _uploadProductInfoUseCase(
           json: productModel.toJson(), category: state.categoryProduct.name);
       response.fold(
@@ -111,7 +104,6 @@ class ProductIntegrationCubit extends Cubit<ProductIntegrationState> {
           );
         },
       );
-      debugPrint('productModel => $productModel');
       return productModel;
     }
     return null;

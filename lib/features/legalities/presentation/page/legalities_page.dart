@@ -1,3 +1,4 @@
+import 'package:app_flutter_produkt_bestellen/core/firebase/firebase_configuration.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text_style.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_scaffold.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +22,7 @@ class _AppRights extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Row(
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Flexible(
@@ -35,6 +36,16 @@ class _AppRights extends StatelessWidget {
               'Christopher Michael Haas',
               textAlign: TextAlign.center,
               style: AppTextStyle.bold18,
+            ),
+          ),
+          Flexible(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              child: Text(
+                'AppId: ${FirebaseConfiguration.firebaseToken}' ?? '',
+                textAlign: TextAlign.center,
+                style: AppTextStyle.bold14,
+              ),
             ),
           ),
         ],

@@ -175,8 +175,6 @@ class _NotificationSettingsListView extends StatelessWidget {
                                     .isInProcess
                                 ? null
                                 : (value) async {
-                                    debugPrint(
-                                        "value ==> $value --- allActive ==> ${state[index].isActive}");
                                     await context
                                         .read<NotificationSettingsCubit>()
                                         .toggle(

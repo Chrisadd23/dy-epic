@@ -31,8 +31,6 @@ class CubitCategory extends Cubit<StateCategory> {
       debugPrint(failure.toString());
       emit(StateCategory.failure(failure: failure));
     }, (categoryEntityList) async {
-      debugPrint(categoryEntityList.toString());
-
       final categoryEntityPicturePath =
           getCategoryEntityPicturePath(categoryEntityList: categoryEntityList);
       await _useCaseGetPictures(fileNames: categoryEntityPicturePath);
@@ -53,13 +51,11 @@ class CubitCategory extends Cubit<StateCategory> {
   }
 
   void replaceProductAttributes({required CategoryProductModel categoryModel}) {
-    debugPrint("replaceProductAttributes");
     final newCategoryProductList =
         _useCaseChangeAttributesFromProduct(categoryModel: categoryModel);
 
     state.mapOrNull(
       success: (successState) {
-        debugPrint("emit new state with => $newCategoryProductList");
         emit(
           successState.copyWith(categoryEntityList: newCategoryProductList),
         );

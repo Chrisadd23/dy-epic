@@ -19,10 +19,6 @@ class OrderPageShellNavigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint(
-        "navigationShell.currentIndex ==> ${navigationShell.currentIndex}");
-    debugPrint("goRouterState.location  ==> ${goRouterState.location}");
-
     return GlobalScaffold(
       appBarContext: context,
       showMenuBar: !goRouterState.location

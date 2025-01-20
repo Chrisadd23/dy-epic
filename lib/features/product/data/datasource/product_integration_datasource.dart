@@ -6,7 +6,6 @@ import 'package:app_flutter_produkt_bestellen/core/firebase/firebase_configurati
 import 'package:app_flutter_produkt_bestellen/core/fix_values/flavor.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:either_dart/either.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
 
 abstract class ProductIntegrationDataSource {
@@ -30,7 +29,6 @@ class ProductIntegrationDataSourceImplementation
     try {
       final ImagePicker picker = ImagePicker();
 
-      debugPrint("imageTemp => $picker");
       final image = await picker.pickImage(source: ImageSource.gallery);
       if (image == null) {
         return const Left(Failure.message('Es wurde kein Bild ausgewählt!'));
@@ -38,7 +36,6 @@ class ProductIntegrationDataSourceImplementation
 
       final imageTemp = File(image.path);
       final dataType = imageTemp.path.split('.').last;
-      debugPrint("dataType ==> $dataType");
       if (!(dataType == 'png' || dataType == 'jpg')) {
         return const Left(Failure.message(
             'Bitte wählen Sie eine .png order .jpg Datei aus.'));

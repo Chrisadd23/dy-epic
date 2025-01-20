@@ -30,8 +30,6 @@ class EuroInputFormatter extends TextInputFormatter {
 
     String formattedText = formattedBeforeComma;
 
-    debugPrint('formatted Text => $formattedText');
-
     if (newText.characters.contains(',') && newText.length == 1) {
       formattedText += '0,';
     } else if (afterComma != null) {

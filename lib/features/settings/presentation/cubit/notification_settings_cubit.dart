@@ -1,7 +1,6 @@
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/domain/repository/login_repository.dart';
 import 'package:app_flutter_produkt_bestellen/features/settings/presentation/cubit/notification_settings_state.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class NotificationSettingsCubit extends Cubit<NotificationSettingsState> {
@@ -12,8 +11,6 @@ class NotificationSettingsCubit extends Cubit<NotificationSettingsState> {
 
   void loadNotifications() {
     if (_loginRepository.customer != null) {
-      debugPrint(
-          "notifications ==> ${_loginRepository.customer?.notifications}");
       emit(NotificationSettingsState(
         areAllActive: _loginRepository.customer!.areAllNotificationsActive,
         listNotificationSetting: _loginRepository.customer!.notifications
@@ -31,13 +28,11 @@ class NotificationSettingsCubit extends Cubit<NotificationSettingsState> {
     emit(state.copyWith(isInProcess: true));
     final currentList =
         List<NotificationSetting>.of(state.listNotificationSetting);
-    debugPrint("currentList ==> $currentList\n\n");
     final newList = currentList
         .map((e) => e.copyWith(
               isActive: toggleAll,
             ))
         .toList();
-    debugPrint("still currentList ==> $currentList");
 
     if (_loginRepository.customer != null) {
       final newNotificationState = await _loginRepository.toggleNotifications(
@@ -45,7 +40,6 @@ class NotificationSettingsCubit extends Cubit<NotificationSettingsState> {
         customerNumber: _loginRepository.customer!.customerNumber,
       );
       newNotificationState.fold((failure) {
-        debugPrint("left ==> $failure");
         emit(state.copyWith(
             isInProcess: false,
             listNotificationSetting: currentList,
@@ -73,14 +67,11 @@ class NotificationSettingsCubit extends Cubit<NotificationSettingsState> {
     emit(state.copyWith(isInProcess: true));
     final currentList =
         List<NotificationSetting>.of(state.listNotificationSetting);
-    debugPrint("currentList ==> $currentList\n\n");
     final newList = currentList
         .map((notification) => notification.enumOrderProcess == orderProcess
             ? notification.copyWith(isActive: toggle)
             : notification)
         .toList();
-
-    debugPrint("still currentList ==> $currentList");
 
     if (_loginRepository.customer != null) {
       final newNotificationState = await _loginRepository.toggleNotifications(
@@ -88,7 +79,6 @@ class NotificationSettingsCubit extends Cubit<NotificationSettingsState> {
         customerNumber: _loginRepository.customer!.customerNumber,
       );
       newNotificationState.fold((failure) {
-        debugPrint("left ==> $failure");
         emit(state.copyWith(
             isInProcess: false,
             listNotificationSetting: currentList,

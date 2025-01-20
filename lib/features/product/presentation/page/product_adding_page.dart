@@ -239,7 +239,6 @@ class _VisibleCheckbox extends StatelessWidget {
             return Switch(
               value: isVisible,
               onChanged: (value) async {
-                debugPrint("value ==> $value ");
                 context.read<ProductIntegrationCubit>().toggleIsVisible(
                       toggle: value,
                     );
@@ -290,7 +289,6 @@ class _SendButtonContainer extends StatelessWidget {
                   onPressedBasedOnDuration: isInProcess
                       ? () {}
                       : () async {
-                          debugPrint('save button pressed');
                           await context
                               .read<ProductIntegrationCubit>()
                               .uploadImage(
@@ -636,7 +634,6 @@ class _PictureIntegrationButton extends StatelessWidget {
                 duration: const Duration(milliseconds: 50),
                 borderRadius: 10,
                 onPressedBasedOnDuration: () async {
-                  debugPrint('press image button');
                   await context.read<ProductIntegrationCubit>().getImage();
                 },
                 child: const Icon(Icons.photo))),

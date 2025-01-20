@@ -5,7 +5,6 @@ import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
 import 'package:app_flutter_produkt_bestellen/core/firebase/firebase_configuration.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:either_dart/either.dart';
-import 'package:flutter/cupertino.dart';
 
 abstract class DataSourceCore {
   Future<Either<Failure, List<EntityCorePictures>>> getImageBytes(
@@ -20,14 +19,12 @@ class DataSourceImplementationCore extends DataSourceCore {
       int i = 1;
       final listEntityPictures = await filenames
           .map((name) async {
-            debugPrint("getImageBytes $name --  ");
             Uint8List? uInt8List;
             for (var type in PictureFileType.values) {
               uInt8List = await FirebaseConfiguration.getImageBytes(
                   '$name.${type.name}');
               if (uInt8List != null) break;
             }
-            debugPrint("--count ==> ${i++} getImageBytes $name --  ");
             return EntityCorePictures(
                 name: name, listIntForUint8List: uInt8List);
           })

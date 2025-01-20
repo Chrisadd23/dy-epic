@@ -19,8 +19,8 @@ abstract class Bootstrap {
           options: DefaultFirebaseOptions.currentPlatform,
         );
         await FirebaseConfiguration.requestPermission();
-        await FirebaseConfiguration.initFlutterLocalNotificationAttributes();
         await FirebaseConfiguration.initFirebaseSettings();
+
         await SharedPreferencesHandling.initialise();
 
         //SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);

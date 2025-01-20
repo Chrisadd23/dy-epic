@@ -49,8 +49,6 @@ class LoginDatasourceImplementation extends LoginDatasource {
         final Map<String, dynamic>? json = value.docs.firstOrNull?.data();
 
         if (json != null) {
-          debugPrint("customerJson ==> $json");
-
           return Right(EntityLoginCustomer.fromJson(json));
         } else {
           return const Left(
@@ -172,7 +170,6 @@ class LoginDatasourceImplementation extends LoginDatasource {
         final Map<String, dynamic>? json = value.docs.firstOrNull?.data();
 
         if (json != null) {
-          debugPrint("customerJson ==> $json");
           return Right(EntityLoginCustomer.fromJson(json));
         } else {
           return const Left(

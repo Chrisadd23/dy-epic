@@ -3,7 +3,6 @@ import 'package:app_flutter_produkt_bestellen/features/category/share/data/datas
 import 'package:app_flutter_produkt_bestellen/features/category/share/data/model/category_product_model.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/domain/entity/category_entity.dart';
 import 'package:either_dart/either.dart';
-import 'package:flutter/cupertino.dart';
 
 class CategoryProductRepository {
   CategoryProductRepository(this._categoryRemoteDataSource);
@@ -27,7 +26,6 @@ class CategoryProductRepository {
         },
       );
     } else {
-      debugPrint('_listCategoryProductModel is not empty');
       return Right(
         listCategoryProductModel
             .map(

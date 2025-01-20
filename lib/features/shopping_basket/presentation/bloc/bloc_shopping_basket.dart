@@ -6,7 +6,6 @@ import 'package:app_flutter_produkt_bestellen/features/shopping_basket/domain/en
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/domain/repository/shopping_basket_ropository.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/bloc/event_shopping_basket.dart';
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -18,7 +17,6 @@ class BlocShoppingBasket
     on<EventShoppingBasket>((event, emitState) async {
       await event.when(
         add: (category, count, categoryEntity, entityCorePicture, timeIndex) {
-          debugPrint("add product");
           final listOrderProduct = List.of(state.orderChosenProductList);
           if (timeIndex == null) {
             listOrderProduct.add(ShoppingBasketProduct(

@@ -21,9 +21,6 @@ abstract class CategoryRemoteDataSource {
                 .toList(),
           );
 
-      debugPrint(
-          'categoryProductModelList ==> ${categoryProductModelList.toString()}');
-
       return Right(categoryProductModelList);
     } catch (error) {
       return Left(Failure.databaseError(error.toString()));
@@ -42,7 +39,6 @@ abstract class CategoryRemoteDataSource {
   Future<Either<Failure, bool>> deleteProduct(
       {required String? productId}) async {
     try {
-      debugPrint('doc id => $productId');
       await _collection.doc(productId).delete();
       return const Right(true);
     } catch (failure) {

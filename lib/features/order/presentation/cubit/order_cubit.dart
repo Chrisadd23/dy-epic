@@ -18,7 +18,6 @@ class OrderCubit extends OrderCustomerCubit {
   ) {
     _streamSubscription =
         _orderRepository.listOrderStream.listen((listOrderModel) {
-      debugPrint("cubit listener order model => $listOrderModel");
       emit(
         OrderCustomerState.success(
           orderList: listOrderModel.map((order) => order.toEntity()).toList(),
@@ -46,7 +45,6 @@ class OrderCubit extends OrderCustomerCubit {
     if (userType == UserType.owner) {
       try {
         if (_orderRepository.listOrderModel.isEmpty) {
-          debugPrint("activate getOrderUseCase");
           _getOwnerOrderUseCase();
         } else {
           emit(OrderCustomerState.success(
@@ -60,7 +58,6 @@ class OrderCubit extends OrderCustomerCubit {
     } else if (customerNumber != null) {
       try {
         if (_orderRepository.listOrderModel.isEmpty) {
-          debugPrint("activate getOrderUseCase");
           _getCustomerOrderUseCase(customerId: customerNumber);
         } else {
           emit(OrderCustomerState.success(

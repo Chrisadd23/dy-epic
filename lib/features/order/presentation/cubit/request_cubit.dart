@@ -17,7 +17,6 @@ class RequestCubit extends OrderCustomerCubit {
           orElse: () => emit(OrderCustomerState.success(
               orderList: listRequestModel.map((e) => e.toEntity()).toList())),
           success: (successState) {
-            debugPrint('sortType orderCubit: ${successState.sortType}');
             emit(successState.copyWith(
                 orderList: getSortedOrderEntity(
                     listOrderEntity:
@@ -42,7 +41,6 @@ class RequestCubit extends OrderCustomerCubit {
     if (customerNumber != null) {
       try {
         if (_orderRepository.listRequestModel.isEmpty) {
-          debugPrint("activate getRequestUseCase");
           _getRequestUseCase(customerId: customerNumber);
         } else {
           emit(OrderCustomerState.success(

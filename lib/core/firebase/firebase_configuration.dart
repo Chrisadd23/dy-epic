@@ -18,12 +18,12 @@ abstract class FirebaseConfiguration {
   static Future<void> requestPermission() async {
     _firebaseStorage = FirebaseStorage.instance;
     _firebaseMessaging = FirebaseMessaging.instance;
-    await _firebaseMessaging.requestPermission();
+    if (Platform.isIOS) {
+      await _firebaseMessaging.requestPermission();
+    }
   }
 
   static Future<void> initFirebaseSettings() async {
-    initFlutterLocalNotificationAttributes;
-
     NotificationSettings settings = await _firebaseMessaging.requestPermission(
       alert: true,
       announcement: false,
@@ -54,6 +54,7 @@ abstract class FirebaseConfiguration {
       if (initialMessage != null) {
         debugPrint("handle initialMessage");
       }
+      _initFlutterLocalNotificationAttributes;
       _initFirebaseMessagingInForegroundListener;
       _iniTifebaseMessagingInBackgroundListener;
     } catch (error) {
@@ -112,13 +113,13 @@ abstract class FirebaseConfiguration {
     FirebaseMessaging.onBackgroundMessage((remoteMessage) async {
       // If you're going to use other Firebase services in the background, such as Firestore,
       // make sure you call `initializeApp` before using other Firebase services.
-      await Firebase.initializeApp();
 
       debugPrint("Handling a background message: ${remoteMessage.messageId}");
+      await Firebase.initializeApp();
     });
   }
 
-  static Future<void> initFlutterLocalNotificationAttributes() async {
+  static Future<void> _initFlutterLocalNotificationAttributes() async {
     _flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
     const AndroidInitializationSettings initializationSettingsAndroid =
         AndroidInitializationSettings('@mipmap/oberhaizinger');
