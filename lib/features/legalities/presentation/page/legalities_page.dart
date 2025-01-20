@@ -42,7 +42,7 @@ class _AppRights extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: Text(
-                'AppId: ${FirebaseConfiguration.firebaseToken}' ?? '',
+                'AppId: ${FirebaseConfiguration.firebaseToken}',
                 textAlign: TextAlign.center,
                 style: AppTextStyle.bold14,
               ),

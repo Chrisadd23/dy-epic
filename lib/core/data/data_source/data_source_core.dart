@@ -16,7 +16,6 @@ class DataSourceImplementationCore extends DataSourceCore {
   Future<Either<Failure, List<EntityCorePictures>>> getImageBytes(
       {required List<String> filenames}) async {
     try {
-      int i = 1;
       final listEntityPictures = await filenames
           .map((name) async {
             Uint8List? uInt8List;
