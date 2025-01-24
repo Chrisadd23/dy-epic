@@ -115,6 +115,7 @@ abstract class FirebaseConfiguration {
       // make sure you call `initializeApp` before using other Firebase services.
 
       debugPrint("Handling a background message: ${remoteMessage.messageId}");
+      debugPrint("remoteMessage data: ${remoteMessage.data}");
       await Firebase.initializeApp();
     });
   }
