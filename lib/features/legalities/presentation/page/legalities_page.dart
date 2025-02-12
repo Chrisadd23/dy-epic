@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:app_flutter_produkt_bestellen/core/firebase/firebase_configuration.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text_style.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_scaffold.dart';
@@ -41,13 +43,27 @@ class _AppRights extends StatelessWidget {
           Flexible(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
-              child: Text(
-                'AppId: ${FirebaseConfiguration.firebaseToken}',
+              child: SelectableText(
+                'App-Id: ${FirebaseConfiguration.appToken}',
                 textAlign: TextAlign.center,
                 style: AppTextStyle.bold14,
               ),
             ),
           ),
+          SizedBox(
+            height: 16,
+          ),
+          if (Platform.isIOS)
+            Flexible(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                child: SelectableText(
+                  'Token: ${FirebaseConfiguration.firebaseToken}',
+                  textAlign: TextAlign.center,
+                  style: AppTextStyle.bold14,
+                ),
+              ),
+            ),
         ],
       ),
     );

@@ -13,6 +13,7 @@ abstract class FirebaseConfiguration {
   static late final FirebaseMessaging _firebaseMessaging;
   static late final FlutterLocalNotificationsPlugin
       _flutterLocalNotificationsPlugin;
+  static String? appToken;
   static String? firebaseToken;
 
   static Future<void> requestPermission() async {
@@ -35,11 +36,18 @@ abstract class FirebaseConfiguration {
     );
     debugPrint('User granted permission: ${settings.authorizationStatus}');
     try {
-      firebaseToken = Platform.isAndroid
+      appToken = Platform.isAndroid
           ? await _firebaseMessaging.getToken()
           : await _firebaseMessaging.getAPNSToken();
 
-      debugPrint("firebaseToken ==> $firebaseToken");
+      try {
+        if (appToken != null && Platform.isIOS) {
+          firebaseToken = await _firebaseMessaging.getToken();
+        }
+      } catch (error) {
+        debugPrint("firebaseToken error => ${error.toString()}");
+      }
+
       await _firebaseMessaging.setForegroundNotificationPresentationOptions(
         alert: true, // Required to display a heads up notification
         badge: true,
