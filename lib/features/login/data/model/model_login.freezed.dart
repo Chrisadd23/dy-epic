@@ -14,6 +14,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
+ModelLogin _$ModelLoginFromJson(Map<String, dynamic> json) {
+  return _ModelLogin.fromJson(json);
+}
+
 /// @nodoc
 mixin _$ModelLogin {
   CustomerAddress get address => throw _privateConstructorUsedError;
@@ -31,6 +35,7 @@ mixin _$ModelLogin {
       throw _privateConstructorUsedError;
   String? get fToken => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ModelLoginCopyWith<ModelLogin> get copyWith =>
       throw _privateConstructorUsedError;
@@ -271,6 +276,9 @@ class _$ModelLoginImpl extends _ModelLogin {
       : _notifications = notifications,
         super._();
 
+  factory _$ModelLoginImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ModelLoginImplFromJson(json);
+
   @override
   final CustomerAddress address;
   @override
@@ -334,6 +342,7 @@ class _$ModelLoginImpl extends _ModelLogin {
             (identical(other.fToken, fToken) || other.fToken == fToken));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -354,6 +363,13 @@ class _$ModelLoginImpl extends _ModelLogin {
   @pragma('vm:prefer-inline')
   _$$ModelLoginImplCopyWith<_$ModelLoginImpl> get copyWith =>
       __$$ModelLoginImplCopyWithImpl<_$ModelLoginImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ModelLoginImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _ModelLogin extends ModelLogin {
@@ -370,6 +386,9 @@ abstract class _ModelLogin extends ModelLogin {
       final List<UserNotification> notifications,
       final String? fToken}) = _$ModelLoginImpl;
   const _ModelLogin._() : super._();
+
+  factory _ModelLogin.fromJson(Map<String, dynamic> json) =
+      _$ModelLoginImpl.fromJson;
 
   @override
   CustomerAddress get address;

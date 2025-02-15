@@ -1,7 +1,6 @@
 //ignore_for_file: invalid_annotation_target
-import 'package:freezed_annotation/freezed_annotation.dart';
-
 import 'package:app_flutter_produkt_bestellen/features/login/domain/entity/entity_login_customer.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'model_login.freezed.dart';
 part 'model_login.g.dart';
@@ -24,4 +23,7 @@ class ModelLogin with _$ModelLogin {
     @Default([]) List<UserNotification> notifications,
     String? fToken,
   }) = _ModelLogin;
+
+  factory ModelLogin.fromJson(Map<String, dynamic> json) =>
+      _$ModelLoginFromJson(json);
 }
