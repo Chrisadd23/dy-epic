@@ -25,16 +25,6 @@ abstract class FirebaseConfiguration {
   }
 
   static Future<void> initFirebaseSettings() async {
-    NotificationSettings settings = await _firebaseMessaging.requestPermission(
-      alert: true,
-      announcement: false,
-      badge: true,
-      carPlay: false,
-      criticalAlert: false,
-      provisional: false,
-      sound: true,
-    );
-
     try {
       appToken = Platform.isAndroid
           ? await _firebaseMessaging.getToken()
