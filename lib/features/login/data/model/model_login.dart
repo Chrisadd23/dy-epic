@@ -1,6 +1,7 @@
 //ignore_for_file: invalid_annotation_target
-import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../../domain/entity/entity_login_customer.dart';
 
 part 'model_login.freezed.dart';
 part 'model_login.g.dart';
@@ -23,36 +24,4 @@ class ModelLogin with _$ModelLogin {
     @Default([]) List<UserNotification> notifications,
     String? fToken,
   }) = _ModelLogin;
-}
-
-@freezed
-class CustomerAddress with _$CustomerAddress {
-  @JsonSerializable(explicitToJson: true)
-  const factory CustomerAddress({
-    required String street,
-    required String city,
-    required String zipCode,
-  }) = _CustomerAddress;
-
-  factory CustomerAddress.fromJson(Map<String, dynamic> json) =>
-      _$CustomerAddressFromJson(json);
-}
-
-@freezed
-class UserNotification with _$UserNotification {
-  const UserNotification._();
-
-  @JsonSerializable(explicitToJson: true)
-  const factory UserNotification({
-    required int statusType,
-    required bool active,
-  }) = _UserNotification;
-
-  EnumOrderProcess get orderProcessTyp => EnumOrderProcess.values
-      .toList()
-      .where((element) => element.index == statusType)
-      .first;
-
-  factory UserNotification.fromJson(Map<String, dynamic> json) =>
-      _$UserNotificationFromJson(json);
 }

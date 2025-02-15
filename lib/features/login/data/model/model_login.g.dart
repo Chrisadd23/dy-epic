@@ -42,33 +42,3 @@ Map<String, dynamic> _$$ModelLoginImplToJson(_$ModelLoginImpl instance) =>
       'notifications': instance.notifications.map((e) => e.toJson()).toList(),
       'fToken': instance.fToken,
     };
-
-_$CustomerAddressImpl _$$CustomerAddressImplFromJson(
-        Map<String, dynamic> json) =>
-    _$CustomerAddressImpl(
-      street: json['street'] as String,
-      city: json['city'] as String,
-      zipCode: json['zipCode'] as String,
-    );
-
-Map<String, dynamic> _$$CustomerAddressImplToJson(
-        _$CustomerAddressImpl instance) =>
-    <String, dynamic>{
-      'street': instance.street,
-      'city': instance.city,
-      'zipCode': instance.zipCode,
-    };
-
-_$UserNotificationImpl _$$UserNotificationImplFromJson(
-        Map<String, dynamic> json) =>
-    _$UserNotificationImpl(
-      statusType: (json['statusType'] as num).toInt(),
-      active: json['active'] as bool,
-    );
-
-Map<String, dynamic> _$$UserNotificationImplToJson(
-        _$UserNotificationImpl instance) =>
-    <String, dynamic>{
-      'statusType': instance.statusType,
-      'active': instance.active,
-    };
