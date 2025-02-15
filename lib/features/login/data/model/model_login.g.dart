@@ -1,14 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'entity_login_customer.dart';
+part of 'model_login.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$EntityLoginCustomerImpl _$$EntityLoginCustomerImplFromJson(
-        Map<String, dynamic> json) =>
-    _$EntityLoginCustomerImpl(
+_$ModelLoginImpl _$$ModelLoginImplFromJson(Map<String, dynamic> json) =>
+    _$ModelLoginImpl(
       address:
           CustomerAddress.fromJson(json['address'] as Map<String, dynamic>),
       customerNumber: json['customerNumber'] as String,
@@ -29,8 +28,7 @@ _$EntityLoginCustomerImpl _$$EntityLoginCustomerImplFromJson(
       fToken: json['fToken'] as String?,
     );
 
-Map<String, dynamic> _$$EntityLoginCustomerImplToJson(
-        _$EntityLoginCustomerImpl instance) =>
+Map<String, dynamic> _$$ModelLoginImplToJson(_$ModelLoginImpl instance) =>
     <String, dynamic>{
       'address': instance.address.toJson(),
       'customerNumber': instance.customerNumber,

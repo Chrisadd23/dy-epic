@@ -2,21 +2,15 @@
 import 'package:app_flutter_produkt_bestellen/core/fix_values/enums.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'entity_login_customer.freezed.dart';
-part 'entity_login_customer.g.dart';
-
-enum UserType {
-  owner,
-  worker,
-  customer,
-}
+part 'model_login.freezed.dart';
+part 'model_login.g.dart';
 
 @freezed
-class EntityLoginCustomer with _$EntityLoginCustomer {
-  const EntityLoginCustomer._();
+class ModelLogin with _$ModelLogin {
+  const ModelLogin._();
 
   @JsonSerializable(explicitToJson: true)
-  const factory EntityLoginCustomer({
+  const factory ModelLogin({
     required CustomerAddress address,
     required String customerNumber,
     required int userTypeIndex,
@@ -28,20 +22,7 @@ class EntityLoginCustomer with _$EntityLoginCustomer {
     CustomerAddress? deliveryAddress,
     @Default([]) List<UserNotification> notifications,
     String? fToken,
-  }) = _EntityLoginCustomer;
-
-  UserType get getUserType {
-    return UserType.values
-        .where((userType) => userType.index == userTypeIndex)
-        .first;
-  }
-
-  bool get areAllNotificationsActive {
-    return notifications.any((element) => element.active == false) == false;
-  }
-
-  factory EntityLoginCustomer.fromJson(Map<String, dynamic> json) =>
-      _$EntityLoginCustomerFromJson(json);
+  }) = _ModelLogin;
 }
 
 @freezed

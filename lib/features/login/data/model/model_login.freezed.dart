@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'entity_login_customer.dart';
+part of 'model_login.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,8 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-EntityLoginCustomer _$EntityLoginCustomerFromJson(Map<String, dynamic> json) {
-  return _EntityLoginCustomer.fromJson(json);
-}
-
 /// @nodoc
-mixin _$EntityLoginCustomer {
+mixin _$ModelLogin {
   CustomerAddress get address => throw _privateConstructorUsedError;
   String get customerNumber => throw _privateConstructorUsedError;
   int get userTypeIndex => throw _privateConstructorUsedError;
@@ -35,17 +31,16 @@ mixin _$EntityLoginCustomer {
       throw _privateConstructorUsedError;
   String? get fToken => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $EntityLoginCustomerCopyWith<EntityLoginCustomer> get copyWith =>
+  $ModelLoginCopyWith<ModelLogin> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $EntityLoginCustomerCopyWith<$Res> {
-  factory $EntityLoginCustomerCopyWith(
-          EntityLoginCustomer value, $Res Function(EntityLoginCustomer) then) =
-      _$EntityLoginCustomerCopyWithImpl<$Res, EntityLoginCustomer>;
+abstract class $ModelLoginCopyWith<$Res> {
+  factory $ModelLoginCopyWith(
+          ModelLogin value, $Res Function(ModelLogin) then) =
+      _$ModelLoginCopyWithImpl<$Res, ModelLogin>;
   @useResult
   $Res call(
       {CustomerAddress address,
@@ -65,9 +60,9 @@ abstract class $EntityLoginCustomerCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$EntityLoginCustomerCopyWithImpl<$Res, $Val extends EntityLoginCustomer>
-    implements $EntityLoginCustomerCopyWith<$Res> {
-  _$EntityLoginCustomerCopyWithImpl(this._value, this._then);
+class _$ModelLoginCopyWithImpl<$Res, $Val extends ModelLogin>
+    implements $ModelLoginCopyWith<$Res> {
+  _$ModelLoginCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -159,11 +154,11 @@ class _$EntityLoginCustomerCopyWithImpl<$Res, $Val extends EntityLoginCustomer>
 }
 
 /// @nodoc
-abstract class _$$EntityLoginCustomerImplCopyWith<$Res>
-    implements $EntityLoginCustomerCopyWith<$Res> {
-  factory _$$EntityLoginCustomerImplCopyWith(_$EntityLoginCustomerImpl value,
-          $Res Function(_$EntityLoginCustomerImpl) then) =
-      __$$EntityLoginCustomerImplCopyWithImpl<$Res>;
+abstract class _$$ModelLoginImplCopyWith<$Res>
+    implements $ModelLoginCopyWith<$Res> {
+  factory _$$ModelLoginImplCopyWith(
+          _$ModelLoginImpl value, $Res Function(_$ModelLoginImpl) then) =
+      __$$ModelLoginImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -186,11 +181,11 @@ abstract class _$$EntityLoginCustomerImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$EntityLoginCustomerImplCopyWithImpl<$Res>
-    extends _$EntityLoginCustomerCopyWithImpl<$Res, _$EntityLoginCustomerImpl>
-    implements _$$EntityLoginCustomerImplCopyWith<$Res> {
-  __$$EntityLoginCustomerImplCopyWithImpl(_$EntityLoginCustomerImpl _value,
-      $Res Function(_$EntityLoginCustomerImpl) _then)
+class __$$ModelLoginImplCopyWithImpl<$Res>
+    extends _$ModelLoginCopyWithImpl<$Res, _$ModelLoginImpl>
+    implements _$$ModelLoginImplCopyWith<$Res> {
+  __$$ModelLoginImplCopyWithImpl(
+      _$ModelLoginImpl _value, $Res Function(_$ModelLoginImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -208,7 +203,7 @@ class __$$EntityLoginCustomerImplCopyWithImpl<$Res>
     Object? notifications = null,
     Object? fToken = freezed,
   }) {
-    return _then(_$EntityLoginCustomerImpl(
+    return _then(_$ModelLoginImpl(
       address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
@@ -260,8 +255,8 @@ class __$$EntityLoginCustomerImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$EntityLoginCustomerImpl extends _EntityLoginCustomer {
-  const _$EntityLoginCustomerImpl(
+class _$ModelLoginImpl extends _ModelLogin {
+  const _$ModelLoginImpl(
       {required this.address,
       required this.customerNumber,
       required this.userTypeIndex,
@@ -275,9 +270,6 @@ class _$EntityLoginCustomerImpl extends _EntityLoginCustomer {
       this.fToken})
       : _notifications = notifications,
         super._();
-
-  factory _$EntityLoginCustomerImpl.fromJson(Map<String, dynamic> json) =>
-      _$$EntityLoginCustomerImplFromJson(json);
 
   @override
   final CustomerAddress address;
@@ -313,14 +305,14 @@ class _$EntityLoginCustomerImpl extends _EntityLoginCustomer {
 
   @override
   String toString() {
-    return 'EntityLoginCustomer(address: $address, customerNumber: $customerNumber, userTypeIndex: $userTypeIndex, email: $email, companyName: $companyName, customerName: $customerName, customerSurname: $customerSurname, registrationDate: $registrationDate, deliveryAddress: $deliveryAddress, notifications: $notifications, fToken: $fToken)';
+    return 'ModelLogin(address: $address, customerNumber: $customerNumber, userTypeIndex: $userTypeIndex, email: $email, companyName: $companyName, customerName: $customerName, customerSurname: $customerSurname, registrationDate: $registrationDate, deliveryAddress: $deliveryAddress, notifications: $notifications, fToken: $fToken)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EntityLoginCustomerImpl &&
+            other is _$ModelLoginImpl &&
             (identical(other.address, address) || other.address == address) &&
             (identical(other.customerNumber, customerNumber) ||
                 other.customerNumber == customerNumber) &&
@@ -342,7 +334,6 @@ class _$EntityLoginCustomerImpl extends _EntityLoginCustomer {
             (identical(other.fToken, fToken) || other.fToken == fToken));
   }
 
-  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -361,20 +352,12 @@ class _$EntityLoginCustomerImpl extends _EntityLoginCustomer {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EntityLoginCustomerImplCopyWith<_$EntityLoginCustomerImpl> get copyWith =>
-      __$$EntityLoginCustomerImplCopyWithImpl<_$EntityLoginCustomerImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$EntityLoginCustomerImplToJson(
-      this,
-    );
-  }
+  _$$ModelLoginImplCopyWith<_$ModelLoginImpl> get copyWith =>
+      __$$ModelLoginImplCopyWithImpl<_$ModelLoginImpl>(this, _$identity);
 }
 
-abstract class _EntityLoginCustomer extends EntityLoginCustomer {
-  const factory _EntityLoginCustomer(
+abstract class _ModelLogin extends ModelLogin {
+  const factory _ModelLogin(
       {required final CustomerAddress address,
       required final String customerNumber,
       required final int userTypeIndex,
@@ -385,11 +368,8 @@ abstract class _EntityLoginCustomer extends EntityLoginCustomer {
       final int? registrationDate,
       final CustomerAddress? deliveryAddress,
       final List<UserNotification> notifications,
-      final String? fToken}) = _$EntityLoginCustomerImpl;
-  const _EntityLoginCustomer._() : super._();
-
-  factory _EntityLoginCustomer.fromJson(Map<String, dynamic> json) =
-      _$EntityLoginCustomerImpl.fromJson;
+      final String? fToken}) = _$ModelLoginImpl;
+  const _ModelLogin._() : super._();
 
   @override
   CustomerAddress get address;
@@ -417,7 +397,7 @@ abstract class _EntityLoginCustomer extends EntityLoginCustomer {
   String? get fToken;
   @override
   @JsonKey(ignore: true)
-  _$$EntityLoginCustomerImplCopyWith<_$EntityLoginCustomerImpl> get copyWith =>
+  _$$ModelLoginImplCopyWith<_$ModelLoginImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

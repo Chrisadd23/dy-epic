@@ -34,15 +34,18 @@ abstract class FirebaseConfiguration {
       provisional: false,
       sound: true,
     );
-    debugPrint('User granted permission: ${settings.authorizationStatus}');
+
     try {
       appToken = Platform.isAndroid
           ? await _firebaseMessaging.getToken()
           : await _firebaseMessaging.getAPNSToken();
-
+      debugPrint('appToken $appToken');
       try {
-        if (appToken != null && Platform.isIOS) {
-          firebaseToken = await _firebaseMessaging.getToken();
+        if (appToken != null) {
+          firebaseToken = Platform.isAndroid
+              ? appToken
+              : await _firebaseMessaging.getToken();
+          debugPrint("firebaseToken $firebaseToken");
         }
       } catch (error) {
         debugPrint("firebaseToken error => ${error.toString()}");
