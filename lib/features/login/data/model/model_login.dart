@@ -1,7 +1,7 @@
 //ignore_for_file: invalid_annotation_target
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../domain/entity/entity_login_customer.dart';
+import 'package:app_flutter_produkt_bestellen/features/login/domain/entity/entity_login_customer.dart';
 
 part 'model_login.freezed.dart';
 part 'model_login.g.dart';

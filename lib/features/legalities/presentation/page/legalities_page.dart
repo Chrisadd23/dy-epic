@@ -50,7 +50,7 @@ class _AppRights extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
           if (Platform.isIOS)
