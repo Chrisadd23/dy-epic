@@ -8,6 +8,10 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
+void customLog(String messag) {
+  print("Custom Log: $messag");
+}
+
 abstract class FirebaseConfiguration {
   static late final FirebaseStorage _firebaseStorage;
   static late final FirebaseMessaging _firebaseMessaging;
@@ -20,7 +24,15 @@ abstract class FirebaseConfiguration {
     _firebaseStorage = FirebaseStorage.instance;
     _firebaseMessaging = FirebaseMessaging.instance;
     if (Platform.isIOS) {
-      await _firebaseMessaging.requestPermission();
+      await _firebaseMessaging.requestPermission(
+        alert: true,
+        announcement: false,
+        badge: true,
+        carPlay: false,
+        criticalAlert: false,
+        provisional: false,
+        sound: true,
+      );
     }
   }
 
@@ -52,15 +64,23 @@ abstract class FirebaseConfiguration {
 
       RemoteMessage? initialMessage =
           await _firebaseMessaging.getInitialMessage();
-      if (initialMessage != null) {
-        debugPrint("handle initialMessage");
-      }
+
       _initFlutterLocalNotificationAttributes;
       _initFirebaseMessagingInForegroundListener;
-      _iniTifebaseMessagingInBackgroundListener;
+      _initFirebaseMessagingInBackgroundListener;
+
+      //Background
+      FirebaseMessaging.onMessageOpenedApp.listen(_handleMessage);
+      if (initialMessage != null) {
+        debugPrint("get data from initialMessage");
+      }
     } catch (error) {
       debugPrint(error.toString());
     }
+  }
+
+  static void _handleMessage(RemoteMessage message) {
+    debugPrint('_handleMessage ${message.data}');
   }
 
   static Future<Uint8List?> getImageBytes(String filename) async {
@@ -97,26 +117,27 @@ abstract class FirebaseConfiguration {
     }
   }
 
-  static void _initFirebaseMessagingInForegroundListener() {
+  static Future<void> _initFirebaseMessagingInForegroundListener() async {
+    customLog('_initFirebaseMessagingInForegroundListener');
     FirebaseMessaging.onMessage.listen((remoteMessage) {
-      debugPrint('Got a message whilst in the foreground!');
-      debugPrint('Message data: ${remoteMessage.data}');
+      customLog('Got a message whilst in the foreground!');
+      customLog('Message data: ${remoteMessage.data}');
 
       if (remoteMessage.notification != null) {
-        _showNotification;
-        debugPrint(
+        _showNotification(remoteMessage);
+        customLog(
             'Message also contained a notification: ${remoteMessage.notification}');
       }
     });
   }
 
-  static void _iniTifebaseMessagingInBackgroundListener() {
+  static void _initFirebaseMessagingInBackgroundListener() {
     FirebaseMessaging.onBackgroundMessage((remoteMessage) async {
       // If you're going to use other Firebase services in the background, such as Firestore,
       // make sure you call `initializeApp` before using other Firebase services.
 
-      debugPrint("Handling a background message: ${remoteMessage.messageId}");
-      debugPrint("remoteMessage data: ${remoteMessage.data}");
+      print("Handling a background message: ${remoteMessage.messageId}");
+      print("remoteMessage data: ${remoteMessage.data}");
       await Firebase.initializeApp();
     });
   }
@@ -150,6 +171,7 @@ abstract class FirebaseConfiguration {
     const NotificationDetails notificationDetails = NotificationDetails(
         android: androidNotificationDetails, iOS: iOsNotificationDetails);
 
+    debugPrint("_flutterLocalNotificationsPlugin.show");
     await _flutterLocalNotificationsPlugin.show(1, message.notification?.title,
         message.notification?.body, notificationDetails,
         payload: 'Not present');
