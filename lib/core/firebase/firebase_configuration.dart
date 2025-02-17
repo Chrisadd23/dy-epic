@@ -9,7 +9,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 void customLog(String messag) {
-  print("Custom Log: $messag");
+  debugPrint("Custom Log: $messag");
 }
 
 abstract class FirebaseConfiguration {
@@ -136,8 +136,8 @@ abstract class FirebaseConfiguration {
       // If you're going to use other Firebase services in the background, such as Firestore,
       // make sure you call `initializeApp` before using other Firebase services.
 
-      print("Handling a background message: ${remoteMessage.messageId}");
-      print("remoteMessage data: ${remoteMessage.data}");
+      debugPrint("Handling a background message: ${remoteMessage.messageId}");
+      debugPrint("remoteMessage data: ${remoteMessage.data}");
       await Firebase.initializeApp();
     });
   }
