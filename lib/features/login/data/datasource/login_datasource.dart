@@ -1,4 +1,5 @@
 import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
+import 'package:app_flutter_produkt_bestellen/core/firebase/firebase_configuration.dart';
 import 'package:app_flutter_produkt_bestellen/core/shared_preferences_handling.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/domain/entity/entity_login_customer.dart';
 import 'package:app_flutter_produkt_bestellen/features/settings/presentation/cubit/notification_settings_state.dart';
@@ -45,11 +46,26 @@ class LoginDatasourceImplementation extends LoginDatasource {
               .where('customerNumber', isEqualTo: customerNumber)
               .where('password', isEqualTo: password)
               .get()
-              .then((value) {
+              .then((value) async {
         final Map<String, dynamic>? json = value.docs.firstOrNull?.data();
+        final documentId = value.docs.firstOrNull?.id;
 
         if (json != null) {
-          return Right(EntityLoginCustomer.fromJson(json));
+          final entityLoginCustomer = EntityLoginCustomer.fromJson(json);
+          if (documentId != null &&
+              FirebaseConfiguration.firebaseToken != null &&
+              FirebaseConfiguration.firebaseToken !=
+                  entityLoginCustomer.fToken) {
+            await _updateFirebaseUserFirebaseToken(
+                    firebaseToken: FirebaseConfiguration.firebaseToken!,
+                    documentId: documentId)
+                .then(
+              (fToken) => fToken != null
+                  ? entityLoginCustomer.copyWith(fToken: fToken)
+                  : null,
+            );
+          }
+          return Right(entityLoginCustomer);
         } else {
           return const Left(
               Failure.databaseError('Der Benutzer wurde nicht gefunden.'));
@@ -71,6 +87,18 @@ class LoginDatasourceImplementation extends LoginDatasource {
       return entityLoginCustomer;
     } catch (e) {
       return Left(Failure.databaseError(e.toString()));
+    }
+  }
+
+  Future<String?> _updateFirebaseUserFirebaseToken(
+      {required String firebaseToken, required String documentId}) async {
+    try {
+      await _firebaseFirestore.collection('User').doc(documentId).update({
+        'fToken': firebaseToken,
+      });
+      return firebaseToken;
+    } catch (error) {
+      return null;
     }
   }
 

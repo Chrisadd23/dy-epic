@@ -1,6 +1,8 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
+import 'package:app_flutter_produkt_bestellen/features/order/data/model/order_model.dart';
 import 'package:either_dart/either.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -80,7 +82,17 @@ abstract class FirebaseConfiguration {
   }
 
   static void _handleMessage(RemoteMessage message) {
-    debugPrint('_handleMessage ${message.data}');
+    debugPrint('_handleMessage');
+    final Map<String, dynamic> json =
+        jsonDecode(message.data.values.first.toString());
+    //debugPrint(json.toString());
+
+    switch (json["type"]) {
+      case 1:
+        final order = OrderModel.fromJson(json['order']);
+        debugPrint("order ==> $order");
+        break;
+    }
   }
 
   static Future<Uint8List?> getImageBytes(String filename) async {
@@ -136,9 +148,10 @@ abstract class FirebaseConfiguration {
       // If you're going to use other Firebase services in the background, such as Firestore,
       // make sure you call `initializeApp` before using other Firebase services.
 
+      await Firebase.initializeApp();
+
       debugPrint("Handling a background message: ${remoteMessage.messageId}");
       debugPrint("remoteMessage data: ${remoteMessage.data}");
-      await Firebase.initializeApp();
     });
   }
 
