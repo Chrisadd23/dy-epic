@@ -98,29 +98,31 @@ abstract class FirebaseConfiguration {
         final order = OrderModel.fromJson(json['order']).toEntity();
         _pageNavigation(
             routeName: AppGoRouter.detailedOrderInformation.name,
-            extra: order,
+            order: order,
             type: json["type"]);
+        break;
+      case 2:
         break;
     }
   }
 
   static void _pageNavigation(
       {required String routeName,
-      required OrderEntity extra,
+      required OrderEntity order,
       required int type}) {
     getIt<LoginCubit>().state.maybeWhen(loggedIn: (customer) {
-      if (customer.customerNumber != extra.customerId) {
+      if (customer.customerNumber != order.customerId) {
         getIt<LoginCubit>().logOut();
         getIt<CubitPushNotificationData>()
-            .addNotificationData(orderEntity: extra);
+            .addNotificationData(orderEntity: order);
         getIt<GoRouter>().goNamed(AppGoRouter.login.name,
-            extra: extra, queryParameters: {'redirectName': routeName});
+            extra: order, queryParameters: {'redirectName': routeName});
       }
     }, orElse: () {
       getIt<CubitPushNotificationData>()
-          .addNotificationData(orderEntity: extra);
+          .addNotificationData(orderEntity: order);
       getIt<GoRouter>().goNamed(AppGoRouter.login.name,
-          extra: extra, queryParameters: {'redirectName': routeName});
+          extra: order, queryParameters: {'redirectName': routeName});
     });
   }
 
