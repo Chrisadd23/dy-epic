@@ -2,13 +2,19 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
+import 'package:app_flutter_produkt_bestellen/core/global_cubits/cubit_push_notification_data.dart';
+import 'package:app_flutter_produkt_bestellen/core/routes/go_router.dart';
+import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/data/model/order_model.dart';
+import 'package:app_flutter_produkt_bestellen/features/order/domain/entity/order_entity.dart';
+import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:either_dart/either.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:go_router/go_router.dart';
 
 void customLog(String messag) {
   debugPrint("Custom Log: $messag");
@@ -89,10 +95,33 @@ abstract class FirebaseConfiguration {
 
     switch (json["type"]) {
       case 1:
-        final order = OrderModel.fromJson(json['order']);
-        debugPrint("order ==> $order");
+        final order = OrderModel.fromJson(json['order']).toEntity();
+        _pageNavigation(
+            routeName: AppGoRouter.detailedOrderInformation.name,
+            extra: order,
+            type: json["type"]);
         break;
     }
+  }
+
+  static void _pageNavigation(
+      {required String routeName,
+      required OrderEntity extra,
+      required int type}) {
+    getIt<LoginCubit>().state.maybeWhen(loggedIn: (customer) {
+      if (customer.customerNumber != extra.customerId) {
+        getIt<LoginCubit>().logOut();
+        getIt<CubitPushNotificationData>()
+            .addNotificationData(orderEntity: extra);
+        getIt<GoRouter>().goNamed(AppGoRouter.login.name,
+            extra: extra, queryParameters: {'redirectName': routeName});
+      }
+    }, orElse: () {
+      getIt<CubitPushNotificationData>()
+          .addNotificationData(orderEntity: extra);
+      getIt<GoRouter>().goNamed(AppGoRouter.login.name,
+          extra: extra, queryParameters: {'redirectName': routeName});
+    });
   }
 
   static Future<Uint8List?> getImageBytes(String filename) async {

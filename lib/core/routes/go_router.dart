@@ -2,10 +2,12 @@ import 'dart:convert';
 
 import 'package:app_flutter_produkt_bestellen/core/error/page_not_found.dart';
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text.dart';
+import 'package:app_flutter_produkt_bestellen/core/global_cubits/cubit_push_notification_data.dart';
 import 'package:app_flutter_produkt_bestellen/features/app_start/presentation/page/app_start_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/domain/entity/category_entity.dart';
 import 'package:app_flutter_produkt_bestellen/features/home/presentation/page/home_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/legalities/presentation/page/legalities_page.dart';
+import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/page/login_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/domain/entity/order_entity.dart';
 import 'package:app_flutter_produkt_bestellen/features/order/presentation/page/detailed_order_information.dart';
@@ -20,6 +22,8 @@ import 'package:app_flutter_produkt_bestellen/features/settings/presentation/pag
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/domain/entity/shopping_basket_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../global_dependencies.dart';
 
 enum AppGoRouter {
   root('/'),
@@ -65,187 +69,223 @@ enum AppGoRouter {
       );
 
   static final GoRouter _router = GoRouter(
-    debugLogDiagnostics: true,
-    routes: [
-      GoRoute(
-          path: root.path,
-          name: root.name,
-          pageBuilder: (context, state) =>
-              _getCustomerTransition(const AppStartPage(), state),
-          routes: [
-            GoRoute(
-                path: login.path,
-                name: login.name,
-                pageBuilder: (context, state) {
-                  final redirectName = state.queryParameters['redirectName'];
-                  return _getCustomerTransition(
-                      LoginPage(redirectName: redirectName), state);
-                }),
-            GoRoute(
-              path: home.path,
-              name: home.name,
-              pageBuilder: (context, state) =>
-                  _getCustomerTransition(const HomePage(), state),
-              routes: [
-                GoRoute(
-                  path: product.path,
-                  name: product.name,
+      debugLogDiagnostics: true,
+      routes: [
+        GoRoute(
+            path: root.path,
+            name: root.name,
+            pageBuilder: (context, state) =>
+                _getCustomerTransition(const AppStartPage(), state),
+            routes: [
+              GoRoute(
+                  path: login.path,
+                  name: login.name,
                   pageBuilder: (context, state) {
-                    debugPrint("check goRouter record ${state.extra as ({
-                      ShoppingBasketProduct chosenProduct,
-                      int index
-                    })?}");
+                    final redirectName = state.queryParameters['redirectName'];
+                    return _getCustomerTransition(
+                        LoginPage(redirectName: redirectName), state);
+                  }),
+              GoRoute(
+                path: home.path,
+                name: home.name,
+                pageBuilder: (context, state) =>
+                    _getCustomerTransition(const HomePage(), state),
+                routes: [
+                  GoRoute(
+                    path: product.path,
+                    name: product.name,
+                    pageBuilder: (context, state) {
+                      debugPrint("check goRouter record ${state.extra as ({
+                        ShoppingBasketProduct chosenProduct,
+                        int index
+                      })?}");
 
-                    final recordOrder = state.extra as ({
-                      ShoppingBasketProduct chosenProduct,
-                      int index
-                    })?;
+                      final recordOrder = state.extra as ({
+                        ShoppingBasketProduct chosenProduct,
+                        int index
+                      })?;
 
-                    final product = _getCategoryEntityFromJsonDecode(
-                        jsonEncoded: state.queryParameters['product']);
-                    if (product != null) {
+                      final product = _getCategoryEntityFromJsonDecode(
+                          jsonEncoded: state.queryParameters['product']);
+                      if (product != null) {
+                        return _getCustomerTransition(
+                          ProductPage(
+                            product: product,
+                          ),
+                          state,
+                        );
+                      }
+                      final selectedColor = state.queryParameters['color'];
+
                       return _getCustomerTransition(
                         ProductPage(
-                          product: product,
+                          color: selectedColor,
+                          recordOrder: recordOrder,
                         ),
                         state,
                       );
-                    }
-                    final selectedColor = state.queryParameters['color'];
+                    },
+                  ),
+                  GoRoute(
+                    path: AppGoRouter.productAdding.path,
+                    name: AppGoRouter.productAdding.name,
+                    pageBuilder: (context, state) {
+                      final product = _getCategoryEntityFromJsonDecode(
+                          jsonEncoded: state.queryParameters['product']);
 
-                    return _getCustomerTransition(
-                      ProductPage(
-                        color: selectedColor,
-                        recordOrder: recordOrder,
+                      final categoryIndex =
+                          state.queryParameters['categoryIndex'];
+                      return _getCustomerTransition(
+                          ProductIntegrationPage(
+                              product: product, categoryIndex: categoryIndex),
+                          state);
+                    },
+                  )
+                ],
+              ),
+              StatefulShellRoute.indexedStack(
+                pageBuilder: (context, state, navigationShell) =>
+                    _getCustomerTransition(
+                  OrderPageShellNavigation(
+                    navigationShell: navigationShell,
+                    goRouterState: state,
+                  ),
+                  state,
+                ),
+                branches: <StatefulShellBranch>[
+                  StatefulShellBranch(
+                    routes: [
+                      GoRoute(
+                        path: order.path,
+                        name: order.name,
+                        builder: (context, state) => const OrderPage(),
+                        routes: [
+                          GoRoute(
+                              path: detailedOrderInformation.path,
+                              name: detailedOrderInformation.name,
+                              pageBuilder: (context, state) {
+                                late OrderEntity orderEntity;
+                                if (getIt<CubitPushNotificationData>()
+                                        .state
+                                        ?.order !=
+                                    null) {
+                                  orderEntity =
+                                      getIt<CubitPushNotificationData>()
+                                          .state!
+                                          .order!;
+                                  getIt<CubitPushNotificationData>().clear();
+                                } else {
+                                  orderEntity = state.extra as OrderEntity;
+                                }
+                                return _getCustomerTransition(
+                                  DetailedOrderInformation(
+                                    informationTitle: AppText.orderInformation,
+                                    orderEntity: orderEntity,
+                                  ),
+                                  state,
+                                  transitionDuration: Duration.zero,
+                                  reverseTransitionDuration: Duration.zero,
+                                );
+                              },
+                              redirect: (context, state) {
+                                return getIt<LoginCubit>().state.maybeWhen(
+                                    loggedIn: (customer) {
+                                      if (getIt<CubitPushNotificationData>()
+                                                  .state
+                                                  ?.order
+                                                  ?.customerId ==
+                                              null ||
+                                          customer.customerNumber ==
+                                              getIt<CubitPushNotificationData>()
+                                                  .state
+                                                  ?.order
+                                                  ?.customerId) {
+                                        return state.fullPath;
+                                      } else {
+                                        getIt<CubitPushNotificationData>()
+                                            .clear();
+                                        return AppGoRouter.root.path +
+                                            AppGoRouter.home.path;
+                                      }
+                                    },
+                                    orElse: () =>
+                                        AppGoRouter.root.path +
+                                        AppGoRouter.home.path);
+                              }),
+                        ],
                       ),
-                      state,
-                    );
-                  },
-                ),
-                GoRoute(
-                  path: AppGoRouter.productAdding.path,
-                  name: AppGoRouter.productAdding.name,
-                  pageBuilder: (context, state) {
-                    final product = _getCategoryEntityFromJsonDecode(
-                        jsonEncoded: state.queryParameters['product']);
-
-                    final categoryIndex =
-                        state.queryParameters['categoryIndex'];
-                    return _getCustomerTransition(
-                        ProductIntegrationPage(
-                            product: product, categoryIndex: categoryIndex),
-                        state);
-                  },
-                )
-              ],
-            ),
-            StatefulShellRoute.indexedStack(
-              pageBuilder: (context, state, navigationShell) =>
-                  _getCustomerTransition(
-                OrderPageShellNavigation(
-                  navigationShell: navigationShell,
-                  goRouterState: state,
-                ),
-                state,
+                    ],
+                  ),
+                  StatefulShellBranch(
+                    routes: [
+                      GoRoute(
+                        path: request.path,
+                        name: request.name,
+                        builder: (context, state) => const RequestPage(),
+                        routes: [
+                          GoRoute(
+                            path: detailedRequestInformation.path,
+                            name: detailedRequestInformation.name,
+                            pageBuilder: (context, state) {
+                              final orderEntity = state.extra as OrderEntity;
+                              return _getCustomerTransition(
+                                DetailedOrderInformation(
+                                  informationTitle: AppText.requestInformation,
+                                  orderEntity: orderEntity,
+                                ),
+                                state,
+                                transitionDuration: Duration.zero,
+                                reverseTransitionDuration: Duration.zero,
+                              );
+                            },
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
               ),
-              branches: <StatefulShellBranch>[
-                StatefulShellBranch(
-                  routes: [
-                    GoRoute(
-                      path: order.path,
-                      name: order.name,
-                      builder: (context, state) => const OrderPage(),
-                      routes: [
-                        GoRoute(
-                          path: detailedOrderInformation.path,
-                          name: detailedOrderInformation.name,
-                          pageBuilder: (context, state) {
-                            final orderEntity = state.extra as OrderEntity;
-                            return _getCustomerTransition(
-                              DetailedOrderInformation(
-                                informationTitle: AppText.orderInformation,
-                                orderEntity: orderEntity,
-                              ),
-                              state,
-                              transitionDuration: Duration.zero,
-                              reverseTransitionDuration: Duration.zero,
-                            );
-                          },
-                        ),
-                      ],
-                    ),
-                  ],
+              StatefulShellRoute.indexedStack(
+                pageBuilder: (context, state, navigationShell) =>
+                    _getCustomerTransition(
+                  SettingsPageShellNavigation(navigationShell: navigationShell),
+                  state,
                 ),
-                StatefulShellBranch(
-                  routes: [
-                    GoRoute(
-                      path: request.path,
-                      name: request.name,
-                      builder: (context, state) => const RequestPage(),
-                      routes: [
-                        GoRoute(
-                          path: detailedRequestInformation.path,
-                          name: detailedRequestInformation.name,
-                          pageBuilder: (context, state) {
-                            final orderEntity = state.extra as OrderEntity;
-                            return _getCustomerTransition(
-                              DetailedOrderInformation(
-                                informationTitle: AppText.requestInformation,
-                                orderEntity: orderEntity,
-                              ),
-                              state,
-                              transitionDuration: Duration.zero,
-                              reverseTransitionDuration: Duration.zero,
-                            );
-                          },
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            StatefulShellRoute.indexedStack(
-              pageBuilder: (context, state, navigationShell) =>
-                  _getCustomerTransition(
-                SettingsPageShellNavigation(navigationShell: navigationShell),
-                state,
+                branches: <StatefulShellBranch>[
+                  StatefulShellBranch(
+                    routes: [
+                      GoRoute(
+                        path: notificationSettings.path,
+                        name: notificationSettings.name,
+                        builder: (context, state) =>
+                            const NotificationSettingsPage(),
+                      ),
+                    ],
+                  ),
+                  StatefulShellBranch(
+                    routes: [
+                      GoRoute(
+                        path: profileSettings.path,
+                        name: profileSettings.name,
+                        builder: (context, state) =>
+                            const CustomerSettingsPage(),
+                      ),
+                    ],
+                  ),
+                ],
               ),
-              branches: <StatefulShellBranch>[
-                StatefulShellBranch(
-                  routes: [
-                    GoRoute(
-                      path: notificationSettings.path,
-                      name: notificationSettings.name,
-                      builder: (context, state) =>
-                          const NotificationSettingsPage(),
-                    ),
-                  ],
-                ),
-                StatefulShellBranch(
-                  routes: [
-                    GoRoute(
-                      path: profileSettings.path,
-                      name: profileSettings.name,
-                      builder: (context, state) => const CustomerSettingsPage(),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            GoRoute(
-              path: legalities.path,
-              name: legalities.name,
-              pageBuilder: (context, state) =>
-                  _getCustomerTransition(const LegalitiesPage(), state),
-            ),
-          ])
-    ],
-    errorBuilder: (context, state) => PageNotFound(state.error),
-    redirect: (context, state) {
-      return null;
-    },
-  );
+              GoRoute(
+                path: legalities.path,
+                name: legalities.name,
+                pageBuilder: (context, state) =>
+                    _getCustomerTransition(const LegalitiesPage(), state),
+              ),
+            ])
+      ],
+      errorBuilder: (context, state) => PageNotFound(state.error),
+      redirect: (context, state) {
+        return state.fullPath;
+      });
 
   static CategoryEntity? _getCategoryEntityFromJsonDecode(
       {String? jsonEncoded}) {

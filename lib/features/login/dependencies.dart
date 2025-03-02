@@ -1,3 +1,4 @@
+import 'package:app_flutter_produkt_bestellen/core/global_cubits/cubit_push_notification_data.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/data/datasource/login_datasource.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/data/repository/login_repository_implementation.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/domain/repository/login_repository.dart';
@@ -46,6 +47,8 @@ abstract class LoginDependencies {
       ..registerFactory<StayLoggedInCubit>(
         () => StayLoggedInCubit(),
       )
-      ..registerFactory<TextEditingCubit>(() => TextEditingCubit());
+      ..registerFactory<TextEditingCubit>(() => TextEditingCubit())
+      ..registerLazySingleton<CubitPushNotificationData>(
+          () => CubitPushNotificationData());
   }
 }
