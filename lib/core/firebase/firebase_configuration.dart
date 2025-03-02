@@ -117,6 +117,9 @@ abstract class FirebaseConfiguration {
             .addNotificationData(orderEntity: order);
         getIt<GoRouter>().goNamed(AppGoRouter.login.name,
             extra: order, queryParameters: {'redirectName': routeName});
+      } else {
+        getIt<GoRouter>()
+            .goNamed(AppGoRouter.detailedOrderInformation.name, extra: order);
       }
     }, orElse: () {
       getIt<CubitPushNotificationData>()
