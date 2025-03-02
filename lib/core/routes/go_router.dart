@@ -20,10 +20,9 @@ import 'package:app_flutter_produkt_bestellen/features/settings/presentation/pag
 import 'package:app_flutter_produkt_bestellen/features/settings/presentation/page/notification_settings_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/settings/presentation/page/settings_page_shell_navigation.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/domain/entity/shopping_basket_entity.dart';
+import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
-import '../../global_dependencies.dart';
 
 enum AppGoRouter {
   root('/'),
