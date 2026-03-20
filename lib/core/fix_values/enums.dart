@@ -63,6 +63,7 @@ enum AppDrawerCategoriesEnum {
       title: 'Einstellungen',
       name: 'notificationSettings',
       isLoginRequired: true),
+  messages(title: 'Benachrichtigung', name: 'messages', isLoginRequired: true),
   legalities(title: 'Rechtliches', name: 'legalities', isLoginRequired: false);
 
   const AppDrawerCategoriesEnum(
