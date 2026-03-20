@@ -2,6 +2,7 @@ import 'package:app_flutter_produkt_bestellen/core/global_cubits/cubit_push_noti
 import 'package:app_flutter_produkt_bestellen/features/login/data/datasource/login_datasource.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/data/repository/login_repository_implementation.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/domain/repository/login_repository.dart';
+import 'package:app_flutter_produkt_bestellen/features/login/domain/use_case/get_customer_use_case.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/domain/use_case/get_customer_with_customer_number_use_case.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/domain/use_case/get_local_customer_number_use_case.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/domain/use_case/update_customer_use_case.dart';
@@ -34,6 +35,11 @@ abstract class LoginDependencies {
       )
       ..registerLazySingleton<GetLocalCustomerNumberUseCase>(
         () => GetLocalCustomerNumberUseCase(
+          getIt(),
+        ),
+      )
+      ..registerLazySingleton<GetCustomerUseCase>(
+        () => GetCustomerUseCase(
           getIt(),
         ),
       )
