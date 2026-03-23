@@ -45,3 +45,5 @@ linter:
     prefer_const_literals_to_create_immutables: false
     prefer_final_fields: false
     use_key_in_widget_constructors: false
+    use_super_parameters: false
+    unnecessary_to_list_in_spreads: false
