@@ -72,8 +72,7 @@ amplifytools.xcconfig
 .fvmrc
 
 #projet
-lib/firebase_core.dart
 lib/firebase_options.dart
 lib/firebase_options_settings.json
-
-assets/*
+lib/firebase_options2.dart
+lib/firebase_options_settings2.json
