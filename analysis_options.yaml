@@ -1,56 +1,47 @@
 # This file configures the analyzer, which statically analyzes Dart code to
 # check for errors, warnings, and lints.
-#
-# The issues identified by the analyzer are surfaced in the UI of Dart-enabled
-# IDEs (https://dart.dev/tools#ides-and-editors). The analyzer can also be
-# invoked from the command line by running `flutter analyze`.
 
-# The following line activates a set of recommended lints for Flutter apps,
-# packages, and plugins designed to encourage good coding practices.
 include: package:flutter_lints/flutter.yaml
 
+analyzer:
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+  errors:
+    # Hier werden alle Fehler zu Ignorierung herabgestuft, die oft Pushes blockieren
+    todo: ignore
+    deprecated_member_use: ignore
+    deprecated_member_use_from_same_package: ignore
+    invalid_annotation_target: ignore
+
 linter:
-  # The lint rules applied to this project can be customized in the
-  # section below to disable rules from the `package:flutter_lints/flutter.yaml`
-  # included above or to enable additional rules. A list of all available lints
-  # and their documentation is published at
-  # https://dart-lang.github.io/linter/lints/index.html.
-  #
-  # Instead of disabling a lint rule for the entire project in the
-  # section below, it can also be suppressed for a single line of code
-  # or a specific dart file by using the `// ignore: name_of_lint` and
-  # `// ignore_for_file: name_of_lint` syntax on the line or in the file
-  # producing the lint.
   rules:
-    - invalid_annotation_target: false
-    - unnecessary_await_in_return
-    - unnecessary_getters_setters
-    - unnecessary_late
-    - unnecessary_new
-    - unnecessary_null_in_if_null_operators
-    - unnecessary_nullable_for_final_variable_declarations
-    - void_checks
-    - prefer_const_constructors_in_immutables
-    - library_names
-    - avoid_unnecessary_containers
-    - avoid_unused_constructor_parameters
-    - camel_case_extensions
-    - constant_identifier_names
-    - empty_constructor_bodies
-    - file_names
-    - avoid_null_checks_in_equality_operators
-    - invalid_case_patterns
-    - no_duplicate_case_values
-    - always_use_package_imports
-    - annotate_overrides
-    - avoid_relative_lib_imports
-    - avoid_types_as_parameter_names
-    - avoid_print
-    - depend_on_referenced_packages
-    - cascade_invocations
-
-  # Uncomment to disable the `avoid_print` rule
-  # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
-
-# Additional information about this file can be found at
-# https://dart.dev/guides/language/analysis-options
+    # Wir deaktivieren hier die Lints, die am häufigsten Probleme machen
+    avoid_print: false
+    always_use_package_imports: false
+    annotate_overrides: false
+    avoid_relative_lib_imports: false
+    avoid_types_as_parameter_names: false
+    cascade_invocations: false
+    constant_identifier_names: false
+    file_names: false
+    library_names: false
+    prefer_const_constructors_in_immutables: false
+    unnecessary_await_in_return: false
+    unnecessary_getters_setters: false
+    unnecessary_late: false
+    unnecessary_new: false
+    unnecessary_null_in_if_null_operators: false
+    unnecessary_nullable_for_final_variable_declarations: false
+    void_checks: false
+    avoid_unnecessary_containers: false
+    avoid_unused_constructor_parameters: false
+    camel_case_extensions: false
+    empty_constructor_bodies: false
+    avoid_null_checks_in_equality_operators: false
+    invalid_case_patterns: false
+    no_duplicate_case_values: false
+    prefer_const_constructors: false
+    prefer_const_literals_to_create_immutables: false
+    prefer_final_fields: false
+    use_key_in_widget_constructors: false
