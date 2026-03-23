@@ -47,3 +47,4 @@ linter:
     use_key_in_widget_constructors: false
     use_super_parameters: false
     unnecessary_to_list_in_spreads: false
+    dangling_library_doc_comments: false
