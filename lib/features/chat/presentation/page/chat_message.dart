@@ -50,10 +50,10 @@ class ChatMessageBodyOwner extends StatelessWidget {
     return ListView.builder(
       itemCount: context.read<ChatMessageCubit>().state.length,
       itemBuilder: (context, index) => ListTile(
-        title: Text(
-            context.read<ChatMessageCubit>().state[index].companyName ?? ""),
+        title:
+            Text(context.read<ChatMessageCubit>().state[index].customerNumber),
         subtitle: Text(
-            context.read<ChatMessageCubit>().state[index].customerNumber ?? ""),
+            context.read<ChatMessageCubit>().state[index].companyName ?? ""),
         leading: const Icon(Icons.person),
       ),
     );
