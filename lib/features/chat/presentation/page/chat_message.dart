@@ -51,10 +51,9 @@ class ChatMessageBodyOwner extends StatelessWidget {
       itemCount: context.read<ChatMessageCubit>().state.length,
       itemBuilder: (context, index) => ListTile(
         title: Text(
-            context.read<ChatMessageCubit>().state[index].customerName ?? ""),
+            context.read<ChatMessageCubit>().state[index].companyName ?? ""),
         subtitle: Text(
-            context.read<ChatMessageCubit>().state[index].customerSurname ??
-                ""),
+            context.read<ChatMessageCubit>().state[index].customerNumber ?? ""),
         leading: const Icon(Icons.person),
       ),
     );
