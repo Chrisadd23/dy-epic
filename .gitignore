@@ -70,3 +70,9 @@ amplifytools.xcconfig
 # FVM Version Cache
 .fvm/
 .fvmrc
+
+#projet
+lib/firebase_options.dart
+lib/firebase_options_settings.json
+lib/firebase_options2.dart
+lib/firebase_options_settings2.json

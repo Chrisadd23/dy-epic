@@ -1,0 +1,20 @@
+{
+  "id": "orderId",
+  "userId": "userId",
+  "status": "oderStatus",
+  "createdAt": "dateTime",
+  "products": [
+    {
+      "productName": "productName",
+      "productNumber": "productNumber",
+      "productType": 1,
+      "productCount": 1,
+      "price": 20,
+      "color": "color",
+      "size": {
+        "width": 1600,
+        "height": 800
+      }
+    }
+  ]
+}
