@@ -9,6 +9,8 @@ import 'package:app_flutter_produkt_bestellen/features/settings/dependencies.dar
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/dependencies.dart';
 import 'package:get_it/get_it.dart';
 
+import 'features/chat/dependencies.dart';
+
 final getIt = GetIt.instance;
 
 void setUpMainDependencies() {
@@ -24,5 +26,6 @@ void setUpMainDependencies() {
   ShoppingBasketDependencies.setUp();
   OrderDependencies.setUp();
   LoginDependencies.setUp();
+  ChatDependencies.setUp();
   SettingsDependencies.setUp();
 }

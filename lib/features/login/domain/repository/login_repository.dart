@@ -3,6 +3,8 @@ import 'package:app_flutter_produkt_bestellen/features/login/domain/entity/entit
 import 'package:app_flutter_produkt_bestellen/features/settings/presentation/cubit/notification_settings_state.dart';
 import 'package:either_dart/either.dart';
 
+import '../../../chat/domain/entity/entity_contacts.dart';
+
 abstract class LoginRepository {
   Future<Either<Failure, EntityLoginCustomer>> loginCustomer(
       {required String customerNumber,
@@ -29,4 +31,6 @@ abstract class LoginRepository {
   String? getLocalCustomerNumber();
 
   Future<Failure?> logout();
+
+  Future<Either<Failure, List<EntityContact>>> getAllContacts();
 }

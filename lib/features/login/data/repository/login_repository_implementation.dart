@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
 import 'package:app_flutter_produkt_bestellen/core/shared_preferences_handling.dart';
+import 'package:app_flutter_produkt_bestellen/features/chat/domain/entity/entity_contacts.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/data/datasource/login_datasource.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/domain/entity/entity_login_customer.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/domain/repository/login_repository.dart';
@@ -99,5 +100,10 @@ class LoginRepositoryImplementation extends LoginRepository {
   @override
   Future<Failure?> logout() async {
     return _loginDataSource.logOut();
+  }
+
+  @override
+  Future<Either<Failure, List<EntityContact>>> getAllContacts() {
+    return _loginDataSource.getAllContacts();
   }
 }

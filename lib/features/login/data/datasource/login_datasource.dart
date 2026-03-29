@@ -1,11 +1,13 @@
-import 'package:app_flutter_produkt_bestellen/core/error/failure_state.dart';
 import 'package:app_flutter_produkt_bestellen/core/firebase/firebase_configuration.dart';
 import 'package:app_flutter_produkt_bestellen/core/shared_preferences_handling.dart';
+import 'package:app_flutter_produkt_bestellen/features/chat/domain/entity/entity_contacts.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/domain/entity/entity_login_customer.dart';
 import 'package:app_flutter_produkt_bestellen/features/settings/presentation/cubit/notification_settings_state.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:either_dart/either.dart';
 import 'package:flutter/foundation.dart';
+
+import '../../../../core/error/failure_state.dart';
 
 abstract class LoginDatasource {
   Future<Either<Failure, EntityLoginCustomer>> login(
@@ -27,6 +29,8 @@ abstract class LoginDatasource {
       getCustomerDataBasedOnCustomerNumber({required String customerNumber});
 
   Future<Failure?> logOut();
+
+  Future<Either<Failure, List<EntityContact>>> getAllContacts();
 }
 
 class LoginDatasourceImplementation extends LoginDatasource {
@@ -219,6 +223,34 @@ class LoginDatasourceImplementation extends LoginDatasource {
     } catch (error) {
       return const Failure.message(
           'Sie konnten nicht permanent ausgeloggt werden');
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<EntityContact>>> getAllContacts() async {
+    try {
+      return await _firebaseFirestore
+          .collection('User')
+          .where('userTypeIndex', isEqualTo: 2)
+          .get()
+          .then((value) {
+        final List<EntityContact> contacts = value.docs.map((document) {
+          final json = document.data();
+          return EntityContact(
+            customerNumber: json['customerNumber'],
+            email: json['email'],
+            companyName: json['companyName'],
+            customerName: json['customerName'],
+            customerSurname: json['customerSurname'],
+          );
+        }).toList();
+        debugPrint("contacts => $contacts");
+        return Right(contacts);
+      }, onError: (error) {
+        return Left(Failure.databaseError(error.toString()));
+      });
+    } catch (error) {
+      return Left(Failure.message(error.toString()));
     }
   }
 }
