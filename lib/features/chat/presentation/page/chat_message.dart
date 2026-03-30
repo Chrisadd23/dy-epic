@@ -83,7 +83,7 @@ class ChatMessageBodyOwner extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(5.0),
                         child: CircleAvatar(
-                            backgroundColor: Colors.black,
+                            backgroundColor: Colors.white,
                             child: const Icon(Icons.person)),
                       ),
                     ),
