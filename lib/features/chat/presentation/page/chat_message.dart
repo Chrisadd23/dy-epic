@@ -1,3 +1,4 @@
+import 'package:app_flutter_produkt_bestellen/core/fix_widgets/loading_widget.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_widgets/page/globa_scaffold.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_cubit.dart';
 import 'package:app_flutter_produkt_bestellen/features/shopping_basket/presentation/bloc/bloc_shopping_basket.dart';
@@ -6,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../login/domain/entity/entity_login_customer.dart';
+import '../../domain/entity/entity_contacts.dart';
 import '../cubit/chat_message_cubit.dart';
 
 class ChatMessage extends StatelessWidget {
@@ -47,20 +49,34 @@ class ChatMessageBodyOwner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: context.read<ChatMessageCubit>().state.length,
-      itemBuilder: (context, index) => Container(
-        decoration:
-            BoxDecoration(border: Border.all(color: Colors.grey.shade300)),
-        child: ListTile(
-          title: Text(
-              context.read<ChatMessageCubit>().state[index].customerNumber),
-          subtitle: Text(
-              context.read<ChatMessageCubit>().state[index].companyName ?? ""),
-          leading: const Icon(Icons.person),
-        ),
-      ),
-    );
+    return BlocBuilder<ChatMessageCubit, List<EntityContact>>(
+        builder: (context, state) => state.isEmpty
+            ? Center(child: LoadingWidget())
+            : ListView.builder(
+                itemCount: context.read<ChatMessageCubit>().state.length,
+                itemBuilder: (context, index) => Container(
+                  decoration: BoxDecoration(
+                    border: Border(
+                        bottom: BorderSide(color: Colors.black, width: 2)),
+                    borderRadius:
+                        BorderRadius.only(bottomRight: Radius.circular(20)),
+                  ),
+                  child: ListTile(
+                    title: Text(context
+                        .read<ChatMessageCubit>()
+                        .state[index]
+                        .customerNumber),
+                    subtitle: Text(context
+                            .read<ChatMessageCubit>()
+                            .state[index]
+                            .companyName ??
+                        ""),
+                    leading: CircleAvatar(
+                        backgroundColor: Colors.white,
+                        child: const Icon(Icons.person)),
+                  ),
+                ),
+              ));
   }
 }
 
