@@ -49,12 +49,16 @@ class ChatMessageBodyOwner extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       itemCount: context.read<ChatMessageCubit>().state.length,
-      itemBuilder: (context, index) => ListTile(
-        title:
-            Text(context.read<ChatMessageCubit>().state[index].customerNumber),
-        subtitle: Text(
-            context.read<ChatMessageCubit>().state[index].companyName ?? ""),
-        leading: const Icon(Icons.person),
+      itemBuilder: (context, index) => Container(
+        decoration:
+            BoxDecoration(border: Border.all(color: Colors.grey.shade300)),
+        child: ListTile(
+          title: Text(
+              context.read<ChatMessageCubit>().state[index].customerNumber),
+          subtitle: Text(
+              context.read<ChatMessageCubit>().state[index].companyName ?? ""),
+          leading: const Icon(Icons.person),
+        ),
       ),
     );
   }

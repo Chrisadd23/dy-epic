@@ -278,7 +278,7 @@ class _DropDownButton2Container extends StatelessWidget {
       child: DropdownButton2(
         items: [
           ...dropDownComponents.map(
-            (sortOrder) => DropdownMenuItem(
+            (sortOrder) => DropdownItem(
               value: sortOrder,
               child: Container(
                 decoration: dropDownComponents.last != sortOrder

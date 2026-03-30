@@ -19,9 +19,14 @@ class OrderPageShellNavigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint(
+        "goRouterState.matchedLocation ==> ${goRouterState.matchedLocation}");
+    debugPrint("goRouterState.name ==> ${goRouterState.matchedLocation}");
     return GlobalScaffold(
       appBarContext: context,
-      showMenuBar: !goRouterState.location
+      showMenuBar: !getIt<GoRouter>()
+          .state
+          .matchedLocation
           .contains(AppGoRouter.detailedOrderInformation.path),
       body: BlocProvider<BlocShoppingBasket>.value(
           value: getIt<BlocShoppingBasket>(), child: navigationShell),

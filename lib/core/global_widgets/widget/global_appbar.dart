@@ -107,6 +107,8 @@ class AppBarMenuButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint(
+        "goRouter location ==> ${getIt<GoRouter>().state.matchedLocation}");
     return !showMenuBar
         ? InkWell(
             onTap: () => context.pop(),

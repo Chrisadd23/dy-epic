@@ -242,7 +242,7 @@ class _ShoppingBasketOffer extends StatelessWidget {
                       .read<BlocShoppingBasket>()
                       .add(EventShoppingBasket.change(
                         timePosition: addedTime,
-                        location: getIt<GoRouter>().location,
+                        location: getIt<GoRouter>().state.matchedLocation,
                       ));
                 }
                 if (direction == SwipeDirection.endToStart) {

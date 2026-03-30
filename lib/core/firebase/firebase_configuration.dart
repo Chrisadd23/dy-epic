@@ -201,7 +201,8 @@ abstract class FirebaseConfiguration {
         InitializationSettings(
             android: initializationSettingsAndroid, iOS: initSettingsIos);
 
-    await _flutterLocalNotificationsPlugin.initialize(initializationSettings);
+    await _flutterLocalNotificationsPlugin.initialize(
+        settings: initializationSettings);
   }
 
   static _showNotification(RemoteMessage message) async {
@@ -219,8 +220,11 @@ abstract class FirebaseConfiguration {
         android: androidNotificationDetails, iOS: iOsNotificationDetails);
 
     debugPrint("_flutterLocalNotificationsPlugin.show");
-    await _flutterLocalNotificationsPlugin.show(1, message.notification?.title,
-        message.notification?.body, notificationDetails,
+    await _flutterLocalNotificationsPlugin.show(
+        id: 1,
+        title: message.notification?.title,
+        body: message.notification?.body,
+        notificationDetails: notificationDetails,
         payload: 'Not present');
   }
 }

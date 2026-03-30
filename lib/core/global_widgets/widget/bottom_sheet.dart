@@ -1,9 +1,7 @@
 import 'dart:async';
 
 import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text_style.dart';
-import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class GlobalBottomSheet extends StatefulWidget {
   const GlobalBottomSheet._({required this.infoText, required this.errorIcon});
@@ -33,12 +31,10 @@ class GlobalBottomSheet extends StatefulWidget {
 
 class _GlobalBottomSheetState extends State<GlobalBottomSheet> {
   late final Timer timer;
-  late final String location;
 
   @override
   void initState() {
     super.initState();
-    location = getIt<GoRouter>().location;
     timer = Timer(const Duration(seconds: 3), () {
       Navigator.of(context).pop();
     });

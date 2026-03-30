@@ -158,37 +158,37 @@ class _ProductColumn extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeCategoryCubit, EnumCategoryProduct>(
         builder: (context, category) {
-      productColum() {
+      getCategoryProductWidget(category) {
         switch (category) {
           case EnumCategoryProduct.workingTable:
-            return BlocProvider<CubitCategory>.value(
-                value: getIt<CubitCategory>(
-                    instanceName: EnumCategoryProduct.workingTable.name)
-                  ..load(),
-                child: const _CategoryWorkingTableList());
+            return const _CategoryWorkingTableList();
           case EnumCategoryProduct.officeChairNormal:
-            return BlocProvider<CubitCategory>.value(
-                value: getIt<CubitCategory>(
-                    instanceName: EnumCategoryProduct.officeChairNormal.name)
-                  ..load(),
-                child: const _CategoryOfficeChair());
+            return const _CategoryOfficeChair();
           case EnumCategoryProduct.officeChairHochlehner:
-            return BlocProvider<CubitCategory>.value(
-                value: getIt<CubitCategory>(
-                    instanceName:
-                        EnumCategoryProduct.officeChairHochlehner.name)
-                  ..load(),
-                child: const _CategoryOfficeChair());
+            return const _CategoryOfficeChair();
           case EnumCategoryProduct.conferenceChair:
-            return BlocProvider<CubitCategory>.value(
-                value: getIt<CubitCategory>(
-                    instanceName: EnumCategoryProduct.conferenceChair.name)
-                  ..load(),
-                child: const _CategoryConferenceChair());
+            return const _CategoryConferenceChair();
         }
       }
 
-      return productColum();
+      getCategoryName(category) {
+        switch (category) {
+          case EnumCategoryProduct.workingTable:
+            return EnumCategoryProduct.workingTable.name;
+          case EnumCategoryProduct.officeChairNormal:
+            return EnumCategoryProduct.officeChairNormal.name;
+          case EnumCategoryProduct.officeChairHochlehner:
+            return EnumCategoryProduct.officeChairHochlehner.name;
+          case EnumCategoryProduct.conferenceChair:
+            return EnumCategoryProduct.conferenceChair.name;
+        }
+      }
+
+      return BlocProvider<CubitCategory>.value(
+          value: getIt<CubitCategory>(
+            instanceName: getCategoryName(category),
+          )..load(),
+          child: getCategoryProductWidget(category));
     });
   }
 }

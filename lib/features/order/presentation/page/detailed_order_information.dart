@@ -120,10 +120,9 @@ class _OrderInformationContainer extends StatelessWidget {
                   }
                 }, builder: (context, state) {
                   return DropdownButton2(
-                    value: state.orderProcess,
                     items: EnumOrderProcess.values
                         .map(
-                          (orderProcess) => DropdownMenuItem(
+                          (orderProcess) => DropdownItem(
                             value: orderProcess,
                             child: Center(
                               child: Text(

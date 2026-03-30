@@ -82,7 +82,8 @@ enum AppGoRouter {
                   path: login.path,
                   name: login.name,
                   pageBuilder: (context, state) {
-                    final redirectName = state.queryParameters['redirectName'];
+                    final redirectName =
+                        state.uri.queryParameters['redirectName'];
                     return _getCustomerTransition(
                         LoginPage(redirectName: redirectName), state);
                   }),
@@ -112,7 +113,7 @@ enum AppGoRouter {
                       })?;
 
                       final product = _getCategoryEntityFromJsonDecode(
-                          jsonEncoded: state.queryParameters['product']);
+                          jsonEncoded: state.uri.queryParameters['product']);
                       if (product != null) {
                         return _getCustomerTransition(
                           ProductPage(
@@ -121,7 +122,7 @@ enum AppGoRouter {
                           state,
                         );
                       }
-                      final selectedColor = state.queryParameters['color'];
+                      final selectedColor = state.uri.queryParameters['color'];
 
                       return _getCustomerTransition(
                         ProductPage(
@@ -137,10 +138,10 @@ enum AppGoRouter {
                     name: AppGoRouter.productAdding.name,
                     pageBuilder: (context, state) {
                       final product = _getCategoryEntityFromJsonDecode(
-                          jsonEncoded: state.queryParameters['product']);
+                          jsonEncoded: state.uri.queryParameters['product']);
 
                       final categoryIndex =
-                          state.queryParameters['categoryIndex'];
+                          state.uri.queryParameters['categoryIndex'];
                       return _getCustomerTransition(
                           ProductIntegrationPage(
                               product: product, categoryIndex: categoryIndex),
