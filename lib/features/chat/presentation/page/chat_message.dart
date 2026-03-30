@@ -56,6 +56,12 @@ class ChatMessageBodyOwner extends StatelessWidget {
                 itemCount: context.read<ChatMessageCubit>().state.length,
                 itemBuilder: (context, index) => Container(
                   decoration: BoxDecoration(
+                    gradient: LinearGradient(colors: [
+                      Colors.black54,
+                      Colors.white38,
+                      Colors.grey.shade400,
+                      Colors.transparent,
+                    ], begin: Alignment.bottomLeft, end: Alignment.topRight),
                     border: Border(
                         bottom: BorderSide(color: Colors.black, width: 2)),
                     borderRadius:
