@@ -78,8 +78,15 @@ class ChatMessageBodyOwner extends StatelessWidget {
                             .companyName ??
                         ""),
                     leading: CircleAvatar(
-                        backgroundColor: Colors.white,
-                        child: const Icon(Icons.person)),
+                      backgroundColor: Colors.black,
+                      foregroundColor: Colors.black,
+                      child: Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: CircleAvatar(
+                            backgroundColor: Colors.black,
+                            child: const Icon(Icons.person)),
+                      ),
+                    ),
                   ),
                 ),
               ));
