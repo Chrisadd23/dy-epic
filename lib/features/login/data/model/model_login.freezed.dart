@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,43 +9,88 @@ part of 'model_login.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-ModelLogin _$ModelLoginFromJson(Map<String, dynamic> json) {
-  return _ModelLogin.fromJson(json);
-}
 
 /// @nodoc
 mixin _$ModelLogin {
-  CustomerAddress get address => throw _privateConstructorUsedError;
-  String get customerNumber => throw _privateConstructorUsedError;
-  int get userTypeIndex => throw _privateConstructorUsedError;
-  String? get email => throw _privateConstructorUsedError;
-  String? get companyName => throw _privateConstructorUsedError;
+  CustomerAddress get address;
+  String get customerNumber;
+  int get userTypeIndex;
+  String? get email;
+  String? get companyName;
   @JsonKey(name: 'firstname')
-  String? get customerName => throw _privateConstructorUsedError;
+  String? get customerName;
   @JsonKey(name: 'lastname')
-  String? get customerSurname => throw _privateConstructorUsedError;
-  int? get registrationDate => throw _privateConstructorUsedError;
-  CustomerAddress? get deliveryAddress => throw _privateConstructorUsedError;
-  List<UserNotification> get notifications =>
-      throw _privateConstructorUsedError;
-  String? get fToken => throw _privateConstructorUsedError;
+  String? get customerSurname;
+  int? get registrationDate;
+  CustomerAddress? get deliveryAddress;
+  List<UserNotification> get notifications;
+  String? get fToken;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+  /// Create a copy of ModelLogin
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $ModelLoginCopyWith<ModelLogin> get copyWith =>
-      throw _privateConstructorUsedError;
+      _$ModelLoginCopyWithImpl<ModelLogin>(this as ModelLogin, _$identity);
+
+  /// Serializes this ModelLogin to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is ModelLogin &&
+            (identical(other.address, address) || other.address == address) &&
+            (identical(other.customerNumber, customerNumber) ||
+                other.customerNumber == customerNumber) &&
+            (identical(other.userTypeIndex, userTypeIndex) ||
+                other.userTypeIndex == userTypeIndex) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.companyName, companyName) ||
+                other.companyName == companyName) &&
+            (identical(other.customerName, customerName) ||
+                other.customerName == customerName) &&
+            (identical(other.customerSurname, customerSurname) ||
+                other.customerSurname == customerSurname) &&
+            (identical(other.registrationDate, registrationDate) ||
+                other.registrationDate == registrationDate) &&
+            (identical(other.deliveryAddress, deliveryAddress) ||
+                other.deliveryAddress == deliveryAddress) &&
+            const DeepCollectionEquality()
+                .equals(other.notifications, notifications) &&
+            (identical(other.fToken, fToken) || other.fToken == fToken));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      address,
+      customerNumber,
+      userTypeIndex,
+      email,
+      companyName,
+      customerName,
+      customerSurname,
+      registrationDate,
+      deliveryAddress,
+      const DeepCollectionEquality().hash(notifications),
+      fToken);
+
+  @override
+  String toString() {
+    return 'ModelLogin(address: $address, customerNumber: $customerNumber, userTypeIndex: $userTypeIndex, email: $email, companyName: $companyName, customerName: $customerName, customerSurname: $customerSurname, registrationDate: $registrationDate, deliveryAddress: $deliveryAddress, notifications: $notifications, fToken: $fToken)';
+  }
 }
 
 /// @nodoc
-abstract class $ModelLoginCopyWith<$Res> {
+abstract mixin class $ModelLoginCopyWith<$Res> {
   factory $ModelLoginCopyWith(
-          ModelLogin value, $Res Function(ModelLogin) then) =
-      _$ModelLoginCopyWithImpl<$Res, ModelLogin>;
+          ModelLogin value, $Res Function(ModelLogin) _then) =
+      _$ModelLoginCopyWithImpl;
   @useResult
   $Res call(
       {CustomerAddress address,
@@ -65,15 +110,14 @@ abstract class $ModelLoginCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ModelLoginCopyWithImpl<$Res, $Val extends ModelLogin>
-    implements $ModelLoginCopyWith<$Res> {
-  _$ModelLoginCopyWithImpl(this._value, this._then);
+class _$ModelLoginCopyWithImpl<$Res> implements $ModelLoginCopyWith<$Res> {
+  _$ModelLoginCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final ModelLogin _self;
+  final $Res Function(ModelLogin) _then;
 
+  /// Create a copy of ModelLogin
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -89,179 +133,310 @@ class _$ModelLoginCopyWithImpl<$Res, $Val extends ModelLogin>
     Object? notifications = null,
     Object? fToken = freezed,
   }) {
-    return _then(_value.copyWith(
+    return _then(_self.copyWith(
       address: null == address
-          ? _value.address
+          ? _self.address
           : address // ignore: cast_nullable_to_non_nullable
               as CustomerAddress,
       customerNumber: null == customerNumber
-          ? _value.customerNumber
+          ? _self.customerNumber
           : customerNumber // ignore: cast_nullable_to_non_nullable
               as String,
       userTypeIndex: null == userTypeIndex
-          ? _value.userTypeIndex
+          ? _self.userTypeIndex
           : userTypeIndex // ignore: cast_nullable_to_non_nullable
               as int,
       email: freezed == email
-          ? _value.email
+          ? _self.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
       companyName: freezed == companyName
-          ? _value.companyName
+          ? _self.companyName
           : companyName // ignore: cast_nullable_to_non_nullable
               as String?,
       customerName: freezed == customerName
-          ? _value.customerName
+          ? _self.customerName
           : customerName // ignore: cast_nullable_to_non_nullable
               as String?,
       customerSurname: freezed == customerSurname
-          ? _value.customerSurname
+          ? _self.customerSurname
           : customerSurname // ignore: cast_nullable_to_non_nullable
               as String?,
       registrationDate: freezed == registrationDate
-          ? _value.registrationDate
+          ? _self.registrationDate
           : registrationDate // ignore: cast_nullable_to_non_nullable
               as int?,
       deliveryAddress: freezed == deliveryAddress
-          ? _value.deliveryAddress
+          ? _self.deliveryAddress
           : deliveryAddress // ignore: cast_nullable_to_non_nullable
               as CustomerAddress?,
       notifications: null == notifications
-          ? _value.notifications
+          ? _self.notifications
           : notifications // ignore: cast_nullable_to_non_nullable
               as List<UserNotification>,
       fToken: freezed == fToken
-          ? _value.fToken
-          : fToken // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $CustomerAddressCopyWith<$Res> get address {
-    return $CustomerAddressCopyWith<$Res>(_value.address, (value) {
-      return _then(_value.copyWith(address: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $CustomerAddressCopyWith<$Res>? get deliveryAddress {
-    if (_value.deliveryAddress == null) {
-      return null;
-    }
-
-    return $CustomerAddressCopyWith<$Res>(_value.deliveryAddress!, (value) {
-      return _then(_value.copyWith(deliveryAddress: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$ModelLoginImplCopyWith<$Res>
-    implements $ModelLoginCopyWith<$Res> {
-  factory _$$ModelLoginImplCopyWith(
-          _$ModelLoginImpl value, $Res Function(_$ModelLoginImpl) then) =
-      __$$ModelLoginImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {CustomerAddress address,
-      String customerNumber,
-      int userTypeIndex,
-      String? email,
-      String? companyName,
-      @JsonKey(name: 'firstname') String? customerName,
-      @JsonKey(name: 'lastname') String? customerSurname,
-      int? registrationDate,
-      CustomerAddress? deliveryAddress,
-      List<UserNotification> notifications,
-      String? fToken});
-
-  @override
-  $CustomerAddressCopyWith<$Res> get address;
-  @override
-  $CustomerAddressCopyWith<$Res>? get deliveryAddress;
-}
-
-/// @nodoc
-class __$$ModelLoginImplCopyWithImpl<$Res>
-    extends _$ModelLoginCopyWithImpl<$Res, _$ModelLoginImpl>
-    implements _$$ModelLoginImplCopyWith<$Res> {
-  __$$ModelLoginImplCopyWithImpl(
-      _$ModelLoginImpl _value, $Res Function(_$ModelLoginImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? address = null,
-    Object? customerNumber = null,
-    Object? userTypeIndex = null,
-    Object? email = freezed,
-    Object? companyName = freezed,
-    Object? customerName = freezed,
-    Object? customerSurname = freezed,
-    Object? registrationDate = freezed,
-    Object? deliveryAddress = freezed,
-    Object? notifications = null,
-    Object? fToken = freezed,
-  }) {
-    return _then(_$ModelLoginImpl(
-      address: null == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
-              as CustomerAddress,
-      customerNumber: null == customerNumber
-          ? _value.customerNumber
-          : customerNumber // ignore: cast_nullable_to_non_nullable
-              as String,
-      userTypeIndex: null == userTypeIndex
-          ? _value.userTypeIndex
-          : userTypeIndex // ignore: cast_nullable_to_non_nullable
-              as int,
-      email: freezed == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String?,
-      companyName: freezed == companyName
-          ? _value.companyName
-          : companyName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      customerName: freezed == customerName
-          ? _value.customerName
-          : customerName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      customerSurname: freezed == customerSurname
-          ? _value.customerSurname
-          : customerSurname // ignore: cast_nullable_to_non_nullable
-              as String?,
-      registrationDate: freezed == registrationDate
-          ? _value.registrationDate
-          : registrationDate // ignore: cast_nullable_to_non_nullable
-              as int?,
-      deliveryAddress: freezed == deliveryAddress
-          ? _value.deliveryAddress
-          : deliveryAddress // ignore: cast_nullable_to_non_nullable
-              as CustomerAddress?,
-      notifications: null == notifications
-          ? _value._notifications
-          : notifications // ignore: cast_nullable_to_non_nullable
-              as List<UserNotification>,
-      fToken: freezed == fToken
-          ? _value.fToken
+          ? _self.fToken
           : fToken // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
+  }
+
+  /// Create a copy of ModelLogin
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CustomerAddressCopyWith<$Res> get address {
+    return $CustomerAddressCopyWith<$Res>(_self.address, (value) {
+      return _then(_self.copyWith(address: value));
+    });
+  }
+
+  /// Create a copy of ModelLogin
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CustomerAddressCopyWith<$Res>? get deliveryAddress {
+    if (_self.deliveryAddress == null) {
+      return null;
+    }
+
+    return $CustomerAddressCopyWith<$Res>(_self.deliveryAddress!, (value) {
+      return _then(_self.copyWith(deliveryAddress: value));
+    });
+  }
+}
+
+/// Adds pattern-matching-related methods to [ModelLogin].
+extension ModelLoginPatterns on ModelLogin {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_ModelLogin value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _ModelLogin() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ModelLogin value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ModelLogin():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_ModelLogin value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ModelLogin() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            CustomerAddress address,
+            String customerNumber,
+            int userTypeIndex,
+            String? email,
+            String? companyName,
+            @JsonKey(name: 'firstname') String? customerName,
+            @JsonKey(name: 'lastname') String? customerSurname,
+            int? registrationDate,
+            CustomerAddress? deliveryAddress,
+            List<UserNotification> notifications,
+            String? fToken)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _ModelLogin() when $default != null:
+        return $default(
+            _that.address,
+            _that.customerNumber,
+            _that.userTypeIndex,
+            _that.email,
+            _that.companyName,
+            _that.customerName,
+            _that.customerSurname,
+            _that.registrationDate,
+            _that.deliveryAddress,
+            _that.notifications,
+            _that.fToken);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            CustomerAddress address,
+            String customerNumber,
+            int userTypeIndex,
+            String? email,
+            String? companyName,
+            @JsonKey(name: 'firstname') String? customerName,
+            @JsonKey(name: 'lastname') String? customerSurname,
+            int? registrationDate,
+            CustomerAddress? deliveryAddress,
+            List<UserNotification> notifications,
+            String? fToken)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ModelLogin():
+        return $default(
+            _that.address,
+            _that.customerNumber,
+            _that.userTypeIndex,
+            _that.email,
+            _that.companyName,
+            _that.customerName,
+            _that.customerSurname,
+            _that.registrationDate,
+            _that.deliveryAddress,
+            _that.notifications,
+            _that.fToken);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            CustomerAddress address,
+            String customerNumber,
+            int userTypeIndex,
+            String? email,
+            String? companyName,
+            @JsonKey(name: 'firstname') String? customerName,
+            @JsonKey(name: 'lastname') String? customerSurname,
+            int? registrationDate,
+            CustomerAddress? deliveryAddress,
+            List<UserNotification> notifications,
+            String? fToken)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ModelLogin() when $default != null:
+        return $default(
+            _that.address,
+            _that.customerNumber,
+            _that.userTypeIndex,
+            _that.email,
+            _that.companyName,
+            _that.customerName,
+            _that.customerSurname,
+            _that.registrationDate,
+            _that.deliveryAddress,
+            _that.notifications,
+            _that.fToken);
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$ModelLoginImpl extends _ModelLogin {
-  const _$ModelLoginImpl(
+class _ModelLogin extends ModelLogin {
+  const _ModelLogin(
       {required this.address,
       required this.customerNumber,
       required this.userTypeIndex,
@@ -275,9 +450,8 @@ class _$ModelLoginImpl extends _ModelLogin {
       this.fToken})
       : _notifications = notifications,
         super._();
-
-  factory _$ModelLoginImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ModelLoginImplFromJson(json);
+  factory _ModelLogin.fromJson(Map<String, dynamic> json) =>
+      _$ModelLoginFromJson(json);
 
   @override
   final CustomerAddress address;
@@ -311,16 +485,26 @@ class _$ModelLoginImpl extends _ModelLogin {
   @override
   final String? fToken;
 
+  /// Create a copy of ModelLogin
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'ModelLogin(address: $address, customerNumber: $customerNumber, userTypeIndex: $userTypeIndex, email: $email, companyName: $companyName, customerName: $customerName, customerSurname: $customerSurname, registrationDate: $registrationDate, deliveryAddress: $deliveryAddress, notifications: $notifications, fToken: $fToken)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$ModelLoginCopyWith<_ModelLogin> get copyWith =>
+      __$ModelLoginCopyWithImpl<_ModelLogin>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$ModelLoginToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ModelLoginImpl &&
+            other is _ModelLogin &&
             (identical(other.address, address) || other.address == address) &&
             (identical(other.customerNumber, customerNumber) ||
                 other.customerNumber == customerNumber) &&
@@ -342,7 +526,7 @@ class _$ModelLoginImpl extends _ModelLogin {
             (identical(other.fToken, fToken) || other.fToken == fToken));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -358,64 +542,134 @@ class _$ModelLoginImpl extends _ModelLogin {
       const DeepCollectionEquality().hash(_notifications),
       fToken);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$ModelLoginImplCopyWith<_$ModelLoginImpl> get copyWith =>
-      __$$ModelLoginImplCopyWithImpl<_$ModelLoginImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ModelLoginImplToJson(
-      this,
-    );
+  String toString() {
+    return 'ModelLogin(address: $address, customerNumber: $customerNumber, userTypeIndex: $userTypeIndex, email: $email, companyName: $companyName, customerName: $customerName, customerSurname: $customerSurname, registrationDate: $registrationDate, deliveryAddress: $deliveryAddress, notifications: $notifications, fToken: $fToken)';
   }
 }
 
-abstract class _ModelLogin extends ModelLogin {
-  const factory _ModelLogin(
-      {required final CustomerAddress address,
-      required final String customerNumber,
-      required final int userTypeIndex,
-      final String? email,
-      final String? companyName,
-      @JsonKey(name: 'firstname') final String? customerName,
-      @JsonKey(name: 'lastname') final String? customerSurname,
-      final int? registrationDate,
-      final CustomerAddress? deliveryAddress,
-      final List<UserNotification> notifications,
-      final String? fToken}) = _$ModelLoginImpl;
-  const _ModelLogin._() : super._();
+/// @nodoc
+abstract mixin class _$ModelLoginCopyWith<$Res>
+    implements $ModelLoginCopyWith<$Res> {
+  factory _$ModelLoginCopyWith(
+          _ModelLogin value, $Res Function(_ModelLogin) _then) =
+      __$ModelLoginCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {CustomerAddress address,
+      String customerNumber,
+      int userTypeIndex,
+      String? email,
+      String? companyName,
+      @JsonKey(name: 'firstname') String? customerName,
+      @JsonKey(name: 'lastname') String? customerSurname,
+      int? registrationDate,
+      CustomerAddress? deliveryAddress,
+      List<UserNotification> notifications,
+      String? fToken});
 
-  factory _ModelLogin.fromJson(Map<String, dynamic> json) =
-      _$ModelLoginImpl.fromJson;
-
   @override
-  CustomerAddress get address;
+  $CustomerAddressCopyWith<$Res> get address;
   @override
-  String get customerNumber;
-  @override
-  int get userTypeIndex;
-  @override
-  String? get email;
-  @override
-  String? get companyName;
-  @override
-  @JsonKey(name: 'firstname')
-  String? get customerName;
-  @override
-  @JsonKey(name: 'lastname')
-  String? get customerSurname;
-  @override
-  int? get registrationDate;
-  @override
-  CustomerAddress? get deliveryAddress;
-  @override
-  List<UserNotification> get notifications;
-  @override
-  String? get fToken;
-  @override
-  @JsonKey(ignore: true)
-  _$$ModelLoginImplCopyWith<_$ModelLoginImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  $CustomerAddressCopyWith<$Res>? get deliveryAddress;
 }
+
+/// @nodoc
+class __$ModelLoginCopyWithImpl<$Res> implements _$ModelLoginCopyWith<$Res> {
+  __$ModelLoginCopyWithImpl(this._self, this._then);
+
+  final _ModelLogin _self;
+  final $Res Function(_ModelLogin) _then;
+
+  /// Create a copy of ModelLogin
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? address = null,
+    Object? customerNumber = null,
+    Object? userTypeIndex = null,
+    Object? email = freezed,
+    Object? companyName = freezed,
+    Object? customerName = freezed,
+    Object? customerSurname = freezed,
+    Object? registrationDate = freezed,
+    Object? deliveryAddress = freezed,
+    Object? notifications = null,
+    Object? fToken = freezed,
+  }) {
+    return _then(_ModelLogin(
+      address: null == address
+          ? _self.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as CustomerAddress,
+      customerNumber: null == customerNumber
+          ? _self.customerNumber
+          : customerNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      userTypeIndex: null == userTypeIndex
+          ? _self.userTypeIndex
+          : userTypeIndex // ignore: cast_nullable_to_non_nullable
+              as int,
+      email: freezed == email
+          ? _self.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+      companyName: freezed == companyName
+          ? _self.companyName
+          : companyName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      customerName: freezed == customerName
+          ? _self.customerName
+          : customerName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      customerSurname: freezed == customerSurname
+          ? _self.customerSurname
+          : customerSurname // ignore: cast_nullable_to_non_nullable
+              as String?,
+      registrationDate: freezed == registrationDate
+          ? _self.registrationDate
+          : registrationDate // ignore: cast_nullable_to_non_nullable
+              as int?,
+      deliveryAddress: freezed == deliveryAddress
+          ? _self.deliveryAddress
+          : deliveryAddress // ignore: cast_nullable_to_non_nullable
+              as CustomerAddress?,
+      notifications: null == notifications
+          ? _self._notifications
+          : notifications // ignore: cast_nullable_to_non_nullable
+              as List<UserNotification>,
+      fToken: freezed == fToken
+          ? _self.fToken
+          : fToken // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+
+  /// Create a copy of ModelLogin
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CustomerAddressCopyWith<$Res> get address {
+    return $CustomerAddressCopyWith<$Res>(_self.address, (value) {
+      return _then(_self.copyWith(address: value));
+    });
+  }
+
+  /// Create a copy of ModelLogin
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CustomerAddressCopyWith<$Res>? get deliveryAddress {
+    if (_self.deliveryAddress == null) {
+      return null;
+    }
+
+    return $CustomerAddressCopyWith<$Res>(_self.deliveryAddress!, (value) {
+      return _then(_self.copyWith(deliveryAddress: value));
+    });
+  }
+}
+
+// dart format on

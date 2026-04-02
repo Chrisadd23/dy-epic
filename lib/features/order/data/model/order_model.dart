@@ -7,7 +7,7 @@ part 'order_model.freezed.dart';
 part 'order_model.g.dart';
 
 @freezed
-class OrderModel with _$OrderModel {
+abstract class OrderModel with _$OrderModel {
   const OrderModel._();
 
   @JsonSerializable(explicitToJson: true)
@@ -33,7 +33,7 @@ class OrderModel with _$OrderModel {
 }
 
 @freezed
-class Order with _$Order {
+abstract class Order with _$Order {
   const Order._();
 
   @JsonSerializable(explicitToJson: true)

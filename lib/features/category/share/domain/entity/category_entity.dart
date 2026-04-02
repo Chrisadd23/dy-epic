@@ -5,7 +5,7 @@ part 'category_entity.freezed.dart';
 part 'category_entity.g.dart';
 
 @freezed
-class CategoryEntity with _$CategoryEntity {
+abstract class CategoryEntity with _$CategoryEntity {
   @JsonSerializable(explicitToJson: true)
   const factory CategoryEntity({
     required String productNumber,

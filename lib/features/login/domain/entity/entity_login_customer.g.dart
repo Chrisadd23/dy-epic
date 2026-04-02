@@ -6,9 +6,8 @@ part of 'entity_login_customer.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$EntityLoginCustomerImpl _$$EntityLoginCustomerImplFromJson(
-        Map<String, dynamic> json) =>
-    _$EntityLoginCustomerImpl(
+_EntityLoginCustomer _$EntityLoginCustomerFromJson(Map<String, dynamic> json) =>
+    _EntityLoginCustomer(
       address:
           CustomerAddress.fromJson(json['address'] as Map<String, dynamic>),
       customerNumber: json['customerNumber'] as String,
@@ -29,8 +28,8 @@ _$EntityLoginCustomerImpl _$$EntityLoginCustomerImplFromJson(
       fToken: json['fToken'] as String?,
     );
 
-Map<String, dynamic> _$$EntityLoginCustomerImplToJson(
-        _$EntityLoginCustomerImpl instance) =>
+Map<String, dynamic> _$EntityLoginCustomerToJson(
+        _EntityLoginCustomer instance) =>
     <String, dynamic>{
       'address': instance.address.toJson(),
       'customerNumber': instance.customerNumber,
@@ -45,31 +44,27 @@ Map<String, dynamic> _$$EntityLoginCustomerImplToJson(
       'fToken': instance.fToken,
     };
 
-_$CustomerAddressImpl _$$CustomerAddressImplFromJson(
-        Map<String, dynamic> json) =>
-    _$CustomerAddressImpl(
+_CustomerAddress _$CustomerAddressFromJson(Map<String, dynamic> json) =>
+    _CustomerAddress(
       street: json['street'] as String,
       city: json['city'] as String,
       zipCode: json['zipCode'] as String,
     );
 
-Map<String, dynamic> _$$CustomerAddressImplToJson(
-        _$CustomerAddressImpl instance) =>
+Map<String, dynamic> _$CustomerAddressToJson(_CustomerAddress instance) =>
     <String, dynamic>{
       'street': instance.street,
       'city': instance.city,
       'zipCode': instance.zipCode,
     };
 
-_$UserNotificationImpl _$$UserNotificationImplFromJson(
-        Map<String, dynamic> json) =>
-    _$UserNotificationImpl(
+_UserNotification _$UserNotificationFromJson(Map<String, dynamic> json) =>
+    _UserNotification(
       statusType: (json['statusType'] as num).toInt(),
       active: json['active'] as bool,
     );
 
-Map<String, dynamic> _$$UserNotificationImplToJson(
-        _$UserNotificationImpl instance) =>
+Map<String, dynamic> _$UserNotificationToJson(_UserNotification instance) =>
     <String, dynamic>{
       'statusType': instance.statusType,
       'active': instance.active,

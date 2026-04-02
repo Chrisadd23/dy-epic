@@ -6,7 +6,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'order_customer_state.freezed.dart';
 
 @freezed
-class OrderCustomerState with _$OrderCustomerState {
+abstract class OrderCustomerState with _$OrderCustomerState {
   const OrderCustomerState._();
 
   const factory OrderCustomerState.initialise() = _Initialise;
@@ -35,7 +35,7 @@ class OrderCustomerState with _$OrderCustomerState {
 }
 
 @freezed
-class ProductOrder with _$ProductOrder {
+abstract class ProductOrder with _$ProductOrder {
   const factory ProductOrder({
     required String orderNumber,
     required double amount,
@@ -47,7 +47,7 @@ class ProductOrder with _$ProductOrder {
 }
 
 @freezed
-class ProductInformation with _$ProductInformation {
+abstract class ProductInformation with _$ProductInformation {
   const factory ProductInformation({
     required int count,
     required double price,

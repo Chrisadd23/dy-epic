@@ -5,7 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'notification_settings_state.freezed.dart';
 
 @freezed
-class NotificationSettingsState with _$NotificationSettingsState {
+abstract class NotificationSettingsState with _$NotificationSettingsState {
   const factory NotificationSettingsState({
     @Default(false) bool isInProcess,
     @Default(false) bool areAllActive,
@@ -15,7 +15,7 @@ class NotificationSettingsState with _$NotificationSettingsState {
 }
 
 @freezed
-class NotificationSetting with _$NotificationSetting {
+abstract class NotificationSetting with _$NotificationSetting {
   const factory NotificationSetting({
     required bool isActive,
     required EnumOrderProcess enumOrderProcess,

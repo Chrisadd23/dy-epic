@@ -6,8 +6,7 @@ part of 'model_login.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ModelLoginImpl _$$ModelLoginImplFromJson(Map<String, dynamic> json) =>
-    _$ModelLoginImpl(
+_ModelLogin _$ModelLoginFromJson(Map<String, dynamic> json) => _ModelLogin(
       address:
           CustomerAddress.fromJson(json['address'] as Map<String, dynamic>),
       customerNumber: json['customerNumber'] as String,
@@ -28,7 +27,7 @@ _$ModelLoginImpl _$$ModelLoginImplFromJson(Map<String, dynamic> json) =>
       fToken: json['fToken'] as String?,
     );
 
-Map<String, dynamic> _$$ModelLoginImplToJson(_$ModelLoginImpl instance) =>
+Map<String, dynamic> _$ModelLoginToJson(_ModelLogin instance) =>
     <String, dynamic>{
       'address': instance.address.toJson(),
       'customerNumber': instance.customerNumber,

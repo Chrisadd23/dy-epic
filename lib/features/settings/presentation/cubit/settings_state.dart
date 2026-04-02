@@ -12,7 +12,7 @@ enum NotificationType {
 }
 
 @freezed
-class SettingsState with _$SettingsState {
+abstract class SettingsState with _$SettingsState {
   const factory SettingsState({
     required bool isSaving,
     List<Notifications>? notifications,
@@ -20,7 +20,7 @@ class SettingsState with _$SettingsState {
 }
 
 @freezed
-class Notifications with _$Notifications {
+abstract class Notifications with _$Notifications {
   const factory Notifications({
     required bool activated,
     required NotificationType notificationType,

@@ -7,7 +7,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'product_integration_state.freezed.dart';
 
 @freezed
-class ProductIntegrationState with _$ProductIntegrationState {
+abstract class ProductIntegrationState with _$ProductIntegrationState {
   const factory ProductIntegrationState(
       {required EnumCategoryProduct categoryProduct,
       required bool imageUploadInProcess,

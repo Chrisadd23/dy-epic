@@ -10,8 +10,8 @@ import '../../../login/domain/entity/entity_login_customer.dart';
 import '../../domain/entity/entity_contacts.dart';
 import '../cubit/chat_message_cubit.dart';
 
-class ChatMessage extends StatelessWidget {
-  const ChatMessage({super.key});
+class ChatAccountList extends StatelessWidget {
+  const ChatAccountList({super.key});
 
   @override
   Widget build(BuildContext context) {

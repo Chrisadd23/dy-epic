@@ -12,7 +12,7 @@ enum UserType {
 }
 
 @freezed
-class EntityLoginCustomer with _$EntityLoginCustomer {
+abstract class EntityLoginCustomer with _$EntityLoginCustomer {
   const EntityLoginCustomer._();
 
   @JsonSerializable(explicitToJson: true)
@@ -45,7 +45,7 @@ class EntityLoginCustomer with _$EntityLoginCustomer {
 }
 
 @freezed
-class CustomerAddress with _$CustomerAddress {
+abstract class CustomerAddress with _$CustomerAddress {
   @JsonSerializable(explicitToJson: true)
   const factory CustomerAddress({
     required String street,
@@ -58,7 +58,7 @@ class CustomerAddress with _$CustomerAddress {
 }
 
 @freezed
-class UserNotification with _$UserNotification {
+abstract class UserNotification with _$UserNotification {
   const UserNotification._();
 
   @JsonSerializable(explicitToJson: true)

@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,43 +9,89 @@ part of 'entity_login_customer.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-EntityLoginCustomer _$EntityLoginCustomerFromJson(Map<String, dynamic> json) {
-  return _EntityLoginCustomer.fromJson(json);
-}
 
 /// @nodoc
 mixin _$EntityLoginCustomer {
-  CustomerAddress get address => throw _privateConstructorUsedError;
-  String get customerNumber => throw _privateConstructorUsedError;
-  int get userTypeIndex => throw _privateConstructorUsedError;
-  String? get email => throw _privateConstructorUsedError;
-  String? get companyName => throw _privateConstructorUsedError;
+  CustomerAddress get address;
+  String get customerNumber;
+  int get userTypeIndex;
+  String? get email;
+  String? get companyName;
   @JsonKey(name: 'firstname')
-  String? get customerName => throw _privateConstructorUsedError;
+  String? get customerName;
   @JsonKey(name: 'lastname')
-  String? get customerSurname => throw _privateConstructorUsedError;
-  int? get registrationDate => throw _privateConstructorUsedError;
-  CustomerAddress? get deliveryAddress => throw _privateConstructorUsedError;
-  List<UserNotification> get notifications =>
-      throw _privateConstructorUsedError;
-  String? get fToken => throw _privateConstructorUsedError;
+  String? get customerSurname;
+  int? get registrationDate;
+  CustomerAddress? get deliveryAddress;
+  List<UserNotification> get notifications;
+  String? get fToken;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+  /// Create a copy of EntityLoginCustomer
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $EntityLoginCustomerCopyWith<EntityLoginCustomer> get copyWith =>
-      throw _privateConstructorUsedError;
+      _$EntityLoginCustomerCopyWithImpl<EntityLoginCustomer>(
+          this as EntityLoginCustomer, _$identity);
+
+  /// Serializes this EntityLoginCustomer to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is EntityLoginCustomer &&
+            (identical(other.address, address) || other.address == address) &&
+            (identical(other.customerNumber, customerNumber) ||
+                other.customerNumber == customerNumber) &&
+            (identical(other.userTypeIndex, userTypeIndex) ||
+                other.userTypeIndex == userTypeIndex) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.companyName, companyName) ||
+                other.companyName == companyName) &&
+            (identical(other.customerName, customerName) ||
+                other.customerName == customerName) &&
+            (identical(other.customerSurname, customerSurname) ||
+                other.customerSurname == customerSurname) &&
+            (identical(other.registrationDate, registrationDate) ||
+                other.registrationDate == registrationDate) &&
+            (identical(other.deliveryAddress, deliveryAddress) ||
+                other.deliveryAddress == deliveryAddress) &&
+            const DeepCollectionEquality()
+                .equals(other.notifications, notifications) &&
+            (identical(other.fToken, fToken) || other.fToken == fToken));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      address,
+      customerNumber,
+      userTypeIndex,
+      email,
+      companyName,
+      customerName,
+      customerSurname,
+      registrationDate,
+      deliveryAddress,
+      const DeepCollectionEquality().hash(notifications),
+      fToken);
+
+  @override
+  String toString() {
+    return 'EntityLoginCustomer(address: $address, customerNumber: $customerNumber, userTypeIndex: $userTypeIndex, email: $email, companyName: $companyName, customerName: $customerName, customerSurname: $customerSurname, registrationDate: $registrationDate, deliveryAddress: $deliveryAddress, notifications: $notifications, fToken: $fToken)';
+  }
 }
 
 /// @nodoc
-abstract class $EntityLoginCustomerCopyWith<$Res> {
+abstract mixin class $EntityLoginCustomerCopyWith<$Res> {
   factory $EntityLoginCustomerCopyWith(
-          EntityLoginCustomer value, $Res Function(EntityLoginCustomer) then) =
-      _$EntityLoginCustomerCopyWithImpl<$Res, EntityLoginCustomer>;
+          EntityLoginCustomer value, $Res Function(EntityLoginCustomer) _then) =
+      _$EntityLoginCustomerCopyWithImpl;
   @useResult
   $Res call(
       {CustomerAddress address,
@@ -65,15 +111,15 @@ abstract class $EntityLoginCustomerCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$EntityLoginCustomerCopyWithImpl<$Res, $Val extends EntityLoginCustomer>
+class _$EntityLoginCustomerCopyWithImpl<$Res>
     implements $EntityLoginCustomerCopyWith<$Res> {
-  _$EntityLoginCustomerCopyWithImpl(this._value, this._then);
+  _$EntityLoginCustomerCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final EntityLoginCustomer _self;
+  final $Res Function(EntityLoginCustomer) _then;
 
+  /// Create a copy of EntityLoginCustomer
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -89,179 +135,310 @@ class _$EntityLoginCustomerCopyWithImpl<$Res, $Val extends EntityLoginCustomer>
     Object? notifications = null,
     Object? fToken = freezed,
   }) {
-    return _then(_value.copyWith(
+    return _then(_self.copyWith(
       address: null == address
-          ? _value.address
+          ? _self.address
           : address // ignore: cast_nullable_to_non_nullable
               as CustomerAddress,
       customerNumber: null == customerNumber
-          ? _value.customerNumber
+          ? _self.customerNumber
           : customerNumber // ignore: cast_nullable_to_non_nullable
               as String,
       userTypeIndex: null == userTypeIndex
-          ? _value.userTypeIndex
+          ? _self.userTypeIndex
           : userTypeIndex // ignore: cast_nullable_to_non_nullable
               as int,
       email: freezed == email
-          ? _value.email
+          ? _self.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
       companyName: freezed == companyName
-          ? _value.companyName
+          ? _self.companyName
           : companyName // ignore: cast_nullable_to_non_nullable
               as String?,
       customerName: freezed == customerName
-          ? _value.customerName
+          ? _self.customerName
           : customerName // ignore: cast_nullable_to_non_nullable
               as String?,
       customerSurname: freezed == customerSurname
-          ? _value.customerSurname
+          ? _self.customerSurname
           : customerSurname // ignore: cast_nullable_to_non_nullable
               as String?,
       registrationDate: freezed == registrationDate
-          ? _value.registrationDate
+          ? _self.registrationDate
           : registrationDate // ignore: cast_nullable_to_non_nullable
               as int?,
       deliveryAddress: freezed == deliveryAddress
-          ? _value.deliveryAddress
+          ? _self.deliveryAddress
           : deliveryAddress // ignore: cast_nullable_to_non_nullable
               as CustomerAddress?,
       notifications: null == notifications
-          ? _value.notifications
+          ? _self.notifications
           : notifications // ignore: cast_nullable_to_non_nullable
               as List<UserNotification>,
       fToken: freezed == fToken
-          ? _value.fToken
-          : fToken // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $CustomerAddressCopyWith<$Res> get address {
-    return $CustomerAddressCopyWith<$Res>(_value.address, (value) {
-      return _then(_value.copyWith(address: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $CustomerAddressCopyWith<$Res>? get deliveryAddress {
-    if (_value.deliveryAddress == null) {
-      return null;
-    }
-
-    return $CustomerAddressCopyWith<$Res>(_value.deliveryAddress!, (value) {
-      return _then(_value.copyWith(deliveryAddress: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$EntityLoginCustomerImplCopyWith<$Res>
-    implements $EntityLoginCustomerCopyWith<$Res> {
-  factory _$$EntityLoginCustomerImplCopyWith(_$EntityLoginCustomerImpl value,
-          $Res Function(_$EntityLoginCustomerImpl) then) =
-      __$$EntityLoginCustomerImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {CustomerAddress address,
-      String customerNumber,
-      int userTypeIndex,
-      String? email,
-      String? companyName,
-      @JsonKey(name: 'firstname') String? customerName,
-      @JsonKey(name: 'lastname') String? customerSurname,
-      int? registrationDate,
-      CustomerAddress? deliveryAddress,
-      List<UserNotification> notifications,
-      String? fToken});
-
-  @override
-  $CustomerAddressCopyWith<$Res> get address;
-  @override
-  $CustomerAddressCopyWith<$Res>? get deliveryAddress;
-}
-
-/// @nodoc
-class __$$EntityLoginCustomerImplCopyWithImpl<$Res>
-    extends _$EntityLoginCustomerCopyWithImpl<$Res, _$EntityLoginCustomerImpl>
-    implements _$$EntityLoginCustomerImplCopyWith<$Res> {
-  __$$EntityLoginCustomerImplCopyWithImpl(_$EntityLoginCustomerImpl _value,
-      $Res Function(_$EntityLoginCustomerImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? address = null,
-    Object? customerNumber = null,
-    Object? userTypeIndex = null,
-    Object? email = freezed,
-    Object? companyName = freezed,
-    Object? customerName = freezed,
-    Object? customerSurname = freezed,
-    Object? registrationDate = freezed,
-    Object? deliveryAddress = freezed,
-    Object? notifications = null,
-    Object? fToken = freezed,
-  }) {
-    return _then(_$EntityLoginCustomerImpl(
-      address: null == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
-              as CustomerAddress,
-      customerNumber: null == customerNumber
-          ? _value.customerNumber
-          : customerNumber // ignore: cast_nullable_to_non_nullable
-              as String,
-      userTypeIndex: null == userTypeIndex
-          ? _value.userTypeIndex
-          : userTypeIndex // ignore: cast_nullable_to_non_nullable
-              as int,
-      email: freezed == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String?,
-      companyName: freezed == companyName
-          ? _value.companyName
-          : companyName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      customerName: freezed == customerName
-          ? _value.customerName
-          : customerName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      customerSurname: freezed == customerSurname
-          ? _value.customerSurname
-          : customerSurname // ignore: cast_nullable_to_non_nullable
-              as String?,
-      registrationDate: freezed == registrationDate
-          ? _value.registrationDate
-          : registrationDate // ignore: cast_nullable_to_non_nullable
-              as int?,
-      deliveryAddress: freezed == deliveryAddress
-          ? _value.deliveryAddress
-          : deliveryAddress // ignore: cast_nullable_to_non_nullable
-              as CustomerAddress?,
-      notifications: null == notifications
-          ? _value._notifications
-          : notifications // ignore: cast_nullable_to_non_nullable
-              as List<UserNotification>,
-      fToken: freezed == fToken
-          ? _value.fToken
+          ? _self.fToken
           : fToken // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
+  }
+
+  /// Create a copy of EntityLoginCustomer
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CustomerAddressCopyWith<$Res> get address {
+    return $CustomerAddressCopyWith<$Res>(_self.address, (value) {
+      return _then(_self.copyWith(address: value));
+    });
+  }
+
+  /// Create a copy of EntityLoginCustomer
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CustomerAddressCopyWith<$Res>? get deliveryAddress {
+    if (_self.deliveryAddress == null) {
+      return null;
+    }
+
+    return $CustomerAddressCopyWith<$Res>(_self.deliveryAddress!, (value) {
+      return _then(_self.copyWith(deliveryAddress: value));
+    });
+  }
+}
+
+/// Adds pattern-matching-related methods to [EntityLoginCustomer].
+extension EntityLoginCustomerPatterns on EntityLoginCustomer {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_EntityLoginCustomer value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _EntityLoginCustomer() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_EntityLoginCustomer value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _EntityLoginCustomer():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_EntityLoginCustomer value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _EntityLoginCustomer() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            CustomerAddress address,
+            String customerNumber,
+            int userTypeIndex,
+            String? email,
+            String? companyName,
+            @JsonKey(name: 'firstname') String? customerName,
+            @JsonKey(name: 'lastname') String? customerSurname,
+            int? registrationDate,
+            CustomerAddress? deliveryAddress,
+            List<UserNotification> notifications,
+            String? fToken)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _EntityLoginCustomer() when $default != null:
+        return $default(
+            _that.address,
+            _that.customerNumber,
+            _that.userTypeIndex,
+            _that.email,
+            _that.companyName,
+            _that.customerName,
+            _that.customerSurname,
+            _that.registrationDate,
+            _that.deliveryAddress,
+            _that.notifications,
+            _that.fToken);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            CustomerAddress address,
+            String customerNumber,
+            int userTypeIndex,
+            String? email,
+            String? companyName,
+            @JsonKey(name: 'firstname') String? customerName,
+            @JsonKey(name: 'lastname') String? customerSurname,
+            int? registrationDate,
+            CustomerAddress? deliveryAddress,
+            List<UserNotification> notifications,
+            String? fToken)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _EntityLoginCustomer():
+        return $default(
+            _that.address,
+            _that.customerNumber,
+            _that.userTypeIndex,
+            _that.email,
+            _that.companyName,
+            _that.customerName,
+            _that.customerSurname,
+            _that.registrationDate,
+            _that.deliveryAddress,
+            _that.notifications,
+            _that.fToken);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            CustomerAddress address,
+            String customerNumber,
+            int userTypeIndex,
+            String? email,
+            String? companyName,
+            @JsonKey(name: 'firstname') String? customerName,
+            @JsonKey(name: 'lastname') String? customerSurname,
+            int? registrationDate,
+            CustomerAddress? deliveryAddress,
+            List<UserNotification> notifications,
+            String? fToken)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _EntityLoginCustomer() when $default != null:
+        return $default(
+            _that.address,
+            _that.customerNumber,
+            _that.userTypeIndex,
+            _that.email,
+            _that.companyName,
+            _that.customerName,
+            _that.customerSurname,
+            _that.registrationDate,
+            _that.deliveryAddress,
+            _that.notifications,
+            _that.fToken);
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$EntityLoginCustomerImpl extends _EntityLoginCustomer {
-  const _$EntityLoginCustomerImpl(
+class _EntityLoginCustomer extends EntityLoginCustomer {
+  const _EntityLoginCustomer(
       {required this.address,
       required this.customerNumber,
       required this.userTypeIndex,
@@ -275,9 +452,8 @@ class _$EntityLoginCustomerImpl extends _EntityLoginCustomer {
       this.fToken})
       : _notifications = notifications,
         super._();
-
-  factory _$EntityLoginCustomerImpl.fromJson(Map<String, dynamic> json) =>
-      _$$EntityLoginCustomerImplFromJson(json);
+  factory _EntityLoginCustomer.fromJson(Map<String, dynamic> json) =>
+      _$EntityLoginCustomerFromJson(json);
 
   @override
   final CustomerAddress address;
@@ -311,16 +487,27 @@ class _$EntityLoginCustomerImpl extends _EntityLoginCustomer {
   @override
   final String? fToken;
 
+  /// Create a copy of EntityLoginCustomer
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'EntityLoginCustomer(address: $address, customerNumber: $customerNumber, userTypeIndex: $userTypeIndex, email: $email, companyName: $companyName, customerName: $customerName, customerSurname: $customerSurname, registrationDate: $registrationDate, deliveryAddress: $deliveryAddress, notifications: $notifications, fToken: $fToken)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$EntityLoginCustomerCopyWith<_EntityLoginCustomer> get copyWith =>
+      __$EntityLoginCustomerCopyWithImpl<_EntityLoginCustomer>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$EntityLoginCustomerToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EntityLoginCustomerImpl &&
+            other is _EntityLoginCustomer &&
             (identical(other.address, address) || other.address == address) &&
             (identical(other.customerNumber, customerNumber) ||
                 other.customerNumber == customerNumber) &&
@@ -342,7 +529,7 @@ class _$EntityLoginCustomerImpl extends _EntityLoginCustomer {
             (identical(other.fToken, fToken) || other.fToken == fToken));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -358,147 +545,193 @@ class _$EntityLoginCustomerImpl extends _EntityLoginCustomer {
       const DeepCollectionEquality().hash(_notifications),
       fToken);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$EntityLoginCustomerImplCopyWith<_$EntityLoginCustomerImpl> get copyWith =>
-      __$$EntityLoginCustomerImplCopyWithImpl<_$EntityLoginCustomerImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$EntityLoginCustomerImplToJson(
-      this,
-    );
+  String toString() {
+    return 'EntityLoginCustomer(address: $address, customerNumber: $customerNumber, userTypeIndex: $userTypeIndex, email: $email, companyName: $companyName, customerName: $customerName, customerSurname: $customerSurname, registrationDate: $registrationDate, deliveryAddress: $deliveryAddress, notifications: $notifications, fToken: $fToken)';
   }
 }
 
-abstract class _EntityLoginCustomer extends EntityLoginCustomer {
-  const factory _EntityLoginCustomer(
-      {required final CustomerAddress address,
-      required final String customerNumber,
-      required final int userTypeIndex,
-      final String? email,
-      final String? companyName,
-      @JsonKey(name: 'firstname') final String? customerName,
-      @JsonKey(name: 'lastname') final String? customerSurname,
-      final int? registrationDate,
-      final CustomerAddress? deliveryAddress,
-      final List<UserNotification> notifications,
-      final String? fToken}) = _$EntityLoginCustomerImpl;
-  const _EntityLoginCustomer._() : super._();
+/// @nodoc
+abstract mixin class _$EntityLoginCustomerCopyWith<$Res>
+    implements $EntityLoginCustomerCopyWith<$Res> {
+  factory _$EntityLoginCustomerCopyWith(_EntityLoginCustomer value,
+          $Res Function(_EntityLoginCustomer) _then) =
+      __$EntityLoginCustomerCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {CustomerAddress address,
+      String customerNumber,
+      int userTypeIndex,
+      String? email,
+      String? companyName,
+      @JsonKey(name: 'firstname') String? customerName,
+      @JsonKey(name: 'lastname') String? customerSurname,
+      int? registrationDate,
+      CustomerAddress? deliveryAddress,
+      List<UserNotification> notifications,
+      String? fToken});
 
-  factory _EntityLoginCustomer.fromJson(Map<String, dynamic> json) =
-      _$EntityLoginCustomerImpl.fromJson;
-
   @override
-  CustomerAddress get address;
+  $CustomerAddressCopyWith<$Res> get address;
   @override
-  String get customerNumber;
-  @override
-  int get userTypeIndex;
-  @override
-  String? get email;
-  @override
-  String? get companyName;
-  @override
-  @JsonKey(name: 'firstname')
-  String? get customerName;
-  @override
-  @JsonKey(name: 'lastname')
-  String? get customerSurname;
-  @override
-  int? get registrationDate;
-  @override
-  CustomerAddress? get deliveryAddress;
-  @override
-  List<UserNotification> get notifications;
-  @override
-  String? get fToken;
-  @override
-  @JsonKey(ignore: true)
-  _$$EntityLoginCustomerImplCopyWith<_$EntityLoginCustomerImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  $CustomerAddressCopyWith<$Res>? get deliveryAddress;
 }
 
-CustomerAddress _$CustomerAddressFromJson(Map<String, dynamic> json) {
-  return _CustomerAddress.fromJson(json);
+/// @nodoc
+class __$EntityLoginCustomerCopyWithImpl<$Res>
+    implements _$EntityLoginCustomerCopyWith<$Res> {
+  __$EntityLoginCustomerCopyWithImpl(this._self, this._then);
+
+  final _EntityLoginCustomer _self;
+  final $Res Function(_EntityLoginCustomer) _then;
+
+  /// Create a copy of EntityLoginCustomer
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? address = null,
+    Object? customerNumber = null,
+    Object? userTypeIndex = null,
+    Object? email = freezed,
+    Object? companyName = freezed,
+    Object? customerName = freezed,
+    Object? customerSurname = freezed,
+    Object? registrationDate = freezed,
+    Object? deliveryAddress = freezed,
+    Object? notifications = null,
+    Object? fToken = freezed,
+  }) {
+    return _then(_EntityLoginCustomer(
+      address: null == address
+          ? _self.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as CustomerAddress,
+      customerNumber: null == customerNumber
+          ? _self.customerNumber
+          : customerNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      userTypeIndex: null == userTypeIndex
+          ? _self.userTypeIndex
+          : userTypeIndex // ignore: cast_nullable_to_non_nullable
+              as int,
+      email: freezed == email
+          ? _self.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+      companyName: freezed == companyName
+          ? _self.companyName
+          : companyName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      customerName: freezed == customerName
+          ? _self.customerName
+          : customerName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      customerSurname: freezed == customerSurname
+          ? _self.customerSurname
+          : customerSurname // ignore: cast_nullable_to_non_nullable
+              as String?,
+      registrationDate: freezed == registrationDate
+          ? _self.registrationDate
+          : registrationDate // ignore: cast_nullable_to_non_nullable
+              as int?,
+      deliveryAddress: freezed == deliveryAddress
+          ? _self.deliveryAddress
+          : deliveryAddress // ignore: cast_nullable_to_non_nullable
+              as CustomerAddress?,
+      notifications: null == notifications
+          ? _self._notifications
+          : notifications // ignore: cast_nullable_to_non_nullable
+              as List<UserNotification>,
+      fToken: freezed == fToken
+          ? _self.fToken
+          : fToken // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+
+  /// Create a copy of EntityLoginCustomer
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CustomerAddressCopyWith<$Res> get address {
+    return $CustomerAddressCopyWith<$Res>(_self.address, (value) {
+      return _then(_self.copyWith(address: value));
+    });
+  }
+
+  /// Create a copy of EntityLoginCustomer
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CustomerAddressCopyWith<$Res>? get deliveryAddress {
+    if (_self.deliveryAddress == null) {
+      return null;
+    }
+
+    return $CustomerAddressCopyWith<$Res>(_self.deliveryAddress!, (value) {
+      return _then(_self.copyWith(deliveryAddress: value));
+    });
+  }
 }
 
 /// @nodoc
 mixin _$CustomerAddress {
-  String get street => throw _privateConstructorUsedError;
-  String get city => throw _privateConstructorUsedError;
-  String get zipCode => throw _privateConstructorUsedError;
+  String get street;
+  String get city;
+  String get zipCode;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $CustomerAddressCopyWith<CustomerAddress> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $CustomerAddressCopyWith<$Res> {
-  factory $CustomerAddressCopyWith(
-          CustomerAddress value, $Res Function(CustomerAddress) then) =
-      _$CustomerAddressCopyWithImpl<$Res, CustomerAddress>;
-  @useResult
-  $Res call({String street, String city, String zipCode});
-}
-
-/// @nodoc
-class _$CustomerAddressCopyWithImpl<$Res, $Val extends CustomerAddress>
-    implements $CustomerAddressCopyWith<$Res> {
-  _$CustomerAddressCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
+  /// Create a copy of CustomerAddress
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
+  $CustomerAddressCopyWith<CustomerAddress> get copyWith =>
+      _$CustomerAddressCopyWithImpl<CustomerAddress>(
+          this as CustomerAddress, _$identity);
+
+  /// Serializes this CustomerAddress to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? street = null,
-    Object? city = null,
-    Object? zipCode = null,
-  }) {
-    return _then(_value.copyWith(
-      street: null == street
-          ? _value.street
-          : street // ignore: cast_nullable_to_non_nullable
-              as String,
-      city: null == city
-          ? _value.city
-          : city // ignore: cast_nullable_to_non_nullable
-              as String,
-      zipCode: null == zipCode
-          ? _value.zipCode
-          : zipCode // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is CustomerAddress &&
+            (identical(other.street, street) || other.street == street) &&
+            (identical(other.city, city) || other.city == city) &&
+            (identical(other.zipCode, zipCode) || other.zipCode == zipCode));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, street, city, zipCode);
+
+  @override
+  String toString() {
+    return 'CustomerAddress(street: $street, city: $city, zipCode: $zipCode)';
   }
 }
 
 /// @nodoc
-abstract class _$$CustomerAddressImplCopyWith<$Res>
-    implements $CustomerAddressCopyWith<$Res> {
-  factory _$$CustomerAddressImplCopyWith(_$CustomerAddressImpl value,
-          $Res Function(_$CustomerAddressImpl) then) =
-      __$$CustomerAddressImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $CustomerAddressCopyWith<$Res> {
+  factory $CustomerAddressCopyWith(
+          CustomerAddress value, $Res Function(CustomerAddress) _then) =
+      _$CustomerAddressCopyWithImpl;
   @useResult
   $Res call({String street, String city, String zipCode});
 }
 
 /// @nodoc
-class __$$CustomerAddressImplCopyWithImpl<$Res>
-    extends _$CustomerAddressCopyWithImpl<$Res, _$CustomerAddressImpl>
-    implements _$$CustomerAddressImplCopyWith<$Res> {
-  __$$CustomerAddressImplCopyWithImpl(
-      _$CustomerAddressImpl _value, $Res Function(_$CustomerAddressImpl) _then)
-      : super(_value, _then);
+class _$CustomerAddressCopyWithImpl<$Res>
+    implements $CustomerAddressCopyWith<$Res> {
+  _$CustomerAddressCopyWithImpl(this._self, this._then);
 
+  final CustomerAddress _self;
+  final $Res Function(CustomerAddress) _then;
+
+  /// Create a copy of CustomerAddress
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -506,32 +739,188 @@ class __$$CustomerAddressImplCopyWithImpl<$Res>
     Object? city = null,
     Object? zipCode = null,
   }) {
-    return _then(_$CustomerAddressImpl(
+    return _then(_self.copyWith(
       street: null == street
-          ? _value.street
+          ? _self.street
           : street // ignore: cast_nullable_to_non_nullable
               as String,
       city: null == city
-          ? _value.city
+          ? _self.city
           : city // ignore: cast_nullable_to_non_nullable
               as String,
       zipCode: null == zipCode
-          ? _value.zipCode
+          ? _self.zipCode
           : zipCode // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
 }
 
+/// Adds pattern-matching-related methods to [CustomerAddress].
+extension CustomerAddressPatterns on CustomerAddress {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_CustomerAddress value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _CustomerAddress() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_CustomerAddress value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _CustomerAddress():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_CustomerAddress value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _CustomerAddress() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String street, String city, String zipCode)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _CustomerAddress() when $default != null:
+        return $default(_that.street, _that.city, _that.zipCode);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String street, String city, String zipCode) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _CustomerAddress():
+        return $default(_that.street, _that.city, _that.zipCode);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(String street, String city, String zipCode)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _CustomerAddress() when $default != null:
+        return $default(_that.street, _that.city, _that.zipCode);
+      case _:
+        return null;
+    }
+  }
+}
+
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$CustomerAddressImpl implements _CustomerAddress {
-  const _$CustomerAddressImpl(
+class _CustomerAddress implements CustomerAddress {
+  const _CustomerAddress(
       {required this.street, required this.city, required this.zipCode});
-
-  factory _$CustomerAddressImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CustomerAddressImplFromJson(json);
+  factory _CustomerAddress.fromJson(Map<String, dynamic> json) =>
+      _$CustomerAddressFromJson(json);
 
   @override
   final String street;
@@ -540,216 +929,404 @@ class _$CustomerAddressImpl implements _CustomerAddress {
   @override
   final String zipCode;
 
+  /// Create a copy of CustomerAddress
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'CustomerAddress(street: $street, city: $city, zipCode: $zipCode)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$CustomerAddressCopyWith<_CustomerAddress> get copyWith =>
+      __$CustomerAddressCopyWithImpl<_CustomerAddress>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$CustomerAddressToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CustomerAddressImpl &&
+            other is _CustomerAddress &&
             (identical(other.street, street) || other.street == street) &&
             (identical(other.city, city) || other.city == city) &&
             (identical(other.zipCode, zipCode) || other.zipCode == zipCode));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, street, city, zipCode);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$CustomerAddressImplCopyWith<_$CustomerAddressImpl> get copyWith =>
-      __$$CustomerAddressImplCopyWithImpl<_$CustomerAddressImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$CustomerAddressImplToJson(
-      this,
-    );
+  String toString() {
+    return 'CustomerAddress(street: $street, city: $city, zipCode: $zipCode)';
   }
 }
 
-abstract class _CustomerAddress implements CustomerAddress {
-  const factory _CustomerAddress(
-      {required final String street,
-      required final String city,
-      required final String zipCode}) = _$CustomerAddressImpl;
-
-  factory _CustomerAddress.fromJson(Map<String, dynamic> json) =
-      _$CustomerAddressImpl.fromJson;
-
+/// @nodoc
+abstract mixin class _$CustomerAddressCopyWith<$Res>
+    implements $CustomerAddressCopyWith<$Res> {
+  factory _$CustomerAddressCopyWith(
+          _CustomerAddress value, $Res Function(_CustomerAddress) _then) =
+      __$CustomerAddressCopyWithImpl;
   @override
-  String get street;
-  @override
-  String get city;
-  @override
-  String get zipCode;
-  @override
-  @JsonKey(ignore: true)
-  _$$CustomerAddressImplCopyWith<_$CustomerAddressImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @useResult
+  $Res call({String street, String city, String zipCode});
 }
 
-UserNotification _$UserNotificationFromJson(Map<String, dynamic> json) {
-  return _UserNotification.fromJson(json);
+/// @nodoc
+class __$CustomerAddressCopyWithImpl<$Res>
+    implements _$CustomerAddressCopyWith<$Res> {
+  __$CustomerAddressCopyWithImpl(this._self, this._then);
+
+  final _CustomerAddress _self;
+  final $Res Function(_CustomerAddress) _then;
+
+  /// Create a copy of CustomerAddress
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? street = null,
+    Object? city = null,
+    Object? zipCode = null,
+  }) {
+    return _then(_CustomerAddress(
+      street: null == street
+          ? _self.street
+          : street // ignore: cast_nullable_to_non_nullable
+              as String,
+      city: null == city
+          ? _self.city
+          : city // ignore: cast_nullable_to_non_nullable
+              as String,
+      zipCode: null == zipCode
+          ? _self.zipCode
+          : zipCode // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 mixin _$UserNotification {
-  int get statusType => throw _privateConstructorUsedError;
-  bool get active => throw _privateConstructorUsedError;
+  int get statusType;
+  bool get active;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $UserNotificationCopyWith<UserNotification> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $UserNotificationCopyWith<$Res> {
-  factory $UserNotificationCopyWith(
-          UserNotification value, $Res Function(UserNotification) then) =
-      _$UserNotificationCopyWithImpl<$Res, UserNotification>;
-  @useResult
-  $Res call({int statusType, bool active});
-}
-
-/// @nodoc
-class _$UserNotificationCopyWithImpl<$Res, $Val extends UserNotification>
-    implements $UserNotificationCopyWith<$Res> {
-  _$UserNotificationCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
+  /// Create a copy of UserNotification
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
+  $UserNotificationCopyWith<UserNotification> get copyWith =>
+      _$UserNotificationCopyWithImpl<UserNotification>(
+          this as UserNotification, _$identity);
+
+  /// Serializes this UserNotification to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? statusType = null,
-    Object? active = null,
-  }) {
-    return _then(_value.copyWith(
-      statusType: null == statusType
-          ? _value.statusType
-          : statusType // ignore: cast_nullable_to_non_nullable
-              as int,
-      active: null == active
-          ? _value.active
-          : active // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is UserNotification &&
+            (identical(other.statusType, statusType) ||
+                other.statusType == statusType) &&
+            (identical(other.active, active) || other.active == active));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, statusType, active);
+
+  @override
+  String toString() {
+    return 'UserNotification(statusType: $statusType, active: $active)';
   }
 }
 
 /// @nodoc
-abstract class _$$UserNotificationImplCopyWith<$Res>
-    implements $UserNotificationCopyWith<$Res> {
-  factory _$$UserNotificationImplCopyWith(_$UserNotificationImpl value,
-          $Res Function(_$UserNotificationImpl) then) =
-      __$$UserNotificationImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $UserNotificationCopyWith<$Res> {
+  factory $UserNotificationCopyWith(
+          UserNotification value, $Res Function(UserNotification) _then) =
+      _$UserNotificationCopyWithImpl;
   @useResult
   $Res call({int statusType, bool active});
 }
 
 /// @nodoc
-class __$$UserNotificationImplCopyWithImpl<$Res>
-    extends _$UserNotificationCopyWithImpl<$Res, _$UserNotificationImpl>
-    implements _$$UserNotificationImplCopyWith<$Res> {
-  __$$UserNotificationImplCopyWithImpl(_$UserNotificationImpl _value,
-      $Res Function(_$UserNotificationImpl) _then)
-      : super(_value, _then);
+class _$UserNotificationCopyWithImpl<$Res>
+    implements $UserNotificationCopyWith<$Res> {
+  _$UserNotificationCopyWithImpl(this._self, this._then);
 
+  final UserNotification _self;
+  final $Res Function(UserNotification) _then;
+
+  /// Create a copy of UserNotification
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? statusType = null,
     Object? active = null,
   }) {
-    return _then(_$UserNotificationImpl(
+    return _then(_self.copyWith(
       statusType: null == statusType
-          ? _value.statusType
+          ? _self.statusType
           : statusType // ignore: cast_nullable_to_non_nullable
               as int,
       active: null == active
-          ? _value.active
+          ? _self.active
           : active // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
 }
 
+/// Adds pattern-matching-related methods to [UserNotification].
+extension UserNotificationPatterns on UserNotification {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_UserNotification value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _UserNotification() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_UserNotification value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _UserNotification():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_UserNotification value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _UserNotification() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(int statusType, bool active)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _UserNotification() when $default != null:
+        return $default(_that.statusType, _that.active);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(int statusType, bool active) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _UserNotification():
+        return $default(_that.statusType, _that.active);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(int statusType, bool active)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _UserNotification() when $default != null:
+        return $default(_that.statusType, _that.active);
+      case _:
+        return null;
+    }
+  }
+}
+
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$UserNotificationImpl extends _UserNotification {
-  const _$UserNotificationImpl({required this.statusType, required this.active})
+class _UserNotification extends UserNotification {
+  const _UserNotification({required this.statusType, required this.active})
       : super._();
-
-  factory _$UserNotificationImpl.fromJson(Map<String, dynamic> json) =>
-      _$$UserNotificationImplFromJson(json);
+  factory _UserNotification.fromJson(Map<String, dynamic> json) =>
+      _$UserNotificationFromJson(json);
 
   @override
   final int statusType;
   @override
   final bool active;
 
+  /// Create a copy of UserNotification
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'UserNotification(statusType: $statusType, active: $active)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$UserNotificationCopyWith<_UserNotification> get copyWith =>
+      __$UserNotificationCopyWithImpl<_UserNotification>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$UserNotificationToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$UserNotificationImpl &&
+            other is _UserNotification &&
             (identical(other.statusType, statusType) ||
                 other.statusType == statusType) &&
             (identical(other.active, active) || other.active == active));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, statusType, active);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$UserNotificationImplCopyWith<_$UserNotificationImpl> get copyWith =>
-      __$$UserNotificationImplCopyWithImpl<_$UserNotificationImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$UserNotificationImplToJson(
-      this,
-    );
+  String toString() {
+    return 'UserNotification(statusType: $statusType, active: $active)';
   }
 }
 
-abstract class _UserNotification extends UserNotification {
-  const factory _UserNotification(
-      {required final int statusType,
-      required final bool active}) = _$UserNotificationImpl;
-  const _UserNotification._() : super._();
-
-  factory _UserNotification.fromJson(Map<String, dynamic> json) =
-      _$UserNotificationImpl.fromJson;
-
+/// @nodoc
+abstract mixin class _$UserNotificationCopyWith<$Res>
+    implements $UserNotificationCopyWith<$Res> {
+  factory _$UserNotificationCopyWith(
+          _UserNotification value, $Res Function(_UserNotification) _then) =
+      __$UserNotificationCopyWithImpl;
   @override
-  int get statusType;
-  @override
-  bool get active;
-  @override
-  @JsonKey(ignore: true)
-  _$$UserNotificationImplCopyWith<_$UserNotificationImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @useResult
+  $Res call({int statusType, bool active});
 }
+
+/// @nodoc
+class __$UserNotificationCopyWithImpl<$Res>
+    implements _$UserNotificationCopyWith<$Res> {
+  __$UserNotificationCopyWithImpl(this._self, this._then);
+
+  final _UserNotification _self;
+  final $Res Function(_UserNotification) _then;
+
+  /// Create a copy of UserNotification
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? statusType = null,
+    Object? active = null,
+  }) {
+    return _then(_UserNotification(
+      statusType: null == statusType
+          ? _self.statusType
+          : statusType // ignore: cast_nullable_to_non_nullable
+              as int,
+      active: null == active
+          ? _self.active
+          : active // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+// dart format on

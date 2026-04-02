@@ -6,9 +6,9 @@ part of 'shopping_basket_entity.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ShoppingBasketEntityImpl _$$ShoppingBasketEntityImplFromJson(
+_ShoppingBasketEntity _$ShoppingBasketEntityFromJson(
         Map<String, dynamic> json) =>
-    _$ShoppingBasketEntityImpl(
+    _ShoppingBasketEntity(
       id: json['id'] as String,
       userId: json['userId'] as String,
       status: (json['status'] as num).toInt(),
@@ -18,8 +18,8 @@ _$ShoppingBasketEntityImpl _$$ShoppingBasketEntityImplFromJson(
       sendDate: (json['sendDate'] as num).toInt(),
     );
 
-Map<String, dynamic> _$$ShoppingBasketEntityImplToJson(
-        _$ShoppingBasketEntityImpl instance) =>
+Map<String, dynamic> _$ShoppingBasketEntityToJson(
+        _ShoppingBasketEntity instance) =>
     <String, dynamic>{
       'id': instance.id,
       'userId': instance.userId,
@@ -28,9 +28,9 @@ Map<String, dynamic> _$$ShoppingBasketEntityImplToJson(
       'sendDate': instance.sendDate,
     };
 
-_$ShoppingBasketProductImpl _$$ShoppingBasketProductImplFromJson(
+_ShoppingBasketProduct _$ShoppingBasketProductFromJson(
         Map<String, dynamic> json) =>
-    _$ShoppingBasketProductImpl(
+    _ShoppingBasketProduct(
       categoryEntity: CategoryEntity.fromJson(
           json['categoryEntity'] as Map<String, dynamic>),
       addedTime: (json['addedTime'] as num).toInt(),
@@ -38,8 +38,8 @@ _$ShoppingBasketProductImpl _$$ShoppingBasketProductImplFromJson(
       completeAmount: (json['completeAmount'] as num).toDouble(),
     );
 
-Map<String, dynamic> _$$ShoppingBasketProductImplToJson(
-        _$ShoppingBasketProductImpl instance) =>
+Map<String, dynamic> _$ShoppingBasketProductToJson(
+        _ShoppingBasketProduct instance) =>
     <String, dynamic>{
       'categoryEntity': instance.categoryEntity.toJson(),
       'addedTime': instance.addedTime,

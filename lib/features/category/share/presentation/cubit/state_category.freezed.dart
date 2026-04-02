@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,167 +9,45 @@ part of 'state_category.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$StateCategory {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(List<CategoryEntity>? categoryEntityList) success,
-    required TResult Function(Failure failure) failure,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(List<CategoryEntity>? categoryEntityList)? success,
-    TResult? Function(Failure failure)? failure,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(List<CategoryEntity>? categoryEntityList)? success,
-    TResult Function(Failure failure)? failure,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $StateCategoryCopyWith<$Res> {
-  factory $StateCategoryCopyWith(
-          StateCategory value, $Res Function(StateCategory) then) =
-      _$StateCategoryCopyWithImpl<$Res, StateCategory>;
-}
-
-/// @nodoc
-class _$StateCategoryCopyWithImpl<$Res, $Val extends StateCategory>
-    implements $StateCategoryCopyWith<$Res> {
-  _$StateCategoryCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$LoadingImplCopyWith<$Res> {
-  factory _$$LoadingImplCopyWith(
-          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
-      __$$LoadingImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$StateCategoryCopyWithImpl<$Res, _$LoadingImpl>
-    implements _$$LoadingImplCopyWith<$Res> {
-  __$$LoadingImplCopyWithImpl(
-      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$LoadingImpl extends _Loading {
-  const _$LoadingImpl() : super._();
-
-  @override
-  String toString() {
-    return 'StateCategory.loading()';
-  }
-
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingImpl);
+        (other.runtimeType == runtimeType && other is StateCategory);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
 
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(List<CategoryEntity>? categoryEntityList) success,
-    required TResult Function(Failure failure) failure,
-  }) {
-    return loading();
+  String toString() {
+    return 'StateCategory()';
   }
+}
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(List<CategoryEntity>? categoryEntityList)? success,
-    TResult? Function(Failure failure)? failure,
-  }) {
-    return loading?.call();
-  }
+/// @nodoc
+class $StateCategoryCopyWith<$Res> {
+  $StateCategoryCopyWith(StateCategory _, $Res Function(StateCategory) __);
+}
 
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(List<CategoryEntity>? categoryEntityList)? success,
-    TResult Function(Failure failure)? failure,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
+/// Adds pattern-matching-related methods to [StateCategory].
+extension StateCategoryPatterns on StateCategory {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
 
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
-  }) {
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
-  }) {
-    return loading?.call(this);
-  }
-
-  @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
@@ -177,58 +55,206 @@ class _$LoadingImpl extends _Loading {
     TResult Function(_Failure value)? failure,
     required TResult orElse(),
   }) {
-    if (loading != null) {
-      return loading(this);
+    final _that = this;
+    switch (_that) {
+      case _Loading() when loading != null:
+        return loading(_that);
+      case _Success() when success != null:
+        return success(_that);
+      case _Failure() when failure != null:
+        return failure(_that);
+      case _:
+        return orElse();
     }
-    return orElse();
   }
-}
 
-abstract class _Loading extends StateCategory {
-  const factory _Loading() = _$LoadingImpl;
-  const _Loading._() : super._();
-}
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
 
-/// @nodoc
-abstract class _$$SuccessImplCopyWith<$Res> {
-  factory _$$SuccessImplCopyWith(
-          _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
-      __$$SuccessImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({List<CategoryEntity>? categoryEntityList});
-}
-
-/// @nodoc
-class __$$SuccessImplCopyWithImpl<$Res>
-    extends _$StateCategoryCopyWithImpl<$Res, _$SuccessImpl>
-    implements _$$SuccessImplCopyWith<$Res> {
-  __$$SuccessImplCopyWithImpl(
-      _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? categoryEntityList = freezed,
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Failure value) failure,
   }) {
-    return _then(_$SuccessImpl(
-      categoryEntityList: freezed == categoryEntityList
-          ? _value._categoryEntityList
-          : categoryEntityList // ignore: cast_nullable_to_non_nullable
-              as List<CategoryEntity>?,
-    ));
+    final _that = this;
+    switch (_that) {
+      case _Loading():
+        return loading(_that);
+      case _Success():
+        return success(_that);
+      case _Failure():
+        return failure(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Failure value)? failure,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Loading() when loading != null:
+        return loading(_that);
+      case _Success() when success != null:
+        return success(_that);
+      case _Failure() when failure != null:
+        return failure(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<CategoryEntity>? categoryEntityList)? success,
+    TResult Function(Failure failure)? failure,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Loading() when loading != null:
+        return loading();
+      case _Success() when success != null:
+        return success(_that.categoryEntityList);
+      case _Failure() when failure != null:
+        return failure(_that.failure);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<CategoryEntity>? categoryEntityList) success,
+    required TResult Function(Failure failure) failure,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Loading():
+        return loading();
+      case _Success():
+        return success(_that.categoryEntityList);
+      case _Failure():
+        return failure(_that.failure);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(List<CategoryEntity>? categoryEntityList)? success,
+    TResult? Function(Failure failure)? failure,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Loading() when loading != null:
+        return loading();
+      case _Success() when success != null:
+        return success(_that.categoryEntityList);
+      case _Failure() when failure != null:
+        return failure(_that.failure);
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 
-class _$SuccessImpl extends _Success {
-  const _$SuccessImpl({final List<CategoryEntity>? categoryEntityList})
+class _Loading extends StateCategory {
+  const _Loading() : super._();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Loading);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'StateCategory.loading()';
+  }
+}
+
+/// @nodoc
+
+class _Success extends StateCategory {
+  const _Success({final List<CategoryEntity>? categoryEntityList})
       : _categoryEntityList = categoryEntityList,
         super._();
 
   final List<CategoryEntity>? _categoryEntityList;
-  @override
   List<CategoryEntity>? get categoryEntityList {
     final value = _categoryEntityList;
     if (value == null) return null;
@@ -238,16 +264,18 @@ class _$SuccessImpl extends _Success {
     return EqualUnmodifiableListView(value);
   }
 
-  @override
-  String toString() {
-    return 'StateCategory.success(categoryEntityList: $categoryEntityList)';
-  }
+  /// Create a copy of StateCategory
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$SuccessCopyWith<_Success> get copyWith =>
+      __$SuccessCopyWithImpl<_Success>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SuccessImpl &&
+            other is _Success &&
             const DeepCollectionEquality()
                 .equals(other._categoryEntityList, _categoryEntityList));
   }
@@ -256,97 +284,79 @@ class _$SuccessImpl extends _Success {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_categoryEntityList));
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
-      __$$SuccessImplCopyWithImpl<_$SuccessImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(List<CategoryEntity>? categoryEntityList) success,
-    required TResult Function(Failure failure) failure,
-  }) {
-    return success(categoryEntityList);
+  String toString() {
+    return 'StateCategory.success(categoryEntityList: $categoryEntityList)';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(List<CategoryEntity>? categoryEntityList)? success,
-    TResult? Function(Failure failure)? failure,
-  }) {
-    return success?.call(categoryEntityList);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(List<CategoryEntity>? categoryEntityList)? success,
-    TResult Function(Failure failure)? failure,
-    required TResult orElse(),
-  }) {
-    if (success != null) {
-      return success(categoryEntityList);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
-  }) {
-    return success(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
-  }) {
-    return success?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
-    required TResult orElse(),
-  }) {
-    if (success != null) {
-      return success(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Success extends StateCategory {
-  const factory _Success({final List<CategoryEntity>? categoryEntityList}) =
-      _$SuccessImpl;
-  const _Success._() : super._();
-
-  List<CategoryEntity>? get categoryEntityList;
-  @JsonKey(ignore: true)
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$FailureImplCopyWith<$Res> {
-  factory _$$FailureImplCopyWith(
-          _$FailureImpl value, $Res Function(_$FailureImpl) then) =
-      __$$FailureImplCopyWithImpl<$Res>;
+abstract mixin class _$SuccessCopyWith<$Res>
+    implements $StateCategoryCopyWith<$Res> {
+  factory _$SuccessCopyWith(_Success value, $Res Function(_Success) _then) =
+      __$SuccessCopyWithImpl;
+  @useResult
+  $Res call({List<CategoryEntity>? categoryEntityList});
+}
+
+/// @nodoc
+class __$SuccessCopyWithImpl<$Res> implements _$SuccessCopyWith<$Res> {
+  __$SuccessCopyWithImpl(this._self, this._then);
+
+  final _Success _self;
+  final $Res Function(_Success) _then;
+
+  /// Create a copy of StateCategory
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? categoryEntityList = freezed,
+  }) {
+    return _then(_Success(
+      categoryEntityList: freezed == categoryEntityList
+          ? _self._categoryEntityList
+          : categoryEntityList // ignore: cast_nullable_to_non_nullable
+              as List<CategoryEntity>?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _Failure extends StateCategory {
+  const _Failure({required this.failure}) : super._();
+
+  final Failure failure;
+
+  /// Create a copy of StateCategory
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$FailureCopyWith<_Failure> get copyWith =>
+      __$FailureCopyWithImpl<_Failure>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _Failure &&
+            (identical(other.failure, failure) || other.failure == failure));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, failure);
+
+  @override
+  String toString() {
+    return 'StateCategory.failure(failure: $failure)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$FailureCopyWith<$Res>
+    implements $StateCategoryCopyWith<$Res> {
+  factory _$FailureCopyWith(_Failure value, $Res Function(_Failure) _then) =
+      __$FailureCopyWithImpl;
   @useResult
   $Res call({Failure failure});
 
@@ -354,237 +364,54 @@ abstract class _$$FailureImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$FailureImplCopyWithImpl<$Res>
-    extends _$StateCategoryCopyWithImpl<$Res, _$FailureImpl>
-    implements _$$FailureImplCopyWith<$Res> {
-  __$$FailureImplCopyWithImpl(
-      _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
-      : super(_value, _then);
+class __$FailureCopyWithImpl<$Res> implements _$FailureCopyWith<$Res> {
+  __$FailureCopyWithImpl(this._self, this._then);
 
+  final _Failure _self;
+  final $Res Function(_Failure) _then;
+
+  /// Create a copy of StateCategory
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
     Object? failure = null,
   }) {
-    return _then(_$FailureImpl(
+    return _then(_Failure(
       failure: null == failure
-          ? _value.failure
+          ? _self.failure
           : failure // ignore: cast_nullable_to_non_nullable
               as Failure,
     ));
   }
 
+  /// Create a copy of StateCategory
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FailureCopyWith<$Res> get failure {
-    return $FailureCopyWith<$Res>(_value.failure, (value) {
-      return _then(_value.copyWith(failure: value));
+    return $FailureCopyWith<$Res>(_self.failure, (value) {
+      return _then(_self.copyWith(failure: value));
     });
   }
 }
 
 /// @nodoc
-
-class _$FailureImpl extends _Failure {
-  const _$FailureImpl({required this.failure}) : super._();
-
-  @override
-  final Failure failure;
-
-  @override
-  String toString() {
-    return 'StateCategory.failure(failure: $failure)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$FailureImpl &&
-            (identical(other.failure, failure) || other.failure == failure));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, failure);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
-      __$$FailureImplCopyWithImpl<_$FailureImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(List<CategoryEntity>? categoryEntityList) success,
-    required TResult Function(Failure failure) failure,
-  }) {
-    return failure(this.failure);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(List<CategoryEntity>? categoryEntityList)? success,
-    TResult? Function(Failure failure)? failure,
-  }) {
-    return failure?.call(this.failure);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(List<CategoryEntity>? categoryEntityList)? success,
-    TResult Function(Failure failure)? failure,
-    required TResult orElse(),
-  }) {
-    if (failure != null) {
-      return failure(this.failure);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
-  }) {
-    return failure(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
-  }) {
-    return failure?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
-    required TResult orElse(),
-  }) {
-    if (failure != null) {
-      return failure(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Failure extends StateCategory {
-  const factory _Failure({required final Failure failure}) = _$FailureImpl;
-  const _Failure._() : super._();
-
-  Failure get failure;
-  @JsonKey(ignore: true)
-  _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
 mixin _$ChosenDateTime {
-  DateTime? get selectedDateTime => throw _privateConstructorUsedError;
+  DateTime? get selectedDateTime;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ChosenDateTime
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $ChosenDateTimeCopyWith<ChosenDateTime> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $ChosenDateTimeCopyWith<$Res> {
-  factory $ChosenDateTimeCopyWith(
-          ChosenDateTime value, $Res Function(ChosenDateTime) then) =
-      _$ChosenDateTimeCopyWithImpl<$Res, ChosenDateTime>;
-  @useResult
-  $Res call({DateTime? selectedDateTime});
-}
-
-/// @nodoc
-class _$ChosenDateTimeCopyWithImpl<$Res, $Val extends ChosenDateTime>
-    implements $ChosenDateTimeCopyWith<$Res> {
-  _$ChosenDateTimeCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? selectedDateTime = freezed,
-  }) {
-    return _then(_value.copyWith(
-      selectedDateTime: freezed == selectedDateTime
-          ? _value.selectedDateTime
-          : selectedDateTime // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$ChosenDateTimeImplCopyWith<$Res>
-    implements $ChosenDateTimeCopyWith<$Res> {
-  factory _$$ChosenDateTimeImplCopyWith(_$ChosenDateTimeImpl value,
-          $Res Function(_$ChosenDateTimeImpl) then) =
-      __$$ChosenDateTimeImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({DateTime? selectedDateTime});
-}
-
-/// @nodoc
-class __$$ChosenDateTimeImplCopyWithImpl<$Res>
-    extends _$ChosenDateTimeCopyWithImpl<$Res, _$ChosenDateTimeImpl>
-    implements _$$ChosenDateTimeImplCopyWith<$Res> {
-  __$$ChosenDateTimeImplCopyWithImpl(
-      _$ChosenDateTimeImpl _value, $Res Function(_$ChosenDateTimeImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? selectedDateTime = freezed,
-  }) {
-    return _then(_$ChosenDateTimeImpl(
-      selectedDateTime: freezed == selectedDateTime
-          ? _value.selectedDateTime
-          : selectedDateTime // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$ChosenDateTimeImpl extends _ChosenDateTime {
-  const _$ChosenDateTimeImpl({this.selectedDateTime}) : super._();
-
-  @override
-  final DateTime? selectedDateTime;
-
-  @override
-  String toString() {
-    return 'ChosenDateTime(selectedDateTime: $selectedDateTime)';
-  }
+      _$ChosenDateTimeCopyWithImpl<ChosenDateTime>(
+          this as ChosenDateTime, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ChosenDateTimeImpl &&
+            other is ChosenDateTime &&
             (identical(other.selectedDateTime, selectedDateTime) ||
                 other.selectedDateTime == selectedDateTime));
   }
@@ -592,147 +419,538 @@ class _$ChosenDateTimeImpl extends _ChosenDateTime {
   @override
   int get hashCode => Object.hash(runtimeType, selectedDateTime);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$ChosenDateTimeImplCopyWith<_$ChosenDateTimeImpl> get copyWith =>
-      __$$ChosenDateTimeImplCopyWithImpl<_$ChosenDateTimeImpl>(
-          this, _$identity);
-}
-
-abstract class _ChosenDateTime extends ChosenDateTime {
-  const factory _ChosenDateTime({final DateTime? selectedDateTime}) =
-      _$ChosenDateTimeImpl;
-  const _ChosenDateTime._() : super._();
-
-  @override
-  DateTime? get selectedDateTime;
-  @override
-  @JsonKey(ignore: true)
-  _$$ChosenDateTimeImplCopyWith<_$ChosenDateTimeImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  String toString() {
+    return 'ChosenDateTime(selectedDateTime: $selectedDateTime)';
+  }
 }
 
 /// @nodoc
-mixin _$ProductCategory {
-  String get categoryName => throw _privateConstructorUsedError;
-  List<Product> get listProduct => throw _privateConstructorUsedError;
-  Product? get chosenProduct => throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $ProductCategoryCopyWith<ProductCategory> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $ProductCategoryCopyWith<$Res> {
-  factory $ProductCategoryCopyWith(
-          ProductCategory value, $Res Function(ProductCategory) then) =
-      _$ProductCategoryCopyWithImpl<$Res, ProductCategory>;
+abstract mixin class $ChosenDateTimeCopyWith<$Res> {
+  factory $ChosenDateTimeCopyWith(
+          ChosenDateTime value, $Res Function(ChosenDateTime) _then) =
+      _$ChosenDateTimeCopyWithImpl;
   @useResult
-  $Res call(
-      {String categoryName, List<Product> listProduct, Product? chosenProduct});
-
-  $ProductCopyWith<$Res>? get chosenProduct;
+  $Res call({DateTime? selectedDateTime});
 }
 
 /// @nodoc
-class _$ProductCategoryCopyWithImpl<$Res, $Val extends ProductCategory>
-    implements $ProductCategoryCopyWith<$Res> {
-  _$ProductCategoryCopyWithImpl(this._value, this._then);
+class _$ChosenDateTimeCopyWithImpl<$Res>
+    implements $ChosenDateTimeCopyWith<$Res> {
+  _$ChosenDateTimeCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final ChosenDateTime _self;
+  final $Res Function(ChosenDateTime) _then;
 
+  /// Create a copy of ChosenDateTime
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? categoryName = null,
-    Object? listProduct = null,
-    Object? chosenProduct = freezed,
+    Object? selectedDateTime = freezed,
   }) {
-    return _then(_value.copyWith(
-      categoryName: null == categoryName
-          ? _value.categoryName
-          : categoryName // ignore: cast_nullable_to_non_nullable
-              as String,
-      listProduct: null == listProduct
-          ? _value.listProduct
-          : listProduct // ignore: cast_nullable_to_non_nullable
-              as List<Product>,
-      chosenProduct: freezed == chosenProduct
-          ? _value.chosenProduct
-          : chosenProduct // ignore: cast_nullable_to_non_nullable
-              as Product?,
-    ) as $Val);
+    return _then(_self.copyWith(
+      selectedDateTime: freezed == selectedDateTime
+          ? _self.selectedDateTime
+          : selectedDateTime // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ));
   }
+}
 
-  @override
-  @pragma('vm:prefer-inline')
-  $ProductCopyWith<$Res>? get chosenProduct {
-    if (_value.chosenProduct == null) {
-      return null;
+/// Adds pattern-matching-related methods to [ChosenDateTime].
+extension ChosenDateTimePatterns on ChosenDateTime {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_ChosenDateTime value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _ChosenDateTime() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
     }
+  }
 
-    return $ProductCopyWith<$Res>(_value.chosenProduct!, (value) {
-      return _then(_value.copyWith(chosenProduct: value) as $Val);
-    });
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ChosenDateTime value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ChosenDateTime():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_ChosenDateTime value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ChosenDateTime() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(DateTime? selectedDateTime)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _ChosenDateTime() when $default != null:
+        return $default(_that.selectedDateTime);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(DateTime? selectedDateTime) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ChosenDateTime():
+        return $default(_that.selectedDateTime);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(DateTime? selectedDateTime)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ChosenDateTime() when $default != null:
+        return $default(_that.selectedDateTime);
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
-abstract class _$$ProductCategoryImplCopyWith<$Res>
-    implements $ProductCategoryCopyWith<$Res> {
-  factory _$$ProductCategoryImplCopyWith(_$ProductCategoryImpl value,
-          $Res Function(_$ProductCategoryImpl) then) =
-      __$$ProductCategoryImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String categoryName, List<Product> listProduct, Product? chosenProduct});
+
+class _ChosenDateTime extends ChosenDateTime {
+  const _ChosenDateTime({this.selectedDateTime}) : super._();
 
   @override
-  $ProductCopyWith<$Res>? get chosenProduct;
+  final DateTime? selectedDateTime;
+
+  /// Create a copy of ChosenDateTime
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$ChosenDateTimeCopyWith<_ChosenDateTime> get copyWith =>
+      __$ChosenDateTimeCopyWithImpl<_ChosenDateTime>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _ChosenDateTime &&
+            (identical(other.selectedDateTime, selectedDateTime) ||
+                other.selectedDateTime == selectedDateTime));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, selectedDateTime);
+
+  @override
+  String toString() {
+    return 'ChosenDateTime(selectedDateTime: $selectedDateTime)';
+  }
 }
 
 /// @nodoc
-class __$$ProductCategoryImplCopyWithImpl<$Res>
-    extends _$ProductCategoryCopyWithImpl<$Res, _$ProductCategoryImpl>
-    implements _$$ProductCategoryImplCopyWith<$Res> {
-  __$$ProductCategoryImplCopyWithImpl(
-      _$ProductCategoryImpl _value, $Res Function(_$ProductCategoryImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
+abstract mixin class _$ChosenDateTimeCopyWith<$Res>
+    implements $ChosenDateTimeCopyWith<$Res> {
+  factory _$ChosenDateTimeCopyWith(
+          _ChosenDateTime value, $Res Function(_ChosenDateTime) _then) =
+      __$ChosenDateTimeCopyWithImpl;
   @override
+  @useResult
+  $Res call({DateTime? selectedDateTime});
+}
+
+/// @nodoc
+class __$ChosenDateTimeCopyWithImpl<$Res>
+    implements _$ChosenDateTimeCopyWith<$Res> {
+  __$ChosenDateTimeCopyWithImpl(this._self, this._then);
+
+  final _ChosenDateTime _self;
+  final $Res Function(_ChosenDateTime) _then;
+
+  /// Create a copy of ChosenDateTime
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
   $Res call({
-    Object? categoryName = null,
-    Object? listProduct = null,
-    Object? chosenProduct = freezed,
+    Object? selectedDateTime = freezed,
   }) {
-    return _then(_$ProductCategoryImpl(
-      categoryName: null == categoryName
-          ? _value.categoryName
-          : categoryName // ignore: cast_nullable_to_non_nullable
-              as String,
-      listProduct: null == listProduct
-          ? _value._listProduct
-          : listProduct // ignore: cast_nullable_to_non_nullable
-              as List<Product>,
-      chosenProduct: freezed == chosenProduct
-          ? _value.chosenProduct
-          : chosenProduct // ignore: cast_nullable_to_non_nullable
-              as Product?,
+    return _then(_ChosenDateTime(
+      selectedDateTime: freezed == selectedDateTime
+          ? _self.selectedDateTime
+          : selectedDateTime // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
 
 /// @nodoc
+mixin _$ProductCategory {
+  String get categoryName;
+  List<Product> get listProduct;
+  Product? get chosenProduct;
 
-class _$ProductCategoryImpl extends _ProductCategory {
-  const _$ProductCategoryImpl(
+  /// Create a copy of ProductCategory
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $ProductCategoryCopyWith<ProductCategory> get copyWith =>
+      _$ProductCategoryCopyWithImpl<ProductCategory>(
+          this as ProductCategory, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is ProductCategory &&
+            (identical(other.categoryName, categoryName) ||
+                other.categoryName == categoryName) &&
+            const DeepCollectionEquality()
+                .equals(other.listProduct, listProduct) &&
+            (identical(other.chosenProduct, chosenProduct) ||
+                other.chosenProduct == chosenProduct));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, categoryName,
+      const DeepCollectionEquality().hash(listProduct), chosenProduct);
+
+  @override
+  String toString() {
+    return 'ProductCategory(categoryName: $categoryName, listProduct: $listProduct, chosenProduct: $chosenProduct)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $ProductCategoryCopyWith<$Res> {
+  factory $ProductCategoryCopyWith(
+          ProductCategory value, $Res Function(ProductCategory) _then) =
+      _$ProductCategoryCopyWithImpl;
+  @useResult
+  $Res call(
+      {String categoryName, List<Product> listProduct, Product? chosenProduct});
+
+  $ProductCopyWith<$Res>? get chosenProduct;
+}
+
+/// @nodoc
+class _$ProductCategoryCopyWithImpl<$Res>
+    implements $ProductCategoryCopyWith<$Res> {
+  _$ProductCategoryCopyWithImpl(this._self, this._then);
+
+  final ProductCategory _self;
+  final $Res Function(ProductCategory) _then;
+
+  /// Create a copy of ProductCategory
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? categoryName = null,
+    Object? listProduct = null,
+    Object? chosenProduct = freezed,
+  }) {
+    return _then(_self.copyWith(
+      categoryName: null == categoryName
+          ? _self.categoryName
+          : categoryName // ignore: cast_nullable_to_non_nullable
+              as String,
+      listProduct: null == listProduct
+          ? _self.listProduct
+          : listProduct // ignore: cast_nullable_to_non_nullable
+              as List<Product>,
+      chosenProduct: freezed == chosenProduct
+          ? _self.chosenProduct
+          : chosenProduct // ignore: cast_nullable_to_non_nullable
+              as Product?,
+    ));
+  }
+
+  /// Create a copy of ProductCategory
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ProductCopyWith<$Res>? get chosenProduct {
+    if (_self.chosenProduct == null) {
+      return null;
+    }
+
+    return $ProductCopyWith<$Res>(_self.chosenProduct!, (value) {
+      return _then(_self.copyWith(chosenProduct: value));
+    });
+  }
+}
+
+/// Adds pattern-matching-related methods to [ProductCategory].
+extension ProductCategoryPatterns on ProductCategory {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_ProductCategory value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _ProductCategory() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ProductCategory value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ProductCategory():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_ProductCategory value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ProductCategory() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String categoryName, List<Product> listProduct,
+            Product? chosenProduct)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _ProductCategory() when $default != null:
+        return $default(
+            _that.categoryName, _that.listProduct, _that.chosenProduct);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String categoryName, List<Product> listProduct,
+            Product? chosenProduct)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ProductCategory():
+        return $default(
+            _that.categoryName, _that.listProduct, _that.chosenProduct);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(String categoryName, List<Product> listProduct,
+            Product? chosenProduct)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ProductCategory() when $default != null:
+        return $default(
+            _that.categoryName, _that.listProduct, _that.chosenProduct);
+      case _:
+        return null;
+    }
+  }
+}
+
+/// @nodoc
+
+class _ProductCategory extends ProductCategory {
+  const _ProductCategory(
       {required this.categoryName,
       required final List<Product> listProduct,
       this.chosenProduct})
@@ -752,16 +970,19 @@ class _$ProductCategoryImpl extends _ProductCategory {
   @override
   final Product? chosenProduct;
 
+  /// Create a copy of ProductCategory
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'ProductCategory(categoryName: $categoryName, listProduct: $listProduct, chosenProduct: $chosenProduct)';
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$ProductCategoryCopyWith<_ProductCategory> get copyWith =>
+      __$ProductCategoryCopyWithImpl<_ProductCategory>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ProductCategoryImpl &&
+            other is _ProductCategory &&
             (identical(other.categoryName, categoryName) ||
                 other.categoryName == categoryName) &&
             const DeepCollectionEquality()
@@ -774,239 +995,98 @@ class _$ProductCategoryImpl extends _ProductCategory {
   int get hashCode => Object.hash(runtimeType, categoryName,
       const DeepCollectionEquality().hash(_listProduct), chosenProduct);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$ProductCategoryImplCopyWith<_$ProductCategoryImpl> get copyWith =>
-      __$$ProductCategoryImplCopyWithImpl<_$ProductCategoryImpl>(
-          this, _$identity);
+  String toString() {
+    return 'ProductCategory(categoryName: $categoryName, listProduct: $listProduct, chosenProduct: $chosenProduct)';
+  }
 }
 
-abstract class _ProductCategory extends ProductCategory {
-  const factory _ProductCategory(
-      {required final String categoryName,
-      required final List<Product> listProduct,
-      final Product? chosenProduct}) = _$ProductCategoryImpl;
-  const _ProductCategory._() : super._();
+/// @nodoc
+abstract mixin class _$ProductCategoryCopyWith<$Res>
+    implements $ProductCategoryCopyWith<$Res> {
+  factory _$ProductCategoryCopyWith(
+          _ProductCategory value, $Res Function(_ProductCategory) _then) =
+      __$ProductCategoryCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {String categoryName, List<Product> listProduct, Product? chosenProduct});
 
   @override
-  String get categoryName;
+  $ProductCopyWith<$Res>? get chosenProduct;
+}
+
+/// @nodoc
+class __$ProductCategoryCopyWithImpl<$Res>
+    implements _$ProductCategoryCopyWith<$Res> {
+  __$ProductCategoryCopyWithImpl(this._self, this._then);
+
+  final _ProductCategory _self;
+  final $Res Function(_ProductCategory) _then;
+
+  /// Create a copy of ProductCategory
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  List<Product> get listProduct;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? categoryName = null,
+    Object? listProduct = null,
+    Object? chosenProduct = freezed,
+  }) {
+    return _then(_ProductCategory(
+      categoryName: null == categoryName
+          ? _self.categoryName
+          : categoryName // ignore: cast_nullable_to_non_nullable
+              as String,
+      listProduct: null == listProduct
+          ? _self._listProduct
+          : listProduct // ignore: cast_nullable_to_non_nullable
+              as List<Product>,
+      chosenProduct: freezed == chosenProduct
+          ? _self.chosenProduct
+          : chosenProduct // ignore: cast_nullable_to_non_nullable
+              as Product?,
+    ));
+  }
+
+  /// Create a copy of ProductCategory
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  Product? get chosenProduct;
-  @override
-  @JsonKey(ignore: true)
-  _$$ProductCategoryImplCopyWith<_$ProductCategoryImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $ProductCopyWith<$Res>? get chosenProduct {
+    if (_self.chosenProduct == null) {
+      return null;
+    }
+
+    return $ProductCopyWith<$Res>(_self.chosenProduct!, (value) {
+      return _then(_self.copyWith(chosenProduct: value));
+    });
+  }
 }
 
 /// @nodoc
 mixin _$Product {
-  String get productNumber => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  Enum get productType => throw _privateConstructorUsedError;
-  double get price => throw _privateConstructorUsedError;
-  String get picturePath => throw _privateConstructorUsedError;
-  Uint8List? get pictureByte => throw _privateConstructorUsedError;
-  int? get offerInPercent => throw _privateConstructorUsedError;
-  int? get productCount => throw _privateConstructorUsedError;
+  String get productNumber;
+  String get name;
+  Enum get productType;
+  double get price;
+  String get picturePath;
+  Uint8List? get pictureByte;
+  int? get offerInPercent;
+  int? get productCount;
 
-  @JsonKey(ignore: true)
-  $ProductCopyWith<Product> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $ProductCopyWith<$Res> {
-  factory $ProductCopyWith(Product value, $Res Function(Product) then) =
-      _$ProductCopyWithImpl<$Res, Product>;
-  @useResult
-  $Res call(
-      {String productNumber,
-      String name,
-      Enum productType,
-      double price,
-      String picturePath,
-      Uint8List? pictureByte,
-      int? offerInPercent,
-      int? productCount});
-}
-
-/// @nodoc
-class _$ProductCopyWithImpl<$Res, $Val extends Product>
-    implements $ProductCopyWith<$Res> {
-  _$ProductCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
+  /// Create a copy of Product
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? productNumber = null,
-    Object? name = null,
-    Object? productType = null,
-    Object? price = null,
-    Object? picturePath = null,
-    Object? pictureByte = freezed,
-    Object? offerInPercent = freezed,
-    Object? productCount = freezed,
-  }) {
-    return _then(_value.copyWith(
-      productNumber: null == productNumber
-          ? _value.productNumber
-          : productNumber // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      productType: null == productType
-          ? _value.productType
-          : productType // ignore: cast_nullable_to_non_nullable
-              as Enum,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as double,
-      picturePath: null == picturePath
-          ? _value.picturePath
-          : picturePath // ignore: cast_nullable_to_non_nullable
-              as String,
-      pictureByte: freezed == pictureByte
-          ? _value.pictureByte
-          : pictureByte // ignore: cast_nullable_to_non_nullable
-              as Uint8List?,
-      offerInPercent: freezed == offerInPercent
-          ? _value.offerInPercent
-          : offerInPercent // ignore: cast_nullable_to_non_nullable
-              as int?,
-      productCount: freezed == productCount
-          ? _value.productCount
-          : productCount // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
-  factory _$$ProductImplCopyWith(
-          _$ProductImpl value, $Res Function(_$ProductImpl) then) =
-      __$$ProductImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String productNumber,
-      String name,
-      Enum productType,
-      double price,
-      String picturePath,
-      Uint8List? pictureByte,
-      int? offerInPercent,
-      int? productCount});
-}
-
-/// @nodoc
-class __$$ProductImplCopyWithImpl<$Res>
-    extends _$ProductCopyWithImpl<$Res, _$ProductImpl>
-    implements _$$ProductImplCopyWith<$Res> {
-  __$$ProductImplCopyWithImpl(
-      _$ProductImpl _value, $Res Function(_$ProductImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? productNumber = null,
-    Object? name = null,
-    Object? productType = null,
-    Object? price = null,
-    Object? picturePath = null,
-    Object? pictureByte = freezed,
-    Object? offerInPercent = freezed,
-    Object? productCount = freezed,
-  }) {
-    return _then(_$ProductImpl(
-      productNumber: null == productNumber
-          ? _value.productNumber
-          : productNumber // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      productType: null == productType
-          ? _value.productType
-          : productType // ignore: cast_nullable_to_non_nullable
-              as Enum,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as double,
-      picturePath: null == picturePath
-          ? _value.picturePath
-          : picturePath // ignore: cast_nullable_to_non_nullable
-              as String,
-      pictureByte: freezed == pictureByte
-          ? _value.pictureByte
-          : pictureByte // ignore: cast_nullable_to_non_nullable
-              as Uint8List?,
-      offerInPercent: freezed == offerInPercent
-          ? _value.offerInPercent
-          : offerInPercent // ignore: cast_nullable_to_non_nullable
-              as int?,
-      productCount: freezed == productCount
-          ? _value.productCount
-          : productCount // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$ProductImpl extends _Product {
-  const _$ProductImpl(
-      {required this.productNumber,
-      required this.name,
-      required this.productType,
-      required this.price,
-      required this.picturePath,
-      this.pictureByte,
-      this.offerInPercent,
-      this.productCount})
-      : super._();
-
-  @override
-  final String productNumber;
-  @override
-  final String name;
-  @override
-  final Enum productType;
-  @override
-  final double price;
-  @override
-  final String picturePath;
-  @override
-  final Uint8List? pictureByte;
-  @override
-  final int? offerInPercent;
-  @override
-  final int? productCount;
-
-  @override
-  String toString() {
-    return 'Product(productNumber: $productNumber, name: $name, productType: $productType, price: $price, picturePath: $picturePath, pictureByte: $pictureByte, offerInPercent: $offerInPercent, productCount: $productCount)';
-  }
+  $ProductCopyWith<Product> get copyWith =>
+      _$ProductCopyWithImpl<Product>(this as Product, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ProductImpl &&
+            other is Product &&
             (identical(other.productNumber, productNumber) ||
                 other.productNumber == productNumber) &&
             (identical(other.name, name) || other.name == name) &&
@@ -1035,43 +1115,445 @@ class _$ProductImpl extends _Product {
       offerInPercent,
       productCount);
 
-  @JsonKey(ignore: true)
+  @override
+  String toString() {
+    return 'Product(productNumber: $productNumber, name: $name, productType: $productType, price: $price, picturePath: $picturePath, pictureByte: $pictureByte, offerInPercent: $offerInPercent, productCount: $productCount)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $ProductCopyWith<$Res> {
+  factory $ProductCopyWith(Product value, $Res Function(Product) _then) =
+      _$ProductCopyWithImpl;
+  @useResult
+  $Res call(
+      {String productNumber,
+      String name,
+      Enum productType,
+      double price,
+      String picturePath,
+      Uint8List? pictureByte,
+      int? offerInPercent,
+      int? productCount});
+}
+
+/// @nodoc
+class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
+  _$ProductCopyWithImpl(this._self, this._then);
+
+  final Product _self;
+  final $Res Function(Product) _then;
+
+  /// Create a copy of Product
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? productNumber = null,
+    Object? name = null,
+    Object? productType = null,
+    Object? price = null,
+    Object? picturePath = null,
+    Object? pictureByte = freezed,
+    Object? offerInPercent = freezed,
+    Object? productCount = freezed,
+  }) {
+    return _then(_self.copyWith(
+      productNumber: null == productNumber
+          ? _self.productNumber
+          : productNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      productType: null == productType
+          ? _self.productType
+          : productType // ignore: cast_nullable_to_non_nullable
+              as Enum,
+      price: null == price
+          ? _self.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as double,
+      picturePath: null == picturePath
+          ? _self.picturePath
+          : picturePath // ignore: cast_nullable_to_non_nullable
+              as String,
+      pictureByte: freezed == pictureByte
+          ? _self.pictureByte
+          : pictureByte // ignore: cast_nullable_to_non_nullable
+              as Uint8List?,
+      offerInPercent: freezed == offerInPercent
+          ? _self.offerInPercent
+          : offerInPercent // ignore: cast_nullable_to_non_nullable
+              as int?,
+      productCount: freezed == productCount
+          ? _self.productCount
+          : productCount // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [Product].
+extension ProductPatterns on Product {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_Product value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Product() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_Product value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _Product():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_Product value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _Product() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            String productNumber,
+            String name,
+            Enum productType,
+            double price,
+            String picturePath,
+            Uint8List? pictureByte,
+            int? offerInPercent,
+            int? productCount)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Product() when $default != null:
+        return $default(
+            _that.productNumber,
+            _that.name,
+            _that.productType,
+            _that.price,
+            _that.picturePath,
+            _that.pictureByte,
+            _that.offerInPercent,
+            _that.productCount);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            String productNumber,
+            String name,
+            Enum productType,
+            double price,
+            String picturePath,
+            Uint8List? pictureByte,
+            int? offerInPercent,
+            int? productCount)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _Product():
+        return $default(
+            _that.productNumber,
+            _that.name,
+            _that.productType,
+            _that.price,
+            _that.picturePath,
+            _that.pictureByte,
+            _that.offerInPercent,
+            _that.productCount);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            String productNumber,
+            String name,
+            Enum productType,
+            double price,
+            String picturePath,
+            Uint8List? pictureByte,
+            int? offerInPercent,
+            int? productCount)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _Product() when $default != null:
+        return $default(
+            _that.productNumber,
+            _that.name,
+            _that.productType,
+            _that.price,
+            _that.picturePath,
+            _that.pictureByte,
+            _that.offerInPercent,
+            _that.productCount);
+      case _:
+        return null;
+    }
+  }
+}
+
+/// @nodoc
+
+class _Product extends Product {
+  const _Product(
+      {required this.productNumber,
+      required this.name,
+      required this.productType,
+      required this.price,
+      required this.picturePath,
+      this.pictureByte,
+      this.offerInPercent,
+      this.productCount})
+      : super._();
+
+  @override
+  final String productNumber;
+  @override
+  final String name;
+  @override
+  final Enum productType;
+  @override
+  final double price;
+  @override
+  final String picturePath;
+  @override
+  final Uint8List? pictureByte;
+  @override
+  final int? offerInPercent;
+  @override
+  final int? productCount;
+
+  /// Create a copy of Product
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$ProductCopyWith<_Product> get copyWith =>
+      __$ProductCopyWithImpl<_Product>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _Product &&
+            (identical(other.productNumber, productNumber) ||
+                other.productNumber == productNumber) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.productType, productType) ||
+                other.productType == productType) &&
+            (identical(other.price, price) || other.price == price) &&
+            (identical(other.picturePath, picturePath) ||
+                other.picturePath == picturePath) &&
+            const DeepCollectionEquality()
+                .equals(other.pictureByte, pictureByte) &&
+            (identical(other.offerInPercent, offerInPercent) ||
+                other.offerInPercent == offerInPercent) &&
+            (identical(other.productCount, productCount) ||
+                other.productCount == productCount));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      productNumber,
+      name,
+      productType,
+      price,
+      picturePath,
+      const DeepCollectionEquality().hash(pictureByte),
+      offerInPercent,
+      productCount);
+
+  @override
+  String toString() {
+    return 'Product(productNumber: $productNumber, name: $name, productType: $productType, price: $price, picturePath: $picturePath, pictureByte: $pictureByte, offerInPercent: $offerInPercent, productCount: $productCount)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
+  factory _$ProductCopyWith(_Product value, $Res Function(_Product) _then) =
+      __$ProductCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {String productNumber,
+      String name,
+      Enum productType,
+      double price,
+      String picturePath,
+      Uint8List? pictureByte,
+      int? offerInPercent,
+      int? productCount});
+}
+
+/// @nodoc
+class __$ProductCopyWithImpl<$Res> implements _$ProductCopyWith<$Res> {
+  __$ProductCopyWithImpl(this._self, this._then);
+
+  final _Product _self;
+  final $Res Function(_Product) _then;
+
+  /// Create a copy of Product
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  _$$ProductImplCopyWith<_$ProductImpl> get copyWith =>
-      __$$ProductImplCopyWithImpl<_$ProductImpl>(this, _$identity);
+  $Res call({
+    Object? productNumber = null,
+    Object? name = null,
+    Object? productType = null,
+    Object? price = null,
+    Object? picturePath = null,
+    Object? pictureByte = freezed,
+    Object? offerInPercent = freezed,
+    Object? productCount = freezed,
+  }) {
+    return _then(_Product(
+      productNumber: null == productNumber
+          ? _self.productNumber
+          : productNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      productType: null == productType
+          ? _self.productType
+          : productType // ignore: cast_nullable_to_non_nullable
+              as Enum,
+      price: null == price
+          ? _self.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as double,
+      picturePath: null == picturePath
+          ? _self.picturePath
+          : picturePath // ignore: cast_nullable_to_non_nullable
+              as String,
+      pictureByte: freezed == pictureByte
+          ? _self.pictureByte
+          : pictureByte // ignore: cast_nullable_to_non_nullable
+              as Uint8List?,
+      offerInPercent: freezed == offerInPercent
+          ? _self.offerInPercent
+          : offerInPercent // ignore: cast_nullable_to_non_nullable
+              as int?,
+      productCount: freezed == productCount
+          ? _self.productCount
+          : productCount // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
+  }
 }
 
-abstract class _Product extends Product {
-  const factory _Product(
-      {required final String productNumber,
-      required final String name,
-      required final Enum productType,
-      required final double price,
-      required final String picturePath,
-      final Uint8List? pictureByte,
-      final int? offerInPercent,
-      final int? productCount}) = _$ProductImpl;
-  const _Product._() : super._();
-
-  @override
-  String get productNumber;
-  @override
-  String get name;
-  @override
-  Enum get productType;
-  @override
-  double get price;
-  @override
-  String get picturePath;
-  @override
-  Uint8List? get pictureByte;
-  @override
-  int? get offerInPercent;
-  @override
-  int? get productCount;
-  @override
-  @JsonKey(ignore: true)
-  _$$ProductImplCopyWith<_$ProductImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+// dart format on

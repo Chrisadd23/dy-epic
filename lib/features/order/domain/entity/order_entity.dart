@@ -5,7 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'order_entity.freezed.dart';
 
 @freezed
-class OrderEntity with _$OrderEntity {
+abstract class OrderEntity with _$OrderEntity {
   const OrderEntity._();
 
   const factory OrderEntity(

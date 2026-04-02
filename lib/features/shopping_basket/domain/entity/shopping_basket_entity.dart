@@ -5,7 +5,7 @@ part 'shopping_basket_entity.freezed.dart';
 part 'shopping_basket_entity.g.dart';
 
 @freezed
-class ShoppingBasketEntity with _$ShoppingBasketEntity {
+abstract class ShoppingBasketEntity with _$ShoppingBasketEntity {
   //ignore: invalid_annotation_target
   @JsonSerializable(
       explicitToJson: true) // Verschachtelte Objekte korrekt serialisieren
@@ -22,7 +22,7 @@ class ShoppingBasketEntity with _$ShoppingBasketEntity {
 }
 
 @freezed
-class ShoppingBasketProduct with _$ShoppingBasketProduct {
+abstract class ShoppingBasketProduct with _$ShoppingBasketProduct {
   //ignore: invalid_annotation_target
   @JsonSerializable(explicitToJson: true)
   const factory ShoppingBasketProduct({

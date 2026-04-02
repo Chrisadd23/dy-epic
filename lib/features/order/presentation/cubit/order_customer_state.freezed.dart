@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,33 +9,150 @@ part of 'order_customer_state.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$OrderCustomerState {
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is OrderCustomerState);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'OrderCustomerState()';
+  }
+}
+
+/// @nodoc
+class $OrderCustomerStateCopyWith<$Res> {
+  $OrderCustomerStateCopyWith(
+      OrderCustomerState _, $Res Function(OrderCustomerState) __);
+}
+
+/// Adds pattern-matching-related methods to [OrderCustomerState].
+extension OrderCustomerStatePatterns on OrderCustomerState {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
   @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initialise,
-    required TResult Function() loading,
-    required TResult Function(
-            EnumSortProductOrder sortType, List<OrderEntity>? orderList)
-        success,
-    required TResult Function(Failure failure) failure,
-  }) =>
-      throw _privateConstructorUsedError;
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialise value)? initialise,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Success value)? success,
+    TResult Function(_Failure value)? failure,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initialise() when initialise != null:
+        return initialise(_that);
+      case _Loading() when loading != null:
+        return loading(_that);
+      case _Success() when success != null:
+        return success(_that);
+      case _Failure() when failure != null:
+        return failure(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initialise,
-    TResult? Function()? loading,
-    TResult? Function(
-            EnumSortProductOrder sortType, List<OrderEntity>? orderList)?
-        success,
-    TResult? Function(Failure failure)? failure,
-  }) =>
-      throw _privateConstructorUsedError;
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialise value) initialise,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Failure value) failure,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initialise():
+        return initialise(_that);
+      case _Loading():
+        return loading(_that);
+      case _Success():
+        return success(_that);
+      case _Failure():
+        return failure(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialise value)? initialise,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Failure value)? failure,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initialise() when initialise != null:
+        return initialise(_that);
+      case _Loading() when loading != null:
+        return loading(_that);
+      case _Success() when success != null:
+        return success(_that);
+      case _Failure() when failure != null:
+        return failure(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialise,
@@ -45,345 +162,148 @@ mixin _$OrderCustomerState {
         success,
     TResult Function(Failure failure)? failure,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initialise() when initialise != null:
+        return initialise();
+      case _Loading() when loading != null:
+        return loading();
+      case _Success() when success != null:
+        return success(_that.sortType, _that.orderList);
+      case _Failure() when failure != null:
+        return failure(_that.failure);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
   @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initialise value) initialise,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
-  }) =>
-      throw _privateConstructorUsedError;
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialise,
+    required TResult Function() loading,
+    required TResult Function(
+            EnumSortProductOrder sortType, List<OrderEntity>? orderList)
+        success,
+    required TResult Function(Failure failure) failure,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initialise():
+        return initialise();
+      case _Loading():
+        return loading();
+      case _Success():
+        return success(_that.sortType, _that.orderList);
+      case _Failure():
+        return failure(_that.failure);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
   @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initialise value)? initialise,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initialise value)? initialise,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $OrderCustomerStateCopyWith<$Res> {
-  factory $OrderCustomerStateCopyWith(
-          OrderCustomerState value, $Res Function(OrderCustomerState) then) =
-      _$OrderCustomerStateCopyWithImpl<$Res, OrderCustomerState>;
-}
-
-/// @nodoc
-class _$OrderCustomerStateCopyWithImpl<$Res, $Val extends OrderCustomerState>
-    implements $OrderCustomerStateCopyWith<$Res> {
-  _$OrderCustomerStateCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$InitialiseImplCopyWith<$Res> {
-  factory _$$InitialiseImplCopyWith(
-          _$InitialiseImpl value, $Res Function(_$InitialiseImpl) then) =
-      __$$InitialiseImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$InitialiseImplCopyWithImpl<$Res>
-    extends _$OrderCustomerStateCopyWithImpl<$Res, _$InitialiseImpl>
-    implements _$$InitialiseImplCopyWith<$Res> {
-  __$$InitialiseImplCopyWithImpl(
-      _$InitialiseImpl _value, $Res Function(_$InitialiseImpl) _then)
-      : super(_value, _then);
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialise,
+    TResult? Function()? loading,
+    TResult? Function(
+            EnumSortProductOrder sortType, List<OrderEntity>? orderList)?
+        success,
+    TResult? Function(Failure failure)? failure,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initialise() when initialise != null:
+        return initialise();
+      case _Loading() when loading != null:
+        return loading();
+      case _Success() when success != null:
+        return success(_that.sortType, _that.orderList);
+      case _Failure() when failure != null:
+        return failure(_that.failure);
+      case _:
+        return null;
+    }
+  }
 }
 
 /// @nodoc
 
-class _$InitialiseImpl extends _Initialise {
-  const _$InitialiseImpl() : super._();
+class _Initialise extends OrderCustomerState {
+  const _Initialise() : super._();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Initialise);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
 
   @override
   String toString() {
     return 'OrderCustomerState.initialise()';
   }
+}
+
+/// @nodoc
+
+class _Loading extends OrderCustomerState {
+  const _Loading() : super._();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialiseImpl);
+        (other.runtimeType == runtimeType && other is _Loading);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initialise,
-    required TResult Function() loading,
-    required TResult Function(
-            EnumSortProductOrder sortType, List<OrderEntity>? orderList)
-        success,
-    required TResult Function(Failure failure) failure,
-  }) {
-    return initialise();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initialise,
-    TResult? Function()? loading,
-    TResult? Function(
-            EnumSortProductOrder sortType, List<OrderEntity>? orderList)?
-        success,
-    TResult? Function(Failure failure)? failure,
-  }) {
-    return initialise?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initialise,
-    TResult Function()? loading,
-    TResult Function(
-            EnumSortProductOrder sortType, List<OrderEntity>? orderList)?
-        success,
-    TResult Function(Failure failure)? failure,
-    required TResult orElse(),
-  }) {
-    if (initialise != null) {
-      return initialise();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initialise value) initialise,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
-  }) {
-    return initialise(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initialise value)? initialise,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
-  }) {
-    return initialise?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initialise value)? initialise,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
-    required TResult orElse(),
-  }) {
-    if (initialise != null) {
-      return initialise(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Initialise extends OrderCustomerState {
-  const factory _Initialise() = _$InitialiseImpl;
-  const _Initialise._() : super._();
-}
-
-/// @nodoc
-abstract class _$$LoadingImplCopyWith<$Res> {
-  factory _$$LoadingImplCopyWith(
-          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
-      __$$LoadingImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$OrderCustomerStateCopyWithImpl<$Res, _$LoadingImpl>
-    implements _$$LoadingImplCopyWith<$Res> {
-  __$$LoadingImplCopyWithImpl(
-      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$LoadingImpl extends _Loading {
-  const _$LoadingImpl() : super._();
 
   @override
   String toString() {
     return 'OrderCustomerState.loading()';
   }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initialise,
-    required TResult Function() loading,
-    required TResult Function(
-            EnumSortProductOrder sortType, List<OrderEntity>? orderList)
-        success,
-    required TResult Function(Failure failure) failure,
-  }) {
-    return loading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initialise,
-    TResult? Function()? loading,
-    TResult? Function(
-            EnumSortProductOrder sortType, List<OrderEntity>? orderList)?
-        success,
-    TResult? Function(Failure failure)? failure,
-  }) {
-    return loading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initialise,
-    TResult Function()? loading,
-    TResult Function(
-            EnumSortProductOrder sortType, List<OrderEntity>? orderList)?
-        success,
-    TResult Function(Failure failure)? failure,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initialise value) initialise,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
-  }) {
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initialise value)? initialise,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
-  }) {
-    return loading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initialise value)? initialise,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Loading extends OrderCustomerState {
-  const factory _Loading() = _$LoadingImpl;
-  const _Loading._() : super._();
-}
-
-/// @nodoc
-abstract class _$$SuccessImplCopyWith<$Res> {
-  factory _$$SuccessImplCopyWith(
-          _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
-      __$$SuccessImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({EnumSortProductOrder sortType, List<OrderEntity>? orderList});
-}
-
-/// @nodoc
-class __$$SuccessImplCopyWithImpl<$Res>
-    extends _$OrderCustomerStateCopyWithImpl<$Res, _$SuccessImpl>
-    implements _$$SuccessImplCopyWith<$Res> {
-  __$$SuccessImplCopyWithImpl(
-      _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? sortType = null,
-    Object? orderList = freezed,
-  }) {
-    return _then(_$SuccessImpl(
-      sortType: null == sortType
-          ? _value.sortType
-          : sortType // ignore: cast_nullable_to_non_nullable
-              as EnumSortProductOrder,
-      orderList: freezed == orderList
-          ? _value._orderList
-          : orderList // ignore: cast_nullable_to_non_nullable
-              as List<OrderEntity>?,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$SuccessImpl extends _Success {
-  const _$SuccessImpl(
+class _Success extends OrderCustomerState {
+  const _Success(
       {this.sortType = EnumSortProductOrder.sortDate,
       required final List<OrderEntity>? orderList})
       : _orderList = orderList,
         super._();
 
-  @override
   @JsonKey()
   final EnumSortProductOrder sortType;
   final List<OrderEntity>? _orderList;
-  @override
   List<OrderEntity>? get orderList {
     final value = _orderList;
     if (value == null) return null;
@@ -392,16 +312,18 @@ class _$SuccessImpl extends _Success {
     return EqualUnmodifiableListView(value);
   }
 
-  @override
-  String toString() {
-    return 'OrderCustomerState.success(sortType: $sortType, orderList: $orderList)';
-  }
+  /// Create a copy of OrderCustomerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$SuccessCopyWith<_Success> get copyWith =>
+      __$SuccessCopyWithImpl<_Success>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SuccessImpl &&
+            other is _Success &&
             (identical(other.sortType, sortType) ||
                 other.sortType == sortType) &&
             const DeepCollectionEquality()
@@ -412,111 +334,84 @@ class _$SuccessImpl extends _Success {
   int get hashCode => Object.hash(
       runtimeType, sortType, const DeepCollectionEquality().hash(_orderList));
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
-      __$$SuccessImplCopyWithImpl<_$SuccessImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initialise,
-    required TResult Function() loading,
-    required TResult Function(
-            EnumSortProductOrder sortType, List<OrderEntity>? orderList)
-        success,
-    required TResult Function(Failure failure) failure,
-  }) {
-    return success(sortType, orderList);
+  String toString() {
+    return 'OrderCustomerState.success(sortType: $sortType, orderList: $orderList)';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initialise,
-    TResult? Function()? loading,
-    TResult? Function(
-            EnumSortProductOrder sortType, List<OrderEntity>? orderList)?
-        success,
-    TResult? Function(Failure failure)? failure,
-  }) {
-    return success?.call(sortType, orderList);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initialise,
-    TResult Function()? loading,
-    TResult Function(
-            EnumSortProductOrder sortType, List<OrderEntity>? orderList)?
-        success,
-    TResult Function(Failure failure)? failure,
-    required TResult orElse(),
-  }) {
-    if (success != null) {
-      return success(sortType, orderList);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initialise value) initialise,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
-  }) {
-    return success(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initialise value)? initialise,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
-  }) {
-    return success?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initialise value)? initialise,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
-    required TResult orElse(),
-  }) {
-    if (success != null) {
-      return success(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Success extends OrderCustomerState {
-  const factory _Success(
-      {final EnumSortProductOrder sortType,
-      required final List<OrderEntity>? orderList}) = _$SuccessImpl;
-  const _Success._() : super._();
-
-  EnumSortProductOrder get sortType;
-  List<OrderEntity>? get orderList;
-  @JsonKey(ignore: true)
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$FailureImplCopyWith<$Res> {
-  factory _$$FailureImplCopyWith(
-          _$FailureImpl value, $Res Function(_$FailureImpl) then) =
-      __$$FailureImplCopyWithImpl<$Res>;
+abstract mixin class _$SuccessCopyWith<$Res>
+    implements $OrderCustomerStateCopyWith<$Res> {
+  factory _$SuccessCopyWith(_Success value, $Res Function(_Success) _then) =
+      __$SuccessCopyWithImpl;
+  @useResult
+  $Res call({EnumSortProductOrder sortType, List<OrderEntity>? orderList});
+}
+
+/// @nodoc
+class __$SuccessCopyWithImpl<$Res> implements _$SuccessCopyWith<$Res> {
+  __$SuccessCopyWithImpl(this._self, this._then);
+
+  final _Success _self;
+  final $Res Function(_Success) _then;
+
+  /// Create a copy of OrderCustomerState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? sortType = null,
+    Object? orderList = freezed,
+  }) {
+    return _then(_Success(
+      sortType: null == sortType
+          ? _self.sortType
+          : sortType // ignore: cast_nullable_to_non_nullable
+              as EnumSortProductOrder,
+      orderList: freezed == orderList
+          ? _self._orderList
+          : orderList // ignore: cast_nullable_to_non_nullable
+              as List<OrderEntity>?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _Failure extends OrderCustomerState {
+  const _Failure({required this.failure}) : super._();
+
+  final Failure failure;
+
+  /// Create a copy of OrderCustomerState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$FailureCopyWith<_Failure> get copyWith =>
+      __$FailureCopyWithImpl<_Failure>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _Failure &&
+            (identical(other.failure, failure) || other.failure == failure));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, failure);
+
+  @override
+  String toString() {
+    return 'OrderCustomerState.failure(failure: $failure)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$FailureCopyWith<$Res>
+    implements $OrderCustomerStateCopyWith<$Res> {
+  factory _$FailureCopyWith(_Failure value, $Res Function(_Failure) _then) =
+      __$FailureCopyWithImpl;
   @useResult
   $Res call({Failure failure});
 
@@ -524,176 +419,91 @@ abstract class _$$FailureImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$FailureImplCopyWithImpl<$Res>
-    extends _$OrderCustomerStateCopyWithImpl<$Res, _$FailureImpl>
-    implements _$$FailureImplCopyWith<$Res> {
-  __$$FailureImplCopyWithImpl(
-      _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
-      : super(_value, _then);
+class __$FailureCopyWithImpl<$Res> implements _$FailureCopyWith<$Res> {
+  __$FailureCopyWithImpl(this._self, this._then);
 
+  final _Failure _self;
+  final $Res Function(_Failure) _then;
+
+  /// Create a copy of OrderCustomerState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
     Object? failure = null,
   }) {
-    return _then(_$FailureImpl(
+    return _then(_Failure(
       failure: null == failure
-          ? _value.failure
+          ? _self.failure
           : failure // ignore: cast_nullable_to_non_nullable
               as Failure,
     ));
   }
 
+  /// Create a copy of OrderCustomerState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FailureCopyWith<$Res> get failure {
-    return $FailureCopyWith<$Res>(_value.failure, (value) {
-      return _then(_value.copyWith(failure: value));
+    return $FailureCopyWith<$Res>(_self.failure, (value) {
+      return _then(_self.copyWith(failure: value));
     });
   }
 }
 
 /// @nodoc
+mixin _$ProductOrder {
+  String get orderNumber;
+  double get amount;
+  EnumOrderProcess get enumOrderProcess;
+  DateTime get date;
+  List<ProductInformation> get productInformationList;
+  bool? get hide;
 
-class _$FailureImpl extends _Failure {
-  const _$FailureImpl({required this.failure}) : super._();
-
-  @override
-  final Failure failure;
-
-  @override
-  String toString() {
-    return 'OrderCustomerState.failure(failure: $failure)';
-  }
+  /// Create a copy of ProductOrder
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $ProductOrderCopyWith<ProductOrder> get copyWith =>
+      _$ProductOrderCopyWithImpl<ProductOrder>(
+          this as ProductOrder, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FailureImpl &&
-            (identical(other.failure, failure) || other.failure == failure));
+            other is ProductOrder &&
+            (identical(other.orderNumber, orderNumber) ||
+                other.orderNumber == orderNumber) &&
+            (identical(other.amount, amount) || other.amount == amount) &&
+            (identical(other.enumOrderProcess, enumOrderProcess) ||
+                other.enumOrderProcess == enumOrderProcess) &&
+            (identical(other.date, date) || other.date == date) &&
+            const DeepCollectionEquality()
+                .equals(other.productInformationList, productInformationList) &&
+            (identical(other.hide, hide) || other.hide == hide));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, failure);
+  int get hashCode => Object.hash(
+      runtimeType,
+      orderNumber,
+      amount,
+      enumOrderProcess,
+      date,
+      const DeepCollectionEquality().hash(productInformationList),
+      hide);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
-      __$$FailureImplCopyWithImpl<_$FailureImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initialise,
-    required TResult Function() loading,
-    required TResult Function(
-            EnumSortProductOrder sortType, List<OrderEntity>? orderList)
-        success,
-    required TResult Function(Failure failure) failure,
-  }) {
-    return failure(this.failure);
+  String toString() {
+    return 'ProductOrder(orderNumber: $orderNumber, amount: $amount, enumOrderProcess: $enumOrderProcess, date: $date, productInformationList: $productInformationList, hide: $hide)';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initialise,
-    TResult? Function()? loading,
-    TResult? Function(
-            EnumSortProductOrder sortType, List<OrderEntity>? orderList)?
-        success,
-    TResult? Function(Failure failure)? failure,
-  }) {
-    return failure?.call(this.failure);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initialise,
-    TResult Function()? loading,
-    TResult Function(
-            EnumSortProductOrder sortType, List<OrderEntity>? orderList)?
-        success,
-    TResult Function(Failure failure)? failure,
-    required TResult orElse(),
-  }) {
-    if (failure != null) {
-      return failure(this.failure);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initialise value) initialise,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
-  }) {
-    return failure(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initialise value)? initialise,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
-  }) {
-    return failure?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initialise value)? initialise,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
-    required TResult orElse(),
-  }) {
-    if (failure != null) {
-      return failure(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Failure extends OrderCustomerState {
-  const factory _Failure({required final Failure failure}) = _$FailureImpl;
-  const _Failure._() : super._();
-
-  Failure get failure;
-  @JsonKey(ignore: true)
-  _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$ProductOrder {
-  String get orderNumber => throw _privateConstructorUsedError;
-  double get amount => throw _privateConstructorUsedError;
-  EnumOrderProcess get enumOrderProcess => throw _privateConstructorUsedError;
-  DateTime get date => throw _privateConstructorUsedError;
-  List<ProductInformation> get productInformationList =>
-      throw _privateConstructorUsedError;
-  bool? get hide => throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $ProductOrderCopyWith<ProductOrder> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $ProductOrderCopyWith<$Res> {
+abstract mixin class $ProductOrderCopyWith<$Res> {
   factory $ProductOrderCopyWith(
-          ProductOrder value, $Res Function(ProductOrder) then) =
-      _$ProductOrderCopyWithImpl<$Res, ProductOrder>;
+          ProductOrder value, $Res Function(ProductOrder) _then) =
+      _$ProductOrderCopyWithImpl;
   @useResult
   $Res call(
       {String orderNumber,
@@ -705,15 +515,14 @@ abstract class $ProductOrderCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ProductOrderCopyWithImpl<$Res, $Val extends ProductOrder>
-    implements $ProductOrderCopyWith<$Res> {
-  _$ProductOrderCopyWithImpl(this._value, this._then);
+class _$ProductOrderCopyWithImpl<$Res> implements $ProductOrderCopyWith<$Res> {
+  _$ProductOrderCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final ProductOrder _self;
+  final $Res Function(ProductOrder) _then;
 
+  /// Create a copy of ProductOrder
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -724,103 +533,220 @@ class _$ProductOrderCopyWithImpl<$Res, $Val extends ProductOrder>
     Object? productInformationList = null,
     Object? hide = freezed,
   }) {
-    return _then(_value.copyWith(
+    return _then(_self.copyWith(
       orderNumber: null == orderNumber
-          ? _value.orderNumber
+          ? _self.orderNumber
           : orderNumber // ignore: cast_nullable_to_non_nullable
               as String,
       amount: null == amount
-          ? _value.amount
+          ? _self.amount
           : amount // ignore: cast_nullable_to_non_nullable
               as double,
       enumOrderProcess: null == enumOrderProcess
-          ? _value.enumOrderProcess
+          ? _self.enumOrderProcess
           : enumOrderProcess // ignore: cast_nullable_to_non_nullable
               as EnumOrderProcess,
       date: null == date
-          ? _value.date
+          ? _self.date
           : date // ignore: cast_nullable_to_non_nullable
               as DateTime,
       productInformationList: null == productInformationList
-          ? _value.productInformationList
+          ? _self.productInformationList
           : productInformationList // ignore: cast_nullable_to_non_nullable
               as List<ProductInformation>,
       hide: freezed == hide
-          ? _value.hide
-          : hide // ignore: cast_nullable_to_non_nullable
-              as bool?,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$ProductOrderImplCopyWith<$Res>
-    implements $ProductOrderCopyWith<$Res> {
-  factory _$$ProductOrderImplCopyWith(
-          _$ProductOrderImpl value, $Res Function(_$ProductOrderImpl) then) =
-      __$$ProductOrderImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String orderNumber,
-      double amount,
-      EnumOrderProcess enumOrderProcess,
-      DateTime date,
-      List<ProductInformation> productInformationList,
-      bool? hide});
-}
-
-/// @nodoc
-class __$$ProductOrderImplCopyWithImpl<$Res>
-    extends _$ProductOrderCopyWithImpl<$Res, _$ProductOrderImpl>
-    implements _$$ProductOrderImplCopyWith<$Res> {
-  __$$ProductOrderImplCopyWithImpl(
-      _$ProductOrderImpl _value, $Res Function(_$ProductOrderImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? orderNumber = null,
-    Object? amount = null,
-    Object? enumOrderProcess = null,
-    Object? date = null,
-    Object? productInformationList = null,
-    Object? hide = freezed,
-  }) {
-    return _then(_$ProductOrderImpl(
-      orderNumber: null == orderNumber
-          ? _value.orderNumber
-          : orderNumber // ignore: cast_nullable_to_non_nullable
-              as String,
-      amount: null == amount
-          ? _value.amount
-          : amount // ignore: cast_nullable_to_non_nullable
-              as double,
-      enumOrderProcess: null == enumOrderProcess
-          ? _value.enumOrderProcess
-          : enumOrderProcess // ignore: cast_nullable_to_non_nullable
-              as EnumOrderProcess,
-      date: null == date
-          ? _value.date
-          : date // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      productInformationList: null == productInformationList
-          ? _value._productInformationList
-          : productInformationList // ignore: cast_nullable_to_non_nullable
-              as List<ProductInformation>,
-      hide: freezed == hide
-          ? _value.hide
+          ? _self.hide
           : hide // ignore: cast_nullable_to_non_nullable
               as bool?,
     ));
   }
 }
 
+/// Adds pattern-matching-related methods to [ProductOrder].
+extension ProductOrderPatterns on ProductOrder {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_ProductOrder value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _ProductOrder() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ProductOrder value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ProductOrder():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_ProductOrder value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ProductOrder() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            String orderNumber,
+            double amount,
+            EnumOrderProcess enumOrderProcess,
+            DateTime date,
+            List<ProductInformation> productInformationList,
+            bool? hide)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _ProductOrder() when $default != null:
+        return $default(_that.orderNumber, _that.amount, _that.enumOrderProcess,
+            _that.date, _that.productInformationList, _that.hide);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            String orderNumber,
+            double amount,
+            EnumOrderProcess enumOrderProcess,
+            DateTime date,
+            List<ProductInformation> productInformationList,
+            bool? hide)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ProductOrder():
+        return $default(_that.orderNumber, _that.amount, _that.enumOrderProcess,
+            _that.date, _that.productInformationList, _that.hide);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            String orderNumber,
+            double amount,
+            EnumOrderProcess enumOrderProcess,
+            DateTime date,
+            List<ProductInformation> productInformationList,
+            bool? hide)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ProductOrder() when $default != null:
+        return $default(_that.orderNumber, _that.amount, _that.enumOrderProcess,
+            _that.date, _that.productInformationList, _that.hide);
+      case _:
+        return null;
+    }
+  }
+}
+
 /// @nodoc
 
-class _$ProductOrderImpl implements _ProductOrder {
-  const _$ProductOrderImpl(
+class _ProductOrder implements ProductOrder {
+  const _ProductOrder(
       {required this.orderNumber,
       required this.amount,
       required this.enumOrderProcess,
@@ -850,16 +776,19 @@ class _$ProductOrderImpl implements _ProductOrder {
   @JsonKey()
   final bool? hide;
 
+  /// Create a copy of ProductOrder
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'ProductOrder(orderNumber: $orderNumber, amount: $amount, enumOrderProcess: $enumOrderProcess, date: $date, productInformationList: $productInformationList, hide: $hide)';
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$ProductOrderCopyWith<_ProductOrder> get copyWith =>
+      __$ProductOrderCopyWithImpl<_ProductOrder>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ProductOrderImpl &&
+            other is _ProductOrder &&
             (identical(other.orderNumber, orderNumber) ||
                 other.orderNumber == orderNumber) &&
             (identical(other.amount, amount) || other.amount == amount) &&
@@ -881,121 +810,136 @@ class _$ProductOrderImpl implements _ProductOrder {
       const DeepCollectionEquality().hash(_productInformationList),
       hide);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$ProductOrderImplCopyWith<_$ProductOrderImpl> get copyWith =>
-      __$$ProductOrderImplCopyWithImpl<_$ProductOrderImpl>(this, _$identity);
-}
-
-abstract class _ProductOrder implements ProductOrder {
-  const factory _ProductOrder(
-      {required final String orderNumber,
-      required final double amount,
-      required final EnumOrderProcess enumOrderProcess,
-      required final DateTime date,
-      required final List<ProductInformation> productInformationList,
-      final bool? hide}) = _$ProductOrderImpl;
-
-  @override
-  String get orderNumber;
-  @override
-  double get amount;
-  @override
-  EnumOrderProcess get enumOrderProcess;
-  @override
-  DateTime get date;
-  @override
-  List<ProductInformation> get productInformationList;
-  @override
-  bool? get hide;
-  @override
-  @JsonKey(ignore: true)
-  _$$ProductOrderImplCopyWith<_$ProductOrderImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-mixin _$ProductInformation {
-  int get count => throw _privateConstructorUsedError;
-  double get price => throw _privateConstructorUsedError;
-  String get productNumber => throw _privateConstructorUsedError;
-  String get productTitle => throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $ProductInformationCopyWith<ProductInformation> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $ProductInformationCopyWith<$Res> {
-  factory $ProductInformationCopyWith(
-          ProductInformation value, $Res Function(ProductInformation) then) =
-      _$ProductInformationCopyWithImpl<$Res, ProductInformation>;
-  @useResult
-  $Res call(
-      {int count, double price, String productNumber, String productTitle});
-}
-
-/// @nodoc
-class _$ProductInformationCopyWithImpl<$Res, $Val extends ProductInformation>
-    implements $ProductInformationCopyWith<$Res> {
-  _$ProductInformationCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? count = null,
-    Object? price = null,
-    Object? productNumber = null,
-    Object? productTitle = null,
-  }) {
-    return _then(_value.copyWith(
-      count: null == count
-          ? _value.count
-          : count // ignore: cast_nullable_to_non_nullable
-              as int,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as double,
-      productNumber: null == productNumber
-          ? _value.productNumber
-          : productNumber // ignore: cast_nullable_to_non_nullable
-              as String,
-      productTitle: null == productTitle
-          ? _value.productTitle
-          : productTitle // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+  String toString() {
+    return 'ProductOrder(orderNumber: $orderNumber, amount: $amount, enumOrderProcess: $enumOrderProcess, date: $date, productInformationList: $productInformationList, hide: $hide)';
   }
 }
 
 /// @nodoc
-abstract class _$$ProductInformationImplCopyWith<$Res>
-    implements $ProductInformationCopyWith<$Res> {
-  factory _$$ProductInformationImplCopyWith(_$ProductInformationImpl value,
-          $Res Function(_$ProductInformationImpl) then) =
-      __$$ProductInformationImplCopyWithImpl<$Res>;
+abstract mixin class _$ProductOrderCopyWith<$Res>
+    implements $ProductOrderCopyWith<$Res> {
+  factory _$ProductOrderCopyWith(
+          _ProductOrder value, $Res Function(_ProductOrder) _then) =
+      __$ProductOrderCopyWithImpl;
   @override
+  @useResult
+  $Res call(
+      {String orderNumber,
+      double amount,
+      EnumOrderProcess enumOrderProcess,
+      DateTime date,
+      List<ProductInformation> productInformationList,
+      bool? hide});
+}
+
+/// @nodoc
+class __$ProductOrderCopyWithImpl<$Res>
+    implements _$ProductOrderCopyWith<$Res> {
+  __$ProductOrderCopyWithImpl(this._self, this._then);
+
+  final _ProductOrder _self;
+  final $Res Function(_ProductOrder) _then;
+
+  /// Create a copy of ProductOrder
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? orderNumber = null,
+    Object? amount = null,
+    Object? enumOrderProcess = null,
+    Object? date = null,
+    Object? productInformationList = null,
+    Object? hide = freezed,
+  }) {
+    return _then(_ProductOrder(
+      orderNumber: null == orderNumber
+          ? _self.orderNumber
+          : orderNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      amount: null == amount
+          ? _self.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as double,
+      enumOrderProcess: null == enumOrderProcess
+          ? _self.enumOrderProcess
+          : enumOrderProcess // ignore: cast_nullable_to_non_nullable
+              as EnumOrderProcess,
+      date: null == date
+          ? _self.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      productInformationList: null == productInformationList
+          ? _self._productInformationList
+          : productInformationList // ignore: cast_nullable_to_non_nullable
+              as List<ProductInformation>,
+      hide: freezed == hide
+          ? _self.hide
+          : hide // ignore: cast_nullable_to_non_nullable
+              as bool?,
+    ));
+  }
+}
+
+/// @nodoc
+mixin _$ProductInformation {
+  int get count;
+  double get price;
+  String get productNumber;
+  String get productTitle;
+
+  /// Create a copy of ProductInformation
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $ProductInformationCopyWith<ProductInformation> get copyWith =>
+      _$ProductInformationCopyWithImpl<ProductInformation>(
+          this as ProductInformation, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is ProductInformation &&
+            (identical(other.count, count) || other.count == count) &&
+            (identical(other.price, price) || other.price == price) &&
+            (identical(other.productNumber, productNumber) ||
+                other.productNumber == productNumber) &&
+            (identical(other.productTitle, productTitle) ||
+                other.productTitle == productTitle));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, count, price, productNumber, productTitle);
+
+  @override
+  String toString() {
+    return 'ProductInformation(count: $count, price: $price, productNumber: $productNumber, productTitle: $productTitle)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $ProductInformationCopyWith<$Res> {
+  factory $ProductInformationCopyWith(
+          ProductInformation value, $Res Function(ProductInformation) _then) =
+      _$ProductInformationCopyWithImpl;
   @useResult
   $Res call(
       {int count, double price, String productNumber, String productTitle});
 }
 
 /// @nodoc
-class __$$ProductInformationImplCopyWithImpl<$Res>
-    extends _$ProductInformationCopyWithImpl<$Res, _$ProductInformationImpl>
-    implements _$$ProductInformationImplCopyWith<$Res> {
-  __$$ProductInformationImplCopyWithImpl(_$ProductInformationImpl _value,
-      $Res Function(_$ProductInformationImpl) _then)
-      : super(_value, _then);
+class _$ProductInformationCopyWithImpl<$Res>
+    implements $ProductInformationCopyWith<$Res> {
+  _$ProductInformationCopyWithImpl(this._self, this._then);
 
+  final ProductInformation _self;
+  final $Res Function(ProductInformation) _then;
+
+  /// Create a copy of ProductInformation
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1004,31 +948,197 @@ class __$$ProductInformationImplCopyWithImpl<$Res>
     Object? productNumber = null,
     Object? productTitle = null,
   }) {
-    return _then(_$ProductInformationImpl(
+    return _then(_self.copyWith(
       count: null == count
-          ? _value.count
+          ? _self.count
           : count // ignore: cast_nullable_to_non_nullable
               as int,
       price: null == price
-          ? _value.price
+          ? _self.price
           : price // ignore: cast_nullable_to_non_nullable
               as double,
       productNumber: null == productNumber
-          ? _value.productNumber
+          ? _self.productNumber
           : productNumber // ignore: cast_nullable_to_non_nullable
               as String,
       productTitle: null == productTitle
-          ? _value.productTitle
+          ? _self.productTitle
           : productTitle // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
 }
 
+/// Adds pattern-matching-related methods to [ProductInformation].
+extension ProductInformationPatterns on ProductInformation {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_ProductInformation value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _ProductInformation() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ProductInformation value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ProductInformation():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_ProductInformation value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ProductInformation() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            int count, double price, String productNumber, String productTitle)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _ProductInformation() when $default != null:
+        return $default(
+            _that.count, _that.price, _that.productNumber, _that.productTitle);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            int count, double price, String productNumber, String productTitle)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ProductInformation():
+        return $default(
+            _that.count, _that.price, _that.productNumber, _that.productTitle);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            int count, double price, String productNumber, String productTitle)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ProductInformation() when $default != null:
+        return $default(
+            _that.count, _that.price, _that.productNumber, _that.productTitle);
+      case _:
+        return null;
+    }
+  }
+}
+
 /// @nodoc
 
-class _$ProductInformationImpl implements _ProductInformation {
-  const _$ProductInformationImpl(
+class _ProductInformation implements ProductInformation {
+  const _ProductInformation(
       {required this.count,
       required this.price,
       required this.productNumber,
@@ -1043,16 +1153,19 @@ class _$ProductInformationImpl implements _ProductInformation {
   @override
   final String productTitle;
 
+  /// Create a copy of ProductInformation
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'ProductInformation(count: $count, price: $price, productNumber: $productNumber, productTitle: $productTitle)';
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$ProductInformationCopyWith<_ProductInformation> get copyWith =>
+      __$ProductInformationCopyWithImpl<_ProductInformation>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ProductInformationImpl &&
+            other is _ProductInformation &&
             (identical(other.count, count) || other.count == count) &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.productNumber, productNumber) ||
@@ -1065,31 +1178,61 @@ class _$ProductInformationImpl implements _ProductInformation {
   int get hashCode =>
       Object.hash(runtimeType, count, price, productNumber, productTitle);
 
-  @JsonKey(ignore: true)
+  @override
+  String toString() {
+    return 'ProductInformation(count: $count, price: $price, productNumber: $productNumber, productTitle: $productTitle)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$ProductInformationCopyWith<$Res>
+    implements $ProductInformationCopyWith<$Res> {
+  factory _$ProductInformationCopyWith(
+          _ProductInformation value, $Res Function(_ProductInformation) _then) =
+      __$ProductInformationCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {int count, double price, String productNumber, String productTitle});
+}
+
+/// @nodoc
+class __$ProductInformationCopyWithImpl<$Res>
+    implements _$ProductInformationCopyWith<$Res> {
+  __$ProductInformationCopyWithImpl(this._self, this._then);
+
+  final _ProductInformation _self;
+  final $Res Function(_ProductInformation) _then;
+
+  /// Create a copy of ProductInformation
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  _$$ProductInformationImplCopyWith<_$ProductInformationImpl> get copyWith =>
-      __$$ProductInformationImplCopyWithImpl<_$ProductInformationImpl>(
-          this, _$identity);
+  $Res call({
+    Object? count = null,
+    Object? price = null,
+    Object? productNumber = null,
+    Object? productTitle = null,
+  }) {
+    return _then(_ProductInformation(
+      count: null == count
+          ? _self.count
+          : count // ignore: cast_nullable_to_non_nullable
+              as int,
+      price: null == price
+          ? _self.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as double,
+      productNumber: null == productNumber
+          ? _self.productNumber
+          : productNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      productTitle: null == productTitle
+          ? _self.productTitle
+          : productTitle // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
-abstract class _ProductInformation implements ProductInformation {
-  const factory _ProductInformation(
-      {required final int count,
-      required final double price,
-      required final String productNumber,
-      required final String productTitle}) = _$ProductInformationImpl;
-
-  @override
-  int get count;
-  @override
-  double get price;
-  @override
-  String get productNumber;
-  @override
-  String get productTitle;
-  @override
-  @JsonKey(ignore: true)
-  _$$ProductInformationImplCopyWith<_$ProductInformationImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+// dart format on

@@ -6,7 +6,7 @@ part 'category_product_model.freezed.dart';
 part 'category_product_model.g.dart';
 
 @freezed
-class CategoryProductModel with _$CategoryProductModel {
+abstract class CategoryProductModel with _$CategoryProductModel {
   const CategoryProductModel._();
 
   @JsonSerializable(explicitToJson: true)

@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,167 +9,46 @@ part of 'state_core_picture.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$StateCorePicture {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(List<EntityCorePictures> entityPictures) success,
-    required TResult Function(Failure failure) failure,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(List<EntityCorePictures> entityPictures)? success,
-    TResult? Function(Failure failure)? failure,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(List<EntityCorePictures> entityPictures)? success,
-    TResult Function(Failure failure)? failure,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $StateCorePictureCopyWith<$Res> {
-  factory $StateCorePictureCopyWith(
-          StateCorePicture value, $Res Function(StateCorePicture) then) =
-      _$StateCorePictureCopyWithImpl<$Res, StateCorePicture>;
-}
-
-/// @nodoc
-class _$StateCorePictureCopyWithImpl<$Res, $Val extends StateCorePicture>
-    implements $StateCorePictureCopyWith<$Res> {
-  _$StateCorePictureCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$LoadingImplCopyWith<$Res> {
-  factory _$$LoadingImplCopyWith(
-          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
-      __$$LoadingImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$StateCorePictureCopyWithImpl<$Res, _$LoadingImpl>
-    implements _$$LoadingImplCopyWith<$Res> {
-  __$$LoadingImplCopyWithImpl(
-      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$LoadingImpl implements _Loading {
-  const _$LoadingImpl();
-
-  @override
-  String toString() {
-    return 'StateCorePicture.loading()';
-  }
-
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingImpl);
+        (other.runtimeType == runtimeType && other is StateCorePicture);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
 
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(List<EntityCorePictures> entityPictures) success,
-    required TResult Function(Failure failure) failure,
-  }) {
-    return loading();
+  String toString() {
+    return 'StateCorePicture()';
   }
+}
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(List<EntityCorePictures> entityPictures)? success,
-    TResult? Function(Failure failure)? failure,
-  }) {
-    return loading?.call();
-  }
+/// @nodoc
+class $StateCorePictureCopyWith<$Res> {
+  $StateCorePictureCopyWith(
+      StateCorePicture _, $Res Function(StateCorePicture) __);
+}
 
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(List<EntityCorePictures> entityPictures)? success,
-    TResult Function(Failure failure)? failure,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
+/// Adds pattern-matching-related methods to [StateCorePicture].
+extension StateCorePicturePatterns on StateCorePicture {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
 
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
-  }) {
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
-  }) {
-    return loading?.call(this);
-  }
-
-  @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
@@ -177,72 +56,223 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Failure value)? failure,
     required TResult orElse(),
   }) {
-    if (loading != null) {
-      return loading(this);
+    final _that = this;
+    switch (_that) {
+      case _Loading() when loading != null:
+        return loading(_that);
+      case _Success() when success != null:
+        return success(_that);
+      case _Failure() when failure != null:
+        return failure(_that);
+      case _:
+        return orElse();
     }
-    return orElse();
   }
-}
 
-abstract class _Loading implements StateCorePicture {
-  const factory _Loading() = _$LoadingImpl;
-}
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
 
-/// @nodoc
-abstract class _$$SuccessImplCopyWith<$Res> {
-  factory _$$SuccessImplCopyWith(
-          _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
-      __$$SuccessImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({List<EntityCorePictures> entityPictures});
-}
-
-/// @nodoc
-class __$$SuccessImplCopyWithImpl<$Res>
-    extends _$StateCorePictureCopyWithImpl<$Res, _$SuccessImpl>
-    implements _$$SuccessImplCopyWith<$Res> {
-  __$$SuccessImplCopyWithImpl(
-      _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? entityPictures = null,
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Failure value) failure,
   }) {
-    return _then(_$SuccessImpl(
-      entityPictures: null == entityPictures
-          ? _value._entityPictures
-          : entityPictures // ignore: cast_nullable_to_non_nullable
-              as List<EntityCorePictures>,
-    ));
+    final _that = this;
+    switch (_that) {
+      case _Loading():
+        return loading(_that);
+      case _Success():
+        return success(_that);
+      case _Failure():
+        return failure(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Failure value)? failure,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Loading() when loading != null:
+        return loading(_that);
+      case _Success() when success != null:
+        return success(_that);
+      case _Failure() when failure != null:
+        return failure(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<EntityCorePictures> entityPictures)? success,
+    TResult Function(Failure failure)? failure,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Loading() when loading != null:
+        return loading();
+      case _Success() when success != null:
+        return success(_that.entityPictures);
+      case _Failure() when failure != null:
+        return failure(_that.failure);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<EntityCorePictures> entityPictures) success,
+    required TResult Function(Failure failure) failure,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Loading():
+        return loading();
+      case _Success():
+        return success(_that.entityPictures);
+      case _Failure():
+        return failure(_that.failure);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(List<EntityCorePictures> entityPictures)? success,
+    TResult? Function(Failure failure)? failure,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Loading() when loading != null:
+        return loading();
+      case _Success() when success != null:
+        return success(_that.entityPictures);
+      case _Failure() when failure != null:
+        return failure(_that.failure);
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 
-class _$SuccessImpl implements _Success {
-  const _$SuccessImpl({required final List<EntityCorePictures> entityPictures})
+class _Loading implements StateCorePicture {
+  const _Loading();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Loading);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'StateCorePicture.loading()';
+  }
+}
+
+/// @nodoc
+
+class _Success implements StateCorePicture {
+  const _Success({required final List<EntityCorePictures> entityPictures})
       : _entityPictures = entityPictures;
 
   final List<EntityCorePictures> _entityPictures;
-  @override
   List<EntityCorePictures> get entityPictures {
     if (_entityPictures is EqualUnmodifiableListView) return _entityPictures;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_entityPictures);
   }
 
-  @override
-  String toString() {
-    return 'StateCorePicture.success(entityPictures: $entityPictures)';
-  }
+  /// Create a copy of StateCorePicture
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$SuccessCopyWith<_Success> get copyWith =>
+      __$SuccessCopyWithImpl<_Success>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SuccessImpl &&
+            other is _Success &&
             const DeepCollectionEquality()
                 .equals(other._entityPictures, _entityPictures));
   }
@@ -251,96 +281,79 @@ class _$SuccessImpl implements _Success {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_entityPictures));
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
-      __$$SuccessImplCopyWithImpl<_$SuccessImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(List<EntityCorePictures> entityPictures) success,
-    required TResult Function(Failure failure) failure,
-  }) {
-    return success(entityPictures);
+  String toString() {
+    return 'StateCorePicture.success(entityPictures: $entityPictures)';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(List<EntityCorePictures> entityPictures)? success,
-    TResult? Function(Failure failure)? failure,
-  }) {
-    return success?.call(entityPictures);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(List<EntityCorePictures> entityPictures)? success,
-    TResult Function(Failure failure)? failure,
-    required TResult orElse(),
-  }) {
-    if (success != null) {
-      return success(entityPictures);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
-  }) {
-    return success(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
-  }) {
-    return success?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
-    required TResult orElse(),
-  }) {
-    if (success != null) {
-      return success(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Success implements StateCorePicture {
-  const factory _Success(
-      {required final List<EntityCorePictures> entityPictures}) = _$SuccessImpl;
-
-  List<EntityCorePictures> get entityPictures;
-  @JsonKey(ignore: true)
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$FailureImplCopyWith<$Res> {
-  factory _$$FailureImplCopyWith(
-          _$FailureImpl value, $Res Function(_$FailureImpl) then) =
-      __$$FailureImplCopyWithImpl<$Res>;
+abstract mixin class _$SuccessCopyWith<$Res>
+    implements $StateCorePictureCopyWith<$Res> {
+  factory _$SuccessCopyWith(_Success value, $Res Function(_Success) _then) =
+      __$SuccessCopyWithImpl;
+  @useResult
+  $Res call({List<EntityCorePictures> entityPictures});
+}
+
+/// @nodoc
+class __$SuccessCopyWithImpl<$Res> implements _$SuccessCopyWith<$Res> {
+  __$SuccessCopyWithImpl(this._self, this._then);
+
+  final _Success _self;
+  final $Res Function(_Success) _then;
+
+  /// Create a copy of StateCorePicture
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? entityPictures = null,
+  }) {
+    return _then(_Success(
+      entityPictures: null == entityPictures
+          ? _self._entityPictures
+          : entityPictures // ignore: cast_nullable_to_non_nullable
+              as List<EntityCorePictures>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _Failure implements StateCorePicture {
+  const _Failure({required this.failure});
+
+  final Failure failure;
+
+  /// Create a copy of StateCorePicture
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$FailureCopyWith<_Failure> get copyWith =>
+      __$FailureCopyWithImpl<_Failure>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _Failure &&
+            (identical(other.failure, failure) || other.failure == failure));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, failure);
+
+  @override
+  String toString() {
+    return 'StateCorePicture.failure(failure: $failure)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$FailureCopyWith<$Res>
+    implements $StateCorePictureCopyWith<$Res> {
+  factory _$FailureCopyWith(_Failure value, $Res Function(_Failure) _then) =
+      __$FailureCopyWithImpl;
   @useResult
   $Res call({Failure failure});
 
@@ -348,139 +361,35 @@ abstract class _$$FailureImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$FailureImplCopyWithImpl<$Res>
-    extends _$StateCorePictureCopyWithImpl<$Res, _$FailureImpl>
-    implements _$$FailureImplCopyWith<$Res> {
-  __$$FailureImplCopyWithImpl(
-      _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
-      : super(_value, _then);
+class __$FailureCopyWithImpl<$Res> implements _$FailureCopyWith<$Res> {
+  __$FailureCopyWithImpl(this._self, this._then);
 
+  final _Failure _self;
+  final $Res Function(_Failure) _then;
+
+  /// Create a copy of StateCorePicture
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
     Object? failure = null,
   }) {
-    return _then(_$FailureImpl(
+    return _then(_Failure(
       failure: null == failure
-          ? _value.failure
+          ? _self.failure
           : failure // ignore: cast_nullable_to_non_nullable
               as Failure,
     ));
   }
 
+  /// Create a copy of StateCorePicture
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FailureCopyWith<$Res> get failure {
-    return $FailureCopyWith<$Res>(_value.failure, (value) {
-      return _then(_value.copyWith(failure: value));
+    return $FailureCopyWith<$Res>(_self.failure, (value) {
+      return _then(_self.copyWith(failure: value));
     });
   }
 }
 
-/// @nodoc
-
-class _$FailureImpl implements _Failure {
-  const _$FailureImpl({required this.failure});
-
-  @override
-  final Failure failure;
-
-  @override
-  String toString() {
-    return 'StateCorePicture.failure(failure: $failure)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$FailureImpl &&
-            (identical(other.failure, failure) || other.failure == failure));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, failure);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
-      __$$FailureImplCopyWithImpl<_$FailureImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(List<EntityCorePictures> entityPictures) success,
-    required TResult Function(Failure failure) failure,
-  }) {
-    return failure(this.failure);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(List<EntityCorePictures> entityPictures)? success,
-    TResult? Function(Failure failure)? failure,
-  }) {
-    return failure?.call(this.failure);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(List<EntityCorePictures> entityPictures)? success,
-    TResult Function(Failure failure)? failure,
-    required TResult orElse(),
-  }) {
-    if (failure != null) {
-      return failure(this.failure);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
-  }) {
-    return failure(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
-  }) {
-    return failure?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
-    required TResult orElse(),
-  }) {
-    if (failure != null) {
-      return failure(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Failure implements StateCorePicture {
-  const factory _Failure({required final Failure failure}) = _$FailureImpl;
-
-  Failure get failure;
-  @JsonKey(ignore: true)
-  _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+// dart format on

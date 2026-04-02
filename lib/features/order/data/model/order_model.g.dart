@@ -6,8 +6,7 @@ part of 'order_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$OrderModelImpl _$$OrderModelImplFromJson(Map<String, dynamic> json) =>
-    _$OrderModelImpl(
+_OrderModel _$OrderModelFromJson(Map<String, dynamic> json) => _OrderModel(
       id: json['id'] as String?,
       customerId: json['userId'] as String?,
       status: (json['status'] as num?)?.toInt(),
@@ -17,7 +16,7 @@ _$OrderModelImpl _$$OrderModelImplFromJson(Map<String, dynamic> json) =>
       sendDate: (json['sendDate'] as num?)?.toInt(),
     );
 
-Map<String, dynamic> _$$OrderModelImplToJson(_$OrderModelImpl instance) =>
+Map<String, dynamic> _$OrderModelToJson(_OrderModel instance) =>
     <String, dynamic>{
       'id': instance.id,
       'userId': instance.customerId,
@@ -26,7 +25,7 @@ Map<String, dynamic> _$$OrderModelImplToJson(_$OrderModelImpl instance) =>
       'sendDate': instance.sendDate,
     };
 
-_$OrderImpl _$$OrderImplFromJson(Map<String, dynamic> json) => _$OrderImpl(
+_Order _$OrderFromJson(Map<String, dynamic> json) => _Order(
       categoryEntity: CategoryProductModel.fromJson(
           json['categoryEntity'] as Map<String, dynamic>),
       productCount: (json['productCount'] as num).toInt(),
@@ -34,8 +33,7 @@ _$OrderImpl _$$OrderImplFromJson(Map<String, dynamic> json) => _$OrderImpl(
       addedTime: (json['addedTime'] as num).toInt(),
     );
 
-Map<String, dynamic> _$$OrderImplToJson(_$OrderImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$OrderToJson(_Order instance) => <String, dynamic>{
       'categoryEntity': instance.categoryEntity.toJson(),
       'productCount': instance.productCount,
       'completeAmount': instance.completeAmount,

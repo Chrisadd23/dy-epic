@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,31 +9,59 @@ part of 'product_state.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ProductState {
-  String get hashKey => throw _privateConstructorUsedError;
-  String get category => throw _privateConstructorUsedError;
-  int get productOrderCount => throw _privateConstructorUsedError;
-  CategoryEntity? get productEntity => throw _privateConstructorUsedError;
-  EntityCorePictures? get entityCorePicture =>
-      throw _privateConstructorUsedError;
-  int? get position => throw _privateConstructorUsedError;
+  String get hashKey;
+  String get category;
+  int get productOrderCount;
+  CategoryEntity? get productEntity;
+  EntityCorePictures? get entityCorePicture;
+  int? get position;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProductState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $ProductStateCopyWith<ProductState> get copyWith =>
-      throw _privateConstructorUsedError;
+      _$ProductStateCopyWithImpl<ProductState>(
+          this as ProductState, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is ProductState &&
+            (identical(other.hashKey, hashKey) || other.hashKey == hashKey) &&
+            (identical(other.category, category) ||
+                other.category == category) &&
+            (identical(other.productOrderCount, productOrderCount) ||
+                other.productOrderCount == productOrderCount) &&
+            (identical(other.productEntity, productEntity) ||
+                other.productEntity == productEntity) &&
+            (identical(other.entityCorePicture, entityCorePicture) ||
+                other.entityCorePicture == entityCorePicture) &&
+            (identical(other.position, position) ||
+                other.position == position));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, hashKey, category,
+      productOrderCount, productEntity, entityCorePicture, position);
+
+  @override
+  String toString() {
+    return 'ProductState(hashKey: $hashKey, category: $category, productOrderCount: $productOrderCount, productEntity: $productEntity, entityCorePicture: $entityCorePicture, position: $position)';
+  }
 }
 
 /// @nodoc
-abstract class $ProductStateCopyWith<$Res> {
+abstract mixin class $ProductStateCopyWith<$Res> {
   factory $ProductStateCopyWith(
-          ProductState value, $Res Function(ProductState) then) =
-      _$ProductStateCopyWithImpl<$Res, ProductState>;
+          ProductState value, $Res Function(ProductState) _then) =
+      _$ProductStateCopyWithImpl;
   @useResult
   $Res call(
       {String hashKey,
@@ -48,15 +76,14 @@ abstract class $ProductStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ProductStateCopyWithImpl<$Res, $Val extends ProductState>
-    implements $ProductStateCopyWith<$Res> {
-  _$ProductStateCopyWithImpl(this._value, this._then);
+class _$ProductStateCopyWithImpl<$Res> implements $ProductStateCopyWith<$Res> {
+  _$ProductStateCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final ProductState _self;
+  final $Res Function(ProductState) _then;
 
+  /// Create a copy of ProductState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -67,133 +94,248 @@ class _$ProductStateCopyWithImpl<$Res, $Val extends ProductState>
     Object? entityCorePicture = freezed,
     Object? position = freezed,
   }) {
-    return _then(_value.copyWith(
+    return _then(_self.copyWith(
       hashKey: null == hashKey
-          ? _value.hashKey
+          ? _self.hashKey
           : hashKey // ignore: cast_nullable_to_non_nullable
               as String,
       category: null == category
-          ? _value.category
+          ? _self.category
           : category // ignore: cast_nullable_to_non_nullable
               as String,
       productOrderCount: null == productOrderCount
-          ? _value.productOrderCount
+          ? _self.productOrderCount
           : productOrderCount // ignore: cast_nullable_to_non_nullable
               as int,
       productEntity: freezed == productEntity
-          ? _value.productEntity
+          ? _self.productEntity
           : productEntity // ignore: cast_nullable_to_non_nullable
               as CategoryEntity?,
       entityCorePicture: freezed == entityCorePicture
-          ? _value.entityCorePicture
+          ? _self.entityCorePicture
           : entityCorePicture // ignore: cast_nullable_to_non_nullable
               as EntityCorePictures?,
       position: freezed == position
-          ? _value.position
-          : position // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $CategoryEntityCopyWith<$Res>? get productEntity {
-    if (_value.productEntity == null) {
-      return null;
-    }
-
-    return $CategoryEntityCopyWith<$Res>(_value.productEntity!, (value) {
-      return _then(_value.copyWith(productEntity: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $EntityCorePicturesCopyWith<$Res>? get entityCorePicture {
-    if (_value.entityCorePicture == null) {
-      return null;
-    }
-
-    return $EntityCorePicturesCopyWith<$Res>(_value.entityCorePicture!,
-        (value) {
-      return _then(_value.copyWith(entityCorePicture: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$ProductStateImplCopyWith<$Res>
-    implements $ProductStateCopyWith<$Res> {
-  factory _$$ProductStateImplCopyWith(
-          _$ProductStateImpl value, $Res Function(_$ProductStateImpl) then) =
-      __$$ProductStateImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String hashKey,
-      String category,
-      int productOrderCount,
-      CategoryEntity? productEntity,
-      EntityCorePictures? entityCorePicture,
-      int? position});
-
-  @override
-  $CategoryEntityCopyWith<$Res>? get productEntity;
-  @override
-  $EntityCorePicturesCopyWith<$Res>? get entityCorePicture;
-}
-
-/// @nodoc
-class __$$ProductStateImplCopyWithImpl<$Res>
-    extends _$ProductStateCopyWithImpl<$Res, _$ProductStateImpl>
-    implements _$$ProductStateImplCopyWith<$Res> {
-  __$$ProductStateImplCopyWithImpl(
-      _$ProductStateImpl _value, $Res Function(_$ProductStateImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? hashKey = null,
-    Object? category = null,
-    Object? productOrderCount = null,
-    Object? productEntity = freezed,
-    Object? entityCorePicture = freezed,
-    Object? position = freezed,
-  }) {
-    return _then(_$ProductStateImpl(
-      hashKey: null == hashKey
-          ? _value.hashKey
-          : hashKey // ignore: cast_nullable_to_non_nullable
-              as String,
-      category: null == category
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as String,
-      productOrderCount: null == productOrderCount
-          ? _value.productOrderCount
-          : productOrderCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      productEntity: freezed == productEntity
-          ? _value.productEntity
-          : productEntity // ignore: cast_nullable_to_non_nullable
-              as CategoryEntity?,
-      entityCorePicture: freezed == entityCorePicture
-          ? _value.entityCorePicture
-          : entityCorePicture // ignore: cast_nullable_to_non_nullable
-              as EntityCorePictures?,
-      position: freezed == position
-          ? _value.position
+          ? _self.position
           : position // ignore: cast_nullable_to_non_nullable
               as int?,
     ));
   }
+
+  /// Create a copy of ProductState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CategoryEntityCopyWith<$Res>? get productEntity {
+    if (_self.productEntity == null) {
+      return null;
+    }
+
+    return $CategoryEntityCopyWith<$Res>(_self.productEntity!, (value) {
+      return _then(_self.copyWith(productEntity: value));
+    });
+  }
+
+  /// Create a copy of ProductState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $EntityCorePicturesCopyWith<$Res>? get entityCorePicture {
+    if (_self.entityCorePicture == null) {
+      return null;
+    }
+
+    return $EntityCorePicturesCopyWith<$Res>(_self.entityCorePicture!, (value) {
+      return _then(_self.copyWith(entityCorePicture: value));
+    });
+  }
+}
+
+/// Adds pattern-matching-related methods to [ProductState].
+extension ProductStatePatterns on ProductState {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_ProductState value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _ProductState() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ProductState value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ProductState():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_ProductState value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ProductState() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            String hashKey,
+            String category,
+            int productOrderCount,
+            CategoryEntity? productEntity,
+            EntityCorePictures? entityCorePicture,
+            int? position)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _ProductState() when $default != null:
+        return $default(_that.hashKey, _that.category, _that.productOrderCount,
+            _that.productEntity, _that.entityCorePicture, _that.position);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            String hashKey,
+            String category,
+            int productOrderCount,
+            CategoryEntity? productEntity,
+            EntityCorePictures? entityCorePicture,
+            int? position)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ProductState():
+        return $default(_that.hashKey, _that.category, _that.productOrderCount,
+            _that.productEntity, _that.entityCorePicture, _that.position);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            String hashKey,
+            String category,
+            int productOrderCount,
+            CategoryEntity? productEntity,
+            EntityCorePictures? entityCorePicture,
+            int? position)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ProductState() when $default != null:
+        return $default(_that.hashKey, _that.category, _that.productOrderCount,
+            _that.productEntity, _that.entityCorePicture, _that.position);
+      case _:
+        return null;
+    }
+  }
 }
 
 /// @nodoc
 
-class _$ProductStateImpl implements _ProductState {
-  const _$ProductStateImpl(
+class _ProductState implements ProductState {
+  const _ProductState(
       {this.hashKey = '',
       this.category = '',
       this.productOrderCount = 0,
@@ -217,16 +359,19 @@ class _$ProductStateImpl implements _ProductState {
   @override
   final int? position;
 
+  /// Create a copy of ProductState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'ProductState(hashKey: $hashKey, category: $category, productOrderCount: $productOrderCount, productEntity: $productEntity, entityCorePicture: $entityCorePicture, position: $position)';
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$ProductStateCopyWith<_ProductState> get copyWith =>
+      __$ProductStateCopyWithImpl<_ProductState>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ProductStateImpl &&
+            other is _ProductState &&
             (identical(other.hashKey, hashKey) || other.hashKey == hashKey) &&
             (identical(other.category, category) ||
                 other.category == category) &&
@@ -244,36 +389,109 @@ class _$ProductStateImpl implements _ProductState {
   int get hashCode => Object.hash(runtimeType, hashKey, category,
       productOrderCount, productEntity, entityCorePicture, position);
 
-  @JsonKey(ignore: true)
+  @override
+  String toString() {
+    return 'ProductState(hashKey: $hashKey, category: $category, productOrderCount: $productOrderCount, productEntity: $productEntity, entityCorePicture: $entityCorePicture, position: $position)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$ProductStateCopyWith<$Res>
+    implements $ProductStateCopyWith<$Res> {
+  factory _$ProductStateCopyWith(
+          _ProductState value, $Res Function(_ProductState) _then) =
+      __$ProductStateCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {String hashKey,
+      String category,
+      int productOrderCount,
+      CategoryEntity? productEntity,
+      EntityCorePictures? entityCorePicture,
+      int? position});
+
+  @override
+  $CategoryEntityCopyWith<$Res>? get productEntity;
+  @override
+  $EntityCorePicturesCopyWith<$Res>? get entityCorePicture;
+}
+
+/// @nodoc
+class __$ProductStateCopyWithImpl<$Res>
+    implements _$ProductStateCopyWith<$Res> {
+  __$ProductStateCopyWithImpl(this._self, this._then);
+
+  final _ProductState _self;
+  final $Res Function(_ProductState) _then;
+
+  /// Create a copy of ProductState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  _$$ProductStateImplCopyWith<_$ProductStateImpl> get copyWith =>
-      __$$ProductStateImplCopyWithImpl<_$ProductStateImpl>(this, _$identity);
+  $Res call({
+    Object? hashKey = null,
+    Object? category = null,
+    Object? productOrderCount = null,
+    Object? productEntity = freezed,
+    Object? entityCorePicture = freezed,
+    Object? position = freezed,
+  }) {
+    return _then(_ProductState(
+      hashKey: null == hashKey
+          ? _self.hashKey
+          : hashKey // ignore: cast_nullable_to_non_nullable
+              as String,
+      category: null == category
+          ? _self.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as String,
+      productOrderCount: null == productOrderCount
+          ? _self.productOrderCount
+          : productOrderCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      productEntity: freezed == productEntity
+          ? _self.productEntity
+          : productEntity // ignore: cast_nullable_to_non_nullable
+              as CategoryEntity?,
+      entityCorePicture: freezed == entityCorePicture
+          ? _self.entityCorePicture
+          : entityCorePicture // ignore: cast_nullable_to_non_nullable
+              as EntityCorePictures?,
+      position: freezed == position
+          ? _self.position
+          : position // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
+  }
+
+  /// Create a copy of ProductState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CategoryEntityCopyWith<$Res>? get productEntity {
+    if (_self.productEntity == null) {
+      return null;
+    }
+
+    return $CategoryEntityCopyWith<$Res>(_self.productEntity!, (value) {
+      return _then(_self.copyWith(productEntity: value));
+    });
+  }
+
+  /// Create a copy of ProductState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $EntityCorePicturesCopyWith<$Res>? get entityCorePicture {
+    if (_self.entityCorePicture == null) {
+      return null;
+    }
+
+    return $EntityCorePicturesCopyWith<$Res>(_self.entityCorePicture!, (value) {
+      return _then(_self.copyWith(entityCorePicture: value));
+    });
+  }
 }
 
-abstract class _ProductState implements ProductState {
-  const factory _ProductState(
-      {final String hashKey,
-      final String category,
-      final int productOrderCount,
-      final CategoryEntity? productEntity,
-      final EntityCorePictures? entityCorePicture,
-      final int? position}) = _$ProductStateImpl;
-
-  @override
-  String get hashKey;
-  @override
-  String get category;
-  @override
-  int get productOrderCount;
-  @override
-  CategoryEntity? get productEntity;
-  @override
-  EntityCorePictures? get entityCorePicture;
-  @override
-  int? get position;
-  @override
-  @JsonKey(ignore: true)
-  _$$ProductStateImplCopyWith<_$ProductStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+// dart format on

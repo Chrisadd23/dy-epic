@@ -6,7 +6,7 @@ part 'model_login.freezed.dart';
 part 'model_login.g.dart';
 
 @freezed
-class ModelLogin with _$ModelLogin {
+abstract class ModelLogin with _$ModelLogin {
   const ModelLogin._();
 
   @JsonSerializable(explicitToJson: true)

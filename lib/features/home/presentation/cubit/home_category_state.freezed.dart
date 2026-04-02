@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,167 +9,46 @@ part of 'home_category_state.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$HomeCategoryState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(List<HomeCategoryModel> homeCategoryList) success,
-    required TResult Function(Failure failure) failure,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(List<HomeCategoryModel> homeCategoryList)? success,
-    TResult? Function(Failure failure)? failure,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(List<HomeCategoryModel> homeCategoryList)? success,
-    TResult Function(Failure failure)? failure,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $HomeCategoryStateCopyWith<$Res> {
-  factory $HomeCategoryStateCopyWith(
-          HomeCategoryState value, $Res Function(HomeCategoryState) then) =
-      _$HomeCategoryStateCopyWithImpl<$Res, HomeCategoryState>;
-}
-
-/// @nodoc
-class _$HomeCategoryStateCopyWithImpl<$Res, $Val extends HomeCategoryState>
-    implements $HomeCategoryStateCopyWith<$Res> {
-  _$HomeCategoryStateCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$LoadingImplCopyWith<$Res> {
-  factory _$$LoadingImplCopyWith(
-          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
-      __$$LoadingImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$HomeCategoryStateCopyWithImpl<$Res, _$LoadingImpl>
-    implements _$$LoadingImplCopyWith<$Res> {
-  __$$LoadingImplCopyWithImpl(
-      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$LoadingImpl extends _Loading {
-  const _$LoadingImpl() : super._();
-
-  @override
-  String toString() {
-    return 'HomeCategoryState.loading()';
-  }
-
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingImpl);
+        (other.runtimeType == runtimeType && other is HomeCategoryState);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
 
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(List<HomeCategoryModel> homeCategoryList) success,
-    required TResult Function(Failure failure) failure,
-  }) {
-    return loading();
+  String toString() {
+    return 'HomeCategoryState()';
   }
+}
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(List<HomeCategoryModel> homeCategoryList)? success,
-    TResult? Function(Failure failure)? failure,
-  }) {
-    return loading?.call();
-  }
+/// @nodoc
+class $HomeCategoryStateCopyWith<$Res> {
+  $HomeCategoryStateCopyWith(
+      HomeCategoryState _, $Res Function(HomeCategoryState) __);
+}
 
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(List<HomeCategoryModel> homeCategoryList)? success,
-    TResult Function(Failure failure)? failure,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
+/// Adds pattern-matching-related methods to [HomeCategoryState].
+extension HomeCategoryStatePatterns on HomeCategoryState {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
 
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
-  }) {
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
-  }) {
-    return loading?.call(this);
-  }
-
-  @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loading value)? loading,
@@ -177,58 +56,206 @@ class _$LoadingImpl extends _Loading {
     TResult Function(_Failure value)? failure,
     required TResult orElse(),
   }) {
-    if (loading != null) {
-      return loading(this);
+    final _that = this;
+    switch (_that) {
+      case _Loading() when loading != null:
+        return loading(_that);
+      case _Success() when success != null:
+        return success(_that);
+      case _Failure() when failure != null:
+        return failure(_that);
+      case _:
+        return orElse();
     }
-    return orElse();
   }
-}
 
-abstract class _Loading extends HomeCategoryState {
-  const factory _Loading() = _$LoadingImpl;
-  const _Loading._() : super._();
-}
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
 
-/// @nodoc
-abstract class _$$SuccessImplCopyWith<$Res> {
-  factory _$$SuccessImplCopyWith(
-          _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
-      __$$SuccessImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({List<HomeCategoryModel> homeCategoryList});
-}
-
-/// @nodoc
-class __$$SuccessImplCopyWithImpl<$Res>
-    extends _$HomeCategoryStateCopyWithImpl<$Res, _$SuccessImpl>
-    implements _$$SuccessImplCopyWith<$Res> {
-  __$$SuccessImplCopyWithImpl(
-      _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? homeCategoryList = null,
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Failure value) failure,
   }) {
-    return _then(_$SuccessImpl(
-      homeCategoryList: null == homeCategoryList
-          ? _value._homeCategoryList
-          : homeCategoryList // ignore: cast_nullable_to_non_nullable
-              as List<HomeCategoryModel>,
-    ));
+    final _that = this;
+    switch (_that) {
+      case _Loading():
+        return loading(_that);
+      case _Success():
+        return success(_that);
+      case _Failure():
+        return failure(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Failure value)? failure,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Loading() when loading != null:
+        return loading(_that);
+      case _Success() when success != null:
+        return success(_that);
+      case _Failure() when failure != null:
+        return failure(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<HomeCategoryModel> homeCategoryList)? success,
+    TResult Function(Failure failure)? failure,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Loading() when loading != null:
+        return loading();
+      case _Success() when success != null:
+        return success(_that.homeCategoryList);
+      case _Failure() when failure != null:
+        return failure(_that.failure);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<HomeCategoryModel> homeCategoryList) success,
+    required TResult Function(Failure failure) failure,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Loading():
+        return loading();
+      case _Success():
+        return success(_that.homeCategoryList);
+      case _Failure():
+        return failure(_that.failure);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(List<HomeCategoryModel> homeCategoryList)? success,
+    TResult? Function(Failure failure)? failure,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Loading() when loading != null:
+        return loading();
+      case _Success() when success != null:
+        return success(_that.homeCategoryList);
+      case _Failure() when failure != null:
+        return failure(_that.failure);
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 
-class _$SuccessImpl extends _Success {
-  const _$SuccessImpl({required final List<HomeCategoryModel> homeCategoryList})
+class _Loading extends HomeCategoryState {
+  const _Loading() : super._();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Loading);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'HomeCategoryState.loading()';
+  }
+}
+
+/// @nodoc
+
+class _Success extends HomeCategoryState {
+  const _Success({required final List<HomeCategoryModel> homeCategoryList})
       : _homeCategoryList = homeCategoryList,
         super._();
 
   final List<HomeCategoryModel> _homeCategoryList;
-  @override
   List<HomeCategoryModel> get homeCategoryList {
     if (_homeCategoryList is EqualUnmodifiableListView)
       return _homeCategoryList;
@@ -236,16 +263,18 @@ class _$SuccessImpl extends _Success {
     return EqualUnmodifiableListView(_homeCategoryList);
   }
 
-  @override
-  String toString() {
-    return 'HomeCategoryState.success(homeCategoryList: $homeCategoryList)';
-  }
+  /// Create a copy of HomeCategoryState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$SuccessCopyWith<_Success> get copyWith =>
+      __$SuccessCopyWithImpl<_Success>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SuccessImpl &&
+            other is _Success &&
             const DeepCollectionEquality()
                 .equals(other._homeCategoryList, _homeCategoryList));
   }
@@ -254,98 +283,79 @@ class _$SuccessImpl extends _Success {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_homeCategoryList));
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
-      __$$SuccessImplCopyWithImpl<_$SuccessImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(List<HomeCategoryModel> homeCategoryList) success,
-    required TResult Function(Failure failure) failure,
-  }) {
-    return success(homeCategoryList);
+  String toString() {
+    return 'HomeCategoryState.success(homeCategoryList: $homeCategoryList)';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(List<HomeCategoryModel> homeCategoryList)? success,
-    TResult? Function(Failure failure)? failure,
-  }) {
-    return success?.call(homeCategoryList);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(List<HomeCategoryModel> homeCategoryList)? success,
-    TResult Function(Failure failure)? failure,
-    required TResult orElse(),
-  }) {
-    if (success != null) {
-      return success(homeCategoryList);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
-  }) {
-    return success(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
-  }) {
-    return success?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
-    required TResult orElse(),
-  }) {
-    if (success != null) {
-      return success(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Success extends HomeCategoryState {
-  const factory _Success(
-          {required final List<HomeCategoryModel> homeCategoryList}) =
-      _$SuccessImpl;
-  const _Success._() : super._();
-
-  List<HomeCategoryModel> get homeCategoryList;
-  @JsonKey(ignore: true)
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$FailureImplCopyWith<$Res> {
-  factory _$$FailureImplCopyWith(
-          _$FailureImpl value, $Res Function(_$FailureImpl) then) =
-      __$$FailureImplCopyWithImpl<$Res>;
+abstract mixin class _$SuccessCopyWith<$Res>
+    implements $HomeCategoryStateCopyWith<$Res> {
+  factory _$SuccessCopyWith(_Success value, $Res Function(_Success) _then) =
+      __$SuccessCopyWithImpl;
+  @useResult
+  $Res call({List<HomeCategoryModel> homeCategoryList});
+}
+
+/// @nodoc
+class __$SuccessCopyWithImpl<$Res> implements _$SuccessCopyWith<$Res> {
+  __$SuccessCopyWithImpl(this._self, this._then);
+
+  final _Success _self;
+  final $Res Function(_Success) _then;
+
+  /// Create a copy of HomeCategoryState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? homeCategoryList = null,
+  }) {
+    return _then(_Success(
+      homeCategoryList: null == homeCategoryList
+          ? _self._homeCategoryList
+          : homeCategoryList // ignore: cast_nullable_to_non_nullable
+              as List<HomeCategoryModel>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _Failure extends HomeCategoryState {
+  const _Failure(this.failure) : super._();
+
+  final Failure failure;
+
+  /// Create a copy of HomeCategoryState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$FailureCopyWith<_Failure> get copyWith =>
+      __$FailureCopyWithImpl<_Failure>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _Failure &&
+            (identical(other.failure, failure) || other.failure == failure));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, failure);
+
+  @override
+  String toString() {
+    return 'HomeCategoryState.failure(failure: $failure)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$FailureCopyWith<$Res>
+    implements $HomeCategoryStateCopyWith<$Res> {
+  factory _$FailureCopyWith(_Failure value, $Res Function(_Failure) _then) =
+      __$FailureCopyWithImpl;
   @useResult
   $Res call({Failure failure});
 
@@ -353,140 +363,35 @@ abstract class _$$FailureImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$FailureImplCopyWithImpl<$Res>
-    extends _$HomeCategoryStateCopyWithImpl<$Res, _$FailureImpl>
-    implements _$$FailureImplCopyWith<$Res> {
-  __$$FailureImplCopyWithImpl(
-      _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
-      : super(_value, _then);
+class __$FailureCopyWithImpl<$Res> implements _$FailureCopyWith<$Res> {
+  __$FailureCopyWithImpl(this._self, this._then);
 
+  final _Failure _self;
+  final $Res Function(_Failure) _then;
+
+  /// Create a copy of HomeCategoryState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
     Object? failure = null,
   }) {
-    return _then(_$FailureImpl(
+    return _then(_Failure(
       null == failure
-          ? _value.failure
+          ? _self.failure
           : failure // ignore: cast_nullable_to_non_nullable
               as Failure,
     ));
   }
 
+  /// Create a copy of HomeCategoryState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FailureCopyWith<$Res> get failure {
-    return $FailureCopyWith<$Res>(_value.failure, (value) {
-      return _then(_value.copyWith(failure: value));
+    return $FailureCopyWith<$Res>(_self.failure, (value) {
+      return _then(_self.copyWith(failure: value));
     });
   }
 }
 
-/// @nodoc
-
-class _$FailureImpl extends _Failure {
-  const _$FailureImpl(this.failure) : super._();
-
-  @override
-  final Failure failure;
-
-  @override
-  String toString() {
-    return 'HomeCategoryState.failure(failure: $failure)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$FailureImpl &&
-            (identical(other.failure, failure) || other.failure == failure));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, failure);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
-      __$$FailureImplCopyWithImpl<_$FailureImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loading,
-    required TResult Function(List<HomeCategoryModel> homeCategoryList) success,
-    required TResult Function(Failure failure) failure,
-  }) {
-    return failure(this.failure);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loading,
-    TResult? Function(List<HomeCategoryModel> homeCategoryList)? success,
-    TResult? Function(Failure failure)? failure,
-  }) {
-    return failure?.call(this.failure);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loading,
-    TResult Function(List<HomeCategoryModel> homeCategoryList)? success,
-    TResult Function(Failure failure)? failure,
-    required TResult orElse(),
-  }) {
-    if (failure != null) {
-      return failure(this.failure);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
-  }) {
-    return failure(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
-  }) {
-    return failure?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
-    required TResult orElse(),
-  }) {
-    if (failure != null) {
-      return failure(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Failure extends HomeCategoryState {
-  const factory _Failure(final Failure failure) = _$FailureImpl;
-  const _Failure._() : super._();
-
-  Failure get failure;
-  @JsonKey(ignore: true)
-  _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+// dart format on

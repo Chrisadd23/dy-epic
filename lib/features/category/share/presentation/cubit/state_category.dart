@@ -7,7 +7,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'state_category.freezed.dart';
 
 @freezed
-class StateCategory with _$StateCategory {
+abstract class StateCategory with _$StateCategory {
   const StateCategory._();
 
   const factory StateCategory.loading() = _Loading;
@@ -20,14 +20,14 @@ class StateCategory with _$StateCategory {
 }
 
 @freezed
-class ChosenDateTime with _$ChosenDateTime {
+abstract class ChosenDateTime with _$ChosenDateTime {
   const ChosenDateTime._();
 
   const factory ChosenDateTime({DateTime? selectedDateTime}) = _ChosenDateTime;
 }
 
 @freezed
-class ProductCategory with _$ProductCategory {
+abstract class ProductCategory with _$ProductCategory {
   const ProductCategory._();
 
   const factory ProductCategory({
@@ -38,7 +38,7 @@ class ProductCategory with _$ProductCategory {
 }
 
 @freezed
-class Product with _$Product {
+abstract class Product with _$Product {
   const Product._();
 
   const factory Product({

@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,96 +9,57 @@ part of 'shopping_basket_entity.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-ShoppingBasketEntity _$ShoppingBasketEntityFromJson(Map<String, dynamic> json) {
-  return _ShoppingBasketEntity.fromJson(json);
-}
 
 /// @nodoc
 mixin _$ShoppingBasketEntity {
-  String get id => throw _privateConstructorUsedError;
-  String get userId => throw _privateConstructorUsedError;
-  int get status => throw _privateConstructorUsedError;
-  List<ShoppingBasketProduct> get products =>
-      throw _privateConstructorUsedError;
-  int get sendDate => throw _privateConstructorUsedError;
+  String get id;
+  String get userId;
+  int get status;
+  List<ShoppingBasketProduct> get products;
+  int get sendDate;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $ShoppingBasketEntityCopyWith<ShoppingBasketEntity> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $ShoppingBasketEntityCopyWith<$Res> {
-  factory $ShoppingBasketEntityCopyWith(ShoppingBasketEntity value,
-          $Res Function(ShoppingBasketEntity) then) =
-      _$ShoppingBasketEntityCopyWithImpl<$Res, ShoppingBasketEntity>;
-  @useResult
-  $Res call(
-      {String id,
-      String userId,
-      int status,
-      List<ShoppingBasketProduct> products,
-      int sendDate});
-}
-
-/// @nodoc
-class _$ShoppingBasketEntityCopyWithImpl<$Res,
-        $Val extends ShoppingBasketEntity>
-    implements $ShoppingBasketEntityCopyWith<$Res> {
-  _$ShoppingBasketEntityCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
+  /// Create a copy of ShoppingBasketEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
+  $ShoppingBasketEntityCopyWith<ShoppingBasketEntity> get copyWith =>
+      _$ShoppingBasketEntityCopyWithImpl<ShoppingBasketEntity>(
+          this as ShoppingBasketEntity, _$identity);
+
+  /// Serializes this ShoppingBasketEntity to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? id = null,
-    Object? userId = null,
-    Object? status = null,
-    Object? products = null,
-    Object? sendDate = null,
-  }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as int,
-      products: null == products
-          ? _value.products
-          : products // ignore: cast_nullable_to_non_nullable
-              as List<ShoppingBasketProduct>,
-      sendDate: null == sendDate
-          ? _value.sendDate
-          : sendDate // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is ShoppingBasketEntity &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.status, status) || other.status == status) &&
+            const DeepCollectionEquality().equals(other.products, products) &&
+            (identical(other.sendDate, sendDate) ||
+                other.sendDate == sendDate));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, userId, status,
+      const DeepCollectionEquality().hash(products), sendDate);
+
+  @override
+  String toString() {
+    return 'ShoppingBasketEntity(id: $id, userId: $userId, status: $status, products: $products, sendDate: $sendDate)';
   }
 }
 
 /// @nodoc
-abstract class _$$ShoppingBasketEntityImplCopyWith<$Res>
-    implements $ShoppingBasketEntityCopyWith<$Res> {
-  factory _$$ShoppingBasketEntityImplCopyWith(_$ShoppingBasketEntityImpl value,
-          $Res Function(_$ShoppingBasketEntityImpl) then) =
-      __$$ShoppingBasketEntityImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $ShoppingBasketEntityCopyWith<$Res> {
+  factory $ShoppingBasketEntityCopyWith(ShoppingBasketEntity value,
+          $Res Function(ShoppingBasketEntity) _then) =
+      _$ShoppingBasketEntityCopyWithImpl;
   @useResult
   $Res call(
       {String id,
@@ -109,13 +70,15 @@ abstract class _$$ShoppingBasketEntityImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$ShoppingBasketEntityImplCopyWithImpl<$Res>
-    extends _$ShoppingBasketEntityCopyWithImpl<$Res, _$ShoppingBasketEntityImpl>
-    implements _$$ShoppingBasketEntityImplCopyWith<$Res> {
-  __$$ShoppingBasketEntityImplCopyWithImpl(_$ShoppingBasketEntityImpl _value,
-      $Res Function(_$ShoppingBasketEntityImpl) _then)
-      : super(_value, _then);
+class _$ShoppingBasketEntityCopyWithImpl<$Res>
+    implements $ShoppingBasketEntityCopyWith<$Res> {
+  _$ShoppingBasketEntityCopyWithImpl(this._self, this._then);
 
+  final ShoppingBasketEntity _self;
+  final $Res Function(ShoppingBasketEntity) _then;
+
+  /// Create a copy of ShoppingBasketEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -125,45 +88,210 @@ class __$$ShoppingBasketEntityImplCopyWithImpl<$Res>
     Object? products = null,
     Object? sendDate = null,
   }) {
-    return _then(_$ShoppingBasketEntityImpl(
+    return _then(_self.copyWith(
       id: null == id
-          ? _value.id
+          ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
       userId: null == userId
-          ? _value.userId
+          ? _self.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
       status: null == status
-          ? _value.status
+          ? _self.status
           : status // ignore: cast_nullable_to_non_nullable
               as int,
       products: null == products
-          ? _value._products
+          ? _self.products
           : products // ignore: cast_nullable_to_non_nullable
               as List<ShoppingBasketProduct>,
       sendDate: null == sendDate
-          ? _value.sendDate
+          ? _self.sendDate
           : sendDate // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
 }
 
+/// Adds pattern-matching-related methods to [ShoppingBasketEntity].
+extension ShoppingBasketEntityPatterns on ShoppingBasketEntity {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_ShoppingBasketEntity value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _ShoppingBasketEntity() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ShoppingBasketEntity value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ShoppingBasketEntity():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_ShoppingBasketEntity value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ShoppingBasketEntity() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String id, String userId, int status,
+            List<ShoppingBasketProduct> products, int sendDate)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _ShoppingBasketEntity() when $default != null:
+        return $default(_that.id, _that.userId, _that.status, _that.products,
+            _that.sendDate);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String id, String userId, int status,
+            List<ShoppingBasketProduct> products, int sendDate)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ShoppingBasketEntity():
+        return $default(_that.id, _that.userId, _that.status, _that.products,
+            _that.sendDate);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(String id, String userId, int status,
+            List<ShoppingBasketProduct> products, int sendDate)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ShoppingBasketEntity() when $default != null:
+        return $default(_that.id, _that.userId, _that.status, _that.products,
+            _that.sendDate);
+      case _:
+        return null;
+    }
+  }
+}
+
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$ShoppingBasketEntityImpl implements _ShoppingBasketEntity {
-  const _$ShoppingBasketEntityImpl(
+class _ShoppingBasketEntity implements ShoppingBasketEntity {
+  const _ShoppingBasketEntity(
       {required this.id,
       required this.userId,
       required this.status,
       required final List<ShoppingBasketProduct> products,
       required this.sendDate})
       : _products = products;
-
-  factory _$ShoppingBasketEntityImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ShoppingBasketEntityImplFromJson(json);
+  factory _ShoppingBasketEntity.fromJson(Map<String, dynamic> json) =>
+      _$ShoppingBasketEntityFromJson(json);
 
   @override
   final String id;
@@ -182,16 +310,27 @@ class _$ShoppingBasketEntityImpl implements _ShoppingBasketEntity {
   @override
   final int sendDate;
 
+  /// Create a copy of ShoppingBasketEntity
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'ShoppingBasketEntity(id: $id, userId: $userId, status: $status, products: $products, sendDate: $sendDate)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$ShoppingBasketEntityCopyWith<_ShoppingBasketEntity> get copyWith =>
+      __$ShoppingBasketEntityCopyWithImpl<_ShoppingBasketEntity>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$ShoppingBasketEntityToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ShoppingBasketEntityImpl &&
+            other is _ShoppingBasketEntity &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.status, status) || other.status == status) &&
@@ -200,224 +339,100 @@ class _$ShoppingBasketEntityImpl implements _ShoppingBasketEntity {
                 other.sendDate == sendDate));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, userId, status,
       const DeepCollectionEquality().hash(_products), sendDate);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$ShoppingBasketEntityImplCopyWith<_$ShoppingBasketEntityImpl>
-      get copyWith =>
-          __$$ShoppingBasketEntityImplCopyWithImpl<_$ShoppingBasketEntityImpl>(
-              this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ShoppingBasketEntityImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _ShoppingBasketEntity implements ShoppingBasketEntity {
-  const factory _ShoppingBasketEntity(
-      {required final String id,
-      required final String userId,
-      required final int status,
-      required final List<ShoppingBasketProduct> products,
-      required final int sendDate}) = _$ShoppingBasketEntityImpl;
-
-  factory _ShoppingBasketEntity.fromJson(Map<String, dynamic> json) =
-      _$ShoppingBasketEntityImpl.fromJson;
-
-  @override
-  String get id;
-  @override
-  String get userId;
-  @override
-  int get status;
-  @override
-  List<ShoppingBasketProduct> get products;
-  @override
-  int get sendDate;
-  @override
-  @JsonKey(ignore: true)
-  _$$ShoppingBasketEntityImplCopyWith<_$ShoppingBasketEntityImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-ShoppingBasketProduct _$ShoppingBasketProductFromJson(
-    Map<String, dynamic> json) {
-  return _ShoppingBasketProduct.fromJson(json);
-}
-
-/// @nodoc
-mixin _$ShoppingBasketProduct {
-  CategoryEntity get categoryEntity => throw _privateConstructorUsedError;
-  int get addedTime => throw _privateConstructorUsedError;
-  int get productCount => throw _privateConstructorUsedError;
-  double get completeAmount => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $ShoppingBasketProductCopyWith<ShoppingBasketProduct> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $ShoppingBasketProductCopyWith<$Res> {
-  factory $ShoppingBasketProductCopyWith(ShoppingBasketProduct value,
-          $Res Function(ShoppingBasketProduct) then) =
-      _$ShoppingBasketProductCopyWithImpl<$Res, ShoppingBasketProduct>;
-  @useResult
-  $Res call(
-      {CategoryEntity categoryEntity,
-      int addedTime,
-      int productCount,
-      double completeAmount});
-
-  $CategoryEntityCopyWith<$Res> get categoryEntity;
-}
-
-/// @nodoc
-class _$ShoppingBasketProductCopyWithImpl<$Res,
-        $Val extends ShoppingBasketProduct>
-    implements $ShoppingBasketProductCopyWith<$Res> {
-  _$ShoppingBasketProductCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? categoryEntity = null,
-    Object? addedTime = null,
-    Object? productCount = null,
-    Object? completeAmount = null,
-  }) {
-    return _then(_value.copyWith(
-      categoryEntity: null == categoryEntity
-          ? _value.categoryEntity
-          : categoryEntity // ignore: cast_nullable_to_non_nullable
-              as CategoryEntity,
-      addedTime: null == addedTime
-          ? _value.addedTime
-          : addedTime // ignore: cast_nullable_to_non_nullable
-              as int,
-      productCount: null == productCount
-          ? _value.productCount
-          : productCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      completeAmount: null == completeAmount
-          ? _value.completeAmount
-          : completeAmount // ignore: cast_nullable_to_non_nullable
-              as double,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $CategoryEntityCopyWith<$Res> get categoryEntity {
-    return $CategoryEntityCopyWith<$Res>(_value.categoryEntity, (value) {
-      return _then(_value.copyWith(categoryEntity: value) as $Val);
-    });
+  String toString() {
+    return 'ShoppingBasketEntity(id: $id, userId: $userId, status: $status, products: $products, sendDate: $sendDate)';
   }
 }
 
 /// @nodoc
-abstract class _$$ShoppingBasketProductImplCopyWith<$Res>
-    implements $ShoppingBasketProductCopyWith<$Res> {
-  factory _$$ShoppingBasketProductImplCopyWith(
-          _$ShoppingBasketProductImpl value,
-          $Res Function(_$ShoppingBasketProductImpl) then) =
-      __$$ShoppingBasketProductImplCopyWithImpl<$Res>;
+abstract mixin class _$ShoppingBasketEntityCopyWith<$Res>
+    implements $ShoppingBasketEntityCopyWith<$Res> {
+  factory _$ShoppingBasketEntityCopyWith(_ShoppingBasketEntity value,
+          $Res Function(_ShoppingBasketEntity) _then) =
+      __$ShoppingBasketEntityCopyWithImpl;
   @override
   @useResult
   $Res call(
-      {CategoryEntity categoryEntity,
-      int addedTime,
-      int productCount,
-      double completeAmount});
-
-  @override
-  $CategoryEntityCopyWith<$Res> get categoryEntity;
+      {String id,
+      String userId,
+      int status,
+      List<ShoppingBasketProduct> products,
+      int sendDate});
 }
 
 /// @nodoc
-class __$$ShoppingBasketProductImplCopyWithImpl<$Res>
-    extends _$ShoppingBasketProductCopyWithImpl<$Res,
-        _$ShoppingBasketProductImpl>
-    implements _$$ShoppingBasketProductImplCopyWith<$Res> {
-  __$$ShoppingBasketProductImplCopyWithImpl(_$ShoppingBasketProductImpl _value,
-      $Res Function(_$ShoppingBasketProductImpl) _then)
-      : super(_value, _then);
+class __$ShoppingBasketEntityCopyWithImpl<$Res>
+    implements _$ShoppingBasketEntityCopyWith<$Res> {
+  __$ShoppingBasketEntityCopyWithImpl(this._self, this._then);
 
-  @pragma('vm:prefer-inline')
+  final _ShoppingBasketEntity _self;
+  final $Res Function(_ShoppingBasketEntity) _then;
+
+  /// Create a copy of ShoppingBasketEntity
+  /// with the given fields replaced by the non-null parameter values.
   @override
+  @pragma('vm:prefer-inline')
   $Res call({
-    Object? categoryEntity = null,
-    Object? addedTime = null,
-    Object? productCount = null,
-    Object? completeAmount = null,
+    Object? id = null,
+    Object? userId = null,
+    Object? status = null,
+    Object? products = null,
+    Object? sendDate = null,
   }) {
-    return _then(_$ShoppingBasketProductImpl(
-      categoryEntity: null == categoryEntity
-          ? _value.categoryEntity
-          : categoryEntity // ignore: cast_nullable_to_non_nullable
-              as CategoryEntity,
-      addedTime: null == addedTime
-          ? _value.addedTime
-          : addedTime // ignore: cast_nullable_to_non_nullable
+    return _then(_ShoppingBasketEntity(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      userId: null == userId
+          ? _self.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
+      status: null == status
+          ? _self.status
+          : status // ignore: cast_nullable_to_non_nullable
               as int,
-      productCount: null == productCount
-          ? _value.productCount
-          : productCount // ignore: cast_nullable_to_non_nullable
+      products: null == products
+          ? _self._products
+          : products // ignore: cast_nullable_to_non_nullable
+              as List<ShoppingBasketProduct>,
+      sendDate: null == sendDate
+          ? _self.sendDate
+          : sendDate // ignore: cast_nullable_to_non_nullable
               as int,
-      completeAmount: null == completeAmount
-          ? _value.completeAmount
-          : completeAmount // ignore: cast_nullable_to_non_nullable
-              as double,
     ));
   }
 }
 
 /// @nodoc
+mixin _$ShoppingBasketProduct {
+  CategoryEntity get categoryEntity;
+  int get addedTime;
+  int get productCount;
+  double get completeAmount;
 
-@JsonSerializable(explicitToJson: true)
-class _$ShoppingBasketProductImpl implements _ShoppingBasketProduct {
-  const _$ShoppingBasketProductImpl(
-      {required this.categoryEntity,
-      required this.addedTime,
-      required this.productCount,
-      required this.completeAmount});
+  /// Create a copy of ShoppingBasketProduct
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $ShoppingBasketProductCopyWith<ShoppingBasketProduct> get copyWith =>
+      _$ShoppingBasketProductCopyWithImpl<ShoppingBasketProduct>(
+          this as ShoppingBasketProduct, _$identity);
 
-  factory _$ShoppingBasketProductImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ShoppingBasketProductImplFromJson(json);
-
-  @override
-  final CategoryEntity categoryEntity;
-  @override
-  final int addedTime;
-  @override
-  final int productCount;
-  @override
-  final double completeAmount;
-
-  @override
-  String toString() {
-    return 'ShoppingBasketProduct(categoryEntity: $categoryEntity, addedTime: $addedTime, productCount: $productCount, completeAmount: $completeAmount)';
-  }
+  /// Serializes this ShoppingBasketProduct to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ShoppingBasketProductImpl &&
+            other is ShoppingBasketProduct &&
             (identical(other.categoryEntity, categoryEntity) ||
                 other.categoryEntity == categoryEntity) &&
             (identical(other.addedTime, addedTime) ||
@@ -428,46 +443,375 @@ class _$ShoppingBasketProductImpl implements _ShoppingBasketProduct {
                 other.completeAmount == completeAmount));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, categoryEntity, addedTime, productCount, completeAmount);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$ShoppingBasketProductImplCopyWith<_$ShoppingBasketProductImpl>
-      get copyWith => __$$ShoppingBasketProductImplCopyWithImpl<
-          _$ShoppingBasketProductImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ShoppingBasketProductImplToJson(
-      this,
-    );
+  String toString() {
+    return 'ShoppingBasketProduct(categoryEntity: $categoryEntity, addedTime: $addedTime, productCount: $productCount, completeAmount: $completeAmount)';
   }
 }
 
-abstract class _ShoppingBasketProduct implements ShoppingBasketProduct {
-  const factory _ShoppingBasketProduct(
-      {required final CategoryEntity categoryEntity,
-      required final int addedTime,
-      required final int productCount,
-      required final double completeAmount}) = _$ShoppingBasketProductImpl;
+/// @nodoc
+abstract mixin class $ShoppingBasketProductCopyWith<$Res> {
+  factory $ShoppingBasketProductCopyWith(ShoppingBasketProduct value,
+          $Res Function(ShoppingBasketProduct) _then) =
+      _$ShoppingBasketProductCopyWithImpl;
+  @useResult
+  $Res call(
+      {CategoryEntity categoryEntity,
+      int addedTime,
+      int productCount,
+      double completeAmount});
 
-  factory _ShoppingBasketProduct.fromJson(Map<String, dynamic> json) =
-      _$ShoppingBasketProductImpl.fromJson;
-
-  @override
-  CategoryEntity get categoryEntity;
-  @override
-  int get addedTime;
-  @override
-  int get productCount;
-  @override
-  double get completeAmount;
-  @override
-  @JsonKey(ignore: true)
-  _$$ShoppingBasketProductImplCopyWith<_$ShoppingBasketProductImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  $CategoryEntityCopyWith<$Res> get categoryEntity;
 }
+
+/// @nodoc
+class _$ShoppingBasketProductCopyWithImpl<$Res>
+    implements $ShoppingBasketProductCopyWith<$Res> {
+  _$ShoppingBasketProductCopyWithImpl(this._self, this._then);
+
+  final ShoppingBasketProduct _self;
+  final $Res Function(ShoppingBasketProduct) _then;
+
+  /// Create a copy of ShoppingBasketProduct
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? categoryEntity = null,
+    Object? addedTime = null,
+    Object? productCount = null,
+    Object? completeAmount = null,
+  }) {
+    return _then(_self.copyWith(
+      categoryEntity: null == categoryEntity
+          ? _self.categoryEntity
+          : categoryEntity // ignore: cast_nullable_to_non_nullable
+              as CategoryEntity,
+      addedTime: null == addedTime
+          ? _self.addedTime
+          : addedTime // ignore: cast_nullable_to_non_nullable
+              as int,
+      productCount: null == productCount
+          ? _self.productCount
+          : productCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      completeAmount: null == completeAmount
+          ? _self.completeAmount
+          : completeAmount // ignore: cast_nullable_to_non_nullable
+              as double,
+    ));
+  }
+
+  /// Create a copy of ShoppingBasketProduct
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CategoryEntityCopyWith<$Res> get categoryEntity {
+    return $CategoryEntityCopyWith<$Res>(_self.categoryEntity, (value) {
+      return _then(_self.copyWith(categoryEntity: value));
+    });
+  }
+}
+
+/// Adds pattern-matching-related methods to [ShoppingBasketProduct].
+extension ShoppingBasketProductPatterns on ShoppingBasketProduct {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_ShoppingBasketProduct value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _ShoppingBasketProduct() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ShoppingBasketProduct value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ShoppingBasketProduct():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_ShoppingBasketProduct value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ShoppingBasketProduct() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(CategoryEntity categoryEntity, int addedTime,
+            int productCount, double completeAmount)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _ShoppingBasketProduct() when $default != null:
+        return $default(_that.categoryEntity, _that.addedTime,
+            _that.productCount, _that.completeAmount);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(CategoryEntity categoryEntity, int addedTime,
+            int productCount, double completeAmount)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ShoppingBasketProduct():
+        return $default(_that.categoryEntity, _that.addedTime,
+            _that.productCount, _that.completeAmount);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(CategoryEntity categoryEntity, int addedTime,
+            int productCount, double completeAmount)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _ShoppingBasketProduct() when $default != null:
+        return $default(_that.categoryEntity, _that.addedTime,
+            _that.productCount, _that.completeAmount);
+      case _:
+        return null;
+    }
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(explicitToJson: true)
+class _ShoppingBasketProduct implements ShoppingBasketProduct {
+  const _ShoppingBasketProduct(
+      {required this.categoryEntity,
+      required this.addedTime,
+      required this.productCount,
+      required this.completeAmount});
+  factory _ShoppingBasketProduct.fromJson(Map<String, dynamic> json) =>
+      _$ShoppingBasketProductFromJson(json);
+
+  @override
+  final CategoryEntity categoryEntity;
+  @override
+  final int addedTime;
+  @override
+  final int productCount;
+  @override
+  final double completeAmount;
+
+  /// Create a copy of ShoppingBasketProduct
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$ShoppingBasketProductCopyWith<_ShoppingBasketProduct> get copyWith =>
+      __$ShoppingBasketProductCopyWithImpl<_ShoppingBasketProduct>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$ShoppingBasketProductToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _ShoppingBasketProduct &&
+            (identical(other.categoryEntity, categoryEntity) ||
+                other.categoryEntity == categoryEntity) &&
+            (identical(other.addedTime, addedTime) ||
+                other.addedTime == addedTime) &&
+            (identical(other.productCount, productCount) ||
+                other.productCount == productCount) &&
+            (identical(other.completeAmount, completeAmount) ||
+                other.completeAmount == completeAmount));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, categoryEntity, addedTime, productCount, completeAmount);
+
+  @override
+  String toString() {
+    return 'ShoppingBasketProduct(categoryEntity: $categoryEntity, addedTime: $addedTime, productCount: $productCount, completeAmount: $completeAmount)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$ShoppingBasketProductCopyWith<$Res>
+    implements $ShoppingBasketProductCopyWith<$Res> {
+  factory _$ShoppingBasketProductCopyWith(_ShoppingBasketProduct value,
+          $Res Function(_ShoppingBasketProduct) _then) =
+      __$ShoppingBasketProductCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {CategoryEntity categoryEntity,
+      int addedTime,
+      int productCount,
+      double completeAmount});
+
+  @override
+  $CategoryEntityCopyWith<$Res> get categoryEntity;
+}
+
+/// @nodoc
+class __$ShoppingBasketProductCopyWithImpl<$Res>
+    implements _$ShoppingBasketProductCopyWith<$Res> {
+  __$ShoppingBasketProductCopyWithImpl(this._self, this._then);
+
+  final _ShoppingBasketProduct _self;
+  final $Res Function(_ShoppingBasketProduct) _then;
+
+  /// Create a copy of ShoppingBasketProduct
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? categoryEntity = null,
+    Object? addedTime = null,
+    Object? productCount = null,
+    Object? completeAmount = null,
+  }) {
+    return _then(_ShoppingBasketProduct(
+      categoryEntity: null == categoryEntity
+          ? _self.categoryEntity
+          : categoryEntity // ignore: cast_nullable_to_non_nullable
+              as CategoryEntity,
+      addedTime: null == addedTime
+          ? _self.addedTime
+          : addedTime // ignore: cast_nullable_to_non_nullable
+              as int,
+      productCount: null == productCount
+          ? _self.productCount
+          : productCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      completeAmount: null == completeAmount
+          ? _self.completeAmount
+          : completeAmount // ignore: cast_nullable_to_non_nullable
+              as double,
+    ));
+  }
+
+  /// Create a copy of ShoppingBasketProduct
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CategoryEntityCopyWith<$Res> get categoryEntity {
+    return $CategoryEntityCopyWith<$Res>(_self.categoryEntity, (value) {
+      return _then(_self.copyWith(categoryEntity: value));
+    });
+  }
+}
+
+// dart format on

@@ -5,7 +5,7 @@ import 'package:app_flutter_produkt_bestellen/core/fix_values/app_text.dart';
 import 'package:app_flutter_produkt_bestellen/core/global_cubits/cubit_push_notification_data.dart';
 import 'package:app_flutter_produkt_bestellen/features/app_start/presentation/page/app_start_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/category/share/domain/entity/category_entity.dart';
-import 'package:app_flutter_produkt_bestellen/features/chat/presentation/page/chat_message.dart';
+import 'package:app_flutter_produkt_bestellen/features/chat/presentation/page/chat_account_list.dart';
 import 'package:app_flutter_produkt_bestellen/features/home/presentation/page/home_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/legalities/presentation/page/legalities_page.dart';
 import 'package:app_flutter_produkt_bestellen/features/login/presentation/cubit/login_cubit.dart';
@@ -24,6 +24,8 @@ import 'package:app_flutter_produkt_bestellen/features/shopping_basket/domain/en
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../features/login/presentation/cubit/login_state.dart';
 
 enum AppGoRouter {
   root('/'),
@@ -91,7 +93,7 @@ enum AppGoRouter {
                   path: messages.path,
                   name: messages.name,
                   pageBuilder: (context, state) =>
-                      _getCustomerTransition(const ChatMessage(), state)),
+                      _getCustomerTransition(const ChatAccountList(), state)),
               GoRoute(
                 path: home.path,
                 name: home.name,

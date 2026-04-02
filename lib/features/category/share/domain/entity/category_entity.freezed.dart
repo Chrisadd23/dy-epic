@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,101 +9,62 @@ part of 'category_entity.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-CategoryEntity _$CategoryEntityFromJson(Map<String, dynamic> json) {
-  return _CategoryEntity.fromJson(json);
-}
 
 /// @nodoc
 mixin _$CategoryEntity {
-  String get productNumber => throw _privateConstructorUsedError;
-  String get productTitle => throw _privateConstructorUsedError;
-  String get type => throw _privateConstructorUsedError;
-  bool get isVisible => throw _privateConstructorUsedError;
-  double? get price => throw _privateConstructorUsedError;
-  List<String>? get attributes => throw _privateConstructorUsedError;
+  String get productNumber;
+  String get productTitle;
+  String get type;
+  bool get isVisible;
+  double? get price;
+  List<String>? get attributes;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $CategoryEntityCopyWith<CategoryEntity> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $CategoryEntityCopyWith<$Res> {
-  factory $CategoryEntityCopyWith(
-          CategoryEntity value, $Res Function(CategoryEntity) then) =
-      _$CategoryEntityCopyWithImpl<$Res, CategoryEntity>;
-  @useResult
-  $Res call(
-      {String productNumber,
-      String productTitle,
-      String type,
-      bool isVisible,
-      double? price,
-      List<String>? attributes});
-}
-
-/// @nodoc
-class _$CategoryEntityCopyWithImpl<$Res, $Val extends CategoryEntity>
-    implements $CategoryEntityCopyWith<$Res> {
-  _$CategoryEntityCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
+  /// Create a copy of CategoryEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
+  $CategoryEntityCopyWith<CategoryEntity> get copyWith =>
+      _$CategoryEntityCopyWithImpl<CategoryEntity>(
+          this as CategoryEntity, _$identity);
+
+  /// Serializes this CategoryEntity to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? productNumber = null,
-    Object? productTitle = null,
-    Object? type = null,
-    Object? isVisible = null,
-    Object? price = freezed,
-    Object? attributes = freezed,
-  }) {
-    return _then(_value.copyWith(
-      productNumber: null == productNumber
-          ? _value.productNumber
-          : productNumber // ignore: cast_nullable_to_non_nullable
-              as String,
-      productTitle: null == productTitle
-          ? _value.productTitle
-          : productTitle // ignore: cast_nullable_to_non_nullable
-              as String,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      isVisible: null == isVisible
-          ? _value.isVisible
-          : isVisible // ignore: cast_nullable_to_non_nullable
-              as bool,
-      price: freezed == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as double?,
-      attributes: freezed == attributes
-          ? _value.attributes
-          : attributes // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is CategoryEntity &&
+            (identical(other.productNumber, productNumber) ||
+                other.productNumber == productNumber) &&
+            (identical(other.productTitle, productTitle) ||
+                other.productTitle == productTitle) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.isVisible, isVisible) ||
+                other.isVisible == isVisible) &&
+            (identical(other.price, price) || other.price == price) &&
+            const DeepCollectionEquality()
+                .equals(other.attributes, attributes));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, productNumber, productTitle,
+      type, isVisible, price, const DeepCollectionEquality().hash(attributes));
+
+  @override
+  String toString() {
+    return 'CategoryEntity(productNumber: $productNumber, productTitle: $productTitle, type: $type, isVisible: $isVisible, price: $price, attributes: $attributes)';
   }
 }
 
 /// @nodoc
-abstract class _$$CategoryEntityImplCopyWith<$Res>
-    implements $CategoryEntityCopyWith<$Res> {
-  factory _$$CategoryEntityImplCopyWith(_$CategoryEntityImpl value,
-          $Res Function(_$CategoryEntityImpl) then) =
-      __$$CategoryEntityImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $CategoryEntityCopyWith<$Res> {
+  factory $CategoryEntityCopyWith(
+          CategoryEntity value, $Res Function(CategoryEntity) _then) =
+      _$CategoryEntityCopyWithImpl;
   @useResult
   $Res call(
       {String productNumber,
@@ -115,13 +76,15 @@ abstract class _$$CategoryEntityImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$CategoryEntityImplCopyWithImpl<$Res>
-    extends _$CategoryEntityCopyWithImpl<$Res, _$CategoryEntityImpl>
-    implements _$$CategoryEntityImplCopyWith<$Res> {
-  __$$CategoryEntityImplCopyWithImpl(
-      _$CategoryEntityImpl _value, $Res Function(_$CategoryEntityImpl) _then)
-      : super(_value, _then);
+class _$CategoryEntityCopyWithImpl<$Res>
+    implements $CategoryEntityCopyWith<$Res> {
+  _$CategoryEntityCopyWithImpl(this._self, this._then);
 
+  final CategoryEntity _self;
+  final $Res Function(CategoryEntity) _then;
+
+  /// Create a copy of CategoryEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -132,40 +95,206 @@ class __$$CategoryEntityImplCopyWithImpl<$Res>
     Object? price = freezed,
     Object? attributes = freezed,
   }) {
-    return _then(_$CategoryEntityImpl(
+    return _then(_self.copyWith(
       productNumber: null == productNumber
-          ? _value.productNumber
+          ? _self.productNumber
           : productNumber // ignore: cast_nullable_to_non_nullable
               as String,
       productTitle: null == productTitle
-          ? _value.productTitle
+          ? _self.productTitle
           : productTitle // ignore: cast_nullable_to_non_nullable
               as String,
       type: null == type
-          ? _value.type
+          ? _self.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
       isVisible: null == isVisible
-          ? _value.isVisible
+          ? _self.isVisible
           : isVisible // ignore: cast_nullable_to_non_nullable
               as bool,
       price: freezed == price
-          ? _value.price
+          ? _self.price
           : price // ignore: cast_nullable_to_non_nullable
               as double?,
       attributes: freezed == attributes
-          ? _value._attributes
+          ? _self.attributes
           : attributes // ignore: cast_nullable_to_non_nullable
               as List<String>?,
     ));
   }
 }
 
+/// Adds pattern-matching-related methods to [CategoryEntity].
+extension CategoryEntityPatterns on CategoryEntity {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_CategoryEntity value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _CategoryEntity() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_CategoryEntity value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _CategoryEntity():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_CategoryEntity value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _CategoryEntity() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(String productNumber, String productTitle, String type,
+            bool isVisible, double? price, List<String>? attributes)?
+        $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _CategoryEntity() when $default != null:
+        return $default(_that.productNumber, _that.productTitle, _that.type,
+            _that.isVisible, _that.price, _that.attributes);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(String productNumber, String productTitle, String type,
+            bool isVisible, double? price, List<String>? attributes)
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _CategoryEntity():
+        return $default(_that.productNumber, _that.productTitle, _that.type,
+            _that.isVisible, _that.price, _that.attributes);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(String productNumber, String productTitle, String type,
+            bool isVisible, double? price, List<String>? attributes)?
+        $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _CategoryEntity() when $default != null:
+        return $default(_that.productNumber, _that.productTitle, _that.type,
+            _that.isVisible, _that.price, _that.attributes);
+      case _:
+        return null;
+    }
+  }
+}
+
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$CategoryEntityImpl implements _CategoryEntity {
-  const _$CategoryEntityImpl(
+class _CategoryEntity implements CategoryEntity {
+  const _CategoryEntity(
       {required this.productNumber,
       required this.productTitle,
       required this.type,
@@ -173,9 +302,8 @@ class _$CategoryEntityImpl implements _CategoryEntity {
       this.price,
       final List<String>? attributes})
       : _attributes = attributes;
-
-  factory _$CategoryEntityImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CategoryEntityImplFromJson(json);
+  factory _CategoryEntity.fromJson(Map<String, dynamic> json) =>
+      _$CategoryEntityFromJson(json);
 
   @override
   final String productNumber;
@@ -197,16 +325,26 @@ class _$CategoryEntityImpl implements _CategoryEntity {
     return EqualUnmodifiableListView(value);
   }
 
+  /// Create a copy of CategoryEntity
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'CategoryEntity(productNumber: $productNumber, productTitle: $productTitle, type: $type, isVisible: $isVisible, price: $price, attributes: $attributes)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$CategoryEntityCopyWith<_CategoryEntity> get copyWith =>
+      __$CategoryEntityCopyWithImpl<_CategoryEntity>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$CategoryEntityToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CategoryEntityImpl &&
+            other is _CategoryEntity &&
             (identical(other.productNumber, productNumber) ||
                 other.productNumber == productNumber) &&
             (identical(other.productTitle, productTitle) ||
@@ -219,52 +357,81 @@ class _$CategoryEntityImpl implements _CategoryEntity {
                 .equals(other._attributes, _attributes));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, productNumber, productTitle,
       type, isVisible, price, const DeepCollectionEquality().hash(_attributes));
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$CategoryEntityImplCopyWith<_$CategoryEntityImpl> get copyWith =>
-      __$$CategoryEntityImplCopyWithImpl<_$CategoryEntityImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$CategoryEntityImplToJson(
-      this,
-    );
+  String toString() {
+    return 'CategoryEntity(productNumber: $productNumber, productTitle: $productTitle, type: $type, isVisible: $isVisible, price: $price, attributes: $attributes)';
   }
 }
 
-abstract class _CategoryEntity implements CategoryEntity {
-  const factory _CategoryEntity(
-      {required final String productNumber,
-      required final String productTitle,
-      required final String type,
-      required final bool isVisible,
-      final double? price,
-      final List<String>? attributes}) = _$CategoryEntityImpl;
-
-  factory _CategoryEntity.fromJson(Map<String, dynamic> json) =
-      _$CategoryEntityImpl.fromJson;
-
+/// @nodoc
+abstract mixin class _$CategoryEntityCopyWith<$Res>
+    implements $CategoryEntityCopyWith<$Res> {
+  factory _$CategoryEntityCopyWith(
+          _CategoryEntity value, $Res Function(_CategoryEntity) _then) =
+      __$CategoryEntityCopyWithImpl;
   @override
-  String get productNumber;
-  @override
-  String get productTitle;
-  @override
-  String get type;
-  @override
-  bool get isVisible;
-  @override
-  double? get price;
-  @override
-  List<String>? get attributes;
-  @override
-  @JsonKey(ignore: true)
-  _$$CategoryEntityImplCopyWith<_$CategoryEntityImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @useResult
+  $Res call(
+      {String productNumber,
+      String productTitle,
+      String type,
+      bool isVisible,
+      double? price,
+      List<String>? attributes});
 }
+
+/// @nodoc
+class __$CategoryEntityCopyWithImpl<$Res>
+    implements _$CategoryEntityCopyWith<$Res> {
+  __$CategoryEntityCopyWithImpl(this._self, this._then);
+
+  final _CategoryEntity _self;
+  final $Res Function(_CategoryEntity) _then;
+
+  /// Create a copy of CategoryEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? productNumber = null,
+    Object? productTitle = null,
+    Object? type = null,
+    Object? isVisible = null,
+    Object? price = freezed,
+    Object? attributes = freezed,
+  }) {
+    return _then(_CategoryEntity(
+      productNumber: null == productNumber
+          ? _self.productNumber
+          : productNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      productTitle: null == productTitle
+          ? _self.productTitle
+          : productTitle // ignore: cast_nullable_to_non_nullable
+              as String,
+      type: null == type
+          ? _self.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      isVisible: null == isVisible
+          ? _self.isVisible
+          : isVisible // ignore: cast_nullable_to_non_nullable
+              as bool,
+      price: freezed == price
+          ? _self.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as double?,
+      attributes: freezed == attributes
+          ? _self._attributes
+          : attributes // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+    ));
+  }
+}
+
+// dart format on

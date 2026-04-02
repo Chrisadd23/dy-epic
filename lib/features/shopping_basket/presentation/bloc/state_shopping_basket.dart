@@ -6,7 +6,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'state_shopping_basket.freezed.dart';
 
 @freezed
-class StateShoppingBasket with _$StateShoppingBasket {
+abstract class StateShoppingBasket with _$StateShoppingBasket {
   const StateShoppingBasket._();
 
   const factory StateShoppingBasket(

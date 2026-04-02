@@ -6,8 +6,8 @@ part of 'category_entity.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CategoryEntityImpl _$$CategoryEntityImplFromJson(Map<String, dynamic> json) =>
-    _$CategoryEntityImpl(
+_CategoryEntity _$CategoryEntityFromJson(Map<String, dynamic> json) =>
+    _CategoryEntity(
       productNumber: json['productNumber'] as String,
       productTitle: json['productTitle'] as String,
       type: json['type'] as String,
@@ -18,8 +18,7 @@ _$CategoryEntityImpl _$$CategoryEntityImplFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$$CategoryEntityImplToJson(
-        _$CategoryEntityImpl instance) =>
+Map<String, dynamic> _$CategoryEntityToJson(_CategoryEntity instance) =>
     <String, dynamic>{
       'productNumber': instance.productNumber,
       'productTitle': instance.productTitle,

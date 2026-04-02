@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,298 +9,300 @@ part of 'app_start_state.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AppStartState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initialize,
-    required TResult Function() success,
-    required TResult Function(Failure failure) failure,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initialize,
-    TResult? Function()? success,
-    TResult? Function(Failure failure)? failure,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initialize,
-    TResult Function()? success,
-    TResult Function(Failure failure)? failure,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initialize value) initialize,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initialize value)? initialize,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
-  }) =>
-      throw _privateConstructorUsedError;
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is AppStartState);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'AppStartState()';
+  }
+}
+
+/// @nodoc
+class $AppStartStateCopyWith<$Res> {
+  $AppStartStateCopyWith(AppStartState _, $Res Function(AppStartState) __);
+}
+
+/// Adds pattern-matching-related methods to [AppStartState].
+extension AppStartStatePatterns on AppStartState {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialize value)? initialize,
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initialize() when initialize != null:
+        return initialize(_that);
+      case _Success() when success != null:
+        return success(_that);
+      case _Failure() when failure != null:
+        return failure(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Failure value) failure,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initialize():
+        return initialize(_that);
+      case _Success():
+        return success(_that);
+      case _Failure():
+        return failure(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initialize value)? initialize,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Failure value)? failure,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initialize() when initialize != null:
+        return initialize(_that);
+      case _Success() when success != null:
+        return success(_that);
+      case _Failure() when failure != null:
+        return failure(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialize,
+    TResult Function()? success,
+    TResult Function(Failure failure)? failure,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initialize() when initialize != null:
+        return initialize();
+      case _Success() when success != null:
+        return success();
+      case _Failure() when failure != null:
+        return failure(_that.failure);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialize,
+    required TResult Function() success,
+    required TResult Function(Failure failure) failure,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initialize():
+        return initialize();
+      case _Success():
+        return success();
+      case _Failure():
+        return failure(_that.failure);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initialize,
+    TResult? Function()? success,
+    TResult? Function(Failure failure)? failure,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Initialize() when initialize != null:
+        return initialize();
+      case _Success() when success != null:
+        return success();
+      case _Failure() when failure != null:
+        return failure(_that.failure);
+      case _:
+        return null;
+    }
+  }
 }
 
 /// @nodoc
-abstract class $AppStartStateCopyWith<$Res> {
-  factory $AppStartStateCopyWith(
-          AppStartState value, $Res Function(AppStartState) then) =
-      _$AppStartStateCopyWithImpl<$Res, AppStartState>;
-}
 
-/// @nodoc
-class _$AppStartStateCopyWithImpl<$Res, $Val extends AppStartState>
-    implements $AppStartStateCopyWith<$Res> {
-  _$AppStartStateCopyWithImpl(this._value, this._then);
+class _Initialize implements AppStartState {
+  const _Initialize();
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-}
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Initialize);
+  }
 
-/// @nodoc
-abstract class _$$InitializeImplCopyWith<$Res> {
-  factory _$$InitializeImplCopyWith(
-          _$InitializeImpl value, $Res Function(_$InitializeImpl) then) =
-      __$$InitializeImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$InitializeImplCopyWithImpl<$Res>
-    extends _$AppStartStateCopyWithImpl<$Res, _$InitializeImpl>
-    implements _$$InitializeImplCopyWith<$Res> {
-  __$$InitializeImplCopyWithImpl(
-      _$InitializeImpl _value, $Res Function(_$InitializeImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$InitializeImpl implements _Initialize {
-  const _$InitializeImpl();
+  @override
+  int get hashCode => runtimeType.hashCode;
 
   @override
   String toString() {
     return 'AppStartState.initialize()';
   }
+}
+
+/// @nodoc
+
+class _Success implements AppStartState {
+  const _Success();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitializeImpl);
+        (other.runtimeType == runtimeType && other is _Success);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initialize,
-    required TResult Function() success,
-    required TResult Function(Failure failure) failure,
-  }) {
-    return initialize();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initialize,
-    TResult? Function()? success,
-    TResult? Function(Failure failure)? failure,
-  }) {
-    return initialize?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initialize,
-    TResult Function()? success,
-    TResult Function(Failure failure)? failure,
-    required TResult orElse(),
-  }) {
-    if (initialize != null) {
-      return initialize();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initialize value) initialize,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
-  }) {
-    return initialize(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initialize value)? initialize,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
-  }) {
-    return initialize?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initialize value)? initialize,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
-    required TResult orElse(),
-  }) {
-    if (initialize != null) {
-      return initialize(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Initialize implements AppStartState {
-  const factory _Initialize() = _$InitializeImpl;
-}
-
-/// @nodoc
-abstract class _$$SuccessImplCopyWith<$Res> {
-  factory _$$SuccessImplCopyWith(
-          _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
-      __$$SuccessImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$SuccessImplCopyWithImpl<$Res>
-    extends _$AppStartStateCopyWithImpl<$Res, _$SuccessImpl>
-    implements _$$SuccessImplCopyWith<$Res> {
-  __$$SuccessImplCopyWithImpl(
-      _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$SuccessImpl implements _Success {
-  const _$SuccessImpl();
 
   @override
   String toString() {
     return 'AppStartState.success()';
   }
+}
+
+/// @nodoc
+
+class _Failure implements AppStartState {
+  const _Failure({required this.failure});
+
+  final Failure failure;
+
+  /// Create a copy of AppStartState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$FailureCopyWith<_Failure> get copyWith =>
+      __$FailureCopyWithImpl<_Failure>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SuccessImpl);
+        (other.runtimeType == runtimeType &&
+            other is _Failure &&
+            (identical(other.failure, failure) || other.failure == failure));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, failure);
 
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initialize,
-    required TResult Function() success,
-    required TResult Function(Failure failure) failure,
-  }) {
-    return success();
+  String toString() {
+    return 'AppStartState.failure(failure: $failure)';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initialize,
-    TResult? Function()? success,
-    TResult? Function(Failure failure)? failure,
-  }) {
-    return success?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initialize,
-    TResult Function()? success,
-    TResult Function(Failure failure)? failure,
-    required TResult orElse(),
-  }) {
-    if (success != null) {
-      return success();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initialize value) initialize,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
-  }) {
-    return success(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initialize value)? initialize,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
-  }) {
-    return success?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initialize value)? initialize,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
-    required TResult orElse(),
-  }) {
-    if (success != null) {
-      return success(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Success implements AppStartState {
-  const factory _Success() = _$SuccessImpl;
 }
 
 /// @nodoc
-abstract class _$$FailureImplCopyWith<$Res> {
-  factory _$$FailureImplCopyWith(
-          _$FailureImpl value, $Res Function(_$FailureImpl) then) =
-      __$$FailureImplCopyWithImpl<$Res>;
+abstract mixin class _$FailureCopyWith<$Res>
+    implements $AppStartStateCopyWith<$Res> {
+  factory _$FailureCopyWith(_Failure value, $Res Function(_Failure) _then) =
+      __$FailureCopyWithImpl;
   @useResult
   $Res call({Failure failure});
 
@@ -308,139 +310,35 @@ abstract class _$$FailureImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$FailureImplCopyWithImpl<$Res>
-    extends _$AppStartStateCopyWithImpl<$Res, _$FailureImpl>
-    implements _$$FailureImplCopyWith<$Res> {
-  __$$FailureImplCopyWithImpl(
-      _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
-      : super(_value, _then);
+class __$FailureCopyWithImpl<$Res> implements _$FailureCopyWith<$Res> {
+  __$FailureCopyWithImpl(this._self, this._then);
 
+  final _Failure _self;
+  final $Res Function(_Failure) _then;
+
+  /// Create a copy of AppStartState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
     Object? failure = null,
   }) {
-    return _then(_$FailureImpl(
+    return _then(_Failure(
       failure: null == failure
-          ? _value.failure
+          ? _self.failure
           : failure // ignore: cast_nullable_to_non_nullable
               as Failure,
     ));
   }
 
+  /// Create a copy of AppStartState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FailureCopyWith<$Res> get failure {
-    return $FailureCopyWith<$Res>(_value.failure, (value) {
-      return _then(_value.copyWith(failure: value));
+    return $FailureCopyWith<$Res>(_self.failure, (value) {
+      return _then(_self.copyWith(failure: value));
     });
   }
 }
 
-/// @nodoc
-
-class _$FailureImpl implements _Failure {
-  const _$FailureImpl({required this.failure});
-
-  @override
-  final Failure failure;
-
-  @override
-  String toString() {
-    return 'AppStartState.failure(failure: $failure)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$FailureImpl &&
-            (identical(other.failure, failure) || other.failure == failure));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, failure);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
-      __$$FailureImplCopyWithImpl<_$FailureImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initialize,
-    required TResult Function() success,
-    required TResult Function(Failure failure) failure,
-  }) {
-    return failure(this.failure);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initialize,
-    TResult? Function()? success,
-    TResult? Function(Failure failure)? failure,
-  }) {
-    return failure?.call(this.failure);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initialize,
-    TResult Function()? success,
-    TResult Function(Failure failure)? failure,
-    required TResult orElse(),
-  }) {
-    if (failure != null) {
-      return failure(this.failure);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initialize value) initialize,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
-  }) {
-    return failure(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initialize value)? initialize,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
-  }) {
-    return failure?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initialize value)? initialize,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
-    required TResult orElse(),
-  }) {
-    if (failure != null) {
-      return failure(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Failure implements AppStartState {
-  const factory _Failure({required final Failure failure}) = _$FailureImpl;
-
-  Failure get failure;
-  @JsonKey(ignore: true)
-  _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+// dart format on

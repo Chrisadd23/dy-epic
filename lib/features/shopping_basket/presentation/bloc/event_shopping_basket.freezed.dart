@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,47 +9,177 @@ part of 'event_shopping_basket.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$EventShoppingBasket {
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is EventShoppingBasket);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'EventShoppingBasket()';
+  }
+}
+
+/// @nodoc
+class $EventShoppingBasketCopyWith<$Res> {
+  $EventShoppingBasketCopyWith(
+      EventShoppingBasket _, $Res Function(EventShoppingBasket) __);
+}
+
+/// Adds pattern-matching-related methods to [EventShoppingBasket].
+extension EventShoppingBasketPatterns on EventShoppingBasket {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
   @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            String category,
-            int productOrderCount,
-            CategoryEntity productEntity,
-            EntityCorePictures entityCorePicture,
-            int? timeIndex)
-        add,
-    required TResult Function(int timePosition, String location) change,
-    required TResult Function(int timePosition) remove,
-    required TResult Function(EnumSortProductOrder orderList) orderList,
-    required TResult Function(String customerNumber) send,
-    required TResult Function() clear,
-    required TResult Function() deleteFailureMessage,
-  }) =>
-      throw _privateConstructorUsedError;
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Add value)? add,
+    TResult Function(_Change value)? change,
+    TResult Function(_Remove value)? remove,
+    TResult Function(_OrderList value)? orderList,
+    TResult Function(_Send value)? send,
+    TResult Function(_Clear value)? clear,
+    TResult Function(_DeleteFailureMessage value)? deleteFailureMessage,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Add() when add != null:
+        return add(_that);
+      case _Change() when change != null:
+        return change(_that);
+      case _Remove() when remove != null:
+        return remove(_that);
+      case _OrderList() when orderList != null:
+        return orderList(_that);
+      case _Send() when send != null:
+        return send(_that);
+      case _Clear() when clear != null:
+        return clear(_that);
+      case _DeleteFailureMessage() when deleteFailureMessage != null:
+        return deleteFailureMessage(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String category,
-            int productOrderCount,
-            CategoryEntity productEntity,
-            EntityCorePictures entityCorePicture,
-            int? timeIndex)?
-        add,
-    TResult? Function(int timePosition, String location)? change,
-    TResult? Function(int timePosition)? remove,
-    TResult? Function(EnumSortProductOrder orderList)? orderList,
-    TResult? Function(String customerNumber)? send,
-    TResult? Function()? clear,
-    TResult? Function()? deleteFailureMessage,
-  }) =>
-      throw _privateConstructorUsedError;
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Add value) add,
+    required TResult Function(_Change value) change,
+    required TResult Function(_Remove value) remove,
+    required TResult Function(_OrderList value) orderList,
+    required TResult Function(_Send value) send,
+    required TResult Function(_Clear value) clear,
+    required TResult Function(_DeleteFailureMessage value) deleteFailureMessage,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Add():
+        return add(_that);
+      case _Change():
+        return change(_that);
+      case _Remove():
+        return remove(_that);
+      case _OrderList():
+        return orderList(_that);
+      case _Send():
+        return send(_that);
+      case _Clear():
+        return clear(_that);
+      case _DeleteFailureMessage():
+        return deleteFailureMessage(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Add value)? add,
+    TResult? Function(_Change value)? change,
+    TResult? Function(_Remove value)? remove,
+    TResult? Function(_OrderList value)? orderList,
+    TResult? Function(_Send value)? send,
+    TResult? Function(_Clear value)? clear,
+    TResult? Function(_DeleteFailureMessage value)? deleteFailureMessage,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Add() when add != null:
+        return add(_that);
+      case _Change() when change != null:
+        return change(_that);
+      case _Remove() when remove != null:
+        return remove(_that);
+      case _OrderList() when orderList != null:
+        return orderList(_that);
+      case _Send() when send != null:
+        return send(_that);
+      case _Clear() when clear != null:
+        return clear(_that);
+      case _DeleteFailureMessage() when deleteFailureMessage != null:
+        return deleteFailureMessage(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
@@ -66,166 +196,159 @@ mixin _$EventShoppingBasket {
     TResult Function()? clear,
     TResult Function()? deleteFailureMessage,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Add value) add,
-    required TResult Function(_Change value) change,
-    required TResult Function(_Remove value) remove,
-    required TResult Function(_OrderList value) orderList,
-    required TResult Function(_Send value) send,
-    required TResult Function(_Clear value) clear,
-    required TResult Function(_DeleteFailureMessage value) deleteFailureMessage,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Add value)? add,
-    TResult? Function(_Change value)? change,
-    TResult? Function(_Remove value)? remove,
-    TResult? Function(_OrderList value)? orderList,
-    TResult? Function(_Send value)? send,
-    TResult? Function(_Clear value)? clear,
-    TResult? Function(_DeleteFailureMessage value)? deleteFailureMessage,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Add value)? add,
-    TResult Function(_Change value)? change,
-    TResult Function(_Remove value)? remove,
-    TResult Function(_OrderList value)? orderList,
-    TResult Function(_Send value)? send,
-    TResult Function(_Clear value)? clear,
-    TResult Function(_DeleteFailureMessage value)? deleteFailureMessage,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $EventShoppingBasketCopyWith<$Res> {
-  factory $EventShoppingBasketCopyWith(
-          EventShoppingBasket value, $Res Function(EventShoppingBasket) then) =
-      _$EventShoppingBasketCopyWithImpl<$Res, EventShoppingBasket>;
-}
-
-/// @nodoc
-class _$EventShoppingBasketCopyWithImpl<$Res, $Val extends EventShoppingBasket>
-    implements $EventShoppingBasketCopyWith<$Res> {
-  _$EventShoppingBasketCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$AddImplCopyWith<$Res> {
-  factory _$$AddImplCopyWith(_$AddImpl value, $Res Function(_$AddImpl) then) =
-      __$$AddImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call(
-      {String category,
-      int productOrderCount,
-      CategoryEntity productEntity,
-      EntityCorePictures entityCorePicture,
-      int? timeIndex});
-
-  $CategoryEntityCopyWith<$Res> get productEntity;
-  $EntityCorePicturesCopyWith<$Res> get entityCorePicture;
-}
-
-/// @nodoc
-class __$$AddImplCopyWithImpl<$Res>
-    extends _$EventShoppingBasketCopyWithImpl<$Res, _$AddImpl>
-    implements _$$AddImplCopyWith<$Res> {
-  __$$AddImplCopyWithImpl(_$AddImpl _value, $Res Function(_$AddImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? category = null,
-    Object? productOrderCount = null,
-    Object? productEntity = null,
-    Object? entityCorePicture = null,
-    Object? timeIndex = freezed,
   }) {
-    return _then(_$AddImpl(
-      category: null == category
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as String,
-      productOrderCount: null == productOrderCount
-          ? _value.productOrderCount
-          : productOrderCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      productEntity: null == productEntity
-          ? _value.productEntity
-          : productEntity // ignore: cast_nullable_to_non_nullable
-              as CategoryEntity,
-      entityCorePicture: null == entityCorePicture
-          ? _value.entityCorePicture
-          : entityCorePicture // ignore: cast_nullable_to_non_nullable
-              as EntityCorePictures,
-      timeIndex: freezed == timeIndex
-          ? _value.timeIndex
-          : timeIndex // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ));
+    final _that = this;
+    switch (_that) {
+      case _Add() when add != null:
+        return add(_that.category, _that.productOrderCount, _that.productEntity,
+            _that.entityCorePicture, _that.timeIndex);
+      case _Change() when change != null:
+        return change(_that.timePosition, _that.location);
+      case _Remove() when remove != null:
+        return remove(_that.timePosition);
+      case _OrderList() when orderList != null:
+        return orderList(_that.orderList);
+      case _Send() when send != null:
+        return send(_that.customerNumber);
+      case _Clear() when clear != null:
+        return clear();
+      case _DeleteFailureMessage() when deleteFailureMessage != null:
+        return deleteFailureMessage();
+      case _:
+        return orElse();
+    }
   }
 
-  @override
-  @pragma('vm:prefer-inline')
-  $CategoryEntityCopyWith<$Res> get productEntity {
-    return $CategoryEntityCopyWith<$Res>(_value.productEntity, (value) {
-      return _then(_value.copyWith(productEntity: value));
-    });
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String category,
+            int productOrderCount,
+            CategoryEntity productEntity,
+            EntityCorePictures entityCorePicture,
+            int? timeIndex)
+        add,
+    required TResult Function(int timePosition, String location) change,
+    required TResult Function(int timePosition) remove,
+    required TResult Function(EnumSortProductOrder orderList) orderList,
+    required TResult Function(String customerNumber) send,
+    required TResult Function() clear,
+    required TResult Function() deleteFailureMessage,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Add():
+        return add(_that.category, _that.productOrderCount, _that.productEntity,
+            _that.entityCorePicture, _that.timeIndex);
+      case _Change():
+        return change(_that.timePosition, _that.location);
+      case _Remove():
+        return remove(_that.timePosition);
+      case _OrderList():
+        return orderList(_that.orderList);
+      case _Send():
+        return send(_that.customerNumber);
+      case _Clear():
+        return clear();
+      case _DeleteFailureMessage():
+        return deleteFailureMessage();
+      case _:
+        throw StateError('Unexpected subclass');
+    }
   }
 
-  @override
-  @pragma('vm:prefer-inline')
-  $EntityCorePicturesCopyWith<$Res> get entityCorePicture {
-    return $EntityCorePicturesCopyWith<$Res>(_value.entityCorePicture, (value) {
-      return _then(_value.copyWith(entityCorePicture: value));
-    });
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            String category,
+            int productOrderCount,
+            CategoryEntity productEntity,
+            EntityCorePictures entityCorePicture,
+            int? timeIndex)?
+        add,
+    TResult? Function(int timePosition, String location)? change,
+    TResult? Function(int timePosition)? remove,
+    TResult? Function(EnumSortProductOrder orderList)? orderList,
+    TResult? Function(String customerNumber)? send,
+    TResult? Function()? clear,
+    TResult? Function()? deleteFailureMessage,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _Add() when add != null:
+        return add(_that.category, _that.productOrderCount, _that.productEntity,
+            _that.entityCorePicture, _that.timeIndex);
+      case _Change() when change != null:
+        return change(_that.timePosition, _that.location);
+      case _Remove() when remove != null:
+        return remove(_that.timePosition);
+      case _OrderList() when orderList != null:
+        return orderList(_that.orderList);
+      case _Send() when send != null:
+        return send(_that.customerNumber);
+      case _Clear() when clear != null:
+        return clear();
+      case _DeleteFailureMessage() when deleteFailureMessage != null:
+        return deleteFailureMessage();
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 
-class _$AddImpl implements _Add {
-  const _$AddImpl(
+class _Add implements EventShoppingBasket {
+  const _Add(
       {required this.category,
       required this.productOrderCount,
       required this.productEntity,
       required this.entityCorePicture,
       this.timeIndex});
 
-  @override
   final String category;
-  @override
   final int productOrderCount;
-  @override
   final CategoryEntity productEntity;
-  @override
   final EntityCorePictures entityCorePicture;
-  @override
   final int? timeIndex;
 
-  @override
-  String toString() {
-    return 'EventShoppingBasket.add(category: $category, productOrderCount: $productOrderCount, productEntity: $productEntity, entityCorePicture: $entityCorePicture, timeIndex: $timeIndex)';
-  }
+  /// Create a copy of EventShoppingBasket
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$AddCopyWith<_Add> get copyWith =>
+      __$AddCopyWithImpl<_Add>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AddImpl &&
+            other is _Add &&
             (identical(other.category, category) ||
                 other.category == category) &&
             (identical(other.productOrderCount, productOrderCount) ||
@@ -242,200 +365,111 @@ class _$AddImpl implements _Add {
   int get hashCode => Object.hash(runtimeType, category, productOrderCount,
       productEntity, entityCorePicture, timeIndex);
 
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$AddImplCopyWith<_$AddImpl> get copyWith =>
-      __$$AddImplCopyWithImpl<_$AddImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            String category,
-            int productOrderCount,
-            CategoryEntity productEntity,
-            EntityCorePictures entityCorePicture,
-            int? timeIndex)
-        add,
-    required TResult Function(int timePosition, String location) change,
-    required TResult Function(int timePosition) remove,
-    required TResult Function(EnumSortProductOrder orderList) orderList,
-    required TResult Function(String customerNumber) send,
-    required TResult Function() clear,
-    required TResult Function() deleteFailureMessage,
-  }) {
-    return add(category, productOrderCount, productEntity, entityCorePicture,
-        timeIndex);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String category,
-            int productOrderCount,
-            CategoryEntity productEntity,
-            EntityCorePictures entityCorePicture,
-            int? timeIndex)?
-        add,
-    TResult? Function(int timePosition, String location)? change,
-    TResult? Function(int timePosition)? remove,
-    TResult? Function(EnumSortProductOrder orderList)? orderList,
-    TResult? Function(String customerNumber)? send,
-    TResult? Function()? clear,
-    TResult? Function()? deleteFailureMessage,
-  }) {
-    return add?.call(category, productOrderCount, productEntity,
-        entityCorePicture, timeIndex);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String category,
-            int productOrderCount,
-            CategoryEntity productEntity,
-            EntityCorePictures entityCorePicture,
-            int? timeIndex)?
-        add,
-    TResult Function(int timePosition, String location)? change,
-    TResult Function(int timePosition)? remove,
-    TResult Function(EnumSortProductOrder orderList)? orderList,
-    TResult Function(String customerNumber)? send,
-    TResult Function()? clear,
-    TResult Function()? deleteFailureMessage,
-    required TResult orElse(),
-  }) {
-    if (add != null) {
-      return add(category, productOrderCount, productEntity, entityCorePicture,
-          timeIndex);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Add value) add,
-    required TResult Function(_Change value) change,
-    required TResult Function(_Remove value) remove,
-    required TResult Function(_OrderList value) orderList,
-    required TResult Function(_Send value) send,
-    required TResult Function(_Clear value) clear,
-    required TResult Function(_DeleteFailureMessage value) deleteFailureMessage,
-  }) {
-    return add(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Add value)? add,
-    TResult? Function(_Change value)? change,
-    TResult? Function(_Remove value)? remove,
-    TResult? Function(_OrderList value)? orderList,
-    TResult? Function(_Send value)? send,
-    TResult? Function(_Clear value)? clear,
-    TResult? Function(_DeleteFailureMessage value)? deleteFailureMessage,
-  }) {
-    return add?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Add value)? add,
-    TResult Function(_Change value)? change,
-    TResult Function(_Remove value)? remove,
-    TResult Function(_OrderList value)? orderList,
-    TResult Function(_Send value)? send,
-    TResult Function(_Clear value)? clear,
-    TResult Function(_DeleteFailureMessage value)? deleteFailureMessage,
-    required TResult orElse(),
-  }) {
-    if (add != null) {
-      return add(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Add implements EventShoppingBasket {
-  const factory _Add(
-      {required final String category,
-      required final int productOrderCount,
-      required final CategoryEntity productEntity,
-      required final EntityCorePictures entityCorePicture,
-      final int? timeIndex}) = _$AddImpl;
-
-  String get category;
-  int get productOrderCount;
-  CategoryEntity get productEntity;
-  EntityCorePictures get entityCorePicture;
-  int? get timeIndex;
-  @JsonKey(ignore: true)
-  _$$AddImplCopyWith<_$AddImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$ChangeImplCopyWith<$Res> {
-  factory _$$ChangeImplCopyWith(
-          _$ChangeImpl value, $Res Function(_$ChangeImpl) then) =
-      __$$ChangeImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({int timePosition, String location});
-}
-
-/// @nodoc
-class __$$ChangeImplCopyWithImpl<$Res>
-    extends _$EventShoppingBasketCopyWithImpl<$Res, _$ChangeImpl>
-    implements _$$ChangeImplCopyWith<$Res> {
-  __$$ChangeImplCopyWithImpl(
-      _$ChangeImpl _value, $Res Function(_$ChangeImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? timePosition = null,
-    Object? location = null,
-  }) {
-    return _then(_$ChangeImpl(
-      timePosition: null == timePosition
-          ? _value.timePosition
-          : timePosition // ignore: cast_nullable_to_non_nullable
-              as int,
-      location: null == location
-          ? _value.location
-          : location // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$ChangeImpl implements _Change {
-  const _$ChangeImpl({required this.timePosition, required this.location});
-
-  @override
-  final int timePosition;
-  @override
-  final String location;
-
   @override
   String toString() {
-    return 'EventShoppingBasket.change(timePosition: $timePosition, location: $location)';
+    return 'EventShoppingBasket.add(category: $category, productOrderCount: $productOrderCount, productEntity: $productEntity, entityCorePicture: $entityCorePicture, timeIndex: $timeIndex)';
   }
+}
+
+/// @nodoc
+abstract mixin class _$AddCopyWith<$Res>
+    implements $EventShoppingBasketCopyWith<$Res> {
+  factory _$AddCopyWith(_Add value, $Res Function(_Add) _then) =
+      __$AddCopyWithImpl;
+  @useResult
+  $Res call(
+      {String category,
+      int productOrderCount,
+      CategoryEntity productEntity,
+      EntityCorePictures entityCorePicture,
+      int? timeIndex});
+
+  $CategoryEntityCopyWith<$Res> get productEntity;
+  $EntityCorePicturesCopyWith<$Res> get entityCorePicture;
+}
+
+/// @nodoc
+class __$AddCopyWithImpl<$Res> implements _$AddCopyWith<$Res> {
+  __$AddCopyWithImpl(this._self, this._then);
+
+  final _Add _self;
+  final $Res Function(_Add) _then;
+
+  /// Create a copy of EventShoppingBasket
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? category = null,
+    Object? productOrderCount = null,
+    Object? productEntity = null,
+    Object? entityCorePicture = null,
+    Object? timeIndex = freezed,
+  }) {
+    return _then(_Add(
+      category: null == category
+          ? _self.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as String,
+      productOrderCount: null == productOrderCount
+          ? _self.productOrderCount
+          : productOrderCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      productEntity: null == productEntity
+          ? _self.productEntity
+          : productEntity // ignore: cast_nullable_to_non_nullable
+              as CategoryEntity,
+      entityCorePicture: null == entityCorePicture
+          ? _self.entityCorePicture
+          : entityCorePicture // ignore: cast_nullable_to_non_nullable
+              as EntityCorePictures,
+      timeIndex: freezed == timeIndex
+          ? _self.timeIndex
+          : timeIndex // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
+  }
+
+  /// Create a copy of EventShoppingBasket
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CategoryEntityCopyWith<$Res> get productEntity {
+    return $CategoryEntityCopyWith<$Res>(_self.productEntity, (value) {
+      return _then(_self.copyWith(productEntity: value));
+    });
+  }
+
+  /// Create a copy of EventShoppingBasket
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $EntityCorePicturesCopyWith<$Res> get entityCorePicture {
+    return $EntityCorePicturesCopyWith<$Res>(_self.entityCorePicture, (value) {
+      return _then(_self.copyWith(entityCorePicture: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _Change implements EventShoppingBasket {
+  const _Change({required this.timePosition, required this.location});
+
+  final int timePosition;
+  final String location;
+
+  /// Create a copy of EventShoppingBasket
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$ChangeCopyWith<_Change> get copyWith =>
+      __$ChangeCopyWithImpl<_Change>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ChangeImpl &&
+            other is _Change &&
             (identical(other.timePosition, timePosition) ||
                 other.timePosition == timePosition) &&
             (identical(other.location, location) ||
@@ -445,160 +479,105 @@ class _$ChangeImpl implements _Change {
   @override
   int get hashCode => Object.hash(runtimeType, timePosition, location);
 
-  @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
-  _$$ChangeImplCopyWith<_$ChangeImpl> get copyWith =>
-      __$$ChangeImplCopyWithImpl<_$ChangeImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            String category,
-            int productOrderCount,
-            CategoryEntity productEntity,
-            EntityCorePictures entityCorePicture,
-            int? timeIndex)
-        add,
-    required TResult Function(int timePosition, String location) change,
-    required TResult Function(int timePosition) remove,
-    required TResult Function(EnumSortProductOrder orderList) orderList,
-    required TResult Function(String customerNumber) send,
-    required TResult Function() clear,
-    required TResult Function() deleteFailureMessage,
-  }) {
-    return change(timePosition, location);
+  String toString() {
+    return 'EventShoppingBasket.change(timePosition: $timePosition, location: $location)';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String category,
-            int productOrderCount,
-            CategoryEntity productEntity,
-            EntityCorePictures entityCorePicture,
-            int? timeIndex)?
-        add,
-    TResult? Function(int timePosition, String location)? change,
-    TResult? Function(int timePosition)? remove,
-    TResult? Function(EnumSortProductOrder orderList)? orderList,
-    TResult? Function(String customerNumber)? send,
-    TResult? Function()? clear,
-    TResult? Function()? deleteFailureMessage,
-  }) {
-    return change?.call(timePosition, location);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String category,
-            int productOrderCount,
-            CategoryEntity productEntity,
-            EntityCorePictures entityCorePicture,
-            int? timeIndex)?
-        add,
-    TResult Function(int timePosition, String location)? change,
-    TResult Function(int timePosition)? remove,
-    TResult Function(EnumSortProductOrder orderList)? orderList,
-    TResult Function(String customerNumber)? send,
-    TResult Function()? clear,
-    TResult Function()? deleteFailureMessage,
-    required TResult orElse(),
-  }) {
-    if (change != null) {
-      return change(timePosition, location);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Add value) add,
-    required TResult Function(_Change value) change,
-    required TResult Function(_Remove value) remove,
-    required TResult Function(_OrderList value) orderList,
-    required TResult Function(_Send value) send,
-    required TResult Function(_Clear value) clear,
-    required TResult Function(_DeleteFailureMessage value) deleteFailureMessage,
-  }) {
-    return change(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Add value)? add,
-    TResult? Function(_Change value)? change,
-    TResult? Function(_Remove value)? remove,
-    TResult? Function(_OrderList value)? orderList,
-    TResult? Function(_Send value)? send,
-    TResult? Function(_Clear value)? clear,
-    TResult? Function(_DeleteFailureMessage value)? deleteFailureMessage,
-  }) {
-    return change?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Add value)? add,
-    TResult Function(_Change value)? change,
-    TResult Function(_Remove value)? remove,
-    TResult Function(_OrderList value)? orderList,
-    TResult Function(_Send value)? send,
-    TResult Function(_Clear value)? clear,
-    TResult Function(_DeleteFailureMessage value)? deleteFailureMessage,
-    required TResult orElse(),
-  }) {
-    if (change != null) {
-      return change(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Change implements EventShoppingBasket {
-  const factory _Change(
-      {required final int timePosition,
-      required final String location}) = _$ChangeImpl;
-
-  int get timePosition;
-  String get location;
-  @JsonKey(ignore: true)
-  _$$ChangeImplCopyWith<_$ChangeImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$RemoveImplCopyWith<$Res> {
-  factory _$$RemoveImplCopyWith(
-          _$RemoveImpl value, $Res Function(_$RemoveImpl) then) =
-      __$$RemoveImplCopyWithImpl<$Res>;
+abstract mixin class _$ChangeCopyWith<$Res>
+    implements $EventShoppingBasketCopyWith<$Res> {
+  factory _$ChangeCopyWith(_Change value, $Res Function(_Change) _then) =
+      __$ChangeCopyWithImpl;
+  @useResult
+  $Res call({int timePosition, String location});
+}
+
+/// @nodoc
+class __$ChangeCopyWithImpl<$Res> implements _$ChangeCopyWith<$Res> {
+  __$ChangeCopyWithImpl(this._self, this._then);
+
+  final _Change _self;
+  final $Res Function(_Change) _then;
+
+  /// Create a copy of EventShoppingBasket
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? timePosition = null,
+    Object? location = null,
+  }) {
+    return _then(_Change(
+      timePosition: null == timePosition
+          ? _self.timePosition
+          : timePosition // ignore: cast_nullable_to_non_nullable
+              as int,
+      location: null == location
+          ? _self.location
+          : location // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _Remove implements EventShoppingBasket {
+  const _Remove({required this.timePosition});
+
+  final int timePosition;
+
+  /// Create a copy of EventShoppingBasket
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$RemoveCopyWith<_Remove> get copyWith =>
+      __$RemoveCopyWithImpl<_Remove>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _Remove &&
+            (identical(other.timePosition, timePosition) ||
+                other.timePosition == timePosition));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, timePosition);
+
+  @override
+  String toString() {
+    return 'EventShoppingBasket.remove(timePosition: $timePosition)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$RemoveCopyWith<$Res>
+    implements $EventShoppingBasketCopyWith<$Res> {
+  factory _$RemoveCopyWith(_Remove value, $Res Function(_Remove) _then) =
+      __$RemoveCopyWithImpl;
   @useResult
   $Res call({int timePosition});
 }
 
 /// @nodoc
-class __$$RemoveImplCopyWithImpl<$Res>
-    extends _$EventShoppingBasketCopyWithImpl<$Res, _$RemoveImpl>
-    implements _$$RemoveImplCopyWith<$Res> {
-  __$$RemoveImplCopyWithImpl(
-      _$RemoveImpl _value, $Res Function(_$RemoveImpl) _then)
-      : super(_value, _then);
+class __$RemoveCopyWithImpl<$Res> implements _$RemoveCopyWith<$Res> {
+  __$RemoveCopyWithImpl(this._self, this._then);
 
+  final _Remove _self;
+  final $Res Function(_Remove) _then;
+
+  /// Create a copy of EventShoppingBasket
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
     Object? timePosition = null,
   }) {
-    return _then(_$RemoveImpl(
+    return _then(_Remove(
       timePosition: null == timePosition
-          ? _value.timePosition
+          ? _self.timePosition
           : timePosition // ignore: cast_nullable_to_non_nullable
               as int,
     ));
@@ -607,180 +586,62 @@ class __$$RemoveImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$RemoveImpl implements _Remove {
-  const _$RemoveImpl({required this.timePosition});
+class _OrderList implements EventShoppingBasket {
+  const _OrderList({required this.orderList});
 
-  @override
-  final int timePosition;
+  final EnumSortProductOrder orderList;
 
-  @override
-  String toString() {
-    return 'EventShoppingBasket.remove(timePosition: $timePosition)';
-  }
+  /// Create a copy of EventShoppingBasket
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$OrderListCopyWith<_OrderList> get copyWith =>
+      __$OrderListCopyWithImpl<_OrderList>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RemoveImpl &&
-            (identical(other.timePosition, timePosition) ||
-                other.timePosition == timePosition));
+            other is _OrderList &&
+            (identical(other.orderList, orderList) ||
+                other.orderList == orderList));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, timePosition);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$RemoveImplCopyWith<_$RemoveImpl> get copyWith =>
-      __$$RemoveImplCopyWithImpl<_$RemoveImpl>(this, _$identity);
+  int get hashCode => Object.hash(runtimeType, orderList);
 
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            String category,
-            int productOrderCount,
-            CategoryEntity productEntity,
-            EntityCorePictures entityCorePicture,
-            int? timeIndex)
-        add,
-    required TResult Function(int timePosition, String location) change,
-    required TResult Function(int timePosition) remove,
-    required TResult Function(EnumSortProductOrder orderList) orderList,
-    required TResult Function(String customerNumber) send,
-    required TResult Function() clear,
-    required TResult Function() deleteFailureMessage,
-  }) {
-    return remove(timePosition);
+  String toString() {
+    return 'EventShoppingBasket.orderList(orderList: $orderList)';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String category,
-            int productOrderCount,
-            CategoryEntity productEntity,
-            EntityCorePictures entityCorePicture,
-            int? timeIndex)?
-        add,
-    TResult? Function(int timePosition, String location)? change,
-    TResult? Function(int timePosition)? remove,
-    TResult? Function(EnumSortProductOrder orderList)? orderList,
-    TResult? Function(String customerNumber)? send,
-    TResult? Function()? clear,
-    TResult? Function()? deleteFailureMessage,
-  }) {
-    return remove?.call(timePosition);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String category,
-            int productOrderCount,
-            CategoryEntity productEntity,
-            EntityCorePictures entityCorePicture,
-            int? timeIndex)?
-        add,
-    TResult Function(int timePosition, String location)? change,
-    TResult Function(int timePosition)? remove,
-    TResult Function(EnumSortProductOrder orderList)? orderList,
-    TResult Function(String customerNumber)? send,
-    TResult Function()? clear,
-    TResult Function()? deleteFailureMessage,
-    required TResult orElse(),
-  }) {
-    if (remove != null) {
-      return remove(timePosition);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Add value) add,
-    required TResult Function(_Change value) change,
-    required TResult Function(_Remove value) remove,
-    required TResult Function(_OrderList value) orderList,
-    required TResult Function(_Send value) send,
-    required TResult Function(_Clear value) clear,
-    required TResult Function(_DeleteFailureMessage value) deleteFailureMessage,
-  }) {
-    return remove(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Add value)? add,
-    TResult? Function(_Change value)? change,
-    TResult? Function(_Remove value)? remove,
-    TResult? Function(_OrderList value)? orderList,
-    TResult? Function(_Send value)? send,
-    TResult? Function(_Clear value)? clear,
-    TResult? Function(_DeleteFailureMessage value)? deleteFailureMessage,
-  }) {
-    return remove?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Add value)? add,
-    TResult Function(_Change value)? change,
-    TResult Function(_Remove value)? remove,
-    TResult Function(_OrderList value)? orderList,
-    TResult Function(_Send value)? send,
-    TResult Function(_Clear value)? clear,
-    TResult Function(_DeleteFailureMessage value)? deleteFailureMessage,
-    required TResult orElse(),
-  }) {
-    if (remove != null) {
-      return remove(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Remove implements EventShoppingBasket {
-  const factory _Remove({required final int timePosition}) = _$RemoveImpl;
-
-  int get timePosition;
-  @JsonKey(ignore: true)
-  _$$RemoveImplCopyWith<_$RemoveImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$OrderListImplCopyWith<$Res> {
-  factory _$$OrderListImplCopyWith(
-          _$OrderListImpl value, $Res Function(_$OrderListImpl) then) =
-      __$$OrderListImplCopyWithImpl<$Res>;
+abstract mixin class _$OrderListCopyWith<$Res>
+    implements $EventShoppingBasketCopyWith<$Res> {
+  factory _$OrderListCopyWith(
+          _OrderList value, $Res Function(_OrderList) _then) =
+      __$OrderListCopyWithImpl;
   @useResult
   $Res call({EnumSortProductOrder orderList});
 }
 
 /// @nodoc
-class __$$OrderListImplCopyWithImpl<$Res>
-    extends _$EventShoppingBasketCopyWithImpl<$Res, _$OrderListImpl>
-    implements _$$OrderListImplCopyWith<$Res> {
-  __$$OrderListImplCopyWithImpl(
-      _$OrderListImpl _value, $Res Function(_$OrderListImpl) _then)
-      : super(_value, _then);
+class __$OrderListCopyWithImpl<$Res> implements _$OrderListCopyWith<$Res> {
+  __$OrderListCopyWithImpl(this._self, this._then);
 
+  final _OrderList _self;
+  final $Res Function(_OrderList) _then;
+
+  /// Create a copy of EventShoppingBasket
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
     Object? orderList = null,
   }) {
-    return _then(_$OrderListImpl(
+    return _then(_OrderList(
       orderList: null == orderList
-          ? _value.orderList
+          ? _self.orderList
           : orderList // ignore: cast_nullable_to_non_nullable
               as EnumSortProductOrder,
     ));
@@ -789,180 +650,61 @@ class __$$OrderListImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$OrderListImpl implements _OrderList {
-  const _$OrderListImpl({required this.orderList});
+class _Send implements EventShoppingBasket {
+  const _Send({required this.customerNumber});
 
-  @override
-  final EnumSortProductOrder orderList;
+  final String customerNumber;
 
-  @override
-  String toString() {
-    return 'EventShoppingBasket.orderList(orderList: $orderList)';
-  }
+  /// Create a copy of EventShoppingBasket
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$SendCopyWith<_Send> get copyWith =>
+      __$SendCopyWithImpl<_Send>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$OrderListImpl &&
-            (identical(other.orderList, orderList) ||
-                other.orderList == orderList));
+            other is _Send &&
+            (identical(other.customerNumber, customerNumber) ||
+                other.customerNumber == customerNumber));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, orderList);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$OrderListImplCopyWith<_$OrderListImpl> get copyWith =>
-      __$$OrderListImplCopyWithImpl<_$OrderListImpl>(this, _$identity);
+  int get hashCode => Object.hash(runtimeType, customerNumber);
 
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            String category,
-            int productOrderCount,
-            CategoryEntity productEntity,
-            EntityCorePictures entityCorePicture,
-            int? timeIndex)
-        add,
-    required TResult Function(int timePosition, String location) change,
-    required TResult Function(int timePosition) remove,
-    required TResult Function(EnumSortProductOrder orderList) orderList,
-    required TResult Function(String customerNumber) send,
-    required TResult Function() clear,
-    required TResult Function() deleteFailureMessage,
-  }) {
-    return orderList(this.orderList);
+  String toString() {
+    return 'EventShoppingBasket.send(customerNumber: $customerNumber)';
   }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String category,
-            int productOrderCount,
-            CategoryEntity productEntity,
-            EntityCorePictures entityCorePicture,
-            int? timeIndex)?
-        add,
-    TResult? Function(int timePosition, String location)? change,
-    TResult? Function(int timePosition)? remove,
-    TResult? Function(EnumSortProductOrder orderList)? orderList,
-    TResult? Function(String customerNumber)? send,
-    TResult? Function()? clear,
-    TResult? Function()? deleteFailureMessage,
-  }) {
-    return orderList?.call(this.orderList);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String category,
-            int productOrderCount,
-            CategoryEntity productEntity,
-            EntityCorePictures entityCorePicture,
-            int? timeIndex)?
-        add,
-    TResult Function(int timePosition, String location)? change,
-    TResult Function(int timePosition)? remove,
-    TResult Function(EnumSortProductOrder orderList)? orderList,
-    TResult Function(String customerNumber)? send,
-    TResult Function()? clear,
-    TResult Function()? deleteFailureMessage,
-    required TResult orElse(),
-  }) {
-    if (orderList != null) {
-      return orderList(this.orderList);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Add value) add,
-    required TResult Function(_Change value) change,
-    required TResult Function(_Remove value) remove,
-    required TResult Function(_OrderList value) orderList,
-    required TResult Function(_Send value) send,
-    required TResult Function(_Clear value) clear,
-    required TResult Function(_DeleteFailureMessage value) deleteFailureMessage,
-  }) {
-    return orderList(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Add value)? add,
-    TResult? Function(_Change value)? change,
-    TResult? Function(_Remove value)? remove,
-    TResult? Function(_OrderList value)? orderList,
-    TResult? Function(_Send value)? send,
-    TResult? Function(_Clear value)? clear,
-    TResult? Function(_DeleteFailureMessage value)? deleteFailureMessage,
-  }) {
-    return orderList?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Add value)? add,
-    TResult Function(_Change value)? change,
-    TResult Function(_Remove value)? remove,
-    TResult Function(_OrderList value)? orderList,
-    TResult Function(_Send value)? send,
-    TResult Function(_Clear value)? clear,
-    TResult Function(_DeleteFailureMessage value)? deleteFailureMessage,
-    required TResult orElse(),
-  }) {
-    if (orderList != null) {
-      return orderList(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _OrderList implements EventShoppingBasket {
-  const factory _OrderList({required final EnumSortProductOrder orderList}) =
-      _$OrderListImpl;
-
-  EnumSortProductOrder get orderList;
-  @JsonKey(ignore: true)
-  _$$OrderListImplCopyWith<_$OrderListImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SendImplCopyWith<$Res> {
-  factory _$$SendImplCopyWith(
-          _$SendImpl value, $Res Function(_$SendImpl) then) =
-      __$$SendImplCopyWithImpl<$Res>;
+abstract mixin class _$SendCopyWith<$Res>
+    implements $EventShoppingBasketCopyWith<$Res> {
+  factory _$SendCopyWith(_Send value, $Res Function(_Send) _then) =
+      __$SendCopyWithImpl;
   @useResult
   $Res call({String customerNumber});
 }
 
 /// @nodoc
-class __$$SendImplCopyWithImpl<$Res>
-    extends _$EventShoppingBasketCopyWithImpl<$Res, _$SendImpl>
-    implements _$$SendImplCopyWith<$Res> {
-  __$$SendImplCopyWithImpl(_$SendImpl _value, $Res Function(_$SendImpl) _then)
-      : super(_value, _then);
+class __$SendCopyWithImpl<$Res> implements _$SendCopyWith<$Res> {
+  __$SendCopyWithImpl(this._self, this._then);
 
+  final _Send _self;
+  final $Res Function(_Send) _then;
+
+  /// Create a copy of EventShoppingBasket
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
   $Res call({
     Object? customerNumber = null,
   }) {
-    return _then(_$SendImpl(
+    return _then(_Send(
       customerNumber: null == customerNumber
-          ? _value.customerNumber
+          ? _self.customerNumber
           : customerNumber // ignore: cast_nullable_to_non_nullable
               as String,
     ));
@@ -971,452 +713,42 @@ class __$$SendImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SendImpl implements _Send {
-  const _$SendImpl({required this.customerNumber});
-
-  @override
-  final String customerNumber;
-
-  @override
-  String toString() {
-    return 'EventShoppingBasket.send(customerNumber: $customerNumber)';
-  }
+class _Clear implements EventShoppingBasket {
+  const _Clear();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SendImpl &&
-            (identical(other.customerNumber, customerNumber) ||
-                other.customerNumber == customerNumber));
+        (other.runtimeType == runtimeType && other is _Clear);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, customerNumber);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SendImplCopyWith<_$SendImpl> get copyWith =>
-      __$$SendImplCopyWithImpl<_$SendImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            String category,
-            int productOrderCount,
-            CategoryEntity productEntity,
-            EntityCorePictures entityCorePicture,
-            int? timeIndex)
-        add,
-    required TResult Function(int timePosition, String location) change,
-    required TResult Function(int timePosition) remove,
-    required TResult Function(EnumSortProductOrder orderList) orderList,
-    required TResult Function(String customerNumber) send,
-    required TResult Function() clear,
-    required TResult Function() deleteFailureMessage,
-  }) {
-    return send(customerNumber);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String category,
-            int productOrderCount,
-            CategoryEntity productEntity,
-            EntityCorePictures entityCorePicture,
-            int? timeIndex)?
-        add,
-    TResult? Function(int timePosition, String location)? change,
-    TResult? Function(int timePosition)? remove,
-    TResult? Function(EnumSortProductOrder orderList)? orderList,
-    TResult? Function(String customerNumber)? send,
-    TResult? Function()? clear,
-    TResult? Function()? deleteFailureMessage,
-  }) {
-    return send?.call(customerNumber);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String category,
-            int productOrderCount,
-            CategoryEntity productEntity,
-            EntityCorePictures entityCorePicture,
-            int? timeIndex)?
-        add,
-    TResult Function(int timePosition, String location)? change,
-    TResult Function(int timePosition)? remove,
-    TResult Function(EnumSortProductOrder orderList)? orderList,
-    TResult Function(String customerNumber)? send,
-    TResult Function()? clear,
-    TResult Function()? deleteFailureMessage,
-    required TResult orElse(),
-  }) {
-    if (send != null) {
-      return send(customerNumber);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Add value) add,
-    required TResult Function(_Change value) change,
-    required TResult Function(_Remove value) remove,
-    required TResult Function(_OrderList value) orderList,
-    required TResult Function(_Send value) send,
-    required TResult Function(_Clear value) clear,
-    required TResult Function(_DeleteFailureMessage value) deleteFailureMessage,
-  }) {
-    return send(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Add value)? add,
-    TResult? Function(_Change value)? change,
-    TResult? Function(_Remove value)? remove,
-    TResult? Function(_OrderList value)? orderList,
-    TResult? Function(_Send value)? send,
-    TResult? Function(_Clear value)? clear,
-    TResult? Function(_DeleteFailureMessage value)? deleteFailureMessage,
-  }) {
-    return send?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Add value)? add,
-    TResult Function(_Change value)? change,
-    TResult Function(_Remove value)? remove,
-    TResult Function(_OrderList value)? orderList,
-    TResult Function(_Send value)? send,
-    TResult Function(_Clear value)? clear,
-    TResult Function(_DeleteFailureMessage value)? deleteFailureMessage,
-    required TResult orElse(),
-  }) {
-    if (send != null) {
-      return send(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Send implements EventShoppingBasket {
-  const factory _Send({required final String customerNumber}) = _$SendImpl;
-
-  String get customerNumber;
-  @JsonKey(ignore: true)
-  _$$SendImplCopyWith<_$SendImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$ClearImplCopyWith<$Res> {
-  factory _$$ClearImplCopyWith(
-          _$ClearImpl value, $Res Function(_$ClearImpl) then) =
-      __$$ClearImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$ClearImplCopyWithImpl<$Res>
-    extends _$EventShoppingBasketCopyWithImpl<$Res, _$ClearImpl>
-    implements _$$ClearImplCopyWith<$Res> {
-  __$$ClearImplCopyWithImpl(
-      _$ClearImpl _value, $Res Function(_$ClearImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$ClearImpl implements _Clear {
-  const _$ClearImpl();
+  int get hashCode => runtimeType.hashCode;
 
   @override
   String toString() {
     return 'EventShoppingBasket.clear()';
   }
+}
+
+/// @nodoc
+
+class _DeleteFailureMessage implements EventShoppingBasket {
+  const _DeleteFailureMessage();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ClearImpl);
+        (other.runtimeType == runtimeType && other is _DeleteFailureMessage);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            String category,
-            int productOrderCount,
-            CategoryEntity productEntity,
-            EntityCorePictures entityCorePicture,
-            int? timeIndex)
-        add,
-    required TResult Function(int timePosition, String location) change,
-    required TResult Function(int timePosition) remove,
-    required TResult Function(EnumSortProductOrder orderList) orderList,
-    required TResult Function(String customerNumber) send,
-    required TResult Function() clear,
-    required TResult Function() deleteFailureMessage,
-  }) {
-    return clear();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String category,
-            int productOrderCount,
-            CategoryEntity productEntity,
-            EntityCorePictures entityCorePicture,
-            int? timeIndex)?
-        add,
-    TResult? Function(int timePosition, String location)? change,
-    TResult? Function(int timePosition)? remove,
-    TResult? Function(EnumSortProductOrder orderList)? orderList,
-    TResult? Function(String customerNumber)? send,
-    TResult? Function()? clear,
-    TResult? Function()? deleteFailureMessage,
-  }) {
-    return clear?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String category,
-            int productOrderCount,
-            CategoryEntity productEntity,
-            EntityCorePictures entityCorePicture,
-            int? timeIndex)?
-        add,
-    TResult Function(int timePosition, String location)? change,
-    TResult Function(int timePosition)? remove,
-    TResult Function(EnumSortProductOrder orderList)? orderList,
-    TResult Function(String customerNumber)? send,
-    TResult Function()? clear,
-    TResult Function()? deleteFailureMessage,
-    required TResult orElse(),
-  }) {
-    if (clear != null) {
-      return clear();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Add value) add,
-    required TResult Function(_Change value) change,
-    required TResult Function(_Remove value) remove,
-    required TResult Function(_OrderList value) orderList,
-    required TResult Function(_Send value) send,
-    required TResult Function(_Clear value) clear,
-    required TResult Function(_DeleteFailureMessage value) deleteFailureMessage,
-  }) {
-    return clear(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Add value)? add,
-    TResult? Function(_Change value)? change,
-    TResult? Function(_Remove value)? remove,
-    TResult? Function(_OrderList value)? orderList,
-    TResult? Function(_Send value)? send,
-    TResult? Function(_Clear value)? clear,
-    TResult? Function(_DeleteFailureMessage value)? deleteFailureMessage,
-  }) {
-    return clear?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Add value)? add,
-    TResult Function(_Change value)? change,
-    TResult Function(_Remove value)? remove,
-    TResult Function(_OrderList value)? orderList,
-    TResult Function(_Send value)? send,
-    TResult Function(_Clear value)? clear,
-    TResult Function(_DeleteFailureMessage value)? deleteFailureMessage,
-    required TResult orElse(),
-  }) {
-    if (clear != null) {
-      return clear(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Clear implements EventShoppingBasket {
-  const factory _Clear() = _$ClearImpl;
-}
-
-/// @nodoc
-abstract class _$$DeleteFailureMessageImplCopyWith<$Res> {
-  factory _$$DeleteFailureMessageImplCopyWith(_$DeleteFailureMessageImpl value,
-          $Res Function(_$DeleteFailureMessageImpl) then) =
-      __$$DeleteFailureMessageImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$DeleteFailureMessageImplCopyWithImpl<$Res>
-    extends _$EventShoppingBasketCopyWithImpl<$Res, _$DeleteFailureMessageImpl>
-    implements _$$DeleteFailureMessageImplCopyWith<$Res> {
-  __$$DeleteFailureMessageImplCopyWithImpl(_$DeleteFailureMessageImpl _value,
-      $Res Function(_$DeleteFailureMessageImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$DeleteFailureMessageImpl implements _DeleteFailureMessage {
-  const _$DeleteFailureMessageImpl();
 
   @override
   String toString() {
     return 'EventShoppingBasket.deleteFailureMessage()';
   }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$DeleteFailureMessageImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            String category,
-            int productOrderCount,
-            CategoryEntity productEntity,
-            EntityCorePictures entityCorePicture,
-            int? timeIndex)
-        add,
-    required TResult Function(int timePosition, String location) change,
-    required TResult Function(int timePosition) remove,
-    required TResult Function(EnumSortProductOrder orderList) orderList,
-    required TResult Function(String customerNumber) send,
-    required TResult Function() clear,
-    required TResult Function() deleteFailureMessage,
-  }) {
-    return deleteFailureMessage();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            String category,
-            int productOrderCount,
-            CategoryEntity productEntity,
-            EntityCorePictures entityCorePicture,
-            int? timeIndex)?
-        add,
-    TResult? Function(int timePosition, String location)? change,
-    TResult? Function(int timePosition)? remove,
-    TResult? Function(EnumSortProductOrder orderList)? orderList,
-    TResult? Function(String customerNumber)? send,
-    TResult? Function()? clear,
-    TResult? Function()? deleteFailureMessage,
-  }) {
-    return deleteFailureMessage?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            String category,
-            int productOrderCount,
-            CategoryEntity productEntity,
-            EntityCorePictures entityCorePicture,
-            int? timeIndex)?
-        add,
-    TResult Function(int timePosition, String location)? change,
-    TResult Function(int timePosition)? remove,
-    TResult Function(EnumSortProductOrder orderList)? orderList,
-    TResult Function(String customerNumber)? send,
-    TResult Function()? clear,
-    TResult Function()? deleteFailureMessage,
-    required TResult orElse(),
-  }) {
-    if (deleteFailureMessage != null) {
-      return deleteFailureMessage();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Add value) add,
-    required TResult Function(_Change value) change,
-    required TResult Function(_Remove value) remove,
-    required TResult Function(_OrderList value) orderList,
-    required TResult Function(_Send value) send,
-    required TResult Function(_Clear value) clear,
-    required TResult Function(_DeleteFailureMessage value) deleteFailureMessage,
-  }) {
-    return deleteFailureMessage(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Add value)? add,
-    TResult? Function(_Change value)? change,
-    TResult? Function(_Remove value)? remove,
-    TResult? Function(_OrderList value)? orderList,
-    TResult? Function(_Send value)? send,
-    TResult? Function(_Clear value)? clear,
-    TResult? Function(_DeleteFailureMessage value)? deleteFailureMessage,
-  }) {
-    return deleteFailureMessage?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Add value)? add,
-    TResult Function(_Change value)? change,
-    TResult Function(_Remove value)? remove,
-    TResult Function(_OrderList value)? orderList,
-    TResult Function(_Send value)? send,
-    TResult Function(_Clear value)? clear,
-    TResult Function(_DeleteFailureMessage value)? deleteFailureMessage,
-    required TResult orElse(),
-  }) {
-    if (deleteFailureMessage != null) {
-      return deleteFailureMessage(this);
-    }
-    return orElse();
-  }
 }
 
-abstract class _DeleteFailureMessage implements EventShoppingBasket {
-  const factory _DeleteFailureMessage() = _$DeleteFailureMessageImpl;
-}
+// dart format on

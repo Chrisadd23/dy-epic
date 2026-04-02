@@ -6,9 +6,9 @@ part of 'category_product_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CategoryProductModelImpl _$$CategoryProductModelImplFromJson(
+_CategoryProductModel _$CategoryProductModelFromJson(
         Map<String, dynamic> json) =>
-    _$CategoryProductModelImpl(
+    _CategoryProductModel(
       id: json['id'] as String?,
       isVisible: json['isVisible'] as bool?,
       productNumber: json['productNumber'] as String?,
@@ -21,8 +21,8 @@ _$CategoryProductModelImpl _$$CategoryProductModelImplFromJson(
           const [],
     );
 
-Map<String, dynamic> _$$CategoryProductModelImplToJson(
-        _$CategoryProductModelImpl instance) =>
+Map<String, dynamic> _$CategoryProductModelToJson(
+        _CategoryProductModel instance) =>
     <String, dynamic>{
       'id': instance.id,
       'isVisible': instance.isVisible,
