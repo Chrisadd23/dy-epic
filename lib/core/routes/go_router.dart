@@ -43,7 +43,8 @@ enum AppGoRouter {
   legalities('rechtliches'),
   detailedRequestInformation('requestInformation'),
   detailedOrderInformation('orderInformation'),
-  messages('messages'),
+  messages('nachrichten'),
+  chat('unterhaltung'),
   productAdding('productIntegration');
 
   const AppGoRouter(this.path);
