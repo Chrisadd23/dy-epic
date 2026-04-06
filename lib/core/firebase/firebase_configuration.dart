@@ -26,7 +26,7 @@ abstract class FirebaseConfiguration {
   static late final FirebaseStorage _firebaseStorage;
   static late final FirebaseMessaging _firebaseMessaging;
   static late final FlutterLocalNotificationsPlugin
-      _flutterLocalNotificationsPlugin;
+  _flutterLocalNotificationsPlugin;
   static String? appToken;
   static String? firebaseToken;
 
@@ -72,8 +72,8 @@ abstract class FirebaseConfiguration {
         debugPrint("onTokenRefresh ==> $token");
       });
 
-      RemoteMessage? initialMessage =
-          await _firebaseMessaging.getInitialMessage();
+      RemoteMessage? initialMessage = await _firebaseMessaging
+          .getInitialMessage();
 
       _initFlutterLocalNotificationAttributes;
       _initFirebaseMessagingInForegroundListener;
@@ -91,44 +91,60 @@ abstract class FirebaseConfiguration {
 
   static void _handleMessage(RemoteMessage message) {
     debugPrint('_handleMessage');
-    final Map<String, dynamic> json =
-        jsonDecode(message.data.values.first.toString());
+    final Map<String, dynamic> json = jsonDecode(
+      message.data.values.first.toString(),
+    );
     //debugPrint(json.toString());
 
     switch (json["type"]) {
       case 1:
         final order = OrderModel.fromJson(json['order']).toEntity();
         _pageNavigation(
-            routeName: AppGoRouter.detailedOrderInformation.name,
-            order: order,
-            type: json["type"]);
+          routeName: AppGoRouter.detailedOrderInformation.name,
+          order: order,
+          type: json["type"],
+        );
         break;
       case 2:
         break;
     }
   }
 
-  static void _pageNavigation(
-      {required String routeName,
-      required OrderEntity order,
-      required int type}) {
-    getIt<LoginCubit>().state.maybeWhen(loggedIn: (customer) {
-      if (customer.customerNumber != order.customerId) {
-        getIt<LoginCubit>().logOut();
-        getIt<CubitPushNotificationData>()
-            .addNotificationData(orderEntity: order);
-        getIt<GoRouter>().goNamed(AppGoRouter.login.name,
-            extra: order, queryParameters: {'redirectName': routeName});
-      } else {
-        getIt<GoRouter>()
-            .goNamed(AppGoRouter.detailedOrderInformation.name, extra: order);
-      }
-    }, orElse: () {
-      getIt<CubitPushNotificationData>()
-          .addNotificationData(orderEntity: order);
-      getIt<GoRouter>().goNamed(AppGoRouter.login.name,
-          extra: order, queryParameters: {'redirectName': routeName});
-    });
+  static void _pageNavigation({
+    required String routeName,
+    required OrderEntity order,
+    required int type,
+  }) {
+    getIt<LoginCubit>().state.maybeWhen(
+      loggedIn: (customer) {
+        if (customer.customerNumber != order.customerId) {
+          getIt<LoginCubit>().logOut();
+          getIt<CubitPushNotificationData>().addNotificationData(
+            orderEntity: order,
+          );
+          getIt<GoRouter>().goNamed(
+            AppGoRouter.login.name,
+            extra: order,
+            queryParameters: {'redirectName': routeName},
+          );
+        } else {
+          getIt<GoRouter>().goNamed(
+            AppGoRouter.detailedOrderInformation.name,
+            extra: order,
+          );
+        }
+      },
+      orElse: () {
+        getIt<CubitPushNotificationData>().addNotificationData(
+          orderEntity: order,
+        );
+        getIt<GoRouter>().goNamed(
+          AppGoRouter.login.name,
+          extra: order,
+          queryParameters: {'redirectName': routeName},
+        );
+      },
+    );
   }
 
   static Future<Uint8List?> getImageBytes(String filename) async {
@@ -139,9 +155,7 @@ abstract class FirebaseConfiguration {
           .child(filename)
           .getData(10000000)
           .timeout(const Duration(seconds: 10))
-          .then(
-            (data) => data,
-          );
+          .then((data) => data);
     } catch (error) {
       return null;
     }
@@ -149,10 +163,11 @@ abstract class FirebaseConfiguration {
     return imageBytes;
   }
 
-  static Future<Either<Failure, bool>> uploadImage(
-      {required String productNumber,
-      required File image,
-      required String fileType}) async {
+  static Future<Either<Failure, bool>> uploadImage({
+    required String productNumber,
+    required File image,
+    required String fileType,
+  }) async {
     try {
       await _firebaseStorage
           .ref()
@@ -174,7 +189,8 @@ abstract class FirebaseConfiguration {
       if (remoteMessage.notification != null) {
         _showNotification(remoteMessage);
         customLog(
-            'Message also contained a notification: ${remoteMessage.notification}');
+          'Message also contained a notification: ${remoteMessage.notification}',
+        );
       }
     });
   }
@@ -201,28 +217,41 @@ abstract class FirebaseConfiguration {
 
     const InitializationSettings initializationSettings =
         InitializationSettings(
-            android: initializationSettingsAndroid, iOS: initSettingsIos);
+          android: initializationSettingsAndroid,
+          iOS: initSettingsIos,
+        );
 
-    await _flutterLocalNotificationsPlugin.initialize(initializationSettings);
+    await _flutterLocalNotificationsPlugin.initialize(
+      settings: initializationSettings,
+    );
   }
 
   static Future<void> _showNotification(RemoteMessage message) async {
     const AndroidNotificationDetails androidNotificationDetails =
-        AndroidNotificationDetails('channel_id', 'Channel Name',
-            channelDescription: 'Channel Description',
-            importance: Importance.max,
-            priority: Priority.high,
-            ticker: 'ticker');
+        AndroidNotificationDetails(
+          'channel_id',
+          'Channel Name',
+          channelDescription: 'Channel Description',
+          importance: Importance.max,
+          priority: Priority.high,
+          ticker: 'ticker',
+        );
 
     const DarwinNotificationDetails iOsNotificationDetails =
         DarwinNotificationDetails(presentAlert: true, presentSound: true);
 
     const NotificationDetails notificationDetails = NotificationDetails(
-        android: androidNotificationDetails, iOS: iOsNotificationDetails);
+      android: androidNotificationDetails,
+      iOS: iOsNotificationDetails,
+    );
 
     debugPrint("_flutterLocalNotificationsPlugin.show");
-    await _flutterLocalNotificationsPlugin.show(1, message.notification?.title,
-        message.notification?.body, notificationDetails,
-        payload: 'Not present');
+    await _flutterLocalNotificationsPlugin.show(
+      id: 1,
+      title: message.notification?.title,
+      body: message.notification?.body,
+      notificationDetails: notificationDetails,
+      payload: 'Not present',
+    );
   }
 }

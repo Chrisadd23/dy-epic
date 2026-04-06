@@ -129,7 +129,7 @@ class _NotificationSwitchAll extends StatelessWidget {
                             .read<NotificationSettingsCubit>()
                             .toggleAll(toggleAll: value);
                       },
-            activeColor: Colors.green,
+            activeThumbColor: Colors.green,
             inactiveTrackColor: Colors.transparent,
             hoverColor: Colors.blue,
           );
@@ -182,7 +182,7 @@ class _NotificationSettingsListView extends StatelessWidget {
                                             orderProcess:
                                                 state[index].enumOrderProcess);
                                   },
-                            activeColor: Colors.green,
+                            activeThumbColor: Colors.green,
                             inactiveTrackColor: Colors.transparent,
                             hoverColor: Colors.blue,
                           )

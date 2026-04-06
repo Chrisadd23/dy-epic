@@ -243,7 +243,7 @@ class _VisibleCheckbox extends StatelessWidget {
                       toggle: value,
                     );
               },
-              activeColor: Colors.green,
+              activeThumbColor: Colors.green,
               inactiveTrackColor: Colors.red[200],
               inactiveThumbColor: Colors.red,
               hoverColor: Colors.blue,
