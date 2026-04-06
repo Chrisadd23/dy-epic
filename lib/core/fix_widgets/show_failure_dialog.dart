@@ -13,7 +13,7 @@ class ShowFailureDialog extends StatelessWidget {
   static Future<dynamic> present(
       {required BuildContext context,
       required String failure,
-      required String id}) {
+      required String id}) async {
     if (!_failureMessagesIdList.contains(id)) {
       _failureMessagesIdList.add(id);
       return showDialog(
