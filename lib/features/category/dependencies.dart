@@ -13,7 +13,7 @@ import 'package:app_flutter_produkt_bestellen/features/category/share/presentati
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 
 abstract class CategoryDependencies {
-  static setUp() {
+  static void setUp() {
     _setUpWorkingTable();
     _setUpConferenceChair();
     _setUpOfficeChair();

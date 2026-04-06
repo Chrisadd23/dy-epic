@@ -9,7 +9,7 @@ import 'package:app_flutter_produkt_bestellen/features/product/presentation/cubi
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 
 abstract class ProductDependencies {
-  static setUp() {
+  static void setUp() {
     getIt
       ..registerLazySingleton<ProductIntegrationDataSource>(
           () => ProductIntegrationDataSourceImplementation())

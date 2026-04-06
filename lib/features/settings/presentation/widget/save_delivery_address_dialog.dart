@@ -19,7 +19,7 @@ class SaveDeliveryAddressDialog extends StatelessWidget {
   final String zipCode;
   final String city;
 
-  static showSaveDialog(
+  static Future<dynamic> showSaveDialog(
           {required BuildContext context,
           required EntityLoginCustomer entityLoginCustomer,
           required String street,

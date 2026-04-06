@@ -74,7 +74,7 @@ class _ShoppingBasketStack extends StatelessWidget {
 class _ShoppingBasketDialog extends StatelessWidget {
   const _ShoppingBasketDialog._();
 
-  static show({required BuildContext context}) => showDialog(
+  static Future<dynamic> show({required BuildContext context}) => showDialog(
       context: context,
       builder: (_) => Dialog(
           insetPadding: EdgeInsets.symmetric(

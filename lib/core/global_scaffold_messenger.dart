@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class GlobalScaffoldMessenger {
   const GlobalScaffoldMessenger._();
 
-  static error(
+  static ScaffoldFeatureController<SnackBar, SnackBarClosedReason> error(
           {required BuildContext context,
           required String information,
           Color? color,
@@ -15,7 +15,7 @@ class GlobalScaffoldMessenger {
           gradient: gradient,
           textStyle: textStyle));
 
-  static success(
+  static ScaffoldFeatureController<SnackBar, SnackBarClosedReason> success(
           {required BuildContext context,
           required String information,
           Color? color,

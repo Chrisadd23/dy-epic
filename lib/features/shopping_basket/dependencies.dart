@@ -7,7 +7,7 @@ import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 abstract class ShoppingBasketDependencies {
-  static setUp() {
+  static void setUp() {
     getIt
       ..registerLazySingleton<ShoppingBasketDataSource>(
         () =>

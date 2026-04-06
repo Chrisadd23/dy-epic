@@ -2,7 +2,7 @@ import 'package:app_flutter_produkt_bestellen/features/home/presentation/cubit/h
 import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 
 abstract class HomeDependencies {
-  static setUp() {
+  static void setUp() {
     //cubit
     getIt.registerFactory<HomeCategoryCubit>(() => HomeCategoryCubit());
   }

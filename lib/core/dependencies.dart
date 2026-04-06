@@ -11,7 +11,7 @@ import 'package:app_flutter_produkt_bestellen/global_dependencies.dart';
 import 'package:go_router/go_router.dart';
 
 abstract class CoreDependencies {
-  static setUp() {
+  static void setUp() {
     getIt
       ..registerLazySingleton<DataSourceCore>(
           () => DataSourceImplementationCore())

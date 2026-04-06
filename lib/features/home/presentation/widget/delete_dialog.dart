@@ -15,7 +15,7 @@ class DeleteDialog extends StatelessWidget {
 
   final CategoryEntity categoryEntity;
 
-  static show({
+  static Future<dynamic> show({
     required BuildContext context,
     required CategoryEntity categoryEntity,
     required EnumCategoryProduct enumCategoryProduct,

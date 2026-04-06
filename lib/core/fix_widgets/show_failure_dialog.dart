@@ -10,7 +10,7 @@ class ShowFailureDialog extends StatelessWidget {
 
   final String failure;
 
-  static present(
+  static Future<dynamic> present(
       {required BuildContext context,
       required String failure,
       required String id}) {

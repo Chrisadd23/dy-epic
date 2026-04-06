@@ -6,7 +6,7 @@ import '../login/domain/repository/login_repository.dart';
 import '../login/domain/use_case/get_customer_use_case.dart';
 
 abstract class ChatDependencies {
-  static setUp() {
+  static void setUp() {
     getIt
       ..registerLazySingleton<GetAllContactsUseCase>(
           () => GetAllContactsUseCase(getIt<LoginRepository>()))

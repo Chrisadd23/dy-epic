@@ -206,7 +206,7 @@ abstract class FirebaseConfiguration {
     await _flutterLocalNotificationsPlugin.initialize(initializationSettings);
   }
 
-  static _showNotification(RemoteMessage message) async {
+  static Future<void> _showNotification(RemoteMessage message) async {
     const AndroidNotificationDetails androidNotificationDetails =
         AndroidNotificationDetails('channel_id', 'Channel Name',
             channelDescription: 'Channel Description',
