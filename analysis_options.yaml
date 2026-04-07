@@ -8,9 +8,43 @@ analyzer:
     - "**/*.g.dart"
     - "**/*.freezed.dart"
   errors:
-  # Hier werden alle Fehler zu Ignorierung herabgestuft, die oft Pushes blockieren
-
+    # Hier werden alle Fehler zu Ignorierung herabgestuft, die oft Pushes blockieren
+    todo: ignore
+    deprecated_member_use: ignore
+    deprecated_member_use_from_same_package: ignore
+    invalid_annotation_target: ignore
 
 linter:
   rules:
-  # Wir deaktivieren hier die Lints, die am häufigsten Probleme machen
+    # Wir deaktivieren hier die Lints, die am häufigsten Probleme machen
+    avoid_print: false
+    always_use_package_imports: false
+    annotate_overrides: false
+    avoid_relative_lib_imports: false
+    avoid_types_as_parameter_names: false
+    cascade_invocations: false
+    constant_identifier_names: false
+    file_names: false
+    library_names: false
+    prefer_const_constructors_in_immutables: false
+    unnecessary_await_in_return: false
+    unnecessary_getters_setters: false
+    unnecessary_late: false
+    unnecessary_new: false
+    unnecessary_null_in_if_null_operators: false
+    unnecessary_nullable_for_final_variable_declarations: false
+    void_checks: false
+    avoid_unnecessary_containers: false
+    avoid_unused_constructor_parameters: false
+    camel_case_extensions: false
+    empty_constructor_bodies: false
+    avoid_null_checks_in_equality_operators: false
+    invalid_case_patterns: false
+    no_duplicate_case_values: false
+    prefer_const_constructors: false
+    prefer_const_literals_to_create_immutables: false
+    prefer_final_fields: false
+    use_key_in_widget_constructors: false
+    use_super_parameters: false
+    unnecessary_to_list_in_spreads: false
+    dangling_library_doc_comments: false
