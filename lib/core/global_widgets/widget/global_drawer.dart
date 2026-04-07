@@ -15,7 +15,7 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class GlobalDrawer extends StatelessWidget {
-  const GlobalDrawer({Key? key}) : super(key: key);
+  const GlobalDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -246,7 +246,7 @@ class _DrawerWidget extends StatelessWidget {
                                     Navigator.pop(context);
                                   },
                                 ))
-                            .toList()
+                            
                       ]),
                       const SizedBox(height: 30),
                       BlocBuilder<LoginCubit, LoginState>(

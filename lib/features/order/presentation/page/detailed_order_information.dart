@@ -212,7 +212,7 @@ class _OrderInformationContainer extends StatelessWidget {
           ),
           ...orderEntity.listOrderEntity
               .map((order) => _ProductOrderInformation(order: order))
-              .toList(),
+              ,
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [

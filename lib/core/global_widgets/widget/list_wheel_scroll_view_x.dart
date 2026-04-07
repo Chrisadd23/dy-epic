@@ -1,4 +1,5 @@
 /// A Calculator.
+library;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -79,7 +80,7 @@ class ListWheelScrollViewX extends StatelessWidget {
   final Clip clipBehavior;
 
   const ListWheelScrollViewX({
-    Key? key,
+    super.key,
     this.scrollDirection = Axis.vertical,
     this.controller,
     this.physics,
@@ -95,11 +96,10 @@ class ListWheelScrollViewX extends StatelessWidget {
     this.renderChildrenOutsideViewport = false,
     this.clipBehavior = Clip.hardEdge,
     required this.children,
-  })  : childDelegate = null,
-        super(key: key);
+  })  : childDelegate = null;
 
   const ListWheelScrollViewX.useDelegate({
-    Key? key,
+    super.key,
     this.scrollDirection = Axis.vertical,
     this.controller,
     this.physics,
@@ -115,8 +115,7 @@ class ListWheelScrollViewX extends StatelessWidget {
     this.renderChildrenOutsideViewport = false,
     this.clipBehavior = Clip.hardEdge,
     required this.childDelegate,
-  })  : children = null,
-        super(key: key);
+  })  : children = null;
 
   @override
   Widget build(BuildContext context) {

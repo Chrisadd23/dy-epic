@@ -16,7 +16,7 @@ class GlobalCurvedNavigationBar extends StatefulWidget {
   final double height;
 
   GlobalCurvedNavigationBar({
-    Key? key,
+    super.key,
     required this.items,
     this.index = 0,
     this.color = Colors.white,
@@ -32,8 +32,7 @@ class GlobalCurvedNavigationBar extends StatefulWidget {
         assert(items != null),
         assert(items.isNotEmpty),
         assert(0 <= index && index < items.length),
-        assert(0 <= height && height <= 75.0),
-        super(key: key);
+        assert(0 <= height && height <= 75.0);
 
   @override
   GlobalCurvedNavigationBarState createState() =>

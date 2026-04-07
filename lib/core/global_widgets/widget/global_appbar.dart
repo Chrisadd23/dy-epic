@@ -9,11 +9,10 @@ import 'package:google_fonts/google_fonts.dart';
 
 class GlobalAppBar extends AppBar {
   GlobalAppBar({
-    Key? key,
+    super.key,
     required BuildContext context,
     required bool showMenuBar,
   }) : super(
-          key: key,
           leadingWidth: 0,
           leading: const SizedBox.shrink(),
           centerTitle: false,

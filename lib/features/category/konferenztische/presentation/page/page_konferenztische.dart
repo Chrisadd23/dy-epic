@@ -11,7 +11,9 @@ class PageKonferenztische extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GlobalScaffold(
-        appBarContext: context, body: const _Konferenztische());
+      appBarContext: context,
+      body: const _Konferenztische(),
+    );
   }
 }
 
@@ -43,88 +45,85 @@ class _KonferenztischeState extends State<_Konferenztische> {
         physics: const FixedExtentScrollPhysics(),
         scrollDirection: Axis.horizontal,
         itemExtent: MediaQuery.sizeOf(context).width * 0.75,
-        childDelegate: ListWheelChildLoopingListDelegate(children: [
-          Container(
-            height: MediaQuery.sizeOf(context).height * 0.7,
-            decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.4),
+        childDelegate: ListWheelChildLoopingListDelegate(
+          children: [
+            Container(
+              height: MediaQuery.sizeOf(context).height * 0.7,
+              decoration: BoxDecoration(
+                color: Colors.white.withValues(alpha: 0.4),
                 borderRadius: BorderRadius.circular(20),
                 border: Border.all(
-                    width: 2,
-                    color: Colors.black.withOpacity(0.2),
-                    style: BorderStyle.solid)),
-            child: const Center(
-              child: Text(
-                '1',
-                style: TextStyle(fontSize: 100),
+                  width: 2,
+                  color: Colors.black.withValues(alpha: 0.2),
+                  style: BorderStyle.solid,
+                ),
+              ),
+              child: const Center(
+                child: Text('1', style: TextStyle(fontSize: 100)),
               ),
             ),
-          ),
-          Container(
-            height: MediaQuery.sizeOf(context).height * 0.7,
-            decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.4),
+            Container(
+              height: MediaQuery.sizeOf(context).height * 0.7,
+              decoration: BoxDecoration(
+                color: Colors.white.withValues(alpha: 0.4),
                 borderRadius: BorderRadius.circular(20),
                 border: Border.all(
-                    width: 2,
-                    color: Colors.black.withOpacity(0.2),
-                    style: BorderStyle.solid)),
-            child: const Center(
-              child: Text(
-                '2',
-                style: TextStyle(fontSize: 100),
+                  width: 2,
+                  color: Colors.black.withValues(alpha: 0.2),
+                  style: BorderStyle.solid,
+                ),
+              ),
+              child: const Center(
+                child: Text('2', style: TextStyle(fontSize: 100)),
               ),
             ),
-          ),
-          Container(
-            height: MediaQuery.sizeOf(context).height * 0.7,
-            decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.4),
+            Container(
+              height: MediaQuery.sizeOf(context).height * 0.7,
+              decoration: BoxDecoration(
+                color: Colors.white.withValues(alpha: 0.4),
                 borderRadius: BorderRadius.circular(20),
                 border: Border.all(
-                    width: 2,
-                    color: Colors.black.withOpacity(0.2),
-                    style: BorderStyle.solid)),
-            child: const Center(
-              child: Text(
-                '3',
-                style: TextStyle(fontSize: 100),
+                  width: 2,
+                  color: Colors.black.withValues(alpha: 0.2),
+                  style: BorderStyle.solid,
+                ),
+              ),
+              child: const Center(
+                child: Text('3', style: TextStyle(fontSize: 100)),
               ),
             ),
-          ),
-          Container(
-            height: MediaQuery.sizeOf(context).height * 0.7,
-            decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.4),
+            Container(
+              height: MediaQuery.sizeOf(context).height * 0.7,
+              decoration: BoxDecoration(
+                color: Colors.white.withValues(alpha: 0.4),
                 borderRadius: BorderRadius.circular(20),
                 border: Border.all(
-                    width: 2,
-                    color: Colors.black.withOpacity(0.2),
-                    style: BorderStyle.solid)),
-            child: const Center(
-              child: Text(
-                '4',
-                style: TextStyle(fontSize: 100),
+                  width: 2,
+                  color: Colors.black.withValues(alpha: 0.2),
+                  style: BorderStyle.solid,
+                ),
+              ),
+              child: const Center(
+                child: Text('4', style: TextStyle(fontSize: 100)),
               ),
             ),
-          ),
-          Container(
-            height: MediaQuery.sizeOf(context).height * 0.7,
-            decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.4),
+            Container(
+              height: MediaQuery.sizeOf(context).height * 0.7,
+              decoration: BoxDecoration(
+                color: Colors.white.withValues(alpha: 0.4),
                 borderRadius: BorderRadius.circular(20),
                 border: Border.all(
-                    width: 2,
-                    color: Colors.black.withOpacity(0.2),
-                    style: BorderStyle.solid)),
-            child: const Center(
-              child: Text(
-                '5',
-                style: TextStyle(fontSize: 100),
+                  width: 2,
+                  color: Colors.black.withValues(alpha: 0.2),
+                  style: BorderStyle.solid,
+                ),
+              ),
+              child: const Center(
+                child: Text('5', style: TextStyle(fontSize: 100)),
               ),
             ),
-          ),
-        ]),
+          ],
+        ),
       ),
     );
   }
@@ -140,7 +139,11 @@ class _KonferenztischeState extends State<_Konferenztische> {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<FixedExtentScrollController>(
-        'controller', controller));
+    properties.add(
+      DiagnosticsProperty<FixedExtentScrollController>(
+        'controller',
+        controller,
+      ),
+    );
   }
 }

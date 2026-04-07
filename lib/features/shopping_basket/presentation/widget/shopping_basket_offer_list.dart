@@ -30,81 +30,94 @@ class ShoppingBasketOfferList extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<BlocShoppingBasket, StateShoppingBasket>(
       builder: (context, state) => LayoutBuilder(
-        builder: (context, constraints) => BlocListener<BlocShoppingBasket,
-                StateShoppingBasket>(
-            listenWhen: (_, cState) =>
-                cState.orderChosenProductList.isEmpty || cState.failure != null,
-            listener: (context, state) {
-              if (state.failure != null) {
-                ShowFailureDialog.present(
+        builder: (context, constraints) =>
+            BlocListener<BlocShoppingBasket, StateShoppingBasket>(
+              listenWhen: (_, cState) =>
+                  cState.orderChosenProductList.isEmpty ||
+                  cState.failure != null,
+              listener: (context, state) {
+                if (state.failure != null) {
+                  ShowFailureDialog.present(
                     id: 'shopping_basket_failure',
                     context: context,
-                    failure: state.failure!.getFailureMessage);
-                if (context.mounted) {
-                  context
-                      .read<BlocShoppingBasket>()
-                      .add(const EventShoppingBasket.deleteFailureMessage());
+                    failure: state.failure!.getFailureMessage,
+                  );
+                  if (context.mounted) {
+                    context.read<BlocShoppingBasket>().add(
+                      const EventShoppingBasket.deleteFailureMessage(),
+                    );
+                  }
+                } else {
+                  context.pop(null);
                 }
-              } else {
-                context.pop(null);
-              }
-            },
-            child: Column(
-              children: [
-                SizedBox(
-                  height: constraints.maxHeight * 0.85,
-                  child: ClipRRect(
-                    borderRadius: const BorderRadius.vertical(
-                        bottom: Radius.circular(30)),
-                    child: BlocSelector<BlocShoppingBasket, StateShoppingBasket,
-                            List<ShoppingBasketProduct>>(
-                        selector: (state) => [
-                              ...List.of(state.orderChosenProductList)
-                                ..sort((a, b) =>
-                                    b.addedTime.compareTo(a.addedTime)),
+              },
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: constraints.maxHeight * 0.85,
+                    child: ClipRRect(
+                      borderRadius: const BorderRadius.vertical(
+                        bottom: Radius.circular(30),
+                      ),
+                      child:
+                          BlocSelector<
+                            BlocShoppingBasket,
+                            StateShoppingBasket,
+                            List<ShoppingBasketProduct>
+                          >(
+                            selector: (state) => [
+                              ...List.of(state.orderChosenProductList)..sort(
+                                (a, b) => b.addedTime.compareTo(a.addedTime),
+                              ),
                             ],
-                        builder: (context, state) {
-                          return ListView.builder(
-                            itemCount: state.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              return Padding(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: constraints.maxWidth * 0.05,
-                                    vertical: constraints.maxHeight * 0.02),
-                                child:
-                                    BlocProvider<CubitExpandInformationWidget>(
-                                  create: (context) =>
-                                      getIt<CubitExpandInformationWidget>(),
-                                  child: _ShoppingBasketOffer(
-                                      constraints: constraints,
-                                      item: state[index],
-                                      addedTime: state[index].addedTime,
-                                      orderType: context
-                                          .read<BlocShoppingBasket>()
-                                          .state
-                                          .getEnumOrderType(
-                                              timeIndex:
-                                                  state[index].addedTime)),
-                                ),
+                            builder: (context, state) {
+                              return ListView.builder(
+                                itemCount: state.length,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: constraints.maxWidth * 0.05,
+                                      vertical: constraints.maxHeight * 0.02,
+                                    ),
+                                    child:
+                                        BlocProvider<
+                                          CubitExpandInformationWidget
+                                        >(
+                                          create: (context) =>
+                                              getIt<
+                                                CubitExpandInformationWidget
+                                              >(),
+                                          child: _ShoppingBasketOffer(
+                                            constraints: constraints,
+                                            item: state[index],
+                                            addedTime: state[index].addedTime,
+                                            orderType: context
+                                                .read<BlocShoppingBasket>()
+                                                .state
+                                                .getEnumOrderType(
+                                                  timeIndex:
+                                                      state[index].addedTime,
+                                                ),
+                                          ),
+                                        ),
+                                  );
+                                },
                               );
                             },
-                          );
-                        }),
+                          ),
+                    ),
                   ),
-                ),
-                SendOrderButton(constraints: constraints)
-              ],
-            )),
+                  SendOrderButton(constraints: constraints),
+                ],
+              ),
+            ),
       ),
     );
   }
 }
 
 class SendOrderButton extends StatelessWidget {
-  const SendOrderButton({
-    super.key,
-    required this.constraints,
-  });
+  const SendOrderButton({super.key, required this.constraints});
 
   final BoxConstraints constraints;
 
@@ -113,43 +126,50 @@ class SendOrderButton extends StatelessWidget {
     return Expanded(
       child: Padding(
         padding: EdgeInsets.symmetric(
-            horizontal: constraints.maxWidth * 0.05,
-            vertical: constraints.maxHeight * 0.02),
+          horizontal: constraints.maxWidth * 0.05,
+          vertical: constraints.maxHeight * 0.02,
+        ),
         child: BlocSelector<LoginCubit, LoginState, EntityLoginCustomer?>(
-            selector: (state) => state.customer,
-            builder: (context, customer) {
-              return InkWell(
-                onTap: customer == null
-                    ? () {
-                        GlobalBottomSheet.showGlobalBottomSheet(
-                            context: context,
-                            infoText: AppText.needsToBeLoggedInToSend,
-                            errorIcon: true);
-                      }
-                    : () async {
-                        context.read<BlocShoppingBasket>().add(
-                            EventShoppingBasket.send(
-                                customerNumber: customer.customerNumber));
-                      },
-                child: Container(
-                  height: constraints.maxHeight * 0.15,
-                  width: constraints.maxWidth,
-                  decoration: BoxDecoration(
-                      color: customer == null
-                          ? AppColors.greyD7D7D7
-                          : AppColors.orangeF6A440,
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all()),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
-                    child: Center(
-                        child: Row(
+          selector: (state) => state.customer,
+          builder: (context, customer) {
+            return InkWell(
+              onTap: customer == null
+                  ? () {
+                      GlobalBottomSheet.showGlobalBottomSheet(
+                        context: context,
+                        infoText: AppText.needsToBeLoggedInToSend,
+                        errorIcon: true,
+                      );
+                    }
+                  : () async {
+                      context.read<BlocShoppingBasket>().add(
+                        EventShoppingBasket.send(
+                          customerNumber: customer.customerNumber,
+                        ),
+                      );
+                    },
+              child: Container(
+                height: constraints.maxHeight * 0.15,
+                width: constraints.maxWidth,
+                decoration: BoxDecoration(
+                  color: customer == null
+                      ? AppColors.greyD7D7D7
+                      : AppColors.orangeF6A440,
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Center(
+                    child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Text(
                           'absenden',
                           style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                         customer == null
                             ? const Padding(
@@ -161,11 +181,13 @@ class SendOrderButton extends StatelessWidget {
                               )
                             : const SizedBox.shrink(),
                       ],
-                    )),
+                    ),
                   ),
                 ),
-              );
-            }),
+              ),
+            );
+          },
+        ),
       ),
     );
   }
@@ -191,110 +213,108 @@ class _ShoppingBasketOffer extends StatelessWidget {
         InkWell(
           onTap: () => context.read<CubitExpandInformationWidget>().onTap(),
           child: SwipeableTile.swipeToTriggerCard(
-              borderRadius: 20,
-              key: Key(DateTime.now().toString()),
-              direction: SwipeDirection.horizontal,
-              backgroundBuilder: (context, direction, progress) {
-                return direction == SwipeDirection.startToEnd
-                    ? ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
-                        child: Container(
-                          height: constraints.maxHeight * 0.2,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            border: Border.all(),
-                            color: Colors.green,
-                          ),
-                          alignment: Alignment.centerLeft,
-                          child: const Padding(
-                            padding: EdgeInsets.all(20.0),
-                            child: Icon(
-                              Icons.create,
-                              size: 40,
-                            ),
-                          ),
-                        ),
-                      )
-                    : ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
-                        child: Container(
-                          height: constraints.maxHeight * 0.2,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            border: Border.all(),
-                            color: Colors.red,
-                          ),
-                          alignment: Alignment.centerRight,
-                          child: const Padding(
-                            padding: EdgeInsets.all(20.0),
-                            child: Icon(
-                              Icons.delete,
-                              size: 40,
-                            ),
-                          ),
-                        ),
-                      );
-              },
-              color: Colors.white,
-              onSwiped: (direction) {
-                if (direction == SwipeDirection.startToEnd) {
-                  context
-                      .read<BlocShoppingBasket>()
-                      .add(EventShoppingBasket.change(
-                        timePosition: addedTime,
-                        location: getIt<GoRouter>().state.matchedLocation,
-                      ));
-                }
-                if (direction == SwipeDirection.endToStart) {
-                  context
-                      .read<BlocShoppingBasket>()
-                      .add(EventShoppingBasket.remove(timePosition: addedTime));
-                }
-              },
-              horizontalPadding: 0,
-              verticalPadding: 0,
-              shadow: BoxShadow(
-                color: Colors.black.withOpacity(0.35),
-                blurRadius: 2,
-                offset: const Offset(2, 4),
-              ),
-              swipeThreshold: 0.5,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(),
-                    color: Colors.white,
-                  ),
-                  child: Column(
-                    children: [
-                      SizedBox(
+            borderRadius: 20,
+            key: Key(DateTime.now().toString()),
+            direction: SwipeDirection.horizontal,
+            backgroundBuilder: (context, direction, progress) {
+              return direction == SwipeDirection.startToEnd
+                  ? ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: Container(
                         height: constraints.maxHeight * 0.2,
-                        child: _Offer(
-                            item: item,
-                            picture: context
-                                .read<CubitCorePictures>()
-                                .getSinglePicture(
-                                    productNumber:
-                                        item.categoryEntity.productNumber)),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(),
+                          color: Colors.green,
+                        ),
+                        alignment: Alignment.centerLeft,
+                        child: const Padding(
+                          padding: EdgeInsets.all(20.0),
+                          child: Icon(Icons.create, size: 40),
+                        ),
                       ),
-                      BlocBuilder<CubitExpandInformationWidget, bool>(
-                          builder: (context, expand) {
+                    )
+                  : ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: Container(
+                        height: constraints.maxHeight * 0.2,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(),
+                          color: Colors.red,
+                        ),
+                        alignment: Alignment.centerRight,
+                        child: const Padding(
+                          padding: EdgeInsets.all(20.0),
+                          child: Icon(Icons.delete, size: 40),
+                        ),
+                      ),
+                    );
+            },
+            color: Colors.white,
+            onSwiped: (direction) {
+              if (direction == SwipeDirection.startToEnd) {
+                context.read<BlocShoppingBasket>().add(
+                  EventShoppingBasket.change(
+                    timePosition: addedTime,
+                    location: getIt<GoRouter>().state.matchedLocation,
+                  ),
+                );
+              }
+              if (direction == SwipeDirection.endToStart) {
+                context.read<BlocShoppingBasket>().add(
+                  EventShoppingBasket.remove(timePosition: addedTime),
+                );
+              }
+            },
+            horizontalPadding: 0,
+            verticalPadding: 0,
+            shadow: BoxShadow(
+              color: Colors.black.withValues(alpha: 0.35),
+              blurRadius: 2,
+              offset: const Offset(2, 4),
+            ),
+            swipeThreshold: 0.5,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(),
+                  color: Colors.white,
+                ),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: constraints.maxHeight * 0.2,
+                      child: _Offer(
+                        item: item,
+                        picture: context
+                            .read<CubitCorePictures>()
+                            .getSinglePicture(
+                              productNumber: item.categoryEntity.productNumber,
+                            ),
+                      ),
+                    ),
+                    BlocBuilder<CubitExpandInformationWidget, bool>(
+                      builder: (context, expand) {
                         if (expand) {
                           return _OfferInfo(
-                              item: item,
-                              constraints: constraints,
-                              orderType: orderType);
+                            item: item,
+                            constraints: constraints,
+                            orderType: orderType,
+                          );
                         } else {
                           return const SizedBox.shrink();
                         }
-                      }),
-                    ],
-                  ),
+                      },
+                    ),
+                  ],
                 ),
-              )),
-        )
+              ),
+            ),
+          ),
+        ),
       ],
     );
   }
@@ -368,50 +388,57 @@ class _Offer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints) {
-      return Padding(
-        padding: const EdgeInsets.only(right: 10.0),
-        child: Row(
-          children: [
-            Expanded(
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: picture?.listIntForUint8List != null
-                    ? Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Image.memory(
-                            Uint8List.fromList(picture!.listIntForUint8List!)),
-                      )
-                    : const SizedBox.shrink(),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return Padding(
+          padding: const EdgeInsets.only(right: 10.0),
+          child: Row(
+            children: [
+              Expanded(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: picture?.listIntForUint8List != null
+                      ? Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Image.memory(
+                            Uint8List.fromList(picture!.listIntForUint8List!),
+                          ),
+                        )
+                      : const SizedBox.shrink(),
+                ),
               ),
-            ),
-            Expanded(
-              child: Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(
+              Expanded(
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(
                         vertical: constraints.maxHeight * 0.12,
-                        horizontal: constraints.maxWidth * 0.02),
-                    child: Text(
-                      item.categoryEntity.productTitle,
-                      style: const TextStyle(
+                        horizontal: constraints.maxWidth * 0.02,
+                      ),
+                      child: Text(
+                        item.categoryEntity.productTitle,
+                        style: const TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
-                          decoration: TextDecoration.underline),
-                      textAlign: TextAlign.center,
-                      maxLines: 2,
+                          decoration: TextDecoration.underline,
+                        ),
+                        textAlign: TextAlign.center,
+                        maxLines: 2,
+                      ),
                     ),
-                  ),
-                  FittedBox(
-                    child: Text(item.completeAmount.getCurrency(),
-                        style: AppTextStyle.bold14),
-                  )
-                ],
+                    FittedBox(
+                      child: Text(
+                        item.completeAmount.getCurrency(),
+                        style: AppTextStyle.bold14,
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
-        ),
-      );
-    });
+            ],
+          ),
+        );
+      },
+    );
   }
 }

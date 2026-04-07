@@ -6,15 +6,13 @@ import 'package:flutter/material.dart';
 
 class GlobalScaffold extends Scaffold {
   GlobalScaffold({
-    Key? key,
+    super.key,
     required BuildContext appBarContext,
     required Widget body,
     bool showMenuBar = false,
-    GlobalCurvedNavigationBar? bottomNavigationBar,
-    bool resizeToAvoidBottomInset = false,
+    GlobalCurvedNavigationBar? super.bottomNavigationBar,
+    bool super.resizeToAvoidBottomInset = false,
   }) : super(
-            resizeToAvoidBottomInset: resizeToAvoidBottomInset,
-            key: key,
             extendBody: true,
             appBar: PreferredSize(
               preferredSize: const Size.fromHeight(70),
@@ -38,6 +36,5 @@ class GlobalScaffold extends Scaffold {
             ),
             body: SafeArea(bottom: false, child: body),
             backgroundColor: AppColors.greyCACACA,
-            drawer: const GlobalDrawer(),
-            bottomNavigationBar: bottomNavigationBar);
+            drawer: const GlobalDrawer());
 }
